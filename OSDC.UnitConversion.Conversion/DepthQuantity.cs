@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OSDC.UnitConversion.Conversion
+{
+    public partial class DepthQuantity : LengthQuantity
+    {
+        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+
+        private static DepthQuantity instance_ = null;
+
+        public static DepthQuantity Instance
+        {
+            get
+            {
+                if (instance_ == null)
+                {
+                    instance_ = new DepthQuantity();
+                }
+                return instance_;
+            }
+        }
+
+        protected DepthQuantity() : base()
+        {
+            Name = "Depth";
+            ID = new Guid("c0d965b2-a153-420a-9d03-7a2a272d619e");
+            Reset();
+            this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Metre));
+            this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Feet));
+            PostProcess();
+        }
+    }
+}
