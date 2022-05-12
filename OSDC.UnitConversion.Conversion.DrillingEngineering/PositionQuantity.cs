@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OSDC.UnitConversion.Conversion
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class PositionQuantity : LengthQuantity
+    public partial class PositionQuantity : LengthQuantity, IEngineeringQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
+        public virtual double? MeaningFullPrecisionInSI { get; } = 0.01;
 
         private static PositionQuantity instance_ = null;
 
-        public static PositionQuantity Instance
+        public static new PositionQuantity Instance
         {
             get
             {

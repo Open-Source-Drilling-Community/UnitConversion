@@ -36,10 +36,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitSymbol = SIUnitSymbol,
                     ID = new Guid("eac42b09-cc85-4e29-9aaf-05fe73bca2aa"),
                     ConversionFactorFromSI = 1.0,
-                    IsSI = true,
-                    IsMetric = true,
-                    IsImperial = true,
-                    IsUS = true
+                    IsSI = true
                 },
                 new UnitChoice
                 {

@@ -10,8 +10,8 @@ namespace OSDC.UnitConversion.Conversion
     public abstract partial class PhysicalQuantity
     {
         private static List<PhysicalQuantity> availableQuantities_ = null;
-        internal static Dictionary<Guid, PhysicalQuantity> PhysicalQuantitiesByGuid = new Dictionary<Guid, PhysicalQuantity>();
-        internal static Dictionary<string, PhysicalQuantity> PhysicalQuantitiesByName = new Dictionary<string, PhysicalQuantity>();
+        private static Dictionary<Guid, PhysicalQuantity> physicalQuantitiesByGuid_ = null;
+        private static Dictionary<string, PhysicalQuantity> physicalQuantitiesByName_ = null;
 
         public static List<PhysicalQuantity> AvailableQuantities
         {
@@ -19,73 +19,94 @@ namespace OSDC.UnitConversion.Conversion
             {
                 if (availableQuantities_ == null)
                 {
-                    Assembly[] assemblies = GetAllAssemblies();
-                    foreach (Assembly assembly in assemblies)
+                    Initialize();
+                }
+                return availableQuantities_;
+            }
+        }
+
+        private static void Initialize()
+        {
+            Assembly assembly = Assembly.GetAssembly(typeof(PhysicalQuantity));
+            if (assembly != null)
+            {
+                foreach (Type typ in assembly.GetTypes())
+                {
+                    if (typ.IsSubclassOf(typeof(PhysicalQuantity)))
                     {
-                        foreach (Type typ in assembly.GetTypes())
+                        MethodInfo method = null;
+                        foreach (MethodInfo meth in typ.GetMethods())
                         {
-                            if (typ.IsSubclassOf(typeof(PhysicalQuantity)))
+                            if (meth.IsStatic &&
+                                meth.Name.EndsWith("Instance") &&
+                                meth.ReturnType.IsSubclassOf(typeof(PhysicalQuantity)))
                             {
-                                MethodInfo method = null;
-                                foreach (MethodInfo meth in typ.GetMethods())
+                                method = meth;
+                                break;
+                            }
+                        }
+                        // call the method
+                        if (method != null)
+                        {
+                            object obj = method.Invoke(null, null);
+                            if (obj != null)
+                            {
+                                var res = (PhysicalQuantity)obj;
+                                if (availableQuantities_ == null)
                                 {
-                                    if (meth.IsStatic && 
-                                        meth.Name.EndsWith("Instance") &&
-                                        meth.ReturnType.IsSubclassOf(typeof(PhysicalQuantity)))
-                                    {
-                                        method = meth;
-                                        break;
-                                    }
+                                    availableQuantities_ = new List<PhysicalQuantity>();
                                 }
-                                // call the method
-                                if (method != null)
+                                availableQuantities_.Add(res);
+                                if (physicalQuantitiesByGuid_ == null)
                                 {
-                                    object obj = method.Invoke(null, null);
-                                    if (obj != null)
-                                    {
-                                        var res = (PhysicalQuantity)obj;
-                                        if (availableQuantities_ == null)
-                                        {
-                                            availableQuantities_ = new List<PhysicalQuantity>();
-                                        }
-                                        availableQuantities_.Add(res);
-                                        if (res.ID != Guid.Empty && !PhysicalQuantitiesByGuid.ContainsKey(res.ID))
-                                        {
-                                            PhysicalQuantitiesByGuid.Add(res.ID, res);
-                                        }
-                                        else
-                                        {
-                                            throw new Exception("problem with ID of physical quantity");
-                                        }
-                                        if (!string.IsNullOrEmpty(res.Name) && !PhysicalQuantitiesByName.ContainsKey(res.Name))
-                                        {
-                                            PhysicalQuantitiesByName.Add(res.Name, res);
-                                        }
-                                        else
-                                        {
-                                            throw new Exception("problem with name of physical quantity");
-                                        }
-                                    }
+                                    physicalQuantitiesByGuid_ = new Dictionary<Guid, PhysicalQuantity>();
+                                }
+                                if (res.ID != Guid.Empty && !physicalQuantitiesByGuid_.ContainsKey(res.ID))
+                                {
+                                    physicalQuantitiesByGuid_.Add(res.ID, res);
+                                }
+                                else
+                                {
+                                    throw new Exception("problem with ID of physical quantity");
+                                }
+                                if (physicalQuantitiesByName_ == null)
+                                {
+                                    physicalQuantitiesByName_ = new Dictionary<string, PhysicalQuantity>();
+                                }
+                                if (!string.IsNullOrEmpty(res.Name) && !physicalQuantitiesByName_.ContainsKey(res.Name))
+                                {
+                                    physicalQuantitiesByName_.Add(res.Name, res);
+                                }
+                                else
+                                {
+                                    throw new Exception("problem with name of physical quantity");
                                 }
                             }
                         }
                     }
                 }
-                return availableQuantities_;
             }
         }
 
         internal static PhysicalQuantity GetQuantity(Guid ID)
         {
             PhysicalQuantity quantity = null;
-            PhysicalQuantitiesByGuid.TryGetValue(ID, out quantity);
+            if (physicalQuantitiesByGuid_ == null)
+            {
+                Initialize();
+            }
+            physicalQuantitiesByGuid_.TryGetValue(ID, out quantity);
             return quantity;
         }
 
         internal static PhysicalQuantity GetQuantity(string name)
         {
             PhysicalQuantity quantity = null;
-            PhysicalQuantitiesByName.TryGetValue(name, out quantity);
+            if (physicalQuantitiesByName_ == null)
+            {
+                Initialize();
+            }
+            physicalQuantitiesByName_.TryGetValue(name, out quantity);
             return quantity;
         }
 
@@ -95,7 +116,11 @@ namespace OSDC.UnitConversion.Conversion
             Guid guid;
             if (enumLookUp_.TryGetValue(choice, out guid))
             {
-                PhysicalQuantitiesByGuid.TryGetValue(guid, out quantity);
+                if (physicalQuantitiesByGuid_ == null)
+                {
+                    Initialize();
+                }
+                physicalQuantitiesByGuid_.TryGetValue(guid, out quantity);
             }
             return quantity;
         }
@@ -229,11 +254,6 @@ namespace OSDC.UnitConversion.Conversion
         /// </summary>
         public virtual double SolidAngleDimension { get;  } = 0;
         /// <summary>
-        /// the smallest absolute value of the quantity that makes any sense with regards to its usage
-        /// ex: drilling depth 0.001m, pipe diameter 0.0001m
-        /// </summary>
-        public virtual double? MeaningFullPrecisionInSI { get; } = null;
-        /// <summary>
         /// return an alphabetically sorted list of the unit choice names
         /// </summary>
         /// <returns></returns>
@@ -350,7 +370,13 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByName_.TryGetValue(unitChoiceName, out unitChoice))
             {
-                return unitChoice.FromSI(value, MeaningFullPrecisionInSI);
+                if (this is IEngineeringQuantity quantity)
+                {
+                    return unitChoice.FromSI(value, quantity.MeaningFullPrecisionInSI);
+                } else
+                {
+                    return unitChoice.FromSI(value).ToString(CultureInfo.InvariantCulture.NumberFormat);
+                }
             }
             else
             {
@@ -368,7 +394,14 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByGuid_.TryGetValue(ID, out unitChoice))
             {
-                return unitChoice.FromSI(value, MeaningFullPrecisionInSI);
+                if (this is IEngineeringQuantity quantity)
+                {
+                    return unitChoice.FromSI(value, quantity.MeaningFullPrecisionInSI);
+                }
+                else
+                {
+                    return unitChoice.FromSI(value).ToString(CultureInfo.InvariantCulture.NumberFormat);
+                }
             }
             else
             {
@@ -406,7 +439,14 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByGuid_.TryGetValue(ID, out unitChoice))
             {
-                return unitChoice.ToSI(value, MeaningFullPrecisionInSI);
+                if (this is IEngineeringQuantity quantity)
+                {
+                    return unitChoice.ToSI(value, quantity.MeaningFullPrecisionInSI);
+                }
+                else
+                {
+                    return unitChoice.ToSI(value).ToString(CultureInfo.InvariantCulture.NumberFormat);
+                }
             }
             else
             {
@@ -424,7 +464,14 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByName_.TryGetValue(unitChoiceName, out unitChoice))
             {
-                return unitChoice.ToSI(value, MeaningFullPrecisionInSI);
+                if (this is IEngineeringQuantity quantity)
+                {
+                    return unitChoice.ToSI(value, quantity.MeaningFullPrecisionInSI);
+                }
+                else
+                {
+                    return unitChoice.ToSI(value).ToString(CultureInfo.InvariantCulture.NumberFormat);
+                }
             }
             else
             {

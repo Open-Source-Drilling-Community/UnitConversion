@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OSDC.UnitConversion.Conversion
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class CableDiameterQuantity : SmallLengthQuantity
     {
@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
 
         private static CableDiameterQuantity instance_ = null;
 
-        public static CableDiameterQuantity Instance
+        public static new CableDiameterQuantity Instance
         {
             get
             {

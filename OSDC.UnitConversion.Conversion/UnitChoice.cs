@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public class UnitChoice
     {
-        internal enum DefaultUnitSetChoiceEnum { SI = 1, Metric = 2, Imperial = 4, US = 8}
+        public enum DefaultUnitSetChoiceEnum { SI = 1, Metric = 2, Imperial = 4, US = 8}
 
         private byte unitSystem_ = 0;
 
@@ -38,39 +38,6 @@ namespace OSDC.UnitConversion.Conversion
             set
             {
                 unitSystem_ |= (byte)DefaultUnitSetChoiceEnum.SI;
-            }
-        }
-        /// <summary>
-        /// true if it is the standard metric unit
-        /// </summary>
-        public bool IsMetric
-        {
-            get { return (unitSystem_ & (byte)DefaultUnitSetChoiceEnum.Metric) != 0; }
-            set
-            {
-                unitSystem_ |= (byte)DefaultUnitSetChoiceEnum.Metric;
-            }
-        }
-        /// <summary>
-        /// true if it is the standard imperial unit
-        /// </summary>
-        public bool IsImperial
-        {
-            get { return (unitSystem_ & (byte)DefaultUnitSetChoiceEnum.Imperial) != 0; }
-            set
-            {
-                unitSystem_ |= (byte)DefaultUnitSetChoiceEnum.Imperial;
-            }
-        }
-        /// <summary>
-        /// true if it is the standard US unit
-        /// </summary>
-        public bool IsUS
-        {
-            get { return (unitSystem_ & (byte)DefaultUnitSetChoiceEnum.US) != 0; }
-            set
-            {
-                unitSystem_ |= (byte)DefaultUnitSetChoiceEnum.US;
             }
         }
         /// <summary>

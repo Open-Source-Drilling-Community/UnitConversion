@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OSDC.UnitConversion.Conversion
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class PoreDiameterQuantity : SmallLengthQuantity
     {
@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
 
         private static PoreDiameterQuantity instance_ = null;
 
-        public static PoreDiameterQuantity Instance
+        public static new PoreDiameterQuantity Instance
         {
             get
             {

@@ -38,8 +38,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitSymbol = SIUnitSymbol,
                     ID = new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d"),
                     ConversionFactorFromSI = 1.0,
-                    IsSI = true,
-                    IsMetric = true
+                    IsSI = true
                 },
                 new UnitChoice
                 {
@@ -130,9 +129,14 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "pound",
                     UnitSymbol = "lb",
                     ID = new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878"),
-                    ConversionFactorFromSI = 2.204623,
-                    IsImperial = true,
-                    IsUS = true
+                    ConversionFactorFromSI = 2.204623
+                },
+                new UnitChoice
+                {
+                   UnitName = "KiloPound",
+                   UnitSymbol = "klb",
+                   ID = new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69"),
+                   ConversionFactorFromSI = 0.002204622621848776
                 },
                 new UnitChoice
                 {

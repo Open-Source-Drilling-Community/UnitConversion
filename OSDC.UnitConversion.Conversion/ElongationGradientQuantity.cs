@@ -4,29 +4,28 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class LinearElongationQuantity : DerivedPhysicalQuanity
+    public partial class ElongationGradientQuantity : DerivedPhysicalQuantity
     {
-        public override string SIUnitName { get; } = "meter per meter";
+        public override string SIUnitName { get; } = "MeterPerMeter";
         public override string SIUnitSymbol { get; } = "m/m";
-        public override double? MeaningFullPrecisionInSI { get; } = 0.00001;
 
-        private static LinearElongationQuantity instance_ = null;
+        private static ElongationGradientQuantity instance_ = null;
 
-        public static LinearElongationQuantity Instance
+        public static ElongationGradientQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new LinearElongationQuantity();
+                    instance_ = new ElongationGradientQuantity();
                 }
                 return instance_;
             }
         }
 
-        protected LinearElongationQuantity() : base()
+        protected ElongationGradientQuantity() : base()
         {
-            Name = "Linear Elongation";
+            Name = "ElongationGradient";
             ID = new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120");
             Reset();
             this.UnitChoices.Add(new UnitChoice
@@ -42,17 +41,14 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = "millimeter per meter",
                 UnitSymbol = "mm/m",
                 ID = new Guid("4e241b59-388a-428f-82e7-b9971f9e1df5"),
-                ConversionFactorFromSI = 1000.0,
-                IsMetric = true
+                ConversionFactorFromSI = 1000.0
             });
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "inch per foot",
                 UnitSymbol = "in/ft",
                 ID = new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2"),
-                ConversionFactorFromSI = 39.37008 / 3.28084,
-                IsImperial = true,
-                IsUS = true
+                ConversionFactorFromSI = 39.37008 / 3.28084
             });
             PostProcess();
         }

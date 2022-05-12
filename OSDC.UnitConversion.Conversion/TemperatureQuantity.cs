@@ -12,7 +12,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string SIUnitSymbol { get; } = "K";
         private static TemperatureQuantity instance_ = null;
 
-        public virtual double TemperatureDimension { get; } = 1;
+        public override double TemperatureDimension { get; } = 1;
 
         public static TemperatureQuantity Instance
         {
@@ -46,8 +46,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitSymbol = "°C",
                     ID = new Guid("5d69048e-fe18-4923-9341-cb80c2ccf8cc"),
                     ConversionFactorFromSI = 1.0,
-                    ConversionBiasFromSI = -273.15,
-                    IsMetric = true
+                    ConversionBiasFromSI = -273.15
                 },
                 new UnitChoice
                 {
@@ -55,9 +54,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitSymbol = "°F",
                     ID = new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f"),
                     ConversionFactorFromSI = 9.0/5.0,
-                    ConversionBiasFromSI = -459.67,
-                    IsImperial = true,
-                    IsUS = true
+                    ConversionBiasFromSI = -459.67
                 },
                 new UnitChoice
                 {

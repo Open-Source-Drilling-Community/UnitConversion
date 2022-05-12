@@ -4,13 +4,13 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class SmallLengthQuantity : LengthQuantity
+    public partial class SmallLengthQuantity : LengthQuantity, IEngineeringQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.0001;
+        public virtual double? MeaningFullPrecisionInSI { get; } = 0.0001;
 
         private static SmallLengthQuantity instance_ = null;
 
-        public static SmallLengthQuantity Instance
+        public static new SmallLengthQuantity Instance
         {
             get
             {

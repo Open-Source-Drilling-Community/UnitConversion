@@ -38,8 +38,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitSymbol = SIUnitSymbol,
                     ID = new Guid("cc442e11-bb28-4e51-9074-87df66050d8a"),
                     ConversionFactorFromSI = 1.0,
-                    IsSI = true,
-                    IsMetric = true
+                    IsSI = true
                 },
                 new UnitChoice
                 {
@@ -137,9 +136,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "feet",
                     UnitSymbol = "ft",
                     ID = new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a"),
-                    ConversionFactorFromSI = 1.0/0.3048,
-                    IsImperial = true,
-                    IsUS = true
+                    ConversionFactorFromSI = 1.0/0.3048
                 },
                 new UnitChoice
                 {

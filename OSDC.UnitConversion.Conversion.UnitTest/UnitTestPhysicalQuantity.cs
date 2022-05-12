@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using OSDC.UnitConversion.Conversion;
-
+using OSDC.UnitConversion.Conversion.DrillingEngineering;
 
 namespace OSDC.UnitConversion.Conversion.UnitTest
 {

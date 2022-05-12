@@ -11,7 +11,7 @@ namespace OSDC.UnitConversion.Conversion
 
         public override string SIUnitSymbol { get; } = "sr";
 
-        public virtual double SolidAngleDimension { get; } = 1;
+        public override double SolidAngleDimension { get; } = 1;
 
         private static SolidAngleQuantity instance_ = null;
 
@@ -53,10 +53,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "square degree",
                     UnitSymbol = "(°)²",
                     ID = new Guid("ad4b94e8-1a86-42ab-bfc6-9cc7ff7a835f"),
-                    ConversionFactorFromSI = (180.0*180.0)/(Math.PI*Math.PI),
-                    IsMetric = true,
-                    IsImperial = true,
-                    IsUS = true
+                    ConversionFactorFromSI = (180.0*180.0)/(Math.PI*Math.PI)
                 }
             };
             PostProcess();

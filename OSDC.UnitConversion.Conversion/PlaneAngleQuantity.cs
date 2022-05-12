@@ -11,7 +11,7 @@ namespace OSDC.UnitConversion.Conversion
 
         public override string SIUnitSymbol { get; } = "rd";
 
-        public virtual double PlaneAngleDimension { get; } = 1;
+        public override double PlaneAngleDimension { get; } = 1;
 
         private static PlaneAngleQuantity instance_ = null;
 
@@ -53,10 +53,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "degree",
                     UnitSymbol = "°",
                     ID = new Guid("023a3393-a01e-499f-967a-a76b1a78d586"),
-                    ConversionFactorFromSI = 180.0/Math.PI,
-                    IsMetric = true,
-                    IsImperial = true,
-                    IsUS = true
+                    ConversionFactorFromSI = 180.0/Math.PI
                 },
                 new UnitChoice
                 {

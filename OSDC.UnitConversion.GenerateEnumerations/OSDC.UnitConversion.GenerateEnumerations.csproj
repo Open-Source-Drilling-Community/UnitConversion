@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj" />
     <ProjectReference Include="..\OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj" />
   </ItemGroup>
 

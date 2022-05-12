@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
 
         private static RelativeTemperatureQuantity instance_ = null;
 
-        public static RelativeTemperatureQuantity Instance
+        public static new RelativeTemperatureQuantity Instance
         {
             get
             {
@@ -32,8 +32,7 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = "Relative Celcius",
                 UnitSymbol = "°C",
                 ID = new Guid("10ea31a1-e661-41c9-9a3d-245904b73599"),
-                ConversionFactorFromSI = 1.0,
-                IsMetric = true
+                ConversionFactorFromSI = 1.0
             }
             );
             this.UnitChoices.Add(new UnitChoice()
@@ -41,9 +40,7 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = "Rankine",
                 UnitSymbol = "°R",
                 ID = new Guid("62f3ffbc-eda3-400a-9fb7-8d021771f0fa"),
-                ConversionFactorFromSI = 9.0 / 5.0,
-                IsUS = true,
-                IsImperial = true
+                ConversionFactorFromSI = 9.0 / 5.0
             }
             );
             PostProcess();

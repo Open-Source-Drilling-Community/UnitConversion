@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OSDC.UnitConversion.Conversion
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class NozzleDiameterQuantity : SmallLengthQuantity
     {
@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
 
         private static NozzleDiameterQuantity instance_ = null;
 
-        public static NozzleDiameterQuantity Instance
+        public static new NozzleDiameterQuantity Instance
         {
             get
             {

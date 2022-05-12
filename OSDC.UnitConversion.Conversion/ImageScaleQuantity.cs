@@ -4,11 +4,11 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class ImageScaleQuantity : DerivedPhysicalQuanity
+    public partial class ImageScaleQuantity : DerivedPhysicalQuantity, IEngineeringQuantity
     {
         public override string SIUnitName { get; } = "dot per meter";
         public override string SIUnitSymbol { get; } = "dpm";
-        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public double? MeaningFullPrecisionInSI { get; } = 0.001;
 
         public override double LengthDimension { get; } = -1;
 
@@ -44,10 +44,7 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = "dot per inch",
                 UnitSymbol = "dpi",
                 ID = new Guid("e042b571-b7d0-477d-abf6-8b8998e5ba6c"),
-                ConversionFactorFromSI = 1.0 / 39.37007874,
-                IsMetric = true,
-                IsImperial = true,
-                IsUS = true
+                ConversionFactorFromSI = 1.0 / 39.37007874
             });
             this.UnitChoices.Add(new UnitChoice
             {
