@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "RadianPerMeter";
-        public override string SIUnitSymbol { get; } = "rd/m";
+        public override string SIUnitLabel { get; } = "rd/m";
         public override double LengthDimension { get; } = -1;
         private static AngleVariationGradientQuantity instance_ = null;
 
@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("5d9782b6-c4c7-47ca-a86b-dce3f63c3747"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -39,28 +39,28 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "DegreePerMeter",
-          UnitSymbol = "°/m",
+          UnitLabel = "°/m",
           ID = new Guid("2fcd4219-8879-4494-9563-5173ec2292fa"),
           ConversionFactorFromSI = 57.29577951308232
         },
          new UnitChoice
         {
           UnitName = "DegreePerCentimeter",
-          UnitSymbol = "°/cm",
+          UnitLabel = "°/cm",
           ID = new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7"),
           ConversionFactorFromSI = 57.29577951308232/100.0
         },
         new UnitChoice
         {
           UnitName = "DegreePerFoot",
-          UnitSymbol = "°/ft",
+          UnitLabel = "°/ft",
           ID = new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b"),
           ConversionFactorFromSI = 57.29577951308232*0.3048
         },
         new UnitChoice
         {
           UnitName = "DegreePerInch",
-          UnitSymbol = "°/in",
+          UnitLabel = "°/in",
           ID = new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4"),
           ConversionFactorFromSI = 57.29577951308232*0.0254
         }

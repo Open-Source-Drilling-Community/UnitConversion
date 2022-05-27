@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class StandardProportionQuantity : ProportionQuantity, IEngineeringQuantity
+    public partial class StandardProportionQuantity : ProportionQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
 
         private static StandardProportionQuantity instance_ = null;
 

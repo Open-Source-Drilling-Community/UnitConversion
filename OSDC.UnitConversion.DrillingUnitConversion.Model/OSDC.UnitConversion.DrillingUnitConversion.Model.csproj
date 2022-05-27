@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="docfx.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="docfx.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj" />
+    <ProjectReference Include="..\OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj" />
+  </ItemGroup>
+
+</Project>

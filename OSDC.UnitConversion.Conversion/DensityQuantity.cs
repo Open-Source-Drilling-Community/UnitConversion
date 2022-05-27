@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "KilogramPerCubicMeter";
-        public override string SIUnitSymbol { get; } = "kg/m³";
+        public override string SIUnitLabel { get; } = "kg/m³";
         public override double MassDimension { get; } = 1;
         public override double LengthDimension { get; } = -3;
         private static DensityQuantity instance_ = null;
@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -40,42 +40,42 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "GramPerCubicMeter",
-          UnitSymbol = "g/m³",
+          UnitLabel = "g/m³",
           ID = new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
           UnitName = "SpecificGravity",
-          UnitSymbol = "s.g.",
+          UnitLabel = "s.g.",
           ID = new Guid("da94ba95-4494-45af-bf99-31f00031c680"),
           ConversionFactorFromSI = 0.001
         },
         new UnitChoice
         {
           UnitName = "GramPerCubicCentimeter",
-          UnitSymbol = "g/cm³",
+          UnitLabel = "g/cm³",
           ID = new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450"),
           ConversionFactorFromSI = 0.001
         },
         new UnitChoice
         {
           UnitName = "PoundPerGallonUK",
-          UnitSymbol = "ppgUK",
+          UnitLabel = "ppgUK",
           ID = new Guid("75ecf787-8778-4d74-afc7-498e117d27bf"),
           ConversionFactorFromSI = 0.0100224
         },
         new UnitChoice
         {
           UnitName = "PoundPerGallonUS",
-          UnitSymbol = "ppgUS",
+          UnitLabel = "ppgUS",
           ID = new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da"),
           ConversionFactorFromSI = 0.0083454
         },
         new UnitChoice
         {
           UnitName = "PoundPerCubicFoot",
-          UnitSymbol = "lb/ft³",
+          UnitLabel = "lb/ft³",
           ID = new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935"),
           ConversionFactorFromSI = 0.0624279606
         }

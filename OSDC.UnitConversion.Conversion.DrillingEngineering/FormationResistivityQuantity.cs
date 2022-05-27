@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class FormationResistivityQuantity : ResistivityQuantity, IEngineeringQuantity
+    public partial class FormationResistivityQuantity : ResistivityQuantity
     {
-    public virtual double? MeaningFullPrecisionInSI {get; } = 10000;
+        public override double? MeaningFullPrecisionInSI { get; } = 10000;
         private static FormationResistivityQuantity instance_ = null;
 
         public static new FormationResistivityQuantity Instance

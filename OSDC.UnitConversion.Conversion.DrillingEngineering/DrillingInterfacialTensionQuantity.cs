@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingInterfacialTensionQuantity : InterfacialTensionQuantity, IEngineeringQuantity
+    public partial class DrillingInterfacialTensionQuantity : InterfacialTensionQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.0001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.0001;
 
         private static DrillingInterfacialTensionQuantity instance_ = null;
 

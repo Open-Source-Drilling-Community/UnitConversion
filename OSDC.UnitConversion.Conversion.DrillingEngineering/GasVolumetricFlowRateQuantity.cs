@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class GasVolumetricFlowRateQuantity : VolumetricFlowRateQuantity, IEngineeringQuantity
+    public partial class GasVolumetricFlowRateQuantity : VolumetricFlowRateQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.01;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
         private static GasVolumetricFlowRateQuantity instance_ = null;
 
         public static new GasVolumetricFlowRateQuantity Instance

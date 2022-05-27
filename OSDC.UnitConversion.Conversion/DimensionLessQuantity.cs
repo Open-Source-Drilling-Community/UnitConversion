@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
     public override string TypicalSymbol {get; } = null;
     public override string SIUnitName {get; } = "DimensionLess";
-    public override string SIUnitSymbol {get; } = "";
+    public override string SIUnitLabel {get; } = "";
     private static DimensionLessQuantity instance_ = null;
 
     public static DimensionLessQuantity Instance
@@ -30,7 +30,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945"),
           ConversionFactorFromSI = 1.0,
           IsSI = true

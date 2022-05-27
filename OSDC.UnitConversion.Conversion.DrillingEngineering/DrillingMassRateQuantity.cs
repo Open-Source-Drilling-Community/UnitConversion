@@ -4,11 +4,11 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingMassRateQuantity : MassRateQuantity, IEngineeringQuantity
+    public partial class DrillingMassRateQuantity : MassRateQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.0001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.0001;
 
-        private static new DrillingMassRateQuantity instance_ = null;
+        private static DrillingMassRateQuantity instance_ = null;
 
         public static new DrillingMassRateQuantity Instance
         {

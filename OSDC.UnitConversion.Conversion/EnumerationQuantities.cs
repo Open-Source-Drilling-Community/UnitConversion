@@ -542,7 +542,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensitySpeedQuantity : DerivedPhysicalQuantity
+  public partial class DensityRateOfChangeQuantity : DerivedPhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {

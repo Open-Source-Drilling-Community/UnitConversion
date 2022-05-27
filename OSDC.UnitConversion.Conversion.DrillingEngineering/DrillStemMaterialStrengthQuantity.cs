@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillStemMaterialStrengthQuantity : MaterialStrengthQuantity, IEngineeringQuantity
+    public partial class DrillStemMaterialStrengthQuantity : MaterialStrengthQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 10000;
+        public override double? MeaningFullPrecisionInSI { get; } = 10000;
         private static DrillStemMaterialStrengthQuantity instance_ = null;
 
         public static new DrillStemMaterialStrengthQuantity Instance

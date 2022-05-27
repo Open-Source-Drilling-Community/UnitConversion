@@ -558,7 +558,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDensitySpeedQuantity : DensitySpeedQuantity
+  public partial class DrillingDensityRateOfChangeQuantity : DensityRateOfChangeQuantity
   {
     public new enum UnitChoicesEnum 
       {

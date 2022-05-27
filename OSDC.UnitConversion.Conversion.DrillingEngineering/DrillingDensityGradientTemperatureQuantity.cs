@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingDensityGradientTemperatureQuantity : DensityGradientTemperatureQuantity, IEngineeringQuantity
+    public partial class DrillingDensityGradientTemperatureQuantity : DensityGradientTemperatureQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
 
         private static DrillingDensityGradientTemperatureQuantity instance_ = null;
 

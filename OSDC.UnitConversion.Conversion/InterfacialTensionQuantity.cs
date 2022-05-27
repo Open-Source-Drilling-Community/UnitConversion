@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "NewtonPerMeter";
-        public override string SIUnitSymbol { get; } = "N/m";
+        public override string SIUnitLabel { get; } = "N/m";
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
         private static InterfacialTensionQuantity instance_ = null;
@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -40,21 +40,21 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "MilliNewtonPerMeter",
-          UnitSymbol = "mN/m",
+          UnitLabel = "mN/m",
           ID = new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
           UnitName = "DynesPerCentimeter",
-          UnitSymbol = "dyn/cm",
+          UnitLabel = "dyn/cm",
           ID = new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
           UnitName = "PoundPerSecondSquared",
-          UnitSymbol = "lbm/s²",
+          UnitLabel = "lbm/s²",
           ID = new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c"),
           ConversionFactorFromSI = 2.2046244201837775
         }

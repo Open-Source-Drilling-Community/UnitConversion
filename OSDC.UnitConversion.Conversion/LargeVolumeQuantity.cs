@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class LargeVolumeQuantity : VolumeQuantity, IEngineeringQuantity
+    public partial class LargeVolumeQuantity : VolumeQuantity
     {
 
-        public double? MeaningFullPrecisionInSI { get; } = 0.1;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.1;
         private static LargeVolumeQuantity instance_ = null;
 
         public static new LargeVolumeQuantity Instance

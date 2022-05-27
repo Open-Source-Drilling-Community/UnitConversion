@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingDurationQuantity : TimeQuantity, IEngineeringQuantity
+    public partial class DrillingDurationQuantity : TimeQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
 
         private static DrillingDurationQuantity instance_ = null;
 

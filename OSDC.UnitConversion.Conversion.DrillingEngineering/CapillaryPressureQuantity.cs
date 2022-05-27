@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class CapillaryPressureQuantity : PressureQuantity, IEngineeringQuantity
+    public partial class CapillaryPressureQuantity : PressureQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.1;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.1;
         private static CapillaryPressureQuantity instance_ = null;
 
         public static new CapillaryPressureQuantity Instance

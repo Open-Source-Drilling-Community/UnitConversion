@@ -4,10 +4,10 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingThermalConductivityQuantity : ThermalConductivityQuantity, IEngineeringQuantity
+    public partial class DrillingThermalConductivityQuantity : ThermalConductivityQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.01;
-        private static new DrillingThermalConductivityQuantity instance_ = null;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
+        private static DrillingThermalConductivityQuantity instance_ = null;
 
         public static new DrillingThermalConductivityQuantity Instance
         {

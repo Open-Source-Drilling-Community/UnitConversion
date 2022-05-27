@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class HeightQuantity : LengthQuantity, IEngineeringQuantity
+    public partial class HeightQuantity : LengthQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
         private static HeightQuantity instance_ = null;
 
         public static new HeightQuantity Instance

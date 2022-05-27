@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>OSDC.UnitConversion.DrillingUnitConversion.JsonSD</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NJsonSchema" Version="10.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OSDC.UnitConversion.DrillingUnitConversion.Model\OSDC.UnitConversion.DrillingUnitConversion.Model.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "KilogramPerSecond";
-        public override string SIUnitSymbol { get; } = "kg/s";
+        public override string SIUnitLabel { get; } = "kg/s";
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -1;
         private static MassRateQuantity instance_ = null;
@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("a2daceb8-7705-4c97-9945-b354ea1ff78d"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -40,7 +40,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "KilogramPerMinute",
-          UnitSymbol = "kg/min",
+          UnitLabel = "kg/min",
           ID = new Guid("b776ae6f-5b86-462c-b815-2608d7e98192"),
           ConversionFactorFromSI = 60
         }

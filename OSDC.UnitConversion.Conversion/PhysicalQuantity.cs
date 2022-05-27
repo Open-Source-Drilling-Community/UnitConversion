@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public abstract partial class PhysicalQuantity
+    public partial class PhysicalQuantity
     {
         private static List<PhysicalQuantity> availableQuantities_ = null;
         private static Dictionary<Guid, PhysicalQuantity> physicalQuantitiesByGuid_ = null;
@@ -88,7 +88,7 @@ namespace OSDC.UnitConversion.Conversion
             }
         }
 
-        internal static PhysicalQuantity GetQuantity(Guid ID)
+        public static PhysicalQuantity GetQuantity(Guid ID)
         {
             PhysicalQuantity quantity = null;
             if (physicalQuantitiesByGuid_ == null)
@@ -99,7 +99,7 @@ namespace OSDC.UnitConversion.Conversion
             return quantity;
         }
 
-        internal static PhysicalQuantity GetQuantity(string name)
+        public static PhysicalQuantity GetQuantity(string name)
         {
             PhysicalQuantity quantity = null;
             if (physicalQuantitiesByName_ == null)
@@ -110,7 +110,7 @@ namespace OSDC.UnitConversion.Conversion
             return quantity;
         }
 
-        internal static PhysicalQuantity GetQuantity(PhysicalQuantity.QuantityEnum choice)
+        public static PhysicalQuantity GetQuantity(PhysicalQuantity.QuantityEnum choice)
         {
             PhysicalQuantity quantity = null;
             Guid guid;
@@ -207,11 +207,11 @@ namespace OSDC.UnitConversion.Conversion
         /// <summary>
         /// the SI unit name for this base unit
         /// </summary>
-        public abstract string SIUnitName { get; }
+        public virtual string SIUnitName { get; }
         /// <summary>
         /// the SI unit symbol for this base unit
         /// </summary>
-        public abstract string SIUnitSymbol { get; }
+        public virtual string SIUnitLabel { get; }
         /// <summary>
         /// the possible non SI unit choices for this base unit
         /// </summary>
@@ -253,6 +253,9 @@ namespace OSDC.UnitConversion.Conversion
         /// the physical dimension for solid angle
         /// </summary>
         public virtual double SolidAngleDimension { get;  } = 0;
+        /// the smallest absolute value of the quantity that makes any sense with regards to its usage
+        /// ex: drilling depth 0.001m, pipe diameter 0.0001m
+        public virtual double? MeaningFullPrecisionInSI { get; } = null;
         /// <summary>
         /// return an alphabetically sorted list of the unit choice names
         /// </summary>
@@ -370,9 +373,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByName_.TryGetValue(unitChoiceName, out unitChoice))
             {
-                if (this is IEngineeringQuantity quantity)
+                if (MeaningFullPrecisionInSI != null)
                 {
-                    return unitChoice.FromSI(value, quantity.MeaningFullPrecisionInSI);
+                    return unitChoice.FromSI(value, MeaningFullPrecisionInSI);
                 } else
                 {
                     return unitChoice.FromSI(value).ToString(CultureInfo.InvariantCulture.NumberFormat);
@@ -394,9 +397,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByGuid_.TryGetValue(ID, out unitChoice))
             {
-                if (this is IEngineeringQuantity quantity)
+                if (MeaningFullPrecisionInSI != null)
                 {
-                    return unitChoice.FromSI(value, quantity.MeaningFullPrecisionInSI);
+                    return unitChoice.FromSI(value, MeaningFullPrecisionInSI);
                 }
                 else
                 {
@@ -439,9 +442,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByGuid_.TryGetValue(ID, out unitChoice))
             {
-                if (this is IEngineeringQuantity quantity)
+                if (MeaningFullPrecisionInSI != null)
                 {
-                    return unitChoice.ToSI(value, quantity.MeaningFullPrecisionInSI);
+                    return unitChoice.ToSI(value, MeaningFullPrecisionInSI);
                 }
                 else
                 {
@@ -464,9 +467,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByName_.TryGetValue(unitChoiceName, out unitChoice))
             {
-                if (this is IEngineeringQuantity quantity)
+                if (MeaningFullPrecisionInSI != null)
                 {
-                    return unitChoice.ToSI(value, quantity.MeaningFullPrecisionInSI);
+                    return unitChoice.ToSI(value, MeaningFullPrecisionInSI);
                 }
                 else
                 {

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class EarthMagneticFluxDencityQuantity : MagneticFluxDensityQuantity, IEngineeringQuantity
+    public partial class EarthMagneticFluxDencityQuantity : MagneticFluxDensityQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.00001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.00001;
 
         private static EarthMagneticFluxDencityQuantity instance_ = null;
 

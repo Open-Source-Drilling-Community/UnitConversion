@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingAngleVariationGradientQuantity : AngleVariationGradientQuantity, IEngineeringQuantity
+    public partial class DrillingAngleVariationGradientQuantity : AngleVariationGradientQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.00017453292519943296;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.00017453292519943296;
 
         private static DrillingAngleVariationGradientQuantity instance_ = null;
 

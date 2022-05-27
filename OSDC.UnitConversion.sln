@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32228.343
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion", "OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj", "{41EDBC03-3490-45F6-AD42-52427FAF0382}"
 EndProject
@@ -9,9 +9,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Convers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.GenerateEnumerations", "OSDC.UnitConversion.GenerateEnumerations\OSDC.UnitConversion.GenerateEnumerations.csproj", "{8F3420A3-B428-4F4B-8444-233E4464A838}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.BlazorTest", "OSDC.UnitConversion.BlazorTest\OSDC.UnitConversion.BlazorTest.csproj", "{3D9C751A-415A-4100-A383-56F5287C37B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion.DrillingEngineering", "OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj", "{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.Conversion.DrillingEngineering", "OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj", "{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonCL", "OSDC.UnitConversion.DrillingUnitConversion.JsonCL\OSDC.UnitConversion.DrillingUnitConversion.JsonCL.csproj", "{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonSD", "OSDC.UnitConversion.DrillingUnitConversion.JsonSD\OSDC.UnitConversion.DrillingUnitConversion.JsonSD.csproj", "{C331ED8E-DA0E-4183-8E66-587F7C0686DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.Model", "OSDC.UnitConversion.DrillingUnitConversion.Model\OSDC.UnitConversion.DrillingUnitConversion.Model.csproj", "{79037EB4-4133-44EB-BBBC-A7CE886F2D51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared", "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared\OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.csproj", "{6C0E828A-D958-4B7E-9617-226E8292C42F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.Service", "OSDC.UnitConversion.DrillingUnitConversion.Service\OSDC.UnitConversion.DrillingUnitConversion.Service.csproj", "{6ACD2B6E-CA80-4873-8767-D1821346459A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.Test", "OSDC.UnitConversion.DrillingUnitConversion.Test\OSDC.UnitConversion.DrillingUnitConversion.Test.csproj", "{36375D06-CE05-4247-B8F7-C1CA0643DF44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client", "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client\OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.csproj", "{2335F990-BB7B-4801-8AD6-CD424E76374C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +43,38 @@ Global
 		{8F3420A3-B428-4F4B-8444-233E4464A838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F3420A3-B428-4F4B-8444-233E4464A838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F3420A3-B428-4F4B-8444-233E4464A838}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D9C751A-415A-4100-A383-56F5287C37B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D9C751A-415A-4100-A383-56F5287C37B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D9C751A-415A-4100-A383-56F5287C37B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D9C751A-415A-4100-A383-56F5287C37B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36375D06-CE05-4247-B8F7-C1CA0643DF44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36375D06-CE05-4247-B8F7-C1CA0643DF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36375D06-CE05-4247-B8F7-C1CA0643DF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36375D06-CE05-4247-B8F7-C1CA0643DF44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

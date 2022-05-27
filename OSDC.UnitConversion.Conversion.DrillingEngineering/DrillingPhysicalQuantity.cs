@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public abstract partial class DrillingPhysicalQuantity : PhysicalQuantity
+    public partial class DrillingPhysicalQuantity : PhysicalQuantity
     {
         private static List<PhysicalQuantity> availableQuantities_ = null;
         internal static Dictionary<string, PhysicalQuantity> physicalQuantitiesByName_ = null;
@@ -85,7 +85,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             }
         }
 
-        internal static PhysicalQuantity GetQuantity(DrillingPhysicalQuantity.QuantityEnum choice)
+        public static PhysicalQuantity GetQuantity(DrillingPhysicalQuantity.QuantityEnum choice)
         {
             PhysicalQuantity quantity = null;
             Guid guid;
@@ -97,6 +97,35 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Initialize();
                 }
                 physicalQuantitiesByGuid_.TryGetValue(guid, out quantity);
+            }
+            return quantity;
+        }
+        public static new PhysicalQuantity GetQuantity(Guid choiceID)
+        {
+            PhysicalQuantity quantity = null;
+            if (physicalQuantitiesByGuid_ == null)
+            {
+                Initialize();
+            }
+            physicalQuantitiesByGuid_.TryGetValue(choiceID, out quantity);
+            if (quantity == null)
+            {
+                quantity = PhysicalQuantity.GetQuantity(choiceID);
+            }
+            return quantity;
+        }
+
+        public static new PhysicalQuantity GetQuantity(string choiceName)
+        {
+            PhysicalQuantity quantity = null;
+            if (physicalQuantitiesByName_ == null)
+            {
+                Initialize();
+            }
+            physicalQuantitiesByName_.TryGetValue(choiceName, out quantity);
+            if (quantity == null)
+            {
+                quantity = PhysicalQuantity.GetQuantity(choiceName);
             }
             return quantity;
         }

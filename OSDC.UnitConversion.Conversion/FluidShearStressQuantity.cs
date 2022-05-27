@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class FluidShearStressQuantity : PressureQuantity, IEngineeringQuantity
+    public partial class FluidShearStressQuantity : PressureQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public double? MeaningFullPrecisionInSI { get; } = 1E-06;
+        public override double? MeaningFullPrecisionInSI { get; } = 1E-06;
         private static FluidShearStressQuantity instance_ = null;
 
         public static new FluidShearStressQuantity Instance

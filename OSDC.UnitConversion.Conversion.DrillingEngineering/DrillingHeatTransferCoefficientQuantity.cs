@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingHeatTransferCoefficientQuantity : HeatTransferCoefficientQuantity, IEngineeringQuantity
+    public partial class DrillingHeatTransferCoefficientQuantity : HeatTransferCoefficientQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.0001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.0001;
         private static DrillingHeatTransferCoefficientQuantity instance_ = null;
 
         public static new DrillingHeatTransferCoefficientQuantity Instance

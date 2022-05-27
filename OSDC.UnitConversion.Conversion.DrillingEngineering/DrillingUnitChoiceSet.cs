@@ -8,12 +8,81 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public class DrillingUnitChoiceSet : UnitChoiceSet
     {
+        private static Dictionary<Guid, DrillingUnitChoiceSet> unitChoiceSets_ = null;
+
         private static List<PhysicalQuantity> availableQuantities_ = null;
 
         private static DrillingUnitChoiceSet SIUnitChoiceSet_ = null;
         private static DrillingUnitChoiceSet MetricUnitChoiceSet_ = null;
         private static DrillingUnitChoiceSet ImperialUnitChoiceSet_ = null;
         private static DrillingUnitChoiceSet USUnitChoiceSet_ = null;
+
+        public static new UnitChoiceSet Get(Guid ID)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            DrillingUnitChoiceSet result;
+            unitChoiceSets_.TryGetValue(ID, out result);
+            if (result == null)
+            {
+                return UnitChoiceSet.Get(ID);
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public static new DrillingUnitChoiceSet CreateNew()
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet();
+            unitChoiceSet.ID = Guid.NewGuid();
+            unitChoiceSets_.Add(unitChoiceSet.ID, unitChoiceSet);
+            return unitChoiceSet;
+        }
+
+        public static new DrillingUnitChoiceSet CreateNew(Guid guid)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            if (unitChoiceSets_.ContainsKey(guid))
+            {
+                DrillingUnitChoiceSet result;
+                unitChoiceSets_.TryGetValue(guid, out result);
+                return result;
+            }
+            else
+            {
+                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet();
+                unitChoiceSet.ID = guid;
+                unitChoiceSets_.Add(unitChoiceSet.ID, unitChoiceSet);
+                return unitChoiceSet;
+            }
+        }
+
+        private static void Initialize()
+        {
+            if (unitChoiceSets_ == null)
+            {
+                unitChoiceSets_ = new Dictionary<Guid, DrillingUnitChoiceSet>();
+                DrillingUnitChoiceSet SI = DrillingSIUnitChoiceSet;
+                unitChoiceSets_.Add(SI.ID, SI);
+                DrillingUnitChoiceSet metric = DrillingMetricUnitChoiceSet;
+                unitChoiceSets_.Add(metric.ID, metric);
+                DrillingUnitChoiceSet US = DrillingUSUnitChoiceSet;
+                unitChoiceSets_.Add(US.ID, US);
+                DrillingUnitChoiceSet imperial = DrillingImperialUnitChoiceSet;
+                unitChoiceSets_.Add(imperial.ID, imperial);
+            }
+        }
 
         public static DrillingUnitChoiceSet DrillingSIUnitChoiceSet
         {
@@ -65,10 +134,36 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         /// <summary>
         /// default constructor
         /// </summary>
-        public DrillingUnitChoiceSet() : base()
+        protected DrillingUnitChoiceSet() : base()
         {
 
         }
+
+        protected PhysicalQuantity GetQuantity(DrillingPhysicalQuantity.QuantityEnum quantityChoice)
+        {
+            return DrillingPhysicalQuantity.GetQuantity(quantityChoice);
+        }
+
+        protected override PhysicalQuantity GetQuantity(Guid quantityID)
+        {
+            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityID);
+            if (quantity == null)
+            {
+                quantity = base.GetQuantity(quantityID);
+            }
+            return quantity;
+        }
+
+        protected override PhysicalQuantity GetQuantity(string quantityName)
+        {
+            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityName);
+            if (quantity == null)
+            {
+                quantity = base.GetQuantity(quantityName);
+            }
+            return quantity;
+        }
+
 
         public static new List<PhysicalQuantity> AvailableQuantities
         {
@@ -119,13 +214,14 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public UnitChoice GetChoice(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
         {
             UnitChoice choice = null;
-            Guid unitChoiceID;
-            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(physicalQuantityID);
-            if (quantity != null && Choices.TryGetValue(quantity.ID, out unitChoiceID))
+            string unitChoiceID;
+            PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
+            if (quantity != null && Choices.TryGetValue(quantity.ID.ToString(), out unitChoiceID))
             {
-                if (unitChoiceID != Guid.Empty)
+                Guid ID = StringToGUID(unitChoiceID);
+                if (ID != Guid.Empty)
                 {
-                    choice = quantity.GetUnitChoice(unitChoiceID);
+                    choice = quantity.GetUnitChoice(ID);
                 }
             }
             return choice;
@@ -143,7 +239,28 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 return null;
             }
         }
+        public string FromSIString(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
+        {
+            double? meaningfullPrecision = null;
+            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(physicalQuantityID);
+            meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+            UnitChoice choice = GetChoice(physicalQuantityID);
+            if (choice != null)
+            {
+                return choice.FromSI(val, meaningfullPrecision);
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="physicalQuantityID"></param>
+        /// <param name="val"></param>
+        /// <returns></returns>
         public double? ToSI(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
         {
             UnitChoice choice = GetChoice(physicalQuantityID);
@@ -157,19 +274,18 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             }
         }
 
-        public string GetUnitSymbol(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
+        public string GetUnitLabel(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
         {
             UnitChoice choice = GetChoice(physicalQuantityID);
             if (choice != null)
             {
-                return choice.UnitSymbol;
+                return choice.UnitLabel;
             }
             else
             {
                 return null;
             }
         }
-
 
         /// <summary>
         /// 
@@ -189,7 +305,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 */
                 
                 if (defaultUnitChoice == UnitChoice.DefaultUnitSetChoiceEnum.SI)
-                {                  
+                {
+                    IsSI = true;
+                    IsDefault = true;
+                    ID = new Guid("f8338e35-c548-4284-a2e7-61b94a7b4769");
+                    Name = "SI";
+                    Description = "International System of Units";
+
                     foreach (PhysicalQuantity quantity in quantities)
                     {
                         if (quantity.ID != Guid.Empty)
@@ -205,9 +327,9 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                             }
                             if (unitChoiceID != Guid.Empty)
                             {
-                                if (!Choices.ContainsKey(quantity.ID))
+                                if (!Choices.ContainsKey(quantity.ID.ToString()))
                                 {
-                                    Choices.Add(quantity.ID, unitChoiceID);
+                                    Choices.Add(quantity.ID.ToString(), unitChoiceID.ToString());
                                 }
                                 else
                                 {
@@ -223,180 +345,195 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 }
                 else if (defaultUnitChoice == UnitChoice.DefaultUnitSetChoiceEnum.Metric)
                 {
-                    Choices.Add(BlockVelocityQuantity.Instance.ID, BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.MeterPerSecond).ID);
-                    Choices.Add(CableDiameterQuantity.Instance.ID, CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID);
-                    Choices.Add(CapillaryPressureQuantity.Instance.ID, CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.Bar).ID);
-                    Choices.Add(DepthQuantity.Instance.ID, DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Metre).ID);
-                    Choices.Add(DrillingAccelerationQuantity.Instance.ID, DrillingAccelerationQuantity.Instance.GetUnitChoice(DrillingAccelerationQuantity.UnitChoicesEnum.MeterPerSecondSquare).ID);
-                    Choices.Add(DrillingAngleVariationGradientQuantity.Instance.ID, DrillingAngleVariationGradientQuantity.Instance.GetUnitChoice(DrillingAngleVariationGradientQuantity.UnitChoicesEnum.DegreePerMeter).ID);
-                    Choices.Add(DrillingAngularVelocityQuantity.Instance.ID, DrillingAngularVelocityQuantity.Instance.GetUnitChoice(DrillingAngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID);
-                    Choices.Add(DrillingAreaQuantity.Instance.ID, DrillingAreaQuantity.Instance.GetUnitChoice(DrillingAreaQuantity.UnitChoicesEnum.SquareMeter).ID);
-                    Choices.Add(DrillingCompressibilityQuantity.Instance.ID, DrillingCompressibilityQuantity.Instance.GetUnitChoice(DrillingCompressibilityQuantity.UnitChoicesEnum.InverseBar).ID);
-                    Choices.Add(DrillingCurvatureQuantity.Instance.ID, DrillingCurvatureQuantity.Instance.GetUnitChoice(DrillingCurvatureQuantity.UnitChoicesEnum.DegreePer30m).ID);
-                    Choices.Add(DrillingDensityGradientDepthQuantity.Instance.ID, DrillingDensityGradientDepthQuantity.Instance.GetUnitChoice(DrillingDensityGradientDepthQuantity.UnitChoicesEnum.SpecificGravityPerMeter).ID);
-                    Choices.Add(DrillingDensityGradientTemperatureQuantity.Instance.ID, DrillingDensityGradientTemperatureQuantity.Instance.GetUnitChoice(DrillingDensityGradientTemperatureQuantity.UnitChoicesEnum.SpecificGravityPerCelsius).ID);
-                    Choices.Add(DrillingDensityQuantity.Instance.ID, DrillingDensityQuantity.Instance.GetUnitChoice(DrillingDensityQuantity.UnitChoicesEnum.SpecificGravity).ID);
-                    Choices.Add(DrillingDensitySpeedQuantity.Instance.ID, DrillingDensitySpeedQuantity.Instance.GetUnitChoice(DrillingDensitySpeedQuantity.UnitChoicesEnum.SpecificGravityPerSecond).ID);
-                    Choices.Add(DrillingDurationQuantity.Instance.ID, DrillingDurationQuantity.Instance.GetUnitChoice(DrillingDurationQuantity.UnitChoicesEnum.Second).ID);
-                    Choices.Add(DrillingDynamicViscosityQuantity.Instance.ID, DrillingDynamicViscosityQuantity.Instance.GetUnitChoice(DrillingDynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID);
-                    Choices.Add(DrillingElongationGradientQuantity.Instance.ID, DrillingElongationGradientQuantity.Instance.GetUnitChoice(DrillingElongationGradientQuantity.UnitChoicesEnum.MillimeterPerMeter).ID); ;
-                    Choices.Add(DrillingFluidVelocityQuantity.Instance.ID, DrillingFluidVelocityQuantity.Instance.GetUnitChoice(DrillingFluidVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID);
-                    Choices.Add(DrillingForceGradientQuantity.Instance.ID, DrillingForceGradientQuantity.Instance.GetUnitChoice(DrillingForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID);
-                    Choices.Add(DrillingForceQuantity.Instance.ID, DrillingForceQuantity.Instance.GetUnitChoice(DrillingForceQuantity.UnitChoicesEnum.DecaNewton).ID);
-                    Choices.Add(DrillingHeatTransferCoefficientQuantity.Instance.ID, DrillingHeatTransferCoefficientQuantity.Instance.GetUnitChoice(DrillingHeatTransferCoefficientQuantity.UnitChoicesEnum.WattPerMeterSquaredPerKelvin).ID);
-                    Choices.Add(DrillingHydraulicConductivityQuantity.Instance.ID, DrillingHydraulicConductivityQuantity.Instance.GetUnitChoice(DrillingHydraulicConductivityQuantity.UnitChoicesEnum.CentimeterPerSecond).ID);
-                    Choices.Add(DrillingInterfacialTensionQuantity.Instance.ID, DrillingInterfacialTensionQuantity.Instance.GetUnitChoice(DrillingInterfacialTensionQuantity.UnitChoicesEnum.NewtonPerMeter).ID);
-                    Choices.Add(DrillingMassQuantity.Instance.ID, DrillingMassQuantity.Instance.GetUnitChoice(DrillingMassQuantity.UnitChoicesEnum.Kilogram).ID);
-                    Choices.Add(DrillingMassGradientQuantity.Instance.ID, DrillingMassGradientQuantity.Instance.GetUnitChoice(DrillingMassGradientQuantity.UnitChoicesEnum.PoundPerFoot).ID);
-                    Choices.Add(DrillingMassRateQuantity.Instance.ID, DrillingMassRateQuantity.Instance.GetUnitChoice(DrillingMassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID);
-                    Choices.Add(DrillingPlaneAngleQuantity.Instance.ID, DrillingPlaneAngleQuantity.Instance.GetUnitChoice(DrillingPlaneAngleQuantity.UnitChoicesEnum.Degree).ID);
-                    Choices.Add(DrillingPressureGradientQuantity.Instance.ID, DrillingPressureGradientQuantity.Instance.GetUnitChoice(DrillingPressureGradientQuantity.UnitChoicesEnum.BarPerMeter).ID);
-                    Choices.Add(DrillingPressureQuantity.Instance.ID, DrillingPressureQuantity.Instance.GetUnitChoice(DrillingPressureQuantity.UnitChoicesEnum.Bar).ID);
-                    Choices.Add(DrillingPressureLossConstantQuantity.Instance.ID, DrillingPressureLossConstantQuantity.Instance.GetUnitChoice(DrillingPressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantMetric).ID);
-                    Choices.Add(DrillingRotationFrequencyRateOfChangeQuantity.Instance.ID, DrillingRotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(DrillingRotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID);
-                    Choices.Add(DrillingSpecificHeatCapacityQuantity.Instance.ID, DrillingSpecificHeatCapacityQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityQuantity.UnitChoicesEnum.JoulePerKilogramKelvin).ID);
-                    Choices.Add(DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.ID, DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerKilogramKelvinPerKelvin).ID);
-                    Choices.Add(DrillingTemperatureGradientQuantity.Instance.ID, DrillingTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingTemperatureGradientQuantity.UnitChoicesEnum.CelsiusPer100Meter).ID);
-                    Choices.Add(DrillingTensionQuantity.Instance.ID, DrillingTensionQuantity.Instance.GetUnitChoice(DrillingTensionQuantity.UnitChoicesEnum.KiloDecaNewton).ID);
-                    Choices.Add(DrillingThermalConductivityQuantity.Instance.ID, DrillingThermalConductivityQuantity.Instance.GetUnitChoice(DrillingThermalConductivityQuantity.UnitChoicesEnum.WattPerMetreKelvin).ID);
-                    Choices.Add(DrillingThermalConductivityTemperatureGradientQuantity.Instance.ID, DrillingThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.WattPerMetreKelvinPerKelvin).ID);
-                    Choices.Add(DrillingTorqueQuantity.Instance.ID, DrillingTorqueQuantity.Instance.GetUnitChoice(DrillingTorqueQuantity.UnitChoicesEnum.MeterKiloNewton).ID);
-                    Choices.Add(DrillingVolumeQuantity.Instance.ID, DrillingVolumeQuantity.Instance.GetUnitChoice(DrillingVolumeQuantity.UnitChoicesEnum.Liter).ID);
-                    Choices.Add(DrillingVolumetricFlowRateOfChangeQuantity.Instance.ID, DrillingVolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.LiterPerMinutePerSecond).ID);
-                    Choices.Add(DrillingVolumetricFlowrateQuantity.Instance.ID, DrillingVolumetricFlowrateQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowrateQuantity.UnitChoicesEnum.LiterPerMinute).ID);
-                    Choices.Add(DrillStemMaterialStrengthQuantity.Instance.ID, DrillStemMaterialStrengthQuantity.Instance.GetUnitChoice(DrillStemMaterialStrengthQuantity.UnitChoicesEnum.MegaPascal).ID);
-                    Choices.Add(HeightQuantity.Instance.ID, HeightQuantity.Instance.GetUnitChoice(HeightQuantity.UnitChoicesEnum.Metre).ID);
-                    Choices.Add(NozzleDiameterQuantity.Instance.ID, NozzleDiameterQuantity.Instance.GetUnitChoice(NozzleDiameterQuantity.UnitChoicesEnum.Inch_32).ID);
-                    Choices.Add(PipeDiameterQuantity.Instance.ID, PipeDiameterQuantity.Instance.GetUnitChoice(PipeDiameterQuantity.UnitChoicesEnum.Inch).ID);
-                    Choices.Add(PoreDiameterQuantity.Instance.ID, PoreDiameterQuantity.Instance.GetUnitChoice(PoreDiameterQuantity.UnitChoicesEnum.Micrometer).ID);
-                    Choices.Add(PositionQuantity.Instance.ID, PositionQuantity.Instance.GetUnitChoice(PositionQuantity.UnitChoicesEnum.Metre).ID);
-                    Choices.Add(FormationStrengthQuantity.Instance.ID, FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.MegaPascal).ID);
-                    Choices.Add(FormationResistivityQuantity.Instance.ID, FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMeter).ID);
-                    Choices.Add(GammaRayQuantity.Instance.ID, GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID);
-                    Choices.Add(GasVolumetricFlowRateQuantity.Instance.ID, GasVolumetricFlowRateQuantity.Instance.GetUnitChoice(GasVolumetricFlowRateQuantity.UnitChoicesEnum.LiterPerMinute).ID);
-                    Choices.Add(GasShowQuantity.Instance.ID, GasShowQuantity.Instance.GetUnitChoice(GasShowQuantity.UnitChoicesEnum.Percent).ID);
-                    Choices.Add(HookLoadQuantity.Instance.ID, HookLoadQuantity.Instance.GetUnitChoice(HookLoadQuantity.UnitChoicesEnum.TonneMetric).ID);
-                    Choices.Add(PoreSurfaceQuantity.Instance.ID, PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID);
-                    Choices.Add(RateOfPenetrationQuantity.Instance.ID, RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.MeterPerHour).ID);
-                    Choices.Add(WeightOnBitQuantity.Instance.ID, WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.TonneMetric).ID);
+                    IsDefault = true;
+                    ID = new Guid("0e595036-8f8b-4b70-9d81-3b45f351f55c");
+                    Name = "Metric";
+                    Description = "Metric System of Units";
+
+                    Choices.Add(BlockVelocityQuantity.Instance.ID.ToString(), BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.MeterPerSecond).ID.ToString());
+                    Choices.Add(CableDiameterQuantity.Instance.ID.ToString(), CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(CapillaryPressureQuantity.Instance.ID.ToString(), CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.Bar).ID.ToString());
+                    Choices.Add(DepthQuantity.Instance.ID.ToString(), DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Metre).ID.ToString());
+                    Choices.Add(DrillingAccelerationQuantity.Instance.ID.ToString(), DrillingAccelerationQuantity.Instance.GetUnitChoice(DrillingAccelerationQuantity.UnitChoicesEnum.MeterPerSecondSquare).ID.ToString());
+                    Choices.Add(DrillingAngleVariationGradientQuantity.Instance.ID.ToString(), DrillingAngleVariationGradientQuantity.Instance.GetUnitChoice(DrillingAngleVariationGradientQuantity.UnitChoicesEnum.DegreePerMeter).ID.ToString());
+                    Choices.Add(DrillingAngularVelocityQuantity.Instance.ID.ToString(), DrillingAngularVelocityQuantity.Instance.GetUnitChoice(DrillingAngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
+                    Choices.Add(DrillingAreaQuantity.Instance.ID.ToString(), DrillingAreaQuantity.Instance.GetUnitChoice(DrillingAreaQuantity.UnitChoicesEnum.SquareMeter).ID.ToString());
+                    Choices.Add(DrillingCompressibilityQuantity.Instance.ID.ToString(), DrillingCompressibilityQuantity.Instance.GetUnitChoice(DrillingCompressibilityQuantity.UnitChoicesEnum.InverseBar).ID.ToString());
+                    Choices.Add(DrillingCurvatureQuantity.Instance.ID.ToString(), DrillingCurvatureQuantity.Instance.GetUnitChoice(DrillingCurvatureQuantity.UnitChoicesEnum.DegreePer30m).ID.ToString());
+                    Choices.Add(DrillingDensityGradientDepthQuantity.Instance.ID.ToString(), DrillingDensityGradientDepthQuantity.Instance.GetUnitChoice(DrillingDensityGradientDepthQuantity.UnitChoicesEnum.SpecificGravityPerMeter).ID.ToString());
+                    Choices.Add(DrillingDensityGradientTemperatureQuantity.Instance.ID.ToString(), DrillingDensityGradientTemperatureQuantity.Instance.GetUnitChoice(DrillingDensityGradientTemperatureQuantity.UnitChoicesEnum.SpecificGravityPerCelsius).ID.ToString());
+                    Choices.Add(DrillingDensityQuantity.Instance.ID.ToString(), DrillingDensityQuantity.Instance.GetUnitChoice(DrillingDensityQuantity.UnitChoicesEnum.SpecificGravity).ID.ToString());
+                    Choices.Add(DrillingDensityRateOfChangeQuantity.Instance.ID.ToString(), DrillingDensityRateOfChangeQuantity.Instance.GetUnitChoice(DrillingDensityRateOfChangeQuantity.UnitChoicesEnum.SpecificGravityPerSecond).ID.ToString());
+                    Choices.Add(DrillingDurationQuantity.Instance.ID.ToString(), DrillingDurationQuantity.Instance.GetUnitChoice(DrillingDurationQuantity.UnitChoicesEnum.Second).ID.ToString());
+                    Choices.Add(DrillingDynamicViscosityQuantity.Instance.ID.ToString(), DrillingDynamicViscosityQuantity.Instance.GetUnitChoice(DrillingDynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
+                    Choices.Add(DrillingElongationGradientQuantity.Instance.ID.ToString(), DrillingElongationGradientQuantity.Instance.GetUnitChoice(DrillingElongationGradientQuantity.UnitChoicesEnum.MillimeterPerMeter).ID.ToString()); ;
+                    Choices.Add(DrillingFluidVelocityQuantity.Instance.ID.ToString(), DrillingFluidVelocityQuantity.Instance.GetUnitChoice(DrillingFluidVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(DrillingForceGradientQuantity.Instance.ID.ToString(), DrillingForceGradientQuantity.Instance.GetUnitChoice(DrillingForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID.ToString());
+                    Choices.Add(DrillingForceQuantity.Instance.ID.ToString(), DrillingForceQuantity.Instance.GetUnitChoice(DrillingForceQuantity.UnitChoicesEnum.DecaNewton).ID.ToString());
+                    Choices.Add(DrillingHeatTransferCoefficientQuantity.Instance.ID.ToString(), DrillingHeatTransferCoefficientQuantity.Instance.GetUnitChoice(DrillingHeatTransferCoefficientQuantity.UnitChoicesEnum.WattPerMeterSquaredPerKelvin).ID.ToString());
+                    Choices.Add(DrillingHydraulicConductivityQuantity.Instance.ID.ToString(), DrillingHydraulicConductivityQuantity.Instance.GetUnitChoice(DrillingHydraulicConductivityQuantity.UnitChoicesEnum.CentimeterPerSecond).ID.ToString());
+                    Choices.Add(DrillingInterfacialTensionQuantity.Instance.ID.ToString(), DrillingInterfacialTensionQuantity.Instance.GetUnitChoice(DrillingInterfacialTensionQuantity.UnitChoicesEnum.NewtonPerMeter).ID.ToString());
+                    Choices.Add(DrillingMassQuantity.Instance.ID.ToString(), DrillingMassQuantity.Instance.GetUnitChoice(DrillingMassQuantity.UnitChoicesEnum.Kilogram).ID.ToString());
+                    Choices.Add(DrillingMassGradientQuantity.Instance.ID.ToString(), DrillingMassGradientQuantity.Instance.GetUnitChoice(DrillingMassGradientQuantity.UnitChoicesEnum.PoundPerFoot).ID.ToString());
+                    Choices.Add(DrillingMassRateQuantity.Instance.ID.ToString(), DrillingMassRateQuantity.Instance.GetUnitChoice(DrillingMassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID.ToString());
+                    Choices.Add(DrillingPlaneAngleQuantity.Instance.ID.ToString(), DrillingPlaneAngleQuantity.Instance.GetUnitChoice(DrillingPlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(DrillingPressureGradientQuantity.Instance.ID.ToString(), DrillingPressureGradientQuantity.Instance.GetUnitChoice(DrillingPressureGradientQuantity.UnitChoicesEnum.BarPerMeter).ID.ToString());
+                    Choices.Add(DrillingPressureQuantity.Instance.ID.ToString(), DrillingPressureQuantity.Instance.GetUnitChoice(DrillingPressureQuantity.UnitChoicesEnum.Bar).ID.ToString());
+                    Choices.Add(DrillingPressureLossConstantQuantity.Instance.ID.ToString(), DrillingPressureLossConstantQuantity.Instance.GetUnitChoice(DrillingPressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantMetric).ID.ToString());
+                    Choices.Add(DrillingRotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), DrillingRotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(DrillingRotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID.ToString());
+                    Choices.Add(DrillingSpecificHeatCapacityQuantity.Instance.ID.ToString(), DrillingSpecificHeatCapacityQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityQuantity.UnitChoicesEnum.JoulePerKilogramKelvin).ID.ToString());
+                    Choices.Add(DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.ID.ToString(), DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerKilogramKelvinPerKelvin).ID.ToString());
+                    Choices.Add(DrillingTemperatureGradientQuantity.Instance.ID.ToString(), DrillingTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingTemperatureGradientQuantity.UnitChoicesEnum.CelsiusPer100Meter).ID.ToString());
+                    Choices.Add(DrillingTensionQuantity.Instance.ID.ToString(), DrillingTensionQuantity.Instance.GetUnitChoice(DrillingTensionQuantity.UnitChoicesEnum.KiloDecaNewton).ID.ToString());
+                    Choices.Add(DrillingThermalConductivityQuantity.Instance.ID.ToString(), DrillingThermalConductivityQuantity.Instance.GetUnitChoice(DrillingThermalConductivityQuantity.UnitChoicesEnum.WattPerMetreKelvin).ID.ToString());
+                    Choices.Add(DrillingThermalConductivityTemperatureGradientQuantity.Instance.ID.ToString(), DrillingThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.WattPerMetreKelvinPerKelvin).ID.ToString());
+                    Choices.Add(DrillingTorqueQuantity.Instance.ID.ToString(), DrillingTorqueQuantity.Instance.GetUnitChoice(DrillingTorqueQuantity.UnitChoicesEnum.MeterKiloNewton).ID.ToString());
+                    Choices.Add(DrillingVolumeQuantity.Instance.ID.ToString(), DrillingVolumeQuantity.Instance.GetUnitChoice(DrillingVolumeQuantity.UnitChoicesEnum.Liter).ID.ToString());
+                    Choices.Add(DrillingVolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), DrillingVolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.LiterPerMinutePerSecond).ID.ToString());
+                    Choices.Add(DrillingVolumetricFlowrateQuantity.Instance.ID.ToString(), DrillingVolumetricFlowrateQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowrateQuantity.UnitChoicesEnum.LiterPerMinute).ID.ToString());
+                    Choices.Add(DrillStemMaterialStrengthQuantity.Instance.ID.ToString(), DrillStemMaterialStrengthQuantity.Instance.GetUnitChoice(DrillStemMaterialStrengthQuantity.UnitChoicesEnum.MegaPascal).ID.ToString());
+                    Choices.Add(HeightQuantity.Instance.ID.ToString(), HeightQuantity.Instance.GetUnitChoice(HeightQuantity.UnitChoicesEnum.Metre).ID.ToString());
+                    Choices.Add(NozzleDiameterQuantity.Instance.ID.ToString(), NozzleDiameterQuantity.Instance.GetUnitChoice(NozzleDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(PipeDiameterQuantity.Instance.ID.ToString(), PipeDiameterQuantity.Instance.GetUnitChoice(PipeDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(PoreDiameterQuantity.Instance.ID.ToString(), PoreDiameterQuantity.Instance.GetUnitChoice(PoreDiameterQuantity.UnitChoicesEnum.Micrometer).ID.ToString());
+                    Choices.Add(PositionQuantity.Instance.ID.ToString(), PositionQuantity.Instance.GetUnitChoice(PositionQuantity.UnitChoicesEnum.Metre).ID.ToString());
+                    Choices.Add(FormationStrengthQuantity.Instance.ID.ToString(), FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.MegaPascal).ID.ToString());
+                    Choices.Add(FormationResistivityQuantity.Instance.ID.ToString(), FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMeter).ID.ToString());
+                    Choices.Add(GammaRayQuantity.Instance.ID.ToString(), GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID.ToString());
+                    Choices.Add(GasVolumetricFlowRateQuantity.Instance.ID.ToString(), GasVolumetricFlowRateQuantity.Instance.GetUnitChoice(GasVolumetricFlowRateQuantity.UnitChoicesEnum.LiterPerMinute).ID.ToString());
+                    Choices.Add(GasShowQuantity.Instance.ID.ToString(), GasShowQuantity.Instance.GetUnitChoice(GasShowQuantity.UnitChoicesEnum.Percent).ID.ToString());
+                    Choices.Add(HookLoadQuantity.Instance.ID.ToString(), HookLoadQuantity.Instance.GetUnitChoice(HookLoadQuantity.UnitChoicesEnum.TonneMetric).ID.ToString());
+                    Choices.Add(PoreSurfaceQuantity.Instance.ID.ToString(), PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID.ToString());
+                    Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.MeterPerHour).ID.ToString());
+                    Choices.Add(WeightOnBitQuantity.Instance.ID.ToString(), WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.TonneMetric).ID.ToString());
                 }
                 else if (defaultUnitChoice == UnitChoice.DefaultUnitSetChoiceEnum.US)
                 {
-                    Choices.Add(BlockVelocityQuantity.Instance.ID, BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID);
-                    Choices.Add(CableDiameterQuantity.Instance.ID, CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID);
-                    Choices.Add(CapillaryPressureQuantity.Instance.ID, CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID);
-                    Choices.Add(DepthQuantity.Instance.ID, DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Feet).ID);
-                    Choices.Add(DrillingAccelerationQuantity.Instance.ID, DrillingAccelerationQuantity.Instance.GetUnitChoice(DrillingAccelerationQuantity.UnitChoicesEnum.FootPerSecondSquare).ID);
-                    Choices.Add(DrillingAngleVariationGradientQuantity.Instance.ID, DrillingAngleVariationGradientQuantity.Instance.GetUnitChoice(DrillingAngleVariationGradientQuantity.UnitChoicesEnum.DegreePerFoot).ID);
-                    Choices.Add(DrillingAngularVelocityQuantity.Instance.ID, DrillingAngularVelocityQuantity.Instance.GetUnitChoice(DrillingAngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID);
-                    Choices.Add(DrillingAreaQuantity.Instance.ID, DrillingAreaQuantity.Instance.GetUnitChoice(DrillingAreaQuantity.UnitChoicesEnum.SquareFoot).ID);
-                    Choices.Add(DrillingCompressibilityQuantity.Instance.ID, DrillingCompressibilityQuantity.Instance.GetUnitChoice(DrillingCompressibilityQuantity.UnitChoicesEnum.InversePoundPerSquareInch).ID);
-                    Choices.Add(DrillingCurvatureQuantity.Instance.ID, DrillingCurvatureQuantity.Instance.GetUnitChoice(DrillingCurvatureQuantity.UnitChoicesEnum.DegreePer100ft).ID);
-                    Choices.Add(DrillingDensityGradientDepthQuantity.Instance.ID, DrillingDensityGradientDepthQuantity.Instance.GetUnitChoice(DrillingDensityGradientDepthQuantity.UnitChoicesEnum.PoundPerGallonUSPer100Foot).ID);
-                    Choices.Add(DrillingDensityGradientTemperatureQuantity.Instance.ID, DrillingDensityGradientTemperatureQuantity.Instance.GetUnitChoice(DrillingDensityGradientTemperatureQuantity.UnitChoicesEnum.PoundPerGallonUSPerFarenheit).ID);
-                    Choices.Add(DrillingDensityQuantity.Instance.ID, DrillingDensityQuantity.Instance.GetUnitChoice(DrillingDensityQuantity.UnitChoicesEnum.PoundPerGallonUS).ID);
-                    Choices.Add(DrillingDensitySpeedQuantity.Instance.ID, DrillingDensitySpeedQuantity.Instance.GetUnitChoice(DrillingDensitySpeedQuantity.UnitChoicesEnum.PoundPerGallonUSPerHour).ID);
-                    Choices.Add(DrillingDurationQuantity.Instance.ID, DrillingDurationQuantity.Instance.GetUnitChoice(DrillingDurationQuantity.UnitChoicesEnum.Second).ID);
-                    Choices.Add(DrillingDynamicViscosityQuantity.Instance.ID, DrillingDynamicViscosityQuantity.Instance.GetUnitChoice(DrillingDynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID);
-                    Choices.Add(DrillingElongationGradientQuantity.Instance.ID, DrillingElongationGradientQuantity.Instance.GetUnitChoice(DrillingElongationGradientQuantity.UnitChoicesEnum.InchPerFoot).ID); ;
-                    Choices.Add(DrillingFluidVelocityQuantity.Instance.ID, DrillingFluidVelocityQuantity.Instance.GetUnitChoice(DrillingFluidVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID);
-                    Choices.Add(DrillingForceGradientQuantity.Instance.ID, DrillingForceGradientQuantity.Instance.GetUnitChoice(DrillingForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID);
-                    Choices.Add(DrillingForceQuantity.Instance.ID, DrillingForceQuantity.Instance.GetUnitChoice(DrillingForceQuantity.UnitChoicesEnum.PoundForce).ID);
-                    Choices.Add(DrillingHeatTransferCoefficientQuantity.Instance.ID, DrillingHeatTransferCoefficientQuantity.Instance.GetUnitChoice(DrillingHeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit).ID);
-                    Choices.Add(DrillingHydraulicConductivityQuantity.Instance.ID, DrillingHydraulicConductivityQuantity.Instance.GetUnitChoice(DrillingHydraulicConductivityQuantity.UnitChoicesEnum.InchPerSecond).ID);
-                    Choices.Add(DrillingInterfacialTensionQuantity.Instance.ID, DrillingInterfacialTensionQuantity.Instance.GetUnitChoice(DrillingInterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared).ID);
-                    Choices.Add(DrillingMassQuantity.Instance.ID, DrillingMassQuantity.Instance.GetUnitChoice(DrillingMassQuantity.UnitChoicesEnum.Pound).ID);
-                    Choices.Add(DrillingMassGradientQuantity.Instance.ID, DrillingMassGradientQuantity.Instance.GetUnitChoice(DrillingMassGradientQuantity.UnitChoicesEnum.PoundPerFoot).ID);
-                    Choices.Add(DrillingMassRateQuantity.Instance.ID, DrillingMassRateQuantity.Instance.GetUnitChoice(DrillingMassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID);
-                    Choices.Add(DrillingPlaneAngleQuantity.Instance.ID, DrillingPlaneAngleQuantity.Instance.GetUnitChoice(DrillingPlaneAngleQuantity.UnitChoicesEnum.Degree).ID);
-                    Choices.Add(DrillingPressureGradientQuantity.Instance.ID, DrillingPressureGradientQuantity.Instance.GetUnitChoice(DrillingPressureGradientQuantity.UnitChoicesEnum.PSIPerFoot).ID);
-                    Choices.Add(DrillingPressureQuantity.Instance.ID, DrillingPressureQuantity.Instance.GetUnitChoice(DrillingPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID);
-                    Choices.Add(DrillingPressureLossConstantQuantity.Instance.ID, DrillingPressureLossConstantQuantity.Instance.GetUnitChoice(DrillingPressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantUS).ID);
-                    Choices.Add(DrillingRotationFrequencyRateOfChangeQuantity.Instance.ID, DrillingRotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(DrillingRotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID);
-                    Choices.Add(DrillingSpecificHeatCapacityQuantity.Instance.ID, DrillingSpecificHeatCapacityQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit).ID);
-                    Choices.Add(DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.ID, DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit).ID);
-                    Choices.Add(DrillingTemperatureGradientQuantity.Instance.ID, DrillingTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingTemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPer100Foot).ID);
-                    Choices.Add(DrillingTensionQuantity.Instance.ID, DrillingTensionQuantity.Instance.GetUnitChoice(DrillingTensionQuantity.UnitChoicesEnum.KiloPoundForce).ID);
-                    Choices.Add(DrillingThermalConductivityQuantity.Instance.ID, DrillingThermalConductivityQuantity.Instance.GetUnitChoice(DrillingThermalConductivityQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit).ID);
-                    Choices.Add(DrillingThermalConductivityTemperatureGradientQuantity.Instance.ID, DrillingThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit).ID);
-                    Choices.Add(DrillingTorqueQuantity.Instance.ID, DrillingTorqueQuantity.Instance.GetUnitChoice(DrillingTorqueQuantity.UnitChoicesEnum.FootPound).ID);
-                    Choices.Add(DrillingVolumeQuantity.Instance.ID, DrillingVolumeQuantity.Instance.GetUnitChoice(DrillingVolumeQuantity.UnitChoicesEnum.USGallon).ID);
-                    Choices.Add(DrillingVolumetricFlowRateOfChangeQuantity.Instance.ID, DrillingVolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.USGallonPerMinutePerSecond).ID);
-                    Choices.Add(DrillingVolumetricFlowrateQuantity.Instance.ID, DrillingVolumetricFlowrateQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowrateQuantity.UnitChoicesEnum.USGallonPerMinute).ID);
-                    Choices.Add(DrillStemMaterialStrengthQuantity.Instance.ID, DrillStemMaterialStrengthQuantity.Instance.GetUnitChoice(DrillStemMaterialStrengthQuantity.UnitChoicesEnum.PSI).ID);
-                    Choices.Add(NozzleDiameterQuantity.Instance.ID, NozzleDiameterQuantity.Instance.GetUnitChoice(NozzleDiameterQuantity.UnitChoicesEnum.Inch_32).ID);
-                    Choices.Add(PipeDiameterQuantity.Instance.ID, PipeDiameterQuantity.Instance.GetUnitChoice(PipeDiameterQuantity.UnitChoicesEnum.Inch).ID);
-                    Choices.Add(PositionQuantity.Instance.ID, PositionQuantity.Instance.GetUnitChoice(PositionQuantity.UnitChoicesEnum.Feet).ID);
-                    Choices.Add(PoreDiameterQuantity.Instance.ID, PoreDiameterQuantity.Instance.GetUnitChoice(PoreDiameterQuantity.UnitChoicesEnum.Inch_32).ID);
-                    Choices.Add(FormationStrengthQuantity.Instance.ID, FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.PSI).ID);
-                    Choices.Add(FormationResistivityQuantity.Instance.ID, FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMeter).ID);
-                    Choices.Add(GammaRayQuantity.Instance.ID, GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID);
-                    Choices.Add(GasVolumetricFlowRateQuantity.Instance.ID, GasVolumetricFlowRateQuantity.Instance.GetUnitChoice(GasVolumetricFlowRateQuantity.UnitChoicesEnum.USGallonPerMinute).ID);
-                    Choices.Add(GasShowQuantity.Instance.ID, GasShowQuantity.Instance.GetUnitChoice(GasShowQuantity.UnitChoicesEnum.Percent).ID);
-                    Choices.Add(HeightQuantity.Instance.ID, HeightQuantity.Instance.GetUnitChoice(HeightQuantity.UnitChoicesEnum.Feet).ID);
-                    Choices.Add(HookLoadQuantity.Instance.ID, HookLoadQuantity.Instance.GetUnitChoice(HookLoadQuantity.UnitChoicesEnum.KiloPound).ID);
-                    Choices.Add(PoreSurfaceQuantity.Instance.ID, PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID);
-                    Choices.Add(RateOfPenetrationQuantity.Instance.ID, RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID);
-                    Choices.Add(WeightOnBitQuantity.Instance.ID, WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.KiloPound).ID);
+                    IsDefault = true;
+                    ID = new Guid("3693c680-8c7e-4977-874e-109be3600c64");
+                    Name = "US";
+                    Description = "United States of America System of Units";
+
+                    Choices.Add(BlockVelocityQuantity.Instance.ID.ToString(), BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(CableDiameterQuantity.Instance.ID.ToString(), CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(CapillaryPressureQuantity.Instance.ID.ToString(), CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
+                    Choices.Add(DepthQuantity.Instance.ID.ToString(), DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Feet).ID.ToString());
+                    Choices.Add(DrillingAccelerationQuantity.Instance.ID.ToString(), DrillingAccelerationQuantity.Instance.GetUnitChoice(DrillingAccelerationQuantity.UnitChoicesEnum.FootPerSecondSquare).ID.ToString());
+                    Choices.Add(DrillingAngleVariationGradientQuantity.Instance.ID.ToString(), DrillingAngleVariationGradientQuantity.Instance.GetUnitChoice(DrillingAngleVariationGradientQuantity.UnitChoicesEnum.DegreePerFoot).ID.ToString());
+                    Choices.Add(DrillingAngularVelocityQuantity.Instance.ID.ToString(), DrillingAngularVelocityQuantity.Instance.GetUnitChoice(DrillingAngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
+                    Choices.Add(DrillingAreaQuantity.Instance.ID.ToString(), DrillingAreaQuantity.Instance.GetUnitChoice(DrillingAreaQuantity.UnitChoicesEnum.SquareFoot).ID.ToString());
+                    Choices.Add(DrillingCompressibilityQuantity.Instance.ID.ToString(), DrillingCompressibilityQuantity.Instance.GetUnitChoice(DrillingCompressibilityQuantity.UnitChoicesEnum.InversePoundPerSquareInch).ID.ToString());
+                    Choices.Add(DrillingCurvatureQuantity.Instance.ID.ToString(), DrillingCurvatureQuantity.Instance.GetUnitChoice(DrillingCurvatureQuantity.UnitChoicesEnum.DegreePer100ft).ID.ToString());
+                    Choices.Add(DrillingDensityGradientDepthQuantity.Instance.ID.ToString(), DrillingDensityGradientDepthQuantity.Instance.GetUnitChoice(DrillingDensityGradientDepthQuantity.UnitChoicesEnum.PoundPerGallonUSPer100Foot).ID.ToString());
+                    Choices.Add(DrillingDensityGradientTemperatureQuantity.Instance.ID.ToString(), DrillingDensityGradientTemperatureQuantity.Instance.GetUnitChoice(DrillingDensityGradientTemperatureQuantity.UnitChoicesEnum.PoundPerGallonUSPerFarenheit).ID.ToString());
+                    Choices.Add(DrillingDensityQuantity.Instance.ID.ToString(), DrillingDensityQuantity.Instance.GetUnitChoice(DrillingDensityQuantity.UnitChoicesEnum.PoundPerGallonUS).ID.ToString());
+                    Choices.Add(DrillingDensityRateOfChangeQuantity.Instance.ID.ToString(), DrillingDensityRateOfChangeQuantity.Instance.GetUnitChoice(DrillingDensityRateOfChangeQuantity.UnitChoicesEnum.PoundPerGallonUSPerHour).ID.ToString());
+                    Choices.Add(DrillingDurationQuantity.Instance.ID.ToString(), DrillingDurationQuantity.Instance.GetUnitChoice(DrillingDurationQuantity.UnitChoicesEnum.Second).ID.ToString());
+                    Choices.Add(DrillingDynamicViscosityQuantity.Instance.ID.ToString(), DrillingDynamicViscosityQuantity.Instance.GetUnitChoice(DrillingDynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
+                    Choices.Add(DrillingElongationGradientQuantity.Instance.ID.ToString(), DrillingElongationGradientQuantity.Instance.GetUnitChoice(DrillingElongationGradientQuantity.UnitChoicesEnum.InchPerFoot).ID.ToString()); ;
+                    Choices.Add(DrillingFluidVelocityQuantity.Instance.ID.ToString(), DrillingFluidVelocityQuantity.Instance.GetUnitChoice(DrillingFluidVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(DrillingForceGradientQuantity.Instance.ID.ToString(), DrillingForceGradientQuantity.Instance.GetUnitChoice(DrillingForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID.ToString());
+                    Choices.Add(DrillingForceQuantity.Instance.ID.ToString(), DrillingForceQuantity.Instance.GetUnitChoice(DrillingForceQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
+                    Choices.Add(DrillingHeatTransferCoefficientQuantity.Instance.ID.ToString(), DrillingHeatTransferCoefficientQuantity.Instance.GetUnitChoice(DrillingHeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit).ID.ToString());
+                    Choices.Add(DrillingHydraulicConductivityQuantity.Instance.ID.ToString(), DrillingHydraulicConductivityQuantity.Instance.GetUnitChoice(DrillingHydraulicConductivityQuantity.UnitChoicesEnum.InchPerSecond).ID.ToString());
+                    Choices.Add(DrillingInterfacialTensionQuantity.Instance.ID.ToString(), DrillingInterfacialTensionQuantity.Instance.GetUnitChoice(DrillingInterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared).ID.ToString());
+                    Choices.Add(DrillingMassQuantity.Instance.ID.ToString(), DrillingMassQuantity.Instance.GetUnitChoice(DrillingMassQuantity.UnitChoicesEnum.Pound).ID.ToString());
+                    Choices.Add(DrillingMassGradientQuantity.Instance.ID.ToString(), DrillingMassGradientQuantity.Instance.GetUnitChoice(DrillingMassGradientQuantity.UnitChoicesEnum.PoundPerFoot).ID.ToString());
+                    Choices.Add(DrillingMassRateQuantity.Instance.ID.ToString(), DrillingMassRateQuantity.Instance.GetUnitChoice(DrillingMassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID.ToString());
+                    Choices.Add(DrillingPlaneAngleQuantity.Instance.ID.ToString(), DrillingPlaneAngleQuantity.Instance.GetUnitChoice(DrillingPlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(DrillingPressureGradientQuantity.Instance.ID.ToString(), DrillingPressureGradientQuantity.Instance.GetUnitChoice(DrillingPressureGradientQuantity.UnitChoicesEnum.PSIPerFoot).ID.ToString());
+                    Choices.Add(DrillingPressureQuantity.Instance.ID.ToString(), DrillingPressureQuantity.Instance.GetUnitChoice(DrillingPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
+                    Choices.Add(DrillingPressureLossConstantQuantity.Instance.ID.ToString(), DrillingPressureLossConstantQuantity.Instance.GetUnitChoice(DrillingPressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantUS).ID.ToString());
+                    Choices.Add(DrillingRotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), DrillingRotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(DrillingRotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID.ToString());
+                    Choices.Add(DrillingSpecificHeatCapacityQuantity.Instance.ID.ToString(), DrillingSpecificHeatCapacityQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit).ID.ToString());
+                    Choices.Add(DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.ID.ToString(), DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit).ID.ToString());
+                    Choices.Add(DrillingTemperatureGradientQuantity.Instance.ID.ToString(), DrillingTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingTemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPer100Foot).ID.ToString());
+                    Choices.Add(DrillingTensionQuantity.Instance.ID.ToString(), DrillingTensionQuantity.Instance.GetUnitChoice(DrillingTensionQuantity.UnitChoicesEnum.KiloPoundForce).ID.ToString());
+                    Choices.Add(DrillingThermalConductivityQuantity.Instance.ID.ToString(), DrillingThermalConductivityQuantity.Instance.GetUnitChoice(DrillingThermalConductivityQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit).ID.ToString());
+                    Choices.Add(DrillingThermalConductivityTemperatureGradientQuantity.Instance.ID.ToString(), DrillingThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit).ID.ToString());
+                    Choices.Add(DrillingTorqueQuantity.Instance.ID.ToString(), DrillingTorqueQuantity.Instance.GetUnitChoice(DrillingTorqueQuantity.UnitChoicesEnum.FootPound).ID.ToString());
+                    Choices.Add(DrillingVolumeQuantity.Instance.ID.ToString(), DrillingVolumeQuantity.Instance.GetUnitChoice(DrillingVolumeQuantity.UnitChoicesEnum.USGallon).ID.ToString());
+                    Choices.Add(DrillingVolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), DrillingVolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.USGallonPerMinutePerSecond).ID.ToString());
+                    Choices.Add(DrillingVolumetricFlowrateQuantity.Instance.ID.ToString(), DrillingVolumetricFlowrateQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowrateQuantity.UnitChoicesEnum.USGallonPerMinute).ID.ToString());
+                    Choices.Add(DrillStemMaterialStrengthQuantity.Instance.ID.ToString(), DrillStemMaterialStrengthQuantity.Instance.GetUnitChoice(DrillStemMaterialStrengthQuantity.UnitChoicesEnum.PSI).ID.ToString());
+                    Choices.Add(NozzleDiameterQuantity.Instance.ID.ToString(), NozzleDiameterQuantity.Instance.GetUnitChoice(NozzleDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(PipeDiameterQuantity.Instance.ID.ToString(), PipeDiameterQuantity.Instance.GetUnitChoice(PipeDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(PositionQuantity.Instance.ID.ToString(), PositionQuantity.Instance.GetUnitChoice(PositionQuantity.UnitChoicesEnum.Feet).ID.ToString());
+                    Choices.Add(PoreDiameterQuantity.Instance.ID.ToString(), PoreDiameterQuantity.Instance.GetUnitChoice(PoreDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(FormationStrengthQuantity.Instance.ID.ToString(), FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.PSI).ID.ToString());
+                    Choices.Add(FormationResistivityQuantity.Instance.ID.ToString(), FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMeter).ID.ToString());
+                    Choices.Add(GammaRayQuantity.Instance.ID.ToString(), GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID.ToString());
+                    Choices.Add(GasVolumetricFlowRateQuantity.Instance.ID.ToString(), GasVolumetricFlowRateQuantity.Instance.GetUnitChoice(GasVolumetricFlowRateQuantity.UnitChoicesEnum.USGallonPerMinute).ID.ToString());
+                    Choices.Add(GasShowQuantity.Instance.ID.ToString(), GasShowQuantity.Instance.GetUnitChoice(GasShowQuantity.UnitChoicesEnum.Percent).ID.ToString());
+                    Choices.Add(HeightQuantity.Instance.ID.ToString(), HeightQuantity.Instance.GetUnitChoice(HeightQuantity.UnitChoicesEnum.Feet).ID.ToString());
+                    Choices.Add(HookLoadQuantity.Instance.ID.ToString(), HookLoadQuantity.Instance.GetUnitChoice(HookLoadQuantity.UnitChoicesEnum.KiloPound).ID.ToString());
+                    Choices.Add(PoreSurfaceQuantity.Instance.ID.ToString(), PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID.ToString());
+                    Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID.ToString());
+                    Choices.Add(WeightOnBitQuantity.Instance.ID.ToString(), WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.KiloPound).ID.ToString());
                 }
                 else if (defaultUnitChoice == UnitChoice.DefaultUnitSetChoiceEnum.Imperial)
                 {
-                    Choices.Add(BlockVelocityQuantity.Instance.ID, BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID);
-                    Choices.Add(CableDiameterQuantity.Instance.ID, CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID);
-                    Choices.Add(CapillaryPressureQuantity.Instance.ID, CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID);
-                    Choices.Add(DepthQuantity.Instance.ID, DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Feet).ID);
-                    Choices.Add(DrillingAccelerationQuantity.Instance.ID, DrillingAccelerationQuantity.Instance.GetUnitChoice(DrillingAccelerationQuantity.UnitChoicesEnum.FootPerSecondSquare).ID);
-                    Choices.Add(DrillingAngleVariationGradientQuantity.Instance.ID, DrillingAngleVariationGradientQuantity.Instance.GetUnitChoice(DrillingAngleVariationGradientQuantity.UnitChoicesEnum.DegreePerFoot).ID);
-                    Choices.Add(DrillingAngularVelocityQuantity.Instance.ID, DrillingAngularVelocityQuantity.Instance.GetUnitChoice(DrillingAngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID);
-                    Choices.Add(DrillingAreaQuantity.Instance.ID, DrillingAreaQuantity.Instance.GetUnitChoice(DrillingAreaQuantity.UnitChoicesEnum.SquareFoot).ID);
-                    Choices.Add(DrillingCompressibilityQuantity.Instance.ID, DrillingCompressibilityQuantity.Instance.GetUnitChoice(DrillingCompressibilityQuantity.UnitChoicesEnum.InversePoundPerSquareInch).ID);
-                    Choices.Add(DrillingCurvatureQuantity.Instance.ID, DrillingCurvatureQuantity.Instance.GetUnitChoice(DrillingCurvatureQuantity.UnitChoicesEnum.DegreePer100ft).ID);
-                    Choices.Add(DrillingDensityGradientDepthQuantity.Instance.ID, DrillingDensityGradientDepthQuantity.Instance.GetUnitChoice(DrillingDensityGradientDepthQuantity.UnitChoicesEnum.PoundPerGallonUKPer100Foot).ID);
-                    Choices.Add(DrillingDensityGradientTemperatureQuantity.Instance.ID, DrillingDensityGradientTemperatureQuantity.Instance.GetUnitChoice(DrillingDensityGradientTemperatureQuantity.UnitChoicesEnum.PoundPerGallonUSPerFarenheit).ID);
-                    Choices.Add(DrillingDensityQuantity.Instance.ID, DrillingDensityQuantity.Instance.GetUnitChoice(DrillingDensityQuantity.UnitChoicesEnum.PoundPerGallonUK).ID);
-                    Choices.Add(DrillingDensitySpeedQuantity.Instance.ID, DrillingDensitySpeedQuantity.Instance.GetUnitChoice(DrillingDensitySpeedQuantity.UnitChoicesEnum.PoundPerGallonUKPerHour).ID);
-                    Choices.Add(DrillingDurationQuantity.Instance.ID, DrillingDurationQuantity.Instance.GetUnitChoice(DrillingDurationQuantity.UnitChoicesEnum.Second).ID);
-                    Choices.Add(DrillingDynamicViscosityQuantity.Instance.ID, DrillingDynamicViscosityQuantity.Instance.GetUnitChoice(DrillingDynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID);
-                    Choices.Add(DrillingElongationGradientQuantity.Instance.ID, DrillingElongationGradientQuantity.Instance.GetUnitChoice(DrillingElongationGradientQuantity.UnitChoicesEnum.InchPerFoot).ID); ;
-                    Choices.Add(DrillingFluidVelocityQuantity.Instance.ID, DrillingFluidVelocityQuantity.Instance.GetUnitChoice(DrillingFluidVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID);
-                    Choices.Add(DrillingForceGradientQuantity.Instance.ID, DrillingForceGradientQuantity.Instance.GetUnitChoice(DrillingForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID);
-                    Choices.Add(DrillingForceQuantity.Instance.ID, DrillingForceQuantity.Instance.GetUnitChoice(DrillingForceQuantity.UnitChoicesEnum.PoundForce).ID);
-                    Choices.Add(DrillingHeatTransferCoefficientQuantity.Instance.ID, DrillingHeatTransferCoefficientQuantity.Instance.GetUnitChoice(DrillingHeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit).ID);
-                    Choices.Add(DrillingHydraulicConductivityQuantity.Instance.ID, DrillingHydraulicConductivityQuantity.Instance.GetUnitChoice(DrillingHydraulicConductivityQuantity.UnitChoicesEnum.InchPerSecond).ID);
-                    Choices.Add(DrillingInterfacialTensionQuantity.Instance.ID, DrillingInterfacialTensionQuantity.Instance.GetUnitChoice(DrillingInterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared).ID);
-                    Choices.Add(DrillingMassQuantity.Instance.ID, DrillingMassQuantity.Instance.GetUnitChoice(DrillingMassQuantity.UnitChoicesEnum.Pound).ID);
-                    Choices.Add(DrillingMassGradientQuantity.Instance.ID, DrillingMassGradientQuantity.Instance.GetUnitChoice(DrillingMassGradientQuantity.UnitChoicesEnum.PoundPerFoot).ID);
-                    Choices.Add(DrillingMassRateQuantity.Instance.ID, DrillingMassRateQuantity.Instance.GetUnitChoice(DrillingMassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID);
-                    Choices.Add(DrillingPlaneAngleQuantity.Instance.ID, DrillingPlaneAngleQuantity.Instance.GetUnitChoice(DrillingPlaneAngleQuantity.UnitChoicesEnum.Degree).ID);
-                    Choices.Add(DrillingPressureGradientQuantity.Instance.ID, DrillingPressureGradientQuantity.Instance.GetUnitChoice(DrillingPressureGradientQuantity.UnitChoicesEnum.PSIPerFoot).ID);
-                    Choices.Add(DrillingPressureQuantity.Instance.ID, DrillingPressureQuantity.Instance.GetUnitChoice(DrillingPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID);
-                    Choices.Add(DrillingPressureLossConstantQuantity.Instance.ID, DrillingPressureLossConstantQuantity.Instance.GetUnitChoice(DrillingPressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantUK).ID);
-                    Choices.Add(DrillingRotationFrequencyRateOfChangeQuantity.Instance.ID, DrillingRotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(DrillingRotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID);
-                    Choices.Add(DrillingSpecificHeatCapacityQuantity.Instance.ID, DrillingSpecificHeatCapacityQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit).ID);
-                    Choices.Add(DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.ID, DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit).ID);
-                    Choices.Add(DrillingTemperatureGradientQuantity.Instance.ID, DrillingTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingTemperatureGradientQuantity.UnitChoicesEnum.CelsiusPer100Foot).ID);
-                    Choices.Add(DrillingTensionQuantity.Instance.ID, DrillingTensionQuantity.Instance.GetUnitChoice(DrillingTensionQuantity.UnitChoicesEnum.KiloPoundForce).ID);
-                    Choices.Add(DrillingThermalConductivityQuantity.Instance.ID, DrillingThermalConductivityQuantity.Instance.GetUnitChoice(DrillingThermalConductivityQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit).ID);
-                    Choices.Add(DrillingThermalConductivityTemperatureGradientQuantity.Instance.ID, DrillingThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit).ID);
-                    Choices.Add(DrillingTorqueQuantity.Instance.ID, DrillingTorqueQuantity.Instance.GetUnitChoice(DrillingTorqueQuantity.UnitChoicesEnum.FootPound).ID);
-                    Choices.Add(DrillingVolumeQuantity.Instance.ID, DrillingVolumeQuantity.Instance.GetUnitChoice(DrillingVolumeQuantity.UnitChoicesEnum.UKGallon).ID);
-                    Choices.Add(DrillingVolumetricFlowRateOfChangeQuantity.Instance.ID, DrillingVolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.UKGallonPerMinutePerSecond).ID);
-                    Choices.Add(DrillingVolumetricFlowrateQuantity.Instance.ID, DrillingVolumetricFlowrateQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowrateQuantity.UnitChoicesEnum.UKGallonPerMinute).ID);
-                    Choices.Add(DrillStemMaterialStrengthQuantity.Instance.ID, DrillStemMaterialStrengthQuantity.Instance.GetUnitChoice(DrillStemMaterialStrengthQuantity.UnitChoicesEnum.PSI).ID);
-                    Choices.Add(HeightQuantity.Instance.ID, HeightQuantity.Instance.GetUnitChoice(HeightQuantity.UnitChoicesEnum.Feet).ID);
-                    Choices.Add(NozzleDiameterQuantity.Instance.ID, NozzleDiameterQuantity.Instance.GetUnitChoice(NozzleDiameterQuantity.UnitChoicesEnum.Inch_32).ID);
-                    Choices.Add(PipeDiameterQuantity.Instance.ID, PipeDiameterQuantity.Instance.GetUnitChoice(PipeDiameterQuantity.UnitChoicesEnum.Inch).ID);
-                    Choices.Add(PositionQuantity.Instance.ID, PositionQuantity.Instance.GetUnitChoice(PositionQuantity.UnitChoicesEnum.Feet).ID);
-                    Choices.Add(PoreDiameterQuantity.Instance.ID, PoreDiameterQuantity.Instance.GetUnitChoice(PoreDiameterQuantity.UnitChoicesEnum.Inch_32).ID);
-                    Choices.Add(FormationStrengthQuantity.Instance.ID, FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.PSI).ID);
-                    Choices.Add(FormationResistivityQuantity.Instance.ID, FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMeter).ID);
-                    Choices.Add(GammaRayQuantity.Instance.ID, GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID);
-                    Choices.Add(GasVolumetricFlowRateQuantity.Instance.ID, GasVolumetricFlowRateQuantity.Instance.GetUnitChoice(GasVolumetricFlowRateQuantity.UnitChoicesEnum.UKGallonPerMinute).ID);
-                    Choices.Add(GasShowQuantity.Instance.ID, GasShowQuantity.Instance.GetUnitChoice(GasShowQuantity.UnitChoicesEnum.Percent).ID);
-                    Choices.Add(HookLoadQuantity.Instance.ID, HookLoadQuantity.Instance.GetUnitChoice(HookLoadQuantity.UnitChoicesEnum.KiloPound).ID);
-                    Choices.Add(PoreSurfaceQuantity.Instance.ID, PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID);
-                    Choices.Add(RateOfPenetrationQuantity.Instance.ID, RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID);
-                    Choices.Add(WeightOnBitQuantity.Instance.ID, WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.KiloPound).ID);
+                    IsDefault = true;
+                    ID = new Guid("67e6faf9-8d2f-4071-badb-f8d1355017a4");
+                    Name = "Imperial";
+                    Description = "United Kingdom System of Units";
+
+                    Choices.Add(BlockVelocityQuantity.Instance.ID.ToString(), BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(CableDiameterQuantity.Instance.ID.ToString(), CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(CapillaryPressureQuantity.Instance.ID.ToString(), CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
+                    Choices.Add(DepthQuantity.Instance.ID.ToString(), DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Feet).ID.ToString());
+                    Choices.Add(DrillingAccelerationQuantity.Instance.ID.ToString(), DrillingAccelerationQuantity.Instance.GetUnitChoice(DrillingAccelerationQuantity.UnitChoicesEnum.FootPerSecondSquare).ID.ToString());
+                    Choices.Add(DrillingAngleVariationGradientQuantity.Instance.ID.ToString(), DrillingAngleVariationGradientQuantity.Instance.GetUnitChoice(DrillingAngleVariationGradientQuantity.UnitChoicesEnum.DegreePerFoot).ID.ToString());
+                    Choices.Add(DrillingAngularVelocityQuantity.Instance.ID.ToString(), DrillingAngularVelocityQuantity.Instance.GetUnitChoice(DrillingAngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
+                    Choices.Add(DrillingAreaQuantity.Instance.ID.ToString(), DrillingAreaQuantity.Instance.GetUnitChoice(DrillingAreaQuantity.UnitChoicesEnum.SquareFoot).ID.ToString());
+                    Choices.Add(DrillingCompressibilityQuantity.Instance.ID.ToString(), DrillingCompressibilityQuantity.Instance.GetUnitChoice(DrillingCompressibilityQuantity.UnitChoicesEnum.InversePoundPerSquareInch).ID.ToString());
+                    Choices.Add(DrillingCurvatureQuantity.Instance.ID.ToString(), DrillingCurvatureQuantity.Instance.GetUnitChoice(DrillingCurvatureQuantity.UnitChoicesEnum.DegreePer100ft).ID.ToString());
+                    Choices.Add(DrillingDensityGradientDepthQuantity.Instance.ID.ToString(), DrillingDensityGradientDepthQuantity.Instance.GetUnitChoice(DrillingDensityGradientDepthQuantity.UnitChoicesEnum.PoundPerGallonUKPer100Foot).ID.ToString());
+                    Choices.Add(DrillingDensityGradientTemperatureQuantity.Instance.ID.ToString(), DrillingDensityGradientTemperatureQuantity.Instance.GetUnitChoice(DrillingDensityGradientTemperatureQuantity.UnitChoicesEnum.PoundPerGallonUSPerFarenheit).ID.ToString());
+                    Choices.Add(DrillingDensityQuantity.Instance.ID.ToString(), DrillingDensityQuantity.Instance.GetUnitChoice(DrillingDensityQuantity.UnitChoicesEnum.PoundPerGallonUK).ID.ToString());
+                    Choices.Add(DrillingDensityRateOfChangeQuantity.Instance.ID.ToString(), DrillingDensityRateOfChangeQuantity.Instance.GetUnitChoice(DrillingDensityRateOfChangeQuantity.UnitChoicesEnum.PoundPerGallonUKPerHour).ID.ToString());
+                    Choices.Add(DrillingDurationQuantity.Instance.ID.ToString(), DrillingDurationQuantity.Instance.GetUnitChoice(DrillingDurationQuantity.UnitChoicesEnum.Second).ID.ToString());
+                    Choices.Add(DrillingDynamicViscosityQuantity.Instance.ID.ToString(), DrillingDynamicViscosityQuantity.Instance.GetUnitChoice(DrillingDynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
+                    Choices.Add(DrillingElongationGradientQuantity.Instance.ID.ToString(), DrillingElongationGradientQuantity.Instance.GetUnitChoice(DrillingElongationGradientQuantity.UnitChoicesEnum.InchPerFoot).ID.ToString()); ;
+                    Choices.Add(DrillingFluidVelocityQuantity.Instance.ID.ToString(), DrillingFluidVelocityQuantity.Instance.GetUnitChoice(DrillingFluidVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(DrillingForceGradientQuantity.Instance.ID.ToString(), DrillingForceGradientQuantity.Instance.GetUnitChoice(DrillingForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID.ToString());
+                    Choices.Add(DrillingForceQuantity.Instance.ID.ToString(), DrillingForceQuantity.Instance.GetUnitChoice(DrillingForceQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
+                    Choices.Add(DrillingHeatTransferCoefficientQuantity.Instance.ID.ToString(), DrillingHeatTransferCoefficientQuantity.Instance.GetUnitChoice(DrillingHeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit).ID.ToString());
+                    Choices.Add(DrillingHydraulicConductivityQuantity.Instance.ID.ToString(), DrillingHydraulicConductivityQuantity.Instance.GetUnitChoice(DrillingHydraulicConductivityQuantity.UnitChoicesEnum.InchPerSecond).ID.ToString());
+                    Choices.Add(DrillingInterfacialTensionQuantity.Instance.ID.ToString(), DrillingInterfacialTensionQuantity.Instance.GetUnitChoice(DrillingInterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared).ID.ToString());
+                    Choices.Add(DrillingMassQuantity.Instance.ID.ToString(), DrillingMassQuantity.Instance.GetUnitChoice(DrillingMassQuantity.UnitChoicesEnum.Pound).ID.ToString());
+                    Choices.Add(DrillingMassGradientQuantity.Instance.ID.ToString(), DrillingMassGradientQuantity.Instance.GetUnitChoice(DrillingMassGradientQuantity.UnitChoicesEnum.PoundPerFoot).ID.ToString());
+                    Choices.Add(DrillingMassRateQuantity.Instance.ID.ToString(), DrillingMassRateQuantity.Instance.GetUnitChoice(DrillingMassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID.ToString());
+                    Choices.Add(DrillingPlaneAngleQuantity.Instance.ID.ToString(), DrillingPlaneAngleQuantity.Instance.GetUnitChoice(DrillingPlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(DrillingPressureGradientQuantity.Instance.ID.ToString(), DrillingPressureGradientQuantity.Instance.GetUnitChoice(DrillingPressureGradientQuantity.UnitChoicesEnum.PSIPerFoot).ID.ToString());
+                    Choices.Add(DrillingPressureQuantity.Instance.ID.ToString(), DrillingPressureQuantity.Instance.GetUnitChoice(DrillingPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
+                    Choices.Add(DrillingPressureLossConstantQuantity.Instance.ID.ToString(), DrillingPressureLossConstantQuantity.Instance.GetUnitChoice(DrillingPressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantUK).ID.ToString());
+                    Choices.Add(DrillingRotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), DrillingRotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(DrillingRotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID.ToString());
+                    Choices.Add(DrillingSpecificHeatCapacityQuantity.Instance.ID.ToString(), DrillingSpecificHeatCapacityQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit).ID.ToString());
+                    Choices.Add(DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.ID.ToString(), DrillingSpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingSpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit).ID.ToString());
+                    Choices.Add(DrillingTemperatureGradientQuantity.Instance.ID.ToString(), DrillingTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingTemperatureGradientQuantity.UnitChoicesEnum.CelsiusPer100Foot).ID.ToString());
+                    Choices.Add(DrillingTensionQuantity.Instance.ID.ToString(), DrillingTensionQuantity.Instance.GetUnitChoice(DrillingTensionQuantity.UnitChoicesEnum.KiloPoundForce).ID.ToString());
+                    Choices.Add(DrillingThermalConductivityQuantity.Instance.ID.ToString(), DrillingThermalConductivityQuantity.Instance.GetUnitChoice(DrillingThermalConductivityQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit).ID.ToString());
+                    Choices.Add(DrillingThermalConductivityTemperatureGradientQuantity.Instance.ID.ToString(), DrillingThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(DrillingThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit).ID.ToString());
+                    Choices.Add(DrillingTorqueQuantity.Instance.ID.ToString(), DrillingTorqueQuantity.Instance.GetUnitChoice(DrillingTorqueQuantity.UnitChoicesEnum.FootPound).ID.ToString());
+                    Choices.Add(DrillingVolumeQuantity.Instance.ID.ToString(), DrillingVolumeQuantity.Instance.GetUnitChoice(DrillingVolumeQuantity.UnitChoicesEnum.UKGallon).ID.ToString());
+                    Choices.Add(DrillingVolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), DrillingVolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.UKGallonPerMinutePerSecond).ID.ToString());
+                    Choices.Add(DrillingVolumetricFlowrateQuantity.Instance.ID.ToString(), DrillingVolumetricFlowrateQuantity.Instance.GetUnitChoice(DrillingVolumetricFlowrateQuantity.UnitChoicesEnum.UKGallonPerMinute).ID.ToString());
+                    Choices.Add(DrillStemMaterialStrengthQuantity.Instance.ID.ToString(), DrillStemMaterialStrengthQuantity.Instance.GetUnitChoice(DrillStemMaterialStrengthQuantity.UnitChoicesEnum.PSI).ID.ToString());
+                    Choices.Add(HeightQuantity.Instance.ID.ToString(), HeightQuantity.Instance.GetUnitChoice(HeightQuantity.UnitChoicesEnum.Feet).ID.ToString());
+                    Choices.Add(NozzleDiameterQuantity.Instance.ID.ToString(), NozzleDiameterQuantity.Instance.GetUnitChoice(NozzleDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(PipeDiameterQuantity.Instance.ID.ToString(), PipeDiameterQuantity.Instance.GetUnitChoice(PipeDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(PositionQuantity.Instance.ID.ToString(), PositionQuantity.Instance.GetUnitChoice(PositionQuantity.UnitChoicesEnum.Feet).ID.ToString());
+                    Choices.Add(PoreDiameterQuantity.Instance.ID.ToString(), PoreDiameterQuantity.Instance.GetUnitChoice(PoreDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(FormationStrengthQuantity.Instance.ID.ToString(), FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.PSI).ID.ToString());
+                    Choices.Add(FormationResistivityQuantity.Instance.ID.ToString(), FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMeter).ID.ToString());
+                    Choices.Add(GammaRayQuantity.Instance.ID.ToString(), GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID.ToString());
+                    Choices.Add(GasVolumetricFlowRateQuantity.Instance.ID.ToString(), GasVolumetricFlowRateQuantity.Instance.GetUnitChoice(GasVolumetricFlowRateQuantity.UnitChoicesEnum.UKGallonPerMinute).ID.ToString());
+                    Choices.Add(GasShowQuantity.Instance.ID.ToString(), GasShowQuantity.Instance.GetUnitChoice(GasShowQuantity.UnitChoicesEnum.Percent).ID.ToString());
+                    Choices.Add(HookLoadQuantity.Instance.ID.ToString(), HookLoadQuantity.Instance.GetUnitChoice(HookLoadQuantity.UnitChoicesEnum.KiloPound).ID.ToString());
+                    Choices.Add(PoreSurfaceQuantity.Instance.ID.ToString(), PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID.ToString());
+                    Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID.ToString());
+                    Choices.Add(WeightOnBitQuantity.Instance.ID.ToString(), WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.KiloPound).ID.ToString());
                 }   
                 CheckMissing(quantities);
             }

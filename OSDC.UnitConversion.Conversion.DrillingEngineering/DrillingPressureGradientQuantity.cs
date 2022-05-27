@@ -4,10 +4,10 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingPressureGradientQuantity : PressureGradientQuantity, IEngineeringQuantity
+    public partial class DrillingPressureGradientQuantity : PressureGradientQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 10000;
-        private static new DrillingPressureGradientQuantity instance_ = null;
+        public override double? MeaningFullPrecisionInSI { get; } = 10000;
+        private static DrillingPressureGradientQuantity instance_ = null;
 
         public static new DrillingPressureGradientQuantity Instance
         {

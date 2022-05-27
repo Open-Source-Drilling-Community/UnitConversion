@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingPressureQuantity : PressureQuantity, IEngineeringQuantity
+    public partial class DrillingPressureQuantity : PressureQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 10000;
+        public override double? MeaningFullPrecisionInSI { get; } = 10000;
 
         private static DrillingPressureQuantity instance_ = null;
 

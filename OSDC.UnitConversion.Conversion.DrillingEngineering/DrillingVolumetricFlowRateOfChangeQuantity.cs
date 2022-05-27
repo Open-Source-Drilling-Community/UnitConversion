@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingVolumetricFlowRateOfChangeQuantity : VolumetricFlowRateOfChangeQuantity, IEngineeringQuantity
+    public partial class DrillingVolumetricFlowRateOfChangeQuantity : VolumetricFlowRateOfChangeQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 1E-06;
+        public override double? MeaningFullPrecisionInSI { get; } = 1E-06;
 
         private static DrillingVolumetricFlowRateOfChangeQuantity instance_ = null;
 

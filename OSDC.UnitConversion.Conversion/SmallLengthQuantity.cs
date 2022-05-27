@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class SmallLengthQuantity : LengthQuantity, IEngineeringQuantity
+    public partial class SmallLengthQuantity : LengthQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.0001;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.0001;
 
         private static SmallLengthQuantity instance_ = null;
 

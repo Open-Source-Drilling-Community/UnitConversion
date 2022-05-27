@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingPlaneAngleQuantity : PlaneAngleQuantity, IEngineeringQuantity
+    public partial class DrillingPlaneAngleQuantity : PlaneAngleQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.01 * Math.PI / 180.0;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.01 * Math.PI / 180.0;
         private static DrillingPlaneAngleQuantity instance_ = null;
 
         public static new DrillingPlaneAngleQuantity Instance

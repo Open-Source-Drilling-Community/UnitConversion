@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class WeightOnBitQuantity : GravitationalLoadQuantity, IEngineeringQuantity
+    public partial class WeightOnBitQuantity : GravitationalLoadQuantity
     {
 
-        public virtual double? MeaningFullPrecisionInSI { get; } = 10;
+        public override double? MeaningFullPrecisionInSI { get; } = 10;
         private static WeightOnBitQuantity instance_ = null;
 
         public static new WeightOnBitQuantity Instance

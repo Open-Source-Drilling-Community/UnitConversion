@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "";
         public override string SIUnitName { get; } = "steradian";
 
-        public override string SIUnitSymbol { get; } = "sr";
+        public override string SIUnitLabel { get; } = "sr";
 
         public override double SolidAngleDimension { get; } = 1;
 
@@ -36,7 +36,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = SIUnitName,
-                    UnitSymbol = SIUnitSymbol,
+                    UnitLabel = SIUnitLabel,
                     ID = new Guid("aee057f5-3235-4976-b6e6-a57179f0173e"),
                     ConversionFactorFromSI = 1.0,
                     IsSI = true
@@ -44,14 +44,14 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "spat",
-                    UnitSymbol = "spat",
+                    UnitLabel = "spat",
                     ID = new Guid("44abc0c0-d564-442a-ac80-b08c9d499867"),
                     ConversionFactorFromSI = 1/(4.0*Math.PI)
                 },
                 new UnitChoice
                 {
                     UnitName = "square degree",
-                    UnitSymbol = "(°)²",
+                    UnitLabel = "(°)²",
                     ID = new Guid("ad4b94e8-1a86-42ab-bfc6-9cc7ff7a835f"),
                     ConversionFactorFromSI = (180.0*180.0)/(Math.PI*Math.PI)
                 }

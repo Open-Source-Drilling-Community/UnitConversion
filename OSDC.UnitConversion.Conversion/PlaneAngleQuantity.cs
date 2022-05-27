@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "";
         public override string SIUnitName { get; } = "radian";
 
-        public override string SIUnitSymbol { get; } = "rd";
+        public override string SIUnitLabel { get; } = "rd";
 
         public override double PlaneAngleDimension { get; } = 1;
 
@@ -36,7 +36,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = SIUnitName,
-                    UnitSymbol = SIUnitSymbol,
+                    UnitLabel = SIUnitLabel,
                     ID = new Guid("a71fc712-342a-48c2-8e45-b56ee31c7ae0"),
                     ConversionFactorFromSI = 1.0,
                     IsSI = true
@@ -44,28 +44,28 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "milliradian",
-                    UnitSymbol = "mrad",
+                    UnitLabel = "mrad",
                     ID = new Guid("34a37faf-dfb9-4a34-899c-c9fa78f295a5"),
                     ConversionFactorFromSI = 1000.0
                 },
                 new UnitChoice
                 {
                     UnitName = "degree",
-                    UnitSymbol = "°",
+                    UnitLabel = "°",
                     ID = new Guid("023a3393-a01e-499f-967a-a76b1a78d586"),
                     ConversionFactorFromSI = 180.0/Math.PI
                 },
                 new UnitChoice
                 {
                     UnitName = "grad",
-                    UnitSymbol = "grad",
+                    UnitLabel = "grad",
                     ID = new Guid("584314cf-a10f-49b6-a5e9-1cfa0ec0f355"),
                     ConversionFactorFromSI = 200.0/Math.PI
                 },
                 new UnitChoice
                 {
                     UnitName = "gon",
-                    UnitSymbol = "gon",
+                    UnitLabel = "gon",
                     ID = new Guid("feefeed5-2df2-4c66-84f1-0de998ba44db"),
                     ConversionFactorFromSI = 200.0/Math.PI
                 },
@@ -73,49 +73,49 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "circle",
-                    UnitSymbol = "circle",
+                    UnitLabel = "circle",
                     ID = new Guid("e27aeec3-667d-41bb-9bd2-60bf213f8b7b"),
                     ConversionFactorFromSI = 1.0/(2.0*Math.PI)
                 },
                 new UnitChoice
                 {
                     UnitName = "revolution",
-                    UnitSymbol = "revolution",
+                    UnitLabel = "revolution",
                     ID = new Guid("e613477b-f8bc-45c7-8ccc-391a7f33af05"),
                     ConversionFactorFromSI = 1.0/(2.0*Math.PI)
                 },
                 new UnitChoice
                 {
                     UnitName = "quadrant",
-                    UnitSymbol = "quadrant",
+                    UnitLabel = "quadrant",
                     ID = new Guid("dedbbea6-40e7-439a-9409-220fee4c148a"),
                     ConversionFactorFromSI = 2.0/Math.PI
                 },
                 new UnitChoice
                 {
                     UnitName = "sextant",
-                    UnitSymbol = "sextant",
+                    UnitLabel = "sextant",
                     ID = new Guid("ce4197b4-6d9d-488b-a360-98899a82837e"),
                     ConversionFactorFromSI = 3.0/Math.PI
                 },
                 new UnitChoice
                 {
                     UnitName = "octant",
-                    UnitSymbol = "octant",
+                    UnitLabel = "octant",
                     ID = new Guid("8f78bfce-cad9-4a77-aa5f-3a5fecc89364"),
                     ConversionFactorFromSI = 4.0/Math.PI
                 },
                  new UnitChoice
                 {
                     UnitName = "arc minute",
-                    UnitSymbol = "\'",
+                    UnitLabel = "\'",
                     ID = new Guid("e1ce9562-ecd0-46e2-82e2-bcec1b6ac113"),
                     ConversionFactorFromSI = 180.0*60.0/Math.PI
                 },
                 new UnitChoice
                 {
                     UnitName = "arc second",
-                    UnitSymbol = "\"",
+                    UnitLabel = "\"",
                     ID = new Guid("bea092da-34d6-4130-bc65-41fb7702597a"),
                     ConversionFactorFromSI = 180.0*60.0*60.0/Math.PI
                 }

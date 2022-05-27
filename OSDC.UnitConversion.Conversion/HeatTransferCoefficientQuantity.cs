@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "WattPerMeterSquaredPerKelvin";
-        public override string SIUnitSymbol { get; } = "W/m²/K";
+        public override string SIUnitLabel { get; } = "W/m²/K";
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;
         public override double TemperatureDimension { get; } = -1;
@@ -33,7 +33,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("e1737353-c10b-46cd-aa4e-9c90afb2f01e"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -41,7 +41,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit",
-          UnitSymbol = "BTU/h/ft²/°F",
+          UnitLabel = "BTU/h/ft²/°F",
           ID = new Guid("6963db25-2bd9-4017-9c83-cc578a11abbf"),
           ConversionFactorFromSI = 0.176110184
         }

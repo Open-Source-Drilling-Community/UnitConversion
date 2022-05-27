@@ -29,7 +29,7 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "RPMPerSecond",
-                UnitSymbol = "rpm/s",
+                UnitLabel = "rpm/s",
                 ID = new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb"),
                 ConversionFactorFromSI = 60
             });

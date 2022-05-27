@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "PressureLossConstantSI";
-        public override string SIUnitSymbol { get; } = "(m³/s)²•(kg/m³)/Pa";
+        public override string SIUnitLabel { get; } = "(m³/s)²•(kg/m³)/Pa";
         public override double LengthDimension { get; } = 4;
         private static PressureLossConstantQuantity instance_ = null;
 
@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("e0b334c4-2e44-4b1b-891f-9deae86a4d17"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -39,21 +39,21 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "PressureLossConstantMetric",
-          UnitSymbol = "(l/min)²•sg/bar",
+          UnitLabel = "(l/min)²•sg/bar",
           ID = new Guid("043fbd34-1e4f-45bc-9935-b1797b606fd6"),
           ConversionFactorFromSI = 360000000000
         },
         new UnitChoice
         {
           UnitName = "PressureLossConstantUK",
-          UnitSymbol = "gpmUK²•ppgUK/psi",
+          UnitLabel = "gpmUK²•ppgUK/psi",
           ID = new Guid("d5a97f2d-cb2f-449f-8f60-0ad292a01b87"),
           ConversionFactorFromSI = 12036978643.119
         },
         new UnitChoice
         {
           UnitName = "PressureLossConstantUS",
-          UnitSymbol = "gpmUS²•ppgUS/psi",
+          UnitLabel = "gpmUS²•ppgUS/psi",
           ID = new Guid("b5cb21d1-0e71-4ab2-8d9d-42de21753edc"),
           ConversionFactorFromSI = 14455817187.722
         }

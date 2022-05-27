@@ -14,9 +14,9 @@ namespace OSDC.UnitConversion.Conversion
         /// </summary>
         public string UnitName { get; set; } = null;
         /// <summary>
-        /// the symbol used for that unit choice
+        /// the label used for that unit choice
         /// </summary>
-        public string UnitSymbol { get; set; }
+        public string UnitLabel { get; set; }
         /// <summary>
         /// a global unique identifier
         /// </summary>

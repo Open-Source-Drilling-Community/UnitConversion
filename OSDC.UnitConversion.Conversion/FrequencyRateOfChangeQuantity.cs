@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "HertzPerSecond";
-        public override string SIUnitSymbol { get; } = "Hz/s";
+        public override string SIUnitLabel { get; } = "Hz/s";
         public override double TimeDimension { get; } = -2;
         private static FrequencyRateOfChangeQuantity instance_ = null;
 
@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd"),
           ConversionFactorFromSI = 1.0,
           IsSI = true

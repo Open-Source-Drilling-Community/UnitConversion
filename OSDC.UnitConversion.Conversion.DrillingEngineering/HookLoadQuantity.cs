@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class HookLoadQuantity : GravitationalLoadQuantity, IEngineeringQuantity
+    public partial class HookLoadQuantity : GravitationalLoadQuantity
     {
         public override string SIUnitName { get; } = "Kilogram";
-        public override string SIUnitSymbol { get; } = "kg";
-        public virtual double? MeaningFullPrecisionInSI { get; } = 100;
+        public override string SIUnitLabel { get; } = "kg";
+        public override double? MeaningFullPrecisionInSI { get; } = 100;
         private static HookLoadQuantity instance_ = null;
 
         public static new HookLoadQuantity Instance

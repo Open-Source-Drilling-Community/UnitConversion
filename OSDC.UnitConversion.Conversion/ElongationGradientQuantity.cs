@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ElongationGradientQuantity : DerivedPhysicalQuantity
     {
         public override string SIUnitName { get; } = "MeterPerMeter";
-        public override string SIUnitSymbol { get; } = "m/m";
+        public override string SIUnitLabel { get; } = "m/m";
 
         private static ElongationGradientQuantity instance_ = null;
 
@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = SIUnitName,
-                UnitSymbol = SIUnitSymbol,
+                UnitLabel = SIUnitLabel,
                 ID = new Guid("cc12967b-4c7d-4c70-95cf-d2f23bd6f76b"),
                 ConversionFactorFromSI = 1.0,
                 IsSI = true
@@ -39,14 +39,14 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "millimeter per meter",
-                UnitSymbol = "mm/m",
+                UnitLabel = "mm/m",
                 ID = new Guid("4e241b59-388a-428f-82e7-b9971f9e1df5"),
                 ConversionFactorFromSI = 1000.0
             });
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "inch per foot",
-                UnitSymbol = "in/ft",
+                UnitLabel = "in/ft",
                 ID = new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2"),
                 ConversionFactorFromSI = 39.37008 / 3.28084
             });

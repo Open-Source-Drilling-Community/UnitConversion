@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "PascalSecond";
-        public override string SIUnitSymbol { get; } = "Pa•s";
+        public override string SIUnitLabel { get; } = "Pa•s";
         public override double LengthDimension { get; } = -1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -1;
@@ -33,7 +33,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("5707caa4-e293-430d-9575-425305060fcc"),
           ConversionFactorFromSI = 1.0,
           IsSI = true
@@ -41,21 +41,21 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "CentiPoise",
-          UnitSymbol = "cP",
+          UnitLabel = "cP",
           ID = new Guid("a71ef873-6ea2-4922-a100-231177de0e85"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
           UnitName = "MicroPascalSecond",
-          UnitSymbol = "µPa•s",
+          UnitLabel = "µPa•s",
           ID = new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d"),
           ConversionFactorFromSI = 1000000
         },
         new UnitChoice
         {
           UnitName = "MicroPoise",
-          UnitSymbol = "µP",
+          UnitLabel = "µP",
           ID = new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8"),
           ConversionFactorFromSI = 10000000
         }

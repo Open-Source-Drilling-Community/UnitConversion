@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "OhmMeter";
-        public override string SIUnitSymbol { get; } = "Ohm•m";
+        public override string SIUnitLabel { get; } = "Ohm•m";
         public override double LengthDimension { get; } = 3;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;
@@ -34,7 +34,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = SIUnitName,
-          UnitSymbol = SIUnitSymbol,
+          UnitLabel = SIUnitLabel,
           ID = new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb"),
           ConversionFactorFromSI = 1.0,
           IsSI = true

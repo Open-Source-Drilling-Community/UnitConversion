@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "Θ";
         public override string SIUnitName { get; } = "kelvin";
 
-        public override string SIUnitSymbol { get; } = "K";
+        public override string SIUnitLabel { get; } = "K";
         private static TemperatureQuantity instance_ = null;
 
         public override double TemperatureDimension { get; } = 1;
@@ -35,7 +35,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = SIUnitName,
-                    UnitSymbol = SIUnitSymbol,
+                    UnitLabel = SIUnitLabel,
                     ID = new Guid("8fc5fa10-2d89-4064-8ace-b852d9a8d31f"),
                     ConversionFactorFromSI = 1.0,
                     IsSI = true
@@ -43,7 +43,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "celsius",
-                    UnitSymbol = "°C",
+                    UnitLabel = "°C",
                     ID = new Guid("5d69048e-fe18-4923-9341-cb80c2ccf8cc"),
                     ConversionFactorFromSI = 1.0,
                     ConversionBiasFromSI = -273.15
@@ -51,7 +51,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "fahrenheit",
-                    UnitSymbol = "°F",
+                    UnitLabel = "°F",
                     ID = new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f"),
                     ConversionFactorFromSI = 9.0/5.0,
                     ConversionBiasFromSI = -459.67
@@ -59,7 +59,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "réaumure",
-                    UnitSymbol = "°Ré",
+                    UnitLabel = "°Ré",
                     ID = new Guid("968def6c-bc85-49b0-84a8-3ac7ad37efc6"),
                     ConversionFactorFromSI = 4.0/5.0,
                     ConversionBiasFromSI = -273.15 *4.0/5.0

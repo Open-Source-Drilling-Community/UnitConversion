@@ -1,0 +1,615 @@
+﻿@page "/DataUnitConversionSets"
+@using System.Text;
+@using System.Globalization
+@using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
+@using Newtonsoft.Json;
+@using Microsoft.Extensions.Logging
+@inject ILogger<DataUnitConversionSets> logger
+
+@if (httpClient == null && unitChoiceSets == null && quantityNames == null && results_ == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @*Header of the page for DataUnitConversionSets*@
+    <h1>Data Unit Conversion Sets</h1>
+    <h2>Unit choice Set</h2>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <span class="label">Unit Choice Set</span>
+                </td>
+                <td>
+                    <select @bind="@UnitChoiceSetName">
+                        @foreach (Tuple<Guid, string> tuple in unitChoiceSets)
+                        {
+                            <option>@tuple.Item2</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Sets of values that must be converted according to the chosen unit choice set</h2>
+    <div>
+        <button class="btn btn-primary" @onclick="@(() => Convert())">Convert</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <span class="label">Quantity Set</span>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < quantityUnitConversions.Count; i++)
+                {
+                    var local_i = i;@*Do not use a loop variable directly in a lambda expression*@
+                    <tr>
+                        <td>Quantity</td>
+                        <td>@quantityUnitConversions[i].Item1</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="@(() => DeleteQuantityConversion(local_i))">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Conversion Type</td>
+                                        <td>Value</td>
+                                        <td>Unit</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < quantityUnitConversions[local_i].Item3.Count; j++)
+                                    {
+                                        var local_j = j;@*Do not use a loop variable directly in a lambda expression*@
+                                        <tr>
+                                            <td>@quantityUnitConversions[local_i].Item3[local_j].Conversion</td>
+                                            <td>@quantityUnitConversions[local_i].Item3[local_j].DataIn</td>
+                                            <td>@quantityUnitConversions[local_i].Item3[local_j].UnitLabelIn</td>
+                                            <td>
+                                                <button class="btn btn-primary" @onclick="@(() => DeleteDataConversion(local_i, local_j))">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <EditForm Model="quantityUnitConversions[local_i].Item2">
+                                                <InputRadioGroup @bind-Value="quantityUnitConversions[local_i].Item2.Conversion">
+                                                    @foreach (var option in conversions)
+                                                            {
+                                                        <InputRadio Value="option" />@option<br />
+                                                            }
+                                                </InputRadioGroup>
+                                            </EditForm>
+                                        </td>
+                                        <td>
+                                            <input class="label" type="text" @bind="@quantityUnitConversions[local_i].Item2.DataIn" />
+                                            <span class="label">@quantityUnitConversions[local_i].Item2.UnitLabelIn</span>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" @onclick="(() => AddConversion(local_i))">Add</button>
+                                            <button class="btn btn-primary" @onclick="(() => CancelConversion(local_i))">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <span class=" label">
+                            Quantity
+                        </span>
+                    </td>
+                    <td>
+                        <select @bind="@QuantityName">
+                            @foreach (Tuple<Guid, string> tuple in quantityNames)
+                            {
+                                <option>@tuple.Item2</option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" hidden="@isHiddenAdd" @onclick="Add">Add</button>
+                        <button class="btn btn-primary" @onclick="Cancel">Cancel</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <button class="btn btn-primary" @onclick="@(() => Convert())">Convert</button>
+    </div>
+    <h2>Results from the Unit Conversion</h2>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Data In</td>
+                    <td>Conversion Type</td>
+                    <td>Converted Data</td>
+                    <td>Unit Label</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var quantityConversion in results_.QuantityUnitConversions)
+                {
+                    @foreach (var conversion in quantityConversion.DataConversions) 
+                    {
+                        <tr>
+                            <td>@conversion.DataIn</td>
+                            <td>@conversion.Conversion</td>
+                            <td>@conversion.DataOutString</td>
+                            <td>@conversion.DataOutUnitChoiceLabel</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
+@code {
+
+    class ConversionClass
+    {
+        public string[] Conversions { get; set; }
+        private string conversion_ = null;
+        public string Conversion
+        {
+            get
+            {
+                return conversion_;
+            }
+            set
+            {
+                conversion_ = value;
+                if (!string.IsNullOrEmpty(conversion_))
+                {
+                    if (conversion_.Equals(Conversions[0]))
+                    {
+                        UnitLabelIn = SILabel;
+                    }
+                    else
+                    {
+                        UnitLabelIn = UserChoiceLabel;
+                    }
+                }
+            }
+        }
+        public double? DataIn { get; set; }
+        public string SILabel { get; set; }
+        public string UserChoiceLabel { get; set; }
+        public string UnitLabelIn { get; set; }
+
+        public ConversionClass() : base()
+        {
+
+        }
+        public ConversionClass(ConversionClass src)
+        {
+            if (src != null)
+            {
+                Conversions = src.Conversions;
+                conversion_ = src.conversion_;
+                DataIn = src.DataIn;
+                SILabel = src.SILabel;
+                UserChoiceLabel = src.UserChoiceLabel;
+                UnitLabelIn = src.UnitLabelIn;
+            }
+        }
+    }
+
+    private static readonly string emptyChoice = "-------";
+
+    private HttpClient httpClient;
+    private string unitChoiceSetName_;
+    private List<Tuple<Guid, string>> unitChoiceSets;
+    private string quantityName_;
+    private bool isHiddenAdd = true;
+    private List<Tuple<Guid, string>> quantityNames;
+    private List<Tuple<string, ConversionClass, List<ConversionClass>>> quantityUnitConversions = new List<Tuple<string, ConversionClass, List<ConversionClass>>>();
+    private string[] conversions = new string[] { "From SI", "To SI" };
+
+    private DataUnitConversionSet results_ = null;
+
+    private string QuantityName
+    {
+        get
+        {
+            return quantityName_;
+        }
+        set
+        {
+            quantityName_ = value;
+            PostProcessQuantityName();
+        }
+    }
+
+    private string UnitChoiceSetName
+    {
+        get
+        {
+            return unitChoiceSetName_;
+        }
+        set
+        {
+            unitChoiceSetName_ = value;
+            PostProcessUnitChoiceSet();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
+            logger.LogInformation("Trying to load DataUnitConversionSets from client: " + host);
+            httpClient = APIUtils.SetHttpClient(host);
+            unitChoiceSets = new List<Tuple<Guid, string>>();
+            unitChoiceSets.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
+            quantityNames = new List<Tuple<Guid, string>>();
+            quantityNames.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
+            results_ = new DataUnitConversionSet(Guid.Empty, "Webapp", "Conversion from Webapp", Guid.Empty, new List<ModelClientShared.QuantityUnitConversion>());
+            List<Tuple<Guid, string>> choices = await APIUtils.LoadUnitChoiceSets(httpClient, logger);
+            if (choices != null)
+            {
+                foreach (Tuple<Guid, string> id in choices)
+                {
+                    unitChoiceSets.Add(id);
+                }
+            }
+            List<Tuple<Guid, string>> quantities = await APIUtils.LoadQuantityChoices(httpClient, logger);
+            if (quantities != null)
+            {
+                foreach (Tuple<Guid, string> id in quantities)
+                {
+                    quantityNames.Add(id);
+                }
+            }
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+        catch (Exception ex)
+        {
+            httpClient = null;
+            logger.LogError(ex, "Impossible to load the UnitChoiceSet on initialization");
+        }
+    }
+
+    private async void Add()
+    {
+        // process
+        if (!string.IsNullOrEmpty(quantityName_))
+        {
+            Guid ID = Guid.Empty;
+            foreach (Tuple<Guid, string> choice in quantityNames)
+            {
+                if (quantityName_.Equals(choice.Item2))
+                {
+                    ID = choice.Item1;
+                    break;
+                }
+            }
+            if (ID != Guid.Empty)
+            {
+                PhysicalQuantity quantity = await APIUtils.LoadQuantity(httpClient, logger, ID);
+                if (quantity != null)
+                {
+                    if (!string.IsNullOrEmpty(UnitChoiceSetName))
+                    {
+                        Guid unitChoiceSetID = Guid.Empty;
+                        foreach (Tuple<Guid, string> id in unitChoiceSets)
+                        {
+                            if (UnitChoiceSetName.Equals(id.Item2))
+                            {
+                                unitChoiceSetID = id.Item1;
+                                break;
+                            }
+                        }
+                        if (unitChoiceSetID != Guid.Empty)
+                        {
+                            UnitChoiceSet unitChoiceSet = await APIUtils.LoadUnitChoiceSet(httpClient, logger, unitChoiceSetID);
+                            if (unitChoiceSet != null)
+                            {
+                                OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.QuantityUnitConversion quantityUnitConversion = new OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.QuantityUnitConversion();
+                                quantityUnitConversion.PhysicalQuantityID = ID;
+                                quantityUnitConversion.DataConversions = new List<DataConversion>();
+                                ConversionClass conversionClass = new ConversionClass();
+                                conversionClass.SILabel = quantity.SIUnitLabel;
+                                string unitChoiceIDString;
+                                if (unitChoiceSet.Choices.TryGetValue(ID.ToString(), out unitChoiceIDString))
+                                {
+                                    Guid unitChoiceID = new Guid(unitChoiceIDString);
+                                    UnitChoice unitChoice = null;
+                                    foreach (UnitChoice choice in quantity.UnitChoices)
+                                    {
+                                        if (choice.ID == unitChoiceID)
+                                        {
+                                            unitChoice = choice;
+                                            break;
+                                        }
+                                    }
+                                    if (unitChoice != null)
+                                    {
+                                        conversionClass.UserChoiceLabel = unitChoice.UnitLabel;
+                                        conversionClass.Conversions = conversions;
+                                        conversionClass.Conversion = conversions[0];
+                                        quantityUnitConversions.Add(new Tuple<string, ConversionClass, List<ConversionClass>>(quantityName_, conversionClass, new List<ConversionClass>()));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // reset state
+            QuantityName = emptyChoice;
+            isHiddenAdd = true;
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+    }
+
+    private void Cancel()
+    {
+        QuantityName = emptyChoice;
+        isHiddenAdd = true;
+    }
+
+    private void DeleteQuantityConversion(int i)
+    {
+        if (i >= 0 && i < quantityUnitConversions.Count)
+        {
+            quantityUnitConversions.RemoveAt(i);
+        }
+    }
+    private void PostProcessQuantityName()
+    {
+        if (!string.IsNullOrEmpty(quantityName_))
+        {
+            Guid ID = Guid.Empty;
+            foreach (Tuple<Guid, string> choice in quantityNames)
+            {
+                if (quantityName_.Equals(choice.Item2))
+                {
+                    ID = choice.Item1;
+                    break;
+                }
+            }
+            isHiddenAdd = ID == Guid.Empty;
+        }
+    }
+
+    private async void PostProcessUnitChoiceSet()
+    {
+        if (!string.IsNullOrEmpty(UnitChoiceSetName) && quantityUnitConversions != null)
+        {
+            Guid unitChoiceSetID = Guid.Empty;
+            foreach (Tuple<Guid, string> choice in unitChoiceSets)
+            {
+                if (choice != null && UnitChoiceSetName.Equals(choice.Item2))
+                {
+                    unitChoiceSetID = choice.Item1;
+                    break;
+                }
+            }
+            if (unitChoiceSetID != Guid.Empty)
+            {
+                UnitChoiceSet unitChoiceSet = await APIUtils.LoadUnitChoiceSet(httpClient, logger, unitChoiceSetID);
+                if (unitChoiceSet != null)
+                {
+                    foreach (Tuple<string, ConversionClass, List<ConversionClass>> quantityUnitConversion in quantityUnitConversions)
+                    {
+                        if (quantityUnitConversion != null && !string.IsNullOrEmpty(quantityUnitConversion.Item1))
+                        {
+                            Guid quantityID = Guid.Empty;
+                            foreach (Tuple<Guid, string> choice in quantityNames)
+                            {
+                                if (quantityUnitConversion.Item1.Equals(choice.Item2))
+                                {
+                                    quantityID = choice.Item1;
+                                    break;
+                                }
+                            }
+                            if (quantityID != Guid.Empty)
+                            {
+                                PhysicalQuantity quantity = await APIUtils.LoadQuantity(httpClient, logger, quantityID);
+                                if (quantity != null)
+                                {
+                                    string unitChoiceIDString = null;
+                                    if (unitChoiceSet.Choices.TryGetValue(quantity.ID.ToString(), out unitChoiceIDString))
+                                    {
+                                        Guid unitChoiceID = new Guid(unitChoiceIDString);
+                                        UnitChoice unitChoice = null;
+                                        foreach (UnitChoice choice in quantity.UnitChoices)
+                                        {
+                                            if (choice.ID == unitChoiceID)
+                                            {
+                                                unitChoice = choice;
+                                                break;
+                                            }
+                                        }
+                                        if (unitChoice != null)
+                                        {
+                                            string SIUnitLabel = quantity.SIUnitLabel;
+                                            string userChoiceLabel = unitChoice.UnitLabel;
+                                            if (quantityUnitConversion.Item2 != null)
+                                            {
+                                                quantityUnitConversion.Item2.SILabel = SIUnitLabel;
+                                                quantityUnitConversion.Item2.UserChoiceLabel = userChoiceLabel;
+                                                if (quantityUnitConversion.Item2.Conversion == quantityUnitConversion.Item2.Conversions[0])
+                                                {
+                                                    quantityUnitConversion.Item2.UnitLabelIn = SIUnitLabel;
+                                                }
+                                                else
+                                                {
+                                                    quantityUnitConversion.Item2.UnitLabelIn = userChoiceLabel;
+                                                }
+                                            }
+                                            foreach (ConversionClass conversion in quantityUnitConversion.Item3)
+                                            {
+                                                if (conversion != null)
+                                                {
+                                                    conversion.SILabel = SIUnitLabel;
+                                                    conversion.UserChoiceLabel = userChoiceLabel;
+                                                    if (conversion.Conversion == quantityUnitConversion.Item2.Conversions[0])
+                                                    {
+                                                        conversion.UnitLabelIn = SIUnitLabel;
+                                                    }
+                                                    else
+                                                    {
+                                                        conversion.UnitLabelIn = userChoiceLabel;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                await InvokeAsync(() => { StateHasChanged(); });
+            }
+        }
+    }
+    private void AddConversion(int i)
+    {
+        if (i >= 0 && i < quantityUnitConversions.Count)
+        {
+            var choice = quantityUnitConversions[i];
+            if (choice != null && choice.Item2 != null)
+            {
+                ConversionClass conversion = new ConversionClass(choice.Item2);
+                choice.Item3.Add(conversion);
+            }
+        }
+    }
+    private void CancelConversion(int i)
+    {
+        if (i >= 0 && i < quantityUnitConversions.Count)
+        {
+            var choice = quantityUnitConversions[i];
+            if (choice != null && choice.Item2 != null && choice.Item2.Conversions != null && choice.Item2.Conversions.Length > 0)
+            {
+                choice.Item2.Conversion = choice.Item2.Conversions[0];
+                choice.Item2.DataIn = null;
+            }
+        }
+    }
+
+    private void DeleteDataConversion(int i, int j)
+    {
+        if (i >= 0 && i < quantityUnitConversions.Count)
+        {
+            var choice = quantityUnitConversions[i];
+            if (choice != null)
+            {
+                if (j >= 0 && j < choice.Item3.Count)
+                {
+                    choice.Item3.RemoveAt(j);
+                }
+            }
+        }
+    }
+
+    private async void Convert()
+    {
+        if (!string.IsNullOrEmpty(unitChoiceSetName_) && quantityUnitConversions != null && results_ != null && quantityNames != null)
+        {
+            Guid unitChoiceSetID = Guid.Empty;
+            foreach (Tuple<Guid, string> choice in unitChoiceSets)
+            {
+                if (choice != null && unitChoiceSetName_.Equals(choice.Item2))
+                {
+                    unitChoiceSetID = choice.Item1;
+                    break;
+                }
+            }
+            if (unitChoiceSetID != Guid.Empty)
+            {
+                List<ModelClientShared.QuantityUnitConversion> conversions = new List<ModelClientShared.QuantityUnitConversion>();
+                foreach (Tuple<string, ConversionClass, List<ConversionClass>> quantityUnitConversion in quantityUnitConversions)
+                {
+                    if (!string.IsNullOrEmpty(quantityUnitConversion.Item1))
+                    {
+                        Guid quantityID = Guid.Empty;
+                        foreach (Tuple<Guid, string> choice in quantityNames)
+                        {
+                            if (quantityUnitConversion.Item1.Equals(choice.Item2))
+                            {
+                                quantityID = choice.Item1;
+                                break;
+                            }
+                        }
+                        if (quantityID != Guid.Empty)
+                        {
+                            ModelClientShared.QuantityUnitConversion quantityConversion = new ModelClientShared.QuantityUnitConversion();
+                            quantityConversion.PhysicalQuantityID = quantityID;
+                            quantityConversion.DataConversions = new List<DataConversion>();
+                            foreach (ConversionClass conversion in quantityUnitConversion.Item3)
+                            {
+                                if (conversion.DataIn != null)
+                                {
+                                    DataConversion conv = new DataConversion();
+                                    if (conversion.Conversion == conversion.Conversions[0])
+                                    {
+                                        conv.Conversion = ConversionType.FromSI;
+                                    }
+                                    else
+                                    {
+                                        conv.Conversion = ConversionType.ToSI;
+                                    }
+                                    conv.DataIn = (double)conversion.DataIn;
+                                    quantityConversion.DataConversions.Add(conv);
+                                }
+                            }
+                            conversions.Add(quantityConversion);
+                        }
+                    }
+                }
+                DataUnitConversionSet query = new DataUnitConversionSet(Guid.NewGuid(), "webapp", "Conversion from Webapp", unitChoiceSetID, conversions);
+                bool success = await APIUtils.PostDataUnitConversionSet(httpClient, logger, query);
+                if (success)
+                {
+                    DataUnitConversionSet result = await APIUtils.LoadDataUnitConversionSet(httpClient, logger, query.ID);
+                    if (result != null)
+                    {
+                        results_.ID = result.ID;
+                        results_.Name = result.Name;
+                        results_.Description = result.Description;
+                        results_.ReferenceUnitChoiceSetID = result.ReferenceUnitChoiceSetID;
+                        if (results_.QuantityUnitConversions == null)
+                        {
+                            results_.QuantityUnitConversions = new List<ModelClientShared.QuantityUnitConversion>();
+                        }
+                        results_.QuantityUnitConversions.Clear();
+                        foreach (ModelClientShared.QuantityUnitConversion quantityUnitConversion in result.QuantityUnitConversions)
+                        {
+                            results_.QuantityUnitConversions.Add(new ModelClientShared.QuantityUnitConversion(quantityUnitConversion));
+                        }
+                        success = await APIUtils.DeleteDataUnitConversionSet(httpClient, logger, query.ID);
+                    }
+                }
+                await InvokeAsync(() => { StateHasChanged(); });
+            }
+        }
+    }
+}
+
+
+

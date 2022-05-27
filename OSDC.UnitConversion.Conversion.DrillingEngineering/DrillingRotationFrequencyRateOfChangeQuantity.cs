@@ -4,9 +4,9 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingRotationFrequencyRateOfChangeQuantity : RotationFrequencyRateOfChangeQuantity, IEngineeringQuantity
+    public partial class DrillingRotationFrequencyRateOfChangeQuantity : RotationFrequencyRateOfChangeQuantity
     {
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.016666666666666666;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.016666666666666666;
 
         private static DrillingRotationFrequencyRateOfChangeQuantity instance_ = null;
 

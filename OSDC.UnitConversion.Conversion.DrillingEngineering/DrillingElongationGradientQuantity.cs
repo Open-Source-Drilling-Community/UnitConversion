@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingElongationGradientQuantity : ElongationGradientQuantity, IEngineeringQuantity
+    public partial class DrillingElongationGradientQuantity : ElongationGradientQuantity
     {
         
-        public virtual double? MeaningFullPrecisionInSI { get; } = 0.01;
+        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
         private static DrillingElongationGradientQuantity instance_ = null;
 
         public static new DrillingElongationGradientQuantity Instance
