@@ -51,12 +51,10 @@ ingress:
       paths:
         - path: /DrillingUnitConversion/webapp
           pathType: Prefix
-  hosts:
     - host: dev.digiwells.no
       paths:
         - path: /DrillingUnitConversion/webapp
           pathType: Prefix
-  hosts:
     - host: app.digiwells.no
       paths:
         - path: /DrillingUnitConversion/webapp
