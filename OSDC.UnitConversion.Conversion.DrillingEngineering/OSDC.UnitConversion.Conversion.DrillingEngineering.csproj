@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Eric Cayeux</Authors>
+    <Company>Norwegian Research Institute</Company>
+    <Description>A package for unit conversion that accounts for Drilling Engineering meaningfull precisions</Description>
+    <PackageProjectUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
