@@ -22,12 +22,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new SolidAngleQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected SolidAngleQuantity() : base()
+        public SolidAngleQuantity() : base()
         {
             Name = "Solid Angle";
             ID = new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f");
@@ -56,7 +57,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = (180.0*180.0)/(Math.PI*Math.PI)
                 }
             };
-            PostProcess();
         }
     }
 }

@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new TorqueQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected TorqueQuantity() : base()
+        public TorqueQuantity() : base()
         {
             Name = "Torque";
             ID = new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4");
@@ -74,7 +75,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.0007375621211696556
         }
       };
-            PostProcess();
         }
     }
 }

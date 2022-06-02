@@ -18,11 +18,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new FrequencyRateOfChangeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected FrequencyRateOfChangeQuantity() : base()
+        public FrequencyRateOfChangeQuantity() : base()
         {
             Name = "FrequencyRateOfChange";
             ID = new Guid("e9d5bfe9-428b-4df0-9fe5-d9ad17e6a0cb");
@@ -37,7 +38,6 @@ namespace OSDC.UnitConversion.Conversion
           IsSI = true
         }
       };
-            PostProcess();
         }
     }
 }

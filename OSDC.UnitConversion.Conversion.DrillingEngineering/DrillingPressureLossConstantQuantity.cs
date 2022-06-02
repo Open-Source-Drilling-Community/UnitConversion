@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingPressureLossConstantQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingPressureLossConstantQuantity() : base()
+        public DrillingPressureLossConstantQuantity() : base()
         {
             Name = "DrillingPressureLossConstant";
             ID = new Guid("fd799f5c-0963-4201-aec3-e531df6b226e");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(PressureLossConstantQuantity.Instance.GetUnitChoice(PressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantMetric));
             this.UnitChoices.Add(PressureLossConstantQuantity.Instance.GetUnitChoice(PressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantUK));
             this.UnitChoices.Add(PressureLossConstantQuantity.Instance.GetUnitChoice(PressureLossConstantQuantity.UnitChoicesEnum.PressureLossConstantUS));
-            PostProcess();
         }
 
     }

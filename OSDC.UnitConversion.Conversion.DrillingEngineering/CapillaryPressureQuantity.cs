@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new CapillaryPressureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected CapillaryPressureQuantity() : base()
+        public CapillaryPressureQuantity() : base()
         {
             Name = "CapillaryPressure";
             ID = new Guid("72228ff1-9ba8-44f0-b9b1-85fa8dfb32ea");
@@ -30,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.KiloPascal));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.MegaPascal));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.KiloPoundPerSquareInch));
-            PostProcess();
         }
     }
 }

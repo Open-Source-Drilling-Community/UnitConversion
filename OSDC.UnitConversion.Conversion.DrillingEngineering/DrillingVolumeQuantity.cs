@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingVolumeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingVolumeQuantity() : base()
+        public DrillingVolumeQuantity() : base()
         {
             Name = "DrillingVolume";
             ID = new Guid("b8c9f810-d576-4523-a26f-921305c7f7b4");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.Liter));
             this.UnitChoices.Add(VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.USGallon));
             this.UnitChoices.Add(VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.UKGallon));
-            PostProcess();
         }
 
     }

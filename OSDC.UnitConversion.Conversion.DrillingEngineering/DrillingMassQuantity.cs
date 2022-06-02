@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingMassQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillingMassQuantity() : base()
+        public DrillingMassQuantity() : base()
         {
             Name = "DrillingMass";
             ID = new Guid("f4c0a6fd-5000-4507-8612-ae4374c0cacc");
@@ -30,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Pound));
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.KiloPound));
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.TonUK));
-            PostProcess();
         }
 
     }

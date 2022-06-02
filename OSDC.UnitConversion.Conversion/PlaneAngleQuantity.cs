@@ -22,12 +22,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new PlaneAngleQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected PlaneAngleQuantity() : base()
+        public PlaneAngleQuantity() : base()
         {
             Name = "Plane Angle";
             ID = new Guid("751a8f44-d938-4319-a422-a753962fd91f");
@@ -120,7 +121,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 180.0*60.0*60.0/Math.PI
                 }
             };
-            PostProcess();
         }
     }
 }

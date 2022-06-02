@@ -21,12 +21,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new MassQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected MassQuantity() : base()
+        public MassQuantity() : base()
         {
             Name = "Mass";
             ID = new Guid("99d13248-c303-4b3d-b062-af98de701d6f");
@@ -202,7 +203,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 0.019684
                 }
             };
-            PostProcess();
         }
     }
 }

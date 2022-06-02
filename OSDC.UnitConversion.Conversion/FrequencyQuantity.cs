@@ -18,11 +18,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new FrequencyQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected FrequencyQuantity() : base()
+        public FrequencyQuantity() : base()
         {
             Name = "Frequency";
             ID = new Guid("8a1ff3d9-95c9-43e1-abb4-4ae9b8df861e");
@@ -58,7 +59,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.000000001
         }
       };
-            PostProcess();
         }
     }
 }

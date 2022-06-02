@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new StandardProportionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected StandardProportionQuantity() : base()
+        public StandardProportionQuantity() : base()
         {
             Name = "StandardProportion";
             ID = new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7");
@@ -31,9 +32,6 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent));
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.PerThousand));
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.PartPerMillion));
-            PostProcess();
         }
-
-
     }
 }

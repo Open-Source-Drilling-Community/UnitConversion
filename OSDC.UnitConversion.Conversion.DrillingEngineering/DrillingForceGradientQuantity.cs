@@ -16,12 +16,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingForceGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingForceGradientQuantity() : base()
+        public DrillingForceGradientQuantity() : base()
         {
             Name = "DrillingForceGradient";
             ID = new Guid("78942f39-d764-42f1-b270-47a3b35e5112");
@@ -29,8 +30,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPerMeter));
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPer30Meter));
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter));
-            PostProcess();
         }
-
     }
 }

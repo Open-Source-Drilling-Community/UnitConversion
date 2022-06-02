@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingCurvatureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingCurvatureQuantity() : base()
+        public DrillingCurvatureQuantity() : base()
         {
             Name = "DrillingCurvature";
             ID = new Guid("0e41ce3a-a0e4-44a3-bf6e-6c2a70f4a28b");
@@ -32,7 +33,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer30m));
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer30ft));
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer100ft));
-            PostProcess();
         }
 
     }

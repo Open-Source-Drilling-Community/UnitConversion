@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new MaterialStrengthQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected MaterialStrengthQuantity() : base()
+        public MaterialStrengthQuantity() : base()
         {
             Name = "MaterialStrength";
             ID = new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40");
@@ -74,7 +75,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1.4503762645158166E-10
         }
       };
-            PostProcess();
         }
     }
 }

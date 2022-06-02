@@ -16,18 +16,18 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingPlaneAngleQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillingPlaneAngleQuantity() : base()
+        public DrillingPlaneAngleQuantity() : base()
         {
             Name = "DrillingPlaneAngle";
             ID = new Guid("94ad3e73-2a44-4c60-bbca-188b941f3357");
             Reset();
             this.UnitChoices.Add(PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Radian));
             this.UnitChoices.Add(PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree));
-            PostProcess();
         }
 
     }

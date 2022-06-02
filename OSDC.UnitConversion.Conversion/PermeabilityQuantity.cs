@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new PermeabilityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected PermeabilityQuantity() : base()
+        public PermeabilityQuantity() : base()
         {
             Name = "Permeability";
             ID = new Guid("413da2c1-ebad-454a-ae14-1a8620f8f59c");
@@ -46,7 +47,6 @@ namespace OSDC.UnitConversion.Conversion
                 ID = new Guid("b552f28d-c68a-4c59-853c-fe6e03dd5f4c"),
                 ConversionFactorFromSI = 1000000000.0
             });
-            PostProcess();
         }
     }
 }

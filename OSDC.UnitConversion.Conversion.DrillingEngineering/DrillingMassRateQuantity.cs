@@ -17,19 +17,19 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingMassRateQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingMassRateQuantity() : base()
+        public DrillingMassRateQuantity() : base()
         {
             Name = "DrillingMassRate";
             ID = new Guid("0e218b8e-bc7c-4902-b88d-1cdab4a5dc94");
             Reset();
             this.UnitChoices.Add(MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerSecond));
             this.UnitChoices.Add(MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerMinute));
-            PostProcess();
         }
     }
 }

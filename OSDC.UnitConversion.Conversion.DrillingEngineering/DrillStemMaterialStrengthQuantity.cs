@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillStemMaterialStrengthQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillStemMaterialStrengthQuantity() : base()
+        public DrillStemMaterialStrengthQuantity() : base()
         {
             Name = "DrillStemMaterialStrength";
             ID = new Guid("fd58fca3-6221-4e85-a7aa-a021ee04e8a8");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.MegapoundPerSquareInch));
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.PoundPer100SquareFoot));
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.PSI));
-            PostProcess();
         }
 
     }

@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingThermalConductivityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillingThermalConductivityQuantity() : base()
+        public DrillingThermalConductivityQuantity() : base()
         {
             Name = "DrillingThermalConductivity";
             ID = new Guid("186eef6a-9da3-4b97-a6d0-d496bdf59321");
@@ -30,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(ThermalConductivityQuantity.Instance.GetUnitChoice(ThermalConductivityQuantity.UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsius));
             this.UnitChoices.Add(ThermalConductivityQuantity.Instance.GetUnitChoice(ThermalConductivityQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit));
             this.UnitChoices.Add(ThermalConductivityQuantity.Instance.GetUnitChoice(ThermalConductivityQuantity.UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFarenheit));
-            PostProcess();
         }
 
     }

@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new AccelerationQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected AccelerationQuantity() : base()
+        public AccelerationQuantity() : base()
         {
             Name = "Acceleration";
             ID = new Guid("454a7b6b-a921-428e-8aa7-a4a636a58e34");
@@ -171,7 +172,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.06
         }
             };
-            PostProcess();
         }
     }
 }

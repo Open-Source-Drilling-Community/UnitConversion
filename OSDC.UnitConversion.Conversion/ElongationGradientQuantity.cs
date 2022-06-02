@@ -18,12 +18,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ElongationGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected ElongationGradientQuantity() : base()
+        public ElongationGradientQuantity() : base()
         {
             Name = "ElongationGradient";
             ID = new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120");
@@ -50,7 +51,6 @@ namespace OSDC.UnitConversion.Conversion
                 ID = new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2"),
                 ConversionFactorFromSI = 39.37008 / 3.28084
             });
-            PostProcess();
         }
     }
 }

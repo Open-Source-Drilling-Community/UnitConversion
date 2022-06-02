@@ -41,6 +41,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          DrillingSpecificHeatCapacity,  // DrillingSpecificHeatCapacity
          DrillingSpecificHeatCapacityTemperatureGradient,  // DrillingSpecificHeatCapacityTemperatureGradient
          DrillingTemperatureGradient,  // DrillingTemperatureGradient
+         DrillingTemperature,  // DrillingTemperature
          DrillingTension,  // DrillingTension
          DrillingThermalConductivity,  // DrillingThermalConductivity
          DrillingThermalConductivityTemperatureGradient,  // DrillingThermalConductivityTemperatureGradient
@@ -100,6 +101,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingSpecificHeatCapacity, new Guid("05c59293-4e3b-4fc0-b579-12c241109610")},  // DrillingSpecificHeatCapacity
          {QuantityEnum.DrillingSpecificHeatCapacityTemperatureGradient, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // DrillingSpecificHeatCapacityTemperatureGradient
          {QuantityEnum.DrillingTemperatureGradient, new Guid("82b91f3f-d1ec-476b-98e0-eedbba6281ec")},  // DrillingTemperatureGradient
+         {QuantityEnum.DrillingTemperature, new Guid("84ce5a77-fd76-4014-ad8e-03f194c3e329")},  // DrillingTemperature
          {QuantityEnum.DrillingTension, new Guid("fe8fd6fd-814c-44c9-9462-f034dd46dc85")},  // DrillingTension
          {QuantityEnum.DrillingThermalConductivity, new Guid("186eef6a-9da3-4b97-a6d0-d496bdf59321")},  // DrillingThermalConductivity
          {QuantityEnum.DrillingThermalConductivityTemperatureGradient, new Guid("559ae484-42ed-4379-86f5-67dae451a9c9")},  // DrillingThermalConductivityTemperatureGradient
@@ -1201,6 +1203,34 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.FahrenheitPerFoot, new Guid("d08596f1-77c4-4a8e-9245-6bf563fa7345")},  // FahrenheitPerFoot
          {UnitChoicesEnum.FahrenheitPer30Foot, new Guid("a1664cb0-db5c-4933-9b57-d075c4975f46")},  // FahrenheitPer30Foot
          {UnitChoicesEnum.FahrenheitPer100Foot, new Guid("232e2d6d-cb65-4b56-9277-457e4ff678fa")} // FahrenheitPer100Foot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingTemperatureQuantity : TemperatureQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Kelvin,  // kelvin
+         Celsius,  // celsius
+         Fahrenheit // fahrenheit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Kelvin, new Guid("8fc5fa10-2d89-4064-8ace-b852d9a8d31f")},  // kelvin
+         {UnitChoicesEnum.Celsius, new Guid("5d69048e-fe18-4923-9341-cb80c2ccf8cc")},  // celsius
+         {UnitChoicesEnum.Fahrenheit, new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f")} // fahrenheit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

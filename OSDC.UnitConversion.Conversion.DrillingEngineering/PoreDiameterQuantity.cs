@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new PoreDiameterQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected PoreDiameterQuantity() : base()
+        public PoreDiameterQuantity() : base()
         {
             Name = "Pore Diameter";
             ID = new Guid("781affbc-fae3-40a0-a110-fd3bdfd7d41f");

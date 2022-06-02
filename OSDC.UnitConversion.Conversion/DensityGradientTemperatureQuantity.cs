@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new DensityGradientTemperatureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DensityGradientTemperatureQuantity() : base()
+        public DensityGradientTemperatureQuantity() : base()
         {
             Name = "DensityGradientTemperature";
             ID = new Guid("2d788f1e-db66-49c3-8eb6-313152cd8e3c");
@@ -67,7 +68,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.00254367792,
         }
       };
-            PostProcess();
         }
     }
 }

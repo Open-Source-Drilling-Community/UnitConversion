@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new DensityGradientDepthQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DensityGradientDepthQuantity() : base()
+        public DensityGradientDepthQuantity() : base()
         {
             Name = "DensityGradientDepth";
             ID = new Guid("037e0326-5095-4c82-ba1b-4df594243cda");
@@ -116,7 +117,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1.5021719999999998
         }
       };
-            PostProcess();
         }
     }
 }

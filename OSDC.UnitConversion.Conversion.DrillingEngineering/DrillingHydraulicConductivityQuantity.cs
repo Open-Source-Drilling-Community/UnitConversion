@@ -16,12 +16,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingHydraulicConductivityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingHydraulicConductivityQuantity() : base()
+        public DrillingHydraulicConductivityQuantity() : base()
         {
             Name = "DrillingHydraulicConductivity";
             ID = new Guid("6cc821d6-b979-4bf9-b1cc-ac266b221330");
@@ -36,7 +37,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerDay));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.CentimeterPerSecond));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.InchPerSecond));
-            PostProcess();
         }
 
     }

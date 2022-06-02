@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingAngleVariationGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingAngleVariationGradientQuantity() : base()
+        public DrillingAngleVariationGradientQuantity() : base()
         {
             Name = "DrillingAngleVariationGradient";
             ID = new Guid("e6f22876-ca88-4d0e-a4a5-c76b0db3556f");
@@ -32,7 +33,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(AngleVariationGradientQuantity.Instance.GetUnitChoice(AngleVariationGradientQuantity.UnitChoicesEnum.DegreePerFoot));
             this.UnitChoices.Add(AngleVariationGradientQuantity.Instance.GetUnitChoice(AngleVariationGradientQuantity.UnitChoicesEnum.DegreePerCentimeter));
             this.UnitChoices.Add(AngleVariationGradientQuantity.Instance.GetUnitChoice(AngleVariationGradientQuantity.UnitChoicesEnum.DegreePerInch));
-            PostProcess();
         }
 
     }

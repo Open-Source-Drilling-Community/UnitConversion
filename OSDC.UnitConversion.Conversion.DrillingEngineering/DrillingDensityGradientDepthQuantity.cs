@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingDensityGradientDepthQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingDensityGradientDepthQuantity() : base()
+        public DrillingDensityGradientDepthQuantity() : base()
         {
             Name = "DrillingDensityGradientDepth";
             ID = new Guid("787c3f65-b6d5-4866-885b-12571b1d9734");
@@ -39,7 +40,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(DensityGradientDepthQuantity.Instance.GetUnitChoice(DensityGradientDepthQuantity.UnitChoicesEnum.SpecificGravityPer10Meter));
             this.UnitChoices.Add(DensityGradientDepthQuantity.Instance.GetUnitChoice(DensityGradientDepthQuantity.UnitChoicesEnum.SpecificGravityPer30Meter));
             this.UnitChoices.Add(DensityGradientDepthQuantity.Instance.GetUnitChoice(DensityGradientDepthQuantity.UnitChoicesEnum.SpecificGravityPerMeter));
-            PostProcess();
         }
 
 

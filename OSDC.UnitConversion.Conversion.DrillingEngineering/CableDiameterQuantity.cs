@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new CableDiameterQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected CableDiameterQuantity() : base()
+        public CableDiameterQuantity() : base()
         {
             Name = "Cable Diameter";
             ID = new Guid("6b3db5b2-7e30-47f7-91c5-5951dd3f9246");

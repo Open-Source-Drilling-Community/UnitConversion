@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingDensityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingDensityQuantity() : base()
+        public DrillingDensityQuantity() : base()
         {
             Name = "DrillingDensity";
             ID = new Guid("60f2af98-56e4-4f9c-8438-59646a35fc0d");
@@ -34,7 +35,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(DensityQuantity.Instance.GetUnitChoice(DensityQuantity.UnitChoicesEnum.PoundPerGallonUK));
             this.UnitChoices.Add(DensityQuantity.Instance.GetUnitChoice(DensityQuantity.UnitChoicesEnum.PoundPerGallonUS));
             this.UnitChoices.Add(DensityQuantity.Instance.GetUnitChoice(DensityQuantity.UnitChoicesEnum.SpecificGravity));
-            PostProcess();
         }
 
 

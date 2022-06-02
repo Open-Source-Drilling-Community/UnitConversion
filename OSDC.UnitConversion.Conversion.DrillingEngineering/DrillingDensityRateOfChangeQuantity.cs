@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingDensityRateOfChangeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingDensityRateOfChangeQuantity() : base()
+        public DrillingDensityRateOfChangeQuantity() : base()
         {
             Name = "DrillingDensitySpeed";
             ID = new Guid("af63f164-0fb7-42c0-ac55-06e40b6c12e5");
@@ -38,7 +39,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(DensityRateOfChangeQuantity.Instance.GetUnitChoice(DensityRateOfChangeQuantity.UnitChoicesEnum.SpecificGravityPerHour));
             this.UnitChoices.Add(DensityRateOfChangeQuantity.Instance.GetUnitChoice(DensityRateOfChangeQuantity.UnitChoicesEnum.SpecificGravityPerMinute));
             this.UnitChoices.Add(DensityRateOfChangeQuantity.Instance.GetUnitChoice(DensityRateOfChangeQuantity.UnitChoicesEnum.SpecificGravityPerSecond));
-            PostProcess();
         }
 
 

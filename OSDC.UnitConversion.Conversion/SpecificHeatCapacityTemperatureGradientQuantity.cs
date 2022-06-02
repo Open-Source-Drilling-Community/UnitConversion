@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new SpecificHeatCapacityTemperatureGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected SpecificHeatCapacityTemperatureGradientQuantity() : base()
+        public SpecificHeatCapacityTemperatureGradientQuantity() : base()
         {
             Name = "SpecificHeatCapcityTemperatureGradient";
             ID = new Guid("3a317540-3db4-47a1-a566-33b6f39b7540");
@@ -67,7 +68,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.00013269216666666667
         }
       };
-            PostProcess();
         }
     }
 }

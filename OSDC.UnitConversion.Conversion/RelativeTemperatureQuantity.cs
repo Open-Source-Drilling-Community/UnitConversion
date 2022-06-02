@@ -16,12 +16,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new RelativeTemperatureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected RelativeTemperatureQuantity() : base()
+        public RelativeTemperatureQuantity() : base()
         {
             Name = "Relative Temperature";
             ID = new Guid("58dadec7-7858-414b-8d7b-66504d5c2793");
@@ -43,7 +44,6 @@ namespace OSDC.UnitConversion.Conversion
                 ConversionFactorFromSI = 9.0 / 5.0
             }
             );
-            PostProcess();
         }
     }
 }

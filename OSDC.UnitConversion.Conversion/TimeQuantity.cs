@@ -19,12 +19,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new TimeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected TimeQuantity() : base()
+        public TimeQuantity() : base()
         {
             Name = "Time";
             ID = new Guid("7106f7cb-ddf2-4e2f-9e21-b19bc83eb248");
@@ -103,7 +104,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "fornight",
+                    UnitName = "fortnight",
                     UnitLabel = "fortnight",
                     ID = new Guid("bc87f864-3dc1-4f1a-87bc-4123a47c53dc"),
                     ConversionFactorFromSI = 1.0/(14*24.0*3600.0)
@@ -193,7 +194,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 1.0/31536000000000.0
                 }
             };
-            PostProcess();
         }
     }
 }

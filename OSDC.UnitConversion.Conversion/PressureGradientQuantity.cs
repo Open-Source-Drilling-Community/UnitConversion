@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new PressureGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected PressureGradientQuantity() : base()
+        public PressureGradientQuantity() : base()
         {
             Name = "PressureGradient";
             ID = new Guid("62eb6afe-bd7d-48dd-b4fd-de40e9f3c632");
@@ -60,7 +61,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 4.4207468542442094E-05
         }
       };
-            PostProcess();
         }
     }
 }

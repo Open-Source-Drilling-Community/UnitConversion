@@ -22,11 +22,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ElectricTensionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ElectricTensionQuantity() : base()
+        public ElectricTensionQuantity() : base()
         {
             Name = "ElectricTension";
             ID = new Guid("da5094a4-7481-4246-9def-1bd3b6f893a1");
@@ -62,7 +63,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.001
         }
       };
-            PostProcess();
         }
     }
 }

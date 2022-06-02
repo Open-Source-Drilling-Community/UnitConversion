@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new GasVolumetricFlowRateQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected GasVolumetricFlowRateQuantity() : base()
+        public GasVolumetricFlowRateQuantity() : base()
         {
             Name = "GasVolmetricFlowRate";
             ID = new Guid("453bbddf-4979-4557-ba76-3fd3420fd97e");
@@ -54,7 +55,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.MillionStandardCubicFootPerDay));
             this.UnitChoices.Add(VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.MillionUKGallonPerDay));
             this.UnitChoices.Add(VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.MillionUSGallonPerDay));
-            PostProcess();
         }
     }
 }

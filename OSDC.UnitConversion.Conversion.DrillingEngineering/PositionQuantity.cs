@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new PositionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected PositionQuantity() : base()
+        public PositionQuantity() : base()
         {
             Name = "Position";
             ID = new Guid("20f58500-7e00-41e7-acc4-99e9de9bfd07");
@@ -34,7 +35,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Yard));
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Surveyor_sChain));
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Mile));
-            PostProcess();
         }
     }
 }

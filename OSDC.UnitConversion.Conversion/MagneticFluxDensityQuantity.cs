@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new MagneticFluxDensityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected MagneticFluxDensityQuantity() : base()
+        public MagneticFluxDensityQuantity() : base()
         {
             Name = "MagneticFluxDensity";
             ID = new Guid("b9a3f96b-8861-4b03-9c8a-3c0d7d6ec139");
@@ -89,7 +90,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1.0
         }
             };
-            PostProcess();
         }
     }
 }

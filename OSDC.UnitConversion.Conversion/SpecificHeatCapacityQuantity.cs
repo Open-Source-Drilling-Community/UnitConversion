@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new SpecificHeatCapacityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected SpecificHeatCapacityQuantity() : base()
+        public SpecificHeatCapacityQuantity() : base()
         {
             Name = "SpecificHeatCapacity";
             ID = new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9");
@@ -67,7 +68,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.0002388459
         }
       };
-            PostProcess();
         }
     }
 }

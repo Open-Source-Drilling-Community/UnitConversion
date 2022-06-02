@@ -3,26 +3,27 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class YoungModulusQuantity : PressureQuantity
+    public partial class YoungModulusQuantity : PressureQuantity
     {
-    public override double? MeaningFullPrecisionInSI {get; } = 10000;
-    private static YoungModulusQuantity instance_ = null;
+        public override double? MeaningFullPrecisionInSI { get; } = 10000;
+        private static YoungModulusQuantity instance_ = null;
 
-    public static new YoungModulusQuantity Instance
-    {
-      get
-      {
-        if (instance_ == null)
+        public static new YoungModulusQuantity Instance
         {
-          instance_ = new YoungModulusQuantity();
+            get
+            {
+                if (instance_ == null)
+                {
+                    instance_ = new YoungModulusQuantity();
+                    instance_.PostProcess();
+                }
+                return instance_;
+            }
         }
-        return instance_;
-      }
-    }
-    protected YoungModulusQuantity() : base()
-    {
-      Name = "YoungModulus";
-      ID = new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec");
+        public YoungModulusQuantity() : base()
+        {
+            Name = "YoungModulus";
+            ID = new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec");
             Reset();
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Pascal));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.MegaPascal));
@@ -68,7 +69,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1.4503762645158166E-10
         }
       };
-      PostProcess();
+        }
     }
-  }
 }

@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new EnergyQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected EnergyQuantity() : base()
+        public EnergyQuantity() : base()
         {
             Name = "Energy";
             ID = new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179");
@@ -74,7 +75,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.0041867999999561055
         }
       };
-            PostProcess();
         }
     }
 }

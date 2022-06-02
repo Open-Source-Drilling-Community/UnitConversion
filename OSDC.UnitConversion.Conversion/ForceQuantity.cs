@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ForceQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ForceQuantity() : base()
+        public ForceQuantity() : base()
         {
             Name = "Force";
             ID = new Guid("af9fd237-14d8-4b75-8d0b-34ea8961c20b");
@@ -81,7 +82,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.00022480894387096184
         }
       };
-            PostProcess();
         }
     }
 }

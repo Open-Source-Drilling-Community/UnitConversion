@@ -17,19 +17,19 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingRotationFrequencyRateOfChangeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingRotationFrequencyRateOfChangeQuantity() : base()
+        public DrillingRotationFrequencyRateOfChangeQuantity() : base()
         {
             Name = "DrillingRotationFrequencyRateOfChange";
             ID = new Guid("4950170a-7882-4673-9d27-3402dbbca2bb");
             Reset();
             this.UnitChoices.Add(RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond));
             this.UnitChoices.Add(RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond));
-            PostProcess();
         }
 
     }

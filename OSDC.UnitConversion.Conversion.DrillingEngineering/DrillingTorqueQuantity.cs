@@ -16,12 +16,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingTorqueQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingTorqueQuantity() : base()
+        public DrillingTorqueQuantity() : base()
         {
             Name = "DrillingTorque";
             ID = new Guid("eff33c0e-1e92-49e4-a7ab-716d9d66a157");
@@ -32,7 +33,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(TorqueQuantity.Instance.GetUnitChoice(TorqueQuantity.UnitChoicesEnum.MeterDecaNewton));
             this.UnitChoices.Add(TorqueQuantity.Instance.GetUnitChoice(TorqueQuantity.UnitChoicesEnum.MeterKilogramForce));
             this.UnitChoices.Add(TorqueQuantity.Instance.GetUnitChoice(TorqueQuantity.UnitChoicesEnum.MeterKiloNewton));
-            PostProcess();
         }
 
     }

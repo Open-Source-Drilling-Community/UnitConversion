@@ -22,12 +22,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new LuminousIntensityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected LuminousIntensityQuantity() : base()
+        public LuminousIntensityQuantity() : base()
         {
             Name = "Luminous Intensity";
             ID = new Guid("fd02d171-cd96-4a41-84cc-431b50ba879b");
@@ -119,7 +120,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 0.10266940451745
                 }
             };
-            PostProcess();
         }
     }
 }

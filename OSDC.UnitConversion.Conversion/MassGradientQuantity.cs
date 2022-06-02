@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new MassGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected MassGradientQuantity() : base()
+        public MassGradientQuantity() : base()
         {
             Name = "MassGradient";
             ID = new Guid("b8694592-8f8d-4684-b0ba-c88de50c8486");
@@ -52,7 +53,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1000
         }
       };
-            PostProcess();
         }
     }
 }

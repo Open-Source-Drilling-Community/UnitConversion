@@ -17,16 +17,16 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new NozzleDiameterQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected NozzleDiameterQuantity() : base()
+        public NozzleDiameterQuantity() : base()
         {
             Name = "Nozzle Diameter";
             ID = new Guid("1fbe2318-851d-4fd7-b711-9c23ffe544c7");
         }
-
     }
 }

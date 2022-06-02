@@ -18,11 +18,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new AngleVariationGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected AngleVariationGradientQuantity() : base()
+        public AngleVariationGradientQuantity() : base()
         {
             Name = "AngleVariationGradient";
             ID = new Guid("aed9c464-1073-448b-be62-a6a0c2a53dbc");
@@ -65,7 +66,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 57.29577951308232*0.0254
         }
       };
-            PostProcess();
         }
     }
 }

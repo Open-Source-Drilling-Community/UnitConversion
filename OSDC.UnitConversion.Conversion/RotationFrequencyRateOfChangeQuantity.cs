@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new RotationFrequencyRateOfChangeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected RotationFrequencyRateOfChangeQuantity() : base()
+        public RotationFrequencyRateOfChangeQuantity() : base()
         {
             Name = "RotationFreqencyRateOfChange";
             ID = new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e");
@@ -33,7 +34,6 @@ namespace OSDC.UnitConversion.Conversion
                 ID = new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb"),
                 ConversionFactorFromSI = 60
             });
-            PostProcess();
         }
 
     }

@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new VolumetricFlowRateQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected VolumetricFlowRateQuantity() : base()
+        public VolumetricFlowRateQuantity() : base()
         {
             Name = "FlowRate";
             ID = new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839");
@@ -283,7 +284,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 543455.6989255428
         }
       };
-            PostProcess();
         }
     }
 }

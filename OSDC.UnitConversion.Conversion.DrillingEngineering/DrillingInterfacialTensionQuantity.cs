@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingInterfacialTensionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingInterfacialTensionQuantity() : base()
+        public DrillingInterfacialTensionQuantity() : base()
         {
             Name = "DrillingInterfacialTension";
             ID = new Guid("1bf5cf90-84c4-4dcc-ac74-92223d3c3c46");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.MilliNewtonPerMeter));
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.DynesPerCentimeter));
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared));
-            PostProcess();
         }
 
     }

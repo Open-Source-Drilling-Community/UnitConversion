@@ -16,12 +16,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingTensionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingTensionQuantity() : base()
+        public DrillingTensionQuantity() : base()
         {
             Name = "DrillingTension";
             ID = new Guid("fe8fd6fd-814c-44c9-9462-f034dd46dc85");
@@ -33,7 +34,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KiloNewton));
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KiloPoundForce));
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.PoundForce));
-            PostProcess();
         }
 
     }

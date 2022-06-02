@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new PipeDiameterQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected PipeDiameterQuantity() : base()
+        public PipeDiameterQuantity() : base()
         {
             Name = "Pipe Diameter";
             ID = new Guid("28a2fe65-db50-46ec-8b1d-2a26286a5813");

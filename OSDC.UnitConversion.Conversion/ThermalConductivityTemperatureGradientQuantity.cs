@@ -21,11 +21,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ThermalConductivityTemperatureGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ThermalConductivityTemperatureGradientQuantity() : base()
+        public ThermalConductivityTemperatureGradientQuantity() : base()
         {
             Name = "ThermalConductivityTemperatureGradient";
             ID = new Guid("5e509f43-8fb4-490e-b9a5-59d7393761c0");
@@ -68,7 +69,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 3.8519288888888887
         }
       };
-            PostProcess();
         }
     }
 }

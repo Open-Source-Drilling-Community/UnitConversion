@@ -22,11 +22,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ThermalConductivityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ThermalConductivityQuantity() : base()
+        public ThermalConductivityQuantity() : base()
         {
             Name = "ThermalConductivity";
             ID = new Guid("ca23212e-8f2d-4041-89f6-ac8bfa8604fa");
@@ -69,7 +70,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 6.933472
         }
       };
-            PostProcess();
         }
     }
 }

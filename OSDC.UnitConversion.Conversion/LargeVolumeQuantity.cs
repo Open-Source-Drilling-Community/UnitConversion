@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new LargeVolumeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected LargeVolumeQuantity() : base()
+        public LargeVolumeQuantity() : base()
         {
             Name = "LargeVolume";
             ID = new Guid("f8ab1afa-7b99-403b-9410-93598bbb4089");
@@ -36,7 +37,6 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.MillionBarrel));
             this.UnitChoices.Add(VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.MillionStandardCubicFoot));
             this.UnitChoices.Add(VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.ThousandStandardCubicFoot));
-            PostProcess();
         }
     }
 }

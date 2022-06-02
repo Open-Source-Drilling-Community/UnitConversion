@@ -16,12 +16,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingElongationGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingElongationGradientQuantity() : base()
+        public DrillingElongationGradientQuantity() : base()
         {
             Name = "DrillingElongationGradient";
             ID = new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9");
@@ -29,7 +30,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.MeterPerMeter));
             this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.MillimeterPerMeter));
             this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.InchPerFoot));
-            PostProcess();
         }
         
     }

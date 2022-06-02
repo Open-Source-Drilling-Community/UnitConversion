@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ForceGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ForceGradientQuantity() : base()
+        public ForceGradientQuantity() : base()
         {
             Name = "ForceGradient";
             ID = new Guid("e5212340-1147-4cad-9f71-5cd9d4208ffd");
@@ -53,7 +54,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 10
         }
       };
-            PostProcess();
         }
     }
 }

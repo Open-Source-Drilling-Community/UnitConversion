@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingPressureGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillingPressureGradientQuantity() : base()
+        public DrillingPressureGradientQuantity() : base()
         {
             Name = "DrillingPressureGradient";
             ID = new Guid("92a284e7-9898-41f7-950d-4ba9f1ec550b");
@@ -29,7 +30,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.BarPerMeter));
             this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PSIPerFoot));
             this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PSIPerMeter));
-            PostProcess();
         }
 
     }

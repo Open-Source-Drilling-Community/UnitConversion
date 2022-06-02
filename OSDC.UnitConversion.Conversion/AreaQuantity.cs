@@ -3,28 +3,29 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class AreaQuantity : DerivedPhysicalQuantity
+    public partial class AreaQuantity : DerivedPhysicalQuantity
     {
-    public override string TypicalSymbol {get; } = "A";
-    public override string SIUnitName {get; } = "SquareMeter";
-    public override string SIUnitLabel {get; } = "m²";
-    private static AreaQuantity instance_ = null;
+        public override string TypicalSymbol { get; } = "A";
+        public override string SIUnitName { get; } = "SquareMeter";
+        public override string SIUnitLabel { get; } = "m²";
+        private static AreaQuantity instance_ = null;
 
-    public static AreaQuantity Instance
-    {
-      get
-      {
-        if (instance_ == null)
+        public static AreaQuantity Instance
         {
-          instance_ = new AreaQuantity();
+            get
+            {
+                if (instance_ == null)
+                {
+                    instance_ = new AreaQuantity();
+                    instance_.PostProcess();
+                }
+                return instance_;
+            }
         }
-        return instance_;
-      }
-    }
-    protected AreaQuantity() : base()
-    {
-      Name = "Area";
-      ID = new Guid("2a892bab-1b39-4ae4-b2d2-989621b09557");
+        protected AreaQuantity() : base()
+        {
+            Name = "Area";
+            ID = new Guid("2a892bab-1b39-4ae4-b2d2-989621b09557");
             UnitChoices = new List<UnitChoice>()
       {
         new UnitChoice
@@ -114,7 +115,6 @@ namespace OSDC.UnitConversion.Conversion
         },
 
       };
-      PostProcess();
+        }
     }
-  }
 }

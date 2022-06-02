@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingTemperatureGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillingTemperatureGradientQuantity() : base()
+        public DrillingTemperatureGradientQuantity() : base()
         {
             Name = "DrillingTemperatureGradient";
             ID = new Guid("82b91f3f-d1ec-476b-98e0-eedbba6281ec");
@@ -36,7 +37,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(TemperatureGradientQuantity.Instance.GetUnitChoice(TemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPerFoot));
             this.UnitChoices.Add(TemperatureGradientQuantity.Instance.GetUnitChoice(TemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPer30Foot));
             this.UnitChoices.Add(TemperatureGradientQuantity.Instance.GetUnitChoice(TemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPer100Foot));
-            PostProcess();
         }
 
     }

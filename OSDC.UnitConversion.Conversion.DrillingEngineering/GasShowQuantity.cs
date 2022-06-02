@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new GasShowQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected GasShowQuantity() : base()
+        public GasShowQuantity() : base()
         {
             Name = "GasShow";
             ID = new Guid("c81adbce-b90b-4889-8b79-921d95b35179");
@@ -28,7 +29,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent));
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.PerThousand));
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.PartPerMillion));
-            PostProcess();
         }
     }
 }

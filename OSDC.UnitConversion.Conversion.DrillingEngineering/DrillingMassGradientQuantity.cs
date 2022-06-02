@@ -16,18 +16,18 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingMassGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DrillingMassGradientQuantity() : base()
+        public DrillingMassGradientQuantity() : base()
         {
             Name = "DrillingMassGradient";
             ID = new Guid("dc474098-a2b5-44fb-b56a-0ae20ff62ad6");
             Reset();
             this.UnitChoices.Add(MassGradientQuantity.Instance.GetUnitChoice(MassGradientQuantity.UnitChoicesEnum.KilogramPerMeter));
             this.UnitChoices.Add(MassGradientQuantity.Instance.GetUnitChoice(MassGradientQuantity.UnitChoicesEnum.PoundPerFoot));
-            PostProcess();
         }
 
     }

@@ -16,11 +16,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new FluidShearStressQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected FluidShearStressQuantity() : base()
+        public FluidShearStressQuantity() : base()
         {
             Name = "FluidShearStress";
             ID = new Guid("b8f8f4f5-1925-4eaf-87c2-2adfdf618454");
@@ -30,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Bar));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.PoundPerSquareInch));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.PoundPer100SquareFoot));
-            PostProcess();
         }
     }
 }

@@ -21,11 +21,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new PressureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected PressureQuantity() : base()
+        public PressureQuantity() : base()
         {
             Name = "Pressure";
             ID = new Guid("0f282508-9223-489d-86e6-36307f987045");
@@ -229,7 +230,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.0003348832
         }
       };
-            PostProcess();
         }
     }
 }

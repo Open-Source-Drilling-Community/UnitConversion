@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new RateOfPenetrationQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected RateOfPenetrationQuantity() : base()
+        public RateOfPenetrationQuantity() : base()
         {
             Name = "RateOfPenetration";
             ID = new Guid("c2581b41-944c-410b-9805-62c4b54de510");
@@ -28,7 +29,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MeterPerHour));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerSecond));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerHour));
-            PostProcess();
         }
     }
 }

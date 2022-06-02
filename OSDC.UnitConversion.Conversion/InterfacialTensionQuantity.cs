@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new InterfacialTensionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected InterfacialTensionQuantity() : base()
+        public InterfacialTensionQuantity() : base()
         {
             Name = "InterfacialTension";
             ID = new Guid("6c2da24b-fa92-415d-9161-150de87dad4c");
@@ -59,7 +60,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 2.2046244201837775
         }
       };
-            PostProcess();
         }
     }
 }

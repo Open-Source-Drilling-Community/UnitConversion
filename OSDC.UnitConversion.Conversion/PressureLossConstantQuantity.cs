@@ -18,11 +18,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new PressureLossConstantQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected PressureLossConstantQuantity() : base()
+        public PressureLossConstantQuantity() : base()
         {
             Name = "PressureLossConstant";
             ID = new Guid("6417f6e0-969d-43f2-bee6-249199ec1697");
@@ -58,7 +59,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 14455817187.722
         }
       };
-            PostProcess();
         }
     }
 }

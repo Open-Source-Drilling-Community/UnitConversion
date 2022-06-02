@@ -16,19 +16,19 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingFluidVelocityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingFluidVelocityQuantity() : base()
+        public DrillingFluidVelocityQuantity() : base()
         {
             Name = "DrillingFluidVelocity";
             ID = new Guid("dac9cee1-59a3-42d5-98c6-0c7baf5083bb");
             Reset();
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MeterPerSecond));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerSecond));
-            PostProcess();
         }
         
     }

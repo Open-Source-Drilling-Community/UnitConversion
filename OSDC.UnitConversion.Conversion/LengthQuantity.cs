@@ -21,12 +21,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new LengthQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected LengthQuantity() : base()
+        public LengthQuantity() : base()
         {
             Name = "Length";
             ID = new Guid("96058475-80c4-4394-b21a-afd2fb1594c8");
@@ -237,7 +238,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 1.0/201.168
                 },
             };
-            PostProcess();
         }
     }
 }

@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new DensityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DensityQuantity() : base()
+        public DensityQuantity() : base()
         {
             Name = "Density";
             ID = new Guid("5754358c-9359-4bb0-8eb4-08602d19c6af");
@@ -80,7 +81,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.0624279606
         }
       };
-            PostProcess();
         }
     }
 }

@@ -21,12 +21,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new TemperatureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected TemperatureQuantity() : base()
+        public TemperatureQuantity() : base()
         {
             Name = "Temperature";
             ID = new Guid("16130f2d-72a8-44a5-beaa-adbb5a1a7b21");
@@ -65,7 +66,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionBiasFromSI = -273.15 *4.0/5.0
                 }
             };
-            PostProcess();
         }
     }
 }

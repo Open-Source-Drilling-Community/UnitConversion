@@ -15,12 +15,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new FormationStrengthQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected FormationStrengthQuantity() : base()
+        public FormationStrengthQuantity() : base()
         {
             Name = "FormationStrength";
             ID = new Guid("55a8119f-4609-4d51-91b4-e2281c46c779");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.Pascal));
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.PoundPer100SquareFoot));
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.PSI));
-            PostProcess();
         }
 
     }

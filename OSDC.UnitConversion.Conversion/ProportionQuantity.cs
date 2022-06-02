@@ -3,29 +3,30 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ProportionQuantity : DerivedPhysicalQuantity
+    public partial class ProportionQuantity : DerivedPhysicalQuantity
     {
-    public override string TypicalSymbol {get; } = null;
-    public override string SIUnitName {get; } = "Proportion";
-    public override string SIUnitLabel {get; } = "";
-    private static ProportionQuantity instance_ = null;
+        public override string TypicalSymbol { get; } = null;
+        public override string SIUnitName { get; } = "Proportion";
+        public override string SIUnitLabel { get; } = "";
+        private static ProportionQuantity instance_ = null;
 
-    public static ProportionQuantity Instance
-    {
-      get
-      {
-        if (instance_ == null)
+        public static ProportionQuantity Instance
         {
-          instance_ = new ProportionQuantity();
+            get
+            {
+                if (instance_ == null)
+                {
+                    instance_ = new ProportionQuantity();
+                    instance_.PostProcess();
+                }
+                return instance_;
+            }
         }
-        return instance_;
-      }
-    }
-    protected ProportionQuantity() : base()
-    {
-      Name = "Proportion";
-      ID = new Guid("10d2d588-19b8-4822-9240-e1d278d99e32");
-      UnitChoices = new List<UnitChoice>()
+        public ProportionQuantity() : base()
+        {
+            Name = "Proportion";
+            ID = new Guid("10d2d588-19b8-4822-9240-e1d278d99e32");
+            UnitChoices = new List<UnitChoice>()
       {
         new UnitChoice
         {
@@ -57,7 +58,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1000000
         }
       };
-      PostProcess();
+        }
     }
-  }
 }

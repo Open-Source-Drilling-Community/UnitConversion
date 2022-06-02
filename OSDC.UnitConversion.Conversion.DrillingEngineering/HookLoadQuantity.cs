@@ -17,11 +17,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new HookLoadQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected HookLoadQuantity() : base()
+        public HookLoadQuantity() : base()
         {
             Name = "HookLoad";
             ID = new Guid("126be5e9-ed09-459e-92ce-32a5fcd81f0a");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Pound));
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.KiloPound));
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.TonUK));
-            PostProcess();
         }
     }
 }

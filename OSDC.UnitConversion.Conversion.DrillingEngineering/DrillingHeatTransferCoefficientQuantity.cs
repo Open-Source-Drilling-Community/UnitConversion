@@ -16,19 +16,19 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingHeatTransferCoefficientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingHeatTransferCoefficientQuantity() : base()
+        public DrillingHeatTransferCoefficientQuantity() : base()
         {
             Name = "DrillingHeatTransferCoefficient";
             ID = new Guid("c99547c5-b545-4060-bd82-eadc13772493");
             Reset();
             this.UnitChoices.Add(HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.WattPerMeterSquaredPerKelvin));
             this.UnitChoices.Add(HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit));
-            PostProcess();
         }
 
     }

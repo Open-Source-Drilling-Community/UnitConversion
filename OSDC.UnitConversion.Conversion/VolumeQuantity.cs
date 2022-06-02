@@ -18,11 +18,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new VolumeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected VolumeQuantity() : base()
+        public VolumeQuantity() : base()
         {
             Name = "Volume";
             ID = new Guid("69151432-d2ed-4473-a3dc-334f8e6daaa6");
@@ -128,7 +129,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 3.531467E-05
         }
       };
-            PostProcess();
         }
     }
 }

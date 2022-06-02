@@ -71,7 +71,8 @@ namespace OSDC.UnitConversion.Conversion
          Torque,  // Torque
          YoungModulus,  // YoungModulus
          StandardProportion,  // StandardProportion
-         StandardDimensionLess // StandardDimensionLess
+         StandardDimensionLess,  // StandardDimensionLess
+         StandardLength // Standard Length
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -139,7 +140,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Torque, new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4")},  // Torque
          {QuantityEnum.YoungModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // YoungModulus
          {QuantityEnum.StandardProportion, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // StandardProportion
-         {QuantityEnum.StandardDimensionLess, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")} // StandardDimensionLess
+         {QuantityEnum.StandardDimensionLess, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionLess
+         {QuantityEnum.StandardLength, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")} // Standard Length
     };
   }
 }
@@ -1274,7 +1276,7 @@ namespace OSDC.UnitConversion.Conversion
          Hour,  // hour
          Day,  // day
          Week,  // week
-         Fornight,  // fornight
+         Fortnight,  // fortnight
          MonthCommon,  // month common
          MonthSynodic,  // month synodic
          QuaterCommon,  // quater common
@@ -1300,7 +1302,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Hour, new Guid("f0d815e4-9bef-4422-94e6-1de52216b611")},  // hour
          {UnitChoicesEnum.Day, new Guid("85442621-bb56-4e2a-8e77-2b72409ff84f")},  // day
          {UnitChoicesEnum.Week, new Guid("4dd50f01-60b3-4d44-82ea-ff8ededd797d")},  // week
-         {UnitChoicesEnum.Fornight, new Guid("bc87f864-3dc1-4f1a-87bc-4123a47c53dc")},  // fornight
+         {UnitChoicesEnum.Fortnight, new Guid("bc87f864-3dc1-4f1a-87bc-4123a47c53dc")},  // fortnight
          {UnitChoicesEnum.MonthCommon, new Guid("41cceaa2-1a1d-40f1-9195-5183be9770d4")},  // month common
          {UnitChoicesEnum.MonthSynodic, new Guid("31edcda9-df8f-4d15-83a9-7dafd8a7e404")},  // month synodic
          {UnitChoicesEnum.QuaterCommon, new Guid("71f0e01a-c1a2-49ba-a25b-c11854f8867c")},  // quater common
@@ -2591,6 +2593,42 @@ namespace OSDC.UnitConversion.Conversion
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.DimensionLess, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // DimensionLess
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class StandardLengthQuantity : LengthQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Centimeter,  // centimeter
+         Decimeter,  // decimeter
+         Feet,  // feet
+         Inch,  // inch
+         Metre,  // metre
+         Micrometer,  // micrometer
+         Millimeter // millimeter
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Centimeter, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimeter
+         {UnitChoicesEnum.Decimeter, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimeter
+         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
+         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
+         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
+         {UnitChoicesEnum.Micrometer, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometer
+         {UnitChoicesEnum.Millimeter, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")} // millimeter
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

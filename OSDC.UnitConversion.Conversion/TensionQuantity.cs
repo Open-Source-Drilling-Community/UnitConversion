@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new TensionQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected TensionQuantity() : base()
+        public TensionQuantity() : base()
         {
             Name = "Tension";
             ID = new Guid("7c4e127d-aa65-4796-a962-c2c666c4fdd0");
@@ -31,7 +32,6 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.KilogramForce));
             this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.PoundForce));
             this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.KiloPoundForce));
-            PostProcess();
         }
     }
 }

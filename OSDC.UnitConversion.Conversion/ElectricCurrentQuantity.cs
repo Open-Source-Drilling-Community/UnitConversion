@@ -19,12 +19,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ElectricCurrentQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected ElectricCurrentQuantity() : base()
+        public ElectricCurrentQuantity() : base()
         {
             Name = "Electrical Current";
             ID = new Guid("a322deae-e965-41bf-b4fe-a7530d33c9a0");
@@ -172,7 +173,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 2997924536.843143
                 }
             };
-            PostProcess();
         }
     }
 }

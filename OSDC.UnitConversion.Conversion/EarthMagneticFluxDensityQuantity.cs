@@ -17,12 +17,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new EarthMagneticFluxDencityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected EarthMagneticFluxDencityQuantity() : base()
+        public EarthMagneticFluxDencityQuantity() : base()
         {
             Name = "EarthMagneticFluxDensity";
             ID = new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7");
@@ -32,8 +33,6 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.MilliGauss));
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.MicroTesla));
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.NanoTesla));
-            PostProcess();
         }
-
     }
 }

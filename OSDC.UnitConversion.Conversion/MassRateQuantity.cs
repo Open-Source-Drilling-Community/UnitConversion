@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new MassRateQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected MassRateQuantity() : base()
+        public MassRateQuantity() : base()
         {
             Name = "MassRate";
             ID = new Guid("3dd05c4c-3d6d-49ae-a878-5a5e4a6e7acf");
@@ -45,7 +46,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 60
         }
       };
-            PostProcess();
         }
     }
 }

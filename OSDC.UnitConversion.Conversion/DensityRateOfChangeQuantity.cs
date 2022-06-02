@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new DensityRateOfChangeQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DensityRateOfChangeQuantity() : base()
+        public DensityRateOfChangeQuantity() : base()
         {
             Name = "DensitySpeed";
             ID = new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11");
@@ -109,7 +110,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 30.043456026479998
         }
       };
-            PostProcess();
         }
     }
 }

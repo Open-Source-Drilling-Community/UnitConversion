@@ -17,11 +17,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new PoreSurfaceQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected PoreSurfaceQuantity() : base()
+        public PoreSurfaceQuantity() : base()
         {
             Name = "PoreSurface";
             ID = new Guid("c88cc254-b870-44a6-b896-5863472bdcd0");
@@ -30,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareMillimeter));
             this.UnitChoices.Add(AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareMicrometer));
             this.UnitChoices.Add(AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareFoot));
-            PostProcess();
         }
         
     }

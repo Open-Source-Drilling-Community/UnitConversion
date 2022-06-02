@@ -21,12 +21,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new AmountSubstanceQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected AmountSubstanceQuantity() : base()
+        public AmountSubstanceQuantity() : base()
         {
             Name = "Amount Substance";
             ID = new Guid("200be1eb-c278-447c-9b15-32d20fc778b9");
@@ -90,7 +91,6 @@ namespace OSDC.UnitConversion.Conversion
                     ConversionFactorFromSI = 0.001
                 }
             };
-            PostProcess();
         }
     }
 

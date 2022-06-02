@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new HeatTransferCoefficientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected HeatTransferCoefficientQuantity() : base()
+        public HeatTransferCoefficientQuantity() : base()
         {
             Name = "HeatTransferCoefficient";
             ID = new Guid("08c247bc-a55b-460e-a9a7-150faf10bdff");
@@ -46,7 +47,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 0.176110184
         }
       };
-            PostProcess();
         }
     }
 }

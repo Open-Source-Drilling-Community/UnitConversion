@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new BlockVelocityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected BlockVelocityQuantity() : base()
+        public BlockVelocityQuantity() : base()
         {
             Name = "BlockVelocity";
             ID = new Guid("82a2b5fc-9edd-45ea-80cb-1cd46d516fdb");
@@ -30,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerHour));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerMinute));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerSecond));
-            PostProcess();
         }
     }
 }

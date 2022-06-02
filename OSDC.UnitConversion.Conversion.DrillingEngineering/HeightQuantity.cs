@@ -15,11 +15,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new HeightQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected HeightQuantity() : base()
+        public HeightQuantity() : base()
         {
             Name = "Height";
             ID = new Guid("8ec20e78-3307-4363-9fc1-97c64a4b6e6e");
@@ -34,7 +35,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Feet));
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Yard));
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Mile));
-            PostProcess();
         }
     }
 }

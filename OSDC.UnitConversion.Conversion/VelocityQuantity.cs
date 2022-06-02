@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new VelocityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected VelocityQuantity() : base()
+        public VelocityQuantity() : base()
         {
             Name = "Velocity";
             ID = new Guid("b3fd17fe-ce71-4ef3-ac99-cf4f5756e81a");
@@ -109,7 +110,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 2.236936
         }
       };
-            PostProcess();
         }
     }
 }

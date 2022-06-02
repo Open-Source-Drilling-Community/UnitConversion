@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new CompressibilityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected CompressibilityQuantity() : base()
+        public CompressibilityQuantity() : base()
         {
             Name = "Compressibility";
             ID = new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14");
@@ -53,7 +54,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 6894.7625831
         }
       };
-            PostProcess();
         }
     }
 }

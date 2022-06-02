@@ -21,11 +21,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ResistivityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ResistivityQuantity() : base()
+        public ResistivityQuantity() : base()
         {
             Name = "Resistivity";
             ID = new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80");
@@ -40,7 +41,6 @@ namespace OSDC.UnitConversion.Conversion
           IsSI = true
         }
       };
-            PostProcess();
         }
     }
 }

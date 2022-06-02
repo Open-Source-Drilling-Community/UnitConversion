@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new TemperatureGradientQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected TemperatureGradientQuantity() : base()
+        public TemperatureGradientQuantity() : base()
         {
             Name = "TemperatureGradient";
             ID = new Guid("4c1819d5-008b-4613-b62a-3f5d91b08ee7");
@@ -108,7 +109,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 54.864000000000004
         }
       };
-            PostProcess();
         }
     }
 }

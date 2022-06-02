@@ -17,19 +17,19 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                 if (instance_ == null)
                 {
                     instance_ = new DrillingAngularVelocityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected DrillingAngularVelocityQuantity() : base()
+        public DrillingAngularVelocityQuantity() : base()
         {
             Name = "DrillingAngularVelocity";
             ID = new Guid("046cb449-8cab-4d0c-bb28-3e2060f292e5");
             Reset();
             this.UnitChoices.Add(AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.RadianPerSecond));
             this.UnitChoices.Add(AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond));
-            PostProcess();
         }
 
     }

@@ -21,12 +21,13 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ImageScaleQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        protected ImageScaleQuantity() : base()
+        public ImageScaleQuantity() : base()
         {
             Name = "Image Scale";
             ID = new Guid("a3f230b0-a70b-40dd-9305-39e63bb1821b");
@@ -60,8 +61,6 @@ namespace OSDC.UnitConversion.Conversion
                 ID = new Guid("76e21d1d-54f5-4bbb-81c6-1b92b8b30bfe"),
                 ConversionFactorFromSI = 1.0 / 1000000.0
             });
-
-            PostProcess();
         }
 
     }

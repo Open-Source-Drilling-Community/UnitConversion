@@ -22,11 +22,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new ElectricalCapacitanceQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected ElectricalCapacitanceQuantity() : base()
+        public ElectricalCapacitanceQuantity() : base()
         {
             Name = "Capacitance";
             ID = new Guid("9b284ff7-57bb-4ee0-bdbc-5fb7b80f3ae3");
@@ -69,7 +70,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 1000000000
         }
       };
-            PostProcess();
         }
     }
 }

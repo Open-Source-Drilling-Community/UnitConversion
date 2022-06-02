@@ -17,11 +17,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new AngularVelocityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected AngularVelocityQuantity() : base()
+        public AngularVelocityQuantity() : base()
         {
             Name = "AngularVelocity";
             ID = new Guid("688ccd2b-6a30-4ccc-8580-a80c3a5803fa");
@@ -85,7 +86,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 3437.746770785
         }
       };
-            PostProcess();
         }
     }
 }

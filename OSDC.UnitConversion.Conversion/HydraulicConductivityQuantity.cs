@@ -17,11 +17,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new HydraulicConductivityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected HydraulicConductivityQuantity() : base()
+        public HydraulicConductivityQuantity() : base()
         {
             Name = "HydraulicConductivity";
             ID = new Guid("04df2b82-aff0-485a-855e-3d2aa53e12eb");
@@ -36,7 +37,6 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerDay));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.CentimeterPerSecond));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.InchPerSecond));
-            PostProcess();
         }
     }
 }

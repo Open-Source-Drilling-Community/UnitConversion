@@ -20,11 +20,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new DynamicViscosityQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected DynamicViscosityQuantity() : base()
+        public DynamicViscosityQuantity() : base()
         {
             Name = "DynamicViscosity";
             ID = new Guid("c830517f-5915-4a8f-ba83-bd102c0a935f");
@@ -60,7 +61,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 10000000
         }
       };
-            PostProcess();
         }
     }
 }

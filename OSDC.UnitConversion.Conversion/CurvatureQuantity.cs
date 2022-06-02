@@ -19,11 +19,12 @@ namespace OSDC.UnitConversion.Conversion
                 if (instance_ == null)
                 {
                     instance_ = new CurvatureQuantity();
+                    instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        protected CurvatureQuantity() : base()
+        public CurvatureQuantity() : base()
         {
             Name = "Curvature";
             ID = new Guid("bbfe7349-8cf5-4ca0-8a84-ffe66d7f33d0");
@@ -87,7 +88,6 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSI = 57.29577951308232
         }
       };
-            PostProcess();
         }
     }
 }
