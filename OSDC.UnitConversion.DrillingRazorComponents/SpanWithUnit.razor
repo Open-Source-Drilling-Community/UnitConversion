@@ -1,0 +1,82 @@
+﻿@implements IUnitAwareComponent
+
+<span>@ChildContent  @DisplayedValue</span>
+
+
+@code {
+    [CascadingParameter]
+    private UnitAndReferenceChoiceTag Parent { get; set; }
+
+    [Parameter]
+    public double? SIValue
+    {
+        get
+        {
+            return SIValue_;
+        }
+        set
+        {
+            SIValue_ = value;
+            ManageUnits();
+        }
+    }
+
+    [Parameter]
+    public String QuantityName { get; set; }
+
+    [Parameter]
+    public bool UseUnitLabel { get; set; } = false;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;
+
+    [Parameter]
+    public PositionDirectionType PositionDirection { get; set; } = PositionDirectionType.Independent;
+
+    private string DisplayedValue { get; set; }
+
+    private double? SIValue_;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        if (Parent == null)
+        {
+            throw new ArgumentNullException(nameof(Parent), "SpanWithUnit must exist within a UnitAndReferenceChoiceTag");
+        }
+        Parent.Add(this);
+        ManageUnits();
+    }
+
+    public void ManageUnits()
+    {
+        if (Parent != null && !string.IsNullOrEmpty(Parent.UnitChoiceSetName))
+        {
+            switch (DrillingSignalReference)
+            {
+                case DrillingSignalReferenceType.Pressure:
+                    DisplayedValue = Parent.FromAbsolutePressureSI(SIValue, QuantityName, UseUnitLabel);
+                    break;
+                case DrillingSignalReferenceType.Azimuth:
+                    DisplayedValue = Parent.FromTrueNorthAzimuthSI(SIValue, QuantityName, UseUnitLabel);
+                    break;
+                case DrillingSignalReferenceType.Depth:
+                    DisplayedValue = Parent.FromWGS84DepthSI(SIValue, QuantityName, UseUnitLabel);
+                    break;
+                case DrillingSignalReferenceType.Position:
+                    DisplayedValue = Parent.FromWGS84PositionSI(SIValue, QuantityName, UseUnitLabel, PositionDirection);
+                    break;
+                default:
+                    DisplayedValue = Parent.FromSI(SIValue, QuantityName, UseUnitLabel);
+                    break;
+            }
+        }
+        else
+        {
+            DisplayedValue = "";
+        }
+    }
+}

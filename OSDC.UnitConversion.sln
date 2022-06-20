@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32228.430
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion", "OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj", "{41EDBC03-3490-45F6-AD42-52427FAF0382}"
 EndProject
@@ -11,19 +11,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Generat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion.DrillingEngineering", "OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj", "{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonCL", "OSDC.UnitConversion.DrillingUnitConversion.JsonCL\OSDC.UnitConversion.DrillingUnitConversion.JsonCL.csproj", "{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonCL", "OSDC.UnitConversion.DrillingUnitConversion.JsonCL\OSDC.UnitConversion.DrillingUnitConversion.JsonCL.csproj", "{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonSD", "OSDC.UnitConversion.DrillingUnitConversion.JsonSD\OSDC.UnitConversion.DrillingUnitConversion.JsonSD.csproj", "{C331ED8E-DA0E-4183-8E66-587F7C0686DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonSD", "OSDC.UnitConversion.DrillingUnitConversion.JsonSD\OSDC.UnitConversion.DrillingUnitConversion.JsonSD.csproj", "{C331ED8E-DA0E-4183-8E66-587F7C0686DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.Model", "OSDC.UnitConversion.DrillingUnitConversion.Model\OSDC.UnitConversion.DrillingUnitConversion.Model.csproj", "{79037EB4-4133-44EB-BBBC-A7CE886F2D51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.Model", "OSDC.UnitConversion.DrillingUnitConversion.Model\OSDC.UnitConversion.DrillingUnitConversion.Model.csproj", "{79037EB4-4133-44EB-BBBC-A7CE886F2D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared", "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared\OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.csproj", "{6C0E828A-D958-4B7E-9617-226E8292C42F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared", "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared\OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.csproj", "{6C0E828A-D958-4B7E-9617-226E8292C42F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.Service", "OSDC.UnitConversion.DrillingUnitConversion.Service\OSDC.UnitConversion.DrillingUnitConversion.Service.csproj", "{6ACD2B6E-CA80-4873-8767-D1821346459A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.Service", "OSDC.UnitConversion.DrillingUnitConversion.Service\OSDC.UnitConversion.DrillingUnitConversion.Service.csproj", "{6ACD2B6E-CA80-4873-8767-D1821346459A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.Test", "OSDC.UnitConversion.DrillingUnitConversion.Test\OSDC.UnitConversion.DrillingUnitConversion.Test.csproj", "{36375D06-CE05-4247-B8F7-C1CA0643DF44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.Test", "OSDC.UnitConversion.DrillingUnitConversion.Test\OSDC.UnitConversion.DrillingUnitConversion.Test.csproj", "{36375D06-CE05-4247-B8F7-C1CA0643DF44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client", "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client\OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.csproj", "{2335F990-BB7B-4801-8AD6-CD424E76374C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client", "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client\OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.csproj", "{2335F990-BB7B-4801-8AD6-CD424E76374C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingRazorComponents", "OSDC.UnitConversion.DrillingRazorComponents\OSDC.UnitConversion.DrillingRazorComponents.csproj", "{EB56DE35-B51D-4EA6-8743-8F490E8701C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2335F990-BB7B-4801-8AD6-CD424E76374C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

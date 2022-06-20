@@ -1,0 +1,53 @@
+﻿@implements IDateTimeReferenceAwareComponent
+
+<span>@ChildContent @DisplayedValue</span>
+
+@code {
+    [CascadingParameter]
+    private UnitAndReferenceChoiceTag Parent { get; set; }
+
+    [Parameter]
+    public DateTime? UTCValue
+    {
+        get
+        {
+            return UTCValue_;
+        }
+        set
+        {
+            UTCValue_ = value;
+            ManageDateTimeReference();
+        }
+    }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string DisplayedValue { get; set; }
+
+    private DateTime? UTCValue_;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        if (Parent == null)
+        {
+            throw new ArgumentNullException(nameof(Parent), "SpanDate must exist within a UnitAndReferenceChoiceTag");
+        }
+        Parent.Add(this);
+        ManageDateTimeReference();
+    }
+
+    public void ManageDateTimeReference()
+    {
+        if (Parent != null && !string.IsNullOrEmpty(Parent.DateReferenceName))
+        {
+            DisplayedValue = Parent.DateFromUTC(UTCValue_);
+        }
+        else
+        {
+            DisplayedValue = "";
+        }
+    }
+
+}

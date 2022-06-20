@@ -1,0 +1,216 @@
+﻿@using System.Globalization
+@implements IDateTimeReferenceAwareComponent
+
+<input class="text" type="text" @bind="@ValueInDefinedTimeReference" />
+
+@code {
+    [CascadingParameter]
+    private UnitAndReferenceChoiceTag Parent { get; set; }
+
+    [Parameter]
+    public DateTime UTCValue
+    {
+        get
+        {
+            if (UTCValue_ == null)
+            {
+                return DateTime.MinValue;
+            }
+            else
+            {
+                return (DateTime)UTCValue_;
+            }
+        }
+        set
+        {
+            if (value == DateTime.MinValue)
+            {
+                UTCValue_ = null;
+            }
+            else
+            {
+                UTCValue_ = value;
+            }
+            ManageDateTimeReference();
+        }
+    }
+
+    [Parameter]
+    public DateTime? UTCValueNullable
+    {
+        get
+        {
+            return UTCValue_;
+        }
+        set
+        {
+            UTCValue_ = value;
+            ManageDateTimeReference();
+        }
+    }
+    private DateTime? UTCValue_;
+
+    [Parameter]
+    public EventCallback<DateTime> UTCValueChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<DateTime?> UTCValueNullableChanged { get; set; }
+
+    private bool inhibited_ = false;
+
+    private string ValueInDefinedTimeReference
+    {
+        get
+        {
+            return valueInDefinedTimeReference_;
+        }
+        set
+        {
+            valueInDefinedTimeReference_ = value;
+            ManageChangedValue();
+        }
+    }
+
+    private string valueInDefinedTimeReference_;
+
+    protected override void OnInitialized()
+    {
+        if (Parent == null)
+            throw new ArgumentNullException(nameof(Parent), "InputDate must exist within a UnitAndReferenceChoiceTag");
+        base.OnInitialized();
+        Parent.Add(this);
+        ManageDateTimeReference();
+    }
+
+    public async Task ManageChangedValue()
+    {
+
+        if (!inhibited_)
+        {
+            DateTime valueInDefinedTimeReference;
+            if (Parent != null && TryParse(valueInDefinedTimeReference_, out valueInDefinedTimeReference))
+            {
+                UTCValue = Parent.ToUTC(valueInDefinedTimeReference);
+            }
+
+            inhibited_ = false;
+            try
+            {
+                await UTCValueChanged.InvokeAsync(UTCValue);
+                await UTCValueNullableChanged.InvokeAsync(UTCValueNullable);
+            }
+            catch (Exception e)
+            {
+
+            }
+            inhibited_ = false;
+        }
+    }
+
+    public void ManageDateTimeReference()
+    {
+        if (!inhibited_)
+        {
+            inhibited_ = true;
+            try
+            {
+                if (Parent != null && !string.IsNullOrEmpty(Parent.DateReferenceName))
+                {
+                    ValueInDefinedTimeReference = Parent.DateFromUTC(UTCValueNullable);
+                }
+                else
+                {
+                    ValueInDefinedTimeReference = "";
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+            inhibited_ = false;
+        }
+    }
+
+    private static bool TryParse(string value, out DateTime result)
+    {
+        return DateTime.TryParse(value, out result) ||
+               DateTime.TryParse(value, US_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result) ||
+               DateTime.TryParse(value, NO_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result) ||
+               DateTime.TryParse(value, FR_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result) ||
+               DateTime.TryParse(value, IT_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result) ||
+               DateTime.TryParse(value, SP_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result) ||
+               DateTime.TryParse(value, PT_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result) ||
+               DateTime.TryParse(value, UK_DATETIME_FORMAT, DateTimeStyles.AssumeLocal, out result);
+    }
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("en-US")
+    /// </summary>
+    private static CultureInfo US_CULTURE = new CultureInfo("en-US");
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("nb-NO")
+    /// </summary>
+    private static CultureInfo NO_CULTURE = new CultureInfo("nb-NO");
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("fr-FR")
+    /// </summary>
+    private static CultureInfo FR_CULTURE = new CultureInfo("fr-FR");
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("it-IT")
+    /// </summary>
+    private static CultureInfo IT_CULTURE = new CultureInfo("it-IT");
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("es-ES")
+    /// </summary>
+    private static CultureInfo SP_CULTURE = new CultureInfo("es-ES");
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("en-GB")
+    /// </summary>
+    private static CultureInfo UK_CULTURE = new CultureInfo("en-GB");
+
+    /// <summary>
+    /// Shorthand for System.Globalization.CultureInfo("pt-PT")
+    /// </summary>
+    private static CultureInfo PT_CULTURE = new CultureInfo("pt-PT");
+
+    /// <summary>
+    /// Shorthand for US_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo US_DATETIME_FORMAT = US_CULTURE.DateTimeFormat;
+
+    /// <summary>
+    /// Shorthand for NO_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo NO_DATETIME_FORMAT = NO_CULTURE.DateTimeFormat;
+
+    /// <summary>
+    /// Shorthand for FR_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo FR_DATETIME_FORMAT = FR_CULTURE.DateTimeFormat;
+
+    /// <summary>
+    /// Shorthand for IT_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo IT_DATETIME_FORMAT = IT_CULTURE.DateTimeFormat;
+
+    /// <summary>
+    /// Shorthand for SP_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo SP_DATETIME_FORMAT = SP_CULTURE.DateTimeFormat;
+
+    /// <summary>
+    /// Shorthand for UK_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo UK_DATETIME_FORMAT = UK_CULTURE.DateTimeFormat;
+
+    /// <summary>
+    /// Shorthand for PT_CULTURE.DateTimeFormat
+    /// </summary>
+    public static DateTimeFormatInfo PT_DATETIME_FORMAT = PT_CULTURE.DateTimeFormat;
+
+}

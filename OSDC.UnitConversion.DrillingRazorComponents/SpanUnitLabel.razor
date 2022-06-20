@@ -1,0 +1,61 @@
+﻿@implements IUnitAwareComponent
+
+<span class="label">@UnitLabel</span>
+
+@code {
+    [CascadingParameter]
+    private UnitAndReferenceChoiceTag Parent { get; set; }
+
+    [Parameter]
+    public string QuantityName { get; set; }
+
+    [Parameter]
+    public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;
+
+    private string UnitLabel { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (Parent == null)
+            throw new ArgumentNullException(nameof(Parent), "SpanUnitLabel must exist within a UnitAndReferenceChoiceTag");
+        base.OnInitialized();
+        Parent.Add(this);
+        ManageUnits();
+    }
+    public void ManageUnits()
+    {
+        try
+        {
+            if (Parent != null && !string.IsNullOrEmpty(Parent.UnitChoiceSetName))
+            {
+                switch (DrillingSignalReference)
+                {
+                    case DrillingSignalReferenceType.Pressure:
+                        UnitLabel = Parent.GetPressureUnitLabel(QuantityName);
+                        break;
+                    case DrillingSignalReferenceType.Azimuth:
+                        UnitLabel = Parent.GetAzimuthUnitLabel(QuantityName);
+                        break;
+                    case DrillingSignalReferenceType.Depth:
+                        UnitLabel = Parent.GetDepthUnitLabel(QuantityName);
+                        break;
+                    case DrillingSignalReferenceType.Position:
+                        UnitLabel = Parent.GetPositionUnitLabel(QuantityName);
+                        break;
+                    default:
+                        UnitLabel = Parent.GetUnitLabel(QuantityName);
+                        break;
+                }
+            }
+            else
+            {
+                UnitLabel = "";
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+}
