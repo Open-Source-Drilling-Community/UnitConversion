@@ -232,8 +232,8 @@ else
 
             unitChoiceSets = new List<Tuple<Guid, string>>();
             List<Tuple<Guid, string>> choices = null;
-            if (!string.IsNullOrEmpty(HttpHost) && 
-                !string.IsNullOrEmpty(HttpBasePath) && 
+            if (!string.IsNullOrEmpty(HttpHost) &&
+                !string.IsNullOrEmpty(HttpBasePath) &&
                 !string.IsNullOrEmpty(HttpController))
             {
                 httpClient = new HttpClient
@@ -260,6 +260,7 @@ else
             }
             else
             {
+                choices = new List<Tuple<Guid, string>>();
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
                 {
