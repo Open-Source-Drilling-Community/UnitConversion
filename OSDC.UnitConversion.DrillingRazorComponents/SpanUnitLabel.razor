@@ -1,6 +1,6 @@
 ﻿@implements IUnitAwareComponent
 
-<span class="label">@UnitLabel</span>
+<span class="label" hidden="@Hidden">@UnitLabel</span>
 
 @code {
     [CascadingParameter]
@@ -11,6 +11,9 @@
 
     [Parameter]
     public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;
+
+    [Parameter]
+    public bool Hidden { get; set; }
 
     private string UnitLabel { get; set; }
 

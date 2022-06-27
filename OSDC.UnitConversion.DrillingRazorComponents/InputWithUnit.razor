@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @implements IUnitAwareComponent
 
-<input class="text" type="text" @bind="@ValueInUserUnit" />
+<input class="text" type="text" hidden="@Hidden" size="@Size" @bind="@ValueInUserUnit" />
 
 @code {
     [CascadingParameter]
@@ -64,6 +64,12 @@
 
     [Parameter]
     public PositionDirectionType PositionDirection { get; set; } = PositionDirectionType.Independent;
+
+    [Parameter]
+    public bool Hidden { get; set; }
+
+    [Parameter]
+    public int Size { get; set; }
 
     private bool inhibited_ = false;
 

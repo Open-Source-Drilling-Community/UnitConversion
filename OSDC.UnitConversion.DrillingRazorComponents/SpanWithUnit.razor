@@ -1,6 +1,6 @@
 ﻿@implements IUnitAwareComponent
 
-<span>@ChildContent  @DisplayedValue</span>
+<span hidden="@Hidden">@ChildContent  @DisplayedValue</span>
 
 
 @code {
@@ -36,6 +36,9 @@
     [Parameter]
     public PositionDirectionType PositionDirection { get; set; } = PositionDirectionType.Independent;
 
+    [Parameter]
+    public bool Hidden { get; set; }
+
     private string DisplayedValue { get; set; }
 
     private double? SIValue_;
@@ -55,6 +58,7 @@
     {
         if (Parent != null && !string.IsNullOrEmpty(Parent.UnitChoiceSetName))
         {
+            DisplayedValue = Parent.FromSI(SIValue, QuantityName, UseUnitLabel);
             switch (DrillingSignalReference)
             {
                 case DrillingSignalReferenceType.Pressure:

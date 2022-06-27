@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @implements IDateTimeReferenceAwareComponent
 
-<input class="text" type="text" @bind="@ValueInDefinedTimeReference" />
+<input class="text" type="text" hidden="@Hidden" size="@Size" @bind="@ValueInDefinedTimeReference" />
 
 @code {
     [CascadingParameter]
@@ -55,6 +55,12 @@
 
     [Parameter]
     public EventCallback<DateTime?> UTCValueNullableChanged { get; set; }
+
+    [Parameter]
+    public bool Hidden { get; set; }
+
+    [Parameter]
+    public int Size { get; set; }
 
     private bool inhibited_ = false;
 

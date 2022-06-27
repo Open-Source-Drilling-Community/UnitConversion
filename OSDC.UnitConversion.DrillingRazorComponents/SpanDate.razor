@@ -1,6 +1,6 @@
 ﻿@implements IDateTimeReferenceAwareComponent
 
-<span>@ChildContent @DisplayedValue</span>
+<span hidden="@Hidden">@ChildContent @DisplayedValue</span>
 
 @code {
     [CascadingParameter]
@@ -22,6 +22,9 @@
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool Hidden { get; set; }
 
     private string DisplayedValue { get; set; }
 
