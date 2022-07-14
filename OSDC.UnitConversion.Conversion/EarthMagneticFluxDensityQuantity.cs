@@ -4,26 +4,26 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class EarthMagneticFluxDencityQuantity : MagneticFluxDensityQuantity
+    public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
     {
         public override double? MeaningFullPrecisionInSI { get; } = 0.00001;
 
-        private static EarthMagneticFluxDencityQuantity instance_ = null;
+        private static EarthMagneticFluxDensityQuantity instance_ = null;
 
-        public static new EarthMagneticFluxDencityQuantity Instance
+        public static new EarthMagneticFluxDensityQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new EarthMagneticFluxDencityQuantity();
+                    instance_ = new EarthMagneticFluxDensityQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        public EarthMagneticFluxDencityQuantity() : base()
+        public EarthMagneticFluxDensityQuantity() : base()
         {
             Name = "EarthMagneticFluxDensity";
             ID = new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7");

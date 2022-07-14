@@ -20,7 +20,6 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
             dataUnitConversionSetManager_ = new DataUnitConversionSetManager(
                 loggerFactory,
                 new DrillingUnitChoiceSetManager(loggerFactory));
-            DatabaseCleaner.Instance.Activate();
         }
 
         // GET api/DataUnitConversionSets

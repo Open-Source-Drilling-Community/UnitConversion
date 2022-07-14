@@ -642,7 +642,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class EarthMagneticFluxDencityQuantity : MagneticFluxDensityQuantity
+  public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
   {
     public new enum UnitChoicesEnum 
       {

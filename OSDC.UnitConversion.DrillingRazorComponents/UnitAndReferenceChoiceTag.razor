@@ -236,6 +236,11 @@ else
                 !string.IsNullOrEmpty(HttpBasePath) &&
                 !string.IsNullOrEmpty(HttpController))
             {
+                //Case where the child-Blazor-component ("razor component") of UnitAndReferenceChoiceTag has defined its own additional DrillingUnitChoiceSets
+                //    - these need to be rendered by the parent component (this)
+                //    - then, the child component needs to tell its parent how to retrieve this information through the use of the Blazor component [Parameter] attribute
+                //    - the route to the microservice: HttpHost and HttBasePath
+                //    - the endpoint to reach the corresponding CRUD GET request: HttpController (string)
                 httpClient = new HttpClient
                 {
                     BaseAddress = new Uri(HttpHost + HttpBasePath)
@@ -260,6 +265,7 @@ else
             }
             else
             {
+                //Default case where the child razor component is provided the default UnitChoiceSet
                 choices = new List<Tuple<Guid, string>>();
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
