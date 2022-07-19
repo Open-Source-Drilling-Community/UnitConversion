@@ -133,7 +133,7 @@ else
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
             logger.LogInformation("Trying to load DrillingUnitChoiceSets from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
-            unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+            unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
             physicalQuantities_ = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
         }
         catch (Exception ex)
@@ -159,7 +159,7 @@ else
     {
         if (i >= 0 && i < unitChoiceSets_.Count && physicalQuantities_ != null)
         {
-            currentDetails_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger, unitChoiceSets_[i].Item1);
+            currentDetails_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger, unitChoiceSets_[i].Item1);
             if (currentDetails_ != null && currentDetails_.Choices != null)
             {
                 isHiddenUpdate = currentDetails_.IsDefault;
@@ -208,7 +208,7 @@ else
             bool success = await APIUtils.DeleteDrillingUnitConversionSet(httpClient, logger, unitChoiceSets_[i].Item1);
             if (success)
             {
-                unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+                unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
                 await InvokeAsync(() => { StateHasChanged(); });
             }
         }
@@ -243,7 +243,7 @@ else
                 if (success)
                 {
                     Cancel();
-                    unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+                    unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
                     await InvokeAsync(() => { StateHasChanged(); });
                 }
             }
@@ -289,7 +289,7 @@ else
                 }
             }
             bool success = await APIUtils.PutDrillingUnitConversionSet(httpClient, logger, currentDetails_);
-            unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+            unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
             CancelDetails();
         }
     }

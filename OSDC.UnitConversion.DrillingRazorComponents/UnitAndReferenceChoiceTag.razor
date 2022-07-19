@@ -231,7 +231,7 @@ else
             dateReferences.Add(new Tuple<Guid, string>(new Guid("f0ee13c7-2b9b-46e1-8d57-3fd6070f8a9b"), "Local Time"));
 
             unitChoiceSets = new List<Tuple<Guid, string>>();
-            List<Tuple<Guid, string>> choices = null;
+            List<Tuple<Guid, string>> choices = new();
             if (!string.IsNullOrEmpty(HttpHost) &&
                 !string.IsNullOrEmpty(HttpBasePath) &&
                 !string.IsNullOrEmpty(HttpController))
@@ -242,20 +242,35 @@ else
                 //    - info about the route to the microservice: HttpHost and HttBasePath
                 //    - info about the endpoint of the corresponding CRUD GET request: HttpController (string)
                 httpClient = new HttpClient
-                {
-                    BaseAddress = new Uri(HttpHost + HttpBasePath)
-                };
+                    {
+                        BaseAddress = new Uri(HttpHost + HttpBasePath)
+                    };
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
+                    //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
                     var a = await httpClient.GetAsync(HttpController);
                     if (a.IsSuccessStatusCode)
                     {
                         string str = await a.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Tuple<Guid, string>>>(str);
+                            List<Guid> ids = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(str);
+                            foreach (Guid ID in ids)
+                            {
+                                //names of the existing UnitChoiceSets are retrieved in a separate call (although it could be done with the first one)
+                                a = await httpClient.GetAsync(HttpController + "/" + ID.ToString());
+                                if (a.IsSuccessStatusCode)
+                                {
+                                    str = await a.Content.ReadAsStringAsync();
+                                    if (!string.IsNullOrEmpty(str))
+                                    {
+                                        DrillingUnitChoiceSet dUnitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
+                                        choices.Add(new Tuple<Guid, string>(ID, dUnitChoiceSet.Name));
+                                    }
+                                }
+                            }
                         }
                     }
                 }

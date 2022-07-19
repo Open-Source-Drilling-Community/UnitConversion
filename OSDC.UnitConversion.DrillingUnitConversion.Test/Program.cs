@@ -358,7 +358,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
 
             #region readIDs
             // Test DataUnitConversionSets #7: check that the new calculationData has been deleted
-            List<Tuple<Guid, string>> updatedDrillingUnitChoiceSetIDs = null;
+            List<Guid> updatedDrillingUnitChoiceSetIDs = null;
             a = client.GetAsync("DrillingUnitChoiceSets");
             a.Wait();
             message = a.Result;
@@ -367,13 +367,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    updatedDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<List<Tuple<Guid, string>>>(str);
+                    updatedDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<List<Guid>>(str);
                     if (updatedDrillingUnitChoiceSetIDs != null)
                     {
                         bool found = false;
-                        foreach (Tuple<Guid, string> choice in updatedDrillingUnitChoiceSetIDs)
+                        foreach (Guid ID in updatedDrillingUnitChoiceSetIDs)
                         {
-                            if (choice != null && choice.Item1 == newId)
+                            if (ID != null && ID.Equals(newId))
                             {
                                 found = true;
                                 break;
@@ -415,9 +415,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             if (updatedDrillingUnitChoiceSetIDs != null)
             {
                 results = new List<UnitChoiceSet>();
-                foreach (Tuple<Guid, string> ID in updatedDrillingUnitChoiceSetIDs)
+                foreach (Guid ID in updatedDrillingUnitChoiceSetIDs)
                 {
-                    a = client.GetAsync("DrillingUnitChoiceSets/" + ID.Item1.ToString());
+                    a = client.GetAsync("DrillingUnitChoiceSets/" + ID.ToString());
                     a.Wait();
                     message = a.Result;
                     if (message.IsSuccessStatusCode)

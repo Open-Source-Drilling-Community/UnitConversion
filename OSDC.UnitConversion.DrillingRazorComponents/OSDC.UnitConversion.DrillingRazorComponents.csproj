@@ -8,7 +8,7 @@
     <Description>A package with Blazor components to manage unit and reference conversions.</Description>
     <PackageProjectUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</RepositoryUrl>
-    <Version>1.0.10</Version>
+    <Version>1.0.11</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -23,7 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.17" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.4" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.5" />
   </ItemGroup>
 
 </Project>

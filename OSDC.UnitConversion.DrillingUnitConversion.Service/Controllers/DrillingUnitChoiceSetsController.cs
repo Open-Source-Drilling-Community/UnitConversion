@@ -22,7 +22,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         // GET api/DrillingUnitChoiceSets
         [HttpGet]
-        public IEnumerable<Tuple<Guid, string, string, bool>> Get()
+        public IEnumerable<Guid> Get()
         {
             var ids = drillingUnitChoiceSetManager_.GetIDs();
             return ids;

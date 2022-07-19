@@ -20,7 +20,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             connection_ = SQLConnectionManager.GetConnection(loggerFactory);
 
             // first initiate a call to the database to make sure all its tables are initialized
-            List<Tuple<Guid, string, string, bool>> unitChoiceSetIDs = GetIDs();
+            List<Guid> unitChoiceSetIDs = GetIDs();
 
             // then create some default DrillingUnitChoiceSets'
             if (!unitChoiceSetIDs.Any())
@@ -117,22 +117,21 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             return count >= 1;
         }
 
-        public List<Tuple<Guid, string, string, bool>> GetIDs()
+        public List<Guid> GetIDs()
         {
-            List<Tuple<Guid, string, string, bool>> ids = new List<Tuple<Guid, string, string, bool>>();
+            List<Guid> ids = new List<Guid>();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
-                command.CommandText = @"SELECT ID, Name, Description, IsDefault FROM DrillingUnitChoiceSetsTable";
+                command.CommandText = @"SELECT ID FROM DrillingUnitChoiceSetsTable";
                 try
                 {
                     using var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                        if (!reader.IsDBNull(0))
                         {
-                            int res = reader.GetInt32(3);
-                            ids.Add(new Tuple<Guid, string, string, bool>(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), res != 0));
+                            ids.Add(reader.GetGuid(0));
                         }
                     }
                 }
