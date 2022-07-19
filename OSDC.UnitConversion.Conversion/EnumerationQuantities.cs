@@ -18,7 +18,7 @@ namespace OSDC.UnitConversion.Conversion
          DensityGradientTemperature,  // DensityGradientTemperature
          Density,  // Density
          DensitySpeed,  // DensitySpeed
-         DimensionLess,  // DimensionLess
+         Dimensionless,  // Dimensionless
          DynamicViscosity,  // DynamicViscosity
          EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
          Capacitance,  // Capacitance
@@ -71,7 +71,7 @@ namespace OSDC.UnitConversion.Conversion
          Torque,  // Torque
          YoungModulus,  // YoungModulus
          StandardProportion,  // StandardProportion
-         StandardDimensionLess,  // StandardDimensionLess
+         StandardDimensionless,  // StandardDimensionless
          StandardLength // Standard Length
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
@@ -87,7 +87,7 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.DensityGradientTemperature, new Guid("2d788f1e-db66-49c3-8eb6-313152cd8e3c")},  // DensityGradientTemperature
          {QuantityEnum.Density, new Guid("5754358c-9359-4bb0-8eb4-08602d19c6af")},  // Density
          {QuantityEnum.DensitySpeed, new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11")},  // DensitySpeed
-         {QuantityEnum.DimensionLess, new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43")},  // DimensionLess
+         {QuantityEnum.Dimensionless, new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43")},  // Dimensionless
          {QuantityEnum.DynamicViscosity, new Guid("c830517f-5915-4a8f-ba83-bd102c0a935f")},  // DynamicViscosity
          {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
          {QuantityEnum.Capacitance, new Guid("9b284ff7-57bb-4ee0-bdbc-5fb7b80f3ae3")},  // Capacitance
@@ -140,7 +140,7 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Torque, new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4")},  // Torque
          {QuantityEnum.YoungModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // YoungModulus
          {QuantityEnum.StandardProportion, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // StandardProportion
-         {QuantityEnum.StandardDimensionLess, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionLess
+         {QuantityEnum.StandardDimensionless, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionless
          {QuantityEnum.StandardLength, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")} // Standard Length
     };
   }
@@ -588,15 +588,15 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DimensionLessQuantity : DerivedPhysicalQuantity
+  public partial class DimensionlessQuantity : DerivedPhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         DimensionLess // DimensionLess
+         Dimensionless // Dimensionless
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.DimensionLess, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // DimensionLess
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // Dimensionless
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2584,15 +2584,15 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class StandardDimensionLessQuantity : DimensionLessQuantity
+  public partial class StandardDimensionlessQuantity : DimensionlessQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         DimensionLess // DimensionLess
+         Dimensionless // Dimensionless
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.DimensionLess, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // DimensionLess
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // Dimensionless
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

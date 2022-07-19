@@ -84,11 +84,11 @@
       <FileName>DensityRateOfChangeQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DimensionLessQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.DimensionlessQuantity" Collapsed="true">
     <Position X="9.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAIAAAAAAAAAAgAAAABAAAAgQAAAACAAAAA=</HashCode>
-      <FileName>DimensionLessQuantity.cs</FileName>
+      <FileName>DimensionlessQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.DynamicViscosityQuantity" Collapsed="true">
@@ -469,7 +469,7 @@
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.StandardDimensionLessQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.StandardDimensionlessQuantity" Collapsed="true">
     <Position X="9.5" Y="2" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
