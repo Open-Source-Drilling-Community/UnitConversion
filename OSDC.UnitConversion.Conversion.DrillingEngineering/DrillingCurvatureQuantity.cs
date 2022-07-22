@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class DrillingCurvatureQuantity : CurvatureQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 5.817764173314432E-06;
+        public override double? MeaningfulPrecisionInSI { get; } = 5.817764173314432E-06;
 
         private static DrillingCurvatureQuantity instance_ = null;
 

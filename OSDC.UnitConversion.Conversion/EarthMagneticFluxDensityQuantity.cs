@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.00001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.00001;
 
         private static EarthMagneticFluxDensityQuantity instance_ = null;
 

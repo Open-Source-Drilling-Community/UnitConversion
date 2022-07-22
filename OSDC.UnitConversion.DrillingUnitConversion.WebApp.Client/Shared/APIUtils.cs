@@ -285,21 +285,21 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
         public static async Task<List<PhysicalQuantity>> LoadDrillingPhysicalQuantities(HttpClient httpClient, ILogger logger)
         {
             bool success = false;
-            List<PhysicalQuantity> drillingPhysicalQuantities = new List<PhysicalQuantity>();
+            List<PhysicalQuantity> drillingPhysicalQuantities = new();
             try
             {
                 var a = await httpClient.GetAsync("DrillingPhysicalQuantities");
                 if (a.IsSuccessStatusCode)
                 {
-                    Tuple<Guid, string>[] ids = null;
+                    Guid[] ids = null;
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        ids = Newtonsoft.Json.JsonConvert.DeserializeObject<Tuple<Guid,string>[]>(str);
+                        ids = Newtonsoft.Json.JsonConvert.DeserializeObject<Guid[]>(str);
                     }
                     for (int i = 0; i < ids.Length; i++)
                     {
-                        a = await httpClient.GetAsync("DrillingPhysicalQuantities/" + ids[i].Item1.ToString());
+                        a = await httpClient.GetAsync("DrillingPhysicalQuantities/" + ids[i].ToString());
                         if (a.IsSuccessStatusCode && a.Content != null)
                         {
                             str = await a.Content.ReadAsStringAsync();
@@ -362,38 +362,6 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             {
                 logger.LogInformation("Loaded QuantityDataConversions successfully");
                 return quantityDataConversionIDs;
-            }
-            else
-            {
-                logger.LogWarning("Impossible to load QuantityDataConversions");
-                return null;
-            }
-        }
-        public static async Task<List<Tuple<Guid, string>>> LoadQuantityChoices(HttpClient httpClient, ILogger logger)
-        {
-            bool success = false;
-            List<Tuple<Guid, string>> choices = null;
-            try
-            {
-                var a = await httpClient.GetAsync("DrillingPhysicalQuantities");
-                if (a.IsSuccessStatusCode)
-                {
-                    string str = await a.Content.ReadAsStringAsync();
-                    if (!string.IsNullOrEmpty(str))
-                    {
-                        choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Tuple<Guid, string>>>(str);
-                        success = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Impossible to load QuantityDataConversions");
-            }
-            if (success)
-            {
-                logger.LogInformation("Loaded QuantityDataConversions successfully");
-                return choices;
             }
             else
             {

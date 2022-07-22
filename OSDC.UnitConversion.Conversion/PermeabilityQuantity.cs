@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class PermeabilityQuantity : AreaQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.0000000001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.0000000001;
         private static PermeabilityQuantity instance_ = null;
 
         public static new PermeabilityQuantity Instance

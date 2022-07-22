@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class FormationStrengthQuantity : MaterialStrengthQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 10000;
+        public override double? MeaningfulPrecisionInSI { get; } = 10000;
         private static FormationStrengthQuantity instance_ = null;
 
         public static new FormationStrengthQuantity Instance

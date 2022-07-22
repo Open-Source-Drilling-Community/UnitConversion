@@ -89,12 +89,12 @@ namespace OSDC.UnitConversion.Conversion
             return (val - ConversionBiasFromSI) / ConversionFactorFromSI;
         }
 
-        public string FromSI(double val, double? meaningfullPrecisionInSI)
+        public string FromSI(double val, double? meaningfulPrecisionInSI)
         {
             double valInUnit = FromSI(val);
-            if (meaningfullPrecisionInSI != null)
+            if (meaningfulPrecisionInSI != null)
             {
-                int digits = DigitAccuracy(FromSI((double)meaningfullPrecisionInSI));
+                int digits = DigitAccuracy(FromSI((double)meaningfulPrecisionInSI));
                 return valInUnit.ToString("N" + ((digits >= 0) ? digits : 0), CultureInfo.InvariantCulture.NumberFormat);
             }
             else
@@ -103,12 +103,12 @@ namespace OSDC.UnitConversion.Conversion
             }
         }
 
-        public string ToSI(double val, double? meaningfullPrecisionInSI)
+        public string ToSI(double val, double? meaningfulPrecisionInSI)
         {
             double valInSI = ToSI(val);
-            if (meaningfullPrecisionInSI != null)
+            if (meaningfulPrecisionInSI != null)
             {
-                int digits = DigitAccuracy((double)meaningfullPrecisionInSI);
+                int digits = DigitAccuracy((double)meaningfulPrecisionInSI);
                 return valInSI.ToString("N" + ((digits >= 0) ? digits : 0), CultureInfo.InvariantCulture.NumberFormat);
             }
             else

@@ -119,7 +119,7 @@ else
     private List<Tuple<Guid, string, string, bool>> unitChoiceSets_ = null;
     private DrillingUnitChoiceSet currentDetails_ = null;
     private List<QuantityUnitChoiceAssociation> quantityUnitAssociations_ = null;
-    private List<PhysicalQuantity> physicalQuantities_ = null;
+    private List<PhysicalQuantity> drillingPhysicalQuantities_ = null;
     private bool isHiddenUpdate = true;
     private bool isHiddenEdit = false;
 
@@ -129,12 +129,12 @@ else
         {
             unitChoiceSets_ = new List<Tuple<Guid, string, string, bool>>();
             quantityUnitAssociations_ = new List<QuantityUnitChoiceAssociation>();
-            physicalQuantities_ = new List<PhysicalQuantity>();
+            drillingPhysicalQuantities_ = new List<PhysicalQuantity>();
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
             logger.LogInformation("Trying to load DrillingUnitChoiceSets from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
             unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
-            physicalQuantities_ = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
+            drillingPhysicalQuantities_ = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
         }
         catch (Exception ex)
         {
@@ -157,7 +157,7 @@ else
     }
     private async void Details(int i)
     {
-        if (i >= 0 && i < unitChoiceSets_.Count && physicalQuantities_ != null)
+        if (i >= 0 && i < unitChoiceSets_.Count && drillingPhysicalQuantities_ != null)
         {
             currentDetails_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger, unitChoiceSets_[i].Item1);
             if (currentDetails_ != null && currentDetails_.Choices != null)
@@ -168,7 +168,7 @@ else
                 foreach (string key in currentDetails_.Choices.Keys)
                 {
                     PhysicalQuantity quantity = null;
-                    foreach (PhysicalQuantity q in physicalQuantities_)
+                    foreach (PhysicalQuantity q in drillingPhysicalQuantities_)
                     {
                         if (q != null && q.ID.ToString() == key)
                         {
@@ -217,10 +217,10 @@ else
     {
         if (!string.IsNullOrEmpty(UnitConversionSetName))
         {
-            if (physicalQuantities_ != null)
+            if (drillingPhysicalQuantities_ != null)
             {
                 Dictionary<string, string> dict = new Dictionary<string, string>();
-                foreach (PhysicalQuantity quantity in physicalQuantities_)
+                foreach (PhysicalQuantity quantity in drillingPhysicalQuantities_)
                 {
                     if (quantity != null)
                     {

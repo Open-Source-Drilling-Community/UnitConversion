@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class StandardDimensionlessQuantity : DimensionlessQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.001;
 
         private static StandardDimensionlessQuantity instance_ = null;
 

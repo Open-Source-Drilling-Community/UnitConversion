@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class GasShowQuantity : ProportionQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 1E-07;
+        public override double? MeaningfulPrecisionInSI { get; } = 1E-07;
         private static GasShowQuantity instance_ = null;
 
         public static new GasShowQuantity Instance

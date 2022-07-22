@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class PoreDiameterQuantity : SmallLengthQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.0000001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.0000001;
 
         private static PoreDiameterQuantity instance_ = null;
 

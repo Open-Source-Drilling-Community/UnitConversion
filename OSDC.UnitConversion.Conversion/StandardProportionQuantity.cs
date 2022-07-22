@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class StandardProportionQuantity : ProportionQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.001;
 
         private static StandardProportionQuantity instance_ = null;
 

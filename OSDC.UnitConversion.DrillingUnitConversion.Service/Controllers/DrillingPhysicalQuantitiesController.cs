@@ -21,17 +21,17 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         // GET api/DrillingPhysicalQuantities
         [HttpGet]
-        public IEnumerable<Tuple<Guid, string>> Get(int option)
+        public IEnumerable<Guid> Get(int option)
         {
             if (option == 0)
             {
                 List<PhysicalQuantity> quantities = DrillingPhysicalQuantity.AvailableQuantities;
-                List<Tuple<Guid, string>> ids = new List<Tuple<Guid, string>>();
+                List<Guid> ids = new List<Guid>();
                 if (quantities != null)
                 {
                     foreach (PhysicalQuantity quantity in quantities)
                     {
-                        ids.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
+                        ids.Add(quantity.ID);
                     }
                 }
                 return ids;

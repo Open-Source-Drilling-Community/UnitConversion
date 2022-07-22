@@ -319,16 +319,16 @@ namespace OSDC.UnitConversion.Conversion
 
         public string FromSIString(string physicalQuantityName, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = GetQuantity(physicalQuantityName);
             if (quantity != null)
             {
-                meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+                meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             }
             UnitChoice choice = GetChoice(physicalQuantityName);
             if (choice != null)
             {
-                return choice.FromSI(val, meaningfullPrecision);
+                return choice.FromSI(val, meaningfulPrecision);
             }
             else
             {
@@ -338,16 +338,16 @@ namespace OSDC.UnitConversion.Conversion
 
         public string FromSIString(Guid physicalQuantityID, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
             if (quantity != null)
             {
-                meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+                meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             }
             UnitChoice choice = GetChoice(physicalQuantityID);
             if (choice != null)
             {
-                return choice.FromSI(val, meaningfullPrecision);
+                return choice.FromSI(val, meaningfulPrecision);
             }
             else
             {
@@ -357,16 +357,16 @@ namespace OSDC.UnitConversion.Conversion
 
         public string FromSIString(PhysicalQuantity.QuantityEnum physicalQuantityID, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
             if (quantity != null)
             {
-                meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+                meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             }
             UnitChoice choice = GetChoice(physicalQuantityID);
             if (choice != null)
             {
-                return choice.FromSI(val, meaningfullPrecision);
+                return choice.FromSI(val, meaningfulPrecision);
             }
             else
             {
@@ -414,16 +414,16 @@ namespace OSDC.UnitConversion.Conversion
         }
         public string ToSIString(string physicalQuantityName, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = GetQuantity(physicalQuantityName);
             if (quantity != null)
             {
-                meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+                meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             }
             UnitChoice choice = GetChoice(physicalQuantityName);
             if (choice != null)
             {
-                return choice.ToSI(val, meaningfullPrecision);
+                return choice.ToSI(val, meaningfulPrecision);
             }
             else
             {
@@ -433,16 +433,16 @@ namespace OSDC.UnitConversion.Conversion
 
         public string ToSIString(Guid physicalQuantityID, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
             if (quantity != null)
             {
-                meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+                meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             }
             UnitChoice choice = GetChoice(physicalQuantityID);
             if (choice != null)
             {
-                return choice.ToSI(val, meaningfullPrecision);
+                return choice.ToSI(val, meaningfulPrecision);
             }
             else
             {
@@ -452,16 +452,16 @@ namespace OSDC.UnitConversion.Conversion
 
         public string ToSIString(PhysicalQuantity.QuantityEnum physicalQuantityID, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
             if (quantity != null)
             {
-                meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+                meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             }
             UnitChoice choice = GetChoice(physicalQuantityID);
             if (choice != null)
             {
-                return choice.ToSI(val, meaningfullPrecision);
+                return choice.ToSI(val, meaningfulPrecision);
             }
             else
             {

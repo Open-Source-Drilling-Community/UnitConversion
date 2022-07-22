@@ -12,7 +12,7 @@ namespace OSDC.UnitConversion.Conversion
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;
         public override double ElectricCurrentDimension { get; } = -1;
-        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.01;
         private static ElectricTensionQuantity instance_ = null;
 
         public static ElectricTensionQuantity Instance

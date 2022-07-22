@@ -50,7 +50,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
 
             #region readIDs
             // Test DrillingPhysicalQuantities #1: read the IDs
-            Tuple<Guid, string>[] drillingPhysicalQuantityIDs = null;
+            Guid[] drillingPhysicalQuantityIDs = null;
             var a = client.GetAsync("DrillingPhysicalQuantities");
             a.Wait();
             message = a.Result;
@@ -59,7 +59,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    drillingPhysicalQuantityIDs = JsonConvert.DeserializeObject<Tuple<Guid, string>[]>(str);
+                    drillingPhysicalQuantityIDs = JsonConvert.DeserializeObject<Guid[]>(str);
                     if (drillingPhysicalQuantityIDs != null)
                     {
                         Console.WriteLine("Test DrillingPhysicalQuantities #1: read IDs: success. IDs: ");
@@ -92,9 +92,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             if (drillingPhysicalQuantityIDs != null)
             {
                 results = new List<PhysicalQuantity>();
-                foreach (Tuple<Guid, string> tuple in drillingPhysicalQuantityIDs)
+                foreach (Guid ID in drillingPhysicalQuantityIDs)
                 {
-                    a = client.GetAsync("DrillingPhysicalQuantities/" + tuple.Item1.ToString());
+                    a = client.GetAsync("DrillingPhysicalQuantities/" + ID.ToString());
                     a.Wait();
                     message = a.Result;
                     if (message.IsSuccessStatusCode)

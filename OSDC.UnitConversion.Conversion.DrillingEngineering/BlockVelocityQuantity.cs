@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class BlockVelocityQuantity : VelocityQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.01;
         private static BlockVelocityQuantity instance_ = null;
 
         public static new BlockVelocityQuantity Instance

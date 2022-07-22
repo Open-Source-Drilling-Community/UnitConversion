@@ -274,12 +274,12 @@ else
                     unitChoiceSets.Add(id);
                 }
             }
-            List<Tuple<Guid, string>> quantities = await APIUtils.LoadQuantityChoices(httpClient, logger);
+            List<PhysicalQuantity> quantities = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
             if (quantities != null)
             {
-                foreach (Tuple<Guid, string> id in quantities)
+                foreach (PhysicalQuantity quantity in quantities)
                 {
-                    quantityNames.Add(id);
+                    quantityNames.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
                 }
             }
             await InvokeAsync(() => { StateHasChanged(); });

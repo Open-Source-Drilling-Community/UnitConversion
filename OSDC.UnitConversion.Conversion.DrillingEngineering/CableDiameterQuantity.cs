@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class CableDiameterQuantity : SmallLengthQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.0005;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.0005;
 
         private static CableDiameterQuantity instance_ = null;
 

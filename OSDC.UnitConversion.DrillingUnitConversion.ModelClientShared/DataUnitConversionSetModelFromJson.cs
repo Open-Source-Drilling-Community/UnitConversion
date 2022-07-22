@@ -146,8 +146,8 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared
         [Newtonsoft.Json.JsonProperty("SolidAngleDimension", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double SolidAngleDimension { get; set; }
     
-        [Newtonsoft.Json.JsonProperty("MeaningFullPrecisionInSI", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double? MeaningFullPrecisionInSI { get; set; }
+        [Newtonsoft.Json.JsonProperty("MeaningfulPrecisionInSI", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double? MeaningfulPrecisionInSI { get; set; }
     
     
     }

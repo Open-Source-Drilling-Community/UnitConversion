@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class DrillingTemperatureQuantity : TemperatureQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.01;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.01;
         private static DrillingTemperatureQuantity instance_ = null;
 
         public static new DrillingTemperatureQuantity Instance

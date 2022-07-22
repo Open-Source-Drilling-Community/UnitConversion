@@ -495,13 +495,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         }
         public string FromSIString(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
         {
-            double? meaningfullPrecision = null;
+            double? meaningfulPrecision = null;
             PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(physicalQuantityID);
-            meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
+            meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
             UnitChoice choice = GetChoice(physicalQuantityID);
             if (choice != null)
             {
-                return choice.FromSI(val, meaningfullPrecision);
+                return choice.FromSI(val, meaningfulPrecision);
             }
             else
             {

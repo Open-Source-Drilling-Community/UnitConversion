@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class DrillingAngleVariationGradientQuantity : AngleVariationGradientQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.00017453292519943296;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.00017453292519943296;
 
         private static DrillingAngleVariationGradientQuantity instance_ = null;
 

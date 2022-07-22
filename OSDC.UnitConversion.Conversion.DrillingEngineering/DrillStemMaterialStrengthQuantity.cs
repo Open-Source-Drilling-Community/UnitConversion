@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class DrillStemMaterialStrengthQuantity : MaterialStrengthQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 10000;
+        public override double? MeaningfulPrecisionInSI { get; } = 10000;
         private static DrillStemMaterialStrengthQuantity instance_ = null;
 
         public static new DrillStemMaterialStrengthQuantity Instance

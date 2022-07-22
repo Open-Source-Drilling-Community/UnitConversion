@@ -89,10 +89,6 @@ else
     //http client
     private HttpClient httpClient;
 
-    //html booleans for dynamic visualization
-    private bool IsHidMainPanel = false;
-
-    private Guid[] IDs = null;
     private List<Tuple<Guid, string>> quantityChoices_ = null;
     private List<Tuple<Guid, string>> quantityUnitChoices_ = null;
     private PhysicalQuantity quantity = null;
@@ -187,11 +183,10 @@ else
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
             logger.LogInformation("Trying to load QuantityDataConversions from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
-            IDs = await APIUtils.LoadQuantityDataConversions(httpClient, logger);
-            List<Tuple<Guid, string>> quantityChoices = await APIUtils.LoadQuantityChoices(httpClient, logger);
-            foreach (Tuple<Guid, string> choice in quantityChoices)
+            List<PhysicalQuantity> quantities = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
+            foreach (PhysicalQuantity quantity in quantities)
             {
-                QuantityChoices.Add(choice);
+                QuantityChoices.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
             }
         }
         catch (Exception ex)
