@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using System;
 using System.Collections.Generic;
@@ -203,6 +205,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         {
             if (drillingUnitChoiceSet != null && drillingUnitChoiceSet.ID != null && !drillingUnitChoiceSet.ID.Equals(Guid.Empty))
             {
+                // 1) the custom DrillingUnitChoiceSet is added to the database
                 if (connection_ != null)
                 {
                     lock (lock_)
@@ -233,7 +236,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                             logger_.LogError(ex, "Impossible to add the DrillingUnitChoiceSet into DrillingUnitChoiceSetsTable");
                             success = false;
                         }
-                        // Finalizing
+                        // Finalizing addition to the database
                         if (success)
                         {
                             transaction.Commit();
@@ -243,7 +246,8 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         {
                             transaction.Rollback();
                         }
-                        return success;
+                        // 2) the DrillingUnitChoiceSet must be statically added to the DrillingUnitChoiceSet class to be later accessed by consumers like class DataUnitConversionSet which calls the static method DrillingUnitChoiceSet.Get()
+                        return (success && DrillingUnitChoiceSet.Add(drillingUnitChoiceSet));
                     }
                 }
                 else
@@ -327,6 +331,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         {
             if (guid != null && !guid.Equals(Guid.Empty) && drillingUnitChoiceSet != null && guid.Equals(drillingUnitChoiceSet.ID))
             {
+                // 1) the custom DrillingUnitChoiceSet is updated in the database
                 if (connection_ != null)
                 {
                     lock (lock_)
@@ -360,13 +365,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         {
                             transaction.Commit();
                             logger_.LogInformation("Updated the DrillingUnitChoiceSet of given ID successfully");
-                            return true;
                         }
                         else
                         {
                             transaction.Rollback();
-                            return false;
                         }
+                        // 2) the DrillingUnitChoiceSet must be statically updated in the DrillingUnitChoiceSet class to be later accessed by consumers like class DataUnitConversionSet which calls the static method DrillingUnitChoiceSet.Get()
+                        return (success && DrillingUnitChoiceSet.Update(drillingUnitChoiceSet));
                     }
                 }
                 else

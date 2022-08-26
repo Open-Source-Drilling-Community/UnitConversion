@@ -330,6 +330,44 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             }
         }
 
+        /// <summary>
+        /// Adds the given DrillingUnitChoiceSet to the static Dictionary of available DrillingUnitChoiceSet
+        /// </summary>
+        /// <param name="drillingUnitChoiceSet"></param>
+        /// <returns>Returns true is effectively added to the static Dictionary, false otherwise</returns>
+        public static bool Add(DrillingUnitChoiceSet drillingUnitChoiceSet)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            if (!unitChoiceSets_.ContainsKey(drillingUnitChoiceSet.ID))
+            {
+                unitChoiceSets_.Add(drillingUnitChoiceSet.ID, drillingUnitChoiceSet);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Updates the given DrillingUnitChoiceSet in the static Dictionary of available DrillingUnitChoiceSet
+        /// </summary>
+        /// <param name="drillingUnitChoiceSet"></param>
+        /// <returns>Returns true is effectively updated in the static Dictionary, false otherwise</returns>
+        public static bool Update(DrillingUnitChoiceSet drillingUnitChoiceSet)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            if (unitChoiceSets_.ContainsKey(drillingUnitChoiceSet.ID))
+            {
+                unitChoiceSets_[drillingUnitChoiceSet.ID] = drillingUnitChoiceSet;
+                return true;
+            }
+            return false;
+        }
+
         private static void Initialize()
         {
             if (unitChoiceSets_ == null)
