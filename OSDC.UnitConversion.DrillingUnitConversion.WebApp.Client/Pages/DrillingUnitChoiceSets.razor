@@ -47,7 +47,9 @@ else
                         <td>@unitChoiceSets_[i].Flags["IsDefault"]</td>
                         <td align="right">
                             <button class="btn btn-primary" hidden="@unitChoiceSets_[local_i].Flags["IsDefault"]" @onclick="@(() => Delete(local_i))">Delete</button>
-                            <button class="btn btn-primary" @onclick="@(() => Details(local_i))">Details</button>
+                            <button class="btn btn-primary" @onclick="@(() => Details(local_i))">
+                                @(@unitChoiceSets_[local_i].Flags["IsDefault"] ? "Details" : "Edit")
+                            </button>
                         </td>
                     </tr>
                 }

@@ -17,7 +17,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         public DrillingPhysicalQuantitiesController(ILoggerFactory loggerFactory)
         {
-            logger_ = loggerFactory.CreateLogger<DataUnitConversionSetsController>();
+            logger_ = loggerFactory.CreateLogger<DrillingPhysicalQuantitiesController>();
         }
 
         // GET api/DrillingPhysicalQuantities
