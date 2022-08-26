@@ -20,7 +20,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             connection_ = SQLConnectionManager.GetConnection(loggerFactory);
 
             // first initiate a call to the database to make sure all its tables are initialized
-            List<Guid> unitChoiceSetIDs = GetIDs();
+            List<MetaID> unitChoiceSetIDs = GetIDs();
 
             // then create some default DrillingUnitChoiceSets'
             if (!unitChoiceSetIDs.Any())
@@ -117,13 +117,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             return count >= 1;
         }
 
-        public List<Guid> GetIDs()
+        public List<MetaID> GetIDs()
         {
-            List<Guid> ids = new List<Guid>();
+            List<MetaID> ids = new List<MetaID>();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
-                command.CommandText = @"SELECT ID FROM DrillingUnitChoiceSetsTable";
+                command.CommandText = @"SELECT ID, Name, Description, IsDefault FROM DrillingUnitChoiceSetsTable";
                 try
                 {
                     using var reader = command.ExecuteReader();
@@ -131,7 +131,12 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                     {
                         if (!reader.IsDBNull(0))
                         {
-                            ids.Add(reader.GetGuid(0));
+                            int res = reader.GetInt32(3);
+                            Dictionary<string, bool> flags = new Dictionary<string, bool>
+                            {
+                                { "IsDefault", res != 0 }
+                            };
+                            ids.Add(new MetaID(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), flags));
                         }
                     }
                 }

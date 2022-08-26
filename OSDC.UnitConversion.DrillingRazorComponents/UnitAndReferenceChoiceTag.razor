@@ -12,9 +12,9 @@ else
                 </td>
                 <td>
                     <select @bind="@UnitChoiceSetName">
-                        @foreach (Tuple<Guid, string> tuple in unitChoiceSets)
+                        @foreach (MetaID metaId in unitChoiceSets)
                         {
-                            <option>@tuple.Item2</option>
+                            <option>@metaId.Name</option>
                         }
                     </select>
                 </td>
@@ -131,7 +131,7 @@ else
     private string azimuthReferenceName;
     private string pressureReferenceName;
     private HttpClient httpClient;
-    private List<Tuple<Guid, string>> unitChoiceSets = new List<Tuple<Guid, string>>();
+    private List<MetaID> unitChoiceSets = new List<MetaID>();
     private List<Tuple<Guid, string>> depthReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> positionReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> azimuthReferences = new List<Tuple<Guid, string>>();
@@ -230,8 +230,8 @@ else
             dateReferences.Add(new Tuple<Guid, string>(new Guid("6fb296eb-eb77-4a6f-82d0-122c74e8d3cf"), "UTC"));
             dateReferences.Add(new Tuple<Guid, string>(new Guid("f0ee13c7-2b9b-46e1-8d57-3fd6070f8a9b"), "Local Time"));
 
-            unitChoiceSets = new List<Tuple<Guid, string>>();
-            List<Tuple<Guid, string>> choices = new();
+            unitChoiceSets = new List<MetaID>();
+            List<MetaID> choices = new();
             if (!string.IsNullOrEmpty(HttpHost) &&
                 !string.IsNullOrEmpty(HttpBasePath) &&
                 !string.IsNullOrEmpty(HttpController))
@@ -256,21 +256,7 @@ else
                         string str = await a.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            List<Guid> ids = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(str);
-                            foreach (Guid ID in ids)
-                            {
-                                //names of the existing UnitChoiceSets are retrieved in a separate call (although it could be done with the first one)
-                                a = await httpClient.GetAsync(HttpController + "/" + ID.ToString());
-                                if (a.IsSuccessStatusCode)
-                                {
-                                    str = await a.Content.ReadAsStringAsync();
-                                    if (!string.IsNullOrEmpty(str))
-                                    {
-                                        DrillingUnitChoiceSet dUnitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
-                                        choices.Add(new Tuple<Guid, string>(ID, dUnitChoiceSet.Name));
-                                    }
-                                }
-                            }
+                            choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaID>>(str);
                         }
                     }
                 }
@@ -281,39 +267,39 @@ else
             else
             {
                 //Default case where the child razor component uses the default UnitChoiceSet
-                choices = new List<Tuple<Guid, string>>();
+                choices = new List<MetaID>();
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
                 {
-                    choices.Add(new Tuple<Guid, string>(SIUnitChoiceSet.ID, SIUnitChoiceSet.Name));
+                    choices.Add(new MetaID(SIUnitChoiceSet.ID, SIUnitChoiceSet.Name));
                 }
                 UnitChoiceSet metricUnitChoiceSet = DrillingUnitChoiceSet.DrillingMetricUnitChoiceSet;
                 if (metricUnitChoiceSet != null)
                 {
-                    choices.Add(new Tuple<Guid, string>(metricUnitChoiceSet.ID, metricUnitChoiceSet.Name));
+                    choices.Add(new MetaID(metricUnitChoiceSet.ID, metricUnitChoiceSet.Name));
                 }
                 UnitChoiceSet imperialUnitChoiceSet = DrillingUnitChoiceSet.DrillingImperialUnitChoiceSet;
                 if (imperialUnitChoiceSet != null)
                 {
-                    choices.Add(new Tuple<Guid, string>(imperialUnitChoiceSet.ID, imperialUnitChoiceSet.Name));
+                    choices.Add(new MetaID(imperialUnitChoiceSet.ID, imperialUnitChoiceSet.Name));
                 }
                 UnitChoiceSet USUnitChoiceSet = DrillingUnitChoiceSet.DrillingUSUnitChoiceSet;
                 if (USUnitChoiceSet != null)
                 {
-                    choices.Add(new Tuple<Guid, string>(USUnitChoiceSet.ID, USUnitChoiceSet.Name));
+                    choices.Add(new MetaID(USUnitChoiceSet.ID, USUnitChoiceSet.Name));
                 }
             }
             string defaultUnitChoiceSetName = null;
             if (choices != null)
             {
                 unitChoiceSets.Clear();
-                choices.Sort((x, y) => Comparer<string>.Default.Compare(x.Item2, y.Item2));
-                foreach (Tuple<Guid, string> id in choices)
+                choices.Sort((x, y) => Comparer<string>.Default.Compare(x.Name, y.Name));
+                foreach (MetaID metaId in choices)
                 {
-                    unitChoiceSets.Add(id);
-                    if (string.IsNullOrEmpty(defaultUnitChoiceSetName) && id.Item1 != Guid.Empty)
+                    unitChoiceSets.Add(metaId);
+                    if (string.IsNullOrEmpty(defaultUnitChoiceSetName) && metaId.ID != Guid.Empty)
                     {
-                        defaultUnitChoiceSetName = id.Item2;
+                        defaultUnitChoiceSetName = metaId.Name;
                     }
                 }
             }
@@ -1397,11 +1383,11 @@ else
         Guid unitChoiceSetID = Guid.Empty;
         if (unitChoiceSets != null)
         {
-            foreach (Tuple<Guid, string> tuple in unitChoiceSets)
+            foreach (MetaID metaId in unitChoiceSets)
             {
-                if (UnitChoiceSetName == tuple.Item2)
+                if (UnitChoiceSetName == metaId.Name)
                 {
-                    unitChoiceSetID = tuple.Item1;
+                    unitChoiceSetID = metaId.ID;
                     break;
                 }
             }

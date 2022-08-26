@@ -113,10 +113,10 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                 return false;
             }
         }
-        public static async Task<List<Tuple<Guid, string, string, bool>>> LoadDrillingUnitChoiceSets(HttpClient httpClient, ILogger logger)
+        public static async Task<List<MetaID>> LoadDrillingUnitChoiceSets(HttpClient httpClient, ILogger logger)
         {
             bool success = false;
-            List<Tuple<Guid, string, string, bool>> unitChoiceSets = new();
+            List<MetaID> unitChoiceSets = new();
             try
             {
                 //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
@@ -126,22 +126,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        List<Guid> ids = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(str);
-                        foreach (Guid ID in ids)
-                        {
-                            //names of the existing UnitChoiceSets are retrieved in a separate call (although it could be done with the first one)
-                            a = await httpClient.GetAsync("DrillingUnitChoiceSets/" + ID.ToString());
-                            if (a.IsSuccessStatusCode)
-                            {
-                                str = await a.Content.ReadAsStringAsync();
-                                if (!string.IsNullOrEmpty(str))
-                                {
-                                    DrillingUnitChoiceSet dUnitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
-                                    unitChoiceSets.Add(new Tuple<Guid, string, string, bool>(
-                                        ID, dUnitChoiceSet.Name, dUnitChoiceSet.Description, dUnitChoiceSet.IsDefault));
-                                }
-                            }
-                        }
+                        unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaID>>(str);
                         success = true;
                     }
                 }
@@ -156,7 +141,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             }
             if (success)
             {
-                unitChoiceSets.Sort((tas1, tas2) => String.Compare(tas1.Item2, tas2.Item2, false, new CultureInfo("nb-NO")));
+                unitChoiceSets.Sort((m1, m2) => String.Compare(m1.Name, m2.Name, false, new CultureInfo("nb-NO")));
                 logger.LogInformation("Loaded UnitConversionSets successfully");
                 return unitChoiceSets;
             }
@@ -291,15 +276,15 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                 var a = await httpClient.GetAsync("DrillingPhysicalQuantities");
                 if (a.IsSuccessStatusCode)
                 {
-                    Guid[] ids = null;
+                    List<MetaID> metaIds = null;
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        ids = Newtonsoft.Json.JsonConvert.DeserializeObject<Guid[]>(str);
+                        metaIds = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaID>>(str);
                     }
-                    for (int i = 0; i < ids.Length; i++)
+                    for (int i = 0; i < metaIds.Count; i++)
                     {
-                        a = await httpClient.GetAsync("DrillingPhysicalQuantities/" + ids[i].ToString());
+                        a = await httpClient.GetAsync("DrillingPhysicalQuantities/" + metaIds[i].ID.ToString());
                         if (a.IsSuccessStatusCode && a.Content != null)
                         {
                             str = await a.Content.ReadAsStringAsync();
@@ -312,7 +297,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                             }
                         }
                     }
-                    if (drillingPhysicalQuantities.Count != ids.Length)
+                    if (drillingPhysicalQuantities.Count != metaIds.Count)
                         throw new Exception("Inconsistent count of DataUnitConversionSet-loaded IDs and loaded DrillingPhysicalQuantities. Verify that the database garbage collector is not set with a too small time update.");
                     success = true;
                 }
@@ -327,7 +312,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             }
             if (success)
             {
-                drillingPhysicalQuantities.Sort((tac1, tac2) => String.Compare(tac1.Name, tac2.Name, false, new CultureInfo("nb-NO")));
+                drillingPhysicalQuantities.Sort((dpq1, dpq2) => String.Compare(dpq1.Name, dpq2.Name, false, new CultureInfo("nb-NO")));
                 logger.LogInformation("Loaded DrillingPhysicalQuantities successfully");
                 return drillingPhysicalQuantities;
             }
@@ -465,10 +450,10 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                 return result;
             }
         }
-        public static async Task<List<Tuple<Guid, string>>> LoadUnitChoiceSets(HttpClient httpClient, ILogger logger)
+        public static async Task<List<MetaID>> LoadUnitChoiceSets(HttpClient httpClient, ILogger logger)
         {
             bool success = false;
-            List<Tuple<Guid, string>> choices = new();
+            List<MetaID> choices = new();
             try
             {
                 //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
@@ -478,21 +463,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        List<Guid> ids = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Guid>>(str);
-                        foreach (Guid ID in ids)
-                        {
-                            //names of the existing UnitChoiceSets are retrieved in a separate call (although it could be done with the first one)
-                            a = await httpClient.GetAsync("DrillingUnitChoiceSets/" + ID.ToString());
-                            if (a.IsSuccessStatusCode)
-                            {
-                                str = await a.Content.ReadAsStringAsync();
-                                if (!string.IsNullOrEmpty(str))
-                                {
-                                    DrillingUnitChoiceSet dUnitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
-                                    choices.Add(new Tuple<Guid, string>(ID, dUnitChoiceSet.Name));
-                                }
-                            }
-                        }
+                        choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaID>>(str);
                         success = true;
                     }
                 }

@@ -50,7 +50,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
 
             #region readIDs
             // Test DrillingPhysicalQuantities #1: read the IDs
-            Guid[] drillingPhysicalQuantityIDs = null;
+            List<MetaID> drillingPhysicalQuantityIDs = null;
             var a = client.GetAsync("DrillingPhysicalQuantities");
             a.Wait();
             message = a.Result;
@@ -59,13 +59,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    drillingPhysicalQuantityIDs = JsonConvert.DeserializeObject<Guid[]>(str);
+                    drillingPhysicalQuantityIDs = JsonConvert.DeserializeObject<List<MetaID>>(str);
                     if (drillingPhysicalQuantityIDs != null)
                     {
                         Console.WriteLine("Test DrillingPhysicalQuantities #1: read IDs: success. IDs: ");
-                        for (int i = 0; i < drillingPhysicalQuantityIDs.Length; i++)
+                        for (int i = 0; i < drillingPhysicalQuantityIDs.Count; i++)
                         {
-                            Console.Write("\t" + drillingPhysicalQuantityIDs[i].ToString());
+                            Console.Write("\t" + drillingPhysicalQuantityIDs[i].ID.ToString());
                         }
                         Console.WriteLine();
                     }
@@ -92,9 +92,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             if (drillingPhysicalQuantityIDs != null)
             {
                 results = new List<PhysicalQuantity>();
-                foreach (Guid ID in drillingPhysicalQuantityIDs)
+                foreach (MetaID metaId in drillingPhysicalQuantityIDs)
                 {
-                    a = client.GetAsync("DrillingPhysicalQuantities/" + ID.ToString());
+                    a = client.GetAsync("DrillingPhysicalQuantities/" + metaId.ID.ToString());
                     a.Wait();
                     message = a.Result;
                     if (message.IsSuccessStatusCode)
@@ -358,7 +358,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
 
             #region readIDs
             // Test DataUnitConversionSets #7: check that the new calculationData has been deleted
-            List<Guid> updatedDrillingUnitChoiceSetIDs = null;
+            List<MetaID> updatedDrillingUnitChoiceSetIDs = null;
             a = client.GetAsync("DrillingUnitChoiceSets");
             a.Wait();
             message = a.Result;
@@ -367,13 +367,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    updatedDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<List<Guid>>(str);
+                    updatedDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<List<MetaID>>(str);
                     if (updatedDrillingUnitChoiceSetIDs != null)
                     {
                         bool found = false;
-                        foreach (Guid ID in updatedDrillingUnitChoiceSetIDs)
+                        foreach (MetaID metaId in updatedDrillingUnitChoiceSetIDs)
                         {
-                            if (ID != null && ID.Equals(newId))
+                            if (metaId != null && metaId.ID.Equals(newId))
                             {
                                 found = true;
                                 break;
@@ -384,7 +384,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                             Console.WriteLine("Test DrillingUnitChoiceSets #7: check that the new DrillingUnitChoiceSet has been deleted: success. IDs: ");
                             for (int i = 0; i < updatedDrillingUnitChoiceSetIDs.Count; i++)
                             {
-                                Console.Write("\t" + updatedDrillingUnitChoiceSetIDs[i].ToString());
+                                Console.Write("\t" + updatedDrillingUnitChoiceSetIDs[i].ID.ToString());
                             }
                             Console.WriteLine();
                         }
@@ -415,9 +415,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             if (updatedDrillingUnitChoiceSetIDs != null)
             {
                 results = new List<UnitChoiceSet>();
-                foreach (Guid ID in updatedDrillingUnitChoiceSetIDs)
+                foreach (MetaID metaId in updatedDrillingUnitChoiceSetIDs)
                 {
-                    a = client.GetAsync("DrillingUnitChoiceSets/" + ID.ToString());
+                    a = client.GetAsync("DrillingUnitChoiceSets/" + metaId.ID.ToString());
                     a.Wait();
                     message = a.Result;
                     if (message.IsSuccessStatusCode)

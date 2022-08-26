@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         // GET api/DrillingUnitChoiceSets
         [HttpGet]
-        public IEnumerable<Guid> Get()
+        public IEnumerable<MetaID> Get()
         {
-            var ids = drillingUnitChoiceSetManager_.GetIDs();
+            List<MetaID> ids = drillingUnitChoiceSetManager_.GetIDs();
             return ids;
         }
 
