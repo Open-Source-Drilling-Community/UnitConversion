@@ -8,6 +8,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared
     public partial class MetaID
     {
         /// <summary>
+        /// default constructor
+        /// </summary>
+        public MetaID() : base()
+        {
+        }
+
+        /// <summary>
         /// constructor
         /// </summary>
         [JsonConstructor]
