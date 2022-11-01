@@ -236,11 +236,9 @@ else
                 !string.IsNullOrEmpty(HttpBasePath) &&
                 !string.IsNullOrEmpty(HttpController))
             {
-                //Case where the child-Blazor-component ("razor component") of UnitAndReferenceChoiceTag has defined its own additional DrillingUnitChoiceSets
-                //    - these need to be rendered by the parent component (this)
-                //    - the child component informs its parent how to retrieve this information with the below parameters annotated as [Parameter]:
-                //    - info about the route to the microservice: HttpHost and HttBasePath
-                //    - info about the endpoint of the corresponding CRUD GET request: HttpController (string)
+                //Case when a controller of DrillingUnitChoiceSets is defined
+                //    - this offers the possibility to define custom DrillingUnitChoiceSets
+                //    - the child razor component of the present one (this) must indicate how to send requests to this controller (route, endpoint)
                 httpClient = new HttpClient
                     {
                         BaseAddress = new Uri(HttpHost + HttpBasePath)
@@ -266,7 +264,7 @@ else
             }
             else
             {
-                //Default case where the child razor component uses the default UnitChoiceSet
+                //Case when no controller is available: default UnitChoiceSets are used
                 choices = new List<MetaID>();
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
