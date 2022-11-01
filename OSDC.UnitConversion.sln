@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32602.291
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion", "OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj", "{41EDBC03-3490-45F6-AD42-52427FAF0382}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client", "OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client\OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.csproj", "{2335F990-BB7B-4801-8AD6-CD424E76374C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingRazorComponents", "OSDC.UnitConversion.DrillingRazorComponents\OSDC.UnitConversion.DrillingRazorComponents.csproj", "{EB56DE35-B51D-4EA6-8743-8F490E8701C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingRazorMudComponents", "OSDC.UnitConversion.DrillingRazorMudComponents\OSDC.UnitConversion.DrillingRazorMudComponents.csproj", "{5415C7F7-8A55-4E80-99FB-1057E308112D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB56DE35-B51D-4EA6-8743-8F490E8701C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
