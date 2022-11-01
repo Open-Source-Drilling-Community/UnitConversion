@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Version>1.0.0</Version>
+    <Authors>Gilles Pelfrene</Authors>
+    <Company>NORCE</Company>
+    <Description>Razor components based on MudBlazor used Unit management of webapps</Description>
   </PropertyGroup>
 
 
