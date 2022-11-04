@@ -289,7 +289,7 @@ else
                         break; //the given UnitChoiceSetName is checked against each name in the available unitChoiceSets
                 }
                 //                unitChoiceSet_ = DrillingUnitChoiceSet.Get(defaultMetaId.ID);
-                if (defaultMetaID != null)
+                if (defaultMetaId != null)
                     UnitChoiceSetName = defaultMetaId.Name; //eventually, the UnitChoiceSetName is set to an existing unitChoiceSet (if there are any), by default the last available is "US"
             }
             await InvokeAsync(() => { StateHasChanged(); });
