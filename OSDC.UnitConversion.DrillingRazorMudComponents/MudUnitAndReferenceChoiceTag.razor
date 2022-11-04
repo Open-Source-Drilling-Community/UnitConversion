@@ -9,9 +9,9 @@ else
             <tr>
                 <td width="18%">
                     <MudSelect @bind-Value="UnitChoiceSetName" Label="UnitChoiceSet" Variant="Variant.Filled">
-                        @foreach (MetaID metaID in unitChoiceSets)
+                        @foreach (MetaInfo metaInfo in unitChoiceSets)
                         {
-                            <MudSelectItem Value="@metaID.Name">@metaID.Name</MudSelectItem>
+                            <MudSelectItem Value="@metaInfo.Name">@metaInfo.Name</MudSelectItem>
                         }
                     </MudSelect>
                 </td>
@@ -139,7 +139,7 @@ else
     public string DateReferenceName;
 
     private HttpClient httpClient;
-    private List<MetaID> unitChoiceSets = new List<MetaID>();
+    private List<MetaInfo> unitChoiceSets = new List<MetaInfo>();
     private List<Tuple<Guid, string>> depthReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> positionReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> azimuthReferences = new List<Tuple<Guid, string>>();
@@ -221,7 +221,7 @@ else
             dateReferences.Add(new Tuple<Guid, string>(new Guid("6fb296eb-eb77-4a6f-82d0-122c74e8d3cf"), "UTC"));
             dateReferences.Add(new Tuple<Guid, string>(new Guid("f0ee13c7-2b9b-46e1-8d57-3fd6070f8a9b"), "Local Time"));
 
-            unitChoiceSets = new List<MetaID>();
+            unitChoiceSets = new List<MetaInfo>();
             unitChoiceSets.Clear();
             if (!string.IsNullOrEmpty(HttpHost) &&
                 !string.IsNullOrEmpty(HttpBasePath) &&
@@ -244,7 +244,7 @@ else
                         string str = await a.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaID>>(str);
+                            unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
                         }
                     }
                 }
@@ -258,39 +258,39 @@ else
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaID(SIUnitChoiceSet.ID, SIUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo(SIUnitChoiceSet.ID, SIUnitChoiceSet.Name));
                 }
                 UnitChoiceSet metricUnitChoiceSet = DrillingUnitChoiceSet.DrillingMetricUnitChoiceSet;
                 if (metricUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaID(metricUnitChoiceSet.ID, metricUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo(metricUnitChoiceSet.ID, metricUnitChoiceSet.Name));
                 }
                 UnitChoiceSet imperialUnitChoiceSet = DrillingUnitChoiceSet.DrillingImperialUnitChoiceSet;
                 if (imperialUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaID(imperialUnitChoiceSet.ID, imperialUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo(imperialUnitChoiceSet.ID, imperialUnitChoiceSet.Name));
                 }
                 UnitChoiceSet USUnitChoiceSet = DrillingUnitChoiceSet.DrillingUSUnitChoiceSet;
                 if (USUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaID(USUnitChoiceSet.ID, USUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo(USUnitChoiceSet.ID, USUnitChoiceSet.Name));
                 }
             }
             //Initializing unitChoiceSet_ and associated UnitChoiceSetName: default value or checking the validity of the given one
-            MetaID defaultMetaId = null;
+            MetaInfo defaultMetaInfo = null;
             if (unitChoiceSets != null)
             {
                 unitChoiceSets.Sort((x, y) => Comparer<string>.Default.Compare(x.Name, y.Name));
-                foreach (MetaID metaId in unitChoiceSets)
+                foreach (MetaInfo metaInfo in unitChoiceSets)
                 {
-                    //unitChoiceSets.Add(metaId);
-                    defaultMetaId = metaId;
-                    if (string.IsNullOrEmpty(UnitChoiceSetName) || UnitChoiceSetName.Equals(metaId.Name))
+                    //unitChoiceSets.Add(metaInfo);
+                    defaultMetaInfo = metaInfo;
+                    if (string.IsNullOrEmpty(UnitChoiceSetName) || UnitChoiceSetName.Equals(metaInfo.Name))
                         break; //the given UnitChoiceSetName is checked against each name in the available unitChoiceSets
                 }
-                //                unitChoiceSet_ = DrillingUnitChoiceSet.Get(defaultMetaId.ID);
-                if (defaultMetaId != null)
-                    UnitChoiceSetName = defaultMetaId.Name; //eventually, the UnitChoiceSetName is set to an existing unitChoiceSet (if there are any), by default the last available is "US"
+                //                unitChoiceSet_ = DrillingUnitChoiceSet.Get(defaultMetaInfo.ID);
+                if (defaultMetaInfo != null)
+                    UnitChoiceSetName = defaultMetaInfo.Name; //eventually, the UnitChoiceSetName is set to an existing unitChoiceSet (if there are any), by default the last available is "US"
             }
             await InvokeAsync(() => { StateHasChanged(); });
         }
@@ -1368,11 +1368,11 @@ else
         Guid unitChoiceSetID = Guid.Empty;
         if (unitChoiceSets != null)
         {
-            foreach (MetaID metaId in unitChoiceSets)
+            foreach (MetaInfo metaInfo in unitChoiceSets)
             {
-                if (UnitChoiceSetName == metaId.Name)
+                if (UnitChoiceSetName == metaInfo.Name)
                 {
-                    unitChoiceSetID = metaId.ID;
+                    unitChoiceSetID = metaInfo.ID;
                     break;
                 }
             }
