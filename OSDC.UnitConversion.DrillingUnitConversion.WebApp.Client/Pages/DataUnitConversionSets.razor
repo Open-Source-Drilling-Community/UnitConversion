@@ -23,9 +23,9 @@ else
                 </td>
                 <td>
                     <select @bind="@UnitChoiceSetName">
-                        @foreach (MetaID metaId in unitChoiceSets)
+                        @foreach (MetaInfo metaInfo in unitChoiceSets)
                         {
-                            <option>@metaId.Name</option>
+                            <option>@metaInfo.Name</option>
                         }
                     </select>
                 </td>
@@ -219,7 +219,7 @@ else
 
     private HttpClient httpClient;
     private string unitChoiceSetName_;
-    private List<MetaID> unitChoiceSets;
+    private List<MetaInfo> unitChoiceSets;
     private string quantityName_;
     private bool isHiddenAdd = true;
     private List<Tuple<Guid, string>> quantityNames;
@@ -261,17 +261,17 @@ else
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
             logger.LogInformation("Trying to load DataUnitConversionSets from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
-            unitChoiceSets = new List<MetaID>();
-            unitChoiceSets.Add(new MetaID(Guid.Empty, emptyChoice));
+            unitChoiceSets = new List<MetaInfo>();
+            unitChoiceSets.Add(new MetaInfo(Guid.Empty, emptyChoice));
             quantityNames = new List<Tuple<Guid, string>>();
             quantityNames.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
             results_ = new DataUnitConversionSet(Guid.Empty, "Webapp", "Conversion from Webapp", Guid.Empty, new List<ModelClientShared.QuantityUnitConversion>());
-            List<MetaID> choices = await APIUtils.LoadUnitChoiceSets(httpClient, logger);
+            List<MetaInfo> choices = await APIUtils.LoadUnitChoiceSets(httpClient, logger);
             if (choices != null)
             {
-                foreach (MetaID metaId in choices)
+                foreach (MetaInfo metaInfo in choices)
                 {
-                    unitChoiceSets.Add(metaId);
+                    unitChoiceSets.Add(metaInfo);
                 }
             }
             List<PhysicalQuantity> quantities = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
@@ -313,11 +313,11 @@ else
                     if (!string.IsNullOrEmpty(UnitChoiceSetName))
                     {
                         Guid unitChoiceSetID = Guid.Empty;
-                        foreach (MetaID metaId in unitChoiceSets)
+                        foreach (MetaInfo metaInfo in unitChoiceSets)
                         {
-                            if (UnitChoiceSetName.Equals(metaId.Name))
+                            if (UnitChoiceSetName.Equals(metaInfo.Name))
                             {
-                                unitChoiceSetID = metaId.ID;
+                                unitChoiceSetID = metaInfo.ID;
                                 break;
                             }
                         }
@@ -400,7 +400,7 @@ else
         if (!string.IsNullOrEmpty(UnitChoiceSetName) && quantityUnitConversions != null)
         {
             Guid unitChoiceSetID = Guid.Empty;
-            foreach (MetaID choice in unitChoiceSets)
+            foreach (MetaInfo choice in unitChoiceSets)
             {
                 if (choice != null && UnitChoiceSetName.Equals(choice.Name))
                 {
@@ -534,7 +534,7 @@ else
         {
             //retrieve the choosen UnitChoiceSet from UI
             Guid unitChoiceSetID = Guid.Empty;
-            foreach (MetaID choice in unitChoiceSets)
+            foreach (MetaInfo choice in unitChoiceSets)
             {
                 if (choice != null && unitChoiceSetName_.Equals(choice.Name))
                 {

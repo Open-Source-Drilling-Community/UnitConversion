@@ -118,7 +118,7 @@ else
     private bool isHiddenAdd = true;
     private string unitConversionSetName_ = null;
     private string unitConversionSetDescription = null;
-    private List<MetaID> unitChoiceSets_ = null;
+    private List<MetaInfo> unitChoiceSets_ = null;
     private DrillingUnitChoiceSet currentDetails_ = null;
     private List<QuantityUnitChoiceAssociation> quantityUnitAssociations_ = null;
     private List<PhysicalQuantity> drillingPhysicalQuantities_ = null;
@@ -129,7 +129,7 @@ else
     {
         try
         {
-            unitChoiceSets_ = new List<MetaID>();
+            unitChoiceSets_ = new List<MetaInfo>();
             quantityUnitAssociations_ = new List<QuantityUnitChoiceAssociation>();
             drillingPhysicalQuantities_ = new List<PhysicalQuantity>();
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;

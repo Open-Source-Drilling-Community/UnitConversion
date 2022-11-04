@@ -22,17 +22,17 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         // GET api/DrillingPhysicalQuantities
         [HttpGet]
-        public IEnumerable<MetaID> Get(int option)
+        public IEnumerable<MetaInfo> Get(int option)
         {
             if (option == 0)
             {
                 List<PhysicalQuantity> quantities = DrillingPhysicalQuantity.AvailableQuantities;
-                List<MetaID> ids = new List<MetaID>();
+                List<MetaInfo> ids = new List<MetaInfo>();
                 if (quantities != null)
                 {
                     foreach (PhysicalQuantity quantity in quantities)
                     {
-                        ids.Add(new MetaID(quantity.ID, quantity.Name));
+                        ids.Add(new MetaInfo(quantity.ID, quantity.Name));
                     }
                 }
                 return ids;

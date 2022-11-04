@@ -22,7 +22,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             connection_ = SQLConnectionManager.GetConnection(loggerFactory);
 
             // first initiate a call to the database to make sure all its tables are initialized
-            List<MetaID> unitChoiceSetIDs = GetIDs();
+            List<MetaInfo> unitChoiceSetIDs = GetIDs();
 
             // then create some default DrillingUnitChoiceSets'
             if (!unitChoiceSetIDs.Any())
@@ -119,9 +119,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             return count >= 1;
         }
 
-        public List<MetaID> GetIDs()
+        public List<MetaInfo> GetIDs()
         {
-            List<MetaID> ids = new List<MetaID>();
+            List<MetaInfo> ids = new List<MetaInfo>();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -138,7 +138,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                             {
                                 { "IsDefault", res != 0 }
                             };
-                            ids.Add(new MetaID(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), flags));
+                            ids.Add(new MetaInfo(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), flags));
                         }
                     }
                 }

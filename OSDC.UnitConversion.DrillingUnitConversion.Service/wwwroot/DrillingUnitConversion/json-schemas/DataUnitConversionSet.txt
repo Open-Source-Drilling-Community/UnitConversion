@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "TupleOfDataUnitConversionSetAndDrillingUnitChoiceSetAndPhysicalQuantityAndQuantityDataConversionAndMetaID",
+  "title": "TupleOfDataUnitConversionSetAndDrillingUnitChoiceSetAndPhysicalQuantityAndQuantityDataConversionAndMetaInfo",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -17,7 +17,7 @@
       "$ref": "#/definitions/QuantityDataConversion"
     },
     "Item5": {
-      "$ref": "#/definitions/MetaID"
+      "$ref": "#/definitions/MetaInfo"
     }
   },
   "definitions": {
@@ -305,7 +305,7 @@
         }
       ]
     },
-    "MetaID": {
+    "MetaInfo": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -331,6 +331,14 @@
             "string"
           ]
         },
+        "CreationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastModificationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
         "Flags": {
           "type": [
             "null",
@@ -348,6 +356,25 @@
           "additionalProperties": {
             "type": "string",
             "format": "guid"
+          }
+        },
+        "Labels": {
+          "type": [
+            "null",
+            "object"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Values": {
+          "type": [
+            "null",
+            "object"
+          ],
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
           }
         }
       }
