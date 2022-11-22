@@ -23,9 +23,9 @@ else
                 </td>
                 <td>
                     <select @bind="@UnitChoiceSetName">
-                        @foreach (Tuple<Guid, string> tuple in unitChoiceSets)
+                        @foreach (MetaInfo metaInfo in unitChoiceSets)
                         {
-                            <option>@tuple.Item2</option>
+                            <option>@metaInfo.Name</option>
                         }
                     </select>
                 </td>
@@ -219,7 +219,7 @@ else
 
     private HttpClient httpClient;
     private string unitChoiceSetName_;
-    private List<Tuple<Guid, string>> unitChoiceSets;
+    private List<MetaInfo> unitChoiceSets;
     private string quantityName_;
     private bool isHiddenAdd = true;
     private List<Tuple<Guid, string>> quantityNames;
@@ -261,25 +261,25 @@ else
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
             logger.LogInformation("Trying to load DataUnitConversionSets from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
-            unitChoiceSets = new List<Tuple<Guid, string>>();
-            unitChoiceSets.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
+            unitChoiceSets = new List<MetaInfo>();
+            unitChoiceSets.Add(new MetaInfo(Guid.Empty, emptyChoice));
             quantityNames = new List<Tuple<Guid, string>>();
             quantityNames.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
             results_ = new DataUnitConversionSet(Guid.Empty, "Webapp", "Conversion from Webapp", Guid.Empty, new List<ModelClientShared.QuantityUnitConversion>());
-            List<Tuple<Guid, string>> choices = await APIUtils.LoadUnitChoiceSets(httpClient, logger);
+            List<MetaInfo> choices = await APIUtils.LoadUnitChoiceSets(httpClient, logger);
             if (choices != null)
             {
-                foreach (Tuple<Guid, string> id in choices)
+                foreach (MetaInfo metaInfo in choices)
                 {
-                    unitChoiceSets.Add(id);
+                    unitChoiceSets.Add(metaInfo);
                 }
             }
-            List<Tuple<Guid, string>> quantities = await APIUtils.LoadQuantityChoices(httpClient, logger);
+            List<PhysicalQuantity> quantities = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
             if (quantities != null)
             {
-                foreach (Tuple<Guid, string> id in quantities)
+                foreach (PhysicalQuantity quantity in quantities)
                 {
-                    quantityNames.Add(id);
+                    quantityNames.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
                 }
             }
             await InvokeAsync(() => { StateHasChanged(); });
@@ -313,11 +313,11 @@ else
                     if (!string.IsNullOrEmpty(UnitChoiceSetName))
                     {
                         Guid unitChoiceSetID = Guid.Empty;
-                        foreach (Tuple<Guid, string> id in unitChoiceSets)
+                        foreach (MetaInfo metaInfo in unitChoiceSets)
                         {
-                            if (UnitChoiceSetName.Equals(id.Item2))
+                            if (UnitChoiceSetName.Equals(metaInfo.Name))
                             {
-                                unitChoiceSetID = id.Item1;
+                                unitChoiceSetID = metaInfo.ID;
                                 break;
                             }
                         }
@@ -332,6 +332,7 @@ else
                                 ConversionClass conversionClass = new ConversionClass();
                                 conversionClass.SILabel = quantity.SIUnitLabel;
                                 string unitChoiceIDString;
+                                //get the unit (unitChoiceIDString) associated to the given quantity (ID) in the unit system (UnitChoiceSet) selected by the user
                                 if (unitChoiceSet.Choices.TryGetValue(ID.ToString(), out unitChoiceIDString))
                                 {
                                     Guid unitChoiceID = new Guid(unitChoiceIDString);
@@ -399,11 +400,11 @@ else
         if (!string.IsNullOrEmpty(UnitChoiceSetName) && quantityUnitConversions != null)
         {
             Guid unitChoiceSetID = Guid.Empty;
-            foreach (Tuple<Guid, string> choice in unitChoiceSets)
+            foreach (MetaInfo choice in unitChoiceSets)
             {
-                if (choice != null && UnitChoiceSetName.Equals(choice.Item2))
+                if (choice != null && UnitChoiceSetName.Equals(choice.Name))
                 {
-                    unitChoiceSetID = choice.Item1;
+                    unitChoiceSetID = choice.ID;
                     break;
                 }
             }
@@ -531,17 +532,19 @@ else
     {
         if (!string.IsNullOrEmpty(unitChoiceSetName_) && quantityUnitConversions != null && results_ != null && quantityNames != null)
         {
+            //retrieve the choosen UnitChoiceSet from UI
             Guid unitChoiceSetID = Guid.Empty;
-            foreach (Tuple<Guid, string> choice in unitChoiceSets)
+            foreach (MetaInfo choice in unitChoiceSets)
             {
-                if (choice != null && unitChoiceSetName_.Equals(choice.Item2))
+                if (choice != null && unitChoiceSetName_.Equals(choice.Name))
                 {
-                    unitChoiceSetID = choice.Item1;
+                    unitChoiceSetID = choice.ID;
                     break;
                 }
             }
             if (unitChoiceSetID != Guid.Empty)
             {
+                //collect the QuantityUnitConversions set by the user from UI 
                 List<ModelClientShared.QuantityUnitConversion> conversions = new List<ModelClientShared.QuantityUnitConversion>();
                 foreach (Tuple<string, ConversionClass, List<ConversionClass>> quantityUnitConversion in quantityUnitConversions)
                 {
@@ -582,10 +585,13 @@ else
                         }
                     }
                 }
+                //store the list of QuantityDataUnitConversion in a dedicated DataUnitConversionSet identified by "query.ID"
                 DataUnitConversionSet query = new DataUnitConversionSet(Guid.NewGuid(), "webapp", "Conversion from Webapp", unitChoiceSetID, conversions);
+                //POST the DataUnitConversionSet in the database to run computations server-side
                 bool success = await APIUtils.PostDataUnitConversionSet(httpClient, logger, query);
                 if (success)
                 {
+                    //GET back DataUnitConversionSet to retrive computation results
                     DataUnitConversionSet result = await APIUtils.LoadDataUnitConversionSet(httpClient, logger, query.ID);
                     if (result != null)
                     {
@@ -602,6 +608,7 @@ else
                         {
                             results_.QuantityUnitConversions.Add(new ModelClientShared.QuantityUnitConversion(quantityUnitConversion));
                         }
+                        //DELETE DataUnitConversionSet results from the database
                         success = await APIUtils.DeleteDataUnitConversionSet(httpClient, logger, query.ID);
                     }
                 }

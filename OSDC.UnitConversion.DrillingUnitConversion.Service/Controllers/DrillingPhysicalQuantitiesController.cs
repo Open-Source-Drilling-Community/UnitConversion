@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using OSDC.UnitConversion.Conversion;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
+using OSDC.DotnetLibraries.General.DataManagement;
 using System;
 using System.Collections.Generic;
 
@@ -16,22 +17,22 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         public DrillingPhysicalQuantitiesController(ILoggerFactory loggerFactory)
         {
-            logger_ = loggerFactory.CreateLogger<DataUnitConversionSetsController>();
+            logger_ = loggerFactory.CreateLogger<DrillingPhysicalQuantitiesController>();
         }
 
         // GET api/DrillingPhysicalQuantities
         [HttpGet]
-        public IEnumerable<Tuple<Guid, string>> Get(int option)
+        public IEnumerable<MetaInfo> Get(int option)
         {
             if (option == 0)
             {
                 List<PhysicalQuantity> quantities = DrillingPhysicalQuantity.AvailableQuantities;
-                List<Tuple<Guid, string>> ids = new List<Tuple<Guid, string>>();
+                List<MetaInfo> ids = new List<MetaInfo>();
                 if (quantities != null)
                 {
                     foreach (PhysicalQuantity quantity in quantities)
                     {
-                        ids.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
+                        ids.Add(new MetaInfo(quantity.ID, quantity.Name));
                     }
                 }
                 return ids;

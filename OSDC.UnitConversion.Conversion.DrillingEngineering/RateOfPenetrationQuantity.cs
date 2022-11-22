@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class RateOfPenetrationQuantity : VelocityQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 2.77778E-05;
+        public override double? MeaningfulPrecisionInSI { get; } = 2.77778E-05;
         private static RateOfPenetrationQuantity instance_ = null;
 
         public static new RateOfPenetrationQuantity Instance

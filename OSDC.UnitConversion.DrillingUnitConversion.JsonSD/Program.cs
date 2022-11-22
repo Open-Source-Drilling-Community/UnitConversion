@@ -1,4 +1,5 @@
 ﻿using NJsonSchema;
+using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.Conversion;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using OSDC.UnitConversion.DrillingUnitConversion.Model;
@@ -31,7 +32,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.JsonSD
                 }
             } while (!found);
             rootDir += "..\\OSDC.UnitConversion.DrillingUnitConversion.Service\\wwwroot\\DrillingUnitConversion\\json-schemas\\";
-            var baseData1Schema = JsonSchema.FromType<Tuple<DataUnitConversionSet, DrillingUnitChoiceSet, PhysicalQuantity, QuantityDataConversion>>();
+            var baseData1Schema = JsonSchema.FromType<Tuple<DataUnitConversionSet, DrillingUnitChoiceSet, PhysicalQuantity, QuantityDataConversion, MetaInfo>>();
             var baseData1SchemaJson = baseData1Schema.ToJson();
             using StreamWriter writer = new StreamWriter(rootDir + "DataUnitConversionSet.txt");
             writer.WriteLine(baseData1SchemaJson);

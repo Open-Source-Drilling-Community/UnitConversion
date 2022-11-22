@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class SmallLengthQuantity : LengthQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.0001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.0001;
 
         private static SmallLengthQuantity instance_ = null;
 

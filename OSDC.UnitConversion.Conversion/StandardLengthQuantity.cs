@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class StandardLengthQuantity : LengthQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.001;
 
         private static StandardLengthQuantity instance_ = null;
 

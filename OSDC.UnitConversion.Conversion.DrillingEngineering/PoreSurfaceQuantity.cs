@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
         
         public override string TypicalSymbol { get; } = null;
-        public override double? MeaningFullPrecisionInSI { get; } = 1E-13;
+        public override double? MeaningfulPrecisionInSI { get; } = 1E-13;
         private static PoreSurfaceQuantity instance_ = null;
 
         public static new PoreSurfaceQuantity Instance

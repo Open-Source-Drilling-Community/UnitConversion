@@ -23,7 +23,7 @@ else
     <h2>List of Unit Conversion Sets</h2>
     <div>
         <table class="table">
-            <theader>
+            <thead>
                 <tr>
                     <td>
                         <span class="label">Unit System Name</span>
@@ -32,22 +32,24 @@ else
                         <span class="label">Unit System Description</span>
                     </td>
                     <td>
-                        <span class="label">Is Default?</span>
+                        <span class="label">Is Default</span>
                     </td>
                     <td></td>
                 </tr>
-            </theader>
+            </thead>
             <tbody>
                 @for (int i = 0; i < unitChoiceSets_.Count; i++)
                 {
                     var local_i = i; // Do not use a loop variable directly in a lambda expression
                     <tr>
-                        <td>@unitChoiceSets_[i].Item2</td>
-                        <td>@unitChoiceSets_[i].Item3</td>
-                        <td>@unitChoiceSets_[i].Item4</td>
+                        <td>@unitChoiceSets_[i].Name</td>
+                        <td>@unitChoiceSets_[i].Description</td>
+                        <td>@unitChoiceSets_[i].Flags["IsDefault"]</td>
                         <td align="right">
-                            <button class="btn btn-primary" hidden="@unitChoiceSets_[local_i].Item4" @onclick="@(() => Delete(local_i))">Delete</button>
-                            <button class="btn btn-primary" @onclick="@(() => Details(local_i))">Details</button>
+                            <button class="btn btn-primary" hidden="@unitChoiceSets_[local_i].Flags["IsDefault"]" @onclick="@(() => Delete(local_i))">Delete</button>
+                            <button class="btn btn-primary" @onclick="@(() => Details(local_i))">
+                                @(@unitChoiceSets_[local_i].Flags["IsDefault"] ? "Details" : "Edit")
+                            </button>
                         </td>
                     </tr>
                 }
@@ -116,10 +118,10 @@ else
     private bool isHiddenAdd = true;
     private string unitConversionSetName_ = null;
     private string unitConversionSetDescription = null;
-    private List<Tuple<Guid, string, string, bool>> unitChoiceSets_ = null;
+    private List<MetaInfo> unitChoiceSets_ = null;
     private DrillingUnitChoiceSet currentDetails_ = null;
     private List<QuantityUnitChoiceAssociation> quantityUnitAssociations_ = null;
-    private List<PhysicalQuantity> physicalQuantities_ = null;
+    private List<PhysicalQuantity> drillingPhysicalQuantities_ = null;
     private bool isHiddenUpdate = true;
     private bool isHiddenEdit = false;
 
@@ -127,14 +129,14 @@ else
     {
         try
         {
-            unitChoiceSets_ = new List<Tuple<Guid, string, string, bool>>();
+            unitChoiceSets_ = new List<MetaInfo>();
             quantityUnitAssociations_ = new List<QuantityUnitChoiceAssociation>();
-            physicalQuantities_ = new List<PhysicalQuantity>();
+            drillingPhysicalQuantities_ = new List<PhysicalQuantity>();
             string host = OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Configuration.DrillingUnitConversionHostURL;
             logger.LogInformation("Trying to load DrillingUnitChoiceSets from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
-            unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
-            physicalQuantities_ = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
+            unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
+            drillingPhysicalQuantities_ = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
         }
         catch (Exception ex)
         {
@@ -157,9 +159,9 @@ else
     }
     private async void Details(int i)
     {
-        if (i >= 0 && i < unitChoiceSets_.Count && physicalQuantities_ != null)
+        if (i >= 0 && i < unitChoiceSets_.Count && drillingPhysicalQuantities_ != null)
         {
-            currentDetails_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger, unitChoiceSets_[i].Item1);
+            currentDetails_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger, unitChoiceSets_[i].ID);
             if (currentDetails_ != null && currentDetails_.Choices != null)
             {
                 isHiddenUpdate = currentDetails_.IsDefault;
@@ -168,7 +170,7 @@ else
                 foreach (string key in currentDetails_.Choices.Keys)
                 {
                     PhysicalQuantity quantity = null;
-                    foreach (PhysicalQuantity q in physicalQuantities_)
+                    foreach (PhysicalQuantity q in drillingPhysicalQuantities_)
                     {
                         if (q != null && q.ID.ToString() == key)
                         {
@@ -203,12 +205,12 @@ else
     }
     private async void Delete(int i)
     {
-        if (unitChoiceSets_ != null && i >= 0 && i < unitChoiceSets_.Count && !unitChoiceSets_[i].Item4)
+        if (unitChoiceSets_ != null && i >= 0 && i < unitChoiceSets_.Count && !unitChoiceSets_[i].Flags["IsDefault"])
         {
-            bool success = await APIUtils.DeleteDrillingUnitConversionSet(httpClient, logger, unitChoiceSets_[i].Item1);
+            bool success = await APIUtils.DeleteDrillingUnitConversionSet(httpClient, logger, unitChoiceSets_[i].ID);
             if (success)
             {
-                unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+                unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
                 await InvokeAsync(() => { StateHasChanged(); });
             }
         }
@@ -217,10 +219,11 @@ else
     {
         if (!string.IsNullOrEmpty(UnitConversionSetName))
         {
-            if (physicalQuantities_ != null)
+            if (drillingPhysicalQuantities_ != null)
             {
-                Dictionary<string, string> dict = new Dictionary<string, string>();
-                foreach (PhysicalQuantity quantity in physicalQuantities_)
+                Dictionary<string, string> choices = new Dictionary<string, string>();
+                //note that only (57) drillingPhysicalQuantities are added to custom DrillingUnitChoiceSets, contrary to default UnitChoiceSet that contain both drillingPhysicalQuantities (57) and physicalQuantities (66)
+                foreach (PhysicalQuantity quantity in drillingPhysicalQuantities_)
                 {
                     if (quantity != null)
                     {
@@ -233,17 +236,22 @@ else
                                 break;
                             }
                         }
-                        dict.Add(quantity.ID.ToString(), SIUnitID.ToString());
+                        choices.Add(quantity.ID.ToString(), SIUnitID.ToString());
                     }
                 }
-                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet(Guid.NewGuid(), UnitConversionSetName, unitConversionSetDescription, dict);
+                //a DrillingUnitChoiceSet is created based on data provided by the user (ID, Name, Description, Choices)
+                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet(Guid.NewGuid(), UnitConversionSetName, unitConversionSetDescription, choices);
                 unitChoiceSet.IsDefault = false;
                 unitChoiceSet.IsSI = false;
+                //the DrillingUnitChoiceSet must be
+                // 1) stored in the database
+                // 2) statically added to the class DrillingUnitChoiceSet to be later accessed by consumers like class DataUnitConversionSet which calls the static method DrillingUnitChoiceSet.Get()
+                // Both operations are performed in the DrillingUnitChoiceSetManager at the same time
                 bool success = await APIUtils.PostDrillingUnitConversionSet(httpClient, logger, unitChoiceSet);
                 if (success)
                 {
                     Cancel();
-                    unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+                    unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
                     await InvokeAsync(() => { StateHasChanged(); });
                 }
             }
@@ -288,8 +296,12 @@ else
                     currentDetails_.Choices.Add(assoc.Quantity.ID.ToString(), unitChoiceID.ToString());
                 }
             }
+            //the DrillingUnitChoiceSet must be
+            // 1) updated in the database
+            // 2) statically updated in the class DrillingUnitChoiceSet to be later accessed by consumers like class DataUnitConversionSet which calls the static method DrillingUnitChoiceSet.Get()
+            // Both operations are performed in the DrillingUnitChoiceSetManager at the same time
             bool success = await APIUtils.PutDrillingUnitConversionSet(httpClient, logger, currentDetails_);
-            unitChoiceSets_ = await APIUtils.LoadDrillingUnitConversionSets(httpClient, logger);
+            unitChoiceSets_ = await APIUtils.LoadDrillingUnitChoiceSets(httpClient, logger);
             CancelDetails();
         }
     }

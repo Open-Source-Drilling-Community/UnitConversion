@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             connection_ = SQLConnectionManager.GetConnection(loggerFactory);
 
             // first initiate a call to the database to make sure all its tables are initialized
-            List<Tuple<Guid, string, string, bool>> unitChoiceSetIDs = GetIDs();
+            List<MetaInfo> unitChoiceSetIDs = GetIDs();
 
             // then create some default DrillingUnitChoiceSets'
             if (!unitChoiceSetIDs.Any())
@@ -117,9 +119,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             return count >= 1;
         }
 
-        public List<Tuple<Guid, string, string, bool>> GetIDs()
+        public List<MetaInfo> GetIDs()
         {
-            List<Tuple<Guid, string, string, bool>> ids = new List<Tuple<Guid, string, string, bool>>();
+            List<MetaInfo> ids = new List<MetaInfo>();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -129,10 +131,14 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                     using var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                        if (!reader.IsDBNull(0))
                         {
                             int res = reader.GetInt32(3);
-                            ids.Add(new Tuple<Guid, string, string, bool>(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), res != 0));
+                            Dictionary<string, bool> flags = new Dictionary<string, bool>
+                            {
+                                { "IsDefault", res != 0 }
+                            };
+                            ids.Add(new MetaInfo(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), flags));
                         }
                     }
                 }
@@ -199,6 +205,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         {
             if (drillingUnitChoiceSet != null && drillingUnitChoiceSet.ID != null && !drillingUnitChoiceSet.ID.Equals(Guid.Empty))
             {
+                // 1) the custom DrillingUnitChoiceSet is added to the database
                 if (connection_ != null)
                 {
                     lock (lock_)
@@ -229,7 +236,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                             logger_.LogError(ex, "Impossible to add the DrillingUnitChoiceSet into DrillingUnitChoiceSetsTable");
                             success = false;
                         }
-                        // Finalizing
+                        // Finalizing addition to the database
                         if (success)
                         {
                             transaction.Commit();
@@ -239,7 +246,8 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         {
                             transaction.Rollback();
                         }
-                        return success;
+                        // 2) the DrillingUnitChoiceSet must be statically added to the DrillingUnitChoiceSet class to be later accessed by consumers like class DataUnitConversionSet which calls the static method DrillingUnitChoiceSet.Get()
+                        return (success && DrillingUnitChoiceSet.Add(drillingUnitChoiceSet));
                     }
                 }
                 else
@@ -323,6 +331,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         {
             if (guid != null && !guid.Equals(Guid.Empty) && drillingUnitChoiceSet != null && guid.Equals(drillingUnitChoiceSet.ID))
             {
+                // 1) the custom DrillingUnitChoiceSet is updated in the database
                 if (connection_ != null)
                 {
                     lock (lock_)
@@ -356,13 +365,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         {
                             transaction.Commit();
                             logger_.LogInformation("Updated the DrillingUnitChoiceSet of given ID successfully");
-                            return true;
                         }
                         else
                         {
                             transaction.Rollback();
-                            return false;
                         }
+                        // 2) the DrillingUnitChoiceSet must be statically updated in the DrillingUnitChoiceSet class to be later accessed by consumers like class DataUnitConversionSet which calls the static method DrillingUnitChoiceSet.Get()
+                        return (success && DrillingUnitChoiceSet.Update(drillingUnitChoiceSet));
                     }
                 }
                 else

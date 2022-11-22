@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class RotationFrequencyQuantity : FrequencyQuantity
     {
 
-        public override double? MeaningFullPrecisionInSI { get; } = 0.016666666666666666;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.016666666666666666;
         private static RotationFrequencyQuantity instance_ = null;
 
         public static new RotationFrequencyQuantity Instance

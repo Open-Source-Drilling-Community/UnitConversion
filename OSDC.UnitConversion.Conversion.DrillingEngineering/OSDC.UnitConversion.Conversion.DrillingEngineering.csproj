@@ -5,16 +5,16 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Eric Cayeux</Authors>
     <Company>Norwegian Research Institute</Company>
-    <Description>A package for unit conversion that accounts for Drilling Engineering meaningfull precisions</Description>
+    <Description>A package for unit conversion that accounts for Drilling Engineering meaningful precisions</Description>
     <PackageProjectUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</RepositoryUrl>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.3</Version>
+    <Version>1.0.6</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

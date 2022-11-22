@@ -5,7 +5,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class YoungModulusQuantity : PressureQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 10000;
+        public override double? MeaningfulPrecisionInSI { get; } = 10000;
         private static YoungModulusQuantity instance_ = null;
 
         public static new YoungModulusQuantity Instance

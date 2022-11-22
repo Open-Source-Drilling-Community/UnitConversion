@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class DrillingHydraulicConductivityQuantity : HydraulicConductivityQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.001;
         private static DrillingHydraulicConductivityQuantity instance_ = null;
 
         public static new DrillingHydraulicConductivityQuantity Instance

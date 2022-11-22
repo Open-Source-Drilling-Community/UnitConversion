@@ -161,12 +161,12 @@ else
                     </td>
                 </tr>
 
-                <tr hidden="@IsHidMeaningfullPrecision">
+                <tr hidden="@IsHidMeaningfulPrecision">
                     <td>
-                        <span class="label">Meaningfull Precision</span>
+                        <span class="label">Meaningful Precision</span>
                     </td>
                     <td>
-                        <span class="label">@physicalQuantityMeaningfullPrecision</span>
+                        <span class="label">@physicalQuantityMeaningfulPrecision</span>
                     </td>
                 </tr>
             </tbody>
@@ -209,7 +209,7 @@ else
     private bool IsHidLuminousIntensityDimension = true;
     private bool IsHidPlaneAngleDimension = true;
     private bool IsHidSolidAngleDimension = true;
-    private bool IsHidMeaningfullPrecision = true;
+    private bool IsHidMeaningfulPrecision = true;
     private bool IsHidSIUnitSymbol = true;
 
     //model data objects
@@ -225,7 +225,7 @@ else
     private double? physicalQuantityLuminousIntensityDimension = null;
     private double? physicalQuantityPlaneAngleDimension = null;
     private double? physicalQuantitySolidAngleDimension = null;
-    private string physicalQuantityMeaningfullPrecision = null;
+    private string physicalQuantityMeaningfulPrecision = null;
     private string physicalQuantitySIUnitSymbol = null;
 
     private List<UnitChoice> physicalQuantityUnitChoices = null;
@@ -268,11 +268,11 @@ else
             IsHidPlaneAngleDimension = System.Math.Abs(drillingPhysicalQuantities[idx].PlaneAngleDimension) < 1e-6;
             physicalQuantitySolidAngleDimension = drillingPhysicalQuantities[idx].SolidAngleDimension;
             IsHidSolidAngleDimension = System.Math.Abs(drillingPhysicalQuantities[idx].SolidAngleDimension) < 1e-6;
-            IsHidMeaningfullPrecision = drillingPhysicalQuantities[idx].MeaningFullPrecisionInSI == null;
-            if (drillingPhysicalQuantities[idx].MeaningFullPrecisionInSI != null)
+            IsHidMeaningfulPrecision = drillingPhysicalQuantities[idx].MeaningfulPrecisionInSI == null;
+            if (drillingPhysicalQuantities[idx].MeaningfulPrecisionInSI != null)
             {
-                double val = (double)(drillingPhysicalQuantities[idx].MeaningFullPrecisionInSI);
-                physicalQuantityMeaningfullPrecision = val.ToString(CultureInfo.InvariantCulture) + " " + drillingPhysicalQuantities[idx].SIUnitLabel;
+                double val = (double)(drillingPhysicalQuantities[idx].MeaningfulPrecisionInSI);
+                physicalQuantityMeaningfulPrecision = val.ToString(CultureInfo.InvariantCulture) + " " + drillingPhysicalQuantities[idx].SIUnitLabel;
             }
             IsHidSIUnitSymbol = drillingPhysicalQuantities[idx].SIUnitLabel == null;
             physicalQuantitySIUnitSymbol = drillingPhysicalQuantities[idx].SIUnitLabel;

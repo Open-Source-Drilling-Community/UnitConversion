@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAACAQAAAAAAAQAAIQAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>DrillingPhysicalQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.BlockVelocityQuantity" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>BlockVelocityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.CableDiameterQuantity" Collapsed="true">
+    <Position X="7" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>CableDiameterQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.CapillaryPressureQuantity" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>CapillaryPressureQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DepthQuantity" Collapsed="true">
+    <Position X="13.5" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DepthQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingAccelerationQuantity" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingAccelerationQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingAngleVariationGradientQuantity" Collapsed="true">
+    <Position X="20" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingAngleVariationGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingAngularVelocityQuantity" Collapsed="true">
+    <Position X="23.25" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingAngularVelocityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingAreaQuantity" Collapsed="true">
+    <Position X="26.5" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingAreaQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingCompressibilityQuantity" Collapsed="true">
+    <Position X="3.75" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingCompressibilityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingCurvatureQuantity" Collapsed="true">
+    <Position X="7" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingCurvatureQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingDensityGradientDepthQuantity" Collapsed="true">
+    <Position X="10.25" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingDensityGradientDepthQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingDensityGradientTemperatureQuantity" Collapsed="true">
+    <Position X="13.5" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingDensityGradientTemperatureQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingDensityQuantity" Collapsed="true">
+    <Position X="16.75" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingDensityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingDensityRateOfChangeQuantity" Collapsed="true">
+    <Position X="20" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingDensityRateOfChangeQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingDurationQuantity" Collapsed="true">
+    <Position X="23.25" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingDurationQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingDynamicViscosityQuantity" Collapsed="true">
+    <Position X="26.5" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingDynamicViscosityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingElongationGradientQuantity" Collapsed="true">
+    <Position X="3.75" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingElongationGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingFluidVelocityQuantity" Collapsed="true">
+    <Position X="7" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingFluidVelocityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingForceGradientQuantity" Collapsed="true">
+    <Position X="10.25" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingForceGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingForceQuantity" Collapsed="true">
+    <Position X="13.5" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingForceQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingHeatTransferCoefficientQuantity" Collapsed="true">
+    <Position X="16.75" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingHeatTransferCoefficientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingHydraulicConductivityQuantity" Collapsed="true">
+    <Position X="20" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingHydraulicConductivityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingInterfacialTensionQuantity" Collapsed="true">
+    <Position X="23.25" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingInterfacialTensionQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingMassGradientQuantity" Collapsed="true">
+    <Position X="26.5" Y="3.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingMassGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingMassQuantity" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingMassQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingMassRateQuantity" Collapsed="true">
+    <Position X="7" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingMassRateQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPlaneAngleQuantity" Collapsed="true">
+    <Position X="13.5" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingPlaneAngleQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPressureGradientQuantity" Collapsed="true">
+    <Position X="16.75" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingPressureGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPressureLossConstantQuantity" Collapsed="true">
+    <Position X="20" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingPressureLossConstantQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPressureQuantity" Collapsed="true">
+    <Position X="23.25" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingPressureQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingRotationFrequencyRateOfChangeQuantity" Collapsed="true">
+    <Position X="26.5" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingRotationFrequencyRateOfChangeQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingSpecificHeatCapacityQuantity" Collapsed="true">
+    <Position X="3.75" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingSpecificHeatCapacityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingSpecificHeatCapacityTemperatureGradientQuantity" Collapsed="true">
+    <Position X="7" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingSpecificHeatCapacityTemperatureGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingTemperatureGradientQuantity" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingTemperatureGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingTemperatureQuantity" Collapsed="true">
+    <Position X="13.5" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingTemperatureQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingTensionQuantity" Collapsed="true">
+    <Position X="16.75" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingTensionQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingThermalConductivityQuantity" Collapsed="true">
+    <Position X="20" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingThermalConductivityQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingThermalConductivityTemperatureGradientQuantity" Collapsed="true">
+    <Position X="23.25" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingThermalConductivityTemperatureGradientQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingTorqueQuantity" Collapsed="true">
+    <Position X="26.5" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingTorqueQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingVolumeQuantity" Collapsed="true">
+    <Position X="3.75" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingVolumeQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingVolumetricFlowRateOfChangeQuantity" Collapsed="true">
+    <Position X="7" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingVolumetricFlowRateOfChangeQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingVolumetricFlowrateQuantity" Collapsed="true">
+    <Position X="10.25" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillingVolumetricFlowrateQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.DrillStemMaterialStrengthQuantity" Collapsed="true">
+    <Position X="13.5" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>DrillStemMaterialStrengthQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.FormationResistivityQuantity" Collapsed="true">
+    <Position X="16.75" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.FormationStrengthQuantity" Collapsed="true">
+    <Position X="20" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.GammaRayQuantity" Collapsed="true">
+    <Position X="23.25" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAIAAAAAAAAAAgIAAABAAAAgQAAAACAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.GasShowQuantity" Collapsed="true">
+    <Position X="26.5" Y="6.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.GasVolumetricFlowRateQuantity" Collapsed="true">
+    <Position X="3.75" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.HeightQuantity" Collapsed="true">
+    <Position X="7" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.HookLoadQuantity" Collapsed="true">
+    <Position X="10.25" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAIAAAAAAAAAAgIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.NozzleDiameterQuantity" Collapsed="true">
+    <Position X="13.5" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.PipeDiameterQuantity" Collapsed="true">
+    <Position X="16.75" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.PoreDiameterQuantity" Collapsed="true">
+    <Position X="20" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.PoreSurfaceQuantity" Collapsed="true">
+    <Position X="23.25" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAACAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.PositionQuantity" Collapsed="true">
+    <Position X="26.5" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.RateOfPenetrationQuantity" Collapsed="true">
+    <Position X="3.75" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.WeightOnBitQuantity">
+    <Position X="0.5" Y="1.75" Width="3" />
+    <NestedTypes>
+      <Enum Name="OSDC.UnitConversion.Conversion.DrillingEngineering.WeightOnBitQuantity.UnitChoicesEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>EnumerationQuantities.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAIAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

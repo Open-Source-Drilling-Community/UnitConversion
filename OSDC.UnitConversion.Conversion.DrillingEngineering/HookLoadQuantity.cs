@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
         public override string SIUnitName { get; } = "Kilogram";
         public override string SIUnitLabel { get; } = "kg";
-        public override double? MeaningFullPrecisionInSI { get; } = 100;
+        public override double? MeaningfulPrecisionInSI { get; } = 100;
         private static HookLoadQuantity instance_ = null;
 
         public static new HookLoadQuantity Instance

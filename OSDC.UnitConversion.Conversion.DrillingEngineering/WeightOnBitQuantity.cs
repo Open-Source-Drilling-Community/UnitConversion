@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public partial class WeightOnBitQuantity : GravitationalLoadQuantity
     {
 
-        public override double? MeaningFullPrecisionInSI { get; } = 10;
+        public override double? MeaningfulPrecisionInSI { get; } = 10;
         private static WeightOnBitQuantity instance_ = null;
 
         public static new WeightOnBitQuantity Instance

@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class DrillingMassGradientQuantity : MassGradientQuantity
     {
-        public override double? MeaningFullPrecisionInSI { get; } = 0.05;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.05;
         private static DrillingMassGradientQuantity instance_ = null;
 
         public static new DrillingMassGradientQuantity Instance

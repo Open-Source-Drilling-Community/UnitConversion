@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Globalization;
-using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
@@ -255,7 +254,7 @@ namespace OSDC.UnitConversion.Conversion
         public virtual double SolidAngleDimension { get;  } = 0;
         /// the smallest absolute value of the quantity that makes any sense with regards to its usage
         /// ex: drilling depth 0.001m, pipe diameter 0.0001m
-        public virtual double? MeaningFullPrecisionInSI { get; } = null;
+        public virtual double? MeaningfulPrecisionInSI { get; } = null;
         /// <summary>
         /// return an alphabetically sorted list of the unit choice names
         /// </summary>
@@ -373,9 +372,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByName_.TryGetValue(unitChoiceName, out unitChoice))
             {
-                if (MeaningFullPrecisionInSI != null)
+                if (MeaningfulPrecisionInSI != null)
                 {
-                    return unitChoice.FromSI(value, MeaningFullPrecisionInSI);
+                    return unitChoice.FromSI(value, MeaningfulPrecisionInSI);
                 } else
                 {
                     return unitChoice.FromSI(value).ToString(CultureInfo.InvariantCulture.NumberFormat);
@@ -397,9 +396,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByGuid_.TryGetValue(ID, out unitChoice))
             {
-                if (MeaningFullPrecisionInSI != null)
+                if (MeaningfulPrecisionInSI != null)
                 {
-                    return unitChoice.FromSI(value, MeaningFullPrecisionInSI);
+                    return unitChoice.FromSI(value, MeaningfulPrecisionInSI);
                 }
                 else
                 {
@@ -442,9 +441,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByGuid_.TryGetValue(ID, out unitChoice))
             {
-                if (MeaningFullPrecisionInSI != null)
+                if (MeaningfulPrecisionInSI != null)
                 {
-                    return unitChoice.ToSI(value, MeaningFullPrecisionInSI);
+                    return unitChoice.ToSI(value, MeaningfulPrecisionInSI);
                 }
                 else
                 {
@@ -467,9 +466,9 @@ namespace OSDC.UnitConversion.Conversion
             UnitChoice unitChoice;
             if (unitChoicesByName_.TryGetValue(unitChoiceName, out unitChoice))
             {
-                if (MeaningFullPrecisionInSI != null)
+                if (MeaningfulPrecisionInSI != null)
                 {
-                    return unitChoice.ToSI(value, MeaningFullPrecisionInSI);
+                    return unitChoice.ToSI(value, MeaningfulPrecisionInSI);
                 }
                 else
                 {

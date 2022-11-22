@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string SIUnitName { get; } = "dot per meter";
         public override string SIUnitLabel { get; } = "dpm";
-        public override double? MeaningFullPrecisionInSI { get; } = 0.001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.001;
 
         public override double LengthDimension { get; } = -1;
 

@@ -18,7 +18,6 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         {
             logger_ = loggerFactory.CreateLogger<QuantityDataConversionsController>();
             quantityDataConversionManager_ = new QuantityDataConversionManager(loggerFactory);
-            DatabaseCleaner.Instance.Activate();
         }
 
         // GET api/QuantityDataConversions

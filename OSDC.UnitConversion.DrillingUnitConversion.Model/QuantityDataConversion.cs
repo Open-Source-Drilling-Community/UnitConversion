@@ -45,11 +45,11 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Model
                     {
                         case ConversionType.FromSI:
                             DataOut = unitChoice.FromSI(DataIn);
-                            DataOutString = unitChoice.FromSI(DataIn, quantity.MeaningFullPrecisionInSI);
+                            DataOutString = unitChoice.FromSI(DataIn, quantity.MeaningfulPrecisionInSI);
                             break;
                         default:
                             DataOut = unitChoice.ToSI(DataIn);
-                            DataOutString = unitChoice.ToSI(DataIn, quantity.MeaningFullPrecisionInSI);
+                            DataOutString = unitChoice.ToSI(DataIn, quantity.MeaningfulPrecisionInSI);
                             break;
                     }
                     success = true;

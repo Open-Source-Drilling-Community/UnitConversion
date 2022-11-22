@@ -113,19 +113,20 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                 return false;
             }
         }
-        public static async Task<List<Tuple<Guid, string, string, bool>>> LoadDrillingUnitConversionSets(HttpClient httpClient, ILogger logger)
+        public static async Task<List<MetaInfo>> LoadDrillingUnitChoiceSets(HttpClient httpClient, ILogger logger)
         {
             bool success = false;
-            List<Tuple<Guid, string, string, bool>> unitConversionSets = new List<Tuple<Guid, string, string, bool>>();
+            List<MetaInfo> unitChoiceSets = new();
             try
             {
+                //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
                 var a = await httpClient.GetAsync("DrillingUnitChoiceSets");
                 if (a.IsSuccessStatusCode)
                 {
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        unitConversionSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Tuple<Guid, string, string, bool>>>(str);
+                        unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
                         success = true;
                     }
                 }
@@ -140,9 +141,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             }
             if (success)
             {
-                unitConversionSets.Sort((tas1, tas2) => String.Compare(tas1.Item2, tas2.Item2, false, new CultureInfo("nb-NO")));
+                unitChoiceSets.Sort((m1, m2) => String.Compare(m1.Name, m2.Name, false, new CultureInfo("nb-NO")));
                 logger.LogInformation("Loaded UnitConversionSets successfully");
-                return unitConversionSets;
+                return unitChoiceSets;
             }
             else
             {
@@ -151,7 +152,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             }
         }
 
-        public static async Task<DrillingUnitChoiceSet> LoadDrillingUnitConversionSets(HttpClient httpClient, ILogger logger, Guid unitChoiceSetID)
+        public static async Task<DrillingUnitChoiceSet> LoadDrillingUnitChoiceSets(HttpClient httpClient, ILogger logger, Guid unitChoiceSetID)
         {
             bool success = false;
             DrillingUnitChoiceSet unitChoiceSet = null;
@@ -269,21 +270,21 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
         public static async Task<List<PhysicalQuantity>> LoadDrillingPhysicalQuantities(HttpClient httpClient, ILogger logger)
         {
             bool success = false;
-            List<PhysicalQuantity> drillingPhysicalQuantities = new List<PhysicalQuantity>();
+            List<PhysicalQuantity> drillingPhysicalQuantities = new();
             try
             {
                 var a = await httpClient.GetAsync("DrillingPhysicalQuantities");
                 if (a.IsSuccessStatusCode)
                 {
-                    Tuple<Guid, string>[] ids = null;
+                    List<MetaInfo> metaInfos = null;
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        ids = Newtonsoft.Json.JsonConvert.DeserializeObject<Tuple<Guid,string>[]>(str);
+                        metaInfos = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
                     }
-                    for (int i = 0; i < ids.Length; i++)
+                    for (int i = 0; i < metaInfos.Count; i++)
                     {
-                        a = await httpClient.GetAsync("DrillingPhysicalQuantities/" + ids[i].Item1.ToString());
+                        a = await httpClient.GetAsync("DrillingPhysicalQuantities/" + metaInfos[i].ID.ToString());
                         if (a.IsSuccessStatusCode && a.Content != null)
                         {
                             str = await a.Content.ReadAsStringAsync();
@@ -296,7 +297,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                             }
                         }
                     }
-                    if (drillingPhysicalQuantities.Count != ids.Length)
+                    if (drillingPhysicalQuantities.Count != metaInfos.Count)
                         throw new Exception("Inconsistent count of DataUnitConversionSet-loaded IDs and loaded DrillingPhysicalQuantities. Verify that the database garbage collector is not set with a too small time update.");
                     success = true;
                 }
@@ -311,7 +312,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             }
             if (success)
             {
-                drillingPhysicalQuantities.Sort((tac1, tac2) => String.Compare(tac1.Name, tac2.Name, false, new CultureInfo("nb-NO")));
+                drillingPhysicalQuantities.Sort((dpq1, dpq2) => String.Compare(dpq1.Name, dpq2.Name, false, new CultureInfo("nb-NO")));
                 logger.LogInformation("Loaded DrillingPhysicalQuantities successfully");
                 return drillingPhysicalQuantities;
             }
@@ -346,38 +347,6 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             {
                 logger.LogInformation("Loaded QuantityDataConversions successfully");
                 return quantityDataConversionIDs;
-            }
-            else
-            {
-                logger.LogWarning("Impossible to load QuantityDataConversions");
-                return null;
-            }
-        }
-        public static async Task<List<Tuple<Guid, string>>> LoadQuantityChoices(HttpClient httpClient, ILogger logger)
-        {
-            bool success = false;
-            List<Tuple<Guid, string>> choices = null;
-            try
-            {
-                var a = await httpClient.GetAsync("DrillingPhysicalQuantities");
-                if (a.IsSuccessStatusCode)
-                {
-                    string str = await a.Content.ReadAsStringAsync();
-                    if (!string.IsNullOrEmpty(str))
-                    {
-                        choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Tuple<Guid, string>>>(str);
-                        success = true;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Impossible to load QuantityDataConversions");
-            }
-            if (success)
-            {
-                logger.LogInformation("Loaded QuantityDataConversions successfully");
-                return choices;
             }
             else
             {
@@ -481,19 +450,20 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                 return result;
             }
         }
-        public static async Task<List<Tuple<Guid, string>>> LoadUnitChoiceSets(HttpClient httpClient, ILogger logger)
+        public static async Task<List<MetaInfo>> LoadUnitChoiceSets(HttpClient httpClient, ILogger logger)
         {
             bool success = false;
-            List<Tuple<Guid, string>> choices = null;
+            List<MetaInfo> choices = new();
             try
             {
+                //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
                 var a = await httpClient.GetAsync("DrillingUnitChoiceSets");
                 if (a.IsSuccessStatusCode)
                 {
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Tuple<Guid, string>>>(str);
+                        choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
                         success = true;
                     }
                 }

@@ -2,11 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.2</Version>
+    <Company>NORCE</Company>
+    <Authors>NORCE D&amp;W Team</Authors>
+    <Description>Shared model for DrillingUnitConversion module</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.Net.Http.Json" Version="3.2.0" />
   </ItemGroup>
 
 </Project>

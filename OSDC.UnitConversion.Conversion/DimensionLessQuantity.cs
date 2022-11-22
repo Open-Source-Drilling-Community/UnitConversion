@@ -3,28 +3,28 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class DimensionLessQuantity : DerivedPhysicalQuantity
+    public partial class DimensionlessQuantity : DerivedPhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "DimensionLess";
+        public override string SIUnitName { get; } = "Dimensionless";
         public override string SIUnitLabel { get; } = "";
-        private static DimensionLessQuantity instance_ = null;
+        private static DimensionlessQuantity instance_ = null;
 
-        public static DimensionLessQuantity Instance
+        public static DimensionlessQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new DimensionLessQuantity();
+                    instance_ = new DimensionlessQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
             }
         }
-        public DimensionLessQuantity() : base()
+        public DimensionlessQuantity() : base()
         {
-            Name = "DimensionLess";
+            Name = "Dimensionless";
             ID = new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43");
             UnitChoices = new List<UnitChoice>()
       {

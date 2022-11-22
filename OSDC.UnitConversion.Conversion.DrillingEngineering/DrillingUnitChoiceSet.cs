@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-using OSDC.UnitConversion.Conversion;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
@@ -17,281 +15,19 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         private static DrillingUnitChoiceSet ImperialUnitChoiceSet_ = null;
         private static DrillingUnitChoiceSet USUnitChoiceSet_ = null;
 
-        public static new UnitChoiceSet Get(Guid ID)
-        {
-            if (unitChoiceSets_ == null)
-            {
-                Initialize();
-            }
-            DrillingUnitChoiceSet result;
-            unitChoiceSets_.TryGetValue(ID, out result);
-            if (result == null)
-            {
-                return UnitChoiceSet.Get(ID);
-            }
-            else
-            {
-                return result;
-            }
-        }
-
-        public static new DrillingUnitChoiceSet CreateNew()
-        {
-            if (unitChoiceSets_ == null)
-            {
-                Initialize();
-            }
-            DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet();
-            unitChoiceSet.ID = Guid.NewGuid();
-            unitChoiceSets_.Add(unitChoiceSet.ID, unitChoiceSet);
-            return unitChoiceSet;
-        }
-
-        public static new DrillingUnitChoiceSet CreateNew(Guid guid)
-        {
-            if (unitChoiceSets_ == null)
-            {
-                Initialize();
-            }
-            if (unitChoiceSets_.ContainsKey(guid))
-            {
-                DrillingUnitChoiceSet result;
-                unitChoiceSets_.TryGetValue(guid, out result);
-                return result;
-            }
-            else
-            {
-                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet();
-                unitChoiceSet.ID = guid;
-                unitChoiceSets_.Add(unitChoiceSet.ID, unitChoiceSet);
-                return unitChoiceSet;
-            }
-        }
-
-        private static void Initialize()
-        {
-            if (unitChoiceSets_ == null)
-            {
-                unitChoiceSets_ = new Dictionary<Guid, DrillingUnitChoiceSet>();
-                DrillingUnitChoiceSet SI = DrillingSIUnitChoiceSet;
-                unitChoiceSets_.Add(SI.ID, SI);
-                DrillingUnitChoiceSet metric = DrillingMetricUnitChoiceSet;
-                unitChoiceSets_.Add(metric.ID, metric);
-                DrillingUnitChoiceSet US = DrillingUSUnitChoiceSet;
-                unitChoiceSets_.Add(US.ID, US);
-                DrillingUnitChoiceSet imperial = DrillingImperialUnitChoiceSet;
-                unitChoiceSets_.Add(imperial.ID, imperial);
-            }
-        }
-
-        public static DrillingUnitChoiceSet DrillingSIUnitChoiceSet
-        {
-            get
-            {
-                if (SIUnitChoiceSet_ == null)
-                {
-                    SIUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.SI);
-                }
-                return SIUnitChoiceSet_;
-            }
-        }
-
-        public static DrillingUnitChoiceSet DrillingMetricUnitChoiceSet
-        {
-            get
-            {
-                if (MetricUnitChoiceSet_ == null)
-                {
-                    MetricUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.Metric);
-                }
-                return MetricUnitChoiceSet_;
-            }
-        }
-
-        public static DrillingUnitChoiceSet DrillingImperialUnitChoiceSet
-        {
-            get
-            {
-                if (ImperialUnitChoiceSet_ == null)
-                {
-                    ImperialUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.Imperial);
-                }
-                return ImperialUnitChoiceSet_;
-            }
-        }
-        public static DrillingUnitChoiceSet DrillingUSUnitChoiceSet
-        {
-            get
-            {
-                if (USUnitChoiceSet_ == null)
-                {
-                    USUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.US);
-                }
-                return USUnitChoiceSet_;
-            }
-        }
-
         /// <summary>
         /// default constructor
         /// </summary>
-        protected DrillingUnitChoiceSet() : base()
+        public DrillingUnitChoiceSet() : base()
         {
 
-        }
-
-        protected PhysicalQuantity GetQuantity(DrillingPhysicalQuantity.QuantityEnum quantityChoice)
-        {
-            return DrillingPhysicalQuantity.GetQuantity(quantityChoice);
-        }
-
-        protected override PhysicalQuantity GetQuantity(Guid quantityID)
-        {
-            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityID);
-            if (quantity == null)
-            {
-                quantity = base.GetQuantity(quantityID);
-            }
-            return quantity;
-        }
-
-        protected override PhysicalQuantity GetQuantity(string quantityName)
-        {
-            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityName);
-            if (quantity == null)
-            {
-                quantity = base.GetQuantity(quantityName);
-            }
-            return quantity;
-        }
-
-
-        public static new List<PhysicalQuantity> AvailableQuantities
-        {
-            get
-            {
-                if (availableQuantities_ == null)
-                {
-                    Assembly assembly = Assembly.GetAssembly(typeof(DrillingUnitChoiceSet));
-                    if (assembly != null)
-                    {
-                        foreach (Type typ in assembly.GetTypes())
-                        {
-                            if (typ.IsSubclassOf(typeof(PhysicalQuantity)))
-                            {
-                                MethodInfo method = null;
-                                foreach (MethodInfo meth in typ.GetMethods())
-                                {
-                                    if (meth.IsStatic &&
-                                        meth.Name.EndsWith("Instance") &&
-                                        meth.ReturnType.IsSubclassOf(typeof(PhysicalQuantity)))
-                                    {
-                                        method = meth;
-                                        break;
-                                    }
-                                }
-                                // call the method
-                                if (method != null)
-                                {
-                                    object obj = method.Invoke(null, null);
-                                    if (obj != null)
-                                    {
-                                        var res = (PhysicalQuantity)obj;
-                                        if (availableQuantities_ == null)
-                                        {
-                                            availableQuantities_ = new List<PhysicalQuantity>();
-                                        }
-                                        availableQuantities_.Add(res);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                return availableQuantities_;
-            }
-        }
-
-        public UnitChoice GetChoice(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
-        {
-            UnitChoice choice = null;
-            string unitChoiceID;
-            PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
-            if (quantity != null && Choices.TryGetValue(quantity.ID.ToString(), out unitChoiceID))
-            {
-                Guid ID = StringToGUID(unitChoiceID);
-                if (ID != Guid.Empty)
-                {
-                    choice = quantity.GetUnitChoice(ID);
-                }
-            }
-            return choice;
-        }
-
-        public double? FromSI(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
-        {
-            UnitChoice choice = GetChoice(physicalQuantityID);
-            if (choice != null)
-            {
-                return choice.FromSI(val);
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public string FromSIString(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
-        {
-            double? meaningfullPrecision = null;
-            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(physicalQuantityID);
-            meaningfullPrecision = quantity.MeaningFullPrecisionInSI;
-            UnitChoice choice = GetChoice(physicalQuantityID);
-            if (choice != null)
-            {
-                return choice.FromSI(val, meaningfullPrecision);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="physicalQuantityID"></param>
-        /// <param name="val"></param>
-        /// <returns></returns>
-        public double? ToSI(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
-        {
-            UnitChoice choice = GetChoice(physicalQuantityID);
-            if (choice != null)
-            {
-                return choice.ToSI(val);
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public string GetUnitLabel(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
-        {
-            UnitChoice choice = GetChoice(physicalQuantityID);
-            if (choice != null)
-            {
-                return choice.UnitLabel;
-            }
-            else
-            {
-                return null;
-            }
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="defaultUnitChoice"></param>
-        protected DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum defaultUnitChoice) : base(defaultUnitChoice)
+        public DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum defaultUnitChoice) : base(defaultUnitChoice)
         {
             List<PhysicalQuantity> quantities = DrillingUnitChoiceSet.AvailableQuantities;
             if (quantities != null)
@@ -303,7 +39,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Console.WriteLine("Choices.Add(" + quantity.GetType().Name + ".Instance.ID, " + quantity.GetType().Name + ".Instance.GetUnitChoice(" + quantity.GetType().Name + ".UnitChoicesEnum.).ID);");
                 }
                 */
-                
+
                 if (defaultUnitChoice == UnitChoice.DefaultUnitSetChoiceEnum.SI)
                 {
                     IsSI = true;
@@ -537,10 +273,310 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(PoreSurfaceQuantity.Instance.ID.ToString(), PoreSurfaceQuantity.Instance.GetUnitChoice(PoreSurfaceQuantity.UnitChoicesEnum.SquareMicrometer).ID.ToString());
                     Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID.ToString());
                     Choices.Add(WeightOnBitQuantity.Instance.ID.ToString(), WeightOnBitQuantity.Instance.GetUnitChoice(WeightOnBitQuantity.UnitChoicesEnum.KiloPound).ID.ToString());
-                }   
+                }
                 CheckMissing(quantities);
             }
         }
 
+
+        public static new UnitChoiceSet Get(Guid ID)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            DrillingUnitChoiceSet result;
+            unitChoiceSets_.TryGetValue(ID, out result);
+            if (result == null)
+            {
+                return UnitChoiceSet.Get(ID);
+            }
+            else
+            {
+                return result;
+            }
+        }
+
+        public static new DrillingUnitChoiceSet CreateNew()
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet();
+            unitChoiceSet.ID = Guid.NewGuid();
+            unitChoiceSets_.Add(unitChoiceSet.ID, unitChoiceSet);
+            return unitChoiceSet;
+        }
+
+        public static new DrillingUnitChoiceSet CreateNew(Guid guid)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            if (unitChoiceSets_.ContainsKey(guid))
+            {
+                DrillingUnitChoiceSet result;
+                unitChoiceSets_.TryGetValue(guid, out result);
+                return result;
+            }
+            else
+            {
+                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet();
+                unitChoiceSet.ID = guid;
+                unitChoiceSets_.Add(unitChoiceSet.ID, unitChoiceSet);
+                return unitChoiceSet;
+            }
+        }
+
+        /// <summary>
+        /// Adds the given DrillingUnitChoiceSet to the static Dictionary of available DrillingUnitChoiceSet
+        /// </summary>
+        /// <param name="drillingUnitChoiceSet"></param>
+        /// <returns>Returns true is effectively added to the static Dictionary, false otherwise</returns>
+        public static bool Add(DrillingUnitChoiceSet drillingUnitChoiceSet)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            if (!unitChoiceSets_.ContainsKey(drillingUnitChoiceSet.ID))
+            {
+                unitChoiceSets_.Add(drillingUnitChoiceSet.ID, drillingUnitChoiceSet);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Updates the given DrillingUnitChoiceSet in the static Dictionary of available DrillingUnitChoiceSet
+        /// </summary>
+        /// <param name="drillingUnitChoiceSet"></param>
+        /// <returns>Returns true is effectively updated in the static Dictionary, false otherwise</returns>
+        public static bool Update(DrillingUnitChoiceSet drillingUnitChoiceSet)
+        {
+            if (unitChoiceSets_ == null)
+            {
+                Initialize();
+            }
+            if (unitChoiceSets_.ContainsKey(drillingUnitChoiceSet.ID))
+            {
+                unitChoiceSets_[drillingUnitChoiceSet.ID] = drillingUnitChoiceSet;
+                return true;
+            }
+            return false;
+        }
+
+        private static void Initialize()
+        {
+            if (unitChoiceSets_ == null)
+            {
+                unitChoiceSets_ = new Dictionary<Guid, DrillingUnitChoiceSet>();
+                DrillingUnitChoiceSet SI = DrillingSIUnitChoiceSet;
+                unitChoiceSets_.Add(SI.ID, SI);
+                DrillingUnitChoiceSet metric = DrillingMetricUnitChoiceSet;
+                unitChoiceSets_.Add(metric.ID, metric);
+                DrillingUnitChoiceSet US = DrillingUSUnitChoiceSet;
+                unitChoiceSets_.Add(US.ID, US);
+                DrillingUnitChoiceSet imperial = DrillingImperialUnitChoiceSet;
+                unitChoiceSets_.Add(imperial.ID, imperial);
+            }
+        }
+
+        public static DrillingUnitChoiceSet DrillingSIUnitChoiceSet
+        {
+            get
+            {
+                if (SIUnitChoiceSet_ == null)
+                {
+                    SIUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.SI);
+                }
+                return SIUnitChoiceSet_;
+            }
+        }
+
+        public static DrillingUnitChoiceSet DrillingMetricUnitChoiceSet
+        {
+            get
+            {
+                if (MetricUnitChoiceSet_ == null)
+                {
+                    MetricUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.Metric);
+                }
+                return MetricUnitChoiceSet_;
+            }
+        }
+
+        public static DrillingUnitChoiceSet DrillingImperialUnitChoiceSet
+        {
+            get
+            {
+                if (ImperialUnitChoiceSet_ == null)
+                {
+                    ImperialUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.Imperial);
+                }
+                return ImperialUnitChoiceSet_;
+            }
+        }
+        public static DrillingUnitChoiceSet DrillingUSUnitChoiceSet
+        {
+            get
+            {
+                if (USUnitChoiceSet_ == null)
+                {
+                    USUnitChoiceSet_ = new DrillingUnitChoiceSet(UnitChoice.DefaultUnitSetChoiceEnum.US);
+                }
+                return USUnitChoiceSet_;
+            }
+        }
+
+        protected PhysicalQuantity GetQuantity(DrillingPhysicalQuantity.QuantityEnum quantityChoice)
+        {
+            return DrillingPhysicalQuantity.GetQuantity(quantityChoice);
+        }
+
+        protected override PhysicalQuantity GetQuantity(Guid quantityID)
+        {
+            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityID);
+            if (quantity == null)
+            {
+                quantity = base.GetQuantity(quantityID);
+            }
+            return quantity;
+        }
+
+        protected override PhysicalQuantity GetQuantity(string quantityName)
+        {
+            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityName);
+            if (quantity == null)
+            {
+                quantity = base.GetQuantity(quantityName);
+            }
+            return quantity;
+        }
+
+
+        public static new List<PhysicalQuantity> AvailableQuantities
+        {
+            get
+            {
+                if (availableQuantities_ == null)
+                {
+                    Assembly assembly = Assembly.GetAssembly(typeof(DrillingUnitChoiceSet));
+                    if (assembly != null)
+                    {
+                        foreach (Type typ in assembly.GetTypes())
+                        {
+                            if (typ.IsSubclassOf(typeof(PhysicalQuantity)))
+                            {
+                                MethodInfo method = null;
+                                foreach (MethodInfo meth in typ.GetMethods())
+                                {
+                                    if (meth.IsStatic &&
+                                        meth.Name.EndsWith("Instance") &&
+                                        meth.ReturnType.IsSubclassOf(typeof(PhysicalQuantity)))
+                                    {
+                                        method = meth;
+                                        break;
+                                    }
+                                }
+                                // call the method
+                                if (method != null)
+                                {
+                                    object obj = method.Invoke(null, null);
+                                    if (obj != null)
+                                    {
+                                        var res = (PhysicalQuantity)obj;
+                                        if (availableQuantities_ == null)
+                                        {
+                                            availableQuantities_ = new List<PhysicalQuantity>();
+                                        }
+                                        availableQuantities_.Add(res);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return availableQuantities_;
+            }
+        }
+
+        public UnitChoice GetChoice(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
+        {
+            UnitChoice choice = null;
+            string unitChoiceID;
+            PhysicalQuantity quantity = GetQuantity(physicalQuantityID);
+            if (quantity != null && Choices.TryGetValue(quantity.ID.ToString(), out unitChoiceID))
+            {
+                Guid ID = StringToGUID(unitChoiceID);
+                if (ID != Guid.Empty)
+                {
+                    choice = quantity.GetUnitChoice(ID);
+                }
+            }
+            return choice;
+        }
+
+        public double? FromSI(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
+        {
+            UnitChoice choice = GetChoice(physicalQuantityID);
+            if (choice != null)
+            {
+                return choice.FromSI(val);
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public string FromSIString(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
+        {
+            double? meaningfulPrecision = null;
+            PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(physicalQuantityID);
+            meaningfulPrecision = quantity.MeaningfulPrecisionInSI;
+            UnitChoice choice = GetChoice(physicalQuantityID);
+            if (choice != null)
+            {
+                return choice.FromSI(val, meaningfulPrecision);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="physicalQuantityID"></param>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public double? ToSI(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID, double val)
+        {
+            UnitChoice choice = GetChoice(physicalQuantityID);
+            if (choice != null)
+            {
+                return choice.ToSI(val);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public string GetUnitLabel(DrillingPhysicalQuantity.QuantityEnum physicalQuantityID)
+        {
+            UnitChoice choice = GetChoice(physicalQuantityID);
+            if (choice != null)
+            {
+                return choice.UnitLabel;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
