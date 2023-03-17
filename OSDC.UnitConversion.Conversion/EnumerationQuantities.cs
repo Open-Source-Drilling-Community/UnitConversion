@@ -72,7 +72,8 @@ namespace OSDC.UnitConversion.Conversion
          YoungModulus,  // YoungModulus
          StandardProportion,  // StandardProportion
          StandardDimensionless,  // StandardDimensionless
-         StandardLength // Standard Length
+         StandardLength,  // Standard Length
+         FluidShearRate // FluidShearRate
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -141,7 +142,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.YoungModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // YoungModulus
          {QuantityEnum.StandardProportion, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // StandardProportion
          {QuantityEnum.StandardDimensionless, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionless
-         {QuantityEnum.StandardLength, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")} // Standard Length
+         {QuantityEnum.StandardLength, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")},  // Standard Length
+         {QuantityEnum.FluidShearRate, new Guid("d3aa72c5-2fc0-4024-902e-6775d63f3231")} // FluidShearRate
     };
   }
 }
@@ -1687,6 +1689,7 @@ namespace OSDC.UnitConversion.Conversion
     public new enum UnitChoicesEnum 
       {
          Hertz,  // Hertz
+         ReciprocalSecond,  // ReciprocalSecond
          KiloHertz,  // KiloHertz
          MegaHertz,  // MegaHertz
          GigaHertz // GigaHertz
@@ -1694,6 +1697,7 @@ namespace OSDC.UnitConversion.Conversion
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // Hertz
+         {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")},  // ReciprocalSecond
          {UnitChoicesEnum.KiloHertz, new Guid("acf483c1-5d7a-4914-afa2-de7abed9be3e")},  // KiloHertz
          {UnitChoicesEnum.MegaHertz, new Guid("6dea9f29-d4f4-49a7-86fe-0205d4bab45e")},  // MegaHertz
          {UnitChoicesEnum.GigaHertz, new Guid("655ee4f9-1782-4ec0-894a-afff9b75cac7")} // GigaHertz
@@ -2629,6 +2633,32 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Micrometer, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometer
          {UnitChoicesEnum.Millimeter, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")} // millimeter
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class FluidShearRateQuantity : FrequencyQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Hertz,  // Hertz
+         ReciprocalSecond // ReciprocalSecond
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // Hertz
+         {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")} // ReciprocalSecond
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

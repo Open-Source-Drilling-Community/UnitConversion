@@ -1,14 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.0.1</Version>
+    <Version>1.0.3</Version>
     <Authors>Gilles Pelfrene</Authors>
-    <Company>NORCE</Company>
+    <Company>NORCE Norwegian Research Centre</Company>
     <Description>A package with MudBlazor components to manage unit and reference conversions.</Description>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
 
@@ -20,8 +22,18 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.10" />
     <PackageReference Include="MudBlazor" Version="6.0.17" />
     <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="1.1.0" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.3" />
     <PackageReference Include="OSDC.UnitConversion.DrillingRazorComponents" Version="1.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

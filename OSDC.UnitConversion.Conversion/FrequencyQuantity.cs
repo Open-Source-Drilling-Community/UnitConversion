@@ -39,6 +39,14 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
+          UnitName = "ReciprocalSecond",
+          UnitLabel = "1/s",
+          ID = new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9"),
+          ConversionFactorFromSI = 1.0,
+          IsSI = false
+        },
+        new UnitChoice
+        {
           UnitName = "KiloHertz",
           UnitLabel = "kHz",
           ID = new Guid("acf483c1-5d7a-4914-afa2-de7abed9be3e"),

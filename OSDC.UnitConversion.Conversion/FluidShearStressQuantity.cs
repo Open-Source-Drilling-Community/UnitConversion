@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class FluidShearStressQuantity : PressureQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override double? MeaningfulPrecisionInSI { get; } = 1E-06;
+        public override double? MeaningfulPrecisionInSI { get; } = 1E-04;
         private static FluidShearStressQuantity instance_ = null;
 
         public static new FluidShearStressQuantity Instance

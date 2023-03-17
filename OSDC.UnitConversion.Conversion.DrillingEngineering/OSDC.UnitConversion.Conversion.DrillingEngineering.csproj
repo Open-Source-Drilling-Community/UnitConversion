@@ -4,17 +4,30 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Eric Cayeux</Authors>
-    <Company>Norwegian Research Institute</Company>
+    <Company>NORCE Norwegian Research Institute</Company>
     <Description>A package for unit conversion that accounts for Drilling Engineering meaningful precisions</Description>
     <PackageProjectUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</RepositoryUrl>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.6</Version>
+    <Version>1.0.9</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.3" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
