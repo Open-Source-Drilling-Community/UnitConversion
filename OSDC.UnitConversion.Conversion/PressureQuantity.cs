@@ -228,6 +228,13 @@ namespace OSDC.UnitConversion.Conversion
           UnitLabel = "ft Aq 60°F",
           ID = new Guid("5dc3d224-5a3d-410e-8348-463f802a9b27"),
           ConversionFactorFromSI = 0.0003348832
+        },
+        new UnitChoice
+        {
+          UnitName = "DynesPerSquareCentimeter",
+          UnitLabel = "dynes/cm²",
+          ID = new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38"),
+          ConversionFactorFromSI = 10.0
         }
       };
         }

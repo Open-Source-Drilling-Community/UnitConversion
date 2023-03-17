@@ -60,7 +60,6 @@ namespace OSDC.UnitConversion.Conversion
          Resistivity,  // Resistivity
          FrequencyRateOfChange,  // FrequencyRateOfChange
          RotationFreqencyRateOfChange,  // RotationFreqencyRateOfChange
-         FluidShearStress,  // FluidShearStress
          SpecificHeatCapacity,  // SpecificHeatCapacity
          SpecificHeatCapcityTemperatureGradient,  // SpecificHeatCapcityTemperatureGradient
          TemperatureGradient,  // TemperatureGradient
@@ -73,7 +72,9 @@ namespace OSDC.UnitConversion.Conversion
          StandardProportion,  // StandardProportion
          StandardDimensionless,  // StandardDimensionless
          StandardLength,  // Standard Length
-         FluidShearRate // FluidShearRate
+         FluidShearRate,  // FluidShearRate
+         FluidShearStress,  // FluidShearStress
+         RheologyConsistencyIndex // RheologyConsistencyIndex
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -130,7 +131,6 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Resistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // Resistivity
          {QuantityEnum.FrequencyRateOfChange, new Guid("e9d5bfe9-428b-4df0-9fe5-d9ad17e6a0cb")},  // FrequencyRateOfChange
          {QuantityEnum.RotationFreqencyRateOfChange, new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e")},  // RotationFreqencyRateOfChange
-         {QuantityEnum.FluidShearStress, new Guid("b8f8f4f5-1925-4eaf-87c2-2adfdf618454")},  // FluidShearStress
          {QuantityEnum.SpecificHeatCapacity, new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9")},  // SpecificHeatCapacity
          {QuantityEnum.SpecificHeatCapcityTemperatureGradient, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // SpecificHeatCapcityTemperatureGradient
          {QuantityEnum.TemperatureGradient, new Guid("4c1819d5-008b-4613-b62a-3f5d91b08ee7")},  // TemperatureGradient
@@ -143,7 +143,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.StandardProportion, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // StandardProportion
          {QuantityEnum.StandardDimensionless, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionless
          {QuantityEnum.StandardLength, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")},  // Standard Length
-         {QuantityEnum.FluidShearRate, new Guid("d3aa72c5-2fc0-4024-902e-6775d63f3231")} // FluidShearRate
+         {QuantityEnum.FluidShearRate, new Guid("d3aa72c5-2fc0-4024-902e-6775d63f3231")},  // FluidShearRate
+         {QuantityEnum.FluidShearStress, new Guid("b8f8f4f5-1925-4eaf-87c2-2adfdf618454")},  // FluidShearStress
+         {QuantityEnum.RheologyConsistencyIndex, new Guid("05571702-00e6-47d7-8590-fd3983645406")} // RheologyConsistencyIndex
     };
   }
 }
@@ -621,14 +623,18 @@ namespace OSDC.UnitConversion.Conversion
          PascalSecond,  // PascalSecond
          CentiPoise,  // CentiPoise
          MicroPascalSecond,  // MicroPascalSecond
-         MicroPoise // MicroPoise
+         MicroPoise,  // MicroPoise
+         PoundPer100SquareFootSecond,  // PoundPer100SquareFootSecond
+         DynesPerSquareCentimeterSecond // DynesPerSquareCentimeterSecond
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // PascalSecond
          {UnitChoicesEnum.CentiPoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // CentiPoise
          {UnitChoicesEnum.MicroPascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")},  // MicroPascalSecond
-         {UnitChoicesEnum.MicroPoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")} // MicroPoise
+         {UnitChoicesEnum.MicroPoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // MicroPoise
+         {UnitChoicesEnum.PoundPer100SquareFootSecond, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // PoundPer100SquareFootSecond
+         {UnitChoicesEnum.DynesPerSquareCentimeterSecond, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // DynesPerSquareCentimeterSecond
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1363,7 +1369,8 @@ namespace OSDC.UnitConversion.Conversion
          InchWater4DegC,  // InchWater4DegC
          FootWater4DegC,  // FootWater4DegC
          InchWater60DegF,  // InchWater60DegF
-         FootWater60DegF // FootWater60DegF
+         FootWater60DegF,  // FootWater60DegF
+         DynesPerSquareCentimeter // DynesPerSquareCentimeter
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -1394,7 +1401,8 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.InchWater4DegC, new Guid("3015f436-b35d-455c-af23-b9bc4dd857da")},  // InchWater4DegC
          {UnitChoicesEnum.FootWater4DegC, new Guid("52de6721-dfec-4a54-861c-e74da72c8470")},  // FootWater4DegC
          {UnitChoicesEnum.InchWater60DegF, new Guid("80b388f3-5036-42cb-8462-91a8bfbc429e")},  // InchWater60DegF
-         {UnitChoicesEnum.FootWater60DegF, new Guid("5dc3d224-5a3d-410e-8348-463f802a9b27")} // FootWater60DegF
+         {UnitChoicesEnum.FootWater60DegF, new Guid("5dc3d224-5a3d-410e-8348-463f802a9b27")},  // FootWater60DegF
+         {UnitChoicesEnum.DynesPerSquareCentimeter, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // DynesPerSquareCentimeter
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2224,38 +2232,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class FluidShearStressQuantity : PressureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Pascal,  // Pascal
-         KiloPascal,  // KiloPascal
-         Bar,  // Bar
-         PoundPerSquareInch,  // PoundPerSquareInch
-         PoundPer100SquareFoot // PoundPer100SquareFoot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // Pascal
-         {UnitChoicesEnum.KiloPascal, new Guid("a41c04f5-198b-4a04-b90a-5700412a2a29")},  // KiloPascal
-         {UnitChoicesEnum.Bar, new Guid("0d182739-f8f6-47a6-afcb-71feac973307")},  // Bar
-         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // PoundPerSquareInch
-         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")} // PoundPer100SquareFoot
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class SpecificHeatCapacityQuantity : DerivedPhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -2659,6 +2635,72 @@ namespace OSDC.UnitConversion.Conversion
     {
          {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // Hertz
          {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")} // ReciprocalSecond
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class FluidShearStressQuantity : PressureQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Pascal,  // Pascal
+         KiloPascal,  // KiloPascal
+         Bar,  // Bar
+         PoundPerSquareInch,  // PoundPerSquareInch
+         PoundPer100SquareFoot // PoundPer100SquareFoot
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // Pascal
+         {UnitChoicesEnum.KiloPascal, new Guid("a41c04f5-198b-4a04-b90a-5700412a2a29")},  // KiloPascal
+         {UnitChoicesEnum.Bar, new Guid("0d182739-f8f6-47a6-afcb-71feac973307")},  // Bar
+         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // PoundPerSquareInch
+         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")} // PoundPer100SquareFoot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class RheologyConsistencyIndexQuantity : DynamicViscosityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         PascalSecond,  // PascalSecond
+         MicroPascalSecond,  // MicroPascalSecond
+         CentiPoise,  // CentiPoise
+         MicroPoise,  // MicroPoise
+         PoundPer100SquareFootSecond,  // PoundPer100SquareFootSecond
+         DynesPerSquareCentimeterSecond // DynesPerSquareCentimeterSecond
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // PascalSecond
+         {UnitChoicesEnum.MicroPascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")},  // MicroPascalSecond
+         {UnitChoicesEnum.CentiPoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // CentiPoise
+         {UnitChoicesEnum.MicroPoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // MicroPoise
+         {UnitChoicesEnum.PoundPer100SquareFootSecond, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // PoundPer100SquareFootSecond
+         {UnitChoicesEnum.DynesPerSquareCentimeterSecond, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // DynesPerSquareCentimeterSecond
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

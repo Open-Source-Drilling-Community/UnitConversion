@@ -59,6 +59,20 @@ namespace OSDC.UnitConversion.Conversion
           UnitLabel = "µP",
           ID = new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8"),
           ConversionFactorFromSI = 10000000
+        },
+        new UnitChoice
+        {
+          UnitName = "PoundPer100SquareFootSecond",
+          UnitLabel = "lb•s/100ft²",
+          ID = new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01"),
+          ConversionFactorFromSI = 2.0887
+        },
+        new UnitChoice
+        {
+          UnitName = "DynesPerSquareCentimeterSecond",
+          UnitLabel = "dynes•s/cm²",
+          ID = new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132"),
+          ConversionFactorFromSI = 10.0
         }
       };
         }

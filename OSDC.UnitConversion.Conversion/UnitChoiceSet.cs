@@ -581,6 +581,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(DensityRateOfChangeQuantity.Instance.ID.ToString(), DensityRateOfChangeQuantity.Instance.GetUnitChoice(DensityRateOfChangeQuantity.UnitChoicesEnum.GramPerCubicCentimeterPerHour).ID.ToString());
                     Choices.Add(DimensionlessQuantity.Instance.ID.ToString(), DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(DynamicViscosityQuantity.Instance.ID.ToString(), DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
+                    Choices.Add(RheologyConsistencyIndexQuantity.Instance.ID.ToString(), RheologyConsistencyIndexQuantity.Instance.GetUnitChoice(RheologyConsistencyIndexQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
                     Choices.Add(EarthMagneticFluxDensityQuantity.Instance.ID.ToString(), EarthMagneticFluxDensityQuantity.Instance.GetUnitChoice(EarthMagneticFluxDensityQuantity.UnitChoicesEnum.Gauss).ID.ToString());
                     Choices.Add(ElectricalCapacitanceQuantity.Instance.ID.ToString(), ElectricalCapacitanceQuantity.Instance.GetUnitChoice(ElectricalCapacitanceQuantity.UnitChoicesEnum.MicroFarad).ID.ToString());
                     Choices.Add(ElectricCurrentQuantity.Instance.ID.ToString(), ElectricCurrentQuantity.Instance.GetUnitChoice(ElectricCurrentQuantity.UnitChoicesEnum.Ampere).ID.ToString());
@@ -655,7 +656,8 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(DensityQuantity.Instance.ID.ToString(), DensityQuantity.Instance.GetUnitChoice(DensityQuantity.UnitChoicesEnum.PoundPerGallonUS).ID.ToString());
                     Choices.Add(DensityRateOfChangeQuantity.Instance.ID.ToString(), DensityRateOfChangeQuantity.Instance.GetUnitChoice(DensityRateOfChangeQuantity.UnitChoicesEnum.PoundPerGallonUSPerHour).ID.ToString());
                     Choices.Add(DimensionlessQuantity.Instance.ID.ToString(), DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
-                    Choices.Add(DynamicViscosityQuantity.Instance.ID.ToString(), DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
+                    Choices.Add(DynamicViscosityQuantity.Instance.ID.ToString(), DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PoundPer100SquareFootSecond).ID.ToString());
+                    Choices.Add(RheologyConsistencyIndexQuantity.Instance.ID.ToString(), RheologyConsistencyIndexQuantity.Instance.GetUnitChoice(RheologyConsistencyIndexQuantity.UnitChoicesEnum.PoundPer100SquareFootSecond).ID.ToString());
                     Choices.Add(EarthMagneticFluxDensityQuantity.Instance.ID.ToString(), EarthMagneticFluxDensityQuantity.Instance.GetUnitChoice(EarthMagneticFluxDensityQuantity.UnitChoicesEnum.Gauss).ID.ToString());
                     Choices.Add(ElectricalCapacitanceQuantity.Instance.ID.ToString(), ElectricalCapacitanceQuantity.Instance.GetUnitChoice(ElectricalCapacitanceQuantity.UnitChoicesEnum.MicroFarad).ID.ToString());
                     Choices.Add(ElectricCurrentQuantity.Instance.ID.ToString(), ElectricCurrentQuantity.Instance.GetUnitChoice(ElectricCurrentQuantity.UnitChoicesEnum.Ampere).ID.ToString());
@@ -730,7 +732,8 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(DensityQuantity.Instance.ID.ToString(), DensityQuantity.Instance.GetUnitChoice(DensityQuantity.UnitChoicesEnum.PoundPerGallonUK).ID.ToString());
                     Choices.Add(DensityRateOfChangeQuantity.Instance.ID.ToString(), DensityRateOfChangeQuantity.Instance.GetUnitChoice(DensityRateOfChangeQuantity.UnitChoicesEnum.PoundPerGallonUKPerHour).ID.ToString());
                     Choices.Add(DimensionlessQuantity.Instance.ID.ToString(), DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
-                    Choices.Add(DynamicViscosityQuantity.Instance.ID.ToString(), DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
+                    Choices.Add(DynamicViscosityQuantity.Instance.ID.ToString(), DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PoundPer100SquareFootSecond).ID.ToString());
+                    Choices.Add(RheologyConsistencyIndexQuantity.Instance.ID.ToString(), RheologyConsistencyIndexQuantity.Instance.GetUnitChoice(RheologyConsistencyIndexQuantity.UnitChoicesEnum.PoundPer100SquareFootSecond).ID.ToString());
                     Choices.Add(EarthMagneticFluxDensityQuantity.Instance.ID.ToString(), EarthMagneticFluxDensityQuantity.Instance.GetUnitChoice(EarthMagneticFluxDensityQuantity.UnitChoicesEnum.Gauss).ID.ToString());
                     Choices.Add(ElectricalCapacitanceQuantity.Instance.ID.ToString(), ElectricalCapacitanceQuantity.Instance.GetUnitChoice(ElectricalCapacitanceQuantity.UnitChoicesEnum.MicroFarad).ID.ToString());
                     Choices.Add(ElectricCurrentQuantity.Instance.ID.ToString(), ElectricCurrentQuantity.Instance.GetUnitChoice(ElectricCurrentQuantity.UnitChoicesEnum.Ampere).ID.ToString());
