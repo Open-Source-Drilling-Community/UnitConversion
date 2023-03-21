@@ -3,69 +3,71 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingPhysicalQuantity : PhysicalQuantity
-  {
-     public new enum QuantityEnum 
-       {
-         BlockVelocity,  // BlockVelocity
-         CableDiameter,  // Cable Diameter
-         CapillaryPressure,  // CapillaryPressure
-         Depth,  // Depth
-         DrillingAcceleration,  // DrillingAcceleration
-         DrillingAngleVariationGradient,  // DrillingAngleVariationGradient
-         DrillingAngularVelocity,  // DrillingAngularVelocity
-         DrillingArea,  // DrillingArea
-         DrillingCompressibility,  // DrillingCompressibility
-         DrillingCurvature,  // DrillingCurvature
-         DrillingDensityGradientDepth,  // DrillingDensityGradientDepth
-         DrillingDensityGradientTemperature,  // DrillingDensityGradientTemperature
-         DrillingDensity,  // DrillingDensity
-         DrillingDensitySpeed,  // DrillingDensitySpeed
-         DrillingDuration,  // DrillingDuration
-         DrillingDynamicViscosity,  // DrillingDynamicViscosity
-         DrillingElongationGradient,  // DrillingElongationGradient
-         DrillingFluidVelocity,  // DrillingFluidVelocity
-         DrillingForceGradient,  // DrillingForceGradient
-         DrillingForce,  // DrillingForce
-         DrillingHeatTransferCoefficient,  // DrillingHeatTransferCoefficient
-         DrillingHydraulicConductivity,  // DrillingHydraulicConductivity
-         DrillingInterfacialTension,  // DrillingInterfacialTension
-         DrillingMassGradient,  // DrillingMassGradient
-         DrillingMass,  // DrillingMass
-         DrillingMassRate,  // DrillingMassRate
-         DrillingPlaneAngle,  // DrillingPlaneAngle
-         DrillingPressureGradient,  // DrillingPressureGradient
-         DrillingPressureLossConstant,  // DrillingPressureLossConstant
-         DrillingPressure,  // DrillingPressure
-         DrillingRotationFrequencyRateOfChange,  // DrillingRotationFrequencyRateOfChange
-         DrillingSpecificHeatCapacity,  // DrillingSpecificHeatCapacity
-         DrillingSpecificHeatCapacityTemperatureGradient,  // DrillingSpecificHeatCapacityTemperatureGradient
-         DrillingTemperatureGradient,  // DrillingTemperatureGradient
-         DrillingTemperature,  // DrillingTemperature
-         DrillingTension,  // DrillingTension
-         DrillingThermalConductivity,  // DrillingThermalConductivity
-         DrillingThermalConductivityTemperatureGradient,  // DrillingThermalConductivityTemperatureGradient
-         DrillingTorque,  // DrillingTorque
-         DrillingVolume,  // DrillingVolume
-         DrillingVolumetricFlowRateOfChange,  // DrillingVolumetricFlowRateOfChange
-         DrillingVolumetricFlowrate,  // DrillingVolumetricFlowrate
-         DrillStemMaterialStrength,  // DrillStemMaterialStrength
-         FormationResistivity,  // FormationResistivity
-         FormationStrength,  // FormationStrength
-         GammaRay,  // GammaRay
-         GasShow,  // GasShow
-         GasVolmetricFlowRate,  // GasVolmetricFlowRate
-         Height,  // Height
-         HookLoad,  // HookLoad
-         NozzleDiameter,  // Nozzle Diameter
-         PipeDiameter,  // Pipe Diameter
-         PoreDiameter,  // Pore Diameter
-         PoreSurface,  // PoreSurface
-         Position,  // Position
-         RateOfPenetration,  // RateOfPenetration
-         WeightOnBit // WeightOnBit
-       }
-    protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
+    public partial class DrillingPhysicalQuantity : PhysicalQuantity
+    {
+        public new enum QuantityEnum
+        {
+            BlockVelocity,  // BlockVelocity
+            CableDiameter,  // Cable Diameter
+            CapillaryPressure,  // CapillaryPressure
+            Depth,  // Depth
+            DrillingAcceleration,  // DrillingAcceleration
+            DrillingAngleVariationGradient,  // DrillingAngleVariationGradient
+            DrillingAngularVelocity,  // DrillingAngularVelocity
+            DrillingArea,  // DrillingArea
+            DrillingCompressibility,  // DrillingCompressibility
+            DrillingCurvature,  // DrillingCurvature
+            DrillingDensityGradientDepth,  // DrillingDensityGradientDepth
+            DrillingDensityGradientTemperature,  // DrillingDensityGradientTemperature
+            DrillingDensity,  // DrillingDensity
+            DrillingDensitySpeed,  // DrillingDensitySpeed
+            DrillingDuration,  // DrillingDuration
+            DrillingDynamicViscosity,  // DrillingDynamicViscosity
+            DrillingElongationGradient,  // DrillingElongationGradient
+            DrillingFluidVelocity,  // DrillingFluidVelocity
+            DrillingFluidShearRate, // DrillingFluidShearRate
+            DrillingFluidShearStress, // DrillingFluidShearStress
+            DrillingForceGradient,  // DrillingForceGradient
+            DrillingForce,  // DrillingForce
+            DrillingHeatTransferCoefficient,  // DrillingHeatTransferCoefficient
+            DrillingHydraulicConductivity,  // DrillingHydraulicConductivity
+            DrillingInterfacialTension,  // DrillingInterfacialTension
+            DrillingMassGradient,  // DrillingMassGradient
+            DrillingMass,  // DrillingMass
+            DrillingMassRate,  // DrillingMassRate
+            DrillingPlaneAngle,  // DrillingPlaneAngle
+            DrillingPressureGradient,  // DrillingPressureGradient
+            DrillingPressureLossConstant,  // DrillingPressureLossConstant
+            DrillingPressure,  // DrillingPressure
+            DrillingRotationFrequencyRateOfChange,  // DrillingRotationFrequencyRateOfChange
+            DrillingSpecificHeatCapacity,  // DrillingSpecificHeatCapacity
+            DrillingSpecificHeatCapacityTemperatureGradient,  // DrillingSpecificHeatCapacityTemperatureGradient
+            DrillingTemperatureGradient,  // DrillingTemperatureGradient
+            DrillingTemperature,  // DrillingTemperature
+            DrillingTension,  // DrillingTension
+            DrillingThermalConductivity,  // DrillingThermalConductivity
+            DrillingThermalConductivityTemperatureGradient,  // DrillingThermalConductivityTemperatureGradient
+            DrillingTorque,  // DrillingTorque
+            DrillingVolume,  // DrillingVolume
+            DrillingVolumetricFlowRateOfChange,  // DrillingVolumetricFlowRateOfChange
+            DrillingVolumetricFlowrate,  // DrillingVolumetricFlowrate
+            DrillStemMaterialStrength,  // DrillStemMaterialStrength
+            FormationResistivity,  // FormationResistivity
+            FormationStrength,  // FormationStrength
+            GammaRay,  // GammaRay
+            GasShow,  // GasShow
+            GasVolmetricFlowRate,  // GasVolmetricFlowRate
+            Height,  // Height
+            HookLoad,  // HookLoad
+            NozzleDiameter,  // Nozzle Diameter
+            PipeDiameter,  // Pipe Diameter
+            PoreDiameter,  // Pore Diameter
+            PoreSurface,  // PoreSurface
+            Position,  // Position
+            RateOfPenetration,  // RateOfPenetration
+            WeightOnBit // WeightOnBit
+        }
+        protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
          {QuantityEnum.BlockVelocity, new Guid("82a2b5fc-9edd-45ea-80cb-1cd46d516fdb")},  // BlockVelocity
          {QuantityEnum.CableDiameter, new Guid("6b3db5b2-7e30-47f7-91c5-5951dd3f9246")},  // Cable Diameter
@@ -85,6 +87,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingDynamicViscosity, new Guid("e9b32538-f7f4-4f99-a206-0601a4e4a5f8")},  // DrillingDynamicViscosity
          {QuantityEnum.DrillingElongationGradient, new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9")},  // DrillingElongationGradient
          {QuantityEnum.DrillingFluidVelocity, new Guid("dac9cee1-59a3-42d5-98c6-0c7baf5083bb")},  // DrillingFluidVelocity
+         {QuantityEnum.DrillingFluidShearRate, new Guid("f4254261-59d7-4ba6-8ffa-f653df8e181a")},  // DrillingFluidShearRate
+         {QuantityEnum.DrillingFluidShearStress, new Guid("828ccbc1-5d0e-4fd9-b552-4b54b22c108e")},  // DrillingFluidShearStress
          {QuantityEnum.DrillingForceGradient, new Guid("78942f39-d764-42f1-b270-47a3b35e5112")},  // DrillingForceGradient
          {QuantityEnum.DrillingForce, new Guid("30c08b42-6a89-4d99-879b-882eb7ed46d0")},  // DrillingForce
          {QuantityEnum.DrillingHeatTransferCoefficient, new Guid("c99547c5-b545-4060-bd82-eadc13772493")},  // DrillingHeatTransferCoefficient
@@ -125,23 +129,23 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.RateOfPenetration, new Guid("c2581b41-944c-410b-9805-62c4b54de510")},  // RateOfPenetration
          {QuantityEnum.WeightOnBit, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")} // WeightOnBit
     };
-  }
+    }
 }
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class BlockVelocityQuantity : VelocityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterPerSecond,  // MeterPerSecond
-         MeterPerMinute,  // MeterPerMinute
-         MeterPerHour,  // MeterPerHour
-         FootPerHour,  // FootPerHour
-         FootPerMinute,  // FootPerMinute
-         FootPerSecond // FootPerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class BlockVelocityQuantity : VelocityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterPerSecond,  // MeterPerSecond
+            MeterPerMinute,  // MeterPerMinute
+            MeterPerHour,  // MeterPerHour
+            FootPerHour,  // FootPerHour
+            FootPerMinute,  // FootPerMinute
+            FootPerSecond // FootPerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterPerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // MeterPerSecond
          {UnitChoicesEnum.MeterPerMinute, new Guid("824d3b5b-1e51-446a-99a4-39c02377f303")},  // MeterPerMinute
@@ -150,37 +154,37 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.FootPerMinute, new Guid("2d139d2c-1063-4f8d-99ae-bf71a98a1076")},  // FootPerMinute
          {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")} // FootPerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class CableDiameterQuantity : SmallLengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimeter,  // centimeter
-         Decimeter,  // decimeter
-         Feet,  // feet
-         Inch,  // inch
-         Metre,  // metre
-         Micrometer,  // micrometer
-         Millimeter,  // millimeter
-         Nanometer,  // nanometer
-         Picometer,  // picometer
-         Ångstrøm,  // ångstrøm
-         Inch_32 // inch/32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class CableDiameterQuantity : SmallLengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Centimeter,  // centimeter
+            Decimeter,  // decimeter
+            Feet,  // feet
+            Inch,  // inch
+            Metre,  // metre
+            Micrometer,  // micrometer
+            Millimeter,  // millimeter
+            Nanometer,  // nanometer
+            Picometer,  // picometer
+            Ångstrøm,  // ångstrøm
+            Inch_32 // inch/32
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Centimeter, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimeter
          {UnitChoicesEnum.Decimeter, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimeter
@@ -194,32 +198,32 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
          {UnitChoicesEnum.Inch_32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch/32
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class CapillaryPressureQuantity : PressureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Pascal,  // Pascal
-         Bar,  // Bar
-         PoundPerSquareInch,  // PoundPerSquareInch
-         KiloPascal,  // KiloPascal
-         MegaPascal,  // MegaPascal
-         KiloPoundPerSquareInch // KiloPoundPerSquareInch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class CapillaryPressureQuantity : PressureQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Pascal,  // Pascal
+            Bar,  // Bar
+            PoundPerSquareInch,  // PoundPerSquareInch
+            KiloPascal,  // KiloPascal
+            MegaPascal,  // MegaPascal
+            KiloPoundPerSquareInch // KiloPoundPerSquareInch
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // Pascal
          {UnitChoicesEnum.Bar, new Guid("0d182739-f8f6-47a6-afcb-71feac973307")},  // Bar
@@ -228,83 +232,83 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.MegaPascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // MegaPascal
          {UnitChoicesEnum.KiloPoundPerSquareInch, new Guid("a07b5fe5-87e3-4422-afe1-f54de24deeb8")} // KiloPoundPerSquareInch
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DepthQuantity : LengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Metre,  // metre
-         Feet // feet
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DepthQuantity : LengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Metre,  // metre
+            Feet // feet
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")} // feet
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingAccelerationQuantity : AccelerationQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterPerSecondSquare,  // MeterPerSecondSquare
-         FootPerSecondSquare // FootPerSecondSquare
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingAccelerationQuantity : AccelerationQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterPerSecondSquare,  // MeterPerSecondSquare
+            FootPerSecondSquare // FootPerSecondSquare
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterPerSecondSquare, new Guid("20515c0b-8a90-4e76-a2b3-cab213db5a06")},  // MeterPerSecondSquare
          {UnitChoicesEnum.FootPerSecondSquare, new Guid("74f20b52-6c15-40e2-ae23-5493326fc879")} // FootPerSecondSquare
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingAngleVariationGradientQuantity : AngleVariationGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianPerMeter,  // RadianPerMeter
-         DegreePerMeter,  // DegreePerMeter
-         DegreePerFoot,  // DegreePerFoot
-         DegreePerCentimeter,  // DegreePerCentimeter
-         DegreePerInch // DegreePerInch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingAngleVariationGradientQuantity : AngleVariationGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            RadianPerMeter,  // RadianPerMeter
+            DegreePerMeter,  // DegreePerMeter
+            DegreePerFoot,  // DegreePerFoot
+            DegreePerCentimeter,  // DegreePerCentimeter
+            DegreePerInch // DegreePerInch
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.RadianPerMeter, new Guid("5d9782b6-c4c7-47ca-a86b-dce3f63c3747")},  // RadianPerMeter
          {UnitChoicesEnum.DegreePerMeter, new Guid("2fcd4219-8879-4494-9563-5173ec2292fa")},  // DegreePerMeter
@@ -312,58 +316,58 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.DegreePerCentimeter, new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7")},  // DegreePerCentimeter
          {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")} // DegreePerInch
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingAngularVelocityQuantity : AngularVelocityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianPerSecond,  // RadianPerSecond
-         DegreePerSecond // DegreePerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingAngularVelocityQuantity : AngularVelocityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            RadianPerSecond,  // RadianPerSecond
+            DegreePerSecond // DegreePerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.RadianPerSecond, new Guid("8889fafb-cc58-4c4e-a52d-696219dfcf4a")},  // RadianPerSecond
          {UnitChoicesEnum.DegreePerSecond, new Guid("c6c0676e-c8a6-407d-be44-1691fd6b5d9e")} // DegreePerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingAreaQuantity : AreaQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         SquareMeter,  // SquareMeter
-         SquareFoot,  // SquareFoot
-         SquareDecimeter,  // SquareDecimeter
-         SquareYard,  // SquareYard
-         SquareCentimeter,  // SquareCentimeter
-         SquareInch // SquareInch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingAreaQuantity : AreaQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            SquareMeter,  // SquareMeter
+            SquareFoot,  // SquareFoot
+            SquareDecimeter,  // SquareDecimeter
+            SquareYard,  // SquareYard
+            SquareCentimeter,  // SquareCentimeter
+            SquareInch // SquareInch
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.SquareMeter, new Guid("6225a0d7-d2f1-4bb1-9721-5b260bac26ee")},  // SquareMeter
          {UnitChoicesEnum.SquareFoot, new Guid("5a59332e-17b3-4fa2-9527-12d06a2b4248")},  // SquareFoot
@@ -372,59 +376,59 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.SquareCentimeter, new Guid("d74bb2bc-9c86-4be4-bff1-88cac7b1049b")},  // SquareCentimeter
          {UnitChoicesEnum.SquareInch, new Guid("294bc6d0-5be7-4c70-95f3-ad9dc50f02cf")} // SquareInch
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingCompressibilityQuantity : CompressibilityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         InverseBar,  // InverseBar
-         InversePascal,  // InversePascal
-         InversePoundPerSquareInch // InversePoundPerSquareInch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingCompressibilityQuantity : CompressibilityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            InverseBar,  // InverseBar
+            InversePascal,  // InversePascal
+            InversePoundPerSquareInch // InversePoundPerSquareInch
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.InverseBar, new Guid("4a0f6df4-0d2d-489b-80f1-511be7713101")},  // InverseBar
          {UnitChoicesEnum.InversePascal, new Guid("0e259998-c8bb-4a4d-b281-afb8008b2693")},  // InversePascal
          {UnitChoicesEnum.InversePoundPerSquareInch, new Guid("282ab24c-6c43-4710-8e52-433bdf90cc2e")} // InversePoundPerSquareInch
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingCurvatureQuantity : CurvatureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianPerMeter,  // RadianPerMeter
-         DegreePer10m,  // DegreePer10m
-         DegreePer30m,  // DegreePer30m
-         DegreePer30ft,  // DegreePer30ft
-         DegreePer100ft // DegreePer100ft
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingCurvatureQuantity : CurvatureQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            RadianPerMeter,  // RadianPerMeter
+            DegreePer10m,  // DegreePer10m
+            DegreePer30m,  // DegreePer30m
+            DegreePer30ft,  // DegreePer30ft
+            DegreePer100ft // DegreePer100ft
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.RadianPerMeter, new Guid("cbba2f64-9914-4c00-a3fe-3c2aef560225")},  // RadianPerMeter
          {UnitChoicesEnum.DegreePer10m, new Guid("c62408d6-c3c5-47bd-8cb0-4fa9faf51598")},  // DegreePer10m
@@ -432,38 +436,38 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.DegreePer30ft, new Guid("284dca7d-b1fc-4e40-ab08-a3e0fa2ef9d0")},  // DegreePer30ft
          {UnitChoicesEnum.DegreePer100ft, new Guid("5aa20ab5-6800-48db-abb1-4c3538b0972d")} // DegreePer100ft
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDensityGradientDepthQuantity : DensityGradientDepthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMeterPerMeter,  // KilogramPerCubicMeterPerMeter
-         GramPerCubicCentimeterPer100Meter,  // GramPerCubicCentimeterPer100Meter
-         PoundPerGallonUKPer100Foot,  // PoundPerGallonUKPer100Foot
-         PoundPerGallonUKPer30Foot,  // PoundPerGallonUKPer30Foot
-         PoundPerGallonUKPerFoot,  // PoundPerGallonUKPerFoot
-         PoundPerGallonUSPer100Foot,  // PoundPerGallonUSPer100Foot
-         PoundPerGallonUSPer30Foot,  // PoundPerGallonUSPer30Foot
-         PoundPerGallonUSPerFoot,  // PoundPerGallonUSPerFoot
-         SpecificGravityPer100Meter,  // SpecificGravityPer100Meter
-         SpecificGravityPer10Meter,  // SpecificGravityPer10Meter
-         SpecificGravityPer30Meter,  // SpecificGravityPer30Meter
-         SpecificGravityPerMeter // SpecificGravityPerMeter
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingDensityGradientDepthQuantity : DensityGradientDepthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            KilogramPerCubicMeterPerMeter,  // KilogramPerCubicMeterPerMeter
+            GramPerCubicCentimeterPer100Meter,  // GramPerCubicCentimeterPer100Meter
+            PoundPerGallonUKPer100Foot,  // PoundPerGallonUKPer100Foot
+            PoundPerGallonUKPer30Foot,  // PoundPerGallonUKPer30Foot
+            PoundPerGallonUKPerFoot,  // PoundPerGallonUKPerFoot
+            PoundPerGallonUSPer100Foot,  // PoundPerGallonUSPer100Foot
+            PoundPerGallonUSPer30Foot,  // PoundPerGallonUSPer30Foot
+            PoundPerGallonUSPerFoot,  // PoundPerGallonUSPerFoot
+            SpecificGravityPer100Meter,  // SpecificGravityPer100Meter
+            SpecificGravityPer10Meter,  // SpecificGravityPer10Meter
+            SpecificGravityPer30Meter,  // SpecificGravityPer30Meter
+            SpecificGravityPerMeter // SpecificGravityPerMeter
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.KilogramPerCubicMeterPerMeter, new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1")},  // KilogramPerCubicMeterPerMeter
          {UnitChoicesEnum.GramPerCubicCentimeterPer100Meter, new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06")},  // GramPerCubicCentimeterPer100Meter
@@ -478,31 +482,31 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.SpecificGravityPer30Meter, new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92")},  // SpecificGravityPer30Meter
          {UnitChoicesEnum.SpecificGravityPerMeter, new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2")} // SpecificGravityPerMeter
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDensityGradientTemperatureQuantity : DensityGradientTemperatureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMeterPerKelvin,  // KilogramPerCubicMeterPerKelvin
-         GramPerCubicCentimeterPerCelsius,  // GramPerCubicCentimeterPerCelsius
-         PoundPerGallonUKPerCelsius,  // PoundPerGallonUKPerCelsius
-         PoundPerGallonUSPerFarenheit,  // PoundPerGallonUSPerFarenheit
-         SpecificGravityPerCelsius // SpecificGravityPerCelsius
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingDensityGradientTemperatureQuantity : DensityGradientTemperatureQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            KilogramPerCubicMeterPerKelvin,  // KilogramPerCubicMeterPerKelvin
+            GramPerCubicCentimeterPerCelsius,  // GramPerCubicCentimeterPerCelsius
+            PoundPerGallonUKPerCelsius,  // PoundPerGallonUKPerCelsius
+            PoundPerGallonUSPerFarenheit,  // PoundPerGallonUSPerFarenheit
+            SpecificGravityPerCelsius // SpecificGravityPerCelsius
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.KilogramPerCubicMeterPerKelvin, new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf")},  // KilogramPerCubicMeterPerKelvin
          {UnitChoicesEnum.GramPerCubicCentimeterPerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // GramPerCubicCentimeterPerCelsius
@@ -510,33 +514,33 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.PoundPerGallonUSPerFarenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // PoundPerGallonUSPerFarenheit
          {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")} // SpecificGravityPerCelsius
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDensityQuantity : DensityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         GramPerCubicCentimeter,  // GramPerCubicCentimeter
-         GramPerCubicMeter,  // GramPerCubicMeter
-         KilogramPerCubicMeter,  // KilogramPerCubicMeter
-         PoundPerCubicFoot,  // PoundPerCubicFoot
-         PoundPerGallonUK,  // PoundPerGallonUK
-         PoundPerGallonUS,  // PoundPerGallonUS
-         SpecificGravity // SpecificGravity
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingDensityQuantity : DensityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            GramPerCubicCentimeter,  // GramPerCubicCentimeter
+            GramPerCubicMeter,  // GramPerCubicMeter
+            KilogramPerCubicMeter,  // KilogramPerCubicMeter
+            PoundPerCubicFoot,  // PoundPerCubicFoot
+            PoundPerGallonUK,  // PoundPerGallonUK
+            PoundPerGallonUS,  // PoundPerGallonUS
+            SpecificGravity // SpecificGravity
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.GramPerCubicCentimeter, new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450")},  // GramPerCubicCentimeter
          {UnitChoicesEnum.GramPerCubicMeter, new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a")},  // GramPerCubicMeter
@@ -546,37 +550,37 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.PoundPerGallonUS, new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da")},  // PoundPerGallonUS
          {UnitChoicesEnum.SpecificGravity, new Guid("da94ba95-4494-45af-bf99-31f00031c680")} // SpecificGravity
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDensityRateOfChangeQuantity : DensityRateOfChangeQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         GramPerCubicCentimeterPerHour,  // GramPerCubicCentimeterPerHour
-         KilogramPerCubicMeterPerSecond,  // KilogramPerCubicMeterPerSecond
-         PoundPerGallonUKPerHour,  // PoundPerGallonUKPerHour
-         PoundPerGallonUKPerMinute,  // PoundPerGallonUKPerMinute
-         PoundPerGallonUKPerSecond,  // PoundPerGallonUKPerSecond
-         PoundPerGallonUSPerHour,  // PoundPerGallonUSPerHour
-         PoundPerGallonUSPerMinute,  // PoundPerGallonUSPerMinute
-         PoundPerGallonUSPerSecond,  // PoundPerGallonUSPerSecond
-         SpecificGravityPerHour,  // SpecificGravityPerHour
-         SpecificGravityPerMinute,  // SpecificGravityPerMinute
-         SpecificGravityPerSecond // SpecificGravityPerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingDensityRateOfChangeQuantity : DensityRateOfChangeQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            GramPerCubicCentimeterPerHour,  // GramPerCubicCentimeterPerHour
+            KilogramPerCubicMeterPerSecond,  // KilogramPerCubicMeterPerSecond
+            PoundPerGallonUKPerHour,  // PoundPerGallonUKPerHour
+            PoundPerGallonUKPerMinute,  // PoundPerGallonUKPerMinute
+            PoundPerGallonUKPerSecond,  // PoundPerGallonUKPerSecond
+            PoundPerGallonUSPerHour,  // PoundPerGallonUSPerHour
+            PoundPerGallonUSPerMinute,  // PoundPerGallonUSPerMinute
+            PoundPerGallonUSPerSecond,  // PoundPerGallonUSPerSecond
+            SpecificGravityPerHour,  // SpecificGravityPerHour
+            SpecificGravityPerMinute,  // SpecificGravityPerMinute
+            SpecificGravityPerSecond // SpecificGravityPerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.GramPerCubicCentimeterPerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // GramPerCubicCentimeterPerHour
          {UnitChoicesEnum.KilogramPerCubicMeterPerSecond, new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377")},  // KilogramPerCubicMeterPerSecond
@@ -590,175 +594,233 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // SpecificGravityPerMinute
          {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")} // SpecificGravityPerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDurationQuantity : TimeQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Second,  // second
-         Minute,  // minute
-         Hour,  // hour
-         Day // day
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingDurationQuantity : TimeQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Second,  // second
+            Minute,  // minute
+            Hour,  // hour
+            Day // day
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Second, new Guid("eac42b09-cc85-4e29-9aaf-05fe73bca2aa")},  // second
          {UnitChoicesEnum.Minute, new Guid("4b9dc241-388b-4b7a-b862-48db43234c4a")},  // minute
          {UnitChoicesEnum.Hour, new Guid("f0d815e4-9bef-4422-94e6-1de52216b611")},  // hour
          {UnitChoicesEnum.Day, new Guid("85442621-bb56-4e2a-8e77-2b72409ff84f")} // day
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingDynamicViscosityQuantity : DynamicViscosityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         PascalSecond,  // PascalSecond
-         CentiPoise,  // CentiPoise
-         MicroPoise,  // MicroPoise
-         MicroPascalSecond // MicroPascalSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingDynamicViscosityQuantity : DynamicViscosityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            PascalSecond,  // PascalSecond
+            CentiPoise,  // CentiPoise
+            MicroPoise,  // MicroPoise
+            MicroPascalSecond // MicroPascalSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // PascalSecond
          {UnitChoicesEnum.CentiPoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // CentiPoise
          {UnitChoicesEnum.MicroPoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // MicroPoise
          {UnitChoicesEnum.MicroPascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")} // MicroPascalSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingElongationGradientQuantity : ElongationGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterPerMeter,  // MeterPerMeter
-         MillimeterPerMeter,  // millimeter per meter
-         InchPerFoot // inch per foot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingElongationGradientQuantity : ElongationGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterPerMeter,  // MeterPerMeter
+            MillimeterPerMeter,  // millimeter per meter
+            InchPerFoot // inch per foot
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterPerMeter, new Guid("cc12967b-4c7d-4c70-95cf-d2f23bd6f76b")},  // MeterPerMeter
          {UnitChoicesEnum.MillimeterPerMeter, new Guid("4e241b59-388a-428f-82e7-b9971f9e1df5")},  // millimeter per meter
          {UnitChoicesEnum.InchPerFoot, new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2")} // inch per foot
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingFluidVelocityQuantity : VelocityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterPerSecond,  // MeterPerSecond
-         FootPerSecond // FootPerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingFluidVelocityQuantity : VelocityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterPerSecond,  // MeterPerSecond
+            FootPerSecond // FootPerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterPerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // MeterPerSecond
          {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")} // FootPerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingForceGradientQuantity : ForceGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         NewtonPerMeter,  // NewtonPerMeter
-         NewtonPer30Meter,  // NewtonPer30Meter
-         DecaNewtonPerMeter // decaNewtonPerMeter
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingFluidShearRateQuantity : FluidShearRateQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Hertz,  // Hertz
+            ReciprocalSecond // ReciprocalSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // Hertz
+         {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")} // ReciprocalSecond
+    };
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
+    }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+    public partial class DrillingFluidShearStressQuantity : FluidShearStressQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Pascal,  // Pascal
+            PoundPer100SquareFoot, // PoundPer100SquareFoot
+            PoundPerSquareFoot,  // PoundPerSquareFoot
+            PoundPerSquareInch,  // PoundPerSquareInch
+            DynesPerSquareCentimeter  // DynesPerSquareCentimeter
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // Pascal
+         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")}, // PoundPer100SquareFoot
+         {UnitChoicesEnum.PoundPerSquareFoot, new Guid("35b28889-c076-4274-b200-cf7732b17aa3")},  // PoundPerSquareFoot
+         {UnitChoicesEnum.DynesPerSquareCentimeter, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")},  // DynesPerSquareCentimeter
+         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")}  // PoundPerSquareInch
+    };
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
+    }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+    public partial class DrillingForceGradientQuantity : ForceGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            NewtonPerMeter,  // NewtonPerMeter
+            NewtonPer30Meter,  // NewtonPer30Meter
+            DecaNewtonPerMeter // decaNewtonPerMeter
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.NewtonPerMeter, new Guid("e503a1d3-1815-4321-8087-6e3d6dc641c8")},  // NewtonPerMeter
          {UnitChoicesEnum.NewtonPer30Meter, new Guid("be16e271-5ce7-445b-a8db-9014a6acc22b")},  // NewtonPer30Meter
          {UnitChoicesEnum.DecaNewtonPerMeter, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")} // decaNewtonPerMeter
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingForceQuantity : ForceQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Newton,  // Newton
-         DecaNewton,  // DecaNewton
-         KiloDecaNewton,  // KiloDecaNewton
-         KilogramForce,  // KilogramForce
-         KiloNewton,  // KiloNewton
-         KiloPoundForce,  // KiloPoundForce
-         PoundForce // PoundForce
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingForceQuantity : ForceQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Newton,  // Newton
+            DecaNewton,  // DecaNewton
+            KiloDecaNewton,  // KiloDecaNewton
+            KilogramForce,  // KilogramForce
+            KiloNewton,  // KiloNewton
+            KiloPoundForce,  // KiloPoundForce
+            PoundForce // PoundForce
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Newton, new Guid("2e6b218c-0f85-4e8d-b9c5-73b78d207ef8")},  // Newton
          {UnitChoicesEnum.DecaNewton, new Guid("fc48e3a8-deb9-4cf6-aaad-5b18f7e37972")},  // DecaNewton
@@ -768,62 +830,62 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KiloPoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")},  // KiloPoundForce
          {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")} // PoundForce
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingHeatTransferCoefficientQuantity : HeatTransferCoefficientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         WattPerMeterSquaredPerKelvin,  // WattPerMeterSquaredPerKelvin
-         BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit // BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingHeatTransferCoefficientQuantity : HeatTransferCoefficientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            WattPerMeterSquaredPerKelvin,  // WattPerMeterSquaredPerKelvin
+            BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit // BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.WattPerMeterSquaredPerKelvin, new Guid("e1737353-c10b-46cd-aa4e-9c90afb2f01e")},  // WattPerMeterSquaredPerKelvin
          {UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit, new Guid("6963db25-2bd9-4017-9c83-cc578a11abbf")} // BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingHydraulicConductivityQuantity : HydraulicConductivityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterPerSecond,  // MeterPerSecond
-         MeterPerMinute,  // MeterPerMinute
-         MeterPerHour,  // MeterPerHour
-         MeterPerDay,  // MeterPerDay
-         FootPerSecond,  // FootPerSecond
-         FootPerMinute,  // FootPerMinute
-         FootPerHour,  // FootPerHour
-         FootPerDay,  // FootPerDay
-         CentimeterPerSecond,  // CentimeterPerSecond
-         InchPerSecond // InchPerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingHydraulicConductivityQuantity : HydraulicConductivityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterPerSecond,  // MeterPerSecond
+            MeterPerMinute,  // MeterPerMinute
+            MeterPerHour,  // MeterPerHour
+            MeterPerDay,  // MeterPerDay
+            FootPerSecond,  // FootPerSecond
+            FootPerMinute,  // FootPerMinute
+            FootPerHour,  // FootPerHour
+            FootPerDay,  // FootPerDay
+            CentimeterPerSecond,  // CentimeterPerSecond
+            InchPerSecond // InchPerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterPerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // MeterPerSecond
          {UnitChoicesEnum.MeterPerMinute, new Guid("824d3b5b-1e51-446a-99a4-39c02377f303")},  // MeterPerMinute
@@ -836,87 +898,87 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.CentimeterPerSecond, new Guid("d32f84d7-f076-49ab-8bd5-1ccd27e0eba6")},  // CentimeterPerSecond
          {UnitChoicesEnum.InchPerSecond, new Guid("8cd16c97-5c7a-4ee9-b59b-cbe2decd8ff9")} // InchPerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingInterfacialTensionQuantity : InterfacialTensionQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         NewtonPerMeter,  // NewtonPerMeter
-         MilliNewtonPerMeter,  // MilliNewtonPerMeter
-         DynesPerCentimeter,  // DynesPerCentimeter
-         PoundPerSecondSquared // PoundPerSecondSquared
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingInterfacialTensionQuantity : InterfacialTensionQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            NewtonPerMeter,  // NewtonPerMeter
+            MilliNewtonPerMeter,  // MilliNewtonPerMeter
+            DynesPerCentimeter,  // DynesPerCentimeter
+            PoundPerSecondSquared // PoundPerSecondSquared
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.NewtonPerMeter, new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932")},  // NewtonPerMeter
          {UnitChoicesEnum.MilliNewtonPerMeter, new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690")},  // MilliNewtonPerMeter
          {UnitChoicesEnum.DynesPerCentimeter, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // DynesPerCentimeter
          {UnitChoicesEnum.PoundPerSecondSquared, new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c")} // PoundPerSecondSquared
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingMassGradientQuantity : MassGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerMeter,  // kilogramPerMeter
-         PoundPerFoot // PoundPerFoot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingMassGradientQuantity : MassGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            KilogramPerMeter,  // kilogramPerMeter
+            PoundPerFoot // PoundPerFoot
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.KilogramPerMeter, new Guid("c8b4a6ea-29bf-4e5a-b7ce-9142cefc0752")},  // kilogramPerMeter
          {UnitChoicesEnum.PoundPerFoot, new Guid("6fdf4cb6-a43b-482d-9bc8-d4ad49770f9e")} // PoundPerFoot
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingMassQuantity : MassQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Kilogram,  // kilogram
-         TonneMetric,  // tonne metric
-         Pound,  // pound
-         KiloPound,  // KiloPound
-         TonUK // ton UK
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingMassQuantity : MassQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Kilogram,  // kilogram
+            TonneMetric,  // tonne metric
+            Pound,  // pound
+            KiloPound,  // KiloPound
+            TonUK // ton UK
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
          {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
@@ -924,144 +986,144 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KiloPound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // KiloPound
          {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingMassRateQuantity : MassRateQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerSecond,  // KilogramPerSecond
-         KilogramPerMinute // KilogramPerMinute
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingMassRateQuantity : MassRateQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            KilogramPerSecond,  // KilogramPerSecond
+            KilogramPerMinute // KilogramPerMinute
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.KilogramPerSecond, new Guid("a2daceb8-7705-4c97-9945-b354ea1ff78d")},  // KilogramPerSecond
          {UnitChoicesEnum.KilogramPerMinute, new Guid("b776ae6f-5b86-462c-b815-2608d7e98192")} // KilogramPerMinute
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingPlaneAngleQuantity : PlaneAngleQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Radian,  // radian
-         Degree // degree
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingPlaneAngleQuantity : PlaneAngleQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Radian,  // radian
+            Degree // degree
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Radian, new Guid("a71fc712-342a-48c2-8e45-b56ee31c7ae0")},  // radian
          {UnitChoicesEnum.Degree, new Guid("023a3393-a01e-499f-967a-a76b1a78d586")} // degree
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingPressureGradientQuantity : PressureGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         PascalPerMeter,  // PascalPerMeter
-         BarPerMeter,  // BarPerMeter
-         PSIPerFoot,  // PSIPerFoot
-         PSIPerMeter // PSIPerMeter
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingPressureGradientQuantity : PressureGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            PascalPerMeter,  // PascalPerMeter
+            BarPerMeter,  // BarPerMeter
+            PSIPerFoot,  // PSIPerFoot
+            PSIPerMeter // PSIPerMeter
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.PascalPerMeter, new Guid("f5a37831-4a70-44de-af34-4f6ce1a54af3")},  // PascalPerMeter
          {UnitChoicesEnum.BarPerMeter, new Guid("73a70891-87cf-44fc-8437-94938f034eec")},  // BarPerMeter
          {UnitChoicesEnum.PSIPerFoot, new Guid("b99cef5c-d6df-4803-b52b-6050cf7e7ff8")},  // PSIPerFoot
          {UnitChoicesEnum.PSIPerMeter, new Guid("2235a51b-cdf2-4f53-9664-b7a968dbbba3")} // PSIPerMeter
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingPressureLossConstantQuantity : PressureLossConstantQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         PressureLossConstantSI,  // PressureLossConstantSI
-         PressureLossConstantMetric,  // PressureLossConstantMetric
-         PressureLossConstantUK,  // PressureLossConstantUK
-         PressureLossConstantUS // PressureLossConstantUS
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingPressureLossConstantQuantity : PressureLossConstantQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            PressureLossConstantSI,  // PressureLossConstantSI
+            PressureLossConstantMetric,  // PressureLossConstantMetric
+            PressureLossConstantUK,  // PressureLossConstantUK
+            PressureLossConstantUS // PressureLossConstantUS
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.PressureLossConstantSI, new Guid("e0b334c4-2e44-4b1b-891f-9deae86a4d17")},  // PressureLossConstantSI
          {UnitChoicesEnum.PressureLossConstantMetric, new Guid("043fbd34-1e4f-45bc-9935-b1797b606fd6")},  // PressureLossConstantMetric
          {UnitChoicesEnum.PressureLossConstantUK, new Guid("d5a97f2d-cb2f-449f-8f60-0ad292a01b87")},  // PressureLossConstantUK
          {UnitChoicesEnum.PressureLossConstantUS, new Guid("b5cb21d1-0e71-4ab2-8d9d-42de21753edc")} // PressureLossConstantUS
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingPressureQuantity : PressureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Pascal,  // Pascal
-         Bar,  // Bar
-         PoundPerSquareInch,  // PoundPerSquareInch
-         KiloPascal,  // KiloPascal
-         MegaPascal,  // MegaPascal
-         KiloPoundPerSquareInch // KiloPoundPerSquareInch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingPressureQuantity : PressureQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Pascal,  // Pascal
+            Bar,  // Bar
+            PoundPerSquareInch,  // PoundPerSquareInch
+            KiloPascal,  // KiloPascal
+            MegaPascal,  // MegaPascal
+            KiloPoundPerSquareInch // KiloPoundPerSquareInch
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // Pascal
          {UnitChoicesEnum.Bar, new Guid("0d182739-f8f6-47a6-afcb-71feac973307")},  // Bar
@@ -1070,57 +1132,57 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.MegaPascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // MegaPascal
          {UnitChoicesEnum.KiloPoundPerSquareInch, new Guid("a07b5fe5-87e3-4422-afe1-f54de24deeb8")} // KiloPoundPerSquareInch
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingRotationFrequencyRateOfChangeQuantity : RotationFrequencyRateOfChangeQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         HertzPerSecond,  // HertzPerSecond
-         RPMPerSecond // RPMPerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingRotationFrequencyRateOfChangeQuantity : RotationFrequencyRateOfChangeQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            HertzPerSecond,  // HertzPerSecond
+            RPMPerSecond // RPMPerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.HertzPerSecond, new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd")},  // HertzPerSecond
          {UnitChoicesEnum.RPMPerSecond, new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb")} // RPMPerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingSpecificHeatCapacityQuantity : SpecificHeatCapacityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         JoulePerKilogramKelvin,  // JoulePerKilogramKelvin
-         JoulePerGramKelvin,  // JoulePerGramKelvin
-         JoulePerGramDegreeCelsius,  // JoulePerGramDegreeCelsius
-         CaloriePerGramDegreeCelsius,  // CaloriePerGramDegreeCelsius
-         BritishThermalUnitPerPoundDegreeFarenheit // BritishThermalUnitPerPoundDegreeFarenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingSpecificHeatCapacityQuantity : SpecificHeatCapacityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            JoulePerKilogramKelvin,  // JoulePerKilogramKelvin
+            JoulePerGramKelvin,  // JoulePerGramKelvin
+            JoulePerGramDegreeCelsius,  // JoulePerGramDegreeCelsius
+            CaloriePerGramDegreeCelsius,  // CaloriePerGramDegreeCelsius
+            BritishThermalUnitPerPoundDegreeFarenheit // BritishThermalUnitPerPoundDegreeFarenheit
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.JoulePerKilogramKelvin, new Guid("52d9523e-546b-41dd-b283-a125447433a3")},  // JoulePerKilogramKelvin
          {UnitChoicesEnum.JoulePerGramKelvin, new Guid("0c38001b-ecba-4920-ac75-e4644d8feced")},  // JoulePerGramKelvin
@@ -1128,31 +1190,31 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.CaloriePerGramDegreeCelsius, new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397")},  // CaloriePerGramDegreeCelsius
          {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")} // BritishThermalUnitPerPoundDegreeFarenheit
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingSpecificHeatCapacityTemperatureGradientQuantity : SpecificHeatCapacityTemperatureGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         JoulePerKilogramKelvinPerKelvin,  // JoulePerKilogramKelvinPerKelvin
-         JoulePerGramKelvinPerKelvin,  // JoulePerGramKelvinPerKelvin
-         JoulePerGramDegreeCelsiusPerCelsius,  // JoulePerGramDegreeCelsiusPerCelsius
-         CaloriePerGramDegreeCelsiusPerCelsius,  // CaloriePerGramDegreeCelsiusPerCelsius
-         BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit // BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingSpecificHeatCapacityTemperatureGradientQuantity : SpecificHeatCapacityTemperatureGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            JoulePerKilogramKelvinPerKelvin,  // JoulePerKilogramKelvinPerKelvin
+            JoulePerGramKelvinPerKelvin,  // JoulePerGramKelvinPerKelvin
+            JoulePerGramDegreeCelsiusPerCelsius,  // JoulePerGramDegreeCelsiusPerCelsius
+            CaloriePerGramDegreeCelsiusPerCelsius,  // CaloriePerGramDegreeCelsiusPerCelsius
+            BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit // BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.JoulePerKilogramKelvinPerKelvin, new Guid("9570fd84-ff2e-4a74-93b7-39bcf6558301")},  // JoulePerKilogramKelvinPerKelvin
          {UnitChoicesEnum.JoulePerGramKelvinPerKelvin, new Guid("69520d03-c7c3-483f-bbbb-6bdf3cf74463")},  // JoulePerGramKelvinPerKelvin
@@ -1160,37 +1222,37 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.CaloriePerGramDegreeCelsiusPerCelsius, new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2")},  // CaloriePerGramDegreeCelsiusPerCelsius
          {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit, new Guid("57264532-79b7-4a19-8ffe-617bba781be3")} // BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingTemperatureGradientQuantity : TemperatureGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KelvinPerMeter,  // KelvinPerMeter
-         CelsiusPerMeter,  // CelsiusPerMeter
-         CelsiusPer10Meter,  // CelsiusPer10Meter
-         CelsiusPer30Meter,  // CelsiusPer30Meter
-         CelsiusPer100Meter,  // CelsiusPer100Meter
-         CelsiusPerFoot,  // CelsiusPerFoot
-         CelsiusPer30Foot,  // CelsiusPer30Foot
-         CelsiusPer100Foot,  // CelsiusPer100Foot
-         FahrenheitPerFoot,  // FahrenheitPerFoot
-         FahrenheitPer30Foot,  // FahrenheitPer30Foot
-         FahrenheitPer100Foot // FahrenheitPer100Foot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingTemperatureGradientQuantity : TemperatureGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            KelvinPerMeter,  // KelvinPerMeter
+            CelsiusPerMeter,  // CelsiusPerMeter
+            CelsiusPer10Meter,  // CelsiusPer10Meter
+            CelsiusPer30Meter,  // CelsiusPer30Meter
+            CelsiusPer100Meter,  // CelsiusPer100Meter
+            CelsiusPerFoot,  // CelsiusPerFoot
+            CelsiusPer30Foot,  // CelsiusPer30Foot
+            CelsiusPer100Foot,  // CelsiusPer100Foot
+            FahrenheitPerFoot,  // FahrenheitPerFoot
+            FahrenheitPer30Foot,  // FahrenheitPer30Foot
+            FahrenheitPer100Foot // FahrenheitPer100Foot
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.KelvinPerMeter, new Guid("f1fe19d2-12e3-43d1-ba97-3ef9e8ec9e73")},  // KelvinPerMeter
          {UnitChoicesEnum.CelsiusPerMeter, new Guid("40dbbdfe-b680-403a-8326-2c217ba85d52")},  // CelsiusPerMeter
@@ -1204,61 +1266,61 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.FahrenheitPer30Foot, new Guid("a1664cb0-db5c-4933-9b57-d075c4975f46")},  // FahrenheitPer30Foot
          {UnitChoicesEnum.FahrenheitPer100Foot, new Guid("232e2d6d-cb65-4b56-9277-457e4ff678fa")} // FahrenheitPer100Foot
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingTemperatureQuantity : TemperatureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Kelvin,  // kelvin
-         Celsius,  // celsius
-         Fahrenheit // fahrenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingTemperatureQuantity : TemperatureQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Kelvin,  // kelvin
+            Celsius,  // celsius
+            Fahrenheit // fahrenheit
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Kelvin, new Guid("8fc5fa10-2d89-4064-8ace-b852d9a8d31f")},  // kelvin
          {UnitChoicesEnum.Celsius, new Guid("5d69048e-fe18-4923-9341-cb80c2ccf8cc")},  // celsius
          {UnitChoicesEnum.Fahrenheit, new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f")} // fahrenheit
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingTensionQuantity : TensionQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Newton,  // Newton
-         DecaNewton,  // DecaNewton
-         KiloDecaNewton,  // KiloDecaNewton
-         KilogramForce,  // KilogramForce
-         KiloNewton,  // KiloNewton
-         KiloPoundForce,  // KiloPoundForce
-         PoundForce // PoundForce
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingTensionQuantity : TensionQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Newton,  // Newton
+            DecaNewton,  // DecaNewton
+            KiloDecaNewton,  // KiloDecaNewton
+            KilogramForce,  // KilogramForce
+            KiloNewton,  // KiloNewton
+            KiloPoundForce,  // KiloPoundForce
+            PoundForce // PoundForce
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Newton, new Guid("2e6b218c-0f85-4e8d-b9c5-73b78d207ef8")},  // Newton
          {UnitChoicesEnum.DecaNewton, new Guid("fc48e3a8-deb9-4cf6-aaad-5b18f7e37972")},  // DecaNewton
@@ -1268,31 +1330,31 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KiloPoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")},  // KiloPoundForce
          {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")} // PoundForce
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingThermalConductivityQuantity : ThermalConductivityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         WattPerMetreKelvin,  // WattPerMetreKelvin
-         CaloriePerMetreSecondDegreeCelsius,  // CaloriePerMetreSecondDegreeCelsius
-         CaloriePerCentimetreSecondDegreeCelsius,  // CaloriePerCentimetreSecondDegreeCelsius
-         BritishThermalUnitPerHourFootDegreeFarenheit,  // BritishThermalUnitPerHourFootDegreeFarenheit
-         BritishThermalUnitInchPerHourSquareFootDegreeFarenheit // BritishThermalUnitInchPerHourSquareFootDegreeFarenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingThermalConductivityQuantity : ThermalConductivityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            WattPerMetreKelvin,  // WattPerMetreKelvin
+            CaloriePerMetreSecondDegreeCelsius,  // CaloriePerMetreSecondDegreeCelsius
+            CaloriePerCentimetreSecondDegreeCelsius,  // CaloriePerCentimetreSecondDegreeCelsius
+            BritishThermalUnitPerHourFootDegreeFarenheit,  // BritishThermalUnitPerHourFootDegreeFarenheit
+            BritishThermalUnitInchPerHourSquareFootDegreeFarenheit // BritishThermalUnitInchPerHourSquareFootDegreeFarenheit
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.WattPerMetreKelvin, new Guid("3ddba24f-4ccf-4cb1-af6c-2829cac3b88f")},  // WattPerMetreKelvin
          {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsius, new Guid("d0386fc4-b97b-4874-8c8d-66e093c391ea")},  // CaloriePerMetreSecondDegreeCelsius
@@ -1300,31 +1362,31 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit, new Guid("43169695-8f6e-42ad-8c07-566dc7651edb")},  // BritishThermalUnitPerHourFootDegreeFarenheit
          {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFarenheit, new Guid("c79c2b27-c956-49a3-9caf-8653017777ca")} // BritishThermalUnitInchPerHourSquareFootDegreeFarenheit
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingThermalConductivityTemperatureGradientQuantity : ThermalConductivityTemperatureGradientQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         WattPerMetreKelvinPerKelvin,  // WattPerMetreKelvinPerKelvin
-         BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit,  // BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit
-         BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit,  // BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit
-         CaloriePerCentimetreSecondDegreeCelsiusPerCelsius,  // CaloriePerCentimetreSecondDegreeCelsiusPerCelsius
-         CaloriePerMetreSecondDegreeCelsiusPerCelsius // CaloriePerMetreSecondDegreeCelsiusPerCelsius
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingThermalConductivityTemperatureGradientQuantity : ThermalConductivityTemperatureGradientQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            WattPerMetreKelvinPerKelvin,  // WattPerMetreKelvinPerKelvin
+            BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit,  // BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit
+            BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit,  // BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit
+            CaloriePerCentimetreSecondDegreeCelsiusPerCelsius,  // CaloriePerCentimetreSecondDegreeCelsiusPerCelsius
+            CaloriePerMetreSecondDegreeCelsiusPerCelsius // CaloriePerMetreSecondDegreeCelsiusPerCelsius
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.WattPerMetreKelvinPerKelvin, new Guid("0459940e-d71f-4b01-9ea6-eeb05d754af2")},  // WattPerMetreKelvinPerKelvin
          {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit, new Guid("918b4e34-3986-427f-8bb6-c09740a7c299")},  // BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit
@@ -1332,32 +1394,32 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsiusPerCelsius, new Guid("6c21a6cd-61fe-4086-95a7-ad6d6820c96e")},  // CaloriePerCentimetreSecondDegreeCelsiusPerCelsius
          {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsiusPerCelsius, new Guid("eb08ff8c-d542-440f-a4c7-610653018910")} // CaloriePerMetreSecondDegreeCelsiusPerCelsius
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingTorqueQuantity : TorqueQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterNewton,  // MeterNewton
-         FootPound,  // FootPound
-         KiloFootPound,  // KiloFootPound
-         MeterDecaNewton,  // MeterDecaNewton
-         MeterKilogramForce,  // MeterKilogramForce
-         MeterKiloNewton // MeterKiloNewton
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingTorqueQuantity : TorqueQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterNewton,  // MeterNewton
+            FootPound,  // FootPound
+            KiloFootPound,  // KiloFootPound
+            MeterDecaNewton,  // MeterDecaNewton
+            MeterKilogramForce,  // MeterKilogramForce
+            MeterKiloNewton // MeterKiloNewton
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterNewton, new Guid("50b017fa-8d81-4076-a485-61de1d8301b5")},  // MeterNewton
          {UnitChoicesEnum.FootPound, new Guid("700d9fc7-17e1-4ad6-84f1-39cacbe5fe51")},  // FootPound
@@ -1366,122 +1428,122 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.MeterKilogramForce, new Guid("282f97a0-df2a-4016-9ab0-796db49ff384")},  // MeterKilogramForce
          {UnitChoicesEnum.MeterKiloNewton, new Guid("2e417a6e-1acc-4901-8704-7dfeb3f67546")} // MeterKiloNewton
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingVolumeQuantity : VolumeQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         CubicMeter,  // CubicMeter
-         Liter,  // Liter
-         USGallon,  // USGallon
-         UKGallon // UKGallon
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingVolumeQuantity : VolumeQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            CubicMeter,  // CubicMeter
+            Liter,  // Liter
+            USGallon,  // USGallon
+            UKGallon // UKGallon
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.CubicMeter, new Guid("a465ba87-53d6-456c-8e74-315a1a212498")},  // CubicMeter
          {UnitChoicesEnum.Liter, new Guid("3f713743-6248-4b0b-8f3b-c97b6fab76b1")},  // Liter
          {UnitChoicesEnum.USGallon, new Guid("1377d8ac-d203-48ed-bad4-733b0dc9d496")},  // USGallon
          {UnitChoicesEnum.UKGallon, new Guid("78f1cef7-c489-498c-96fb-d37474e242a9")} // UKGallon
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingVolumetricFlowRateOfChangeQuantity : VolumetricFlowRateOfChangeQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         CubicMeterPerSecondSquare,  // CubicMeterPerSecondSquare
-         LiterPerMinutePerSecond,  // LiterPerMinutePerSecond
-         UKGallonPerMinutePerSecond,  // UKGallonPerMinutePerSecond
-         USGallonPerMinutePerSecond // USGallonPerMinutePerSecond
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingVolumetricFlowRateOfChangeQuantity : VolumetricFlowRateOfChangeQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            CubicMeterPerSecondSquare,  // CubicMeterPerSecondSquare
+            LiterPerMinutePerSecond,  // LiterPerMinutePerSecond
+            UKGallonPerMinutePerSecond,  // UKGallonPerMinutePerSecond
+            USGallonPerMinutePerSecond // USGallonPerMinutePerSecond
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.CubicMeterPerSecondSquare, new Guid("aef20431-be0b-44ea-8770-a59db19b7f94")},  // CubicMeterPerSecondSquare
          {UnitChoicesEnum.LiterPerMinutePerSecond, new Guid("e5a265b6-a9ba-4a09-ba08-b8c417b28ffb")},  // LiterPerMinutePerSecond
          {UnitChoicesEnum.UKGallonPerMinutePerSecond, new Guid("298e7a16-07a5-4b5b-a0de-3e49b31254b4")},  // UKGallonPerMinutePerSecond
          {UnitChoicesEnum.USGallonPerMinutePerSecond, new Guid("3c530e9a-9376-49d1-a6b5-0a6f93f4184b")} // USGallonPerMinutePerSecond
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillingVolumetricFlowrateQuantity : VolumetricFlowRateQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         CubicMeterPerSecond,  // CubicMeterPerSecond
-         LiterPerMinute,  // LiterPerMinute
-         UKGallonPerMinute,  // UKGallonPerMinute
-         USGallonPerMinute // USGallonPerMinute
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillingVolumetricFlowrateQuantity : VolumetricFlowRateQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            CubicMeterPerSecond,  // CubicMeterPerSecond
+            LiterPerMinute,  // LiterPerMinute
+            UKGallonPerMinute,  // UKGallonPerMinute
+            USGallonPerMinute // USGallonPerMinute
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.CubicMeterPerSecond, new Guid("fabe7a23-1ba2-4f5d-b3f5-d5729166c7a0")},  // CubicMeterPerSecond
          {UnitChoicesEnum.LiterPerMinute, new Guid("e1ff1684-02ed-41c0-a82c-40b4a6d348b5")},  // LiterPerMinute
          {UnitChoicesEnum.UKGallonPerMinute, new Guid("bb1d3fbc-efc1-4cf7-9c13-33c25a874224")},  // UKGallonPerMinute
          {UnitChoicesEnum.USGallonPerMinute, new Guid("ceca76e7-fd1e-4220-b072-9f40467a05e3")} // USGallonPerMinute
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillStemMaterialStrengthQuantity : MaterialStrengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Pascal,  // Pascal
-         GigaPascal,  // GigaPascal
-         MegaPascal,  // MegaPascal
-         MegapoundPerSquareInch,  // MegapoundPerSquareInch
-         PoundPer100SquareFoot,  // PoundPer100SquareFoot
-         PSI // PSI
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class DrillStemMaterialStrengthQuantity : MaterialStrengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Pascal,  // Pascal
+            GigaPascal,  // GigaPascal
+            MegaPascal,  // MegaPascal
+            MegapoundPerSquareInch,  // MegapoundPerSquareInch
+            PoundPer100SquareFoot,  // PoundPer100SquareFoot
+            PSI // PSI
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Pascal, new Guid("159e99d3-c79d-4dc6-974f-05cc38af001e")},  // Pascal
          {UnitChoicesEnum.GigaPascal, new Guid("c9aa0a18-02ac-42a0-9afe-8a08b4f03331")},  // GigaPascal
@@ -1490,56 +1552,56 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("eb1e2a52-3de3-4338-ad4d-40e8ce90e40b")},  // PoundPer100SquareFoot
          {UnitChoicesEnum.PSI, new Guid("4adf2a33-05c3-49bb-ba61-59dd76f4621e")} // PSI
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class FormationResistivityQuantity : ResistivityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         OhmMeter // OhmMeter
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class FormationResistivityQuantity : ResistivityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            OhmMeter // OhmMeter
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.OhmMeter, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")} // OhmMeter
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class FormationStrengthQuantity : MaterialStrengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         GigaPascal,  // GigaPascal
-         MegaPascal,  // MegaPascal
-         MegapoundPerSquareInch,  // MegapoundPerSquareInch
-         Pascal,  // Pascal
-         PoundPer100SquareFoot,  // PoundPer100SquareFoot
-         PSI // PSI
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class FormationStrengthQuantity : MaterialStrengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            GigaPascal,  // GigaPascal
+            MegaPascal,  // MegaPascal
+            MegapoundPerSquareInch,  // MegapoundPerSquareInch
+            Pascal,  // Pascal
+            PoundPer100SquareFoot,  // PoundPer100SquareFoot
+            PSI // PSI
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.GigaPascal, new Guid("c9aa0a18-02ac-42a0-9afe-8a08b4f03331")},  // GigaPascal
          {UnitChoicesEnum.MegaPascal, new Guid("38b95b61-a825-4393-a0e8-ecd686575735")},  // MegaPascal
@@ -1548,110 +1610,110 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("eb1e2a52-3de3-4338-ad4d-40e8ce90e40b")},  // PoundPer100SquareFoot
          {UnitChoicesEnum.PSI, new Guid("4adf2a33-05c3-49bb-ba61-59dd76f4621e")} // PSI
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class GammaRayQuantity : DerivedPhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         GammaAPI // GammaAPI
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class GammaRayQuantity : DerivedPhysicalQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            GammaAPI // GammaAPI
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.GammaAPI, new Guid("526a7d9b-514c-4b2d-9ff3-e69d64c299a9")} // GammaAPI
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class GasShowQuantity : ProportionQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Proportion,  // Proportion
-         Percent,  // Percent
-         PerThousand,  // PerThousand
-         PartPerMillion // PartPerMillion
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class GasShowQuantity : ProportionQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Proportion,  // Proportion
+            Percent,  // Percent
+            PerThousand,  // PerThousand
+            PartPerMillion // PartPerMillion
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Proportion, new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9")},  // Proportion
          {UnitChoicesEnum.Percent, new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7")},  // Percent
          {UnitChoicesEnum.PerThousand, new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2")},  // PerThousand
          {UnitChoicesEnum.PartPerMillion, new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792")} // PartPerMillion
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class GasVolumetricFlowRateQuantity : VolumetricFlowRateQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         CubicMeterPerSecond,  // CubicMeterPerSecond
-         CubicFootPerSecond,  // CubicFootPerSecond
-         LiterPerSecond,  // LiterPerSecond
-         UKGallonPerSecond,  // UKGallonPerSecond
-         USGallonPerSecond,  // USGallonPerSecond
-         BarrelPerSecond,  // BarrelPerSecond
-         CubicMeterPerMinute,  // CubicMeterPerMinute
-         CubicFootPerMinute,  // CubicFootPerMinute
-         LiterPerMinute,  // LiterPerMinute
-         UKGallonPerMinute,  // UKGallonPerMinute
-         USGallonPerMinute,  // USGallonPerMinute
-         BarrelPerMinute,  // BarrelPerMinute
-         CubicMeterPerHour,  // CubicMeterPerHour
-         CubicFootPerHour,  // CubicFootPerHour
-         LiterPerHour,  // LiterPerHour
-         UKGallonPerHour,  // UKGallonPerHour
-         USGallonPerHour,  // USGallonPerHour
-         BarrelPerHour,  // BarrelPerHour
-         CubicMeterPerDay,  // CubicMeterPerDay
-         CubicFootPerDay,  // CubicFootPerDay
-         LiterPerDay,  // LiterPerDay
-         UKGallonPerDay,  // UKGallonPerDay
-         USGallonPerDay,  // USGallonPerDay
-         BarrelPerDay,  // BarrelPerDay
-         ThousandStandardCubicFootPerDay,  // ThousandStandardCubicFootPerDay
-         MillionCubicMeterPerDay,  // MillionCubicMeterPerDay
-         MillionLiterPerDay,  // MillionLiterPerDay
-         MillionStandardCubicFootPerDay,  // MillionStandardCubicFootPerDay
-         MillionUKGallonPerDay,  // MillionUKGallonPerDay
-         MillionUSGallonPerDay // MillionUSGallonPerDay
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class GasVolumetricFlowRateQuantity : VolumetricFlowRateQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            CubicMeterPerSecond,  // CubicMeterPerSecond
+            CubicFootPerSecond,  // CubicFootPerSecond
+            LiterPerSecond,  // LiterPerSecond
+            UKGallonPerSecond,  // UKGallonPerSecond
+            USGallonPerSecond,  // USGallonPerSecond
+            BarrelPerSecond,  // BarrelPerSecond
+            CubicMeterPerMinute,  // CubicMeterPerMinute
+            CubicFootPerMinute,  // CubicFootPerMinute
+            LiterPerMinute,  // LiterPerMinute
+            UKGallonPerMinute,  // UKGallonPerMinute
+            USGallonPerMinute,  // USGallonPerMinute
+            BarrelPerMinute,  // BarrelPerMinute
+            CubicMeterPerHour,  // CubicMeterPerHour
+            CubicFootPerHour,  // CubicFootPerHour
+            LiterPerHour,  // LiterPerHour
+            UKGallonPerHour,  // UKGallonPerHour
+            USGallonPerHour,  // USGallonPerHour
+            BarrelPerHour,  // BarrelPerHour
+            CubicMeterPerDay,  // CubicMeterPerDay
+            CubicFootPerDay,  // CubicFootPerDay
+            LiterPerDay,  // LiterPerDay
+            UKGallonPerDay,  // UKGallonPerDay
+            USGallonPerDay,  // USGallonPerDay
+            BarrelPerDay,  // BarrelPerDay
+            ThousandStandardCubicFootPerDay,  // ThousandStandardCubicFootPerDay
+            MillionCubicMeterPerDay,  // MillionCubicMeterPerDay
+            MillionLiterPerDay,  // MillionLiterPerDay
+            MillionStandardCubicFootPerDay,  // MillionStandardCubicFootPerDay
+            MillionUKGallonPerDay,  // MillionUKGallonPerDay
+            MillionUSGallonPerDay // MillionUSGallonPerDay
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.CubicMeterPerSecond, new Guid("fabe7a23-1ba2-4f5d-b3f5-d5729166c7a0")},  // CubicMeterPerSecond
          {UnitChoicesEnum.CubicFootPerSecond, new Guid("a02fc355-34da-447b-ad1f-66cef4cc96d5")},  // CubicFootPerSecond
@@ -1684,36 +1746,36 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.MillionUKGallonPerDay, new Guid("f083576e-1d99-4243-bcfa-5ca6093b6931")},  // MillionUKGallonPerDay
          {UnitChoicesEnum.MillionUSGallonPerDay, new Guid("ffe9958a-3daa-472d-87ab-0b1217dcb1c5")} // MillionUSGallonPerDay
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class HeightQuantity : LengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Metre,  // metre
-         Millimeter,  // millimeter
-         Centimeter,  // centimeter
-         Decimeter,  // decimeter
-         Hectometer,  // hectometer
-         Kilometer,  // kilometer
-         Inch,  // inch
-         Feet,  // feet
-         Yard,  // yard
-         Mile // mile
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class HeightQuantity : LengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Metre,  // metre
+            Millimeter,  // millimeter
+            Centimeter,  // centimeter
+            Decimeter,  // decimeter
+            Hectometer,  // hectometer
+            Kilometer,  // kilometer
+            Inch,  // inch
+            Feet,  // feet
+            Yard,  // yard
+            Mile // mile
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Millimeter, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimeter
@@ -1726,31 +1788,31 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Yard, new Guid("7b9156e4-7cce-41cf-a251-95412f4d91a5")},  // yard
          {UnitChoicesEnum.Mile, new Guid("95736fd3-878b-4d93-9a78-ee6f20619628")} // mile
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class HookLoadQuantity : GravitationalLoadQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Kilogram,  // kilogram
-         TonneMetric,  // tonne metric
-         Pound,  // pound
-         KiloPound,  // KiloPound
-         TonUK // ton UK
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class HookLoadQuantity : GravitationalLoadQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Kilogram,  // kilogram
+            TonneMetric,  // tonne metric
+            Pound,  // pound
+            KiloPound,  // KiloPound
+            TonUK // ton UK
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
          {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
@@ -1758,37 +1820,37 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KiloPound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // KiloPound
          {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class NozzleDiameterQuantity : SmallLengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimeter,  // centimeter
-         Decimeter,  // decimeter
-         Feet,  // feet
-         Inch,  // inch
-         Metre,  // metre
-         Micrometer,  // micrometer
-         Millimeter,  // millimeter
-         Nanometer,  // nanometer
-         Picometer,  // picometer
-         Ångstrøm,  // ångstrøm
-         Inch_32 // inch/32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class NozzleDiameterQuantity : SmallLengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Centimeter,  // centimeter
+            Decimeter,  // decimeter
+            Feet,  // feet
+            Inch,  // inch
+            Metre,  // metre
+            Micrometer,  // micrometer
+            Millimeter,  // millimeter
+            Nanometer,  // nanometer
+            Picometer,  // picometer
+            Ångstrøm,  // ångstrøm
+            Inch_32 // inch/32
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Centimeter, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimeter
          {UnitChoicesEnum.Decimeter, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimeter
@@ -1802,37 +1864,37 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
          {UnitChoicesEnum.Inch_32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch/32
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PipeDiameterQuantity : SmallLengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimeter,  // centimeter
-         Decimeter,  // decimeter
-         Feet,  // feet
-         Inch,  // inch
-         Metre,  // metre
-         Micrometer,  // micrometer
-         Millimeter,  // millimeter
-         Nanometer,  // nanometer
-         Picometer,  // picometer
-         Ångstrøm,  // ångstrøm
-         Inch_32 // inch/32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class PipeDiameterQuantity : SmallLengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Centimeter,  // centimeter
+            Decimeter,  // decimeter
+            Feet,  // feet
+            Inch,  // inch
+            Metre,  // metre
+            Micrometer,  // micrometer
+            Millimeter,  // millimeter
+            Nanometer,  // nanometer
+            Picometer,  // picometer
+            Ångstrøm,  // ångstrøm
+            Inch_32 // inch/32
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Centimeter, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimeter
          {UnitChoicesEnum.Decimeter, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimeter
@@ -1846,37 +1908,37 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
          {UnitChoicesEnum.Inch_32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch/32
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PoreDiameterQuantity : SmallLengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimeter,  // centimeter
-         Decimeter,  // decimeter
-         Feet,  // feet
-         Inch,  // inch
-         Metre,  // metre
-         Micrometer,  // micrometer
-         Millimeter,  // millimeter
-         Nanometer,  // nanometer
-         Picometer,  // picometer
-         Ångstrøm,  // ångstrøm
-         Inch_32 // inch/32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class PoreDiameterQuantity : SmallLengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Centimeter,  // centimeter
+            Decimeter,  // decimeter
+            Feet,  // feet
+            Inch,  // inch
+            Metre,  // metre
+            Micrometer,  // micrometer
+            Millimeter,  // millimeter
+            Nanometer,  // nanometer
+            Picometer,  // picometer
+            Ångstrøm,  // ångstrøm
+            Inch_32 // inch/32
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Centimeter, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimeter
          {UnitChoicesEnum.Decimeter, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimeter
@@ -1890,63 +1952,63 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
          {UnitChoicesEnum.Inch_32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch/32
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PoreSurfaceQuantity : AreaQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         SquareMeter,  // SquareMeter
-         SquareMillimeter,  // SquareMillimeter
-         SquareMicrometer,  // SquareMicrometer
-         SquareFoot // SquareFoot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class PoreSurfaceQuantity : AreaQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            SquareMeter,  // SquareMeter
+            SquareMillimeter,  // SquareMillimeter
+            SquareMicrometer,  // SquareMicrometer
+            SquareFoot // SquareFoot
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.SquareMeter, new Guid("6225a0d7-d2f1-4bb1-9721-5b260bac26ee")},  // SquareMeter
          {UnitChoicesEnum.SquareMillimeter, new Guid("0b87d221-284a-4e8c-8a60-50c522f9ade4")},  // SquareMillimeter
          {UnitChoicesEnum.SquareMicrometer, new Guid("bec98c97-72c7-4485-9138-058ed14e7fbe")},  // SquareMicrometer
          {UnitChoicesEnum.SquareFoot, new Guid("5a59332e-17b3-4fa2-9527-12d06a2b4248")} // SquareFoot
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PositionQuantity : LengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Metre,  // metre
-         Kilometer,  // kilometer
-         Feet,  // feet
-         USSurveyFeet,  // US survey feet
-         Yard,  // yard
-         Surveyor_sChain,  // surveyor's chain
-         Mile // mile
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class PositionQuantity : LengthQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Metre,  // metre
+            Kilometer,  // kilometer
+            Feet,  // feet
+            USSurveyFeet,  // US survey feet
+            Yard,  // yard
+            Surveyor_sChain,  // surveyor's chain
+            Mile // mile
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Kilometer, new Guid("93aee1b8-653d-4841-b948-10460cb84334")},  // kilometer
@@ -1956,61 +2018,61 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Surveyor_sChain, new Guid("f101708b-ab63-4f21-ac87-4b5b3615eb30")},  // surveyor's chain
          {UnitChoicesEnum.Mile, new Guid("95736fd3-878b-4d93-9a78-ee6f20619628")} // mile
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class RateOfPenetrationQuantity : VelocityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         MeterPerSecond,  // MeterPerSecond
-         MeterPerHour,  // MeterPerHour
-         FootPerSecond,  // FootPerSecond
-         FootPerHour // FootPerHour
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class RateOfPenetrationQuantity : VelocityQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            MeterPerSecond,  // MeterPerSecond
+            MeterPerHour,  // MeterPerHour
+            FootPerSecond,  // FootPerSecond
+            FootPerHour // FootPerHour
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MeterPerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // MeterPerSecond
          {UnitChoicesEnum.MeterPerHour, new Guid("b4867c19-0668-4043-b3b9-f666f7552b02")},  // MeterPerHour
          {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")},  // FootPerSecond
          {UnitChoicesEnum.FootPerHour, new Guid("adb3b459-aa7e-4639-ad07-6d19c80f8170")} // FootPerHour
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class WeightOnBitQuantity : GravitationalLoadQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Kilogram,  // kilogram
-         TonneMetric,  // tonne metric
-         Pound,  // pound
-         KiloPound,  // KiloPound
-         TonUK // ton UK
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    public partial class WeightOnBitQuantity : GravitationalLoadQuantity
+    {
+        public new enum UnitChoicesEnum
+        {
+            Kilogram,  // kilogram
+            TonneMetric,  // tonne metric
+            Pound,  // pound
+            KiloPound,  // KiloPound
+            TonUK // ton UK
+        }
+        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
          {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
@@ -2018,15 +2080,15 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KiloPound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // KiloPound
          {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
     };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
+        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+        {
+            UnitChoice c = null;
+            Guid guid;
+            if (enumLookUp_.TryGetValue(choice, out guid))
+            {
+                c = GetUnitChoice(guid);
+            }
+            return c;
+        }
     }
-  }
 }

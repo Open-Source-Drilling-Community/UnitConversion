@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string SIUnitLabel { get; } = "Pa";
         public override double MassDimension { get; } = 1;
         public override double LengthDimension { get; } = -1;
-        public override double TimeDimension { get; } = -1;
+        public override double TimeDimension { get; } = -2;
 
         private static PressureQuantity instance_ = null;
 
