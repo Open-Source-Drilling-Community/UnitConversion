@@ -26,7 +26,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.17" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="1.2.3" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.11" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.12" />
   </ItemGroup>
 
   <ItemGroup>

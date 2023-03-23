@@ -18,9 +18,9 @@ namespace OSDC.UnitConversion.Conversion.UnitTest
             {
                 // check that all guids are unique
                 bool unique = true;
-                Dictionary<Guid, UnitChoice> dict = new Dictionary<Guid, UnitChoice>();
                 foreach (PhysicalQuantity quantity in quantities)
                 {
+                    Dictionary<Guid, UnitChoice> dict = new Dictionary<Guid, UnitChoice>();
                     foreach (UnitChoice choice in quantity.UnitChoices)
                     {
                         if (dict.ContainsKey(choice.ID))

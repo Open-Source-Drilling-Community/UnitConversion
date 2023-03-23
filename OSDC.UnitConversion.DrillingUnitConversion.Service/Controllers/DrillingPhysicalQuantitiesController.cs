@@ -26,7 +26,11 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         {
             if (option == 0)
             {
-                List<PhysicalQuantity> quantities = DrillingPhysicalQuantity.AvailableQuantities;
+                List<PhysicalQuantity> quantities = new List<PhysicalQuantity>();
+                // Adding base Conversion quantities
+                quantities.AddRange(PhysicalQuantity.AvailableQuantities);
+                // and quantities specific to Conversion.DrillingEngineering
+                quantities.AddRange(DrillingPhysicalQuantity.AvailableQuantities);
                 List<MetaInfo> ids = new List<MetaInfo>();
                 if (quantities != null)
                 {

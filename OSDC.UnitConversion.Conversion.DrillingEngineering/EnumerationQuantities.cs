@@ -25,8 +25,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DrillingDynamicViscosity,  // DrillingDynamicViscosity
             DrillingElongationGradient,  // DrillingElongationGradient
             DrillingFluidVelocity,  // DrillingFluidVelocity
-            DrillingFluidShearRate, // DrillingFluidShearRate
-            DrillingFluidShearStress, // DrillingFluidShearStress
             DrillingForceGradient,  // DrillingForceGradient
             DrillingForce,  // DrillingForce
             DrillingHeatTransferCoefficient,  // DrillingHeatTransferCoefficient
@@ -87,8 +85,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingDynamicViscosity, new Guid("e9b32538-f7f4-4f99-a206-0601a4e4a5f8")},  // DrillingDynamicViscosity
          {QuantityEnum.DrillingElongationGradient, new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9")},  // DrillingElongationGradient
          {QuantityEnum.DrillingFluidVelocity, new Guid("dac9cee1-59a3-42d5-98c6-0c7baf5083bb")},  // DrillingFluidVelocity
-         {QuantityEnum.DrillingFluidShearRate, new Guid("f4254261-59d7-4ba6-8ffa-f653df8e181a")},  // DrillingFluidShearRate
-         {QuantityEnum.DrillingFluidShearStress, new Guid("828ccbc1-5d0e-4fd9-b552-4b54b22c108e")},  // DrillingFluidShearStress
          {QuantityEnum.DrillingForceGradient, new Guid("78942f39-d764-42f1-b270-47a3b35e5112")},  // DrillingForceGradient
          {QuantityEnum.DrillingForce, new Guid("30c08b42-6a89-4d99-879b-882eb7ed46d0")},  // DrillingForce
          {QuantityEnum.DrillingHeatTransferCoefficient, new Guid("c99547c5-b545-4060-bd82-eadc13772493")},  // DrillingHeatTransferCoefficient
@@ -707,64 +703,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.MeterPerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // MeterPerSecond
          {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")} // FootPerSecond
-    };
-        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-        {
-            UnitChoice c = null;
-            Guid guid;
-            if (enumLookUp_.TryGetValue(choice, out guid))
-            {
-                c = GetUnitChoice(guid);
-            }
-            return c;
-        }
-    }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-    public partial class DrillingFluidShearRateQuantity : FluidShearRateQuantity
-    {
-        public new enum UnitChoicesEnum
-        {
-            Hertz,  // Hertz
-            ReciprocalSecond // ReciprocalSecond
-        }
-        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // Hertz
-         {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")} // ReciprocalSecond
-    };
-        public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-        {
-            UnitChoice c = null;
-            Guid guid;
-            if (enumLookUp_.TryGetValue(choice, out guid))
-            {
-                c = GetUnitChoice(guid);
-            }
-            return c;
-        }
-    }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-    public partial class DrillingFluidShearStressQuantity : FluidShearStressQuantity
-    {
-        public new enum UnitChoicesEnum
-        {
-            Pascal,  // Pascal
-            PoundPer100SquareFoot, // PoundPer100SquareFoot
-            PoundPerSquareFoot,  // PoundPerSquareFoot
-            PoundPerSquareInch,  // PoundPerSquareInch
-            DynesPerSquareCentimeter  // DynesPerSquareCentimeter
-        }
-        protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // Pascal
-         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")}, // PoundPer100SquareFoot
-         {UnitChoicesEnum.PoundPerSquareFoot, new Guid("35b28889-c076-4274-b200-cf7732b17aa3")},  // PoundPerSquareFoot
-         {UnitChoicesEnum.DynesPerSquareCentimeter, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")},  // DynesPerSquareCentimeter
-         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")}  // PoundPerSquareInch
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
