@@ -207,6 +207,7 @@ else
                         }
                     }
                 }
+                quantityUnitAssociations_.Sort((q1, q2) => q1.Quantity.Name.CompareTo(q2.Quantity.Name));
                 await InvokeAsync(() => { StateHasChanged(); });
             }
         }
