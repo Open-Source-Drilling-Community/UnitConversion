@@ -192,43 +192,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class MetaInfo 
-    {
-        [Newtonsoft.Json.JsonProperty("ID", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Guid ID { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("Name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("Description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Description { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("TypeName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string TypeName { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("CreationDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset CreationDate { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("LastModificationDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset LastModificationDate { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("Flags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, bool> Flags { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("FilterIDs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, System.Guid> FilterIDs { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("Labels", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("Values", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.IDictionary<string, double> Values { get; set; }
-    
-    
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class TupleOfDataUnitConversionSetAndDrillingUnitChoiceSetAndPhysicalQuantityAndQuantityDataConversionAndMetaInfo 
+    public partial class TupleOfDataUnitConversionSetAndDrillingUnitChoiceSetAndPhysicalQuantityAndQuantityDataConversion 
     {
         [Newtonsoft.Json.JsonProperty("Item1", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public DataUnitConversionSet Item1 { get; set; }
@@ -241,9 +205,6 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared
     
         [Newtonsoft.Json.JsonProperty("Item4", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public QuantityDataConversion Item4 { get; set; }
-    
-        [Newtonsoft.Json.JsonProperty("Item5", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public MetaInfo Item5 { get; set; }
     
     
     }

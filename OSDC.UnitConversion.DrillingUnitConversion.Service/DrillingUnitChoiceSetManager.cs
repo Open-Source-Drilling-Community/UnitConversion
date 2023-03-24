@@ -134,11 +134,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         if (!reader.IsDBNull(0))
                         {
                             int res = reader.GetInt32(3);
-                            Dictionary<string, bool> flags = new Dictionary<string, bool>
+                            MetaInfo metaInfo = new MetaInfo
                             {
-                                { "IsDefault", res != 0 }
+                                ID = reader.GetGuid(0),
+                                Name = reader.GetString(1),
+                                Description = reader.GetString(2)
                             };
-                            ids.Add(new MetaInfo(reader.GetGuid(0), reader.GetString(1), reader.GetString(2), flags));
+                            ids.Add(metaInfo); // Note: the IsDefault flag cannot be passed through a MetaInfo anymore (from OSDC.DotnetLibraries.DataManagement > v1.2)
                         }
                     }
                 }

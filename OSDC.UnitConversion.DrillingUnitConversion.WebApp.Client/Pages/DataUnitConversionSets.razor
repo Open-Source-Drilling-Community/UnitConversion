@@ -1,9 +1,4 @@
 ﻿@page "/DataUnitConversionSets"
-@using System.Text;
-@using System.Globalization
-@using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
-@using Newtonsoft.Json;
-@using Microsoft.Extensions.Logging
 @inject ILogger<DataUnitConversionSets> logger
 
 @if (httpClient == null && unitChoiceSets == null && quantityNames == null && results_ == null)

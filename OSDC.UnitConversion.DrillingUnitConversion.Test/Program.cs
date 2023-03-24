@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
 using System;
 using System.Collections.Generic;
@@ -146,7 +147,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
 
             #region readIDs
             // Test DrillingUnitChoiceSets #1: read the IDs
-            Tuple<Guid,string>[] initialDrillingUnitChoiceSetIDs;
+            MetaInfo[] initialDrillingUnitChoiceSetIDs;
             var a = client.GetAsync("DrillingUnitChoiceSets");
             a.Wait();
             message = a.Result;
@@ -155,13 +156,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    initialDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<Tuple<Guid, string>[]>(str);
+                    initialDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<MetaInfo[]>(str);
                     if (initialDrillingUnitChoiceSetIDs != null)
                     {
                         Console.WriteLine("Test DrillingUnitChoiceSets #1: read IDs: success. IDs: ");
                         for (int i = 0; i < initialDrillingUnitChoiceSetIDs.Length; i++)
                         {
-                            Console.Write("\t" + initialDrillingUnitChoiceSetIDs[i]);
+                            Console.Write("\t" + initialDrillingUnitChoiceSetIDs[i].ID);
                         }
                         Console.WriteLine();
                     }

@@ -36,7 +36,12 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
                 {
                     foreach (PhysicalQuantity quantity in quantities)
                     {
-                        ids.Add(new MetaInfo(quantity.ID, quantity.Name));
+                        MetaInfo metaInfo = new MetaInfo
+                        {
+                            ID = quantity.ID,
+                            Name = quantity.Name
+                        };
+                        ids.Add(metaInfo);
                     }
                 }
                 return ids;

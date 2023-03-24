@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "TupleOfDataUnitConversionSetAndDrillingUnitChoiceSetAndPhysicalQuantityAndQuantityDataConversionAndMetaInfo",
+  "title": "TupleOfDataUnitConversionSetAndDrillingUnitChoiceSetAndPhysicalQuantityAndQuantityDataConversion",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -15,9 +15,6 @@
     },
     "Item4": {
       "$ref": "#/definitions/QuantityDataConversion"
-    },
-    "Item5": {
-      "$ref": "#/definitions/MetaInfo"
     }
   },
   "definitions": {
@@ -304,80 +301,6 @@
           }
         }
       ]
-    },
-    "MetaInfo": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "ID": {
-          "type": "string",
-          "format": "guid"
-        },
-        "Name": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "Description": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "TypeName": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "CreationDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "LastModificationDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "Flags": {
-          "type": [
-            "null",
-            "object"
-          ],
-          "additionalProperties": {
-            "type": "boolean"
-          }
-        },
-        "FilterIDs": {
-          "type": [
-            "null",
-            "object"
-          ],
-          "additionalProperties": {
-            "type": "string",
-            "format": "guid"
-          }
-        },
-        "Labels": {
-          "type": [
-            "null",
-            "object"
-          ],
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "Values": {
-          "type": [
-            "null",
-            "object"
-          ],
-          "additionalProperties": {
-            "type": "number",
-            "format": "double"
-          }
-        }
-      }
     }
   }
 }
