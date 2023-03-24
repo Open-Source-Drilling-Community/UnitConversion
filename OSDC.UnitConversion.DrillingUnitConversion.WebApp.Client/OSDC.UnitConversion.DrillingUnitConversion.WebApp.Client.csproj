@@ -4,7 +4,6 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<UserSecretsId>cccd571c-ef54-4f22-8fb0-70cb8755ad7d</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-		<DockerfileBuildArguments>--build-arg NORCE_NUGET_USER --build-arg NORCE_NUGET_APIKEY</DockerfileBuildArguments>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>

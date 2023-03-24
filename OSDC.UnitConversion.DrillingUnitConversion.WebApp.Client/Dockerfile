@@ -5,11 +5,6 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 
-ARG NORCE_NUGET_USER 
-ARG NORCE_NUGET_APIKEY 
-ADD ./NORCE_CA.cer /usr/local/share/ca-certificates/foo.crt
-RUN chmod 644 /usr/local/share/ca-certificates/foo.crt && update-ca-certificates
-
 WORKDIR /src
 
 COPY ["OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared/OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.csproj", "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared/"]
