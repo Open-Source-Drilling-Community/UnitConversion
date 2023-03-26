@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.8" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.12" />
+    <ProjectReference Include="..\OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj" />
+    <ProjectReference Include="..\OSDC.UnitConversion.Conversion\OSDC.UnitConversion.Conversion.csproj" />
   </ItemGroup>
 
 </Project>

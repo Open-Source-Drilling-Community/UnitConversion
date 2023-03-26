@@ -4,29 +4,29 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class SmallLengthQuantity : LengthQuantity
+    public partial class SmallDiameterQuantity : LengthQuantity
     {
-        public override double? MeaningfulPrecisionInSI { get; } = 0.00001;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.0001;
 
-        private static SmallLengthQuantity instance_ = null;
+        private static SmallDiameterQuantity instance_ = null;
 
-        public static new SmallLengthQuantity Instance
+        public static new SmallDiameterQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new SmallLengthQuantity();
+                    instance_ = new SmallDiameterQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        public SmallLengthQuantity() : base()
+        public SmallDiameterQuantity() : base()
         {
-            Name = "Small Length";
-            ID = new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed");
+            Name = "Small Diameter";
+            ID = new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f");
             Reset();
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Centimeter));
             this.UnitChoices.Add(LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Decimeter));

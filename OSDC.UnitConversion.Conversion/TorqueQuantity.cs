@@ -73,7 +73,36 @@ namespace OSDC.UnitConversion.Conversion
           UnitLabel = "kft.lbf",
           ID = new Guid("ee9be6ed-df75-4915-be6a-e3941dacd6bd"),
           ConversionFactorFromSI = 0.0007375621211696556
+        },
+        new UnitChoice
+        {
+          UnitName = "DecimeterNewton",
+          UnitLabel = "dm.N",
+          ID = new Guid("e70db590-c5fb-4ab9-a2c4-3ad611cb7f63"),
+          ConversionFactorFromSI = 10.0
+        },
+        new UnitChoice
+        {
+          UnitName = "CentimeterNewton",
+          UnitLabel = "cm.N",
+          ID = new Guid("4acf4542-8df0-4f57-a852-7c0184dbeec9"),
+          ConversionFactorFromSI = 100.0
+        },
+        new UnitChoice
+        {
+          UnitName = "MillimeterNewton",
+          UnitLabel = "mm.N",
+          ID = new Guid("a933225d-7c8e-4ce4-b0ea-4c1c6e9f7e34"),
+          ConversionFactorFromSI = 1000.0
+        },
+        new UnitChoice
+        {
+          UnitName = "InchPound",
+          UnitLabel = "in.lbf",
+          ID = new Guid("0d40553e-d8c4-4b75-ad05-61199b15a0a1"),
+          ConversionFactorFromSI = 8.850745793490558
         }
+
       };
         }
     }

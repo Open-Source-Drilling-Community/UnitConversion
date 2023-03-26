@@ -595,6 +595,9 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(RelativeTemperatureQuantity.Instance.ID.ToString(), RelativeTemperatureQuantity.Instance.GetUnitChoice(RelativeTemperatureQuantity.UnitChoicesEnum.RelativeCelcius).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Millimeter).ID.ToString());
+                    Choices.Add(SmallTorqueQuantity.Instance.ID.ToString(), SmallTorqueQuantity.Instance.GetUnitChoice(SmallTorqueQuantity.UnitChoicesEnum.MillimeterNewton).ID.ToString());
+                    Choices.Add(SmallRotationFrequencyQuantity.Instance.ID.ToString(), SmallRotationFrequencyQuantity.Instance.GetUnitChoice(SmallRotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
+                    Choices.Add(SmallDiameterQuantity.Instance.ID.ToString(), SmallDiameterQuantity.Instance.GetUnitChoice(SmallDiameterQuantity.UnitChoicesEnum.Millimeter).ID.ToString());
                     Choices.Add(StandardLengthQuantity.Instance.ID.ToString(), StandardLengthQuantity.Instance.GetUnitChoice(StandardLengthQuantity.UnitChoicesEnum.Metre).ID.ToString());
                     Choices.Add(SolidAngleQuantity.Instance.ID.ToString(), SolidAngleQuantity.Instance.GetUnitChoice(SolidAngleQuantity.UnitChoicesEnum.SquareDegree).ID.ToString());
                     Choices.Add(TemperatureQuantity.Instance.ID.ToString(), TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Celsius).ID.ToString());
@@ -670,7 +673,10 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(MassQuantity.Instance.ID.ToString(), MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Pound).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(RelativeTemperatureQuantity.Instance.ID.ToString(), RelativeTemperatureQuantity.Instance.GetUnitChoice(RelativeTemperatureQuantity.UnitChoicesEnum.Rankine).ID.ToString());
-                    Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(SmallTorqueQuantity.Instance.ID.ToString(), SmallTorqueQuantity.Instance.GetUnitChoice(SmallTorqueQuantity.UnitChoicesEnum.InchPound).ID.ToString());
+                    Choices.Add(SmallRotationFrequencyQuantity.Instance.ID.ToString(), SmallRotationFrequencyQuantity.Instance.GetUnitChoice(SmallRotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
+                    Choices.Add(SmallDiameterQuantity.Instance.ID.ToString(), SmallDiameterQuantity.Instance.GetUnitChoice(SmallDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
                     Choices.Add(StandardLengthQuantity.Instance.ID.ToString(), StandardLengthQuantity.Instance.GetUnitChoice(StandardLengthQuantity.UnitChoicesEnum.Feet).ID.ToString());
                     Choices.Add(SolidAngleQuantity.Instance.ID.ToString(), SolidAngleQuantity.Instance.GetUnitChoice(SolidAngleQuantity.UnitChoicesEnum.SquareDegree).ID.ToString());
                     Choices.Add(TemperatureQuantity.Instance.ID.ToString(), TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Fahrenheit).ID.ToString());
@@ -746,7 +752,10 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(MassQuantity.Instance.ID.ToString(), MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Pound).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(RelativeTemperatureQuantity.Instance.ID.ToString(), RelativeTemperatureQuantity.Instance.GetUnitChoice(RelativeTemperatureQuantity.UnitChoicesEnum.Rankine).ID.ToString());
-                    Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
+                    Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch).ID.ToString());
+                    Choices.Add(SmallTorqueQuantity.Instance.ID.ToString(), SmallTorqueQuantity.Instance.GetUnitChoice(SmallTorqueQuantity.UnitChoicesEnum.InchPound).ID.ToString());
+                    Choices.Add(SmallRotationFrequencyQuantity.Instance.ID.ToString(), SmallRotationFrequencyQuantity.Instance.GetUnitChoice(SmallRotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
+                    Choices.Add(SmallDiameterQuantity.Instance.ID.ToString(), SmallDiameterQuantity.Instance.GetUnitChoice(SmallDiameterQuantity.UnitChoicesEnum.Inch_32).ID.ToString());
                     Choices.Add(StandardLengthQuantity.Instance.ID.ToString(), StandardLengthQuantity.Instance.GetUnitChoice(StandardLengthQuantity.UnitChoicesEnum.Feet).ID.ToString());
                     Choices.Add(SolidAngleQuantity.Instance.ID.ToString(), SolidAngleQuantity.Instance.GetUnitChoice(SolidAngleQuantity.UnitChoicesEnum.SquareDegree).ID.ToString());
                     Choices.Add(TemperatureQuantity.Instance.ID.ToString(), TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Fahrenheit).ID.ToString());
@@ -775,7 +784,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(ResistivityQuantity.Instance.ID.ToString(), ResistivityQuantity.Instance.GetUnitChoice(ResistivityQuantity.UnitChoicesEnum.OhmMeter).ID.ToString());
                     Choices.Add(FrequencyRateOfChangeQuantity.Instance.ID.ToString(), FrequencyRateOfChangeQuantity.Instance.GetUnitChoice(FrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond).ID.ToString());
-                    Choices.Add(FluidShearStressQuantity.Instance.ID.ToString(), FluidShearStressQuantity.Instance.GetUnitChoice(FluidShearStressQuantity.UnitChoicesEnum.PoundPerSquareFoot).ID.ToString());
+                    Choices.Add(FluidShearStressQuantity.Instance.ID.ToString(), FluidShearStressQuantity.Instance.GetUnitChoice(FluidShearStressQuantity.UnitChoicesEnum.PoundPer100SquareFoot).ID.ToString());
                     Choices.Add(FluidShearRateQuantity.Instance.ID.ToString(), FluidShearRateQuantity.Instance.GetUnitChoice(FluidShearRateQuantity.UnitChoicesEnum.ReciprocalSecond).ID.ToString());
                     Choices.Add(SpecificHeatCapacityQuantity.Instance.ID.ToString(), SpecificHeatCapacityQuantity.Instance.GetUnitChoice(SpecificHeatCapacityQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit).ID.ToString());
                     Choices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.ID.ToString(), SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit).ID.ToString());
