@@ -21,8 +21,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.10" />
     <PackageReference Include="MudBlazor" Version="6.0.17" />
-    <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="1.2.3" />
-    <PackageReference Include="OSDC.UnitConversion.DrillingRazorComponents" Version="1.0.22" />
+    <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="1.2.4" />
+    <PackageReference Include="OSDC.UnitConversion.DrillingRazorComponents" Version="1.0.24" />
   </ItemGroup>
 
   <ItemGroup>
