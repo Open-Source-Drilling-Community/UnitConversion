@@ -17,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.8" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.12" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.12" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.17" />
   </ItemGroup>
 
 </Project>
