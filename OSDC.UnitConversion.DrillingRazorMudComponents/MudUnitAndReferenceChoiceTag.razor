@@ -238,7 +238,7 @@ else
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
-                    var a = await httpClient.GetAsync(HttpController);
+                    var a = await httpClient.GetAsync(HttpController + "MetaInfos/");
                     if (a.IsSuccessStatusCode)
                     {
                         string str = await a.Content.ReadAsStringAsync();

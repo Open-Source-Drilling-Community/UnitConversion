@@ -248,7 +248,7 @@ else
                 try
                 {
                     //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
-                    var a = await httpClient.GetAsync(HttpController);
+                    var a = await httpClient.GetAsync(HttpController + "MetaInfos/");
                     if (a.IsSuccessStatusCode)
                     {
                         string str = await a.Content.ReadAsStringAsync();

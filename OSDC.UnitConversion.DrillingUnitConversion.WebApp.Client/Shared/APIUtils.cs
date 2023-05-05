@@ -121,7 +121,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             try
             {
                 //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
-                var a = await httpClient.GetAsync("DrillingUnitChoiceSets");
+                var a = await httpClient.GetAsync("DrillingUnitChoiceSets/MetaInfos/");
                 if (a.IsSuccessStatusCode)
                 {
                     string str = await a.Content.ReadAsStringAsync();
@@ -274,7 +274,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             List<PhysicalQuantity> drillingPhysicalQuantities = new();
             try
             {
-                var a = await httpClient.GetAsync("DrillingPhysicalQuantities");
+                var a = await httpClient.GetAsync("DrillingPhysicalQuantities/MetaInfos/");
                 if (a.IsSuccessStatusCode)
                 {
                     List<MetaInfo> metaInfos = null;
@@ -329,7 +329,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             Guid[] quantityDataConversionIDs = null;
             try
             {
-                var a = await httpClient.GetAsync("QuantityDataConversions");
+                var a = await httpClient.GetAsync("QuantityDataConversions/");
                 if (a.IsSuccessStatusCode)
                 {
                     string str = await a.Content.ReadAsStringAsync();
@@ -458,7 +458,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             try
             {
                 //ids of the existing UnitChoiceSets are retrieved first to keep controllers API standard
-                var a = await httpClient.GetAsync("DrillingUnitChoiceSets");
+                var a = await httpClient.GetAsync("DrillingUnitChoiceSets/MetaInfos/");
                 if (a.IsSuccessStatusCode)
                 {
                     string str = await a.Content.ReadAsStringAsync();

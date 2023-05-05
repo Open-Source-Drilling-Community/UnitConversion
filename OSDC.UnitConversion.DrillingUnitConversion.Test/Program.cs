@@ -52,7 +52,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test DrillingPhysicalQuantities #1: read the IDs
             List<MetaInfo> drillingPhysicalQuantityIDs = null;
-            var a = client.GetAsync("DrillingPhysicalQuantities");
+            var a = client.GetAsync("DrillingPhysicalQuantities/MetaInfos/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -148,7 +148,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test DrillingUnitChoiceSets #1: read the IDs
             MetaInfo[] initialDrillingUnitChoiceSetIDs;
-            var a = client.GetAsync("DrillingUnitChoiceSets");
+            var a = client.GetAsync("DrillingUnitChoiceSets/MetaInfos/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -360,7 +360,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test DataUnitConversionSets #7: check that the new calculationData has been deleted
             List<MetaInfo> updatedDrillingUnitChoiceSetIDs = null;
-            a = client.GetAsync("DrillingUnitChoiceSets");
+            a = client.GetAsync("DrillingUnitChoiceSets/MetaInfos/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -469,7 +469,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test DrillingUnitChoiceSets #1: read the IDs
             Guid[] initialDrillingUnitChoiceSetIDs;
-            var a = client.GetAsync("DataUnitConversionSets");
+            var a = client.GetAsync("DataUnitConversionSets/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -691,7 +691,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test DataUnitConversionSets #7: check that the new calculationData has been deleted
             List<Guid> updatedDataUnitConversionSetIDs = null;
-            a = client.GetAsync("DataUnitConversionSets");
+            a = client.GetAsync("DataUnitConversionSets/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -744,7 +744,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test DrillingUnitChoiceSets #1: read the IDs
             Guid[] initialQuantityDataConversionIDs;
-            var a = client.GetAsync("QuantityDataConversions");
+            var a = client.GetAsync("QuantityDataConversions/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -925,7 +925,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #region readIDs
             // Test QuantityDataConversions #7: check that the new QuantityDataConversion has been deleted
             List<Guid> updatedQuantityDataConversionIDs = null;
-            a = client.GetAsync("QuantityDataConversions");
+            a = client.GetAsync("QuantityDataConversions/");
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)

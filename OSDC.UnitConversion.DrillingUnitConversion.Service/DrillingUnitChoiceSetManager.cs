@@ -22,7 +22,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             connection_ = SQLConnectionManager.GetConnection(loggerFactory);
 
             // first initiate a call to the database to make sure all its tables are initialized
-            List<MetaInfo> unitChoiceSetIDs = GetIDs();
+            List<MetaInfo> unitChoiceSetIDs = (List<MetaInfo>)GetMetaInfos();
 
             // then create some default DrillingUnitChoiceSets'
             if (!unitChoiceSetIDs.Any())
@@ -119,13 +119,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
             return count >= 1;
         }
 
-        public List<MetaInfo> GetIDs()
+        public IEnumerable<Guid> Get()
         {
-            List<MetaInfo> ids = new List<MetaInfo>();
+            List<Guid> ids = new List<Guid>();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
-                command.CommandText = @"SELECT ID, Name, Description, IsDefault FROM DrillingUnitChoiceSetsTable";
+                command.CommandText = @"SELECT ID FROM DrillingUnitChoiceSetsTable";
                 try
                 {
                     using var reader = command.ExecuteReader();
@@ -133,14 +133,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                     {
                         if (!reader.IsDBNull(0))
                         {
-                            int res = reader.GetInt32(3);
-                            MetaInfo metaInfo = new MetaInfo
-                            {
-                                ID = reader.GetGuid(0),
-                                Name = reader.GetString(1),
-                                Description = reader.GetString(2)
-                            };
-                            ids.Add(metaInfo); // Note: the IsDefault flag cannot be passed through a MetaInfo anymore (from OSDC.DotnetLibraries.DataManagement > v1.2)
+                            ids.Add(reader.GetGuid(0));
                         }
                     }
                 }
@@ -154,6 +147,42 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                 logger_.LogWarning("Impossible to access the SQLite database");
             }
             return ids;
+        }
+
+        public IEnumerable<MetaInfo> GetMetaInfos()
+        {
+            List<MetaInfo> metaInfos = new List<MetaInfo>();
+            if (connection_ != null)
+            {
+                var command = connection_.CreateCommand();
+                command.CommandText = @"SELECT ID, Name, Description FROM DrillingUnitChoiceSetsTable";
+                try
+                {
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        if (!reader.IsDBNull(0))
+                        {
+                            MetaInfo metaInfo = new MetaInfo
+                            {
+                                ID = reader.GetGuid(0),
+                                Name = reader.GetString(1),
+                                Description = reader.GetString(2)
+                            };
+                            metaInfos.Add(metaInfo);
+                        }
+                    }
+                }
+                catch (SQLiteException ex)
+                {
+                    logger_.LogError(ex, "Impossible to get MetaInfos and names from DrillingUnitChoiceSetsTable");
+                }
+            }
+            else
+            {
+                logger_.LogWarning("Impossible to access the SQLite database");
+            }
+            return metaInfos;
         }
 
         public DrillingUnitChoiceSet Get(Guid guid)
@@ -223,7 +252,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                                 "'" + drillingUnitChoiceSet.ID.ToString() + "', " +
                                 "'" + drillingUnitChoiceSet.Name + "', " +
                                 "'" + drillingUnitChoiceSet.Description + "', " +
-                                "" + ((drillingUnitChoiceSet.IsDefault)?1:0).ToString() + ", " +
+                                "" + ((drillingUnitChoiceSet.IsDefault) ? 1 : 0).ToString() + ", " +
                                 "'" + json + "'" +
                                 ")";
                             int count = command.ExecuteNonQuery();

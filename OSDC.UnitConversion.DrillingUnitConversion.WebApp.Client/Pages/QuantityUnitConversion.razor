@@ -51,13 +51,16 @@ else
                             <InputRadioGroup @bind-Value="conversion_.Conversion">
                                 @foreach (var option in conversions)
                                 {
-                                    <InputRadio Value="option"/>@option<br />
+                                    <InputRadio Value="option" />
+
+                                    @option
+
+                                    <br />
                                 }
                             </InputRadioGroup>
                         </EditForm>
                     </td>
                     <td>
-
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +84,7 @@ else
             </tbody>
         </table>
         <button class="btn btn-primary" @onclick="@(() => Convert())">Convert</button>
-     </div>
+    </div>
 }
 
 @code {

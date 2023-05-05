@@ -23,9 +23,17 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         // GET api/DrillingUnitChoiceSets
         [HttpGet]
-        public IEnumerable<MetaInfo> Get()
+        public IEnumerable<Guid> Get()
         {
-            List<MetaInfo> ids = drillingUnitChoiceSetManager_.GetIDs();
+            var ids = drillingUnitChoiceSetManager_.Get();
+            return ids;
+        }
+
+        // GET api/DrillingUnitChoiceSets
+        [HttpGet("MetaInfos")]
+        public IEnumerable<MetaInfo> GetMetaInfos()
+        {
+            var ids = drillingUnitChoiceSetManager_.GetMetaInfos();
             return ids;
         }
 

@@ -22,34 +22,47 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
 
         // GET api/DrillingPhysicalQuantities
         [HttpGet]
-        public IEnumerable<MetaInfo> Get(int option)
+        public IEnumerable<Guid> Get()
         {
-            if (option == 0)
+            List<PhysicalQuantity> quantities = new List<PhysicalQuantity>();
+            // Adding base Conversion quantities
+            quantities.AddRange(PhysicalQuantity.AvailableQuantities);
+            // and quantities specific to Conversion.DrillingEngineering
+            quantities.AddRange(DrillingPhysicalQuantity.AvailableQuantities);
+            List<Guid> ids = new List<Guid>();
+            if (quantities != null)
             {
-                List<PhysicalQuantity> quantities = new List<PhysicalQuantity>();
-                // Adding base Conversion quantities
-                quantities.AddRange(PhysicalQuantity.AvailableQuantities);
-                // and quantities specific to Conversion.DrillingEngineering
-                quantities.AddRange(DrillingPhysicalQuantity.AvailableQuantities);
-                List<MetaInfo> ids = new List<MetaInfo>();
-                if (quantities != null)
+                foreach (PhysicalQuantity quantity in quantities)
                 {
-                    foreach (PhysicalQuantity quantity in quantities)
-                    {
-                        MetaInfo metaInfo = new MetaInfo
-                        {
-                            ID = quantity.ID,
-                            Name = quantity.Name
-                        };
-                        ids.Add(metaInfo);
-                    }
+                    ids.Add(quantity.ID);
                 }
-                return ids;
             }
-            else
+            return ids;
+        }
+
+        // GET api/DrillingPhysicalQuantities
+        [HttpGet("MetaInfos")]
+        public IEnumerable<MetaInfo> GetMetaInfos()
+        {
+            List<PhysicalQuantity> quantities = new List<PhysicalQuantity>();
+            // Adding base Conversion quantities
+            quantities.AddRange(PhysicalQuantity.AvailableQuantities);
+            // and quantities specific to Conversion.DrillingEngineering
+            quantities.AddRange(DrillingPhysicalQuantity.AvailableQuantities);
+            List<MetaInfo> ids = new List<MetaInfo>();
+            if (quantities != null)
             {
-                return null;
+                foreach (PhysicalQuantity quantity in quantities)
+                {
+                    MetaInfo metaInfo = new MetaInfo
+                    {
+                        ID = quantity.ID,
+                        Name = quantity.Name
+                    };
+                    ids.Add(metaInfo);
+                }
             }
+            return ids;
         }
 
         // GET api/DrillingPhysicalQuantities/c0d965b2-a153-420a-9d03-7a2a272d619e
