@@ -295,7 +295,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             unitChoiceSet.Name = "New DrillingUnitChoiceSet name";
 
             content = new StringContent(unitChoiceSet.GetJson(), Encoding.UTF8, "application/json");
-            a = client.PutAsync("DrillingUnitChoiceSets" + "/" + unitChoiceSet.ID.ToString(), content);
+            a = client.PutAsync("DrillingUnitChoiceSets/" + unitChoiceSet.ID.ToString(), content);
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -626,7 +626,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             conversionSet.Name = "New DataUnitConversionSet name";
 
             content = new StringContent(conversionSet.GetJson(), Encoding.UTF8, "application/json");
-            a = client.PutAsync("DataUnitConversionSets" + "/" + conversionSet.ID.ToString(), content);
+            a = client.PutAsync("DataUnitConversionSets/" + conversionSet.ID.ToString(), content);
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
@@ -858,7 +858,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             quantityDataConversion.Conversion = ConversionType.ToSI;
 
             content = new StringContent(quantityDataConversion.GetJson(), Encoding.UTF8, "application/json");
-            a = client.PutAsync("QuantityDataConversions" + "/" + quantityDataConversion.ID.ToString(), content);
+            a = client.PutAsync("QuantityDataConversions/" + quantityDataConversion.ID.ToString(), content);
             a.Wait();
             message = a.Result;
             if (message.IsSuccessStatusCode)
