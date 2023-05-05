@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,7 +11,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
     <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.12" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.16" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.17" />
   </ItemGroup>
 
 </Project>
