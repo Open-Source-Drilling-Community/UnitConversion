@@ -1381,7 +1381,7 @@ else
         {
             try
             {
-                var a = await httpClient.GetAsync(HttpController + "/" + unitChoiceSetID.ToString());
+                var a = await httpClient.GetAsync(HttpController + unitChoiceSetID.ToString());
                 if (a.IsSuccessStatusCode)
                 {
                     string str = await a.Content.ReadAsStringAsync();
