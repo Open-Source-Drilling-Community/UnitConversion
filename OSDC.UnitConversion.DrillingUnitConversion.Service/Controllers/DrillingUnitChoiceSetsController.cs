@@ -29,7 +29,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
             return ids;
         }
 
-        // GET api/DrillingUnitChoiceSets
+        // GET api/DrillingUnitChoiceSets/MetaInfos
         [HttpGet("MetaInfos")]
         public IEnumerable<MetaInfo> GetMetaInfos()
         {

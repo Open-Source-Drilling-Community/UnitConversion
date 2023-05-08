@@ -40,7 +40,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
             return ids;
         }
 
-        // GET api/DrillingPhysicalQuantities
+        // GET api/DrillingPhysicalQuantities/MetaInfos
         [HttpGet("MetaInfos")]
         public IEnumerable<MetaInfo> GetMetaInfos()
         {
