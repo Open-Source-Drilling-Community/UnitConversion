@@ -1,4 +1,4 @@
-﻿@if (unitChoiceSets == null)
+﻿@if (unitChoiceSets == null || unitChoiceSets.Count == 0 || httpClient == null || unitChoiceSet_ == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -251,6 +251,24 @@ else
                 catch (Exception e)
                 {
                 }
+                try
+                {
+                    if (unitChoiceSets == null || unitChoiceSets.Count == 0)
+                    {
+                        var a = await httpClient.GetAsync(HttpController);
+                        if (a.IsSuccessStatusCode)
+                        {
+                            string str = await a.Content.ReadAsStringAsync();
+                            if (!string.IsNullOrEmpty(str))
+                            {
+                                unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                            }
+                        }
+                    }
+                } catch (Exception e2)
+                {
+                    
+                }
             }
             else
             {
@@ -288,7 +306,7 @@ else
                     if (string.IsNullOrEmpty(UnitChoiceSetName) || UnitChoiceSetName.Equals(metaInfo.Name))
                         break; //the given UnitChoiceSetName is checked against each name in the available unitChoiceSets
                 }
-                //                unitChoiceSet_ = DrillingUnitChoiceSet.Get(defaultMetaInfo.ID);
+                unitChoiceSet_ = DrillingUnitChoiceSet.Get(defaultMetaInfo.ID);
                 if (defaultMetaInfo != null)
                     UnitChoiceSetName = defaultMetaInfo.Name; //eventually, the UnitChoiceSetName is set to an existing unitChoiceSet (if there are any), by default the last available is "US"
             }
