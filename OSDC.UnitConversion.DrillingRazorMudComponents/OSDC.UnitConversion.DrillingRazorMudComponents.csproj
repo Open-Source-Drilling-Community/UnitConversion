@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.3.3</Version>
+    <Version>1.3.5</Version>
     <Authors>Gilles Pelfrene</Authors>
     <Company>NORCE Norwegian Research Centre</Company>
     <Description>A package with MudBlazor components to manage unit and reference conversions.</Description>
