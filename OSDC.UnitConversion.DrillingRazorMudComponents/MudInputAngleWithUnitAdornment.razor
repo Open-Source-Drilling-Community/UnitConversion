@@ -78,7 +78,7 @@
         set
         {
             degreeRoundedValue_ = value;
-            ManageChangedValue();
+            ManageValues();
         }
     }
 
@@ -91,7 +91,7 @@
         set
         {
             minuteRoundedValue_ = value;
-            ManageChangedValue();
+            ManageValues();
         }
     }
 
@@ -104,7 +104,7 @@
         set
         {
             secondValue_ = value;
-            ManageChangedValue();
+            ManageValues();
         }
     }
 
@@ -128,7 +128,8 @@
         secondValue_ = secValue.ToString();
     }
 
-    public async Task ManageChangedValue()
+
+    public async Task ManageValues()
     {
         if (!inhibited_)
         {
@@ -137,24 +138,18 @@
             double secValue;
             if (TryParse(DegreeRoundedValue, out degValue) && TryParse(MinuteRoundedValue, out minValue) && TryParse(SecondValue, out secValue))
             {
-                double valueInDegreeUnit = degValue + 60 * minValue + 3600 * secValue;
+                double valueInDegreeUnit = degValue + minValue / 60 + secValue / 3600;
                 SIValue = degreeUnitChoice.ToSI(valueInDegreeUnit);
                 degreeRoundedValue_ = degValue.ToString();
                 minuteRoundedValue_ = minValue.ToString();
                 secondValue_ = secValue.ToString();
             }
-            try
-            {
-                await SIValueChanged.InvokeAsync(SIValue);
-                await SIValueNullableChanged.InvokeAsync(SIValueNullable);
-            }
-            catch (Exception e)
-            {
-
-            }
+            await SIValueChanged.InvokeAsync(SIValue);
+            await SIValueNullableChanged.InvokeAsync(SIValueNullable);
             inhibited_ = false;
         }
     }
+
 
     private static bool TryParse(string value, out double result)
     {
