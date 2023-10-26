@@ -77,7 +77,8 @@ namespace OSDC.UnitConversion.Conversion
          RheologyConsistencyIndex,  // RheologyConsistencyIndex
          SmallDiameter,  // Small Diameter
          SmallTorque,  // Small Torque
-         SmallRotationFrequency // Small Rotation Frequency
+         SmallRotationFrequency,  // Small Rotation Frequency
+         MagneticFlux // MagneticFlux
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -151,7 +152,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.RheologyConsistencyIndex, new Guid("05571702-00e6-47d7-8590-fd3983645406")},  // RheologyConsistencyIndex
          {QuantityEnum.SmallDiameter, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // Small Diameter
          {QuantityEnum.SmallTorque, new Guid("adf7b170-8d24-4c9f-93e1-40179f361d8c")},  // Small Torque
-         {QuantityEnum.SmallRotationFrequency, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")} // Small Rotation Frequency
+         {QuantityEnum.SmallRotationFrequency, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")},  // Small Rotation Frequency
+         {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")} // MagneticFlux
     };
   }
 }
@@ -2823,6 +2825,54 @@ namespace OSDC.UnitConversion.Conversion
     {
          {UnitChoicesEnum.Hertz, new Guid("59d8be09-9eee-4a88-926c-72e1c7c1242e")},  // Hertz
          {UnitChoicesEnum.RPM, new Guid("30880b5f-803d-412e-9736-62dca3ba5bbd")} // RPM
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MagneticFluxQuantity : DerivedPhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Weber,  // Weber
+         Milliweber,  // Milliweber
+         MicroWeber,  // MicroWeber
+         VoltSecond,  // VoltSecond
+         UnitPole,  // UnitPole
+         Megaline,  // Megaline
+         Kiloline,  // Kiloline
+         Line,  // Line
+         Maxwell,  // Maxwell
+         TeslaSquareMeter,  // TeslaSquareMeter
+         TeslaSquareCentimeter,  // TeslaSquareCentimeter
+         GaussSquareCentimeter,  // GaussSquareCentimeter
+         MagneticFluxQuantum // MagneticFluxQuantum
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Weber, new Guid("d790689d-e7dd-43d8-a3c0-c17ccc8073e5")},  // Weber
+         {UnitChoicesEnum.Milliweber, new Guid("94f03fc7-b0bb-4356-8787-c9e33f6559d2")},  // Milliweber
+         {UnitChoicesEnum.MicroWeber, new Guid("200b9de7-0635-40eb-8ebd-9cef7c01ac10")},  // MicroWeber
+         {UnitChoicesEnum.VoltSecond, new Guid("430305c3-d672-4d68-9b16-d0517243a870")},  // VoltSecond
+         {UnitChoicesEnum.UnitPole, new Guid("3bac78d4-5601-4cb2-bea1-01d952597a4d")},  // UnitPole
+         {UnitChoicesEnum.Megaline, new Guid("cca39e15-ee2e-4b8f-8843-527b329f3e81")},  // Megaline
+         {UnitChoicesEnum.Kiloline, new Guid("85862477-e913-4bcf-9d24-8248ec975d43")},  // Kiloline
+         {UnitChoicesEnum.Line, new Guid("40d608dd-b19f-4489-aac3-a3a6b7a55413")},  // Line
+         {UnitChoicesEnum.Maxwell, new Guid("8c1fcd01-4a3d-469a-a019-d3b35f7ef8b5")},  // Maxwell
+         {UnitChoicesEnum.TeslaSquareMeter, new Guid("f6da9f32-0738-4014-aac6-fdc5935fd436")},  // TeslaSquareMeter
+         {UnitChoicesEnum.TeslaSquareCentimeter, new Guid("312b97ea-6167-47b5-a046-c6c202fb7eb4")},  // TeslaSquareCentimeter
+         {UnitChoicesEnum.GaussSquareCentimeter, new Guid("a0dc1e92-7e84-401f-bca2-a6eb618ef604")},  // GaussSquareCentimeter
+         {UnitChoicesEnum.MagneticFluxQuantum, new Guid("f768bd79-1119-401c-b0df-39a5207273e0")} // MagneticFluxQuantum
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

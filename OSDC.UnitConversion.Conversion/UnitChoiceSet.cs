@@ -618,6 +618,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(InterfacialTensionQuantity.Instance.ID.ToString(), InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.NewtonPerMeter).ID.ToString());
                     Choices.Add(VolumeQuantity.Instance.ID.ToString(), VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.Liter).ID.ToString());
                     Choices.Add(LargeVolumeQuantity.Instance.ID.ToString(), LargeVolumeQuantity.Instance.GetUnitChoice(LargeVolumeQuantity.UnitChoicesEnum.CubicMeter).ID.ToString());
+                    Choices.Add(MagneticFluxQuantity.Instance.ID.ToString(), MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.MicroWeber).ID.ToString());
                     Choices.Add(MagneticFluxDensityQuantity.Instance.ID.ToString(), MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Gauss).ID.ToString());
                     Choices.Add(MassRateQuantity.Instance.ID.ToString(), MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID.ToString());
                     Choices.Add(PermeabilityQuantity.Instance.ID.ToString(), PermeabilityQuantity.Instance.GetUnitChoice(PermeabilityQuantity.UnitChoicesEnum.MilliDarcy).ID.ToString());
@@ -697,6 +698,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(InterfacialTensionQuantity.Instance.ID.ToString(), InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared).ID.ToString());
                     Choices.Add(VolumeQuantity.Instance.ID.ToString(), VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.USGallon).ID.ToString());
                     Choices.Add(LargeVolumeQuantity.Instance.ID.ToString(), LargeVolumeQuantity.Instance.GetUnitChoice(LargeVolumeQuantity.UnitChoicesEnum.USGallon).ID.ToString());
+                    Choices.Add(MagneticFluxQuantity.Instance.ID.ToString(), MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.MicroWeber).ID.ToString());
                     Choices.Add(MagneticFluxDensityQuantity.Instance.ID.ToString(), MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Gauss).ID.ToString());
                     Choices.Add(MassRateQuantity.Instance.ID.ToString(), MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID.ToString());
                     Choices.Add(PermeabilityQuantity.Instance.ID.ToString(), PermeabilityQuantity.Instance.GetUnitChoice(PermeabilityQuantity.UnitChoicesEnum.MilliDarcy).ID.ToString());
@@ -776,6 +778,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(InterfacialTensionQuantity.Instance.ID.ToString(), InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared).ID.ToString());
                     Choices.Add(VolumeQuantity.Instance.ID.ToString(), VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.UKGallon).ID.ToString());
                     Choices.Add(LargeVolumeQuantity.Instance.ID.ToString(), LargeVolumeQuantity.Instance.GetUnitChoice(LargeVolumeQuantity.UnitChoicesEnum.UKGallon).ID.ToString());
+                    Choices.Add(MagneticFluxQuantity.Instance.ID.ToString(), MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.MicroWeber).ID.ToString());
                     Choices.Add(MagneticFluxDensityQuantity.Instance.ID.ToString(), MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Gauss).ID.ToString());
                     Choices.Add(MassRateQuantity.Instance.ID.ToString(), MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerSecond).ID.ToString());
                     Choices.Add(PermeabilityQuantity.Instance.ID.ToString(), PermeabilityQuantity.Instance.GetUnitChoice(PermeabilityQuantity.UnitChoicesEnum.MilliDarcy).ID.ToString());

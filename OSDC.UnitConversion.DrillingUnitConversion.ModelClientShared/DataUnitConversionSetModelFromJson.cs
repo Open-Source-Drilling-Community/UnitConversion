@@ -153,6 +153,9 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared
         [Newtonsoft.Json.JsonProperty("MeaningfulPrecisionInSI", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? MeaningfulPrecisionInSI { get; set; }
 
+        [Newtonsoft.Json.JsonProperty("TypicalSymbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TypicalSymbol { get; set; }
+
 
     }
 

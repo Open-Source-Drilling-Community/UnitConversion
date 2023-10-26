@@ -256,6 +256,11 @@ namespace OSDC.UnitConversion.Conversion
         /// ex: drilling depth 0.001m, pipe diameter 0.0001m
         public virtual double? MeaningfulPrecisionInSI { get; } = null;
         /// <summary>
+        /// the symbol used for this base unit in physical quantity descriptions: L, T, M, ...
+        /// </summary>
+        public virtual string TypicalSymbol { get; } = null;
+
+        /// <summary>
         /// return an alphabetically sorted list of the unit choice names
         /// </summary>
         /// <returns></returns>

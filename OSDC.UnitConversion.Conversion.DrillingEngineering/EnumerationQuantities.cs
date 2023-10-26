@@ -21,6 +21,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          DrillingDensityGradientTemperature,  // DrillingDensityGradientTemperature
          DrillingDensity,  // DrillingDensity
          DrillingDensitySpeed,  // DrillingDensitySpeed
+         DrillingDrillStringMagneticFlux,  // DrillingDrillStringMagneticFlux
          DrillingDuration,  // DrillingDuration
          DrillingDynamicViscosity,  // DrillingDynamicViscosity
          DrillingElongationGradient,  // DrillingElongationGradient
@@ -81,6 +82,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingDensityGradientTemperature, new Guid("b5ccd49c-a9fd-4cfd-8dd1-fb4d3f8c3ad5")},  // DrillingDensityGradientTemperature
          {QuantityEnum.DrillingDensity, new Guid("60f2af98-56e4-4f9c-8438-59646a35fc0d")},  // DrillingDensity
          {QuantityEnum.DrillingDensitySpeed, new Guid("af63f164-0fb7-42c0-ac55-06e40b6c12e5")},  // DrillingDensitySpeed
+         {QuantityEnum.DrillingDrillStringMagneticFlux, new Guid("3a58147b-88db-4474-8390-dd0e0f7d206b")},  // DrillingDrillStringMagneticFlux
          {QuantityEnum.DrillingDuration, new Guid("22443197-6bcf-45f7-9079-4f710585af60")},  // DrillingDuration
          {QuantityEnum.DrillingDynamicViscosity, new Guid("e9b32538-f7f4-4f99-a206-0601a4e4a5f8")},  // DrillingDynamicViscosity
          {QuantityEnum.DrillingElongationGradient, new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9")},  // DrillingElongationGradient
@@ -589,6 +591,40 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // SpecificGravityPerHour
          {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // SpecificGravityPerMinute
          {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")} // SpecificGravityPerSecond
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingDrillStringMagneticFluxQuantity : MagneticFluxQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Weber,  // Weber
+         Milliweber,  // Milliweber
+         MicroWeber,  // MicroWeber
+         TeslaSquareMeter,  // TeslaSquareMeter
+         TeslaSquareCentimeter,  // TeslaSquareCentimeter
+         GaussSquareCentimeter // GaussSquareCentimeter
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Weber, new Guid("d790689d-e7dd-43d8-a3c0-c17ccc8073e5")},  // Weber
+         {UnitChoicesEnum.Milliweber, new Guid("94f03fc7-b0bb-4356-8787-c9e33f6559d2")},  // Milliweber
+         {UnitChoicesEnum.MicroWeber, new Guid("200b9de7-0635-40eb-8ebd-9cef7c01ac10")},  // MicroWeber
+         {UnitChoicesEnum.TeslaSquareMeter, new Guid("f6da9f32-0738-4014-aac6-fdc5935fd436")},  // TeslaSquareMeter
+         {UnitChoicesEnum.TeslaSquareCentimeter, new Guid("312b97ea-6167-47b5-a046-c6c202fb7eb4")},  // TeslaSquareCentimeter
+         {UnitChoicesEnum.GaussSquareCentimeter, new Guid("a0dc1e92-7e84-401f-bca2-a6eb618ef604")} // GaussSquareCentimeter
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

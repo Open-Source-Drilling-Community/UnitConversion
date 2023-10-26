@@ -10,8 +10,7 @@
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="1.0.12" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.17" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="1.0.19" />
   </ItemGroup>
 
 </Project>

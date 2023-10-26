@@ -241,6 +241,12 @@
             "number"
           ],
           "format": "double"
+        },
+        "TypicalSymbol": {
+          "type": [
+            "null",
+            "string"
+          ]
         }
       }
     },

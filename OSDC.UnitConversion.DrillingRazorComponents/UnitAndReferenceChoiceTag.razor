@@ -230,7 +230,6 @@ else
             dateReferences.Add(new Tuple<Guid, string>(new Guid("6fb296eb-eb77-4a6f-82d0-122c74e8d3cf"), "UTC"));
             dateReferences.Add(new Tuple<Guid, string>(new Guid("f0ee13c7-2b9b-46e1-8d57-3fd6070f8a9b"), "Local Time"));
 
-            unitChoiceSets = new List<MetaInfo>();
             List<MetaInfo> choices = new();
             if (!string.IsNullOrEmpty(HttpHost) &&
                 !string.IsNullOrEmpty(HttpBasePath) &&
@@ -260,6 +259,25 @@ else
                 }
                 catch (Exception e)
                 {
+                }
+                try
+                {
+                    if (choices == null || choices.Count == 0)
+                    {
+                        var a = await httpClient.GetAsync(HttpController);
+                        if (a.IsSuccessStatusCode)
+                        {
+                            string str = await a.Content.ReadAsStringAsync();
+                            if (!string.IsNullOrEmpty(str))
+                            {
+                                choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                            }
+                        }
+                    }
+                }
+                catch (Exception e2)
+                {
+
                 }
             }
             else
