@@ -78,7 +78,8 @@ namespace OSDC.UnitConversion.Conversion
          SmallDiameter,  // Small Diameter
          SmallTorque,  // Small Torque
          SmallRotationFrequency,  // Small Rotation Frequency
-         MagneticFlux // MagneticFlux
+         MagneticFlux,  // MagneticFlux
+         RandomWalk // RandomWalk
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -153,7 +154,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.SmallDiameter, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // Small Diameter
          {QuantityEnum.SmallTorque, new Guid("adf7b170-8d24-4c9f-93e1-40179f361d8c")},  // Small Torque
          {QuantityEnum.SmallRotationFrequency, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")},  // Small Rotation Frequency
-         {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")} // MagneticFlux
+         {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")},  // MagneticFlux
+         {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")} // RandomWalk
     };
   }
 }
@@ -2873,6 +2875,44 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.TeslaSquareCentimeter, new Guid("312b97ea-6167-47b5-a046-c6c202fb7eb4")},  // TeslaSquareCentimeter
          {UnitChoicesEnum.GaussSquareCentimeter, new Guid("a0dc1e92-7e84-401f-bca2-a6eb618ef604")},  // GaussSquareCentimeter
          {UnitChoicesEnum.MagneticFluxQuantum, new Guid("f768bd79-1119-401c-b0df-39a5207273e0")} // MagneticFluxQuantum
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class RandomWalkQuantity : DerivedPhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerSqrtSecond,  // RadianPerSqrtSecond
+         RadianPerSqrtMinute,  // RadianPerSqrtMinute
+         RadianPerSqrtHour,  // RadianPerSqrtHour
+         RadianPerSqrtDay,  // RadianPerSqrtDay
+         DegreePerSqrtSecond,  // DegreePerSqrtSecond
+         DegreePerSqrtMinute,  // DegreePerSqrtMinute
+         DegreePerSqrtHour,  // DegreePerSqrtHour
+         DegreePerSqrtDay // DegreePerSqrtDay
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerSqrtSecond, new Guid("557ea59e-a1da-438b-b04d-ccfc5539f87f")},  // RadianPerSqrtSecond
+         {UnitChoicesEnum.RadianPerSqrtMinute, new Guid("ccc41b4e-2efb-4760-969f-94614248374f")},  // RadianPerSqrtMinute
+         {UnitChoicesEnum.RadianPerSqrtHour, new Guid("e296c410-e278-4586-af95-bae6fe4f0673")},  // RadianPerSqrtHour
+         {UnitChoicesEnum.RadianPerSqrtDay, new Guid("fb4a74f9-a648-4310-a424-9c85036bbc41")},  // RadianPerSqrtDay
+         {UnitChoicesEnum.DegreePerSqrtSecond, new Guid("87a0a4e3-a2f5-4f84-b845-c7e6276e1655")},  // DegreePerSqrtSecond
+         {UnitChoicesEnum.DegreePerSqrtMinute, new Guid("e8e3a988-4219-44a5-ae89-ce115a239d04")},  // DegreePerSqrtMinute
+         {UnitChoicesEnum.DegreePerSqrtHour, new Guid("ab6b85cf-54e5-4c3b-a330-f65d7e3bb926")},  // DegreePerSqrtHour
+         {UnitChoicesEnum.DegreePerSqrtDay, new Guid("8f806d0f-3741-4aa8-9f37-54b4f80e307c")} // DegreePerSqrtDay
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

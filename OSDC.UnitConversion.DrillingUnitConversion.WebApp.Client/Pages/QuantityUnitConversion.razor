@@ -187,9 +187,12 @@ else
             logger.LogInformation("Trying to load QuantityDataConversions from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
             List<PhysicalQuantity> quantities = await APIUtils.LoadDrillingPhysicalQuantities(httpClient, logger);
-            foreach (PhysicalQuantity quantity in quantities)
+            if (quantities != null)
             {
-                QuantityChoices.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
+                foreach (PhysicalQuantity quantity in quantities)
+                {
+                    QuantityChoices.Add(new Tuple<Guid, string>(quantity.ID, quantity.Name));
+                }
             }
         }
         catch (Exception ex)

@@ -38,6 +38,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          DrillingPressureGradient,  // DrillingPressureGradient
          DrillingPressureLossConstant,  // DrillingPressureLossConstant
          DrillingPressure,  // DrillingPressure
+         DrillingRandomWalk,  // DrillingRandomWalk
          DrillingRotationFrequencyRateOfChange,  // DrillingRotationFrequencyRateOfChange
          DrillingSpecificHeatCapacity,  // DrillingSpecificHeatCapacity
          DrillingSpecificHeatCapacityTemperatureGradient,  // DrillingSpecificHeatCapacityTemperatureGradient
@@ -99,6 +100,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingPressureGradient, new Guid("92a284e7-9898-41f7-950d-4ba9f1ec550b")},  // DrillingPressureGradient
          {QuantityEnum.DrillingPressureLossConstant, new Guid("fd799f5c-0963-4201-aec3-e531df6b226e")},  // DrillingPressureLossConstant
          {QuantityEnum.DrillingPressure, new Guid("d9db6bb4-77af-4fc3-a683-7bedd781fcba")},  // DrillingPressure
+         {QuantityEnum.DrillingRandomWalk, new Guid("8817dc80-eb46-42d5-b85f-703fa8845f32")},  // DrillingRandomWalk
          {QuantityEnum.DrillingRotationFrequencyRateOfChange, new Guid("4950170a-7882-4673-9d27-3402dbbca2bb")},  // DrillingRotationFrequencyRateOfChange
          {QuantityEnum.DrillingSpecificHeatCapacity, new Guid("05c59293-4e3b-4fc0-b579-12c241109610")},  // DrillingSpecificHeatCapacity
          {QuantityEnum.DrillingSpecificHeatCapacityTemperatureGradient, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // DrillingSpecificHeatCapacityTemperatureGradient
@@ -1105,6 +1107,44 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KiloPascal, new Guid("a41c04f5-198b-4a04-b90a-5700412a2a29")},  // KiloPascal
          {UnitChoicesEnum.MegaPascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // MegaPascal
          {UnitChoicesEnum.KiloPoundPerSquareInch, new Guid("a07b5fe5-87e3-4422-afe1-f54de24deeb8")} // KiloPoundPerSquareInch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingRandomWalkQuantity : RandomWalkQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerSqrtSecond,  // RadianPerSqrtSecond
+         RadianPerSqrtMinute,  // RadianPerSqrtMinute
+         RadianPerSqrtHour,  // RadianPerSqrtHour
+         RadianPerSqrtDay,  // RadianPerSqrtDay
+         DegreePerSqrtSecond,  // DegreePerSqrtSecond
+         DegreePerSqrtMinute,  // DegreePerSqrtMinute
+         DegreePerSqrtHour,  // DegreePerSqrtHour
+         DegreePerSqrtDay // DegreePerSqrtDay
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerSqrtSecond, new Guid("557ea59e-a1da-438b-b04d-ccfc5539f87f")},  // RadianPerSqrtSecond
+         {UnitChoicesEnum.RadianPerSqrtMinute, new Guid("ccc41b4e-2efb-4760-969f-94614248374f")},  // RadianPerSqrtMinute
+         {UnitChoicesEnum.RadianPerSqrtHour, new Guid("e296c410-e278-4586-af95-bae6fe4f0673")},  // RadianPerSqrtHour
+         {UnitChoicesEnum.RadianPerSqrtDay, new Guid("fb4a74f9-a648-4310-a424-9c85036bbc41")},  // RadianPerSqrtDay
+         {UnitChoicesEnum.DegreePerSqrtSecond, new Guid("87a0a4e3-a2f5-4f84-b845-c7e6276e1655")},  // DegreePerSqrtSecond
+         {UnitChoicesEnum.DegreePerSqrtMinute, new Guid("e8e3a988-4219-44a5-ae89-ce115a239d04")},  // DegreePerSqrtMinute
+         {UnitChoicesEnum.DegreePerSqrtHour, new Guid("ab6b85cf-54e5-4c3b-a330-f65d7e3bb926")},  // DegreePerSqrtHour
+         {UnitChoicesEnum.DegreePerSqrtDay, new Guid("8f806d0f-3741-4aa8-9f37-54b4f80e307c")} // DegreePerSqrtDay
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

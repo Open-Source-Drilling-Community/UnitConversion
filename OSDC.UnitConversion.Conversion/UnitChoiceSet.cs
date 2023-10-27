@@ -592,6 +592,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(LengthQuantity.Instance.ID.ToString(), LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Metre).ID.ToString());
                     Choices.Add(LuminousIntensityQuantity.Instance.ID.ToString(), LuminousIntensityQuantity.Instance.GetUnitChoice(LuminousIntensityQuantity.UnitChoicesEnum.Candela).ID.ToString());
                     Choices.Add(MassQuantity.Instance.ID.ToString(), MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Kilogram).ID.ToString());
+                    Choices.Add(RandomWalkQuantity.Instance.ID.ToString(), RandomWalkQuantity.Instance.GetUnitChoice(RandomWalkQuantity.UnitChoicesEnum.DegreePerSqrtHour).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(RelativeTemperatureQuantity.Instance.ID.ToString(), RelativeTemperatureQuantity.Instance.GetUnitChoice(RelativeTemperatureQuantity.UnitChoicesEnum.RelativeCelcius).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Millimeter).ID.ToString());
@@ -672,6 +673,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(LengthQuantity.Instance.ID.ToString(), LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Feet).ID.ToString());
                     Choices.Add(LuminousIntensityQuantity.Instance.ID.ToString(), LuminousIntensityQuantity.Instance.GetUnitChoice(LuminousIntensityQuantity.UnitChoicesEnum.Candela).ID.ToString());
                     Choices.Add(MassQuantity.Instance.ID.ToString(), MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Pound).ID.ToString());
+                    Choices.Add(RandomWalkQuantity.Instance.ID.ToString(), RandomWalkQuantity.Instance.GetUnitChoice(RandomWalkQuantity.UnitChoicesEnum.DegreePerSqrtHour).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(RelativeTemperatureQuantity.Instance.ID.ToString(), RelativeTemperatureQuantity.Instance.GetUnitChoice(RelativeTemperatureQuantity.UnitChoicesEnum.Rankine).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch).ID.ToString());
@@ -752,6 +754,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(LengthQuantity.Instance.ID.ToString(), LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Feet).ID.ToString());
                     Choices.Add(LuminousIntensityQuantity.Instance.ID.ToString(), LuminousIntensityQuantity.Instance.GetUnitChoice(LuminousIntensityQuantity.UnitChoicesEnum.Candela).ID.ToString());
                     Choices.Add(MassQuantity.Instance.ID.ToString(), MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Pound).ID.ToString());
+                    Choices.Add(RandomWalkQuantity.Instance.ID.ToString(), RandomWalkQuantity.Instance.GetUnitChoice(RandomWalkQuantity.UnitChoicesEnum.DegreePerSqrtHour).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(RelativeTemperatureQuantity.Instance.ID.ToString(), RelativeTemperatureQuantity.Instance.GetUnitChoice(RelativeTemperatureQuantity.UnitChoicesEnum.Rankine).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch).ID.ToString());
