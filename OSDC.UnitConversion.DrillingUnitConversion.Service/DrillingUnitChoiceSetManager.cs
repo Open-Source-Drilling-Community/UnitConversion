@@ -13,7 +13,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
     public class DrillingUnitChoiceSetManager
     {
         private readonly ILogger logger_;
-        private readonly object lock_ = new object();
+        private readonly object lock_ = new();
         private readonly SQLiteConnection connection_;
 
         public DrillingUnitChoiceSetManager(ILoggerFactory loggerFactory)
@@ -121,7 +121,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public IEnumerable<Guid> Get()
         {
-            List<Guid> ids = new List<Guid>();
+            List<Guid> ids = new();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -151,7 +151,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public IEnumerable<MetaInfo> GetMetaInfos()
         {
-            List<MetaInfo> metaInfos = new List<MetaInfo>();
+            List<MetaInfo> metaInfos = new();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -163,7 +163,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                     {
                         if (!reader.IsDBNull(0))
                         {
-                            MetaInfo metaInfo = new MetaInfo
+                            MetaInfo metaInfo = new()
                             {
                                 ID = reader.GetGuid(0),
                                 Name = reader.GetString(1),
@@ -187,7 +187,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public DrillingUnitChoiceSet Get(Guid guid)
         {
-            if (guid != null && guid != Guid.Empty)
+            if (guid != Guid.Empty)
             {
                 if (connection_ != null)
                 {
@@ -234,7 +234,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public bool Add(DrillingUnitChoiceSet drillingUnitChoiceSet)
         {
-            if (drillingUnitChoiceSet != null && drillingUnitChoiceSet.ID != null && !drillingUnitChoiceSet.ID.Equals(Guid.Empty))
+            if (drillingUnitChoiceSet != null && !drillingUnitChoiceSet.ID.Equals(Guid.Empty))
             {
                 // 1) the custom DrillingUnitChoiceSet is added to the database
                 if (connection_ != null)
@@ -308,7 +308,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public bool Remove(Guid guid)
         {
-            if (guid != null && !guid.Equals(Guid.Empty))
+            if (!guid.Equals(Guid.Empty))
             {
                 if (connection_ != null)
                 {
@@ -360,7 +360,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public bool Update(Guid guid, DrillingUnitChoiceSet drillingUnitChoiceSet)
         {
-            if (guid != null && !guid.Equals(Guid.Empty) && drillingUnitChoiceSet != null && guid.Equals(drillingUnitChoiceSet.ID))
+            if (!guid.Equals(Guid.Empty) && drillingUnitChoiceSet != null && guid.Equals(drillingUnitChoiceSet.ID))
             {
                 // 1) the custom DrillingUnitChoiceSet is updated in the database
                 if (connection_ != null)

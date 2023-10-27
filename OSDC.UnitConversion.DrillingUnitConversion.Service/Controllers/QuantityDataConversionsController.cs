@@ -39,7 +39,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpPost]
         public void Post([FromBody] QuantityDataConversion value)
         {
-            if (value != null && value.ID != null && !value.ID.Equals(Guid.Empty))
+            if (value != null && !value.ID.Equals(Guid.Empty))
             {
                 QuantityDataConversion dataUnitConversionSet = quantityDataConversionManager_.Get(value.ID);
                 if (dataUnitConversionSet == null)
@@ -61,7 +61,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpPut("{id}")]
         public void Put(Guid id, [FromBody] QuantityDataConversion value)
         {
-            if (value != null && value.ID != null && !value.ID.Equals(Guid.Empty))
+            if (value != null && !value.ID.Equals(Guid.Empty))
             {
                 QuantityDataConversion calculationData = quantityDataConversionManager_.Get(id);
                 if (calculationData != null)
@@ -83,7 +83,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-            if (id != null && !id.Equals(Guid.Empty))
+            if (!id.Equals(Guid.Empty))
             {
                 quantityDataConversionManager_.Remove(id);
             }

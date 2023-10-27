@@ -48,7 +48,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpPost]
         public void Post([FromBody] DrillingUnitChoiceSet value)
         {
-            if (value != null && value.ID != null && value.ID != Guid.Empty)
+            if (value != null && value.ID != Guid.Empty)
             {
                 DrillingUnitChoiceSet baseData1 = drillingUnitChoiceSetManager_.Get(value.ID);
                 if (baseData1 == null)
@@ -70,7 +70,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpPut("{id}")]
         public void Put(Guid id, [FromBody] DrillingUnitChoiceSet value)
         {
-            if (value != null && value.ID != null && value.ID != Guid.Empty)
+            if (value != null && value.ID != Guid.Empty)
             {
                 DrillingUnitChoiceSet baseData1 = drillingUnitChoiceSetManager_.Get(id);
                 if (baseData1 != null)
@@ -92,7 +92,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-            if (id != null && !id.Equals(Guid.Empty))
+            if (!id.Equals(Guid.Empty))
             {
                 drillingUnitChoiceSetManager_.Remove(id);
             }

@@ -11,7 +11,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
     public class QuantityDataConversionManager
     {
         private readonly ILogger logger_;
-        private readonly object lock_ = new object();
+        private readonly object lock_ = new();
         private readonly SQLiteConnection connection_;
 
         public QuantityDataConversionManager(ILoggerFactory loggerFactory)
@@ -112,7 +112,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public List<Guid> GetIDs()
         {
-            List<Guid> ids = new List<Guid>();
+            List<Guid> ids = new();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -141,7 +141,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         public QuantityDataConversion Get(Guid guid)
         {
             QuantityDataConversion result = null;
-            if (guid != null && !guid.Equals(Guid.Empty))
+            if (!guid.Equals(Guid.Empty))
             {
                 if (connection_ != null)
                 {
@@ -360,7 +360,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         public bool Update(Guid guid, QuantityDataConversion quantityDataConversion)
         {
             bool success = true;
-            if (guid != null && !guid.Equals(Guid.Empty) && quantityDataConversion != null && !quantityDataConversion.ID.Equals(Guid.Empty))
+            if (!guid.Equals(Guid.Empty) && quantityDataConversion != null && !quantityDataConversion.ID.Equals(Guid.Empty))
             {
                 // first apply calculations
                 if (!quantityDataConversion.Calculate())

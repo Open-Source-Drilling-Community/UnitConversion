@@ -6,6 +6,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
 WORKDIR /src
+COPY ["OSDC.UnitConversion.DrillingUnitConversion.Model/OSDC.UnitConversion.DrillingUnitConversion.Model.csproj", "OSDC.UnitConversion.DrillingUnitConversion.Model/"]
 COPY ["OSDC.UnitConversion.DrillingUnitConversion.Service/OSDC.UnitConversion.DrillingUnitConversion.Service.csproj", "OSDC.UnitConversion.DrillingUnitConversion.Service/"]
 
 RUN dotnet restore "OSDC.UnitConversion.DrillingUnitConversion.Service/OSDC.UnitConversion.DrillingUnitConversion.Service.csproj"

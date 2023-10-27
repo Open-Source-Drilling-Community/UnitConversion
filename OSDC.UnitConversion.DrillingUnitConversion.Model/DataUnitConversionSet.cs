@@ -50,10 +50,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Model
             Name = name;
             Description = descr;
             ReferenceUnitChoiceSetID = unitChoiceSetID;
-            if (QuantityUnitConversions == null)
-            {
-                QuantityUnitConversions = new List<QuantityUnitConversion>();
-            }
+            QuantityUnitConversions ??= new List<QuantityUnitConversion>();
             QuantityUnitConversions.Clear();
             if (conversions != null)
             {
@@ -75,10 +72,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Model
                 Name = src.Name;
                 Description = src.Description;
                 ReferenceUnitChoiceSetID = src.ReferenceUnitChoiceSetID;
-                if (QuantityUnitConversions == null)
-                {
-                    QuantityUnitConversions = new List<QuantityUnitConversion>();
-                }
+                QuantityUnitConversions ??= new List<QuantityUnitConversion>();
                 QuantityUnitConversions.Clear();
                 if (src.QuantityUnitConversions != null)
                 {
@@ -116,7 +110,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Model
         private bool CalculateOutputUnitConversionSet(UnitChoiceSet unitChoiceSet, QuantityUnitConversion quantityConversion)
         {
             bool success = false;
-            if (unitChoiceSet != null && quantityConversion != null && quantityConversion.PhysicalQuantityID != null && quantityConversion.PhysicalQuantityID != Guid.Empty)
+            if (unitChoiceSet != null && quantityConversion != null && quantityConversion.PhysicalQuantityID != Guid.Empty)
             {
                 PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityConversion.PhysicalQuantityID);
                 if (quantity != null)

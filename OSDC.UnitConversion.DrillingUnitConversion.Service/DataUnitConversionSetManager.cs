@@ -11,15 +11,13 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
     public class DataUnitConversionSetManager
     {
         private readonly ILogger logger_;
-        private readonly object lock_ = new object();
-        private readonly DrillingUnitChoiceSetManager unitConversionSetManager_;
+        private readonly object lock_ = new();
         private readonly SQLiteConnection connection_;
 
-        public DataUnitConversionSetManager(ILoggerFactory loggerFactory, DrillingUnitChoiceSetManager unitConversionSetManager)
+        public DataUnitConversionSetManager(ILoggerFactory loggerFactory)
         {
             logger_ = loggerFactory.CreateLogger<DataUnitConversionSetManager>();
             connection_ = SQLConnectionManager.GetConnection(loggerFactory);
-            unitConversionSetManager_ = unitConversionSetManager;
         }
 
         public int Count
@@ -114,7 +112,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public List<Guid> GetIDs()
         {
-            List<Guid> ids = new List<Guid>();
+            List<Guid> ids = new();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -142,7 +140,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 
         public List<Tuple<Guid, string, string>> GetNames()
         {
-            List<Tuple<Guid, string, string>> names = new List<Tuple<Guid, string, string>>();
+            List<Tuple<Guid, string, string>> names = new();
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -174,7 +172,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         public DataUnitConversionSet Get(Guid guid)
         {
             DataUnitConversionSet result = null;
-            if (guid != null && !guid.Equals(Guid.Empty))
+            if (!guid.Equals(Guid.Empty))
             {
                 if (connection_ != null)
                 {
@@ -395,7 +393,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         public bool Update(Guid guid, DataUnitConversionSet dataUnitConversionSet)
         {
             bool success = true;
-            if (guid != null && !guid.Equals(Guid.Empty) && dataUnitConversionSet != null && !dataUnitConversionSet.ID.Equals(Guid.Empty))
+            if (!guid.Equals(Guid.Empty) && dataUnitConversionSet != null && !dataUnitConversionSet.ID.Equals(Guid.Empty))
             {
                 // first apply calculations
                 if (!dataUnitConversionSet.CalculateOutputUnitConversionSet())

@@ -17,9 +17,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         public DataUnitConversionSetsController(ILoggerFactory loggerFactory)
         {
             logger_ = loggerFactory.CreateLogger<DataUnitConversionSetsController>();
-            dataUnitConversionSetManager_ = new DataUnitConversionSetManager(
-                loggerFactory,
-                new DrillingUnitChoiceSetManager(loggerFactory));
+            dataUnitConversionSetManager_ = new DataUnitConversionSetManager(loggerFactory);
         }
 
         // GET api/DataUnitConversionSets
@@ -41,7 +39,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpPost]
         public void Post([FromBody] DataUnitConversionSet value)
         {
-            if (value != null && value.ID != null && !value.ID.Equals(Guid.Empty))
+            if (value != null && !value.ID.Equals(Guid.Empty))
             {
                 DataUnitConversionSet dataUnitConversionSet = dataUnitConversionSetManager_.Get(value.ID);
                 if (dataUnitConversionSet == null)
@@ -63,7 +61,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpPut("{id}")]
         public void Put(Guid id, [FromBody] DataUnitConversionSet value)
         {
-            if (value != null && value.ID != null && !value.ID.Equals(Guid.Empty))
+            if (value != null && !value.ID.Equals(Guid.Empty))
             {
                 DataUnitConversionSet calculationData = dataUnitConversionSetManager_.Get(id);
                 if (calculationData != null)
@@ -85,7 +83,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-            if (id != null && !id.Equals(Guid.Empty))
+            if (!id.Equals(Guid.Empty))
             {
                 dataUnitConversionSetManager_.Remove(id);
             }

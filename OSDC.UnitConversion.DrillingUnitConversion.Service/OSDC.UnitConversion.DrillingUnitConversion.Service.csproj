@@ -5,7 +5,7 @@
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<UserSecretsId>d4693808-78e9-47c7-919b-bed83a86870d</UserSecretsId>
 		<RootNamespace>OSDC.UnitConversion.DrillingUnitConversion.Service</RootNamespace>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
