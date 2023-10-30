@@ -50,7 +50,7 @@ namespace OSDC.UnitConversion.Conversion
           ID = new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2"),
           ConversionFactorFromSI = 1000
         },
-                new UnitChoice
+        new UnitChoice
         {
           UnitName = "PartPerMillion",
           UnitLabel = "ppm",

@@ -9,6 +9,7 @@ namespace OSDC.UnitConversion.Conversion
        {
          Acceleration,  // Acceleration
          AmountSubstance,  // Amount Substance
+         AngleMagneticFluxDensity,  // AngleMagneticFluxDensity
          AngleVariationGradient,  // AngleVariationGradient
          AngularVelocity,  // AngularVelocity
          Area,  // Area
@@ -79,12 +80,15 @@ namespace OSDC.UnitConversion.Conversion
          SmallTorque,  // Small Torque
          SmallRotationFrequency,  // Small Rotation Frequency
          MagneticFlux,  // MagneticFlux
-         RandomWalk // RandomWalk
+         RandomWalk,  // RandomWalk
+         SmallProportion,  // SmallProportion
+         WaveNumber // WaveNumber
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
          {QuantityEnum.Acceleration, new Guid("454a7b6b-a921-428e-8aa7-a4a636a58e34")},  // Acceleration
          {QuantityEnum.AmountSubstance, new Guid("200be1eb-c278-447c-9b15-32d20fc778b9")},  // Amount Substance
+         {QuantityEnum.AngleMagneticFluxDensity, new Guid("03bb57e6-ca8b-4741-a211-9cf57c8fd177")},  // AngleMagneticFluxDensity
          {QuantityEnum.AngleVariationGradient, new Guid("aed9c464-1073-448b-be62-a6a0c2a53dbc")},  // AngleVariationGradient
          {QuantityEnum.AngularVelocity, new Guid("688ccd2b-6a30-4ccc-8580-a80c3a5803fa")},  // AngularVelocity
          {QuantityEnum.Area, new Guid("2a892bab-1b39-4ae4-b2d2-989621b09557")},  // Area
@@ -155,7 +159,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.SmallTorque, new Guid("adf7b170-8d24-4c9f-93e1-40179f361d8c")},  // Small Torque
          {QuantityEnum.SmallRotationFrequency, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")},  // Small Rotation Frequency
          {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")},  // MagneticFlux
-         {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")} // RandomWalk
+         {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
+         {QuantityEnum.SmallProportion, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // SmallProportion
+         {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")} // WaveNumber
     };
   }
 }
@@ -247,6 +253,60 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Nanomole, new Guid("dc8d0034-ecfa-4dbf-a24c-f1851c4aaf9c")},  // nanomole
          {UnitChoicesEnum.Picomole, new Guid("642555ea-37f0-49b9-9f21-8dd616d477c4")},  // picomole
          {UnitChoicesEnum.Kilomole, new Guid("01157606-070e-41a2-8c78-84a7ae950bd6")} // kilomole
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class AngleMagneticFluxDensityQuantity : DerivedPhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianTesla,  // RadianTesla
+         RadianGauss,  // RadianGauss
+         RadianMilliGauss,  // RadianMilliGauss
+         RadianMilliTesla,  // RadianMilliTesla
+         RadianMicroTesla,  // RadianMicroTesla
+         RadianNanoTesla,  // RadianNanoTesla
+         RadianMaxwellPerSquareCentimeter,  // RadianMaxwellPerSquareCentimeter
+         RadianWeberPerSquareMeter,  // RadianWeberPerSquareMeter
+         DegreeTesla,  // DegreeTesla
+         DegreeGauss,  // DegreeGauss
+         DegreeMilliGauss,  // DegreeMilliGauss
+         DegreeMilliTesla,  // DegreeMilliTesla
+         DegreeMicroTesla,  // DegreeMicroTesla
+         DegreeNanoTesla,  // DegreeNanoTesla
+         DegreeMaxwellPerSquareCentimeter,  // DegreeMaxwellPerSquareCentimeter
+         DegreeWeberPerSquareMeter // DegreeWeberPerSquareMeter
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianTesla, new Guid("242bd328-96ef-4a1b-9a78-1e2eb8366955")},  // RadianTesla
+         {UnitChoicesEnum.RadianGauss, new Guid("aa726b90-bd4b-420c-ae71-6f2f1fde3b58")},  // RadianGauss
+         {UnitChoicesEnum.RadianMilliGauss, new Guid("352a5b84-306d-4e38-898a-58705683fdf0")},  // RadianMilliGauss
+         {UnitChoicesEnum.RadianMilliTesla, new Guid("663639b3-48b8-4c04-a2eb-6ae2e16daa9b")},  // RadianMilliTesla
+         {UnitChoicesEnum.RadianMicroTesla, new Guid("b445e592-e0ca-490f-8880-9708e4e96a01")},  // RadianMicroTesla
+         {UnitChoicesEnum.RadianNanoTesla, new Guid("b4aeee40-29fa-463a-80a4-e10fa42c743f")},  // RadianNanoTesla
+         {UnitChoicesEnum.RadianMaxwellPerSquareCentimeter, new Guid("02d06899-5d89-4669-a4c2-35adb9ec3924")},  // RadianMaxwellPerSquareCentimeter
+         {UnitChoicesEnum.RadianWeberPerSquareMeter, new Guid("409e8e85-0870-4529-ae0c-95ab6506c445")},  // RadianWeberPerSquareMeter
+         {UnitChoicesEnum.DegreeTesla, new Guid("13df770f-6e77-4de4-91c6-137206e53fbb")},  // DegreeTesla
+         {UnitChoicesEnum.DegreeGauss, new Guid("73bb1de0-ccc0-42e6-b88e-44ecfb6fe7e4")},  // DegreeGauss
+         {UnitChoicesEnum.DegreeMilliGauss, new Guid("e74c9ae3-6e17-48e1-896b-e6c1877d68d7")},  // DegreeMilliGauss
+         {UnitChoicesEnum.DegreeMilliTesla, new Guid("812a3461-ae4a-405b-ae5d-73eb23e8a71f")},  // DegreeMilliTesla
+         {UnitChoicesEnum.DegreeMicroTesla, new Guid("50782201-236e-4537-843b-121e8dca28c6")},  // DegreeMicroTesla
+         {UnitChoicesEnum.DegreeNanoTesla, new Guid("0d9bf20d-2b10-4e73-ae8e-3d3e91862ec0")},  // DegreeNanoTesla
+         {UnitChoicesEnum.DegreeMaxwellPerSquareCentimeter, new Guid("092e8231-a6e6-4b29-bdd6-2ae490aa583a")},  // DegreeMaxwellPerSquareCentimeter
+         {UnitChoicesEnum.DegreeWeberPerSquareMeter, new Guid("2d7e1d60-6401-41c0-b436-612116be9ad4")} // DegreeWeberPerSquareMeter
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2913,6 +2973,116 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.DegreePerSqrtMinute, new Guid("e8e3a988-4219-44a5-ae89-ce115a239d04")},  // DegreePerSqrtMinute
          {UnitChoicesEnum.DegreePerSqrtHour, new Guid("ab6b85cf-54e5-4c3b-a330-f65d7e3bb926")},  // DegreePerSqrtHour
          {UnitChoicesEnum.DegreePerSqrtDay, new Guid("8f806d0f-3741-4aa8-9f37-54b4f80e307c")} // DegreePerSqrtDay
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class SmallProportionQuantity : ProportionQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Proportion,  // Proportion
+         Percent,  // Percent
+         PerThousand,  // PerThousand
+         PartPerMillion // PartPerMillion
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Proportion, new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9")},  // Proportion
+         {UnitChoicesEnum.Percent, new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7")},  // Percent
+         {UnitChoicesEnum.PerThousand, new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2")},  // PerThousand
+         {UnitChoicesEnum.PartPerMillion, new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792")} // PartPerMillion
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class WaveNumberQuantity : DerivedPhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         ReciprocalMetre,  // ReciprocalMetre
+         ReciprocalDecimeter,  // ReciprocalDecimeter
+         ReciprocalCentimeter,  // ReciprocalCentimeter
+         ReciprocalMillimeter,  // ReciprocalMillimeter
+         ReciprocalMicrometer,  // ReciprocalMicrometer
+         ReciprocalNanometer,  // ReciprocalNanometer
+         ReciprocalÅngstrøm,  // ReciprocalÅngstrøm
+         ReciprocalPicometer,  // ReciprocalPicometer
+         ReciprocalDecameter,  // ReciprocalDecameter
+         ReciprocalHectometer,  // ReciprocalHectometer
+         ReciprocalKilometer,  // ReciprocalKilometer
+         ReciprocalAstronomicalUnit,  // ReciprocalAstronomicalUnit
+         ReciprocalLightYear,  // ReciprocalLightYear
+         ReciprocalParsec,  // ReciprocalParsec
+         ReciprocalFeet,  // ReciprocalFeet
+         ReciprocalUSSurveyFeet,  // ReciprocalUSSurveyFeet
+         ReciprocalInch,  // ReciprocalInch
+         ReciprocalYard,  // ReciprocalYard
+         ReciprocalFathom,  // ReciprocalFathom
+         ReciprocalSurveyorsChain,  // ReciprocalSurveyorsChain
+         ReciprocalMile,  // ReciprocalMile
+         ReciprocalInternationalNauticalMile,  // ReciprocalInternationalNauticalMile
+         ReciprocalUKNauticalMile,  // ReciprocalUKNauticalMile
+         ReciprocalScandinavianMile,  // ReciprocalScandinavianMile
+         ReciprocalInch_32,  // ReciprocalInch/32
+         ReciprocalMil,  // ReciprocalMil
+         ReciprocalThou,  // ReciprocalThou
+         ReciprocalHand,  // ReciprocalHand
+         ReciprocalFurlong // ReciprocalFurlong
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.ReciprocalMetre, new Guid("3cd38922-b99f-45bb-af6e-a38ebf1240f0")},  // ReciprocalMetre
+         {UnitChoicesEnum.ReciprocalDecimeter, new Guid("cf8a931b-eaa9-4b0c-8894-53d54e93cba1")},  // ReciprocalDecimeter
+         {UnitChoicesEnum.ReciprocalCentimeter, new Guid("4f2c38c2-86ff-4842-afdd-3a9fcf8a623e")},  // ReciprocalCentimeter
+         {UnitChoicesEnum.ReciprocalMillimeter, new Guid("2d484d0f-7d29-48e9-8d5b-ff82fca6f1c5")},  // ReciprocalMillimeter
+         {UnitChoicesEnum.ReciprocalMicrometer, new Guid("ddbbb734-ddd2-4d26-84ba-9995fff479e6")},  // ReciprocalMicrometer
+         {UnitChoicesEnum.ReciprocalNanometer, new Guid("25412abd-9c3e-4b67-b809-d92926eb2b58")},  // ReciprocalNanometer
+         {UnitChoicesEnum.ReciprocalÅngstrøm, new Guid("7c28c943-c084-48f6-804c-87e6c6902b35")},  // ReciprocalÅngstrøm
+         {UnitChoicesEnum.ReciprocalPicometer, new Guid("bca4fde9-e17a-4a27-9a3f-34beab644ee2")},  // ReciprocalPicometer
+         {UnitChoicesEnum.ReciprocalDecameter, new Guid("a691338d-1916-4355-b6e1-3b1bff086c14")},  // ReciprocalDecameter
+         {UnitChoicesEnum.ReciprocalHectometer, new Guid("4da19df4-0ff6-424b-a2ab-9d5811ba48ca")},  // ReciprocalHectometer
+         {UnitChoicesEnum.ReciprocalKilometer, new Guid("a4b4ed8e-a1c6-4e3f-9421-8770cec6ff42")},  // ReciprocalKilometer
+         {UnitChoicesEnum.ReciprocalAstronomicalUnit, new Guid("4d58ee46-e637-4f5a-a1ff-33f002154fec")},  // ReciprocalAstronomicalUnit
+         {UnitChoicesEnum.ReciprocalLightYear, new Guid("81c8c5d9-a892-4702-921b-9946abbef6b0")},  // ReciprocalLightYear
+         {UnitChoicesEnum.ReciprocalParsec, new Guid("b8f6a954-7fe6-4f31-94cc-e53bb5603cd5")},  // ReciprocalParsec
+         {UnitChoicesEnum.ReciprocalFeet, new Guid("1d6a5284-d32f-4f5a-ad27-bfc0f71069aa")},  // ReciprocalFeet
+         {UnitChoicesEnum.ReciprocalUSSurveyFeet, new Guid("16c3f209-e890-4b35-807e-7115545406e0")},  // ReciprocalUSSurveyFeet
+         {UnitChoicesEnum.ReciprocalInch, new Guid("95cd773d-b6da-4148-bd9c-bed66b4a72d8")},  // ReciprocalInch
+         {UnitChoicesEnum.ReciprocalYard, new Guid("be5f64c0-592a-4f3b-b2b5-6df8b9d2a31b")},  // ReciprocalYard
+         {UnitChoicesEnum.ReciprocalFathom, new Guid("ae9e314e-de19-405e-a897-6a68cd4845f6")},  // ReciprocalFathom
+         {UnitChoicesEnum.ReciprocalSurveyorsChain, new Guid("90da0d97-195c-4c30-85d8-51d70b75f071")},  // ReciprocalSurveyorsChain
+         {UnitChoicesEnum.ReciprocalMile, new Guid("acbb10a5-602f-423b-bc15-bdfd80cb7008")},  // ReciprocalMile
+         {UnitChoicesEnum.ReciprocalInternationalNauticalMile, new Guid("78474000-3cd8-4102-b7b4-360b4c2130fc")},  // ReciprocalInternationalNauticalMile
+         {UnitChoicesEnum.ReciprocalUKNauticalMile, new Guid("8a55784f-b5f4-4aa7-b5f9-d19742857349")},  // ReciprocalUKNauticalMile
+         {UnitChoicesEnum.ReciprocalScandinavianMile, new Guid("f766575d-9bfa-45fb-8bfd-50f12a0e6a6a")},  // ReciprocalScandinavianMile
+         {UnitChoicesEnum.ReciprocalInch_32, new Guid("ac9c8b52-22f0-476d-a038-023695c24f25")},  // ReciprocalInch/32
+         {UnitChoicesEnum.ReciprocalMil, new Guid("09d27104-6452-4976-98e0-6fd087e22eb1")},  // ReciprocalMil
+         {UnitChoicesEnum.ReciprocalThou, new Guid("e732fd46-ddf3-433e-8baf-cc531ca69160")},  // ReciprocalThou
+         {UnitChoicesEnum.ReciprocalHand, new Guid("844ed023-9f47-4147-8b50-cf03c99071b5")},  // ReciprocalHand
+         {UnitChoicesEnum.ReciprocalFurlong, new Guid("79a3f3db-0ac8-4bcb-b93c-fca2a673147b")} // ReciprocalFurlong
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

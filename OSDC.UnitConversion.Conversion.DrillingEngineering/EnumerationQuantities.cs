@@ -42,6 +42,9 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          DrillingRotationFrequencyRateOfChange,  // DrillingRotationFrequencyRateOfChange
          DrillingSpecificHeatCapacity,  // DrillingSpecificHeatCapacity
          DrillingSpecificHeatCapacityTemperatureGradient,  // DrillingSpecificHeatCapacityTemperatureGradient
+         DrillingSurveyInstrumentMagneticFluxDensity,  // DrillingSurveyInstrumentMagneticFluxDensity
+         DrillingSurveyInstrumentAngularVelocity,  // DrillingSurveyInstrumentAngularVelocity
+         DrillingSurveyInstrumentReciprocalLength,  // DrillingSurveyInstrumentReciprocalLength
          DrillingTemperatureGradient,  // DrillingTemperatureGradient
          DrillingTemperature,  // DrillingTemperature
          DrillingTension,  // DrillingTension
@@ -104,6 +107,9 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingRotationFrequencyRateOfChange, new Guid("4950170a-7882-4673-9d27-3402dbbca2bb")},  // DrillingRotationFrequencyRateOfChange
          {QuantityEnum.DrillingSpecificHeatCapacity, new Guid("05c59293-4e3b-4fc0-b579-12c241109610")},  // DrillingSpecificHeatCapacity
          {QuantityEnum.DrillingSpecificHeatCapacityTemperatureGradient, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // DrillingSpecificHeatCapacityTemperatureGradient
+         {QuantityEnum.DrillingSurveyInstrumentMagneticFluxDensity, new Guid("a3ad9fd6-a516-42c8-98a5-14e178dc62f2")},  // DrillingSurveyInstrumentMagneticFluxDensity
+         {QuantityEnum.DrillingSurveyInstrumentAngularVelocity, new Guid("76dd6ac8-8b67-416c-b41f-07bbf4065cdb")},  // DrillingSurveyInstrumentAngularVelocity
+         {QuantityEnum.DrillingSurveyInstrumentReciprocalLength, new Guid("c198aa3b-3b24-402d-b60b-f54ff9430f33")},  // DrillingSurveyInstrumentReciprocalLength
          {QuantityEnum.DrillingTemperatureGradient, new Guid("82b91f3f-d1ec-476b-98e0-eedbba6281ec")},  // DrillingTemperatureGradient
          {QuantityEnum.DrillingTemperature, new Guid("84ce5a77-fd76-4014-ad8e-03f194c3e329")},  // DrillingTemperature
          {QuantityEnum.DrillingTension, new Guid("fe8fd6fd-814c-44c9-9462-f034dd46dc85")},  // DrillingTension
@@ -1235,6 +1241,128 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.JoulePerGramDegreeCelsiusPerCelsius, new Guid("9ed03436-3032-4bee-a145-fd03b6236816")},  // JoulePerGramDegreeCelsiusPerCelsius
          {UnitChoicesEnum.CaloriePerGramDegreeCelsiusPerCelsius, new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2")},  // CaloriePerGramDegreeCelsiusPerCelsius
          {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit, new Guid("57264532-79b7-4a19-8ffe-617bba781be3")} // BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingSurveyInstrumentAngleMagneticFluxDensityQuantity : AngleMagneticFluxDensityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianTesla,  // RadianTesla
+         DegreeGauss,  // DegreeGauss
+         DegreeMaxwellPerSquareCentimeter,  // DegreeMaxwellPerSquareCentimeter
+         DegreeMicroTesla,  // DegreeMicroTesla
+         DegreeMilliGauss,  // DegreeMilliGauss
+         DegreeMilliTesla,  // DegreeMilliTesla
+         DegreeNanoTesla,  // DegreeNanoTesla
+         DegreeTesla,  // DegreeTesla
+         DegreeWeberPerSquareMeter,  // DegreeWeberPerSquareMeter
+         RadianGauss,  // RadianGauss
+         RadianMaxwellPerSquareCentimeter,  // RadianMaxwellPerSquareCentimeter
+         RadianMicroTesla,  // RadianMicroTesla
+         RadianMilliGauss,  // RadianMilliGauss
+         RadianMilliTesla,  // RadianMilliTesla
+         RadianNanoTesla,  // RadianNanoTesla
+         RadianWeberPerSquareMeter // RadianWeberPerSquareMeter
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianTesla, new Guid("242bd328-96ef-4a1b-9a78-1e2eb8366955")},  // RadianTesla
+         {UnitChoicesEnum.DegreeGauss, new Guid("73bb1de0-ccc0-42e6-b88e-44ecfb6fe7e4")},  // DegreeGauss
+         {UnitChoicesEnum.DegreeMaxwellPerSquareCentimeter, new Guid("092e8231-a6e6-4b29-bdd6-2ae490aa583a")},  // DegreeMaxwellPerSquareCentimeter
+         {UnitChoicesEnum.DegreeMicroTesla, new Guid("50782201-236e-4537-843b-121e8dca28c6")},  // DegreeMicroTesla
+         {UnitChoicesEnum.DegreeMilliGauss, new Guid("e74c9ae3-6e17-48e1-896b-e6c1877d68d7")},  // DegreeMilliGauss
+         {UnitChoicesEnum.DegreeMilliTesla, new Guid("812a3461-ae4a-405b-ae5d-73eb23e8a71f")},  // DegreeMilliTesla
+         {UnitChoicesEnum.DegreeNanoTesla, new Guid("0d9bf20d-2b10-4e73-ae8e-3d3e91862ec0")},  // DegreeNanoTesla
+         {UnitChoicesEnum.DegreeTesla, new Guid("13df770f-6e77-4de4-91c6-137206e53fbb")},  // DegreeTesla
+         {UnitChoicesEnum.DegreeWeberPerSquareMeter, new Guid("2d7e1d60-6401-41c0-b436-612116be9ad4")},  // DegreeWeberPerSquareMeter
+         {UnitChoicesEnum.RadianGauss, new Guid("aa726b90-bd4b-420c-ae71-6f2f1fde3b58")},  // RadianGauss
+         {UnitChoicesEnum.RadianMaxwellPerSquareCentimeter, new Guid("02d06899-5d89-4669-a4c2-35adb9ec3924")},  // RadianMaxwellPerSquareCentimeter
+         {UnitChoicesEnum.RadianMicroTesla, new Guid("b445e592-e0ca-490f-8880-9708e4e96a01")},  // RadianMicroTesla
+         {UnitChoicesEnum.RadianMilliGauss, new Guid("352a5b84-306d-4e38-898a-58705683fdf0")},  // RadianMilliGauss
+         {UnitChoicesEnum.RadianMilliTesla, new Guid("663639b3-48b8-4c04-a2eb-6ae2e16daa9b")},  // RadianMilliTesla
+         {UnitChoicesEnum.RadianNanoTesla, new Guid("b4aeee40-29fa-463a-80a4-e10fa42c743f")},  // RadianNanoTesla
+         {UnitChoicesEnum.RadianWeberPerSquareMeter, new Guid("409e8e85-0870-4529-ae0c-95ab6506c445")} // RadianWeberPerSquareMeter
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingSurveyInstrumentAngularVelocityQuantity : AngularVelocityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerSecond,  // RadianPerSecond
+         DegreePerSecond,  // DegreePerSecond
+         DegreePerMinute,  // DegreePerMinute
+         DegreePerHour,  // DegreePerHour
+         DegreePerDay // DegreePerDay
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerSecond, new Guid("8889fafb-cc58-4c4e-a52d-696219dfcf4a")},  // RadianPerSecond
+         {UnitChoicesEnum.DegreePerSecond, new Guid("c6c0676e-c8a6-407d-be44-1691fd6b5d9e")},  // DegreePerSecond
+         {UnitChoicesEnum.DegreePerMinute, new Guid("0a3ad50c-bbfa-456c-9613-84f37b4a80f1")},  // DegreePerMinute
+         {UnitChoicesEnum.DegreePerHour, new Guid("44cc8b17-2f87-49c9-8ab7-7f4ed36d9eb6")},  // DegreePerHour
+         {UnitChoicesEnum.DegreePerDay, new Guid("ec049b3d-134b-44a3-9746-0419a368beef")} // DegreePerDay
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingSurveyInstrumentReciprocalLengthQuantity : WaveNumberQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         ReciprocalMetre,  // ReciprocalMetre
+         ReciprocalDecameter,  // ReciprocalDecameter
+         ReciprocalHectometer,  // ReciprocalHectometer
+         ReciprocalKilometer,  // ReciprocalKilometer
+         ReciprocalFeet,  // ReciprocalFeet
+         ReciprocalYard,  // ReciprocalYard
+         ReciprocalMile // ReciprocalMile
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.ReciprocalMetre, new Guid("3cd38922-b99f-45bb-af6e-a38ebf1240f0")},  // ReciprocalMetre
+         {UnitChoicesEnum.ReciprocalDecameter, new Guid("a691338d-1916-4355-b6e1-3b1bff086c14")},  // ReciprocalDecameter
+         {UnitChoicesEnum.ReciprocalHectometer, new Guid("4da19df4-0ff6-424b-a2ab-9d5811ba48ca")},  // ReciprocalHectometer
+         {UnitChoicesEnum.ReciprocalKilometer, new Guid("a4b4ed8e-a1c6-4e3f-9421-8770cec6ff42")},  // ReciprocalKilometer
+         {UnitChoicesEnum.ReciprocalFeet, new Guid("1d6a5284-d32f-4f5a-ad27-bfc0f71069aa")},  // ReciprocalFeet
+         {UnitChoicesEnum.ReciprocalYard, new Guid("be5f64c0-592a-4f3b-b2b5-6df8b9d2a31b")},  // ReciprocalYard
+         {UnitChoicesEnum.ReciprocalMile, new Guid("acbb10a5-602f-423b-bc15-bdfd80cb7008")} // ReciprocalMile
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

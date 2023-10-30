@@ -86,7 +86,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "picometer",
-                    UnitLabel = "nm",
+                    UnitLabel = "pm",
                     ID = new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e"),
                     ConversionFactorFromSI = 1000000000000.0
                 },
