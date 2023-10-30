@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
-using OSDC.DotnetLibraries.General.DataManagement;
+using OSDC.DrillingContextualData.ModelShared;
 
 namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
 {

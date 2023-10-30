@@ -287,22 +287,22 @@ else
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
                 {
-                    choices.Add(new MetaInfo(SIUnitChoiceSet.ID, SIUnitChoiceSet.Name));
+                    choices.Add(new MetaInfo() { ID = SIUnitChoiceSet.ID, Name = SIUnitChoiceSet.Name });
                 }
                 UnitChoiceSet metricUnitChoiceSet = DrillingUnitChoiceSet.DrillingMetricUnitChoiceSet;
                 if (metricUnitChoiceSet != null)
                 {
-                    choices.Add(new MetaInfo(metricUnitChoiceSet.ID, metricUnitChoiceSet.Name));
+                    choices.Add(new MetaInfo() { ID = metricUnitChoiceSet.ID, Name = metricUnitChoiceSet.Name });
                 }
                 UnitChoiceSet imperialUnitChoiceSet = DrillingUnitChoiceSet.DrillingImperialUnitChoiceSet;
                 if (imperialUnitChoiceSet != null)
                 {
-                    choices.Add(new MetaInfo(imperialUnitChoiceSet.ID, imperialUnitChoiceSet.Name));
+                    choices.Add(new MetaInfo() { ID = imperialUnitChoiceSet.ID, Name = imperialUnitChoiceSet.Name });
                 }
                 UnitChoiceSet USUnitChoiceSet = DrillingUnitChoiceSet.DrillingUSUnitChoiceSet;
                 if (USUnitChoiceSet != null)
                 {
-                    choices.Add(new MetaInfo(USUnitChoiceSet.ID, USUnitChoiceSet.Name));
+                    choices.Add(new MetaInfo() { ID = USUnitChoiceSet.ID, Name = USUnitChoiceSet.Name });
                 }
             }
             string defaultUnitChoiceSetName = null;

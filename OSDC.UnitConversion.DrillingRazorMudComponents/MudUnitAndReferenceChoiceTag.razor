@@ -267,7 +267,7 @@ else
                     }
                 } catch (Exception e2)
                 {
-                    
+
                 }
             }
             else
@@ -276,26 +276,26 @@ else
                 UnitChoiceSet SIUnitChoiceSet = DrillingUnitChoiceSet.DrillingSIUnitChoiceSet;
                 if (SIUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaInfo(SIUnitChoiceSet.ID, SIUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo() { ID = SIUnitChoiceSet.ID, Name = SIUnitChoiceSet.Name });
                 }
                 UnitChoiceSet metricUnitChoiceSet = DrillingUnitChoiceSet.DrillingMetricUnitChoiceSet;
                 if (metricUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaInfo(metricUnitChoiceSet.ID, metricUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo() { ID = metricUnitChoiceSet.ID, Name = metricUnitChoiceSet.Name });
                 }
                 UnitChoiceSet imperialUnitChoiceSet = DrillingUnitChoiceSet.DrillingImperialUnitChoiceSet;
                 if (imperialUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaInfo(imperialUnitChoiceSet.ID, imperialUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo() { ID = imperialUnitChoiceSet.ID, Name = imperialUnitChoiceSet.Name });
                 }
                 UnitChoiceSet USUnitChoiceSet = DrillingUnitChoiceSet.DrillingUSUnitChoiceSet;
                 if (USUnitChoiceSet != null)
                 {
-                    unitChoiceSets.Add(new MetaInfo(USUnitChoiceSet.ID, USUnitChoiceSet.Name));
+                    unitChoiceSets.Add(new MetaInfo() { ID = USUnitChoiceSet.ID, Name = USUnitChoiceSet.Name });
                 }
             }
             //Initializing unitChoiceSet_ and associated UnitChoiceSetName: default value or checking the validity of the given one
-            MetaInfo defaultMetaInfo = null;
+            MetaInfo? defaultMetaInfo = null;
             if (unitChoiceSets != null)
             {
                 unitChoiceSets.Sort((x, y) => Comparer<string>.Default.Compare(x.Name, y.Name));

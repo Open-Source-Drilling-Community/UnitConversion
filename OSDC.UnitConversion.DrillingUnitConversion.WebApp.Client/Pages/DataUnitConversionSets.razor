@@ -257,7 +257,7 @@ else
             logger.LogInformation("Trying to load DataUnitConversionSets from client: " + host);
             httpClient = APIUtils.SetHttpClient(host);
             unitChoiceSets = new List<MetaInfo>();
-            unitChoiceSets.Add(new MetaInfo(Guid.Empty, emptyChoice));
+            unitChoiceSets.Add(new MetaInfo() { ID = Guid.Empty, Name = emptyChoice });
             quantityNames = new List<Tuple<Guid, string>>();
             quantityNames.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
             results_ = new DataUnitConversionSet(Guid.Empty, "Webapp", "Conversion from Webapp", Guid.Empty, new List<ModelClientShared.QuantityUnitConversion>());

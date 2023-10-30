@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using OSDC.DotnetLibraries.General.DataManagement;
+using OSDC.DrillingContextualData.ModelShared;
 using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
 using System;
 using System.Collections.Generic;

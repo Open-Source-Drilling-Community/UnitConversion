@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using OSDC.DotnetLibraries.General.DataManagement;
+using OSDC.DrillingContextualData.ModelShared;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using System;
 using System.Collections.Generic;
