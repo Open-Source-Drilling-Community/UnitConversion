@@ -1,8 +1,7 @@
 ﻿@page "/DrillingUnitChoiceSets"
 @using System.Text;
 @using System.Globalization
-@using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
-@using Newtonsoft.Json;
+@using OSDC.UnitConversion.DrillingUnitConversion.ModelShared;
 @using Microsoft.Extensions.Logging
 @inject ILogger<DrillingUnitChoiceSets> logger
 
@@ -249,7 +248,7 @@ else
                     }
                 }
                 //a DrillingUnitChoiceSet is created based on data provided by the user (ID, Name, Description, Choices)
-                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet(Guid.NewGuid(), UnitConversionSetName, unitConversionSetDescription, choices);
+                DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet() { ID = Guid.NewGuid(), Name = UnitConversionSetName, Description = unitConversionSetDescription, Choices = choices };
                 unitChoiceSet.IsDefault = false;
                 unitChoiceSet.IsSI = false;
                 //the DrillingUnitChoiceSet must be

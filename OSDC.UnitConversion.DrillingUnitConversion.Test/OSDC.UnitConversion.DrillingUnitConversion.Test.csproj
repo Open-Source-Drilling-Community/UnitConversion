@@ -11,8 +11,4 @@
     <PackageReference Include="OSDC.DrillingContextualData.ModelShared" Version="1.0.8" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared\OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.csproj" />
-  </ItemGroup>
-
 </Project>

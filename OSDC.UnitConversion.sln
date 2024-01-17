@@ -11,13 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Generat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion.DrillingEngineering", "OSDC.UnitConversion.Conversion.DrillingEngineering\OSDC.UnitConversion.Conversion.DrillingEngineering.csproj", "{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonCL", "OSDC.UnitConversion.DrillingUnitConversion.JsonCL\OSDC.UnitConversion.DrillingUnitConversion.JsonCL.csproj", "{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.JsonSD", "OSDC.UnitConversion.DrillingUnitConversion.JsonSD\OSDC.UnitConversion.DrillingUnitConversion.JsonSD.csproj", "{C331ED8E-DA0E-4183-8E66-587F7C0686DD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.Model", "OSDC.UnitConversion.DrillingUnitConversion.Model\OSDC.UnitConversion.DrillingUnitConversion.Model.csproj", "{79037EB4-4133-44EB-BBBC-A7CE886F2D51}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared", "OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared\OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.csproj", "{6C0E828A-D958-4B7E-9617-226E8292C42F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.Service", "OSDC.UnitConversion.DrillingUnitConversion.Service\OSDC.UnitConversion.DrillingUnitConversion.Service.csproj", "{6ACD2B6E-CA80-4873-8767-D1821346459A}"
 EndProject
@@ -27,7 +21,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Drillin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingRazorComponents", "OSDC.UnitConversion.DrillingRazorComponents\OSDC.UnitConversion.DrillingRazorComponents.csproj", "{EB56DE35-B51D-4EA6-8743-8F490E8701C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSDC.UnitConversion.DrillingRazorMudComponents", "OSDC.UnitConversion.DrillingRazorMudComponents\OSDC.UnitConversion.DrillingRazorMudComponents.csproj", "{5415C7F7-8A55-4E80-99FB-1057E308112D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingRazorMudComponents", "OSDC.UnitConversion.DrillingRazorMudComponents\OSDC.UnitConversion.DrillingRazorMudComponents.csproj", "{5415C7F7-8A55-4E80-99FB-1057E308112D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.OpenAPI2CSharp", "OSDC.UnitConversion.DrillingUnitConversion.OpenAPI2CSharp\OSDC.UnitConversion.DrillingUnitConversion.OpenAPI2CSharp.csproj", "{68143562-45FD-473A-A9E7-B690B5CAE057}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.ModelShared", "OSDC.UnitConversion.DrillingUnitConversion.ModelShared\OSDC.UnitConversion.DrillingUnitConversion.ModelShared.csproj", "{DD757839-6D30-4115-897C-87F279C6AD6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingUnitConversion.ModelSharedForWebApp", "OSDC.UnitConversion.DrillingUnitConversion.ModelSharedForWebApp\OSDC.UnitConversion.DrillingUnitConversion.ModelSharedForWebApp.csproj", "{C15C2A1D-89C4-41BD-9A1B-02688F004031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,22 +51,10 @@ Global
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{144C3A3D-89DE-4D7F-9D6C-916FA2F34943}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC9DAC89-655F-4414-BFF8-9CDA5BCE2313}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C331ED8E-DA0E-4183-8E66-587F7C0686DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79037EB4-4133-44EB-BBBC-A7CE886F2D51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C0E828A-D958-4B7E-9617-226E8292C42F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ACD2B6E-CA80-4873-8767-D1821346459A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,6 +75,18 @@ Global
 		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5415C7F7-8A55-4E80-99FB-1057E308112D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68143562-45FD-473A-A9E7-B690B5CAE057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68143562-45FD-473A-A9E7-B690B5CAE057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68143562-45FD-473A-A9E7-B690B5CAE057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68143562-45FD-473A-A9E7-B690B5CAE057}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD757839-6D30-4115-897C-87F279C6AD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD757839-6D30-4115-897C-87F279C6AD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD757839-6D30-4115-897C-87F279C6AD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD757839-6D30-4115-897C-87F279C6AD6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15C2A1D-89C4-41BD-9A1B-02688F004031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15C2A1D-89C4-41BD-9A1B-02688F004031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15C2A1D-89C4-41BD-9A1B-02688F004031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15C2A1D-89C4-41BD-9A1B-02688F004031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

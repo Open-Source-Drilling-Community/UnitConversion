@@ -1,13 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
+using System.Text.Json;
+using OSDC.UnitConversion.DrillingUnitConversion.ModelShared;
 using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
-using OSDC.DrillingContextualData.ModelShared;
 
 namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
 {
@@ -29,7 +28,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             bool success = false;
             try
             {
-                string json = request.GetJson();
+                string json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var a = await httpClient.PostAsync("DataUnitConversionSets", content);
                 if (a.IsSuccessStatusCode)
@@ -65,7 +64,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        dataUnitConversionSet = JsonConvert.DeserializeObject<DataUnitConversionSet>(str);
+                        dataUnitConversionSet = JsonSerializer.Deserialize<DataUnitConversionSet>(str);
                         if (dataUnitConversionSet == null)
                             throw new NullReferenceException("Impossible to deserialize DataUnitConversionSet string:" + str);
                     }
@@ -127,7 +126,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                        unitChoiceSets = JsonSerializer.Deserialize<List<MetaInfo>>(str);
                         success = true;
                     }
                 }
@@ -165,7 +164,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        unitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
+                        unitChoiceSet = JsonSerializer.Deserialize<DrillingUnitChoiceSet>(str);
                         success = true;
                     }
                 }
@@ -191,7 +190,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             bool success = false;
             try
             {
-                string json = request.GetJson();
+                string json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var a = await httpClient.PostAsync("DrillingUnitChoiceSets", content);
                 if (a.IsSuccessStatusCode)
@@ -220,7 +219,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             bool success = false;
             try
             {
-                string json = request.GetJson();
+                string json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var a = await httpClient.PutAsync("DrillingUnitChoiceSets/" + request.ID.ToString(), content);
                 if (a.IsSuccessStatusCode)
@@ -281,7 +280,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        metaInfos = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                        metaInfos = JsonSerializer.Deserialize<List<MetaInfo>>(str);
                     }
                     for (int i = 0; i < metaInfos.Count; i++)
                     {
@@ -291,7 +290,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                             str = await a.Content.ReadAsStringAsync();
                             if (!string.IsNullOrEmpty(str))
                             {
-                                PhysicalQuantity drillingPhysicalQuantity = JsonConvert.DeserializeObject<PhysicalQuantity>(str);
+                                PhysicalQuantity drillingPhysicalQuantity = JsonSerializer.Deserialize<PhysicalQuantity>(str);
                                 if (drillingPhysicalQuantity == null)
                                     throw new NullReferenceException("Impossible to deserialize DrillingPhysicalQuantities string:" + str);
                                 drillingPhysicalQuantities.Add(drillingPhysicalQuantity);
@@ -335,7 +334,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        quantityDataConversionIDs = Newtonsoft.Json.JsonConvert.DeserializeObject<Guid[]>(str);
+                        quantityDataConversionIDs = JsonSerializer.Deserialize<Guid[]>(str);
                         success = true;
                     }
                 }
@@ -368,7 +367,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        qantity = Newtonsoft.Json.JsonConvert.DeserializeObject<PhysicalQuantity>(str);
+                        qantity = JsonSerializer.Deserialize<PhysicalQuantity>(str);
                         success = true;
                     }
                 }
@@ -393,7 +392,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
             bool success = false;
             try
             {
-                string json = request.GetJson();
+                string json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 var a = await httpClient.PostAsync("QuantityDataConversions", content);
                 if (a.IsSuccessStatusCode)
@@ -430,7 +429,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                         string str = await a.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            result = Newtonsoft.Json.JsonConvert.DeserializeObject<QuantityDataConversion>(str);
+                            result = JsonSerializer.Deserialize<QuantityDataConversion>(str);
                             success = true;
                         }
                     }
@@ -464,7 +463,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        choices = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                        choices = JsonSerializer.Deserialize<List<MetaInfo>>(str);
                         success = true;
                     }
                 }
@@ -484,10 +483,10 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                 return null;
             }
         }
-        public static async Task<UnitChoiceSet> LoadUnitChoiceSet(HttpClient httpClient, ILogger logger, Guid ID)
+        public static async Task<DrillingUnitChoiceSet> LoadUnitChoiceSet(HttpClient httpClient, ILogger logger, Guid ID)
         {
             bool success = false;
-            UnitChoiceSet unitChoiceSet = null;
+            DrillingUnitChoiceSet unitChoiceSet = null;
             try
             {
                 var a = await httpClient.GetAsync("DrillingUnitChoiceSets/" + ID);
@@ -496,7 +495,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.WebApp.Client.Shared
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        unitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<UnitChoiceSet>(str);
+                        unitChoiceSet = JsonSerializer.Deserialize<DrillingUnitChoiceSet>(str);
                         success = true;
                     }
                 }

@@ -260,7 +260,7 @@ else
             unitChoiceSets.Add(new MetaInfo() { ID = Guid.Empty, Name = emptyChoice });
             quantityNames = new List<Tuple<Guid, string>>();
             quantityNames.Add(new Tuple<Guid, string>(Guid.Empty, emptyChoice));
-            results_ = new DataUnitConversionSet(Guid.Empty, "Webapp", "Conversion from Webapp", Guid.Empty, new List<ModelClientShared.QuantityUnitConversion>());
+            results_ = new DataUnitConversionSet() { ID = Guid.Empty, Name = "Webapp", Description = "Conversion from Webapp", ReferenceUnitChoiceSetID = Guid.Empty, QuantityUnitConversions = new List<ModelShared.QuantityUnitConversion>() };
             List<MetaInfo> choices = await APIUtils.LoadUnitChoiceSets(httpClient, logger);
             if (choices != null)
             {
@@ -318,10 +318,10 @@ else
                         }
                         if (unitChoiceSetID != Guid.Empty)
                         {
-                            UnitChoiceSet unitChoiceSet = await APIUtils.LoadUnitChoiceSet(httpClient, logger, unitChoiceSetID);
+                            DrillingUnitChoiceSet unitChoiceSet = await APIUtils.LoadUnitChoiceSet(httpClient, logger, unitChoiceSetID);
                             if (unitChoiceSet != null)
                             {
-                                OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.QuantityUnitConversion quantityUnitConversion = new OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared.QuantityUnitConversion();
+                                OSDC.UnitConversion.DrillingUnitConversion.ModelShared.QuantityUnitConversion quantityUnitConversion = new OSDC.UnitConversion.DrillingUnitConversion.ModelShared.QuantityUnitConversion();
                                 quantityUnitConversion.PhysicalQuantityID = ID;
                                 quantityUnitConversion.DataConversions = new List<DataConversion>();
                                 ConversionClass conversionClass = new ConversionClass();
@@ -405,7 +405,7 @@ else
             }
             if (unitChoiceSetID != Guid.Empty)
             {
-                UnitChoiceSet unitChoiceSet = await APIUtils.LoadUnitChoiceSet(httpClient, logger, unitChoiceSetID);
+                DrillingUnitChoiceSet unitChoiceSet = await APIUtils.LoadUnitChoiceSet(httpClient, logger, unitChoiceSetID);
                 if (unitChoiceSet != null)
                 {
                     foreach (Tuple<string, ConversionClass, List<ConversionClass>> quantityUnitConversion in quantityUnitConversions)
@@ -540,7 +540,7 @@ else
             if (unitChoiceSetID != Guid.Empty)
             {
                 //collect the QuantityUnitConversions set by the user from UI 
-                List<ModelClientShared.QuantityUnitConversion> conversions = new List<ModelClientShared.QuantityUnitConversion>();
+                List<ModelShared.QuantityUnitConversion> conversions = new List<ModelShared.QuantityUnitConversion>();
                 foreach (Tuple<string, ConversionClass, List<ConversionClass>> quantityUnitConversion in quantityUnitConversions)
                 {
                     if (!string.IsNullOrEmpty(quantityUnitConversion.Item1))
@@ -556,7 +556,7 @@ else
                         }
                         if (quantityID != Guid.Empty)
                         {
-                            ModelClientShared.QuantityUnitConversion quantityConversion = new ModelClientShared.QuantityUnitConversion();
+                            ModelShared.QuantityUnitConversion quantityConversion = new ModelShared.QuantityUnitConversion();
                             quantityConversion.PhysicalQuantityID = quantityID;
                             quantityConversion.DataConversions = new List<DataConversion>();
                             foreach (ConversionClass conversion in quantityUnitConversion.Item3)
@@ -581,7 +581,7 @@ else
                     }
                 }
                 //store the list of QuantityDataUnitConversion in a dedicated DataUnitConversionSet identified by "query.ID"
-                DataUnitConversionSet query = new DataUnitConversionSet(Guid.NewGuid(), "webapp", "Conversion from Webapp", unitChoiceSetID, conversions);
+                DataUnitConversionSet query = new DataUnitConversionSet() { ID = Guid.NewGuid(), Name = "webapp", Description = "Conversion from Webapp", ReferenceUnitChoiceSetID = unitChoiceSetID, QuantityUnitConversions = conversions };
                 //POST the DataUnitConversionSet in the database to run computations server-side
                 bool success = await APIUtils.PostDataUnitConversionSet(httpClient, logger, query);
                 if (success)
@@ -596,12 +596,37 @@ else
                         results_.ReferenceUnitChoiceSetID = result.ReferenceUnitChoiceSetID;
                         if (results_.QuantityUnitConversions == null)
                         {
-                            results_.QuantityUnitConversions = new List<ModelClientShared.QuantityUnitConversion>();
+                            results_.QuantityUnitConversions = new List<ModelShared.QuantityUnitConversion>();
                         }
                         results_.QuantityUnitConversions.Clear();
-                        foreach (ModelClientShared.QuantityUnitConversion quantityUnitConversion in result.QuantityUnitConversions)
+                        foreach (ModelShared.QuantityUnitConversion quantityUnitConversion in result.QuantityUnitConversions)
                         {
-                            results_.QuantityUnitConversions.Add(new ModelClientShared.QuantityUnitConversion(quantityUnitConversion));
+                            if (quantityUnitConversion != null) {
+                                var copy = new ModelShared.QuantityUnitConversion();
+                                copy.PhysicalQuantityID = quantityUnitConversion.PhysicalQuantityID;
+                                if (copy.DataConversions == null)
+                                {
+                                    copy.DataConversions = new List<DataConversion>();
+                                }
+                                copy.DataConversions.Clear();
+                                if (quantityUnitConversion.DataConversions != null)
+                                {
+                                    foreach (DataConversion conversion in quantityUnitConversion.DataConversions)
+                                    {
+                                        if (conversion != null)
+                                        {
+                                            var cpy = new DataConversion();
+                                            cpy.DataIn = conversion.DataIn;
+                                            cpy.DataOut = conversion.DataOut;
+                                            cpy.DataOutString = conversion.DataOutString;
+                                            cpy.DataOutUnitChoiceLabel = conversion.DataOutUnitChoiceLabel;
+                                            cpy.Conversion = conversion.Conversion;
+                                            copy.DataConversions.Add(cpy);
+                                        }
+                                    }
+                                }
+                                results_.QuantityUnitConversions.Add(copy);
+                            }
                         }
                         //DELETE DataUnitConversionSet results from the database
                         success = await APIUtils.DeleteDataUnitConversionSet(httpClient, logger, query.ID);
