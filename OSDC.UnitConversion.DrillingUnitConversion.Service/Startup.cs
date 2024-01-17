@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace OSDC.UnitConversion.DrillingUnitConversion.Service
 {
@@ -21,8 +22,17 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
-            services.AddSwaggerGen();
+            services.AddControllersWithViews()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNamingPolicy = null; // preserves C# properties naming conventions (no forced lower case applied)
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); // allows to serialize enums as strings (and not integers)
+                });
+            services.AddSwaggerGen(c =>
+            {
+                c.CustomSchemaIds(x => x.FullName.Replace("+", ".")); // exposes the types according to their fully qualified names / replacing + by . handles enum types that are improperly referenced in swagger.json otherwise ($ref)
+                c.UseAllOfToExtendReferenceSchemas(); // allows to preserve nullable enum types (warning: may have side effects https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/2378)
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,5 +97,5 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                 endpoints.MapFallbackToFile("index.html");
             });
         }
-    }
+      }
 }

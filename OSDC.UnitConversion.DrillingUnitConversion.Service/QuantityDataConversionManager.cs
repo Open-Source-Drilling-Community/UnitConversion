@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using System.Text.Json;
 using OSDC.UnitConversion.DrillingUnitConversion.Model;
 using System;
 using System.Collections.Generic;
@@ -158,7 +158,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                             json = reader.GetString(0);
                             if (!string.IsNullOrEmpty(json))
                             {
-                                result = JsonConvert.DeserializeObject<QuantityDataConversion>(json);
+                                result = JsonSerializer.Deserialize<QuantityDataConversion>(json);
                             }
                         }
                         else
@@ -208,7 +208,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         try
                         {
                             // first add the QuantityDataConversion to the QuantityDataConversionsTable
-                            string json = JsonConvert.SerializeObject(quantityDataConversion);
+                            string json = JsonSerializer.Serialize(quantityDataConversion);
                             var command = connection_.CreateCommand();
                             command.CommandText = @"INSERT INTO QuantityDataConversionsTable " +
                                 "(ID, Data, TimeStamp) VALUES (" +
@@ -378,7 +378,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         // first update the relevant fields in DataUnitConversionSetsTable (other fields never change)
                         try
                         {
-                            string json = JsonConvert.SerializeObject(quantityDataConversion);
+                            string json = JsonSerializer.Serialize(quantityDataConversion);
                             var command = connection_.CreateCommand();
                             command.CommandText = @"UPDATE QuantityDataConversionsTable SET " +
                                 "Data = '" + json + "', " +

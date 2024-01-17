@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using OSDC.UnitConversion.Conversion;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
-using OSDC.DrillingContextualData.ModelShared;
+using OSDC.DotnetLibraries.General.DataManagement;
 using System;
 using System.Collections.Generic;
 

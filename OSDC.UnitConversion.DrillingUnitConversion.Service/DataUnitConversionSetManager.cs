@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using System.Text.Json;
 using OSDC.UnitConversion.DrillingUnitConversion.Model;
 using System;
 using System.Collections.Generic;
@@ -189,7 +189,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                             json = reader.GetString(0);
                             if (!string.IsNullOrEmpty(json))
                             {
-                                result = JsonConvert.DeserializeObject<DataUnitConversionSet>(json);
+                                result = JsonSerializer.Deserialize<DataUnitConversionSet>(json);
                             }
                         }
                         else
@@ -239,7 +239,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         try
                         {
                             // first add the DataUnitConversionSet to the DataUnitConversionSetsTable
-                            string json = JsonConvert.SerializeObject(dataUnitConversionSet);
+                            string json = JsonSerializer.Serialize(dataUnitConversionSet);
                             var command = connection_.CreateCommand();
                             command.CommandText = @"INSERT INTO DataUnitConversionSetsTable " +
                                 "(ID, Name, Description, Data, TimeStamp) VALUES (" +
@@ -411,7 +411,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         // first update the relevant fields in DataUnitConversionSetsTable (other fields never change)
                         try
                         {
-                            string json = JsonConvert.SerializeObject(dataUnitConversionSet);
+                            string json = JsonSerializer.Serialize(dataUnitConversionSet);
                             var command = connection_.CreateCommand();
                             command.CommandText = @"UPDATE DataUnitConversionSetsTable SET " +
                                 "Name = '" + dataUnitConversionSet.Name + "', " +

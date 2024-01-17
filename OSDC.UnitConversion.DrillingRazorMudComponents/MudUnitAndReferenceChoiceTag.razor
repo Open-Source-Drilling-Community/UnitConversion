@@ -244,7 +244,7 @@ else
                         string str = await a.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                            unitChoiceSets = System.Text.Json.JsonSerializer.Deserialize<List<MetaInfo>>(str);
                         }
                     }
                 }
@@ -261,7 +261,7 @@ else
                             string str = await a.Content.ReadAsStringAsync();
                             if (!string.IsNullOrEmpty(str))
                             {
-                                unitChoiceSets = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                                unitChoiceSets = System.Text.Json.JsonSerializer.Deserialize<List<MetaInfo>>(str);
                             }
                         }
                     }
@@ -1405,7 +1405,7 @@ else
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        unitChoiceSet = Newtonsoft.Json.JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
+                        unitChoiceSet = System.Text.Json.JsonSerializer.Deserialize<DrillingUnitChoiceSet>(str);
                     }
                 }
             }

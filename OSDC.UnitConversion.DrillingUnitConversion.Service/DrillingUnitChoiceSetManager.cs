@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using OSDC.DrillingContextualData.ModelShared;
+using System.Text.Json;
+using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using System;
 using System.Collections.Generic;
@@ -201,7 +201,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         if (reader.Read() && !reader.IsDBNull(0))
                         {
                             string json = reader.GetString(0);
-                            result = JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(json);
+                            result = JsonSerializer.Deserialize<DrillingUnitChoiceSet>(json);
                             if (!result.ID.Equals(guid))
                                 throw (new SQLiteException("SQLite database corrupted: DrillingUnitChoiceSetsTable has been jsonified with the wrong ID."));
                         }
@@ -245,7 +245,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         bool success = true;
                         try
                         {
-                            string json = JsonConvert.SerializeObject(drillingUnitChoiceSet);
+                            string json = JsonSerializer.Serialize(drillingUnitChoiceSet);
                             var command = connection_.CreateCommand();
                             command.CommandText = @"INSERT INTO DrillingUnitChoiceSetsTable (ID, Name, Description, IsDefault, Data) " +
                                 "VALUES (" +
@@ -371,7 +371,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service
                         bool success = true;
                         try
                         {
-                            string json = JsonConvert.SerializeObject(drillingUnitChoiceSet);
+                            string json = JsonSerializer.Serialize(drillingUnitChoiceSet);
 
                             var command = connection_.CreateCommand();
                             command.CommandText = @"UPDATE DrillingUnitChoiceSetsTable SET " +
