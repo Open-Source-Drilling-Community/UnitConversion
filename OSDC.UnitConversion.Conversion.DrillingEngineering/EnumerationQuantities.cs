@@ -15,6 +15,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          DrillingAngleVariationGradient,  // DrillingAngleVariationGradient
          DrillingAngularVelocity,  // DrillingAngularVelocity
          DrillingArea,  // DrillingArea
+         DrillingAxialVelocity,  // DrillingAxialVelocity
          DrillingCompressibility,  // DrillingCompressibility
          DrillingCurvature,  // DrillingCurvature
          DrillingDensityGradientDepth,  // DrillingDensityGradientDepth
@@ -80,6 +81,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DrillingAngleVariationGradient, new Guid("e6f22876-ca88-4d0e-a4a5-c76b0db3556f")},  // DrillingAngleVariationGradient
          {QuantityEnum.DrillingAngularVelocity, new Guid("046cb449-8cab-4d0c-bb28-3e2060f292e5")},  // DrillingAngularVelocity
          {QuantityEnum.DrillingArea, new Guid("21fc0373-6eda-460b-bacb-070abf2f3add")},  // DrillingArea
+         {QuantityEnum.DrillingAxialVelocity, new Guid("e278ace8-d577-4fb4-8d1d-dd8a3d072027")},  // DrillingAxialVelocity
          {QuantityEnum.DrillingCompressibility, new Guid("bfec67e2-839f-47d7-968c-69287567835d")},  // DrillingCompressibility
          {QuantityEnum.DrillingCurvature, new Guid("0e41ce3a-a0e4-44a3-bf6e-6c2a70f4a28b")},  // DrillingCurvature
          {QuantityEnum.DrillingDensityGradientDepth, new Guid("787c3f65-b6d5-4866-885b-12571b1d9734")},  // DrillingDensityGradientDepth
@@ -381,6 +383,40 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.SquareYard, new Guid("ae3df24c-e5db-4b88-9e81-228f29855f1b")},  // SquareYard
          {UnitChoicesEnum.SquareCentimeter, new Guid("d74bb2bc-9c86-4be4-bff1-88cac7b1049b")},  // SquareCentimeter
          {UnitChoicesEnum.SquareInch, new Guid("294bc6d0-5be7-4c70-95f3-ad9dc50f02cf")} // SquareInch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillingAxialVelocityQuantity : VelocityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         MeterPerSecond,  // MeterPerSecond
+         MeterPerMinute,  // MeterPerMinute
+         MeterPerHour,  // MeterPerHour
+         FootPerHour,  // FootPerHour
+         FootPerMinute,  // FootPerMinute
+         FootPerSecond // FootPerSecond
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.MeterPerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // MeterPerSecond
+         {UnitChoicesEnum.MeterPerMinute, new Guid("824d3b5b-1e51-446a-99a4-39c02377f303")},  // MeterPerMinute
+         {UnitChoicesEnum.MeterPerHour, new Guid("b4867c19-0668-4043-b3b9-f666f7552b02")},  // MeterPerHour
+         {UnitChoicesEnum.FootPerHour, new Guid("adb3b459-aa7e-4639-ad07-6d19c80f8170")},  // FootPerHour
+         {UnitChoicesEnum.FootPerMinute, new Guid("2d139d2c-1063-4f8d-99ae-bf71a98a1076")},  // FootPerMinute
+         {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")} // FootPerSecond
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

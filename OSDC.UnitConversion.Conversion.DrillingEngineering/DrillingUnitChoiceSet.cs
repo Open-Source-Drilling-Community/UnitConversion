@@ -87,6 +87,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Description = "Metric System of Units";
 
                     Choices.Add(BlockVelocityQuantity.Instance.ID.ToString(), BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.MeterPerSecond).ID.ToString());
+                    Choices.Add(DrillingAxialVelocityQuantity.Instance.ID.ToString(), DrillingAxialVelocityQuantity.Instance.GetUnitChoice(DrillingAxialVelocityQuantity.UnitChoicesEnum.MeterPerSecond).ID.ToString());
                     Choices.Add(CableDiameterQuantity.Instance.ID.ToString(), CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
                     Choices.Add(CapillaryPressureQuantity.Instance.ID.ToString(), CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.Bar).ID.ToString());
                     Choices.Add(DepthQuantity.Instance.ID.ToString(), DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Metre).ID.ToString());
@@ -157,6 +158,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Description = "United States of America System of Units";
 
                     Choices.Add(BlockVelocityQuantity.Instance.ID.ToString(), BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(DrillingAxialVelocityQuantity.Instance.ID.ToString(), DrillingAxialVelocityQuantity.Instance.GetUnitChoice(DrillingAxialVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(CableDiameterQuantity.Instance.ID.ToString(), CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
                     Choices.Add(CapillaryPressureQuantity.Instance.ID.ToString(), CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
                     Choices.Add(DepthQuantity.Instance.ID.ToString(), DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Feet).ID.ToString());
@@ -227,6 +229,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Description = "United Kingdom System of Units";
 
                     Choices.Add(BlockVelocityQuantity.Instance.ID.ToString(), BlockVelocityQuantity.Instance.GetUnitChoice(BlockVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
+                    Choices.Add(DrillingAxialVelocityQuantity.Instance.ID.ToString(), DrillingAxialVelocityQuantity.Instance.GetUnitChoice(DrillingAxialVelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(CableDiameterQuantity.Instance.ID.ToString(), CableDiameterQuantity.Instance.GetUnitChoice(CableDiameterQuantity.UnitChoicesEnum.Inch).ID.ToString());
                     Choices.Add(CapillaryPressureQuantity.Instance.ID.ToString(), CapillaryPressureQuantity.Instance.GetUnitChoice(CapillaryPressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
                     Choices.Add(DepthQuantity.Instance.ID.ToString(), DepthQuantity.Instance.GetUnitChoice(DepthQuantity.UnitChoicesEnum.Feet).ID.ToString());
