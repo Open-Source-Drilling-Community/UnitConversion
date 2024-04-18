@@ -615,6 +615,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(FrequencyQuantity.Instance.ID.ToString(), FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
                     Choices.Add(ProportionQuantity.Instance.ID.ToString(), ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent).ID.ToString());
+                    Choices.Add(PorosityQuantity.Instance.ID.ToString(), PorosityQuantity.Instance.GetUnitChoice(PorosityQuantity.UnitChoicesEnum.Proportion).ID.ToString());
                     Choices.Add(HeatTransferCoefficientQuantity.Instance.ID.ToString(), HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.WattPerMeterSquaredPerKelvin).ID.ToString());
                     Choices.Add(GravitationalLoadQuantity.Instance.ID.ToString(), GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Kilogram).ID.ToString());
                     Choices.Add(HydraulicConductivityQuantity.Instance.ID.ToString(), HydraulicConductivityQuantity.Instance.GetUnitChoice(HydraulicConductivityQuantity.UnitChoicesEnum.MeterPerSecond).ID.ToString());
@@ -699,6 +700,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(FrequencyQuantity.Instance.ID.ToString(), FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
                     Choices.Add(ProportionQuantity.Instance.ID.ToString(), ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent).ID.ToString());
+                    Choices.Add(PorosityQuantity.Instance.ID.ToString(), PorosityQuantity.Instance.GetUnitChoice(PorosityQuantity.UnitChoicesEnum.Proportion).ID.ToString());
                     Choices.Add(HeatTransferCoefficientQuantity.Instance.ID.ToString(), HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit).ID.ToString());
                     Choices.Add(GravitationalLoadQuantity.Instance.ID.ToString(), GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Pound).ID.ToString());
                     Choices.Add(HydraulicConductivityQuantity.Instance.ID.ToString(), HydraulicConductivityQuantity.Instance.GetUnitChoice(HydraulicConductivityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
@@ -783,6 +785,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(FrequencyQuantity.Instance.ID.ToString(), FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
                     Choices.Add(ProportionQuantity.Instance.ID.ToString(), ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent).ID.ToString());
+                    Choices.Add(PorosityQuantity.Instance.ID.ToString(), PorosityQuantity.Instance.GetUnitChoice(PorosityQuantity.UnitChoicesEnum.Proportion).ID.ToString());
                     Choices.Add(HeatTransferCoefficientQuantity.Instance.ID.ToString(), HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit).ID.ToString());
                     Choices.Add(GravitationalLoadQuantity.Instance.ID.ToString(), GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Pound).ID.ToString());
                     Choices.Add(HydraulicConductivityQuantity.Instance.ID.ToString(), HydraulicConductivityQuantity.Instance.GetUnitChoice(HydraulicConductivityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());

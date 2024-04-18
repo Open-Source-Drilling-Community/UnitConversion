@@ -82,7 +82,8 @@ namespace OSDC.UnitConversion.Conversion
          MagneticFlux,  // MagneticFlux
          RandomWalk,  // RandomWalk
          SmallProportion,  // SmallProportion
-         WaveNumber // WaveNumber
+         WaveNumber,  // WaveNumber
+         Porosity // Porosity
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -161,7 +162,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")},  // MagneticFlux
          {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
          {QuantityEnum.SmallProportion, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // SmallProportion
-         {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")} // WaveNumber
+         {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
+         {QuantityEnum.Porosity, new Guid("2f6516a1-47cc-498f-8271-e84150183665")} // Porosity
     };
   }
 }
@@ -3083,6 +3085,34 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.ReciprocalThou, new Guid("e732fd46-ddf3-433e-8baf-cc531ca69160")},  // ReciprocalThou
          {UnitChoicesEnum.ReciprocalHand, new Guid("844ed023-9f47-4147-8b50-cf03c99071b5")},  // ReciprocalHand
          {UnitChoicesEnum.ReciprocalFurlong, new Guid("79a3f3db-0ac8-4bcb-b93c-fca2a673147b")} // ReciprocalFurlong
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PorosityQuantity : ProportionQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Proportion,  // Proportion
+         Percent,  // Percent
+         PerThousand // PerThousand
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Proportion, new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9")},  // Proportion
+         {UnitChoicesEnum.Percent, new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7")},  // Percent
+         {UnitChoicesEnum.PerThousand, new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2")} // PerThousand
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
