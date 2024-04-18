@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>1.3.18</Version>
+    <Version>1.3.19</Version>
     <Authors>Gilles Pelfrene</Authors>
     <Company>NORCE Norwegian Research Centre</Company>
     <Description>A package with MudBlazor components to manage unit and reference conversions.</Description>
@@ -21,7 +21,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.25" />
     <PackageReference Include="MudBlazor" Version="6.8.0" />
-    <PackageReference Include="OSDC.UnitConversion.DrillingRazorComponents" Version="1.3.13" />
+    <PackageReference Include="OSDC.UnitConversion.DrillingRazorComponents" Version="1.3.14" />
   </ItemGroup>
 
   <ItemGroup>
