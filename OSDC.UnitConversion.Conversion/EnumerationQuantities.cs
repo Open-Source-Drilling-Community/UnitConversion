@@ -83,7 +83,8 @@ namespace OSDC.UnitConversion.Conversion
          RandomWalk,  // RandomWalk
          SmallProportion,  // SmallProportion
          WaveNumber,  // WaveNumber
-         Porosity // Porosity
+         Porosity,  // Porosity
+         Power // Power
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -163,7 +164,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
          {QuantityEnum.SmallProportion, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // SmallProportion
          {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
-         {QuantityEnum.Porosity, new Guid("2f6516a1-47cc-498f-8271-e84150183665")} // Porosity
+         {QuantityEnum.Porosity, new Guid("2f6516a1-47cc-498f-8271-e84150183665")},  // Porosity
+         {QuantityEnum.Power, new Guid("6fd69f30-a219-4d56-a1dd-000d8175e2ed")} // Power
     };
   }
 }
@@ -3113,6 +3115,62 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Proportion, new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9")},  // Proportion
          {UnitChoicesEnum.Percent, new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7")},  // Percent
          {UnitChoicesEnum.PerThousand, new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2")} // PerThousand
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PowerQuantity : DerivedPhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Watt,  // Watt
+         DecaWatt,  // DecaWatt
+         HectoWatt,  // HectoWatt
+         KiloWatt,  // KiloWatt
+         MegaWatt,  // MegaWatt
+         GigaWatt,  // GigaWatt
+         TeraWatt,  // TeraWatt
+         PetaWatt,  // PetaWatt
+         ExaWatt,  // ExaWatt
+         DeciWatt,  // DeciWatt
+         CentiWatt,  // CentiWatt
+         MilliWatt,  // MilliWatt
+         MicroWatt,  // MicroWatt
+         NanoWatt,  // NanoWatt
+         PicoWatt,  // PicoWatt
+         FemtoWatt,  // FemtoWatt
+         AttoWatt // AttoWatt
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Watt, new Guid("9d986a0c-700f-4448-a48c-a028bbd22049")},  // Watt
+         {UnitChoicesEnum.DecaWatt, new Guid("fa888306-f2ef-420a-9ce2-8c56fe64ea3c")},  // DecaWatt
+         {UnitChoicesEnum.HectoWatt, new Guid("1f159f0d-635a-4bc8-9020-6c09d72b3f63")},  // HectoWatt
+         {UnitChoicesEnum.KiloWatt, new Guid("016b23c7-0231-45bb-8723-5d3d4cc5c054")},  // KiloWatt
+         {UnitChoicesEnum.MegaWatt, new Guid("5719b5f3-5c24-46d2-8ccd-0a06cc6b49ae")},  // MegaWatt
+         {UnitChoicesEnum.GigaWatt, new Guid("ba67ba92-cdf5-46a8-a5f5-56c1ad102417")},  // GigaWatt
+         {UnitChoicesEnum.TeraWatt, new Guid("b3e60a20-9e0f-479b-903b-16b22d86a515")},  // TeraWatt
+         {UnitChoicesEnum.PetaWatt, new Guid("bafba6b7-8a58-46b0-b4c7-c9a008c5e8f4")},  // PetaWatt
+         {UnitChoicesEnum.ExaWatt, new Guid("457950e4-0d4c-4f18-87ae-c35a7d2f512a")},  // ExaWatt
+         {UnitChoicesEnum.DeciWatt, new Guid("6a3cd886-1c2c-41c8-8214-b21aff588b1e")},  // DeciWatt
+         {UnitChoicesEnum.CentiWatt, new Guid("ac6c67e1-0912-44f2-9496-ed82aca2b925")},  // CentiWatt
+         {UnitChoicesEnum.MilliWatt, new Guid("4b9e8b24-6c84-423e-8f79-b2bec161f219")},  // MilliWatt
+         {UnitChoicesEnum.MicroWatt, new Guid("f0345b17-3e67-4c27-a787-69cd6feb7b1b")},  // MicroWatt
+         {UnitChoicesEnum.NanoWatt, new Guid("622ee208-1b04-42c4-ba6e-552e6e328e02")},  // NanoWatt
+         {UnitChoicesEnum.PicoWatt, new Guid("5b46567b-0571-4ca7-90d5-6304a0b7f938")},  // PicoWatt
+         {UnitChoicesEnum.FemtoWatt, new Guid("325622ea-c161-4f4f-9ee4-86d9e802f21c")},  // FemtoWatt
+         {UnitChoicesEnum.AttoWatt, new Guid("7bc1807f-90ac-41b0-a15f-9d1c81101f6d")} // AttoWatt
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

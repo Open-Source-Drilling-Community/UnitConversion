@@ -611,6 +611,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VelocityQuantity.Instance.ID.ToString(), VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MeterPerSecond).ID.ToString());
                     Choices.Add(ForceGradientQuantity.Instance.ID.ToString(), ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID.ToString());
                     Choices.Add(ForceQuantity.Instance.ID.ToString(), ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.DecaNewton).ID.ToString());
+                    Choices.Add(PowerQuantity.Instance.ID.ToString(), PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).ID.ToString());
                     Choices.Add(MaterialStrengthQuantity.Instance.ID.ToString(), MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.MegaPascal).ID.ToString());
                     Choices.Add(FrequencyQuantity.Instance.ID.ToString(), FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
@@ -696,6 +697,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VelocityQuantity.Instance.ID.ToString(), VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceGradientQuantity.Instance.ID.ToString(), ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID.ToString());
                     Choices.Add(ForceQuantity.Instance.ID.ToString(), ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
+                    Choices.Add(PowerQuantity.Instance.ID.ToString(), PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).ID.ToString());
                     Choices.Add(MaterialStrengthQuantity.Instance.ID.ToString(), MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.PSI).ID.ToString());
                     Choices.Add(FrequencyQuantity.Instance.ID.ToString(), FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
@@ -781,6 +783,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VelocityQuantity.Instance.ID.ToString(), VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceGradientQuantity.Instance.ID.ToString(), ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMeter).ID.ToString());
                     Choices.Add(ForceQuantity.Instance.ID.ToString(), ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
+                    Choices.Add(PowerQuantity.Instance.ID.ToString(), PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).ID.ToString());
                     Choices.Add(MaterialStrengthQuantity.Instance.ID.ToString(), MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.PSI).ID.ToString());
                     Choices.Add(FrequencyQuantity.Instance.ID.ToString(), FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM).ID.ToString());
