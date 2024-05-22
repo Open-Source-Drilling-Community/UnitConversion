@@ -21,7 +21,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/QuantityDataConversions
-        [HttpGet]
+        [HttpGet(Name = "GetAllQuantityDataConversion")]
         public IEnumerable<Guid> Get()
         {
             var ids = quantityDataConversionManager_.GetIDs();
@@ -29,14 +29,14 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/QuantityDataConversions/f8338e35-c548-4284-a2e7-61b94a7b4769
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetQuantityDataConversionById")]
         public QuantityDataConversion Get(Guid id)
         {
             return quantityDataConversionManager_.Get(id);
         }
 
         // POST api/QuantityDataConversions
-        [HttpPost]
+        [HttpPost(Name = "PostQuantityDataConversion")]
         public void Post([FromBody] QuantityDataConversion value)
         {
             if (value != null && !value.ID.Equals(Guid.Empty))
@@ -58,7 +58,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // PUT api/QuantityDataConversions/f29b357f-8b76-4abe-ad84-4ccd5ccef77e
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name = "PutQuantityDataConversionById")]
         public void Put(Guid id, [FromBody] QuantityDataConversion value)
         {
             if (value != null && !value.ID.Equals(Guid.Empty))
@@ -80,7 +80,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // DELETE api/QuantityDataConversions/f29b357f-8b76-4abe-ad84-4ccd5ccef77e
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteQuantityDataConversionById")]
         public void Delete(Guid id)
         {
             if (!id.Equals(Guid.Empty))

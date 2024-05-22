@@ -21,7 +21,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DrillingPhysicalQuantities
-        [HttpGet]
+        [HttpGet(Name = "GetAllDrillingPhysicalQuantity")]
         public IEnumerable<Guid> Get()
         {
             List<PhysicalQuantity> quantities = new List<PhysicalQuantity>();
@@ -41,7 +41,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DrillingPhysicalQuantities/MetaInfos
-        [HttpGet("MetaInfos")]
+        [HttpGet("MetaInfos", Name = "GetAllDrillingPhysicalQuantityMetaInfo")]
         public IEnumerable<MetaInfo> GetMetaInfos()
         {
             List<PhysicalQuantity> quantities = new List<PhysicalQuantity>();
@@ -66,7 +66,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DrillingPhysicalQuantities/c0d965b2-a153-420a-9d03-7a2a272d619e
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetDrillingPhysicalQuantityById")]
         public PhysicalQuantity Get(Guid id)
         {
             PhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(id);

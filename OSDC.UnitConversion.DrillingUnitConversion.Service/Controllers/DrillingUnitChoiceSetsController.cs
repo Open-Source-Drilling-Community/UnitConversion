@@ -22,7 +22,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DrillingUnitChoiceSets
-        [HttpGet]
+        [HttpGet(Name = "GetAllDrillingUnitChoiceSet")]
         public IEnumerable<Guid> Get()
         {
             var ids = drillingUnitChoiceSetManager_.Get();
@@ -30,7 +30,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DrillingUnitChoiceSets/MetaInfos
-        [HttpGet("MetaInfos")]
+        [HttpGet("MetaInfos", Name = "GetAllDrillingUnitChoiceSetMetaInfo")]
         public IEnumerable<MetaInfo> GetMetaInfos()
         {
             var ids = drillingUnitChoiceSetManager_.GetMetaInfos();
@@ -38,14 +38,14 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DrillingUnitChoiceSets/7f70fe4f-f4a4-4fdf-a95d-241b0a6f4a4e
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetDrillingUnitChoiceSetById")]
         public DrillingUnitChoiceSet Get(Guid id)
         {
             return drillingUnitChoiceSetManager_.Get(id);
         }
 
         // POST api/DrillingUnitChoiceSets
-        [HttpPost]
+        [HttpPost(Name = "PostDrillingUnitChoiceSet")]
         public void Post([FromBody] DrillingUnitChoiceSet value)
         {
             if (value != null && value.ID != Guid.Empty)
@@ -67,7 +67,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // PUT api/DrillingUnitChoiceSets/7f70fe4f-f4a4-4fdf-a95d-241b0a6f4a4e
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name = "PutDrillingUnitChoiceSetById")]
         public void Put(Guid id, [FromBody] DrillingUnitChoiceSet value)
         {
             if (value != null && value.ID != Guid.Empty)
@@ -89,7 +89,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // DELETE api/DrillingUnitChoiceSets/7f70fe4f-f4a4-4fdf-a95d-241b0a6f4a4e
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteDrillingUnitChoiceSetById")]
         public void Delete(Guid id)
         {
             if (!id.Equals(Guid.Empty))

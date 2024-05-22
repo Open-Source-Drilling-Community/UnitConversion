@@ -21,7 +21,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DataUnitConversionSets
-        [HttpGet]
+        [HttpGet(Name = "GetAllDataUnitConversionSet")]
         public IEnumerable<Guid> Get()
         {
             var ids = dataUnitConversionSetManager_.GetIDs();
@@ -29,14 +29,14 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // GET api/DataUnitConversionSets/f8338e35-c548-4284-a2e7-61b94a7b4769
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetDataUnitConversionSetById")]
         public DataUnitConversionSet Get(Guid id)
         {
             return dataUnitConversionSetManager_.Get(id);
         }
 
         // POST api/DataUnitConversionSets
-        [HttpPost]
+        [HttpPost(Name = "PostDataUnitConversionSet")]
         public void Post([FromBody] DataUnitConversionSet value)
         {
             if (value != null && !value.ID.Equals(Guid.Empty))
@@ -58,7 +58,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // PUT api/DataUnitConversionSets/f29b357f-8b76-4abe-ad84-4ccd5ccef77e
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name = "PutDataUnitConversionSetById")]
         public void Put(Guid id, [FromBody] DataUnitConversionSet value)
         {
             if (value != null && !value.ID.Equals(Guid.Empty))
@@ -80,7 +80,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Service.Controllers
         }
 
         // DELETE api/DataUnitConversionSets/f29b357f-8b76-4abe-ad84-4ccd5ccef77e
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteDataUnitConversionSetById")]
         public void Delete(Guid id)
         {
             if (!id.Equals(Guid.Empty))
