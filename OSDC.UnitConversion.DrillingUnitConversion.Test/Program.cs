@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using OSDC.DrillingContextualData.ModelShared;
-using OSDC.UnitConversion.DrillingUnitConversion.ModelClientShared;
+﻿using OSDC.UnitConversion.DrillingUnitConversion.ModelShared;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,7 +29,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             }
 
             List<PhysicalQuantity> drillingQuantities = await TestDrillingPhysicalQuantities(host);
-            List<UnitChoiceSet> unitChoiceSets = await TestDrillingUnitChoiceSets(host, drillingQuantities);
+            List<DrillingUnitChoiceSet> unitChoiceSets = await TestDrillingUnitChoiceSets(host, drillingQuantities);
             await TestDataUnitConversionSets(host, drillingQuantities, unitChoiceSets);
             await TestQuantityDataConversions(host, drillingQuantities);
             Thread.Sleep(20000);
@@ -60,7 +59,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    drillingPhysicalQuantityIDs = JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                    drillingPhysicalQuantityIDs = JsonSerializer.Deserialize<List<MetaInfo>>(str);
                     if (drillingPhysicalQuantityIDs != null)
                     {
                         Console.WriteLine("Test DrillingPhysicalQuantities #1: read IDs: success. IDs: ");
@@ -103,7 +102,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                         string str = await message.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            PhysicalQuantity downloadedDrillingPhysicalQuantity = JsonConvert.DeserializeObject<PhysicalQuantity>(str);
+                            PhysicalQuantity downloadedDrillingPhysicalQuantity = JsonSerializer.Deserialize<PhysicalQuantity>(str);
                             results.Add(downloadedDrillingPhysicalQuantity);
                             if (downloadedDrillingPhysicalQuantity != null)
                             {
@@ -135,7 +134,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
         /// Functional tests for DrillingUnitChoiceSets
         /// </summary>
         /// <param name="args"></param>
-        static async Task<List<UnitChoiceSet>> TestDrillingUnitChoiceSets(string host, List<PhysicalQuantity> drillingPhysicalQuantities)
+        static async Task<List<DrillingUnitChoiceSet>> TestDrillingUnitChoiceSets(string host, List<PhysicalQuantity> drillingPhysicalQuantities)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(host + "DrillingUnitConversion/api/");
@@ -156,7 +155,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    initialDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<MetaInfo[]>(str);
+                    initialDrillingUnitChoiceSetIDs = JsonSerializer.Deserialize<MetaInfo[]>(str);
                     if (initialDrillingUnitChoiceSetIDs != null)
                     {
                         Console.WriteLine("Test DrillingUnitChoiceSets #1: read IDs: success. IDs: ");
@@ -213,10 +212,17 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 }
                 j++;
             }
-            DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet(newId, "My test DrillingUnitChoiceSet", "description of my test DrillingUnitChoiceSet", choices);
+            DrillingUnitChoiceSet unitChoiceSet = new DrillingUnitChoiceSet()
+            {
+                ID = newId,
+                Name = "My test DrillingUnitChoiceSet",
+                Description = "description of my test DrillingUnitChoiceSet",
+                Choices = choices,
+                IsDefault = false
+            };
 
             // First, post the DrillingUnitChoiceConversionSet
-            string json = unitChoiceSet.GetJson();
+            string json = JsonSerializer.Serialize(unitChoiceSet);
             content = new StringContent(json, Encoding.UTF8, "application/json");
             a = client.PostAsync("DrillingUnitChoiceSets", content);
             a.Wait();
@@ -239,7 +245,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    DrillingUnitChoiceSet unitChoiceSetDownloaded = JsonConvert.DeserializeObject<DrillingUnitChoiceSet>(str);
+                    DrillingUnitChoiceSet unitChoiceSetDownloaded = JsonSerializer.Deserialize<DrillingUnitChoiceSet>(str);
                     if (unitChoiceSetDownloaded != null &&
                         unitChoiceSet.ID == unitChoiceSetDownloaded.ID &&
                         unitChoiceSet.Name.Equals(unitChoiceSetDownloaded.Name) &&
@@ -294,7 +300,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             // Test DrillingUnitChoiceConversionSets #4: put (update) the previous DrillingUnitChoiceSet 
             unitChoiceSet.Name = "New DrillingUnitChoiceSet name";
 
-            content = new StringContent(unitChoiceSet.GetJson(), Encoding.UTF8, "application/json");
+            content = new StringContent(JsonSerializer.Serialize(unitChoiceSet), Encoding.UTF8, "application/json");
             a = client.PutAsync("DrillingUnitChoiceSets/" + unitChoiceSet.ID.ToString(), content);
             a.Wait();
             message = a.Result;
@@ -319,7 +325,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    DataUnitConversionSet downloadedDataUnitConversionSet = JsonConvert.DeserializeObject<DataUnitConversionSet>(str);
+                    DataUnitConversionSet downloadedDataUnitConversionSet = JsonSerializer.Deserialize<DataUnitConversionSet>(str);
                     if (downloadedDataUnitConversionSet != null && downloadedDataUnitConversionSet.Name.Equals(unitChoiceSet.Name))
                     {
                         Console.WriteLine("Test DrillingUnitChoiceSets #5: read the DrillingUnitChoiceSet: success. ID = " + unitChoiceSet.ID.ToString());
@@ -368,7 +374,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    updatedDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<List<MetaInfo>>(str);
+                    updatedDrillingUnitChoiceSetIDs = JsonSerializer.Deserialize<List<MetaInfo>>(str);
                     if (updatedDrillingUnitChoiceSetIDs != null)
                     {
                         bool found = false;
@@ -411,11 +417,11 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             #endregion
 
             #region readData
-            List<UnitChoiceSet> results = null;
+            List<DrillingUnitChoiceSet> results = null;
             // Test DrillingUnitChoiceSets #8: read all the unitChoiceSets 
             if (updatedDrillingUnitChoiceSetIDs != null)
             {
-                results = new List<UnitChoiceSet>();
+                results = new List<DrillingUnitChoiceSet>();
                 foreach (MetaInfo metaInfo in updatedDrillingUnitChoiceSetIDs)
                 {
                     a = client.GetAsync("DrillingUnitChoiceSets/" + metaInfo.ID.ToString());
@@ -426,7 +432,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                         string str = await message.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(str))
                         {
-                            UnitChoiceSet downloadedUnitChoiceSet = JsonConvert.DeserializeObject<UnitChoiceSet>(str);
+                            DrillingUnitChoiceSet downloadedUnitChoiceSet = JsonSerializer.Deserialize<DrillingUnitChoiceSet>(str);
                             results.Add(downloadedUnitChoiceSet);
                             if (downloadedUnitChoiceSet != null)
                             {
@@ -456,7 +462,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
         /// Functional tests for DataUnitConversionSets
         /// </summary>
         /// <param name="args"></param>
-        static async Task<bool> TestDataUnitConversionSets(string host, List<PhysicalQuantity> drillingPhysicalQuantities, List<UnitChoiceSet> unitChoiceSets)
+        static async Task<bool> TestDataUnitConversionSets(string host, List<PhysicalQuantity> drillingPhysicalQuantities, List<DrillingUnitChoiceSet> unitChoiceSets)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(host + "DrillingUnitConversion/api/");
@@ -477,7 +483,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    initialDrillingUnitChoiceSetIDs = JsonConvert.DeserializeObject<Guid[]>(str);
+                    initialDrillingUnitChoiceSetIDs = JsonSerializer.Deserialize<Guid[]>(str);
                     if (initialDrillingUnitChoiceSetIDs != null)
                     {
                         Console.WriteLine("Test DataUnitConversionSets #1: read IDs: success. IDs: ");
@@ -555,10 +561,17 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             conversions.Add(quantitySet1);
             conversions.Add(quantitySet2);
             int unitChoiceSetIdx = rnd.Next(unitChoiceSets.Count);
-            DataUnitConversionSet conversionSet = new DataUnitConversionSet(newId, "My new conversion set", "New conversion set description", unitChoiceSets[unitChoiceSetIdx].ID, conversions);
+            DataUnitConversionSet conversionSet = new DataUnitConversionSet()
+            {
+                ID = newId,
+                Name = "My new conversion set",
+                Description = "New conversion set description",
+                ReferenceUnitChoiceSetID = unitChoiceSets[unitChoiceSetIdx].ID,
+                QuantityUnitConversions = conversions
+            };
 
             // First, post the DrillingUnitChoiceConversionSet
-            string json = conversionSet.GetJson();
+            string json = JsonSerializer.Serialize(conversionSet);
             content = new StringContent(json, Encoding.UTF8, "application/json");
             a = client.PostAsync("DataUnitConversionSets", content);
             a.Wait();
@@ -581,7 +594,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    DataUnitConversionSet dataUnitConversionSetDownloaded = JsonConvert.DeserializeObject<DataUnitConversionSet>(str);
+                    DataUnitConversionSet dataUnitConversionSetDownloaded = JsonSerializer.Deserialize<DataUnitConversionSet>(str);
                     if (dataUnitConversionSetDownloaded != null &&
                         conversionSet.ID == dataUnitConversionSetDownloaded.ID &&
                         conversionSet.Name.Equals(dataUnitConversionSetDownloaded.Name) &&
@@ -625,7 +638,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             // Test DataUnitConversionSets #4: put (update) the previous DataUnitConversionSet 
             conversionSet.Name = "New DataUnitConversionSet name";
 
-            content = new StringContent(conversionSet.GetJson(), Encoding.UTF8, "application/json");
+            content = new StringContent(JsonSerializer.Serialize(conversionSet), Encoding.UTF8, "application/json");
             a = client.PutAsync("DataUnitConversionSets/" + conversionSet.ID.ToString(), content);
             a.Wait();
             message = a.Result;
@@ -650,7 +663,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    DataUnitConversionSet downloadedDataUnitConversionSet = JsonConvert.DeserializeObject<DataUnitConversionSet>(str);
+                    DataUnitConversionSet downloadedDataUnitConversionSet = JsonSerializer.Deserialize<DataUnitConversionSet>(str);
                     if (downloadedDataUnitConversionSet != null && downloadedDataUnitConversionSet.Name.Equals(conversionSet.Name))
                     {
                         Console.WriteLine("Test DataUnitConversionSets #5: read the DataUnitConversionSet: success. ID = " + conversionSet.ID.ToString());
@@ -699,7 +712,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    updatedDataUnitConversionSetIDs = JsonConvert.DeserializeObject<List<Guid>>(str);
+                    updatedDataUnitConversionSetIDs = JsonSerializer.Deserialize<List<Guid>>(str);
                     if (updatedDataUnitConversionSetIDs != null && !updatedDataUnitConversionSetIDs.Contains(newId))
                     {
                         Console.WriteLine("Test DataUnitConversionSets #7: check that the new DataUnitConversionSet has been deleted: success. IDs: ");
@@ -752,7 +765,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    initialQuantityDataConversionIDs = JsonConvert.DeserializeObject<Guid[]>(str);
+                    initialQuantityDataConversionIDs = JsonSerializer.Deserialize<Guid[]>(str);
                     if (initialQuantityDataConversionIDs != null)
                     {
                         Console.WriteLine("Test QuantityDataConversions #1: read IDs: success. IDs: ");
@@ -802,7 +815,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             quantityDataConversion.Conversion = ConversionType.FromSI;
 
             // First, post the DrillingUnitChoiceConversionSet
-            string json = quantityDataConversion.GetJson();
+            string json = JsonSerializer.Serialize(quantityDataConversion);
             content = new StringContent(json, Encoding.UTF8, "application/json");
             a = client.PostAsync("QuantityDataConversions", content);
             a.Wait();
@@ -825,7 +838,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    QuantityDataConversion quantityDataConversionDownloaded = JsonConvert.DeserializeObject<QuantityDataConversion>(str);
+                    QuantityDataConversion quantityDataConversionDownloaded = JsonSerializer.Deserialize<QuantityDataConversion>(str);
                     if (quantityDataConversionDownloaded != null &&
                         quantityDataConversion.ID == quantityDataConversionDownloaded.ID &&
                         quantityDataConversion.QuantityID == quantityDataConversionDownloaded.QuantityID &&
@@ -857,7 +870,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
             quantityDataConversion.DataIn = 2.0;
             quantityDataConversion.Conversion = ConversionType.ToSI;
 
-            content = new StringContent(quantityDataConversion.GetJson(), Encoding.UTF8, "application/json");
+            content = new StringContent(JsonSerializer.Serialize(quantityDataConversion), Encoding.UTF8, "application/json");
             a = client.PutAsync("QuantityDataConversions/" + quantityDataConversion.ID.ToString(), content);
             a.Wait();
             message = a.Result;
@@ -882,7 +895,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    QuantityDataConversion downloadedQuantityDataConversion = JsonConvert.DeserializeObject<QuantityDataConversion>(str);
+                    QuantityDataConversion downloadedQuantityDataConversion = JsonSerializer.Deserialize<QuantityDataConversion>(str);
                     if (downloadedQuantityDataConversion != null && 
                         downloadedQuantityDataConversion.Conversion == quantityDataConversion.Conversion &&
                         System.Math.Abs(downloadedQuantityDataConversion.DataIn-quantityDataConversion.DataIn) < 1e-6)
@@ -933,7 +946,7 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Test
                 string str = await message.Content.ReadAsStringAsync();
                 if (!string.IsNullOrEmpty(str))
                 {
-                    updatedQuantityDataConversionIDs = JsonConvert.DeserializeObject<List<Guid>>(str);
+                    updatedQuantityDataConversionIDs = JsonSerializer.Deserialize<List<Guid>>(str);
                     if (updatedQuantityDataConversionIDs != null && !updatedQuantityDataConversionIDs.Contains(newId))
                     {
                         Console.WriteLine("Test QuantityDataConversions #7: check that the new QuantityDataConversion has been deleted: success. IDs: ");

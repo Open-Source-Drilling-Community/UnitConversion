@@ -41,27 +41,6 @@ namespace OSDC.UnitConversion.DrillingUnitConversion.Model
         }
 
         /// <summary>
-        /// initialization constructor
-        /// </summary>
-        [JsonConstructor]
-        public DataUnitConversionSet(Guid guid, string name, string descr, Guid unitChoiceSetID, List<QuantityUnitConversion> conversions)
-        {
-            ID = guid;
-            Name = name;
-            Description = descr;
-            ReferenceUnitChoiceSetID = unitChoiceSetID;
-            QuantityUnitConversions ??= new List<QuantityUnitConversion>();
-            QuantityUnitConversions.Clear();
-            if (conversions != null)
-            {
-                foreach (QuantityUnitConversion conversion in conversions)
-                {
-                    QuantityUnitConversions.Add(new QuantityUnitConversion(conversion));
-                }
-            }
-        }
-
-        /// <summary>
         /// copy constructor
         /// </summary>
         public DataUnitConversionSet(DataUnitConversionSet src)

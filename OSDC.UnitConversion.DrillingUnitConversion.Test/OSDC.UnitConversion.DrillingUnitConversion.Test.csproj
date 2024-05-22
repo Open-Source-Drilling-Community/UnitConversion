@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="OSDC.DrillingContextualData.ModelShared" Version="1.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OSDC.UnitConversion.DrillingUnitConversion.ModelSharedForWebApp\OSDC.UnitConversion.DrillingUnitConversion.ModelSharedForWebApp.csproj" />
   </ItemGroup>
 
 </Project>
