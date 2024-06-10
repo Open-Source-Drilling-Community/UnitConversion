@@ -1,6 +1,6 @@
 ﻿@implements IUnitAwareComponent
 
-<MudTextField @bind-Value="@UnitLabel" ReadOnly="true" Variant="Variant.Text" />
+<MudTextField @bind-Value="@UnitLabel" ReadOnly="true" Variant="@VariantType" />
 
 @code {
     [CascadingParameter]
@@ -8,6 +8,9 @@
 
     [Parameter]
     public string QuantityName { get; set; }
+
+    [Parameter]
+    public Variant VariantType { get; set; } = Variant.Text;
 
     [Parameter]
     public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;

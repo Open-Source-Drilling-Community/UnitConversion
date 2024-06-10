@@ -2,15 +2,15 @@
 
 <MudGrid>
     <MudItem>
-        <MudTextField @bind-Value="@DegreeRoundedValue" Label="@QuantityLabel" Variant="Variant.Text" HideSpinButtons="true"
+        <MudTextField @bind-Value="@DegreeRoundedValue" Label="@QuantityLabel" Variant="@VariantType" HideSpinButtons="true"
                       Adornment="Adornment.End" AdornmentText="@degreeUnitChoice.UnitLabel"></MudTextField>
     </MudItem>
     <MudItem>
-        <MudTextField @bind-Value="@MinuteRoundedValue" Variant="Variant.Text" HideSpinButtons="true"
+        <MudTextField @bind-Value="@MinuteRoundedValue" Variant="@VariantType" HideSpinButtons="true"
                       Adornment="Adornment.End" AdornmentText="@minuteUnitChoice.UnitLabel"></MudTextField>
     </MudItem>
     <MudItem>
-        <MudTextField @bind-Value="@SecondValue" Variant="Variant.Text" HideSpinButtons="true"
+        <MudTextField @bind-Value="@SecondValue" Variant="@VariantType" HideSpinButtons="true"
                       Adornment="Adornment.End" AdornmentText="@secondUnitChoice.UnitLabel"></MudTextField>
     </MudItem>
 </MudGrid>
@@ -18,6 +18,9 @@
 @code {
     [Parameter]
     public String QuantityLabel { get; set; }
+
+    [Parameter]
+    public Variant VariantType { get; set; } = Variant.Text;
 
     [Parameter]
     public double SIValue
@@ -58,6 +61,7 @@
             SIValue_ = value;
         }
     }
+
     private double? SIValue_;
     private string degreeRoundedValue_;
     private string minuteRoundedValue_;

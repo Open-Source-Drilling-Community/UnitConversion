@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @implements IUnitAwareComponent
 
-<MudNumericField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="Variant.Text" HideSpinButtons="true"></MudNumericField>
+<MudNumericField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" HideSpinButtons="true"></MudNumericField>
 
 @code {
     [CascadingParameter]
@@ -12,6 +12,9 @@
 
     [Parameter]
     public String QuantityName { get; set; }
+
+    [Parameter]
+    public Variant VariantType { get; set; } = Variant.Text;
 
     [Parameter]
     public double SIValue

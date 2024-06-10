@@ -1,6 +1,6 @@
 ﻿@implements IUnitAwareComponent
 
-<MudTextField @bind-Value="@DisplayedValue" ReadOnly="true" Variant="Variant.Text" />
+<MudTextField @bind-Value="@DisplayedValue" ReadOnly="true" Variant="@VariantType" />
 
 @code {
     [CascadingParameter]
@@ -22,6 +22,9 @@
 
     [Parameter]
     public String QuantityName { get; set; }
+
+    [Parameter]
+    public Variant VariantType { get; set; } = Variant.Text;
 
     [Parameter]
     public bool UseUnitLabel { get; set; } = false;
