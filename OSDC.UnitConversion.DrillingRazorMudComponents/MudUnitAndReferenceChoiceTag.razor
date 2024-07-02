@@ -15,47 +15,61 @@ else
                         }
                     </MudSelect>
                 </td>
-                <td width="16%">
-                    <MudSelect @bind-Value="depthReferenceName_" Label="Depth Reference" Variant="Variant.Filled" Disabled="@IsHiddenDepthReference">
-                        @foreach (Tuple<Guid, string> tuple in depthReferences)
-                        {
-                            <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
-                        }
+                @if (IsHiddenDepthReference)
+                {
+                    <td width="16%">
+                        <MudSelect @bind-Value="depthReferenceName_" Label="Depth Reference" Variant="Variant.Filled">
+                            @foreach (Tuple<Guid, string> tuple in depthReferences)
+                            {
+                                <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
+                            }
                     </MudSelect>
                 </td>
-
-                <td width="16%">
-                    <MudSelect @bind-Value="positionReferenceName_" Label="Position Reference" Variant="Variant.Filled" Disabled="@IsHiddenPositionReference">
-                        @foreach (Tuple<Guid, string> tuple in positionReferences)
-                        {
-                            <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
-                        }
+                }
+                @if (IsHiddenPositionReference)
+                {
+                    <td width="16%">
+                        <MudSelect @bind-Value="positionReferenceName_" Label="Position Reference" Variant="Variant.Filled">
+                            @foreach (Tuple<Guid, string> tuple in positionReferences)
+                            {
+                                <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
+                            }
                     </MudSelect>
                 </td>
+                }
+                @if (IsHiddenAzimuthReference)
+                {
                 <td width="16%">
-                    <MudSelect @bind-Value="azimuthReferenceName_" Label="Azimuth Reference" Variant="Variant.Filled" Disabled="@IsHiddenAzimuthReference">
+                    <MudSelect @bind-Value="azimuthReferenceName_" Label="Azimuth Reference" Variant="Variant.Filled">
                         @foreach (Tuple<Guid, string> tuple in azimuthReferences)
                         {
                             <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
                         }
                     </MudSelect>
                 </td>
+                }
+                @if (IsHiddenPressureReference)
+                {
                 <td width="16%">
-                    <MudSelect @bind-Value="pressureReferenceName_" Label="Pressure Reference" Variant="Variant.Filled" Disabled="@IsHiddenPressureReference">
+                    <MudSelect @bind-Value="pressureReferenceName_" Label="Pressure Reference" Variant="Variant.Filled">
                         @foreach (Tuple<Guid, string> tuple in pressureReferences)
                         {
                             <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
                         }
                     </MudSelect>
                 </td>
-                <td width="18%">
-                    <MudSelect @bind-Value="DateReferenceName" Label="Date Reference" Variant="Variant.Filled">
-                        @foreach (Tuple<Guid, string> tuple in dateReferences)
-                        {
-                            <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
-                        }
+                }
+                @if (IsHiddenDateReference)
+                {
+                    <td width="18%">
+                        <MudSelect @bind-Value="DateReferenceName" Label="Date Reference" Variant="Variant.Filled">
+                            @foreach (Tuple<Guid, string> tuple in dateReferences)
+                            {
+                                <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
+                            }
                     </MudSelect>
                 </td>
+                }
             </tr>
         </tbody>
     </table>
@@ -155,6 +169,7 @@ else
     private bool IsHiddenDepthReference = false;
     private bool IsHiddenAzimuthReference = false;
     private bool IsHiddenPressureReference = false;
+    private bool IsHiddenDateReference = false;
 
     protected override async Task OnInitializedAsync()
     {
