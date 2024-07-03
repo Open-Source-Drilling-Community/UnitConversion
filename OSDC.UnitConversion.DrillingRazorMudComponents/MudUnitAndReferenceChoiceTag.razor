@@ -165,11 +165,11 @@ else
 
     private UnitChoiceSet unitChoiceSet_;
 
-    private bool IsHiddenPositionReference = false;
-    private bool IsHiddenDepthReference = false;
-    private bool IsHiddenAzimuthReference = false;
-    private bool IsHiddenPressureReference = false;
-    private bool IsHiddenDateReference = false;
+    private bool IsHiddenPositionReference = true;
+    private bool IsHiddenDepthReference = true;
+    private bool IsHiddenAzimuthReference = true;
+    private bool IsHiddenPressureReference = true;
+    private bool IsHiddenDateReference = true;
 
     protected override async Task OnInitializedAsync()
     {
@@ -193,7 +193,7 @@ else
                 depthReferences.Add(new Tuple<Guid, string>(new Guid("51891465-3b02-4874-bf8d-cab7d33eb908"), "Well-head Level"));
             }
 
-            IsHiddenDepthReference = depthReferences.Count <= 1;
+            // IsHiddenDepthReference = depthReferences.Count <= 1;
 
             if (WellHeadPositionReferenceSource != null)
             {
@@ -213,7 +213,7 @@ else
             }
             positionReferences.Add(new Tuple<Guid, string>(new Guid("94631afe-61f1-494e-96a0-91f0593285c4"), "WGS84"));
 
-            IsHiddenPositionReference = positionReferences.Count <= 1;
+            // IsHiddenPositionReference = positionReferences.Count <= 1;
 
             azimuthReferences.Add(new Tuple<Guid, string>(new Guid("73cb739b-aae1-4dcb-a1ed-0aad5a62a6bd"), "True North"));
             if (GridConvergenceSource != null)
@@ -224,14 +224,14 @@ else
             {
                 azimuthReferences.Add(new Tuple<Guid, string>(new Guid("fd21b812-338b-4401-a2be-1a4d7d3756b1"), "Magnetic North"));
             }
-            IsHiddenAzimuthReference = azimuthReferences.Count <= 1;
+            // IsHiddenAzimuthReference = azimuthReferences.Count <= 1;
 
             pressureReferences.Add(new Tuple<Guid, string>(new Guid("ffb90df3-d692-4502-9332-d74ddd61b67f"), "Absolute Pressure"));
             if (GaugeReferencePressureSource != null)
             {
                 pressureReferences.Add(new Tuple<Guid, string>(new Guid("28ade755-e07a-4580-b51f-10507832db92"), "Gauge Pressure"));
             }
-            IsHiddenPressureReference = pressureReferences.Count <= 1;
+            // IsHiddenPressureReference = pressureReferences.Count <= 1;
 
             dateReferences.Add(new Tuple<Guid, string>(new Guid("6fb296eb-eb77-4a6f-82d0-122c74e8d3cf"), "UTC"));
             dateReferences.Add(new Tuple<Guid, string>(new Guid("f0ee13c7-2b9b-46e1-8d57-3fd6070f8a9b"), "Local Time"));
