@@ -15,7 +15,7 @@ else
                         }
                     </MudSelect>
                 </td>
-                @if (IsHiddenDepthReference)
+                @if (!IsHiddenDepthReference)
                 {
                     <td width="16%">
                         <MudSelect @bind-Value="depthReferenceName_" Label="Depth Reference" Variant="Variant.Filled">
@@ -26,7 +26,7 @@ else
                     </MudSelect>
                 </td>
                 }
-                @if (IsHiddenPositionReference)
+                @if (!IsHiddenPositionReference)
                 {
                     <td width="16%">
                         <MudSelect @bind-Value="positionReferenceName_" Label="Position Reference" Variant="Variant.Filled">
@@ -37,7 +37,7 @@ else
                     </MudSelect>
                 </td>
                 }
-                @if (IsHiddenAzimuthReference)
+                @if (!IsHiddenAzimuthReference)
                 {
                 <td width="16%">
                     <MudSelect @bind-Value="azimuthReferenceName_" Label="Azimuth Reference" Variant="Variant.Filled">
@@ -48,7 +48,7 @@ else
                     </MudSelect>
                 </td>
                 }
-                @if (IsHiddenPressureReference)
+                @if (!IsHiddenPressureReference)
                 {
                 <td width="16%">
                     <MudSelect @bind-Value="pressureReferenceName_" Label="Pressure Reference" Variant="Variant.Filled">
@@ -59,7 +59,7 @@ else
                     </MudSelect>
                 </td>
                 }
-                @if (IsHiddenDateReference)
+                @if (!IsHiddenDateReference)
                 {
                     <td width="18%">
                         <MudSelect @bind-Value="DateReferenceName" Label="Date Reference" Variant="Variant.Filled">
