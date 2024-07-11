@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileBuildArguments>--build-arg NORCE_NUGET_USER --build-arg NORCE_NUGET_APIKEY</DockerfileBuildArguments>
+		<UserSecretsId>d4693808-78e9-47c7-919b-bed83a86870d</UserSecretsId>
+		<RootNamespace>OSDC.UnitConversion.Service</RootNamespace>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<IsPackable>true</IsPackable>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+		<PackageId>$(AssemblyName)</PackageId>
+		<Version>3.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="NSwag.MSBuild" Version="14.0.8">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Model\Model.csproj" />
+	</ItemGroup>
+
+	<Target Name="CreateSwaggerJson" AfterTargets="Build" Condition="$(Configuration)=='Debug'">
+		<Exec Command="dotnet swagger tofile --output ../ModelShared/json-schemas/$(Version)/$(SolutionName).json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
+	</Target>
+
+</Project>
