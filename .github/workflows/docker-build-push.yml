@@ -19,13 +19,13 @@ jobs:
       run: docker login -u="${{ secrets.DOCKERHUB_USERNAME }}" -p="${{ secrets.DOCKERHUB_PASSWORD }}"
       
     - name: Build Service Docker image
-      run: docker build --file "${{ github.workspace }}/Service/Dockerfile" --tag digiwells/norcedrillingtargetaxisservice:stable --build-arg "NORCE_NUGET_USER=${{ secrets.NORCE_NUGET_USER }}" --build-arg "NORCE_NUGET_APIKEY=${{ secrets.NORCE_NUGET_APIKEY }}" .
+      run: docker build --file "${{ github.workspace }}/Service/Dockerfile" --tag digiwells/osdcunitconversionservice:stable --build-arg "NORCE_NUGET_USER=${{ secrets.NORCE_NUGET_USER }}" --build-arg "NORCE_NUGET_APIKEY=${{ secrets.NORCE_NUGET_APIKEY }}" .
 
     - name: Push Docker image for Service to DockerHub
-      run: docker push digiwells/norcedrillingtargetaxisservice:stable
+      run: docker push digiwells/osdcunitconversionservice:stable
 
-    - name: Build WebApp Docker image
-      run: docker build --file "${{ github.workspace }}/WebApp/Dockerfile" --tag digiwells/norcedrillingtargetaxiswebappclient:stable --build-arg "NORCE_NUGET_USER=${{ secrets.NORCE_NUGET_USER }}" --build-arg "NORCE_NUGET_APIKEY=${{ secrets.NORCE_NUGET_APIKEY }}" .
+    #- name: Build WebApp Docker image
+    #  run: docker build --file "${{ github.workspace }}/WebApp/Dockerfile" --tag digiwells/osdcunitconversionwebappclient:stable --build-arg "NORCE_NUGET_USER=${{ secrets.NORCE_NUGET_USER }}" --build-arg #"NORCE_NUGET_APIKEY=${{ secrets.NORCE_NUGET_APIKEY }}" .
 
-    - name: Push Docker image for WebApp to DockerHub
-      run: docker push digiwells/norcedrillingtargetaxiswebappclient:stable
+    #- name: Push Docker image for WebApp to DockerHub
+    #  run: docker push digiwells/osdcunitconversionservicewebappclient:stable
