@@ -1,0 +1,210 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace OSDC.UnitConversion.Conversion
+{
+    public partial class MassQuantity : SymbolizedBasePhysicalQuantity
+    {
+        public override string DimensionSymbol { get; } = "M";
+        public override string SIUnitName { get; } = "kilogram";
+
+        public override string SIUnitLabel { get; } = "kg";
+        private static MassQuantity instance_ = null;
+
+        public override double MassDimension { get; } = 1;
+
+        public static MassQuantity Instance
+        {
+            get
+            {
+                if (instance_ == null)
+                {
+                    instance_ = new MassQuantity();
+                    instance_.PostProcess();
+                }
+                return instance_;
+            }
+        }
+
+        public MassQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Mass" };
+            ID = new Guid("99d13248-c303-4b3d-b062-af98de701d6f");
+            UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                    UnitName = SIUnitName,
+                    UnitLabel = SIUnitLabel,
+                    ID = new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d"),
+                    ConversionFactorFromSI = 1.0,
+                    IsSI = true
+                },
+                new UnitChoice
+                {
+                    UnitName = "hectogram",
+                    UnitLabel = "hg",
+                    ID = new Guid("2fb79e4b-3eb5-4aa3-9f12-2c66b1784902"),
+                    ConversionFactorFromSI = 10.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "decagram",
+                    UnitLabel = "dag",
+                    ID = new Guid("1b3f72cb-55b1-4027-b6ad-309cd7d6c1a3"),
+                    ConversionFactorFromSI = 100.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "gram",
+                    UnitLabel = "g",
+                    ID = new Guid("049ba04e-4c70-41f5-bb29-6b54bb5b2103"),
+                    ConversionFactorFromSI = 1000.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "centigram",
+                    UnitLabel = "cg",
+                    ID = new Guid("e56aa2fa-80b7-417f-8e08-91b9b8a1198c"),
+                    ConversionFactorFromSI = 100000.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "milligram",
+                    UnitLabel = "mg",
+                    ID = new Guid("322b0e70-c8e5-482e-a9db-682d15baacf9"),
+                    ConversionFactorFromSI = 100000.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "microgram",
+                    UnitLabel = "µg",
+                    ID = new Guid("eb831d52-2690-4b8a-a1a4-83e9bdb07dbc"),
+                    ConversionFactorFromSI = 100000000.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "nanogram",
+                    UnitLabel = "ng",
+                    ID = new Guid("93db8c40-4dd0-46a4-ade6-db51bcbca66f"),
+                    ConversionFactorFromSI = 100000000000.0
+                },
+                new UnitChoice
+                {
+                    UnitName = "atom mass unit",
+                    UnitLabel = "u",
+                    ID = new Guid("f470168e-1e20-458e-b6da-6bee551cb6d6"),
+                    ConversionFactorFromSI = 6.022045e26
+                },
+                new UnitChoice
+                {
+                    UnitName = "tonne metric",
+                    UnitLabel = "t",
+                    ID = new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c"),
+                    ConversionFactorFromSI = 0.001
+                },
+                new UnitChoice
+                {
+                    UnitName = "kilotonne",
+                    UnitLabel = "kt",
+                    ID = new Guid("2a767cda-fc61-4aa4-81dd-1a4f6d6af755"),
+                    ConversionFactorFromSI = 0.000001
+                },
+                 new UnitChoice
+                {
+                    UnitName = "megatonne",
+                    UnitLabel = "Mt",
+                    ID = new Guid("92c4b624-4205-4596-aabf-1dd4aa442718"),
+                    ConversionFactorFromSI = 0.000000001
+                },
+                 new UnitChoice
+                {
+                    UnitName = "gigatonne",
+                    UnitLabel = "Gt",
+                    ID = new Guid("51cd0591-d741-4769-bd22-e36959d1adcf"),
+                    ConversionFactorFromSI = 0.000000000001
+                },
+                  new UnitChoice
+                {
+                    UnitName = "pound",
+                    UnitLabel = "lb",
+                    ID = new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878"),
+                    ConversionFactorFromSI = 2.204623
+                },
+                new UnitChoice
+                {
+                   UnitName = "KiloPound",
+                   UnitLabel = "klb",
+                   ID = new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69"),
+                   ConversionFactorFromSI = 0.002204622621848776
+                },
+                new UnitChoice
+                {
+                    UnitName = "ounce",
+                    UnitLabel = "oz",
+                    ID = new Guid("4e64e69b-2276-46c8-a918-06ab6980178c"),
+                    ConversionFactorFromSI = 32.150747
+                },
+                 new UnitChoice
+                {
+                    UnitName = "stone",
+                    UnitLabel = "st",
+                    ID = new Guid("6894dc1c-21e2-42aa-9569-759c0e6e6d6e"),
+                    ConversionFactorFromSI = 0.157473
+                },
+                 new UnitChoice
+                {
+                    UnitName = "ton UK",
+                    UnitLabel = "LT",
+                    ID = new Guid("059c7b81-ed11-410e-9466-4661011372d2"),
+                    ConversionFactorFromSI = 1.0/1016.046909
+                },
+                  new UnitChoice
+                {
+                    UnitName = "ton US",
+                    UnitLabel = "ST",
+                    ID = new Guid("443af797-a62f-4137-a852-ad1c9163dd7b"),
+                    ConversionFactorFromSI = 1.0/907.184740
+                },
+                   new UnitChoice
+                {
+                    UnitName = "solar mass",
+                    UnitLabel = "M☉",
+                    ID = new Guid("432e73bf-a448-47f6-9c65-9339d5bac5a3"),
+                    ConversionFactorFromSI = 1.98847e30
+                },
+                    new UnitChoice
+                {
+                    UnitName = "earth mass",
+                    UnitLabel = "M🜨",
+                    ID = new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e"),
+                    ConversionFactorFromSI = 5.9722e24
+                },
+                    new UnitChoice
+                {
+                    UnitName = "cental",
+                    UnitLabel = "cental",
+                    ID = new Guid("51c7e932-7cff-4c81-95a9-066241d5f010"),
+                    ConversionFactorFromSI = 0.022046
+                },
+                    new UnitChoice
+                {
+                    UnitName = "grain",
+                    UnitLabel = "gr",
+                    ID = new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2"),
+                    ConversionFactorFromSI = 15432.358353
+                },
+                    new UnitChoice
+                {
+                    UnitName = "hundredweights",
+                    UnitLabel = "cwt",
+                    ID = new Guid("83810f2a-b260-41b3-bc13-5ef60290f214"),
+                    ConversionFactorFromSI = 0.019684
+                }
+            };
+        }
+    }
+}
