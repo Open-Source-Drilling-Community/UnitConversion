@@ -1,0 +1,176 @@
+﻿@implements IUnitAwareComponent
+@inject ILogger<QuantityUnitConversionEdit> logger
+@inject ISnackbar Snackbar
+
+<MudText Class="mt-4 mb-4" Typo="Typo.h6">Edit QuantityUnitConversion</MudText>
+<MudContainer Class="d-flex flex-row mt-4 mb-4">
+    <MudButton Class="me-1" Variant="Variant.Filled" Color="Color.Success" OnClick="Update">Update</MudButton>
+    <MudButton Class="me-1" Variant="Variant.Filled" Color="Color.Primary" OnClick="Close">Close</MudButton>
+    <MudButton Class="me-1" Variant="Variant.Filled" OnClick="Cancel">Cancel</MudButton>
+</MudContainer>
+
+<MudExpansionPanels Class="mt-4 mb-4">
+    <MudExpansionPanel Text="General">
+        <MudGrid>
+            <MudItem xs="6">
+                <MudTextField @bind-Value="@name" Label="Name" Variant="Variant.Filled"></MudTextField>
+            </MudItem>
+            <MudItem xs="6">
+                <MudTextField @bind-Value="@descr" Label="Description" Variant="Variant.Filled"></MudTextField>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Edit parameters">
+        <MudGrid>
+            <MudItem xs="2">
+                <MudInputWithUnitAdornment VariantType="Variant.Filled" QuantityLabel="@DataUtils.QuantityUnitConversionParamLabel" QuantityName="@DataUtils.QuantityUnitConversionParamQty" SIValueNullable="@quantityUnitConversionParamValue" SIValueNullableChanged="@UpdateQuantityUnitConversionParam" />
+                @* <MudField Label="@DataUtils.QuantityUnitConversionParamLabel" Variant="Variant.Filled" Adornment="Adornment.End" AdornmentText="@Parent.GetUnitLabel(DataUtils.QuantityUnitConversionParamQty)">@Parent.FromSI(quantityUnitConversionParamValue, DataUtils.QuantityUnitConversionParamQty, false)</MudField> *@
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="View input data">
+        <MudGrid>
+            <MudItem xs="12">
+                <ScatterPlot NameList="@nameList" ModeFlagList="@modeFlagList" ColorList="@colorList"
+                             XValuesList="@xValuesList" YValuesList="@yValuesList"
+                             YAxisReversed="@false" AspectRatio="-1" PlotHeight="500" PlotWidth="500"
+                             PlotTitle="" XAxisTitle="@DataUtils.InputXValuesTitle" YAxisTitle="@DataUtils.InputYValuesTitle"
+                             XUnit="@DataUtils.InputXValuesQty" YUnit="@DataUtils.InputYValuesQty"
+                             @ref="@quantityUnitConversionPlot">
+                </ScatterPlot>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+@code {
+    [CascadingParameter]
+    private MudUnitAndReferenceChoiceTag? Parent { get; set; }
+
+    [Parameter]
+    public QuantityUnitConversion? CurrentQuantityUnitConversion { get; set; }
+
+    [Parameter]
+    public Action? OnUpdate { get; set; }
+
+    //Local variables used to retrieve user-defined parameters
+    private string? name;
+    private string? descr;
+    private double? quantityUnitConversionParamValue;
+
+    //Plot variables
+    string[] colorScale = { "black", "blue", "grey", "red", "orange", "green", "yellow", "pink", "brown", "purple" };
+    ScatterPlot quantityUnitConversionPlot = new ScatterPlot();
+    List<string> nameList = new List<string>(); //name of each curve in the list to plot
+    List<int> modeFlagList = new List<int>(); //modeFlag of each curve in the list to plot (1 = lines; 2 = markers)
+    List<string> colorList = new List<string>(); //color of each curve in the list of curves to plot
+    List<List<object>> xValuesList = new List<List<object>>(); // list of x values for the list of curves to plot
+    List<List<object>> yValuesList = new List<List<object>>(); // list of y values for the list of curves to plot
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (CurrentQuantityUnitConversion != null && CurrentQuantityUnitConversion.MetaInfo != null)
+            {
+                name = CurrentQuantityUnitConversion.MetaInfo.Name;
+                descr = CurrentQuantityUnitConversion.MetaInfo.Description;
+                quantityUnitConversionParamValue = CurrentQuantityUnitConversion.QuantityUnitConversionParam?.DiracDistributionValue?.Value;
+
+                await InvokeAsync(() => { StateHasChanged(); });
+            }
+            else
+            {
+                logger.LogError("Current QuantityUnitConversion is null or badly formed");
+                Snackbar.Add("Current QuantityUnitConversion is null or badly formed", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem on QuantityUnitConversion initialization");
+            Snackbar.Add("Problem on QuantityUnitConversion initialization", Severity.Error);
+        }
+
+    }
+
+    public void ManageUnits()
+    {
+    }
+
+    private async Task Update()
+    {
+        try
+        {
+            if (CurrentQuantityUnitConversion != null && CurrentQuantityUnitConversion.MetaInfo != null)
+            {
+                CurrentQuantityUnitConversion.MetaInfo.Name = name;
+                CurrentQuantityUnitConversion.MetaInfo.Description = descr;
+                CurrentQuantityUnitConversion.MetaInfo.LastModificationDate = DateTimeOffset.UtcNow;
+                CurrentQuantityUnitConversion.QuantityUnitConversionParam = new ScalarDrillingProperty() { DiracDistributionValue = new DiracDistribution() { Value = quantityUnitConversionParamValue } };
+
+                await APIUtils.ClientUnitConversion.PutQuantityUnitConversionByIdAsync(CurrentQuantityUnitConversion.MetaInfo.ID, CurrentQuantityUnitConversion);
+                logger.LogInformation("Updated the QuantityUnitConversion successfully");
+                Snackbar.Add("Updated the QuantityUnitConversion successfully", Severity.Success);
+            }
+            else
+            {
+                logger.LogWarning("Problem while updating the QuantityUnitConversion");
+                Snackbar.Add("Problem while updating the QuantityUnitConversion", Severity.Warning);
+            }
+        }
+        catch (ApiException ex)
+        {
+            logger.LogError(ex, "Problem while updating the QuantityUnitConversion");
+            Snackbar.Add("Problem while updating the QuantityUnitConversion", Severity.Warning);
+        }
+        UpdatePlots();
+    }
+
+    private async Task Close()
+    {
+        await Update();
+        OnUpdate?.Invoke();
+    }
+
+    private void Cancel()
+    {
+        OnUpdate?.Invoke();
+    }
+
+    private void UpdatePlots()
+    {
+        if (quantityUnitConversionParamValue != null && CurrentQuantityUnitConversion != null && CurrentQuantityUnitConversion.MetaInfo != null)
+        {
+            //each list below is designed to contain N curves: in this case, we only plot 1 curve, corresponding to 1 trajectory
+            nameList.Clear();
+            modeFlagList.Clear();
+            colorList.Clear();
+            xValuesList.Clear();
+            yValuesList.Clear();
+
+            List<object> xValues = new List<object>();
+            List<object> yValues = new List<object>();
+
+            for (int i = 0; i < 90; ++i)
+            {
+                xValues.Add(i);
+                yValues.Add(quantityUnitConversionParamValue * i * Math.PI / 180);
+            }
+            xValuesList.Add(xValues);
+            yValuesList.Add(yValues);
+            nameList.Add($"{CurrentQuantityUnitConversion.MetaInfo.Name}");
+            modeFlagList.Add(1); //1 to 3
+            colorList.Add(colorScale[0]);
+
+            //plot curves
+            quantityUnitConversionPlot.Plot();
+        }
+    }
+
+    // Unit management update methods
+    private void UpdateQuantityUnitConversionParam(double? val)
+    {
+        if (val != null)
+            quantityUnitConversionParamValue = (double)val;
+    }
+}

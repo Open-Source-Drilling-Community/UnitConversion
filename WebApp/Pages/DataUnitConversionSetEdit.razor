@@ -1,0 +1,271 @@
+﻿@implements IUnitAwareComponent
+@inject ILogger<DataUnitConversionSetEdit> logger
+@inject ISnackbar Snackbar
+
+<MudText Class="mt-4 mb-4" Typo="Typo.h6">Edit DataUnitConversionSet</MudText>
+<MudContainer Class="d-flex flex-row mt-4 mb-4">
+    <MudButton Class="me-1" Variant="Variant.Filled" Color="Color.Success" OnClick="Update">Update</MudButton>
+    <MudButton Class="me-1" Variant="Variant.Filled" Color="Color.Primary" OnClick="Close">Close</MudButton>
+    <MudButton Class="me-1" Variant="Variant.Filled" OnClick="Cancel">Cancel</MudButton>
+</MudContainer>
+
+<MudExpansionPanels Class="mt-4 mb-4">
+    <MudExpansionPanel Text="General">
+        <MudGrid>
+            <MudItem xs="4">
+                <MudTextField @bind-Value="@name" Label="Name" Variant="Variant.Filled"></MudTextField>
+            </MudItem>
+            <MudItem xs="4">
+                <MudTextField @bind-Value="@descr" Label="Description" Variant="Variant.Filled"></MudTextField>
+            </MudItem>
+            <MudItem xs="4">
+                @if (FieldList != null)
+                {
+                    <MudSelect T="Field" @bind-Value="@field" ToStringFunc="@DataUtils.ConverterFieldToName"
+                               Label="Field" Variant="Variant.Filled" LockScroll="false">
+                        @foreach (Field f in FieldList)
+                        {
+                            <MudSelectItem Value="@f" />
+                        }
+                    </MudSelect>
+                }
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="@DataUtils.DataUnitConversionSetInputParamListLabel">
+        @if (Parent != null)
+        {
+            <MudDataGrid T="QuantityUnitConversion" MultiSelection="true" Items="@availableQuantityUnitConversionInputHashSet" SortMode="SortMode.Multiple" Filterable="true" QuickFilter="@_quantityUnitConversionFilter"
+                         Hideable="false" ReadOnly="false" EditMode="DataGridEditMode.Form" EditTrigger="DataGridEditTrigger.Manual"
+                         SelectedItems="@selectedQuantityUnitConversionInputHashSet">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6"></MudText>
+                    <MudSpacer />
+                    <MudTextField @bind-Value="_quantityUnitConversionSearchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+                                  AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                </ToolBarContent>
+                <Columns>
+                    <SelectColumn T="QuantityUnitConversion" />
+                    <PropertyColumn Property="x => x.MetaInfo.Name" Title="@DataUtils.QuantityUnitConversionLabel" Sortable="true" Filterable="true" />
+                    <PropertyColumn Property="x => Parent.FromSI(x.QuantityUnitConversionParam.DiracDistributionValue.Value, DataUtils.QuantityUnitConversionParamQty, false)" Title="@inputParamUnitLabel" Sortable="true" Filterable="true" />
+                </Columns>
+                <PagerContent>
+                    <MudDataGridPager T="QuantityUnitConversion" />
+                </PagerContent>
+            </MudDataGrid>
+        }
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="View output data">
+        <MudGrid>
+            <MudItem xs="2">
+                @if (CurrentDataUnitConversionSet != null && Parent != null)
+                {
+                    <MudField Label="@DataUtils.DataUnitConversionSetOutputParamLabel" Variant="Variant.Filled" Adornment="Adornment.End" AdornmentText="@Parent.GetUnitLabel(DataUtils.DataUnitConversionSetOutputParamQty)">
+                        @Parent.FromSI(CurrentDataUnitConversionSet.OutputParam, DataUtils.DataUnitConversionSetOutputParamQty, false)
+                    </MudField>
+                }
+            </MudItem>
+            <MudItem xs="10">
+                <ScatterPlot NameList="@nameList" ModeFlagList="@modeFlagList" ColorList="@colorList"
+                             XValuesList="@xValuesList" YValuesList="@yValuesList"
+                             YAxisReversed="@false" AspectRatio="-1" PlotHeight="500" PlotWidth="500"
+                             PlotTitle="" XAxisTitle="@DataUtils.OutputXValuesTitle" YAxisTitle="@DataUtils.OutputYValuesTitle"
+                             XUnit="@DataUtils.OutputXValuesQty" YUnit="@DataUtils.OutputYValuesQty"
+                             @ref="@dataUnitConversionSetPlot">
+                </ScatterPlot>
+            </MudItem>
+        </MudGrid>
+    </MudExpansionPanel>
+</MudExpansionPanels>
+@code {
+    [CascadingParameter]
+    private MudUnitAndReferenceChoiceTag? Parent { get; set; }
+
+    [Parameter]
+    public DataUnitConversionSet? CurrentDataUnitConversionSet { get; set; }
+
+    [Parameter]
+    public List<QuantityUnitConversion>? QuantityUnitConversionList { get; set; }
+
+    [Parameter]
+    public List<Field>? FieldList { get; set; }
+
+    [Parameter]
+    public Action? OnUpdate { get; set; }
+
+    // Local variables used to retrieve user-defined parameters
+    private HashSet<QuantityUnitConversion> availableQuantityUnitConversionInputHashSet = new();
+    private HashSet<QuantityUnitConversion> selectedQuantityUnitConversionInputHashSet = new();
+    private string? name;
+    private string? descr;
+    private Field? field;
+
+    // Plot variables
+    string[] colorScale = { "black", "blue", "grey", "red", "orange", "green", "yellow", "pink", "brown", "purple" };
+    ScatterPlot dataUnitConversionSetPlot = new ScatterPlot();
+    List<string> nameList = new List<string>(); //name of each curve in the list to plot
+    List<int> modeFlagList = new List<int>(); //modeFlag of each curve in the list to plot (1 = lines; 2 = markers)
+    List<string> colorList = new List<string>(); //color of each curve in the list of curves to plot
+    List<List<object>> xValuesList = new List<List<object>>(); // list of x values for the list of curves to plot
+    List<List<object>> yValuesList = new List<List<object>>(); // list of y values for the list of curves to plot
+
+    // Labels
+    private string? inputParamUnitLabel = null;
+
+    // UI related variables
+    private string? _quantityUnitConversionSearchString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (Parent == null)
+                throw new ArgumentNullException(nameof(Parent), "TargetEdit page must exist within a MudUnitAndReferenceChoiceTag");
+            Parent.Add(this);
+            ManageUnits();
+
+            if (CurrentDataUnitConversionSet != null && CurrentDataUnitConversionSet.MetaInfo != null && QuantityUnitConversionList != null)
+            {
+                name = CurrentDataUnitConversionSet.MetaInfo.Name;
+                descr = CurrentDataUnitConversionSet.MetaInfo.Description;
+                if (field == null && FieldList != null)
+                    field = FieldList.Find(f => f.MetaInfo.ID == CurrentDataUnitConversionSet.FieldMetaInfo.ID);
+                if (field != null)
+                {
+                    availableQuantityUnitConversionInputHashSet.Clear();
+                    selectedQuantityUnitConversionInputHashSet.Clear();
+                    foreach (QuantityUnitConversion data in QuantityUnitConversionList)
+                    {
+                        foreach (QuantityUnitConversion d in CurrentDataUnitConversionSet.QuantityUnitConversionInputList)
+                        {
+                            if (d.MetaInfo.ID == data.MetaInfo.ID)
+                                selectedQuantityUnitConversionInputHashSet.Add(data);
+                        }
+                        availableQuantityUnitConversionInputHashSet.Add(data);
+                    }
+                }
+                else
+                {
+                    logger.LogError("Impossible to find the field of given ID for the current DataUnitConversionSet");
+                    Snackbar.Add("Impossible to find the field of given ID for the current DataUnitConversionSet", Severity.Error);
+                }
+            }
+            else
+            {
+                logger.LogError("Current DataUnitConversionSet is null or badly formed");
+                Snackbar.Add("Current DataUnitConversionSet is null or badly formed", Severity.Error);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem on DataUnitConversionSet initialization");
+            Snackbar.Add("Problem on DataUnitConversionSet initialization", Severity.Error);
+        }
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    public void ManageUnits()
+    {
+        if (Parent != null)
+            inputParamUnitLabel = $"{DataUtils.QuantityUnitConversionParamLabel} ({Parent.GetUnitLabel(DataUtils.QuantityUnitConversionParamQty)})";
+    }
+
+    private async Task Update()
+    {
+        if (selectedQuantityUnitConversionInputHashSet.Any() && field != null)
+        {
+            try
+            {
+                if (CurrentDataUnitConversionSet != null && CurrentDataUnitConversionSet.MetaInfo != null)
+                {
+                    CurrentDataUnitConversionSet.MetaInfo.Name = name;
+                    CurrentDataUnitConversionSet.MetaInfo.Description = descr;
+                    CurrentDataUnitConversionSet.MetaInfo.LastModificationDate = DateTimeOffset.UtcNow;
+                    CurrentDataUnitConversionSet.FieldMetaInfo = field.MetaInfo;
+
+                    CurrentDataUnitConversionSet.QuantityUnitConversionInputList = new List<QuantityUnitConversion>();
+                    foreach (QuantityUnitConversion data in selectedQuantityUnitConversionInputHashSet)
+                        CurrentDataUnitConversionSet.QuantityUnitConversionInputList.Add(data);
+
+                    await APIUtils.ClientUnitConversion.PutDataUnitConversionSetByIdAsync(CurrentDataUnitConversionSet.MetaInfo.ID, CurrentDataUnitConversionSet);
+                    logger.LogInformation("Updated the DataUnitConversionSet successfully");
+                    Snackbar.Add("Updated the DataUnitConversionSet successfully", Severity.Success);
+                }
+                else
+                {
+                    logger.LogWarning("Problem while updating the DataUnitConversionSet");
+                    Snackbar.Add("Problem while updating the DataUnitConversionSet", Severity.Warning);
+                }
+            }
+            catch (ApiException ex)
+            {
+                logger.LogError(ex, "Problem while updating the DataUnitConversionSet");
+                Snackbar.Add("Problem while updating the DataUnitConversionSet", Severity.Warning);
+            }
+            UpdatePlots();
+        }
+        else
+        {
+            logger.LogWarning("No QuantityUnitConversion selected for the current DataUnitConversionSet");
+            Snackbar.Add("No QuantityUnitConversion selected for the current DataUnitConversionSet", Severity.Warning);
+        }
+    }
+
+    private async Task Close()
+    {
+        await Update();
+        if (selectedQuantityUnitConversionInputHashSet.Any())
+            OnUpdate?.Invoke();
+    }
+
+    private void Cancel()
+    {
+        OnUpdate?.Invoke();
+    }
+
+    private void UpdatePlots()
+    {
+        if (nameList != null && modeFlagList != null && colorList != null && xValuesList != null && yValuesList != null &&
+            CurrentDataUnitConversionSet != null && CurrentDataUnitConversionSet.MetaInfo != null && CurrentDataUnitConversionSet.OutputParam != null)
+        {
+            //each list below is designed to contain N curves: in this case, we only plot 1 curve, corresponding to 1 trajectory
+            nameList.Clear();
+            modeFlagList.Clear();
+            colorList.Clear();
+            xValuesList.Clear();
+            yValuesList.Clear();
+
+            List<object> xValues = new List<object>();
+            List<object> yValues = new List<object>();
+
+            for (int i = 0; i < 90; ++i)
+            {
+                xValues.Add(i);
+                yValues.Add(CurrentDataUnitConversionSet.OutputParam * i * Math.PI / 180);
+            }
+            xValuesList.Add(xValues);
+            yValuesList.Add(yValues);
+            nameList.Add($"{CurrentDataUnitConversionSet.MetaInfo.Name}");
+            modeFlagList.Add(1); //1 to 3
+            colorList.Add(colorScale[0]);
+
+            //plot curves
+            dataUnitConversionSetPlot.Plot();
+        }
+    }
+
+    //Quick filter - filter gobally across multiple columns with the same input
+    private Func<QuantityUnitConversion, bool> _quantityUnitConversionFilter => x =>
+    {
+        if (string.IsNullOrWhiteSpace(_quantityUnitConversionSearchString))
+            return true;
+        if ($"{x.MetaInfo.Name}".Contains(_quantityUnitConversionSearchString))
+            return true;
+
+        return false;
+    };
+
+
+}

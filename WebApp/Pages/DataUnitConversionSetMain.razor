@@ -1,0 +1,303 @@
+﻿@page "/DataUnitConversionSet"
+@inject ILogger<DataUnitConversionSet> logger
+@inject ISnackbar Snackbar
+
+<MudUnitAndReferenceChoiceTag HttpHost=@APIUtils.HostNameDrillingUnitConversion
+                              HttpBasePath=@APIUtils.HostBasePathDrillingUnitConversion
+                              HttpController="DrillingUnitChoiceSets/"
+                              UnitChoiceSetName="@DataUtils.UnitAndReferenceParameters.UnitChoiceSetName"
+                              UnitChoiceSetNameChanged="@DataUtils.UpdateUnitChoiceSetName">
+    @if (dataUnitConversionSetList == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <div hidden="@isHiddenMainPanel">
+            <MudDataGrid T="DataUnitConversionSet" MultiSelection="true" Items="@dataUnitConversionSetList" SortMode="SortMode.Multiple" Filterable="true" QuickFilter="@_dataUnitConversionSetFilter"
+                         Hideable="false" ReadOnly="false" EditMode="DataGridEditMode.Form" EditTrigger="DataGridEditTrigger.Manual" SelectedItemsChanged="@SelectedItemsChanged">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6">DataUnitConversionSet</MudText>
+                    <MudButton OnClick="@AddDataUnitConversionSet" Color="@Color.Success" Class="add-item-btn">Add</MudButton>
+                    <MudButton OnClick="@DeleteSelectedDataUnitConversionSet" Color="@Color.Error" Class="add-item-btn">Delete</MudButton>
+                    <MudSpacer />
+                    <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+                                  AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                </ToolBarContent>
+                <Columns>
+                    <SelectColumn T="DataUnitConversionSet" />
+                    <PropertyColumn Property="x => x.MetaInfo.Name" Title="Name" Sortable="true" Filterable="true" />
+                    <PropertyColumn Property="x => x.MetaInfo.Description" Title="Description" Sortable="true" Filterable="true" />
+                    <PropertyColumn Property="x => GetFieldNameFromID(x.FieldMetaInfo.ID)" Title="Field" Sortable="true" Filterable="true" />
+                    <TemplateColumn CellClass="d-flex justify-end" Sortable="false" Filterable="false">
+                        <CellTemplate>
+                            <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="(() => EditDataUnitConversionSet(context.Item.MetaInfo.ID))" />
+                            <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="(() => DeleteDataUnitConversionSet(context.Item.MetaInfo.ID))" />
+                        </CellTemplate>
+                    </TemplateColumn>
+                </Columns>
+                <PagerContent>
+                    <MudDataGridPager T="DataUnitConversionSet" />
+                </PagerContent>
+            </MudDataGrid>
+        </div>
+    }
+    @if (isHiddenMainPanel && fieldList != null && fieldList.Any() && currentDataUnitConversionSet != null)
+    {
+        <DataUnitConversionSetEdit CurrentDataUnitConversionSet="@currentDataUnitConversionSet" FieldList="@fieldList" QuantityUnitConversionList="@quantityUnitConversionList" OnUpdate="@ShowMainPanel" />
+    }
+</MudUnitAndReferenceChoiceTag>
+
+@code {
+    // DataUnitConversionSet related variables
+    private List<DataUnitConversionSet> dataUnitConversionSetList = new();
+    private List<DataUnitConversionSet> selectedDataUnitConversionSetList = new();
+    private DataUnitConversionSet? currentDataUnitConversionSet;
+    // Field related variables
+    private List<Field>? fieldList;
+    // QuantityUnitConversion related variables
+    private List<QuantityUnitConversion>? quantityUnitConversionList;
+
+    // UI related variables
+    public bool isHiddenMainPanel;
+    public bool isHiddenEditPanel;
+    private string? _searchString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Show main panel
+            isHiddenMainPanel = false;
+            isHiddenEditPanel = true;
+            currentDataUnitConversionSet = null;
+            // Trying to load list of Field
+            logger.LogInformation("Trying to load list of Field from client: " + APIUtils.HttpClientField);
+            try
+            {
+                fieldList = (List<Field>)await APIUtils.ClientField.GetAllFieldAsync();
+            }
+            catch (ApiException ex)
+            {
+                logger.LogError(ex, "Impossible to load DataUnitConversionSet from client");
+            }
+            if (fieldList != null)
+            {
+                fieldList.Sort((f1, f2) => f1.MetaInfo.Name.CompareTo(f2.MetaInfo.Name));
+            }
+            else
+            {
+                logger.LogWarning("Returned list of Field were null on initialization");
+                Snackbar.Add("Returned list of Field were null on initialization", Severity.Warning);
+            }
+            // Trying to load list of QuantityUnitConversion
+            logger.LogInformation("Trying to load list of QuantityUnitConversion from client: " + APIUtils.HttpClientUnitConversion);
+            try
+            {
+                quantityUnitConversionList = (List<QuantityUnitConversion>)await APIUtils.ClientUnitConversion.GetAllQuantityUnitConversionAsync();
+            }
+            catch (ApiException ex)
+            {
+                logger.LogError(ex, "Impossible to load QuantityUnitConversion from client");
+            }
+            if (quantityUnitConversionList != null)
+            {
+                quantityUnitConversionList.Sort((f1, f2) => f1.MetaInfo.Name.CompareTo(f2.MetaInfo.Name));
+            }
+            else
+            {
+                logger.LogWarning("Returned list of QuantityUnitConversion were null on initialization");
+                Snackbar.Add("Returned list of QuantityUnitConversion were null on initialization", Severity.Warning);
+            }
+            // Trying to load list of DataUnitConversionSet
+            logger.LogInformation("Trying to load list of DataUnitConversionSet from client: " + APIUtils.HostNameUnitConversion);
+            try
+            {
+                dataUnitConversionSetList = (List<DataUnitConversionSet>)await APIUtils.ClientUnitConversion.GetAllDataUnitConversionSetAsync();
+            }
+            catch (ApiException ex)
+            {
+                logger.LogError(ex, "Impossible to load DataUnitConversionSet from client");
+            }
+            if (dataUnitConversionSetList != null)
+            {
+                dataUnitConversionSetList.Sort((t1, t2) => t1.MetaInfo.Name.CompareTo(t2.MetaInfo.Name));
+            }
+            else
+            {
+                logger.LogWarning("Returned list of DataUnitConversionSet were null on initialization");
+                Snackbar.Add("Returned list of DataUnitConversionSet were null on initialization", Severity.Warning);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Impossible to load list of Field or DataUnitConversionSet on initialization");
+        }
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    private async Task AddDataUnitConversionSet()
+    {
+        if (fieldList != null && fieldList.Count > 0 && quantityUnitConversionList != null && quantityUnitConversionList.Count > 0)
+        {
+            try
+            {
+                DataUnitConversionSet currentDataUnitConversionSet = new();
+                currentDataUnitConversionSet.MetaInfo = new();
+                currentDataUnitConversionSet.MetaInfo.ID = Guid.NewGuid();
+                currentDataUnitConversionSet.MetaInfo.Name = DataUtils.DEFAULT_NAME_DataUnitConversionSet;
+                currentDataUnitConversionSet.MetaInfo.Description = DataUtils.DEFAULT_DESCR_DataUnitConversionSet;
+                currentDataUnitConversionSet.MetaInfo.CreationDate = DateTime.UtcNow;
+                currentDataUnitConversionSet.MetaInfo.LastModificationDate = currentDataUnitConversionSet.MetaInfo.CreationDate;
+                currentDataUnitConversionSet.MetaInfo.TypeName = typeof(DataUnitConversionSet).Name;
+                currentDataUnitConversionSet.MetaInfo.HttpHostName = APIUtils.HostNameUnitConversion;
+                currentDataUnitConversionSet.MetaInfo.HttpHostBasePath = APIUtils.HostBasePathUnitConversion;
+                currentDataUnitConversionSet.MetaInfo.HttpEndPoint = "DataUnitConversionSet/";
+                currentDataUnitConversionSet.OutputParam = 1.0;
+                currentDataUnitConversionSet.QuantityUnitConversionInputList = new List<QuantityUnitConversion>();
+                foreach (QuantityUnitConversion data in quantityUnitConversionList)
+                    currentDataUnitConversionSet.QuantityUnitConversionInputList.Add(data);
+
+                Field? field = fieldList.Find(f => f.MetaInfo.Name == "Ullandhaug"); // first look for Ullandhaug
+                if (field == null)
+                    field = fieldList.ElementAt(0); // otherwise use the first available
+                if (field != null)
+                {
+                    currentDataUnitConversionSet.FieldMetaInfo = field.MetaInfo;
+                    await APIUtils.ClientUnitConversion.PostDataUnitConversionSetAsync(currentDataUnitConversionSet);
+                    logger.LogInformation("DataUnitConversionSet posted successfully");
+                    Snackbar.Add("DataUnitConversionSet posted successfully", Severity.Success);
+                    await OnInitializedAsync();
+                }
+                else
+                {
+                    logger.LogError("Impossible to find Field named \"Ullandhaug\" or to find any other: create one first!");
+                    Snackbar.Add("Impossible to find Field named \"Ullandhaug\" or to find any other: create one first!", Severity.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Impossible to add a new DataUnitConversionSet");
+                Snackbar.Add("Impossible to add a new DataUnitConversionSet", Severity.Warning);
+            }
+        }
+        else
+        {
+            logger.LogWarning("DataUnitConversionSet can not be created without a valid Field and a valid QuantityUnitConversion");
+            Snackbar.Add("DataUnitConversionSet can not be created without a valid Field and a valid QuantityUnitConversion", Severity.Warning);
+        }
+    }
+
+    private async Task EditDataUnitConversionSet(Guid id)
+    {
+        try
+        {
+            currentDataUnitConversionSet = await APIUtils.ClientUnitConversion.GetDataUnitConversionSetByIdAsync(id);
+            if (currentDataUnitConversionSet != null)
+            {
+                isHiddenMainPanel = true;
+                isHiddenEditPanel = false;
+                await InvokeAsync(() => { StateHasChanged(); });
+            }
+            else
+            {
+                logger.LogWarning("Impossible to load DataUnitConversionSet");
+                Snackbar.Add("Impossible to load DataUnitConversionSet", Severity.Warning);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Impossible to load DataUnitConversionSet to be edited");
+        }
+    }
+
+    private async Task DeleteDataUnitConversionSet(Guid id)
+    {
+        try
+        {
+            await APIUtils.ClientUnitConversion.DeleteDataUnitConversionSetByIdAsync(id);
+            await OnInitializedAsync();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Impossible to delete DataUnitConversionSet");
+        }
+    }
+
+    private async Task DeleteSelectedDataUnitConversionSet()
+    {
+        try
+        {
+            foreach (DataUnitConversionSet dataUnitConversionSet in selectedDataUnitConversionSetList)
+            {
+                await APIUtils.ClientUnitConversion.DeleteDataUnitConversionSetByIdAsync(dataUnitConversionSet.MetaInfo.ID);
+            }
+            await OnInitializedAsync();
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Impossible to delete all DataUnitConversionSet");
+        }
+
+    }
+
+    public string GetFieldNameFromID(Guid id)
+    {
+        if (id != Guid.Empty && fieldList != null && fieldList.Any())
+        {
+            try
+            {
+                Field? f = fieldList.Find(x => x.MetaInfo.ID.Equals(id));
+                if (f != null && f.MetaInfo != null)
+                    return f.MetaInfo.Name;
+            }
+            catch (ArgumentNullException ex)
+            {
+                logger.LogWarning(ex, "Impossible to retrieve the Field of given ID");
+            }
+        }
+        return DataUtils.UnidentifiedField;
+    }
+
+    //Quick filter - filter gobally across multiple columns with the same input
+    private Func<DataUnitConversionSet, bool>
+        _dataUnitConversionSetFilter => x =>
+        {
+            if (string.IsNullOrWhiteSpace(_searchString))
+                return true;
+            if ($"{x.MetaInfo.Name} {x.MetaInfo.Description}".Contains(_searchString))
+                return true;
+
+            return false;
+        };
+
+    //Events
+    private void StartedEditingItem(DataUnitConversionSet item)
+    {
+        //Activating Edit event capture with parameter StartedEditingItem="@StartedEditingItem" in MudDataGrid; arguments are specified in OnClick="@context.Actions.StartedEditingItem(...)"
+    }
+
+    private void CancelledEditingItem(DataUnitConversionSet item)
+    {
+        //Activating Cancel event capture with parameter CancelledEditingItem = "@CancelledEditingItem" in MudDataGrid; arguments are specified in OnClick="@context.Actions.CancelledEditingItem(...)"
+    }
+
+    private void CommittedItemChanges(DataUnitConversionSet item)
+    {
+        //Activating Commit event capture with parameter CommittedItemChanges = "@CommittedItemChanges" in MudDataGrid; arguments are specified in OnClick="@context.Actions.CommittedEditingItem(...)"
+    }
+
+    void SelectedItemsChanged(HashSet<DataUnitConversionSet>
+        items)
+    {
+        selectedDataUnitConversionSetList.Clear();
+        selectedDataUnitConversionSetList.InsertRange(0, items);
+    }
+
+    private async void ShowMainPanel()
+    {
+        isHiddenMainPanel = false;
+        isHiddenEditPanel = true;
+        await OnInitializedAsync();
+    }
+}
