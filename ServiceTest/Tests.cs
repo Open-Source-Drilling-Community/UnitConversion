@@ -824,7 +824,6 @@ namespace ServiceTest
             Assert.That(unitSystem2.ID, Is.EqualTo(guid));
             #endregion
 
-
             #region GetAllUnitSystem
             List<UnitSystem> unitSystemList = [];
             try
@@ -842,6 +841,26 @@ namespace ServiceTest
                 select elt;
             Assert.That(unitSystemList2, Is.Not.Null);
             Assert.That(unitSystemList2, Is.Not.Empty);
+            #endregion
+
+            #region GetAllUnitSystemLight
+            List<UnitSystemLight> unitSystemLightList = [];
+            try
+            {
+                unitSystemLightList = (List<UnitSystemLight>)await nSwagClient.GetAllUnitSystemLightAsync();
+            }
+            catch (ApiException ex)
+            {
+                TestContext.WriteLine("Impossible to Get the list of UnitSystemLight\n" + ex.Message);
+            }
+            Assert.That(unitSystemLightList, Is.Not.Null);
+            Assert.That(unitSystemLightList, Is.Not.Empty);
+            IEnumerable<UnitSystemLight> unitSystemLightList2 =
+                from elt in unitSystemLightList
+                where elt.Name == unitSystem.Name
+                select elt;
+            Assert.That(unitSystemLightList2, Is.Not.Null);
+            Assert.That(unitSystemLightList2, Is.Not.Empty);
             #endregion
 
             #region finally delete the new ID

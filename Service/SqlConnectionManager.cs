@@ -27,6 +27,10 @@ namespace OSDC.UnitConversion.Service
             {
                 { "UnitSystemTable", new string[] {
                     "ID text primary key",
+                    "Name text",
+                    "Description text",
+                    "IsDefault bool",
+                    "IsSI bool",
                     "UnitSystem text" }
             },
                 { "UnitSystemConversionSetTable", new string[] {

@@ -395,6 +395,29 @@
         }
       }
     },
+    "/UnitSystem/LightData": {
+      "get": {
+        "tags": [
+          "UnitSystem"
+        ],
+        "operationId": "GetAllUnitSystemLight",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/UnitSystem/HeavyData": {
       "get": {
         "tags": [

@@ -212,12 +212,56 @@ namespace OSDC.UnitConversion.Service
         }
 
         /// <summary>
+        /// Returns the list of all UnitSystemLight present in the microservice database 
+        /// </summary>
+        /// <returns>the list of all UnitSystemLight present in the microservice database</returns>
+        public List<UnitSystemLight> GetAllUnitSystemLight()
+        {
+            List<UnitSystemLight> vals = [];
+            if (connection_ != null)
+            {
+                var command = connection_.CreateCommand();
+                command.CommandText = "SELECT ID, Name, Description, IsDefault, IsSI FROM UnitSystemTable";
+                try
+                {
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read() && !reader.IsDBNull(0))
+                    {
+                        Guid id = reader.GetGuid(0);
+                        string name = reader.GetString(1);
+                        string descr = reader.GetString(2);
+                        bool isDef = reader.GetBoolean(3);
+                        bool si = reader.GetBoolean(4);
+                        UnitSystemLight unitSystemLight = new()
+                        {
+                            ID = id,
+                            Name = name,
+                            Description = descr,
+                            IsDefault = isDef,
+                            IsSI = si
+                        };
+                        vals.Add(unitSystemLight);
+                    }
+                }
+                catch (SqliteException ex)
+                {
+                    logger_.LogError(ex, "Impossible to get UnitSystemLight from UnitSystemTable");
+                }
+            }
+            else
+            {
+                logger_.LogWarning("Impossible to access the SQLite database");
+            }
+            return vals;
+        }
+
+        /// <summary>
         /// Returns the list of all UnitSystem present in the microservice database 
         /// </summary>
         /// <returns>the list of all UnitSystem present in the microservice database</returns>
         public List<UnitSystem> GetAllUnitSystem()
         {
-            List<UnitSystem> vals = new();
+            List<UnitSystem> vals = [];
             if (connection_ != null)
             {
                 var command = connection_.CreateCommand();
@@ -266,8 +310,12 @@ namespace OSDC.UnitConversion.Service
                             string data = JsonSerializer.Serialize(unitSystem);
                             var command = connection_.CreateCommand();
                             command.CommandText = "INSERT INTO UnitSystemTable " +
-                                "(ID, UnitSystem) VALUES (" +
+                                "(ID, Name, Description, IsDefault, IsSI, UnitSystem) VALUES (" +
                                 $"'{unitSystem.ID}', " +
+                                $"'{unitSystem.Name}', " +
+                                $"'{unitSystem.Description}', " +
+                                $"'{unitSystem.IsDefault}', " +
+                                $"'{unitSystem.IsSI}', " +
                                 $"'{data}'" +
                                 ")";
                             int count = command.ExecuteNonQuery();
@@ -329,6 +377,10 @@ namespace OSDC.UnitConversion.Service
                             string data = JsonSerializer.Serialize(unitSystem);
                             var command = connection_.CreateCommand();
                             command.CommandText = $"UPDATE UnitSystemTable SET " +
+                                $"Name = '{unitSystem.Name}', " +
+                                $"Description = '{unitSystem.Description}', " +
+                                $"IsDefault = '{unitSystem.IsDefault}', " +
+                                $"IsSI = '{unitSystem.IsSI}', " +
                                 $"UnitSystem = '{data}' " +
                                 $"WHERE ID = '{guid}'";
                             int count = command.ExecuteNonQuery();

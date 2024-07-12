@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using OSDC.DotnetLibraries.General.DataManagement;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
 
 namespace OSDC.UnitConversion.Service.Controllers
@@ -24,9 +23,9 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Returns the list of Guid of all UnitSystem present in the microservice database at endpoint TplProjectName/api/UnitSystem
+        /// Returns the list of Guid of all UnitSystem present in the microservice database at endpoint UnitConversion/api/UnitSystem
         /// </summary>
-        /// <returns>the list of Guid of all UnitSystem present in the microservice database at endpoint TplProjectName/api/UnitSystem</returns>
+        /// <returns>the list of Guid of all UnitSystem present in the microservice database at endpoint UnitConversion/api/UnitSystem</returns>
         [HttpGet(Name = "GetAllUnitSystemId")]
         public ActionResult<IEnumerable<Guid>> GetAllUnitSystemId()
         {
@@ -42,10 +41,10 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Returns the UnitSystem identified by its Guid from the microservice database, at endpoint TplProjectName/api/UnitSystem/MetaInfo/id
+        /// Returns the UnitSystem identified by its Guid from the microservice database, at endpoint UnitConversion/api/UnitSystem/MetaInfo/id
         /// </summary>
         /// <param name="guid"></param>
-        /// <returns>the UnitSystem identified by its Guid from the microservice database, at endpoint TplProjectName/api/UnitSystem/MetaInfo/id</returns>
+        /// <returns>the UnitSystem identified by its Guid from the microservice database, at endpoint UnitConversion/api/UnitSystem/MetaInfo/id</returns>
         [HttpGet("{id}", Name = "GetUnitSystemById")]
         public ActionResult<UnitSystem> GetUnitSystemById(Guid id)
         {
@@ -68,9 +67,27 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Returns the list of all UnitSystem present in the microservice database, at endpoint TplProjectName/api/UnitSystem/HeavyData
+        /// Returns the list of all UnitSystemLight present in the microservice database, at endpoint UnitConversion/api/UnitSystem/LightData
         /// </summary>
-        /// <returns>the list of all UnitSystem present in the microservice database, at endpoint TplProjectName/api/UnitSystem/HeavyData</returns>
+        /// <returns>the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/LightData</returns>
+        [HttpGet("LightData", Name = "GetAllUnitSystemLight")]
+        public ActionResult<IEnumerable<OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystem>> GetAllUnitSystemLight()
+        {
+            var vals = unitSystemManager_.GetAllUnitSystemLight();
+            if (vals != null)
+            {
+                return Ok(vals);
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Returns the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/HeavyData
+        /// </summary>
+        /// <returns>the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/HeavyData</returns>
         [HttpGet("HeavyData", Name = "GetAllUnitSystem")]
         public ActionResult<IEnumerable<UnitSystem>> GetAllUnitSystem()
         {
@@ -86,10 +103,10 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Performs calculation on the given UnitSystem and adds it to the microservice database, at the endpoint TplProjectName/api/UnitSystem
+        /// Performs calculation on the given UnitSystem and adds it to the microservice database, at the endpoint UnitConversion/api/UnitSystem
         /// </summary>
         /// <param name="unitSystem"></param>
-        /// <returns>true if the given UnitSystem has been added successfully to the microservice database, at the endpoint TplProjectName/api/UnitSystem</returns>
+        /// <returns>true if the given UnitSystem has been added successfully to the microservice database, at the endpoint UnitConversion/api/UnitSystem</returns>
         [HttpPost(Name = "PostUnitSystem")]
         public ActionResult PostUnitSystem([FromBody] UnitSystem value)
         {
@@ -121,10 +138,10 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Performs calculation on the given UnitSystem and updates it in the microservice database, at the endpoint TplProjectName/api/UnitSystem/id
+        /// Performs calculation on the given UnitSystem and updates it in the microservice database, at the endpoint UnitConversion/api/UnitSystem/id
         /// </summary>
         /// <param name="unitSystem"></param>
-        /// <returns>true if the given UnitSystem has been updated successfully to the microservice database, at the endpoint TplProjectName/api/UnitSystem/id</returns>
+        /// <returns>true if the given UnitSystem has been updated successfully to the microservice database, at the endpoint UnitConversion/api/UnitSystem/id</returns>
         [HttpPut("{id}", Name = "PutUnitSystemById")]
         public ActionResult PutUnitSystemById(Guid id, [FromBody] UnitSystem value)
         {
@@ -156,10 +173,10 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Deletes the UnitSystem of given ID from the microservice database, at the endpoint TplProjectName/api/UnitSystem/id
+        /// Deletes the UnitSystem of given ID from the microservice database, at the endpoint UnitConversion/api/UnitSystem/id
         /// </summary>
         /// <param name="guid"></param>
-        /// <returns>true if the UnitSystem was deleted from the microservice database, at the endpoint TplProjectName/api/UnitSystem/id</returns>
+        /// <returns>true if the UnitSystem was deleted from the microservice database, at the endpoint UnitConversion/api/UnitSystem/id</returns>
         [HttpDelete("{id}", Name = "DeleteUnitSystemById")]
         public ActionResult DeleteUnitSystemById(Guid id)
         {
