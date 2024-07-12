@@ -5,26 +5,26 @@ using System.Linq;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingDrillStringMagneticFluxQuantity : MagneticFluxQuantity
+    public partial class DrillStringMagneticFluxDrillingQuantity : MagneticFluxQuantity
     {
         public override double? MeaningfulPrecisionInSI { get; } = 1e-7;
 
-        private static DrillingDrillStringMagneticFluxQuantity instance_ = null;
+        private static DrillStringMagneticFluxDrillingQuantity instance_ = null;
 
-        public static new DrillingDrillStringMagneticFluxQuantity Instance
+        public static new DrillStringMagneticFluxDrillingQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new DrillingDrillStringMagneticFluxQuantity();
+                    instance_ = new DrillStringMagneticFluxDrillingQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
             }
         }
 
-        public DrillingDrillStringMagneticFluxQuantity() : base()
+        public DrillStringMagneticFluxDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "Drill String Magnetic Flux (drilling)" };

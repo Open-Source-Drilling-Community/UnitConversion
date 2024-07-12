@@ -20,6 +20,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DensityDrilling,  // DensityDrilling
             DensityGradientDepthDrilling,  // DensityGradientDepthDrilling
             DensityGradientTemperatureDrilling,  // DensityGradientTemperatureDrilling
+            DensityRateOfChangeDrilling,  // DensityRateOfChangeDrilling
             Depth,  // Depth
             DrillStemMaterialStrength,  // DrillStemMaterialStrength
             DrillStringMagneticFluxDrilling,  // DrillStringMagneticFluxDrilling
@@ -88,6 +89,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             {QuantityEnum.DensityDrilling, new Guid("60f2af98-56e4-4f9c-8438-59646a35fc0d")},  // Density
             {QuantityEnum.DensityGradientDepthDrilling, new Guid("787c3f65-b6d5-4866-885b-12571b1d9734")},  // DensityGradientDepth
             {QuantityEnum.DensityGradientTemperatureDrilling, new Guid("b5ccd49c-a9fd-4cfd-8dd1-fb4d3f8c3ad5")},  // DensityGradientTemperature
+            {QuantityEnum.DensityRateOfChangeDrilling, new Guid("af63f164-0fb7-42c0-ac55-06e40b6c12e5") },  // DensityRateOfChangeDrilling
             {QuantityEnum.Depth, new Guid("c0d965b2-a153-420a-9d03-7a2a272d619e")},  // Depth
             {QuantityEnum.DrillStemMaterialStrength, new Guid("fd58fca3-6221-4e85-a7aa-a021ee04e8a8")},  // DrillStemMaterialStrength
             {QuantityEnum.DrillStringMagneticFluxDrilling, new Guid("3a58147b-88db-4474-8390-dd0e0f7d206b")},  // DrillStringMagneticFlux
@@ -654,7 +656,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class DrillingDrillStringMagneticFluxQuantity : MagneticFluxQuantity
+    public partial class DrillStringMagneticFluxDrillingQuantity : MagneticFluxQuantity
     {
         public new enum UnitChoicesEnum
         {
