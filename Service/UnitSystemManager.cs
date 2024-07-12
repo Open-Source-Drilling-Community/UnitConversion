@@ -230,8 +230,8 @@ namespace OSDC.UnitConversion.Service
                         Guid id = reader.GetGuid(0);
                         string name = reader.GetString(1);
                         string descr = reader.GetString(2);
-                        bool isDef = reader.GetBoolean(3);
-                        bool si = reader.GetBoolean(4);
+                        bool isDef = bool.Parse(reader.GetString(3));
+                        bool si = bool.Parse(reader.GetString(4));
                         UnitSystemLight unitSystemLight = new()
                         {
                             ID = id,
