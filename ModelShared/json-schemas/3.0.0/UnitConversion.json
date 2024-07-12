@@ -409,7 +409,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystemLight"
                   }
                 }
               }
@@ -695,6 +695,30 @@
             },
             "nullable": true
           },
+          "ID": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsDefault": {
+            "type": "boolean"
+          },
+          "IsSI": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystemLight": {
+        "type": "object",
+        "properties": {
           "ID": {
             "type": "string",
             "format": "uuid"

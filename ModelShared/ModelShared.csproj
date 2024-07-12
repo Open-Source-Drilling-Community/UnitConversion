@@ -1,20 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>3.0.0</Version>
+		<Authors>Energy Modelling and Automation group</Authors>
+		<Company>NORCE</Company>
+		<Title>Distributed shared model for client applications of the UnitConversion microservice</Title>
+		<PackageId>OSDC.UnitConversion.$(AssemblyName)</PackageId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.15" />
-    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.8" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.15" />
+		<PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.8" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="json-schemas\" />
-    <Folder Include="json-schemas\3.0.0\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="json-schemas\" />
+		<Folder Include="json-schemas\3.0.0\" />
+	</ItemGroup>
 
 </Project>
