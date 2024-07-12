@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateEnumerations", "Gen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.Conversion.UnitTest", "OSDC.UnitConversion.Conversion.UnitTest\OSDC.UnitConversion.Conversion.UnitTest.csproj", "{9E8DFD04-B781-48B1-BD08-D99B0AB3DD46}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OSDC.UnitConversion.DrillingRazorMudComponents", "OSDC.UnitConversion.DrillingRazorMudComponents\OSDC.UnitConversion.DrillingRazorMudComponents.csproj", "{AB78BF81-D705-43D7-AE35-BEF2AA47D86F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrillingRazorMudComponents", "DrillingRazorMudComponents\DrillingRazorMudComponents.csproj", "{AB78BF81-D705-43D7-AE35-BEF2AA47D86F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

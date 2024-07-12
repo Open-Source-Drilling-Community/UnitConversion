@@ -1,17 +1,18 @@
-﻿@using System.Globalization
+﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
 @implements IUnitAwareComponent
+@inject ILogger<MudInputWithUnit> logger
 
-<MudTextField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" HideSpinButtons="true" Adornment="Adornment.End" AdornmentText="@UnitLabel"></MudTextField>
+<MudNumericField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" HideSpinButtons="true"></MudNumericField>
 
 @code {
     [CascadingParameter]
-    private MudUnitAndReferenceChoiceTag Parent { get; set; }
+    private MudUnitAndReferenceChoiceTag? Parent { get; set; }
 
     [Parameter]
-    public String QuantityLabel { get; set; }
+    public String? QuantityLabel { get; set; }
 
     [Parameter]
-    public String QuantityName { get; set; }
+    public String? QuantityName { get; set; }
 
     [Parameter]
     public Variant VariantType { get; set; } = Variant.Text;
@@ -79,7 +80,7 @@
 
     private bool inhibited_ = false;
 
-    private string ValueInUserUnit
+    private string? ValueInUserUnit
     {
         get
         {
@@ -92,8 +93,7 @@
         }
     }
 
-    private string UnitLabel;
-    private string valueInUserUnit_;
+    private string? valueInUserUnit_;
 
     protected override void OnInitialized()
     {
@@ -110,24 +110,24 @@
         if (!inhibited_)
         {
             double valueInUserUnit;
-            if (Parent != null && TryParse(valueInUserUnit_, out valueInUserUnit))
+            if (Parent != null && TryParse(valueInUserUnit_!, out valueInUserUnit))
             {
                 switch (DrillingSignalReference)
                 {
                     case DrillingSignalReferenceType.Pressure:
-                        SIValue = Parent.ToAbsolutePressureSI(valueInUserUnit, QuantityName);
+                        SIValue = Parent.ToAbsolutePressureSI(valueInUserUnit, QuantityName!);
                         break;
                     case DrillingSignalReferenceType.Azimuth:
-                        SIValue = Parent.ToTrueNorthAzimuthSI(valueInUserUnit, QuantityName);
+                        SIValue = Parent.ToTrueNorthAzimuthSI(valueInUserUnit, QuantityName!);
                         break;
                     case DrillingSignalReferenceType.Depth:
-                        SIValue = Parent.ToWGS84DepthSI(valueInUserUnit, QuantityName);
+                        SIValue = Parent.ToWGS84DepthSI(valueInUserUnit, QuantityName!);
                         break;
                     case DrillingSignalReferenceType.Position:
-                        SIValue = Parent.ToWGS84PositionSI(valueInUserUnit, QuantityName, PositionDirection);
+                        SIValue = Parent.ToWGS84PositionSI(valueInUserUnit, QuantityName!, PositionDirection);
                         break;
                     default:
-                        SIValue = Parent.ToSI(valueInUserUnit, QuantityName);
+                        SIValue = Parent.ToSI(valueInUserUnit, QuantityName!);
                         break;
                 }
             }
@@ -138,9 +138,9 @@
                 await SIValueChanged.InvokeAsync(SIValue);
                 await SIValueNullableChanged.InvokeAsync(SIValueNullable);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                logger.LogError(ex, "Problem while managing changed value in MudInputWithUnit razor component");
             }
             inhibited_ = false;
         }
@@ -153,41 +153,35 @@
             inhibited_ = true;
             try
             {
-                if (Parent != null && !string.IsNullOrEmpty(Parent.UnitChoiceSetName))
+                if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName))
                 {
                     switch (DrillingSignalReference)
                     {
                         case DrillingSignalReferenceType.Pressure:
-                            ValueInUserUnit = Parent.FromAbsolutePressureSI(SIValueNullable, QuantityName, false);
-                            UnitLabel = Parent.GetPressureUnitLabel(QuantityName);
+                            ValueInUserUnit = Parent.FromAbsolutePressureSI(SIValueNullable, QuantityName!, false);
                             break;
                         case DrillingSignalReferenceType.Azimuth:
-                            ValueInUserUnit = Parent.FromTrueNorthAzimuthSI(SIValueNullable, QuantityName, false);
-                            UnitLabel = Parent.GetAzimuthUnitLabel(QuantityName);
+                            ValueInUserUnit = Parent.FromTrueNorthAzimuthSI(SIValueNullable, QuantityName!, false);
                             break;
                         case DrillingSignalReferenceType.Depth:
-                            ValueInUserUnit = Parent.FromWGS84DepthSI(SIValueNullable, QuantityName, false);
-                            UnitLabel = Parent.GetDepthUnitLabel(QuantityName);
+                            ValueInUserUnit = Parent.FromWGS84DepthSI(SIValueNullable, QuantityName!, false);
                             break;
                         case DrillingSignalReferenceType.Position:
-                            ValueInUserUnit = Parent.FromWGS84PositionSI(SIValueNullable, QuantityName, false, PositionDirection);
-                            UnitLabel = Parent.GetPositionUnitLabel(QuantityName);
+                            ValueInUserUnit = Parent.FromWGS84PositionSI(SIValueNullable, QuantityName!, false, PositionDirection);
                             break;
                         default:
-                            ValueInUserUnit = Parent.FromSI(SIValueNullable, QuantityName, false);
-                            UnitLabel = Parent.GetUnitLabel(QuantityName);
+                            ValueInUserUnit = Parent.FromSI(SIValueNullable, QuantityName!, false);
                             break;
                     }
                 }
                 else
                 {
                     ValueInUserUnit = "";
-                    UnitLabel = "";
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                logger.LogError(ex, "Problem while managing units in MudInputWithUnit");
             }
             inhibited_ = false;
         }

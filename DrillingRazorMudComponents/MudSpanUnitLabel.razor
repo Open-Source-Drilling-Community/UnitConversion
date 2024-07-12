@@ -1,13 +1,15 @@
-﻿@implements IUnitAwareComponent
+﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
+@implements IUnitAwareComponent
+@inject ILogger<MudSpanUnitLabel> logger
 
 <MudTextField @bind-Value="@UnitLabel" ReadOnly="true" Variant="@VariantType" />
 
 @code {
     [CascadingParameter]
-    private MudUnitAndReferenceChoiceTag Parent { get; set; }
+    private MudUnitAndReferenceChoiceTag? Parent { get; set; }
 
     [Parameter]
-    public string QuantityName { get; set; }
+    public string? QuantityName { get; set; }
 
     [Parameter]
     public Variant VariantType { get; set; } = Variant.Text;
@@ -18,7 +20,7 @@
     [Parameter]
     public bool Hidden { get; set; }
 
-    private string UnitLabel { get; set; }
+    private string? UnitLabel { get; set; }
 
     protected override void OnInitialized()
     {
@@ -32,24 +34,24 @@
     {
         try
         {
-            if (Parent != null && !string.IsNullOrEmpty(Parent.UnitChoiceSetName))
+            if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName))
             {
                 switch (DrillingSignalReference)
                 {
                     case DrillingSignalReferenceType.Pressure:
-                        UnitLabel = Parent.GetPressureUnitLabel(QuantityName);
+                        UnitLabel = Parent.GetPressureUnitLabel(QuantityName!);
                         break;
                     case DrillingSignalReferenceType.Azimuth:
-                        UnitLabel = Parent.GetAzimuthUnitLabel(QuantityName);
+                        UnitLabel = Parent.GetAzimuthUnitLabel(QuantityName!);
                         break;
                     case DrillingSignalReferenceType.Depth:
-                        UnitLabel = Parent.GetDepthUnitLabel(QuantityName);
+                        UnitLabel = Parent.GetDepthUnitLabel(QuantityName!);
                         break;
                     case DrillingSignalReferenceType.Position:
-                        UnitLabel = Parent.GetPositionUnitLabel(QuantityName);
+                        UnitLabel = Parent.GetPositionUnitLabel(QuantityName!);
                         break;
                     default:
-                        UnitLabel = Parent.GetUnitLabel(QuantityName);
+                        UnitLabel = Parent.GetUnitLabel(QuantityName!);
                         break;
                 }
             }
@@ -58,9 +60,9 @@
                 UnitLabel = "";
             }
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-
+            logger.LogError(ex, "Problem while managing units in MudSpanUnitLabel");
         }
     }
 

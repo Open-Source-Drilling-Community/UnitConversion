@@ -1,17 +1,22 @@
-﻿@using System.Globalization
-@implements IUnitAwareComponent
-
-<MudNumericField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" HideSpinButtons="true"></MudNumericField>
+﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
+<MudGrid>
+    <MudItem>
+        <MudTextField @bind-Value="@DegreeRoundedValue" Label="@QuantityLabel" Variant="@VariantType"
+                      Adornment="Adornment.End" AdornmentText="@degreeUnitChoice.UnitLabel"></MudTextField>
+    </MudItem>
+    <MudItem>
+        <MudTextField @bind-Value="@MinuteRoundedValue" Variant="@VariantType"
+                      Adornment="Adornment.End" AdornmentText="@minuteUnitChoice.UnitLabel"></MudTextField>
+    </MudItem>
+    <MudItem>
+        <MudTextField @bind-Value="@SecondValue" Variant="@VariantType"
+                      Adornment="Adornment.End" AdornmentText="@secondUnitChoice.UnitLabel"></MudTextField>
+    </MudItem>
+</MudGrid>
 
 @code {
-    [CascadingParameter]
-    private MudUnitAndReferenceChoiceTag Parent { get; set; }
-
     [Parameter]
-    public String QuantityLabel { get; set; }
-
-    [Parameter]
-    public String QuantityName { get; set; }
+    public String? QuantityLabel { get; set; }
 
     [Parameter]
     public Variant VariantType { get; set; } = Variant.Text;
@@ -40,7 +45,6 @@
             {
                 SIValue_ = value;
             }
-            ManageUnits();
         }
     }
 
@@ -54,10 +58,13 @@
         set
         {
             SIValue_ = value;
-            ManageUnits();
         }
     }
+
     private double? SIValue_;
+    private string? degreeRoundedValue_;
+    private string? minuteRoundedValue_;
+    private string? secondValue_;
 
     [Parameter]
     public EventCallback<double> SIValueChanged { get; set; }
@@ -65,126 +72,86 @@
     [Parameter]
     public EventCallback<double?> SIValueNullableChanged { get; set; }
 
-    [Parameter]
-    public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;
-
-    [Parameter]
-    public PositionDirectionType PositionDirection { get; set; } = PositionDirectionType.Independent;
-
-    [Parameter]
-    public bool Hidden { get; set; }
-
-    [Parameter]
-    public int Size { get; set; }
-
-    private bool inhibited_ = false;
-
-    private string ValueInUserUnit
+    private string? DegreeRoundedValue
     {
         get
         {
-            return valueInUserUnit_;
+            return degreeRoundedValue_;
         }
         set
         {
-            valueInUserUnit_ = value;
-            ManageChangedValue();
+            degreeRoundedValue_ = value;
+            ManageValues();
         }
     }
 
-    private string valueInUserUnit_;
+    private string? MinuteRoundedValue
+    {
+        get
+        {
+            return minuteRoundedValue_;
+        }
+        set
+        {
+            minuteRoundedValue_ = value;
+            ManageValues();
+        }
+    }
+
+    private string? SecondValue
+    {
+        get
+        {
+            return secondValue_;
+        }
+        set
+        {
+            secondValue_ = value;
+            ManageValues();
+        }
+    }
+
+    private bool inhibited_ = false;
+
+    private readonly UnitChoice degreeUnitChoice = PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree);
+    private readonly UnitChoice minuteUnitChoice = PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.ArcMinute);
+    private readonly UnitChoice secondUnitChoice = PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.ArcSecond);
 
     protected override void OnInitialized()
     {
-        if (Parent == null)
-            throw new ArgumentNullException(nameof(Parent), "InputWithUnit must exist within a UnitAndReferenceChoiceTag");
         base.OnInitialized();
-        Parent.Add(this);
-        ManageUnits();
+
+        double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue);
+        double degValue = Math.Floor(valueInDegreeUnit);
+        double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
+        double secValue = (valueInDegreeUnit - degValue - minValue / 60) * 3600;
+        degreeRoundedValue_ = degValue.ToString();
+        minuteRoundedValue_ = minValue.ToString();
+        secondValue_ = secValue.ToString();
     }
 
-    public async Task ManageChangedValue()
-    {
 
+    public async Task ManageValues()
+    {
         if (!inhibited_)
         {
-            double valueInUserUnit;
-            if (Parent != null && TryParse(valueInUserUnit_, out valueInUserUnit))
+            double degValue;
+            double minValue;
+            double secValue;
+            if (TryParse(DegreeRoundedValue!, out degValue) && TryParse(MinuteRoundedValue!, out minValue) && TryParse(SecondValue!, out secValue))
             {
-                switch (DrillingSignalReference)
-                {
-                    case DrillingSignalReferenceType.Pressure:
-                        SIValue = Parent.ToAbsolutePressureSI(valueInUserUnit, QuantityName);
-                        break;
-                    case DrillingSignalReferenceType.Azimuth:
-                        SIValue = Parent.ToTrueNorthAzimuthSI(valueInUserUnit, QuantityName);
-                        break;
-                    case DrillingSignalReferenceType.Depth:
-                        SIValue = Parent.ToWGS84DepthSI(valueInUserUnit, QuantityName);
-                        break;
-                    case DrillingSignalReferenceType.Position:
-                        SIValue = Parent.ToWGS84PositionSI(valueInUserUnit, QuantityName, PositionDirection);
-                        break;
-                    default:
-                        SIValue = Parent.ToSI(valueInUserUnit, QuantityName);
-                        break;
-                }
+                double valueInDegreeUnit = degValue + minValue / 60 + secValue / 3600;
+                SIValue = degreeUnitChoice.ToSI(valueInDegreeUnit);
+                degreeRoundedValue_ = degValue.ToString();
+                minuteRoundedValue_ = minValue.ToString();
+                secondValue_ = secValue.ToString();
             }
-
-            inhibited_ = false;
-            try
-            {
-                await SIValueChanged.InvokeAsync(SIValue);
-                await SIValueNullableChanged.InvokeAsync(SIValueNullable);
-            }
-            catch (Exception e)
-            {
-
-            }
+            await SIValueChanged.InvokeAsync(SIValue);
+            await SIValueNullableChanged.InvokeAsync(SIValueNullable);
             inhibited_ = false;
         }
     }
 
-    public void ManageUnits()
-    {
-        if (!inhibited_)
-        {
-            inhibited_ = true;
-            try
-            {
-                if (Parent != null && !string.IsNullOrEmpty(Parent.UnitChoiceSetName))
-                {
-                    switch (DrillingSignalReference)
-                    {
-                        case DrillingSignalReferenceType.Pressure:
-                            ValueInUserUnit = Parent.FromAbsolutePressureSI(SIValueNullable, QuantityName, false);
-                            break;
-                        case DrillingSignalReferenceType.Azimuth:
-                            ValueInUserUnit = Parent.FromTrueNorthAzimuthSI(SIValueNullable, QuantityName, false);
-                            break;
-                        case DrillingSignalReferenceType.Depth:
-                            ValueInUserUnit = Parent.FromWGS84DepthSI(SIValueNullable, QuantityName, false);
-                            break;
-                        case DrillingSignalReferenceType.Position:
-                            ValueInUserUnit = Parent.FromWGS84PositionSI(SIValueNullable, QuantityName, false, PositionDirection);
-                            break;
-                        default:
-                            ValueInUserUnit = Parent.FromSI(SIValueNullable, QuantityName, false);
-                            break;
-                    }
-                }
-                else
-                {
-                    ValueInUserUnit = "";
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-            inhibited_ = false;
-        }
-    }
 
     private static bool TryParse(string value, out double result)
     {
