@@ -71,7 +71,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// </summary>
         /// <returns>the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/LightData</returns>
         [HttpGet("LightData", Name = "GetAllUnitSystemLight")]
-        public ActionResult<IEnumerable<OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystem>> GetAllUnitSystemLight()
+        public ActionResult<IEnumerable<UnitSystemLight>> GetAllUnitSystemLight()
         {
             var vals = unitSystemManager_.GetAllUnitSystemLight();
             if (vals != null)
