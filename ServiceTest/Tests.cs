@@ -1,7 +1,7 @@
 using System.Net.Http.Headers;
 using OSDC.UnitConversion.ModelShared;
 
-namespace ServiceTest
+namespace OSDC.UnitConversion.ServiceTest
 {
     public class Tests
     {
