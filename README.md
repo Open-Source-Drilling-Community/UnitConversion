@@ -32,7 +32,7 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 - note that *PhysicalQuantity* extends *BasePhysicalQuantity* and hence encompasses it, so that the class *PhysicalQuantity* opens access to a total of **144 physical quantities**.
 
-- see the complete list of physical quantities by technical fields `[below](# List-of-physical-quantities)`
+- see the complete list of physical quantities by technical fields [below](https://github.com/Open-Source-Drilling-Community/UnitConversion/blob/main/README.md#list-of-physical-quantities)
 
 </details>
 
