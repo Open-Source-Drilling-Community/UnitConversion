@@ -1,7 +1,6 @@
 # UnitConversion
 
-<details>
-   <summary>Physical quantities</summary>
+## Physical quantities
 
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities:
 
@@ -13,10 +12,7 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 - see the complete list of physical quantities by technical fields [below](# List-of-physical-quantities)
 
-</details>
-
-<details>
-   <summary>Unit conversion classes</summary>
+## Unit conversion classes
 
 Unit conversions can be handled:
 
@@ -36,7 +32,6 @@ Unit conversions can be handled:
  
    - *UnitConversionSet* class is more versatile and useful for daily unit conversions technical people must perform in their every day life
 
-</details>
 
 # Unit conversion tools
 
@@ -71,7 +66,7 @@ The UnitConversion repository hosts a:
 </details>
 
 <details>
-   <summary>*BasePhysicalQuantity* and *BaseUnitSystem*</summary>
+   <summary>BasePhysicalQuantity and BaseUnitSystem</summary>
    
 - base physical quantities are accessed in-memory through `BasePhysicalQuantity.AvailableBasePhysicalQuantities`. Each `BasePhysicalQuantity` holds a reference on a list of `UnitChoice` which simply represent units available for this quantity.
 
@@ -79,12 +74,21 @@ The UnitConversion repository hosts a:
 
 - class diagram is as follows
 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/d9a36340-dedf-4266-89c1-93e07eacec20" width="800">
+</p>
 
 
 
 - *PhysicalQuantity* extends *BasePhysicalQuantity* and *UnitSystem* extends *BaseUnitSystem* so that the same considerations as above apply
 
 - class diagram is as follows
+
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/b42b933b-2617-46ae-8071-057f6cb52544" width="500">
+</p>
+
 
 - all these classes are identified with a simple `Guid`. The `MetaInfo` available in nuget package [`OSDC.DotnetLibraries.General.DataManagement`](https://www.nuget.org/packages/OSDC.DotnetLibraries.General.DataManagement) concept is not necessary here due to the in-memeory data access.
 
@@ -111,8 +115,9 @@ The UnitConversion repository hosts a:
 
 - class diagram is as follows
 
-
-
+<p align="center">
+<img src="https://github.com/user-attachments/assets/3df456cc-668e-4336-8d58-1887bbf8d85a" width="800">
+</p>
 
    
 </details>
@@ -282,17 +287,6 @@ The UnitConversion repository hosts a:
 <details>
    <summary>PhysicalQuantity, by technical field (count = 144)</summary>
    
-<style>
-.table-fixed {
-  width: 100%;
-  table-layout: fixed;
-}
-.table-fixed td:nth-child(2) {
-  width: 400px; /* Ajustez la largeur comme nécessaire */
-  word-wrap: break-word;
-}
-</style>
-
 <table class="table-fixed">
   <tr>
     <th>Technical Field</th>
