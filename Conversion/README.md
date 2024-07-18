@@ -3,6 +3,10 @@
 This nuget package hosts the C# model for converting units of a BasePhysicalQuantity.
 Classes and methods are scoped within the namespace: ``UnitConversion.Conversion``
 
+More info on:
+
+https://github.com/Open-Source-Drilling-Community/UnitConversion
+
 # Contributors
 
 **Eric Cayeux**, *NORCE Energy Modelling and Automation*
