@@ -26,7 +26,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             quantities = UnitSystem.AvailableQuantities;
             if (quantities != null)
             {
-                GenerateFile(baseFolder + "OSDC.UnitConversion.Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(DrillingPhysicalQuantity), quantities);
+                GenerateFile(baseFolder + "OSDC.UnitConversion.Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(PhysicalQuantity), quantities);
                 UnitSystem SI = UnitSystem.SIUnitSystem;
                 UnitSystem metric = UnitSystem.MetricUnitSystem;
                 UnitSystem imperial = UnitSystem.ImperialUnitSystem;
