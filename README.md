@@ -1,6 +1,28 @@
-# UnitConversion
+# Unit conversion
 
-## Physical quantities
+The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities, unit systems, and units. The repository hosts:
+
+- a [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion) that handles unit conversions of base physical quantities
+
+- a [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion.DrillingEngineering) that handles unit conversions of physical quantities specific to the drilling engineering field
+
+- a microservice to handle unit conversions programmatically
+  - [microservice API](https://app.digiwells.no/UnitConversion/api/swagger) (swagger)
+  - [PhysicalQuantity endpoint](https://app.digiwells.no/UnitConversion/api/PhysicalQuantity)
+  - [UnitSystem endpoint](https://app.digiwells.no/UnitConversion/api/UnitSystem)
+  - [UnitSystemConversionSet endpoint](https://app.digiwells.no/UnitConversion/api/UnitSystemConversionSet)
+  - [UnitConversionSet endpoint](https://app.digiwells.no/UnitConversion/api/UnitConversionSet)
+
+- a client user interface to handle unit conversions
+  - [PhysicalQuantity endpoint](https://app.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
+  - [UnitSystem endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystem)
+  - [UnitSystemConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystemConversionSet)
+  - [UnitConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitConversionSet)
+
+# Data model
+
+<details>
+   <summary><h3>Physical quantities</h3></summary>
 
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities:
 
@@ -10,9 +32,12 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 - note that *PhysicalQuantity* extends *BasePhysicalQuantity* and hence encompasses it, so that the class *PhysicalQuantity* opens access to a total of **144 physical quantities**.
 
-- see the complete list of physical quantities by technical fields [below](# List-of-physical-quantities)
+- see the complete list of physical quantities by technical fields `[below](# List-of-physical-quantities)`
 
-## Unit conversion classes
+</details>
+
+<details>
+   <summary><h3>Unit conversion classes</h3></summary>
 
 Unit conversions can be handled:
 
@@ -32,32 +57,10 @@ Unit conversions can be handled:
  
    - *UnitConversionSet* class is more versatile and useful for daily unit conversions technical people must perform in their every day life
 
-
-# Unit conversion tools
-
-The UnitConversion repository hosts a:
-
-- [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion) that handles unit conversions of base physical quantities
-
-- [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion.DrillingEngineering) that handles unit conversions of physical quantities specific to the drilling engineering field
-
-- a microservice to handle unit conversions programmatically
-  - [microservice API](https://app.digiwells.no/UnitConversion/api/swagger) (swagger)
-  - [PhysicalQuantity endpoint](https://app.digiwells.no/UnitConversion/api/PhysicalQuantity)
-  - [UnitSystem endpoint](https://app.digiwells.no/UnitConversion/api/UnitSystem)
-  - [UnitSystemConversionSet endpoint](https://app.digiwells.no/UnitConversion/api/UnitSystemConversionSet)
-  - [UnitConversionSet endpoint](https://app.digiwells.no/UnitConversion/api/UnitConversionSet)
-
-- a client user interface to handle unit conversions
-  - [PhysicalQuantity endpoint](https://app.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
-  - [UnitSystem endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystem)
-  - [UnitSystemConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystemConversionSet)
-  - [UnitConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitConversionSet)
-
-# Data model architecture
+</details>
 
 <details>
-   <summary>Hybrid data access</summary>
+   <summary><h3>Hybrid data access</h3></summary>
    
 - physical quantities and standard unit systems are accessed in-memory, through the nuget packages [OSDC.UnitConversion.Conversion.DrillingEngineering](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion) and [OSDC.UnitConversion.Conversion](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion.DrillingEngineering)
 
@@ -66,7 +69,7 @@ The UnitConversion repository hosts a:
 </details>
 
 <details>
-   <summary>BasePhysicalQuantity and BaseUnitSystem</summary>
+   <summary><h3>BasePhysicalQuantity and BaseUnitSystem</h3></summary>
    
 - base physical quantities are accessed in-memory through `BasePhysicalQuantity.AvailableBasePhysicalQuantities`. Each `BasePhysicalQuantity` holds a reference on a list of `UnitChoice` which simply represent units available for this quantity.
 
@@ -95,7 +98,7 @@ The UnitConversion repository hosts a:
 </details>
 
 <details>
-   <summary>Unit conversion classes</summary>
+   <summary><h3>Unit conversion classes</h3></summary>
 
 - the base class that performs `double` to `double?` unit conversions is *ValueConversion*
 
@@ -125,7 +128,7 @@ The UnitConversion repository hosts a:
 # List of physical quantities
 
 <details>
-   <summary>BasePhysicalQuantity (count = 74)</summary>
+   <summary><h3>BasePhysicalQuantity</h3></summary>
    
 |Physical Quantity Name|Usual Names||||
 |---|---|---|---|---|
@@ -211,7 +214,7 @@ The UnitConversion repository hosts a:
 </details>
 
 <details>
-   <summary>PhysicalQuantity, drilling-specific only (count = 66)</summary>
+   <summary><h3>PhysicalQuantity, drilling-specific only</h3></summary>
    
 |Physical Quantity Name|Usual Names||||
 |---|---|---|---|---|
@@ -262,7 +265,7 @@ The UnitConversion repository hosts a:
 |PressureGradientDrilling|Pressure Gradient (drilling)||||||
 |PressureLossConstantDrilling|Pressure Loss Constant (drilling)||||||
 |RandomWalkDrilling|Random Walk (drilling)||||||
-|RateOfPenetration|Rate Of Penetration (drilling)||ROP||
+|RateOfPenetration|Rate Of Penetration (drilling)|ROP|||
 |RotationFrequencyRateOfChangeDrilling|Rotation Frequency Rate Of Change (drilling)||||||
 |ShockRate|Shock Rate (drilling)||||||
 |SpecificHeatCapacityDrilling|Specific Heat Capacity (drilling)||||||
@@ -285,19 +288,19 @@ The UnitConversion repository hosts a:
 </details>
 
 <details>
-   <summary>PhysicalQuantity, by technical field (count = 144)</summary>
+   <summary><h3>PhysicalQuantity, by technical field</h3></summary>
    
 <table class="table-fixed">
   <tr>
     <th>Technical Field</th>
-    <th>Physical Quantities</th>
+    <th>Physical Quantity Names</th>
   </tr>
   <tr>
-    <td>Chemistry_and_Material_Properties</td>
+    <td>Chemistry and Material Properties</td>
     <td>AmountSubstance, DensityGradientDepth, DensityGradientDepthDrilling, DensityGradientTemperature, DensityGradientTemperatureDrilling, DensityDrilling, DensitySpeedDrilling, FormationResistivity, FormationStrength, GasShow, Mass, MassDrilling, MassGradient, MassGradientDrilling, MassRate, MassRateDrilling, Porosity, Proportion, Resistivity, RheologyConsistencyIndex, ShockRate, SmallProportion, SpecificHeatCapacity, SpecificHeatCapacityDrilling, SpecificHeatCapacityTemperatureGradient, SpecificHeatCapacityTemperatureGradientDrilling</td>
   </tr>
   <tr>
-    <td>Drilling_Technology</td>
+    <td>Drilling Technology</td>
     <td>AccelerationDrilling, AngleVariationGradientDrilling, AngularVelocityDrilling, AreaDrilling, AxialVelocityDrilling, CompressibilityDrilling, CurvatureDrilling, DensityDrilling, DensityGradientDepthDrilling, DensityGradientTemperatureDrilling, DensitySpeedDrilling, DrillStringMagneticFlux, DrillStemMaterialStrength, DurationDrilling, DynamicViscosityDrilling, ElongationGradientDrilling, FluidVelocityDrilling, ForceDrilling, ForceGradientDrilling, HeatTransferCoefficientDrilling, HydraulicConductivityDrilling, InterfacialTensionDrilling, MagneticFluxDensityDrilling, PlaneAngleDrilling, PowerDrilling, PressureDrilling, PressureGradientDrilling, PressureLossConstantDrilling, RandomWalkDrilling, RotationFrequencyRateOfChangeDrilling, StickDurationDrilling, SurveyInstrumentAngularVelocityDrilling, SurveyInstrumentMagneticFluxDensityDrilling, SurveyInstrumentReciprocalLengthDrilling, TemperatureDrilling, TemperatureGradientDrilling, ThermalConductivityDrilling, ThermalConductivityTemperatureGradientDrilling, TorqueDrilling, VolumetricFlowRateDrilling, VolumetricFlowRateOfChangeDrilling</td>
   </tr>
   <tr>
@@ -305,15 +308,15 @@ The UnitConversion repository hosts a:
     <td>AngleMagneticFluxDensity, EarthMagneticFluxDensity, ElectricalCurrent, ElectricTension, MagneticFlux, MagneticFluxDensity, SurveyInstrumentMagneticFluxDensityDrilling</td>
   </tr>
   <tr>
-    <td>Fluid_Dynamics_and_Hydraulics</td>
+    <td>Fluid Dynamics and Hydraulics</td>
     <td>Capacitance, Depth, Density, Dimensionless, FluidShearRate, FluidShearStress, FlowRate, FluidVelocityDrilling, HydraulicConductivity, HydraulicConductivityDrilling, InterfacialTension, InterfacialTensionDrilling, Permeability, PressureLossConstant, PressureLossConstantDrilling, VolumetricFlowRateRateOfChange, WaveNumber, VolumetricFlowRateDrilling, VolumetricFlowRateOfChangeDrilling</td>
   </tr>
   <tr>
-    <td>Geometric_and_Dimensional_Analysis</td>
+    <td>Geometric and Dimensional Analysis</td>
     <td>Area, Curvature, CurvatureDrilling, Dimensionless, ImageScale, Length, PlaneAngle, PlaneAngleDrilling, SolidAngle</td>
   </tr>
   <tr>
-    <td>Instrumentation_and_Measurement</td>
+    <td>Instrumentation and Measurement</td>
     <td>Frequency, FrequencyRateOfChange, GammaRay, Height, ImageScale, LuminousIntensity, RelativeTemperature, StandardDimensionless, StandardLength, StandardProportion</td>
   </tr>
   <tr>
@@ -325,11 +328,11 @@ The UnitConversion repository hosts a:
     <td>Acceleration, AngularVelocity, BlockVelocity, DensitySpeed, Force, ForceGradient, GravitationalLoad, HookLoad, Position, RandomWalk, RateOfPenetration, RotationFrequency, RotationFrequencyRateOfChange, SmallRotationFrequency, SmallTorque, Torque, Velocity, WeightOnBit, YoungModulus</td>
   </tr>
   <tr>
-    <td>Structural_and_Material_Science</td>
+    <td>Structural and Material Science</td>
     <td>CableDiameter, DrillStemMaterialStrength, ElongationGradient, LargeVolume, MaterialStrength, NozzleDiameter, PoreDiameter, PoreSurface, SmallDiameter, SmallLength, SmallProportion, StandardDimensionless, StandardLength, StandardProportion, Volume</td>
   </tr>
   <tr>
-    <td>Thermodynamics_and_Heat_Transfer</td>
+    <td>Thermodynamics and Heat Transfer</td>
     <td>CapillaryPressure, Compressibility, Energy, HeatTransferCoefficient, HeatTransferCoefficientDrilling, SpecificHeatCapacity, SpecificHeatCapacityDrilling, SpecificHeatCapacityTemperatureGradient, SpecificHeatCapacityTemperatureGradientDrilling, Temperature, TemperatureGradient, ThermalConductivity, ThermalConductivityDrilling, ThermalConductivityTemperatureGradient, ThermalConductivityTemperatureGradientDrilling</td>
   </tr>
 </table>
