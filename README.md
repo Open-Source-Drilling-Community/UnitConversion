@@ -8,12 +8,12 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 - a microservice to handle unit conversions programmatically
   - [microservice API](https://dev.digiwells.no/UnitConversion/api/swagger) (swagger)
-  - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/api/PhysicalQuantity)
+  - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/api/PhysicalQuantity) (broken link, under active refactoring)
   - [UnitSystem endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystem)
   - [UnitSystemConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystemConversionSet)
   - [UnitConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitConversionSet)
 
-- a client user interface to handle unit conversions (links below do not work while under active refactoring, use [old version of webapp](https://app.digiwells.no/DrillingUnitConversion/webapp/QuantityUnitConversion) in the meantime)
+- a client user interface to handle unit conversions (broken links below, under active refactoring, use [old version of webapp](https://app.digiwells.no/DrillingUnitConversion/webapp/QuantityUnitConversion) in the meantime)
   - [PhysicalQuantity endpoint](https://app.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
   - [UnitSystem endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystem)
   - [UnitSystemConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystemConversionSet)
