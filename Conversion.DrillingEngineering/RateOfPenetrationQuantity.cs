@@ -24,7 +24,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public RateOfPenetrationQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Rate Of Penetration (drilling)" };
+            UsualNames = new HashSet<string>() { "Rate Of Penetration (drilling)", "ROP" };
             ID = new Guid("c2581b41-944c-410b-9805-62c4b54de510");
             Reset();
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MetrePerSecond));
