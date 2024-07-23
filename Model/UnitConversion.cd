@@ -35,7 +35,7 @@
       <FileName>ValueConversion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.BasePhysicalQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.BasePhysicalQuantity">
     <Position X="3" Y="7.5" Width="2.75" />
     <NestedTypes>
       <Class Name="OSDC.UnitConversion.Conversion.BasePhysicalQuantity.QuantityEnum" Collapsed="true">
@@ -44,21 +44,16 @@
     </NestedTypes>
     <TypeIdentifier />
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.UnitChoice" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.UnitChoice">
     <Position X="8.5" Y="7.5" Width="2.25" />
     <TypeIdentifier />
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.BaseUnitSystem" Collapsed="true">
     <Position X="6" Y="7.5" Width="2.25" />
-    <NestedTypes>
-      <Class Name="OSDC.UnitConversion.Conversion.BaseUnitSystem.DefaultUnitSystemEnum" Collapsed="true">
-        <TypeIdentifier />
-      </Class>
-    </NestedTypes>
     <TypeIdentifier />
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity">
-    <Position X="3" Y="8.75" Width="2.75" />
+    <Position X="3" Y="15.5" Width="2.75" />
     <NestedTypes>
       <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum" Collapsed="true">
         <TypeIdentifier />

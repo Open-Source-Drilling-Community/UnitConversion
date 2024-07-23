@@ -25,7 +25,7 @@ namespace OSDC.UnitConversion.Model
         /// <summary>
         /// a list of numerical data to be converted.
         /// </summary>
-        public List<ValueConversion> ValueConversionList { get; set; }
+        public List<ValueConversion>? ValueConversionList { get; set; }
 
         /// <summary>
         /// default constructor required for parsing the data model as a json file
@@ -47,7 +47,8 @@ namespace OSDC.UnitConversion.Model
                 UnitChoice unitChoiceOut = quantity.GetUnitChoice(UnitChoiceIDOut);
                 UnitChoice unitChoiceIn = quantity.GetUnitChoice(UnitChoiceIDIn);
 
-                success = ValueConversion.Calculate(quantity, unitChoiceIn, unitChoiceOut, ValueConversionList);
+                if (ValueConversionList != null)
+                    success = ValueConversion.Calculate(quantity, unitChoiceIn, unitChoiceOut, ValueConversionList);
             }
             return success;
         }

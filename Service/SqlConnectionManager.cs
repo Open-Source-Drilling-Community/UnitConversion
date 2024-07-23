@@ -10,228 +10,247 @@ using Microsoft.Data.Sqlite;
 namespace OSDC.UnitConversion.Service
 {
     /// <summary>
-    /// A singleton manager for the sql database connection
+    /// A manager for the sql database connection, registered as a singleton through dependency injection (see Program.cs)
     /// Prior to creating a database, existing database structure is checked for consistency with the structure defined in tableStructureDict_
     /// If inconsistent (table count, table names, fields count, fields names), a timestamped backup of the existing database is generated first
     /// </summary>
+    /// <remarks>
+    /// SQLite database connection strategy:
+    /// - single connection for every access (chosen strategy in the general case)
+    ///     each access to the database is performed through isolated connections stored in a List of connections
+    ///     > isolation, reliability, fail-safe, thread-safe, but overhead due to opening connections
+    /// - shared connection between access
+    ///     one connection is opened for the lifetime of the application and used to access database through various web requests and commands 
+    ///     > no overhead, but issues with concurrency, single-point of failure, state management
+    /// - scoped connection (registering service with AddScoped rather than AddSingleton)
+    ///     one connection is opened per web request
+    ///     > same problems as with shared connection, but limited to the scope of one webrequest rather than to the whole lifetime of the application
+    /// </remarks>
     public class SqlConnectionManager
     {
-        private static SqlConnectionManager instance_ = null;
-        private static SqliteConnection connection_ = null;
-        private static ILogger logger_;
-        private static string homeDirectory_ = ".." + Path.DirectorySeparatorChar + "home";
-        private static string databaseFileName_ = "UnitConversion.db";
+        private readonly ILogger<SqlConnectionManager> _logger;
+        private readonly string _connectionString;
+        public static readonly string HOME_DIRECTORY = ".." + Path.DirectorySeparatorChar + "home" + Path.DirectorySeparatorChar;
+        public static readonly string DATABASE_FILENAME = "UnitConversion.db";
+        public static readonly string DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
         // dictionary describing tables format
-        private static Dictionary<string, string[]> tableStructureDict_ = new Dictionary<string, string[]>()
+        // Light weight data fields are enumerated explicitly in the data table implementing the light weight data concept
+        // (thus duplicating info in the database) for 2 reasons
+        // 1) to avoid loading the complete MyParentData (heavy weight data) each time we only need contextual info on the data (light weight data)
+        // 2) to keep control of the logic of inserting and selecting a light data in the database
+        //    localized at the controller/manager level (storing MyParentDataLight as a whole could induce database corruption issues)
+        // If the light weight data concept is not implemented, the same contextual info can be retrieved directly from the MyParentData
+        private readonly static Dictionary<string, string[]> _tableStructureDict = new Dictionary<string, string[]>()
             {
                 { "UnitSystemTable", new string[] {
                     "ID text primary key",
+                    // beginning of list of fields used only when light weight concept is implemented
                     "Name text",
                     "Description text",
                     "IsDefault bool",
                     "IsSI bool",
+                    // end of list of fields used only when light weight concept is implemented
                     "UnitSystem text" }
-            },
+                },
                 { "UnitSystemConversionSetTable", new string[] {
                     "ID text primary key",
                     "MetaInfo text",
                     "CreationDate text",
                     "LastModificationDate text",
                     "UnitSystemConversionSet text" }
-            },
+                },
                 { "UnitConversionSetTable", new string[] {
                     "ID text primary key",
                     "MetaInfo text",
                     "CreationDate text",
                     "LastModificationDate text",
                     "UnitConversionSet text" }
-            }
+                }
             };
 
-
-        /// <summary>
-        /// default constructor is private when implementing a singleton pattern
-        /// </summary>
-        private SqlConnectionManager(ILogger logger)
+        public SqlConnectionManager(string connectionString, ILogger<SqlConnectionManager> logger)
         {
-            logger_ = logger;
-        }
-
-        public static SqlConnectionManager GetInstance(ILogger logger)
-        {
-            if (instance_ == null)
+            _connectionString = connectionString;
+            _logger = logger;
+            _logger.LogInformation("SqliteConnectionManager created");
+            if (Initialize())
             {
-                instance_ = new SqlConnectionManager(logger);
+                ManageDataBase();
             }
-            return instance_;
+            else
+            {
+                _logger.LogInformation("SqliteConnectionManager created");
+            }
         }
 
-        public SqliteConnection Connection
+        public SqliteConnection? GetConnection()
         {
-            get
+            var connection = new SqliteConnection(_connectionString);
+            if (connection != null)
             {
-                if (connection_ == null)
+                connection.Open();
+            }
+            else
+            {
+                _logger.LogError("Problem while opening SQLite connection");
+            }
+            return connection;
+        }
+
+        private bool Initialize()
+        {
+            if (!Directory.Exists(HOME_DIRECTORY))
+            {
+                _logger.LogInformation("Creating home directory");
+                try
                 {
-                    if (Initialize())
-                        ManageDataBase();
+                    Directory.CreateDirectory(HOME_DIRECTORY);
                 }
-                return connection_;
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Impossible to create home directory for local storage");
+                    return false;
+                }
             }
+            if (Directory.Exists(HOME_DIRECTORY))
+            {
+                try
+                {
+                    string databaseFileName = HOME_DIRECTORY + Path.DirectorySeparatorChar + DATABASE_FILENAME;
+                    if (File.Exists(databaseFileName))
+                    {
+                        _logger.LogInformation("Opening database {_databaseFileName}", DATABASE_FILENAME);
+                    }
+                    else
+                    {
+                        _logger.LogInformation("Creating database {_databaseFileName}", DATABASE_FILENAME);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Impossible to create {_databaseFileName}", DATABASE_FILENAME);
+                    return false;
+                }
+            }
+            else
+            {
+                _logger.LogError("Home directory for local storage should have been created, check for access");
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
         /// This function parses the existing database and check that its structure matches the expected one.
         /// If not, the existing database is backed-up and the actual database is recreated from scratch
         /// </summary>
-        private static void ManageDataBase()
+        private void ManageDataBase()
         {
-            bool parseOk = true;
-            bool createDb = false;
-
-            List<string> tableNameList = new();
-            string query = "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%';";
-
-            using (var command = new SqliteCommand(query, connection_))
+            var connection = GetConnection();
+            if (connection != null)
             {
-                using (var reader = command.ExecuteReader())
+                bool parseOk = true;
+                bool createDb = false;
+                List<string> tableNameList = [];
+                string query = "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%';";
+
+                using (var command = new SqliteCommand(query, connection))
                 {
-                    while (reader.Read())
+                    using (var reader = command.ExecuteReader())
                     {
-                        tableNameList.Add(reader.GetString(0));
-                    }
-                }
-            }
-
-            if (tableNameList.Count != tableStructureDict_.Count) // unexpected number of tables
-            {
-                parseOk = false;
-            }
-            else
-            {
-                foreach (var tableStruct in tableStructureDict_)
-                {
-                    bool tmpSuccess = false;
-                    foreach (string name in tableNameList)
-                    {
-                        if (name == tableStruct.Key) // unexpected table names
+                        while (reader.Read())
                         {
-                            tmpSuccess = true;
-                            break;
+                            tableNameList.Add(reader.GetString(0));
                         }
                     }
-                    if (!tmpSuccess ||
-                        !CheckDatabaseStructure(tableStruct)) // badly formatted table
-                    {
-                        parseOk = false;
-                        break;
-                    }
                 }
-            }
-            if (!parseOk)
-            {
-                createDb = true;
-                if (tableNameList.Count > 0)
+
+                if (tableNameList.Count != _tableStructureDict.Count) // unexpected number of tables
                 {
-                    logger_.LogWarning("Unexpected structure of the existing database. A timestamped backup copy will be generated");
-                    // backup existing database
-                    string backupFileName = homeDirectory_ + Path.DirectorySeparatorChar + databaseFileName_;
-                    string timeStamp = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss") + "Z";
-                    backupFileName = backupFileName.Insert(backupFileName.Length - 3, "-" + timeStamp);
-                    try
-                    {
-                        File.Copy(homeDirectory_ + Path.DirectorySeparatorChar + databaseFileName_, backupFileName);
-                    }
-                    catch (Exception ex)
-                    {
-                        logger_.LogError(ex, "Problem while generating a timestamped backup copy of the existing database");
-                    }
-                    // drop existing tables
-                    logger_.LogWarning("Dropping tables from existing database");
-                    foreach (string name in tableNameList)
-                    {
-                        if (!DropTable(name))
-                        {
-                            createDb = false;
-                            logger_.LogError($"Impossible to drop {name}. Database may be corrupted, consider deleting it");
-                            break;
-                        }
-                    }
+                    parseOk = false;
                 }
                 else
                 {
-                    logger_.LogError("Nothing done: existing database is not empty and corrupted, consider deleting it manually");
-                }
-            }
-            if (createDb)
-            {
-                logger_.LogInformation("Creating database tables");
-                bool success = true;
-                foreach (var tableStruct in tableStructureDict_)
-                {
-                    if (CreateTable(tableStruct))
+                    foreach (var tableStruct in _tableStructureDict)
                     {
-                        if (!IndexTable($"{tableStruct.Key}"))
+                        bool tmpSuccess = false;
+                        foreach (string tableName in tableNameList)
+                        {
+                            if (tableName == tableStruct.Key) // unexpected table names
+                            {
+                                tmpSuccess = true;
+                                break;
+                            }
+                        }
+                        if (!tmpSuccess ||
+                            !CheckDatabaseStructure(tableStruct)) // badly formatted table
+                        {
+                            parseOk = false;
+                            break;
+                        }
+                    }
+                }
+                if (!parseOk)
+                {
+                    createDb = true;
+                    if (tableNameList.Count > 0)
+                    {
+                        _logger.LogWarning("Unexpected structure of the existing database. A timestamped backup copy will be generated");
+                        // backup existing database
+                        string backupFileName = HOME_DIRECTORY + Path.DirectorySeparatorChar + DATABASE_FILENAME;
+                        string timeStamp = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss");
+                        backupFileName = backupFileName.Insert(backupFileName.Length - 3, "-" + timeStamp);
+                        try
+                        {
+                            File.Copy(HOME_DIRECTORY + Path.DirectorySeparatorChar + DATABASE_FILENAME, backupFileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, "Problem while generating a timestamped backup copy of the existing database");
+                        }
+                        // drop existing tables
+                        _logger.LogWarning("Dropping tables from existing database");
+                        foreach (string tableName in tableNameList)
+                        {
+                            if (!DropTable(tableName))
+                            {
+                                createDb = false;
+                                _logger.LogError("Impossible to drop {tableName}. Database may be corrupted, consider deleting it", tableName);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (createDb)
+                {
+                    _logger.LogInformation("Creating database tables");
+                    bool success = true;
+                    foreach (var tableStruct in _tableStructureDict)
+                    {
+                        string tableName = tableStruct.Key;
+                        if (CreateTable(tableStruct))
+                        {
+                            if (!IndexTable(tableName))
+                                success = false;
+                        }
+                        else
+                        {
                             success = false;
-                    }
-                    else
-                    {
-                        success = false;
-                    }
-                    if (!success)
-                    {
-                        if (!DropTable($"{tableStruct.Key}"))
-                            logger_.LogError($"Impossible to drop {tableStruct.Key}. Database may be corrupted, consider deleting it");
-                    }
+                        }
+                        if (!success)
+                        {
+                            if (!DropTable(tableName))
+                                _logger.LogError("Impossible to drop {key}. Database may be corrupted, consider deleting it", tableName);
+                        }
 
-                }
-            }
-        }
-
-        private static bool Initialize()
-        {
-            if (!Directory.Exists(homeDirectory_))
-            {
-                logger_.LogInformation("Creating home directory");
-                try
-                {
-                    Directory.CreateDirectory(homeDirectory_);
-                }
-                catch (Exception ex)
-                {
-                    logger_.LogError(ex, "Impossible to create home directory for local storage");
-                    return false;
-                }
-            }
-            if (Directory.Exists(homeDirectory_))
-            {
-                try
-                {
-                    string databaseFileName = homeDirectory_ + Path.DirectorySeparatorChar + databaseFileName_;
-                    if (File.Exists(databaseFileName))
-                    {
-                        logger_.LogInformation($"Opening database {databaseFileName_}");
                     }
-                    else
-                    {
-                        logger_.LogInformation($"Creating database {databaseFileName_}");
-                    }
-                    string connectionString = $"Data Source={databaseFileName}";
-                    connection_ = new SqliteConnection(connectionString);
-                    connection_.Open();
-                }
-                catch (Exception ex)
-                {
-                    logger_.LogError(ex, $"Impossible to create {databaseFileName_}");
-                    return false;
                 }
             }
             else
             {
-                logger_.LogError("Home directory for local storage should have been created, check for access");
-                return false;
+                _logger.LogError("Problem opening a new connection while managing database");
             }
-            return true;
         }
 
         /// <summary>
@@ -239,97 +258,136 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="tableStructure"></param>
         /// <returns>true if the expected fields exactly match fields of the stored database</returns>
-        private static bool CheckDatabaseStructure(KeyValuePair<string, string[]> tableStructure)
+        private bool CheckDatabaseStructure(KeyValuePair<string, string[]> tableStructure)
         {
-            var command = connection_.CreateCommand();
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"SELECT * FROM {tableStructure.Key}");
-            command.CommandText = sb.ToString();
-            try
+            var connection = GetConnection();
+            if (connection != null)
             {
-                using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))
+                var command = connection.CreateCommand();
+                string key = tableStructure.Key;
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"SELECT * FROM {key}");
+                command.CommandText = sb.ToString();
+                try
                 {
-                    var schema = reader.GetSchemaTable();
-                    if (tableStructure.Value.Length != schema.Rows.Count)
-                        return false; // unexpected number of fields in table
-                    foreach (string field in tableStructure.Value)
+                    using (var reader = command.ExecuteReader(CommandBehavior.SchemaOnly))
                     {
-                        bool tmpSuccess = false;
-                        foreach (DataRow col in schema.Rows)
+                        var schema = reader.GetSchemaTable();
+                        if (tableStructure.Value.Length != schema.Rows.Count)
+                            return false; // unexpected number of fields in table
+                        foreach (string field in tableStructure.Value)
                         {
-                            if (field.Split(" ").ElementAt(0) == col.Field<String>("ColumnName"))
+                            bool tmpSuccess = false;
+                            foreach (DataRow col in schema.Rows)
                             {
-                                tmpSuccess = true;
-                                break;
+                                if (field.Split(" ").ElementAt(0) == col.Field<String>("ColumnName"))
+                                {
+                                    tmpSuccess = true;
+                                    break;
+                                }
                             }
+                            if (!tmpSuccess)
+                                return false; // at least one expected field is not found in stored database
                         }
-                        if (!tmpSuccess)
-                            return false; // at least one expected field is not found in stored database
                     }
                 }
+                catch (SqliteException ex)
+                {
+                    _logger.LogError(ex, "Impossible to retrieve schema from table {key}", key);
+                    return false;
+                }
             }
-            catch (SqliteException ex)
+            else
             {
-                logger_.LogError(ex, $"Impossible to retrieve schema from table {tableStructure.Key}");
-            }
-            return true;
-        }
-
-        private static bool CreateTable(KeyValuePair<string, string[]> tabStruct)
-        {
-            var command = connection_.CreateCommand();
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"CREATE TABLE {tabStruct.Key} ()");
-            foreach (string col in tabStruct.Value)
-            {
-                sb.Insert(sb.Length - 1, col + ",");
-            };
-            sb.Remove(sb.Length - 2, 1);
-            command.CommandText = sb.ToString();
-
-            try
-            {
-                int res = command.ExecuteNonQuery();
-                logger_.LogInformation($"{tabStruct.Key} has been successfully created");
-            }
-            catch (SqliteException ex)
-            {
-                logger_.LogError(ex, $"Impossible to create {tabStruct.Key} which will be dropped");
+                _logger.LogError("Problem opening a new connection while checking database structure");
                 return false;
             }
             return true;
         }
 
-        private static bool IndexTable(string dbName)
+        private bool CreateTable(KeyValuePair<string, string[]> tabStruct)
         {
-            var command = connection_.CreateCommand();
-            command.CommandText = $"CREATE UNIQUE INDEX {dbName}Index ON {dbName} (ID)";
-            try
+            var connection = GetConnection();
+            if (connection != null)
             {
-                int res = command.ExecuteNonQuery();
-                logger_.LogInformation($"{dbName} has been successfully indexed");
+                var command = connection.CreateCommand();
+                string key = tabStruct.Key;
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"CREATE TABLE {key} ()");
+                foreach (string col in tabStruct.Value)
+                {
+                    sb.Insert(sb.Length - 1, col + ",");
+                };
+                sb.Remove(sb.Length - 2, 1);
+                command.CommandText = sb.ToString();
+
+                try
+                {
+                    int res = command.ExecuteNonQuery();
+                    _logger.LogInformation("{key} has been successfully created", key);
+                }
+                catch (SqliteException ex)
+                {
+                    _logger.LogError(ex, "Impossible to create {key} which will be dropped", key);
+                    return false;
+                }
             }
-            catch (SqliteException ex)
+            else
             {
-                logger_.LogError(ex, $"Impossible to index {dbName} which will be dropped");
+                _logger.LogError("Problem opening a new connection while creating table");
                 return false;
             }
             return true;
         }
 
-        private static bool DropTable(string dbName)
+        private bool IndexTable(string dbName)
         {
-            var command = connection_.CreateCommand();
-            command.CommandText =
-                        $"DROP TABLE {dbName}";
-            try
+            var connection = GetConnection();
+            if (connection != null)
             {
-                int res = command.ExecuteNonQuery();
-                logger_.LogWarning($"{dbName} has been successfully dropped");
+                var command = connection.CreateCommand();
+                command.CommandText = $"CREATE UNIQUE INDEX {dbName}Index ON {dbName} (ID)";
+                try
+                {
+                    int res = command.ExecuteNonQuery();
+                    _logger.LogInformation("{dbName} has been successfully indexed", dbName);
+                }
+                catch (SqliteException ex)
+                {
+                    _logger.LogError(ex, "Impossible to index {dbName} which will be dropped", dbName);
+                    return false;
+                }
             }
-            catch (SqliteException ex)
+            else
             {
-                logger_.LogError(ex, $"Impossible to drop {dbName}");
+                _logger.LogError("Problem opening a new connection while creating table");
+                return false;
+            }
+            return true;
+        }
+
+        private bool DropTable(string dbName)
+        {
+            var connection = GetConnection();
+            if (connection != null)
+            {
+                var command = connection.CreateCommand();
+                command.CommandText =
+                            $"DROP TABLE {dbName}";
+                try
+                {
+                    int res = command.ExecuteNonQuery();
+                    _logger.LogWarning("{dbName} has been successfully dropped", dbName);
+                }
+                catch (SqliteException ex)
+                {
+                    _logger.LogError(ex, "Impossible to drop {dbName}", dbName);
+                    return false;
+                }
+            }
+            else
+            {
+                _logger.LogError("Problem opening a new connection while creating table");
                 return false;
             }
             return true;

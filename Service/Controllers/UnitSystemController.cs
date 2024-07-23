@@ -12,14 +12,13 @@ namespace OSDC.UnitConversion.Service.Controllers
     [ApiController]
     public class UnitSystemController : ControllerBase
     {
-        private readonly ILogger logger_;
-        private readonly UnitSystemManager unitSystemManager_;
+        private readonly ILogger<UnitSystemManager> _logger;
+        private readonly UnitSystemManager _unitSystemManager;
 
-        public UnitSystemController(ILoggerFactory loggerFactory)
+        public UnitSystemController(ILogger<UnitSystemManager> logger, SqlConnectionManager connectionManager)
         {
-            logger_ = loggerFactory.CreateLogger<UnitSystemController>();
-            unitSystemManager_ = UnitSystemManager.GetInstance(logger_);
-            DatabaseCleaner.Instance.Activate(); // activates the singleton DatabaseCleaner that deletes records older than a predefined time from the microservice database
+            _logger = logger;
+            _unitSystemManager = UnitSystemManager.GetInstance(_logger, connectionManager);
         }
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet(Name = "GetAllUnitSystemId")]
         public ActionResult<IEnumerable<Guid>> GetAllUnitSystemId()
         {
-            var ids = unitSystemManager_.GetAllUnitSystemId();
+            var ids = _unitSystemManager.GetAllUnitSystemId();
             if (ids != null)
             {
                 return Ok(ids);
@@ -50,7 +49,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         {
             if (!id.Equals(Guid.Empty))
             {
-                var val = unitSystemManager_.GetUnitSystemById(id);
+                var val = _unitSystemManager.GetUnitSystemById(id);
                 if (val != null)
                 {
                     return Ok(val);
@@ -73,7 +72,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("LightData", Name = "GetAllUnitSystemLight")]
         public ActionResult<IEnumerable<UnitSystemLight>> GetAllUnitSystemLight()
         {
-            var vals = unitSystemManager_.GetAllUnitSystemLight();
+            var vals = _unitSystemManager.GetAllUnitSystemLight();
             if (vals != null)
             {
                 return Ok(vals);
@@ -91,7 +90,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("HeavyData", Name = "GetAllUnitSystem")]
         public ActionResult<IEnumerable<UnitSystem>> GetAllUnitSystem()
         {
-            var vals = unitSystemManager_.GetAllUnitSystem();
+            var vals = _unitSystemManager.GetAllUnitSystem();
             if (vals != null)
             {
                 return Ok(vals);
@@ -112,10 +111,10 @@ namespace OSDC.UnitConversion.Service.Controllers
         {
             if (value != null && value.ID != Guid.Empty)
             {
-                UnitSystem unitSystem = unitSystemManager_.GetUnitSystemById(value.ID);
+                UnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(value.ID);
                 if (unitSystem == null)
                 {
-                    if (unitSystemManager_.AddUnitSystem(value))
+                    if (_unitSystemManager.AddUnitSystem(value))
                     {
                         return Ok(); // status=OK is used rather than status=Created because NSwag auto-generated controllers use 200 (OK) rather than 201 (Created) as return codes
                     }
@@ -126,13 +125,13 @@ namespace OSDC.UnitConversion.Service.Controllers
                 }
                 else
                 {
-                    logger_.LogWarning("The given UnitSystem already exists and will not be added");
+                    _logger.LogWarning("The given UnitSystem already exists and will not be added");
                     return StatusCode(StatusCodes.Status409Conflict);
                 }
             }
             else
             {
-                logger_.LogWarning("The given UnitSystem is null or its ID is empty");
+                _logger.LogWarning("The given UnitSystem is null or its ID is empty");
                 return BadRequest();
             }
         }
@@ -147,10 +146,10 @@ namespace OSDC.UnitConversion.Service.Controllers
         {
             if (value != null && value.ID.Equals(id))
             {
-                UnitSystem unitSystem = unitSystemManager_.GetUnitSystemById(id);
+                UnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(id);
                 if (unitSystem != null)
                 {
-                    if (unitSystemManager_.UpdateUnitSystemById(id, value))
+                    if (_unitSystemManager.UpdateUnitSystemById(id, value))
                     {
                         return Ok();
                     }
@@ -161,13 +160,13 @@ namespace OSDC.UnitConversion.Service.Controllers
                 }
                 else
                 {
-                    logger_.LogWarning("The given UnitSystem has not been found in the database");
+                    _logger.LogWarning("The given UnitSystem has not been found in the database");
                     return NotFound();
                 }
             }
             else
             {
-                logger_.LogWarning("The given UnitSystem is null or its does not match the ID to update");
+                _logger.LogWarning("The given UnitSystem is null or its does not match the ID to update");
                 return BadRequest();
             }
         }
@@ -180,9 +179,9 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpDelete("{id}", Name = "DeleteUnitSystemById")]
         public ActionResult DeleteUnitSystemById(Guid id)
         {
-            if (unitSystemManager_.GetUnitSystemById(id) != null)
+            if (_unitSystemManager.GetUnitSystemById(id) != null)
             {
-                if (unitSystemManager_.DeleteUnitSystemById(id))
+                if (_unitSystemManager.DeleteUnitSystemById(id))
                 {
                     return Ok();
                 }
@@ -193,7 +192,7 @@ namespace OSDC.UnitConversion.Service.Controllers
             }
             else
             {
-                logger_.LogWarning("The UnitSystem of given ID does not exist");
+                _logger.LogWarning("The UnitSystem of given ID does not exist");
                 return NotFound();
             }
         }

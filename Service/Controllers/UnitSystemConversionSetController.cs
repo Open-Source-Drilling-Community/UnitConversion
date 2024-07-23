@@ -12,24 +12,23 @@ namespace OSDC.UnitConversion.Service.Controllers
     [ApiController]
     public class UnitSystemConversionSetController : ControllerBase
     {
-        private readonly ILogger logger_;
-        private readonly UnitSystemConversionSetManager unitSystemConversionSetManager_;
+        private readonly ILogger<UnitSystemConversionSetManager> _logger;
+        private readonly UnitSystemConversionSetManager _unitSystemConversionSetManager;
 
-        public UnitSystemConversionSetController(ILoggerFactory loggerFactory)
+        public UnitSystemConversionSetController(ILogger<UnitSystemConversionSetManager> logger, SqlConnectionManager connectionManager)
         {
-            logger_ = loggerFactory.CreateLogger<UnitSystemConversionSetController>();
-            unitSystemConversionSetManager_ = UnitSystemConversionSetManager.GetInstance(logger_);
-            DatabaseCleaner.Instance.Activate(); // activates the singleton DatabaseCleaner that deletes records older than a predefined time (default 1000h) from the microservice database
+            _logger = logger;
+            _unitSystemConversionSetManager = UnitSystemConversionSetManager.GetInstance(_logger, connectionManager);
         }
 
         /// <summary>
-        /// Returns the list of Guid of all UnitSystemConversionSet present in the microservice database at endpoint TplProjectName/api/UnitSystemConversionSet
+        /// Returns the list of Guid of all UnitSystemConversionSet present in the microservice database at endpoint UnitConversion/api/UnitSystemConversionSet
         /// </summary>
-        /// <returns>the list of Guid of all UnitSystemConversionSet present in the microservice database at endpoint TplProjectName/api/UnitSystemConversionSet</returns>
+        /// <returns>the list of Guid of all UnitSystemConversionSet present in the microservice database at endpoint UnitConversion/api/UnitSystemConversionSet</returns>
         [HttpGet(Name = "GetAllUnitSystemConversionSetId")]
         public ActionResult<IEnumerable<Guid>> GetAllUnitSystemConversionSetId()
         {
-            var ids = unitSystemConversionSetManager_.GetAllUnitSystemConversionSetId();
+            var ids = _unitSystemConversionSetManager.GetAllUnitSystemConversionSetId();
             if (ids != null)
             {
                 return Ok(ids);
@@ -41,13 +40,13 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Returns the list of MetaInfo of all UnitSystemConversionSet present in the microservice database, at endpoint TplProjectName/api/UnitSystemConversionSet/MetaInfo
+        /// Returns the list of MetaInfo of all UnitSystemConversionSet present in the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/MetaInfo
         /// </summary>
-        /// <returns>the list of MetaInfo of all UnitSystemConversionSet present in the microservice database, at endpoint TplProjectName/api/UnitSystemConversionSet/MetaInfo</returns>
+        /// <returns>the list of MetaInfo of all UnitSystemConversionSet present in the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/MetaInfo</returns>
         [HttpGet("MetaInfo", Name = "GetAllUnitSystemConversionSetMetaInfo")]
         public ActionResult<IEnumerable<MetaInfo>> GetAllUnitSystemConversionSetMetaInfo()
         {
-            var vals = unitSystemConversionSetManager_.GetAllUnitSystemConversionSetMetaInfo();
+            var vals = _unitSystemConversionSetManager.GetAllUnitSystemConversionSetMetaInfo();
             if (vals != null)
             {
                 return Ok(vals);
@@ -59,16 +58,16 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Returns the UnitSystemConversionSet identified by its Guid from the microservice database, at endpoint TplProjectName/api/UnitSystemConversionSet/MetaInfo/id
+        /// Returns the UnitSystemConversionSet identified by its Guid from the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/MetaInfo/id
         /// </summary>
         /// <param name="guid"></param>
-        /// <returns>the UnitSystemConversionSet identified by its Guid from the microservice database, at endpoint TplProjectName/api/UnitSystemConversionSet/MetaInfo/id</returns>
+        /// <returns>the UnitSystemConversionSet identified by its Guid from the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/MetaInfo/id</returns>
         [HttpGet("{id}", Name = "GetUnitSystemConversionSetById")]
         public ActionResult<Model.UnitSystemConversionSet> GetUnitSystemConversionSetById(Guid id)
         {
             if (!id.Equals(Guid.Empty))
             {
-                var val = unitSystemConversionSetManager_.GetUnitSystemConversionSetById(id);
+                var val = _unitSystemConversionSetManager.GetUnitSystemConversionSetById(id);
                 if (val != null)
                 {
                     return Ok(val);
@@ -85,13 +84,13 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Returns the list of all UnitSystemConversionSet present in the microservice database, at endpoint TplProjectName/api/UnitSystemConversionSet/HeavyData
+        /// Returns the list of all UnitSystemConversionSet present in the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/HeavyData
         /// </summary>
-        /// <returns>the list of all UnitSystemConversionSet present in the microservice database, at endpoint TplProjectName/api/UnitSystemConversionSet/HeavyData</returns>
+        /// <returns>the list of all UnitSystemConversionSet present in the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/HeavyData</returns>
         [HttpGet("HeavyData", Name = "GetAllUnitSystemConversionSet")]
         public ActionResult<IEnumerable<Model.UnitSystemConversionSet>> GetAllUnitSystemConversionSet()
         {
-            var vals = unitSystemConversionSetManager_.GetAllUnitSystemConversionSet();
+            var vals = _unitSystemConversionSetManager.GetAllUnitSystemConversionSet();
             if (vals != null)
             {
                 return Ok(vals);
@@ -103,19 +102,19 @@ namespace OSDC.UnitConversion.Service.Controllers
         }
 
         /// <summary>
-        /// Performs calculation on the given UnitSystemConversionSet and adds it to the microservice database, at the endpoint TplProjectName/api/UnitSystemConversionSet
+        /// Performs calculation on the given UnitSystemConversionSet and adds it to the microservice database, at the endpoint UnitConversion/api/UnitSystemConversionSet
         /// </summary>
         /// <param name="unitSystemConversionSet"></param>
-        /// <returns>true if the given UnitSystemConversionSet has been added successfully to the microservice database, at the endpoint TplProjectName/api/UnitSystemConversionSet</returns>
+        /// <returns>true if the given UnitSystemConversionSet has been added successfully to the microservice database, at the endpoint UnitConversion/api/UnitSystemConversionSet</returns>
         [HttpPost(Name = "PostUnitSystemConversionSet")]
         public ActionResult PostUnitSystemConversionSet([FromBody] Model.UnitSystemConversionSet value)
         {
             if (value != null && value.MetaInfo != null && value.MetaInfo.ID != Guid.Empty)
             {
-                Model.UnitSystemConversionSet unitSystemConversionSet = unitSystemConversionSetManager_.GetUnitSystemConversionSetById(value.MetaInfo.ID);
+                Model.UnitSystemConversionSet? unitSystemConversionSet = _unitSystemConversionSetManager.GetUnitSystemConversionSetById(value.MetaInfo.ID);
                 if (unitSystemConversionSet == null)
                 {
-                    if (unitSystemConversionSetManager_.AddUnitSystemConversionSet(value))
+                    if (_unitSystemConversionSetManager.AddUnitSystemConversionSet(value))
                     {
                         return Ok(); // status=OK is used rather than status=Created because NSwag auto-generated controllers use 200 (OK) rather than 201 (Created) as return codes
                     }
@@ -126,31 +125,31 @@ namespace OSDC.UnitConversion.Service.Controllers
                 }
                 else
                 {
-                    logger_.LogWarning("The given UnitSystemConversionSet already exists and will not be added");
+                    _logger.LogWarning("The given UnitSystemConversionSet already exists and will not be added");
                     return StatusCode(StatusCodes.Status409Conflict);
                 }
             }
             else
             {
-                logger_.LogWarning("The given UnitSystemConversionSet is null or its ID is empty");
+                _logger.LogWarning("The given UnitSystemConversionSet is null or its ID is empty");
                 return BadRequest();
             }
         }
 
         /// <summary>
-        /// Performs calculation on the given UnitSystemConversionSet and updates it in the microservice database, at the endpoint TplProjectName/api/UnitSystemConversionSet/id
+        /// Performs calculation on the given UnitSystemConversionSet and updates it in the microservice database, at the endpoint UnitConversion/api/UnitSystemConversionSet/id
         /// </summary>
         /// <param name="unitSystemConversionSet"></param>
-        /// <returns>true if the given UnitSystemConversionSet has been updated successfully to the microservice database, at the endpoint TplProjectName/api/UnitSystemConversionSet/id</returns>
+        /// <returns>true if the given UnitSystemConversionSet has been updated successfully to the microservice database, at the endpoint UnitConversion/api/UnitSystemConversionSet/id</returns>
         [HttpPut("{id}", Name = "PutUnitSystemConversionSetById")]
         public ActionResult PutUnitSystemConversionSetById(Guid id, [FromBody] Model.UnitSystemConversionSet value)
         {
             if (value != null && value.MetaInfo != null && value.MetaInfo.ID.Equals(id))
             {
-                Model.UnitSystemConversionSet unitSystemConversionSet = unitSystemConversionSetManager_.GetUnitSystemConversionSetById(id);
+                Model.UnitSystemConversionSet? unitSystemConversionSet = _unitSystemConversionSetManager.GetUnitSystemConversionSetById(id);
                 if (unitSystemConversionSet != null)
                 {
-                    if (unitSystemConversionSetManager_.UpdateUnitSystemConversionSetById(id, value))
+                    if (_unitSystemConversionSetManager.UpdateUnitSystemConversionSetById(id, value))
                     {
                         return Ok();
                     }
@@ -161,28 +160,28 @@ namespace OSDC.UnitConversion.Service.Controllers
                 }
                 else
                 {
-                    logger_.LogWarning("The given UnitSystemConversionSet has not been found in the database");
+                    _logger.LogWarning("The given UnitSystemConversionSet has not been found in the database");
                     return NotFound();
                 }
             }
             else
             {
-                logger_.LogWarning("The given UnitSystemConversionSet is null or its does not match the ID to update");
+                _logger.LogWarning("The given UnitSystemConversionSet is null or its does not match the ID to update");
                 return BadRequest();
             }
         }
 
         /// <summary>
-        /// Deletes the UnitSystemConversionSet of given ID from the microservice database, at the endpoint TplProjectName/api/UnitSystemConversionSet/id
+        /// Deletes the UnitSystemConversionSet of given ID from the microservice database, at the endpoint UnitConversion/api/UnitSystemConversionSet/id
         /// </summary>
         /// <param name="guid"></param>
-        /// <returns>true if the UnitSystemConversionSet was deleted from the microservice database, at the endpoint TplProjectName/api/UnitSystemConversionSet/id</returns>
+        /// <returns>true if the UnitSystemConversionSet was deleted from the microservice database, at the endpoint UnitConversion/api/UnitSystemConversionSet/id</returns>
         [HttpDelete("{id}", Name = "DeleteUnitSystemConversionSetById")]
         public ActionResult DeleteUnitSystemConversionSetById(Guid id)
         {
-            if (unitSystemConversionSetManager_.GetUnitSystemConversionSetById(id) != null)
+            if (_unitSystemConversionSetManager.GetUnitSystemConversionSetById(id) != null)
             {
-                if (unitSystemConversionSetManager_.DeleteUnitSystemConversionSetById(id))
+                if (_unitSystemConversionSetManager.DeleteUnitSystemConversionSetById(id))
                 {
                     return Ok();
                 }
@@ -193,7 +192,7 @@ namespace OSDC.UnitConversion.Service.Controllers
             }
             else
             {
-                logger_.LogWarning("The UnitSystemConversionSet of given ID does not exist");
+                _logger.LogWarning("The UnitSystemConversionSet of given ID does not exist");
                 return NotFound();
             }
         }

@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using OSDC.UnitConversion.Conversion;
+using OSDC.UnitConversion.Conversion.DrillingEngineering;
+
+namespace OSDC.UnitConversion.Service.Controllers
+{
+    [Produces("application/json")]
+    [Route("[controller]")]
+    [ApiController]
+    public class PhysicalQuantityController : ControllerBase
+    {
+        private readonly ILogger _logger;
+
+        public PhysicalQuantityController(ILogger<PhysicalQuantityController> logger)
+        {
+            _logger = logger;
+        }
+
+        /// <summary>
+        /// Returns the list of Guid of all PhysicalQuantity present in the microservice database at endpoint UnitConversion/api/PhysicalQuantity
+        /// </summary>
+        /// <returns>the list of Guid of all PhysicalQuantity present in the microservice database at endpoint UnitConversion/api/PhysicalQuantity</returns>
+        [HttpGet(Name = "GetAllPhysicalQuantityId")]
+        public ActionResult<IEnumerable<Guid>> GetAllPhysicalQuantityId()
+        {
+            List<Guid> ids = [];
+            try
+            {
+                HashSet<BasePhysicalQuantity> quantityHashSet = [];
+                quantityHashSet.UnionWith(BasePhysicalQuantity.AvailableBasePhysicalQuantities);
+                quantityHashSet.UnionWith(PhysicalQuantity.AvailablePhysicalQuantities);
+                foreach (BasePhysicalQuantity qty in quantityHashSet)
+                {
+                    ids.Add(qty.ID);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Problem while getting available physical quantities");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            return Ok(ids);
+        }
+
+        /// <summary>
+        /// Returns the PhysicalQuantity identified by its Guid, at endpoint UnitConversion/api/PhysicalQuantity/id
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns>the PhysicalQuantity identified by its Guid, at endpoint UnitConversion/api/PhysicalQuantity/id</returns>
+        [HttpGet("{id}", Name = "GetPhysicalQuantityById")]
+        public ActionResult<PhysicalQuantity> GetPhysicalQuantityById(Guid id)
+        {
+            if (!id.Equals(Guid.Empty))
+            {
+                BasePhysicalQuantity qty = PhysicalQuantity.GetQuantity(id);
+                if (qty != null)
+                {
+                    return Ok(qty);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        /// <summary>
+        /// Returns the list of all PhysicalQuantity present in the microservice database, at endpoint UnitConversion/api/PhysicalQuantity/HeavyData
+        /// </summary>
+        /// <returns>the list of all PhysicalQuantity present in the microservice database, at endpoint UnitConversion/api/PhysicalQuantity/HeavyData</returns>
+        [HttpGet("HeavyData", Name = "GetAllPhysicalQuantity")]
+        public ActionResult<IEnumerable<PhysicalQuantity>> GetAllPhysicalQuantity()
+        {
+            try
+            {
+                HashSet<BasePhysicalQuantity> quantityHashSet = [];
+                quantityHashSet.UnionWith(BasePhysicalQuantity.AvailableBasePhysicalQuantities);
+                quantityHashSet.UnionWith(PhysicalQuantity.AvailablePhysicalQuantities);
+                return Ok(quantityHashSet);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Problem while getting available physical quantities");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+    }
+}

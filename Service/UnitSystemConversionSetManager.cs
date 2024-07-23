@@ -15,21 +15,21 @@ namespace OSDC.UnitConversion.Service
     /// </summary>
     public class UnitSystemConversionSetManager
     {
-        private static UnitSystemConversionSetManager instance_ = null;
-        private readonly ILogger logger_;
-        private readonly object lock_ = new();
-        private readonly SqliteConnection connection_;
+        private static UnitSystemConversionSetManager? _instance = null;
+        private readonly ILogger<UnitSystemConversionSetManager> _logger;
+        private readonly object _lock = new();
+        private readonly SqlConnectionManager _connectionManager;
 
-        private UnitSystemConversionSetManager(ILogger logger)
+        private UnitSystemConversionSetManager(ILogger<UnitSystemConversionSetManager> logger, SqlConnectionManager connectionManager)
         {
-            logger_ = logger;
-            connection_ = SqlConnectionManager.GetInstance(logger_).Connection;
+            _logger = logger;
+            _connectionManager = connectionManager;
         }
 
-        public static UnitSystemConversionSetManager GetInstance(ILogger logger)
+        public static UnitSystemConversionSetManager GetInstance(ILogger<UnitSystemConversionSetManager> logger, SqlConnectionManager connectionManager)
         {
-            instance_ ??= new UnitSystemConversionSetManager(logger);
-            return instance_;
+            _instance ??= new UnitSystemConversionSetManager(logger, connectionManager);
+            return _instance;
         }
 
         public int Count
@@ -37,9 +37,10 @@ namespace OSDC.UnitConversion.Service
             get
             {
                 int count = 0;
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    var command = connection_.CreateCommand();
+                    var command = connection.CreateCommand();
                     command.CommandText = "SELECT COUNT(*) FROM UnitSystemConversionSetTable";
                     try
                     {
@@ -51,12 +52,12 @@ namespace OSDC.UnitConversion.Service
                     }
                     catch (SqliteException ex)
                     {
-                        logger_.LogError(ex, "Impossible to count records in the UnitSystemConversionSetTable");
+                        _logger.LogError(ex, "Impossible to count records in the UnitSystemConversionSetTable");
                     }
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
                 return count;
             }
@@ -64,16 +65,17 @@ namespace OSDC.UnitConversion.Service
 
         public bool Clear()
         {
-            if (connection_ != null)
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
                 bool success = false;
-                lock (lock_)
+                lock (_lock)
                 {
-                    using var transaction = connection_.BeginTransaction();
+                    using var transaction = connection.BeginTransaction();
                     try
                     {
                         //empty UnitSystemConversionSetTable
-                        var command = connection_.CreateCommand();
+                        var command = connection.CreateCommand();
                         command.CommandText = "DELETE FROM UnitSystemConversionSetTable";
                         command.ExecuteNonQuery();
 
@@ -83,14 +85,14 @@ namespace OSDC.UnitConversion.Service
                     catch (SqliteException ex)
                     {
                         transaction.Rollback();
-                        logger_.LogError(ex, "Impossible to clear the UnitSystemConversionSetTable");
+                        _logger.LogError(ex, "Impossible to clear the UnitSystemConversionSetTable");
                     }
                 }
                 return success;
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
                 return false;
             }
         }
@@ -98,9 +100,10 @@ namespace OSDC.UnitConversion.Service
         public bool Contains(Guid guid)
         {
             int count = 0;
-            if (connection_ != null)
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = $"SELECT COUNT(*) FROM UnitSystemConversionSetTable WHERE ID = ' {guid}'";
                 try
                 {
@@ -112,12 +115,12 @@ namespace OSDC.UnitConversion.Service
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to count rows from UnitSystemConversionSetTable");
+                    _logger.LogError(ex, "Impossible to count rows from UnitSystemConversionSetTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
             return count >= 1;
         }
@@ -126,12 +129,13 @@ namespace OSDC.UnitConversion.Service
         /// Returns the list of Guid of all UnitSystemConversionSet present in the microservice database 
         /// </summary>
         /// <returns>the list of Guid of all UnitSystemConversionSet present in the microservice database</returns>
-        public List<Guid> GetAllUnitSystemConversionSetId()
+        public List<Guid>? GetAllUnitSystemConversionSetId()
         {
-            List<Guid> ids = new();
-            if (connection_ != null)
+            List<Guid> ids = [];
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = "SELECT ID FROM UnitSystemConversionSetTable";
                 try
                 {
@@ -141,29 +145,32 @@ namespace OSDC.UnitConversion.Service
                         Guid id = reader.GetGuid(0);
                         ids.Add(id);
                     }
+                    _logger.LogInformation("Returning the list of ID of existing records from UnitSystemConversionSetTable");
+                    return ids;
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to get IDs from UnitSystemConversionSetTable");
+                    _logger.LogError(ex, "Impossible to get IDs from UnitSystemConversionSetTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
-            return ids;
+            return null;
         }
 
         /// <summary>
         /// Returns the list of MetaInfo of all UnitSystemConversionSet present in the microservice database 
         /// </summary>
         /// <returns>the list of MetaInfo of all UnitSystemConversionSet present in the microservice database</returns>
-        public List<MetaInfo> GetAllUnitSystemConversionSetMetaInfo()
+        public List<MetaInfo?>? GetAllUnitSystemConversionSetMetaInfo()
         {
-            List<MetaInfo> metaInfos = new();
-            if (connection_ != null)
+            List<MetaInfo?> metaInfos = [];
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = "SELECT MetaInfo FROM UnitSystemConversionSetTable";
                 try
                 {
@@ -171,18 +178,20 @@ namespace OSDC.UnitConversion.Service
                     while (reader.Read() && !reader.IsDBNull(0))
                     {
                         string mInfo = reader.GetString(0);
-                        MetaInfo metaInfo = JsonSerializer.Deserialize<MetaInfo>(mInfo);
+                        MetaInfo? metaInfo = JsonSerializer.Deserialize<MetaInfo>(mInfo);
                         metaInfos.Add(metaInfo);
                     }
+                    _logger.LogInformation("Returning the list of MetaInfo of existing records from UnitSystemConversionSetTable");
+                    return metaInfos;
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to get IDs from UnitSystemConversionSetTable");
+                    _logger.LogError(ex, "Impossible to get IDs from UnitSystemConversionSetTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
             return metaInfos;
         }
@@ -192,14 +201,15 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="guid"></param>
         /// <returns>the UnitSystemConversionSet retrieved from the database</returns>
-        public UnitSystemConversionSet GetUnitSystemConversionSetById(Guid guid)
+        public UnitSystemConversionSet? GetUnitSystemConversionSetById(Guid guid)
         {
             if (!guid.Equals(Guid.Empty))
             {
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    UnitSystemConversionSet unitSystemConversionSet;
-                    var command = connection_.CreateCommand();
+                    UnitSystemConversionSet? unitSystemConversionSet;
+                    var command = connection.CreateCommand();
                     command.CommandText = $"SELECT UnitSystemConversionSet FROM UnitSystemConversionSetTable WHERE ID = '{guid}'";
                     try
                     {
@@ -208,33 +218,33 @@ namespace OSDC.UnitConversion.Service
                         {
                             string data = reader.GetString(0);
                             unitSystemConversionSet = JsonSerializer.Deserialize<UnitSystemConversionSet>(data);
-                            if (!unitSystemConversionSet.MetaInfo.ID.Equals(guid))
+                            if (unitSystemConversionSet != null && unitSystemConversionSet.MetaInfo != null && !unitSystemConversionSet.MetaInfo.ID.Equals(guid))
                                 throw (new SqliteException("SQLite database corrupted: retrieved UnitSystemConversionSet is null or has been jsonified with the wrong ID.", 1));
                         }
                         else
                         {
-                            logger_.LogInformation("No UnitSystemConversionSet of given ID in the database");
+                            _logger.LogInformation("No UnitSystemConversionSet of given ID in the database");
                             return null;
                         }
                     }
                     catch (SqliteException ex)
                     {
-                        logger_.LogError(ex, "Impossible to get the UnitSystemConversionSet with the given ID from UnitSystemConversionSetTable");
+                        _logger.LogError(ex, "Impossible to get the UnitSystemConversionSet with the given ID from UnitSystemConversionSetTable");
                         return null;
                     }
 
                     // Finalizing
-                    logger_.LogInformation("Returning the UnitSystemConversionSet of given ID from UnitSystemConversionSetTable");
+                    _logger.LogInformation("Returning the UnitSystemConversionSet of given ID from UnitSystemConversionSetTable");
                     return unitSystemConversionSet;
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The given UnitSystemConversionSet ID is null or empty");
+                _logger.LogWarning("The given UnitSystemConversionSet ID is null or empty");
             }
             return null;
         }
@@ -243,12 +253,13 @@ namespace OSDC.UnitConversion.Service
         /// Returns the list of all UnitSystemConversionSet present in the microservice database 
         /// </summary>
         /// <returns>the list of all UnitSystemConversionSet present in the microservice database</returns>
-        public List<UnitSystemConversionSet> GetAllUnitSystemConversionSet()
+        public List<UnitSystemConversionSet?>? GetAllUnitSystemConversionSet()
         {
-            List<UnitSystemConversionSet> vals = new();
-            if (connection_ != null)
+            List<UnitSystemConversionSet?> vals = [];
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = "SELECT UnitSystemConversionSet FROM UnitSystemConversionSetTable";
                 try
                 {
@@ -256,20 +267,22 @@ namespace OSDC.UnitConversion.Service
                     while (reader.Read() && !reader.IsDBNull(0))
                     {
                         string data = reader.GetString(0);
-                        UnitSystemConversionSet unitSystemConversionSet = JsonSerializer.Deserialize<UnitSystemConversionSet>(data);
+                        UnitSystemConversionSet? unitSystemConversionSet = JsonSerializer.Deserialize<UnitSystemConversionSet>(data);
                         vals.Add(unitSystemConversionSet);
                     }
+                    _logger.LogInformation("Returning the list of existing UnitSystemConversionSet from UnitSystemConversionSetTable");
+                    return vals;
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to get UnitSystemConversionSet from UnitSystemConversionSetTable");
+                    _logger.LogError(ex, "Impossible to get UnitSystemConversionSet from UnitSystemConversionSetTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
-            return vals;
+            return null;
         }
 
         /// <summary>
@@ -277,54 +290,66 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="unitSystemConversionSet"></param>
         /// <returns>true if the given UnitSystemConversionSet has been added successfully</returns>
-        public bool AddUnitSystemConversionSet(UnitSystemConversionSet unitSystemConversionSet)
+        public bool AddUnitSystemConversionSet(UnitSystemConversionSet? unitSystemConversionSet)
         {
             if (unitSystemConversionSet != null && unitSystemConversionSet.MetaInfo != null && unitSystemConversionSet.MetaInfo.ID != Guid.Empty)
             {
                 //calculate outputs
                 if (!unitSystemConversionSet.Calculate())
                 {
-                    logger_.LogWarning("Impossible to calculate outputs for the given UnitSystemConversionSet");
+                    _logger.LogWarning("Impossible to calculate outputs for the given UnitSystemConversionSet");
                     return false;
                 }
                 //update UnitSystemConversionSetTable
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    lock (lock_)
+                    lock (_lock)
                     {
-                        using SqliteTransaction transaction = connection_.BeginTransaction();
+                        using SqliteTransaction transaction = connection.BeginTransaction();
                         bool success = true;
                         try
                         {
                             //add the UnitSystemConversionSet to the UnitSystemConversionSetTable
                             string metaInfo = JsonSerializer.Serialize(unitSystemConversionSet.MetaInfo);
+                            string? cDate = null;
+                            if (unitSystemConversionSet.CreationDate != null)
+                                cDate = ((DateTimeOffset)unitSystemConversionSet.CreationDate).ToString(SqlConnectionManager.DATE_TIME_FORMAT);
+                            string? lDate = null;
+                            if (unitSystemConversionSet.LastModificationDate != null)
+                                lDate = ((DateTimeOffset)unitSystemConversionSet.LastModificationDate).ToString(SqlConnectionManager.DATE_TIME_FORMAT);
                             string data = JsonSerializer.Serialize(unitSystemConversionSet);
-                            var command = connection_.CreateCommand();
+                            var command = connection.CreateCommand();
                             command.CommandText = "INSERT INTO UnitSystemConversionSetTable " +
-                                "(ID, MetaInfo, CreationDate, LastModificationDate, UnitSystemConversionSet) VALUES (" +
+                                "(ID," +
+                                "MetaInfo, " +
+                                "CreationDate, " +
+                                "LastModificationDate, " +
+                                "UnitSystemConversionSet" +
+                                ") VALUES (" +
                                 $"'{unitSystemConversionSet.MetaInfo.ID}', " +
                                 $"'{metaInfo}', " +
-                                $"'{unitSystemConversionSet.CreationDate}', " +
-                                $"'{unitSystemConversionSet.LastModificationDate}', " +
+                                $"'{cDate}', " +
+                                $"'{lDate}', " +
                                 $"'{data}'" +
                                 ")";
                             int count = command.ExecuteNonQuery();
                             if (count != 1)
                             {
-                                logger_.LogWarning("Impossible to insert the given UnitSystemConversionSet into the UnitSystemConversionSetTable");
+                                _logger.LogWarning("Impossible to insert the given UnitSystemConversionSet into the UnitSystemConversionSetTable");
                                 success = false;
                             }
                         }
                         catch (SqliteException ex)
                         {
-                            logger_.LogError(ex, "Impossible to add the given UnitSystemConversionSet into UnitSystemConversionSetTable");
+                            _logger.LogError(ex, "Impossible to add the given UnitSystemConversionSet into UnitSystemConversionSetTable");
                             success = false;
                         }
                         // Finalizing
                         if (success)
                         {
                             transaction.Commit();
-                            logger_.LogInformation("Added the given UnitSystemConversionSet of given ID into the UnitSystemConversionSetTable successfully");
+                            _logger.LogInformation("Added the given UnitSystemConversionSet of given ID into the UnitSystemConversionSetTable successfully");
                         }
                         else
                         {
@@ -335,12 +360,12 @@ namespace OSDC.UnitConversion.Service
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The UnitSystemConversionSet ID or the ID of its input are null or empty");
+                _logger.LogWarning("The UnitSystemConversionSet ID or the ID of its input are null or empty");
             }
             return false;
         }
@@ -350,7 +375,7 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="unitSystemConversionSet"></param>
         /// <returns>true if the given UnitSystemConversionSet has been updated successfully</returns>
-        public bool UpdateUnitSystemConversionSetById(Guid guid, UnitSystemConversionSet unitSystemConversionSet)
+        public bool UpdateUnitSystemConversionSetById(Guid guid, UnitSystemConversionSet? unitSystemConversionSet)
         {
             bool success = true;
             if (guid != Guid.Empty && unitSystemConversionSet != null && unitSystemConversionSet.MetaInfo != null && unitSystemConversionSet.MetaInfo.ID == guid)
@@ -358,37 +383,44 @@ namespace OSDC.UnitConversion.Service
                 //calculate outputs
                 if (!unitSystemConversionSet.Calculate())
                 {
-                    logger_.LogWarning("Impossible to calculate outputs for the given UnitSystemConversionSet");
+                    _logger.LogWarning("Impossible to calculate outputs for the given UnitSystemConversionSet");
                     return false;
                 }
                 //update UnitSystemConversionSetTable
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    lock (lock_)
+                    lock (_lock)
                     {
-                        using SqliteTransaction transaction = connection_.BeginTransaction();
+                        using SqliteTransaction transaction = connection.BeginTransaction();
                         //update fields in UnitSystemConversionSetTable
                         try
                         {
                             string metaInfo = JsonSerializer.Serialize(unitSystemConversionSet.MetaInfo);
+                            string? cDate = null;
+                            if (unitSystemConversionSet.CreationDate != null)
+                                cDate = ((DateTimeOffset)unitSystemConversionSet.CreationDate).ToString(SqlConnectionManager.DATE_TIME_FORMAT);
+                            string? lDate = null;
+                            if (unitSystemConversionSet.LastModificationDate != null)
+                                lDate = ((DateTimeOffset)unitSystemConversionSet.LastModificationDate).ToString(SqlConnectionManager.DATE_TIME_FORMAT);
                             string data = JsonSerializer.Serialize(unitSystemConversionSet);
-                            var command = connection_.CreateCommand();
+                            var command = connection.CreateCommand();
                             command.CommandText = $"UPDATE UnitSystemConversionSetTable SET " +
                                 $"MetaInfo = '{metaInfo}', " +
-                                $"CreationDate = '{unitSystemConversionSet.CreationDate}', " +
-                                $"LastModificationDate = '{unitSystemConversionSet.LastModificationDate}', " +
+                                $"CreationDate = '{cDate}', " +
+                                $"LastModificationDate = '{lDate}', " +
                                 $"UnitSystemConversionSet = '{data}' " +
                                 $"WHERE ID = '{guid}'";
                             int count = command.ExecuteNonQuery();
                             if (count != 1)
                             {
-                                logger_.LogWarning("Impossible to update the UnitSystemConversionSet");
+                                _logger.LogWarning("Impossible to update the UnitSystemConversionSet");
                                 success = false;
                             }
                         }
                         catch (SqliteException ex)
                         {
-                            logger_.LogError(ex, "Impossible to update the UnitSystemConversionSet");
+                            _logger.LogError(ex, "Impossible to update the UnitSystemConversionSet");
                             success = false;
                         }
 
@@ -396,7 +428,7 @@ namespace OSDC.UnitConversion.Service
                         if (success)
                         {
                             transaction.Commit();
-                            logger_.LogInformation("Updated the given UnitSystemConversionSet successfully");
+                            _logger.LogInformation("Updated the given UnitSystemConversionSet successfully");
                             return true;
                         }
                         else
@@ -407,12 +439,12 @@ namespace OSDC.UnitConversion.Service
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The UnitSystemConversionSet ID or the ID of some of its attributes are null or empty");
+                _logger.LogWarning("The UnitSystemConversionSet ID or the ID of some of its attributes are null or empty");
             }
             return false;
         }
@@ -426,33 +458,34 @@ namespace OSDC.UnitConversion.Service
         {
             if (!guid.Equals(Guid.Empty))
             {
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    lock (lock_)
+                    lock (_lock)
                     {
-                        using var transaction = connection_.BeginTransaction();
+                        using var transaction = connection.BeginTransaction();
                         bool success = true;
                         //delete UnitSystemConversionSet from UnitSystemConversionSetTable
                         try
                         {
-                            var command = connection_.CreateCommand();
+                            var command = connection.CreateCommand();
                             command.CommandText = $"DELETE FROM UnitSystemConversionSetTable WHERE ID = '{guid}'";
                             int count = command.ExecuteNonQuery();
                             if (count < 0)
                             {
-                                logger_.LogWarning("Impossible to delete the UnitSystemConversionSet of given ID from the UnitSystemConversionSetTable");
+                                _logger.LogWarning("Impossible to delete the UnitSystemConversionSet of given ID from the UnitSystemConversionSetTable");
                                 success = false;
                             }
                         }
                         catch (SqliteException ex)
                         {
-                            logger_.LogError(ex, "Impossible to delete the UnitSystemConversionSet of given ID from UnitSystemConversionSetTable");
+                            _logger.LogError(ex, "Impossible to delete the UnitSystemConversionSet of given ID from UnitSystemConversionSetTable");
                             success = false;
                         }
                         if (success)
                         {
                             transaction.Commit();
-                            logger_.LogInformation("Removed the UnitSystemConversionSet of given ID from the UnitSystemConversionSetTable successfully");
+                            _logger.LogInformation("Removed the UnitSystemConversionSet of given ID from the UnitSystemConversionSetTable successfully");
                         }
                         else
                         {
@@ -463,55 +496,12 @@ namespace OSDC.UnitConversion.Service
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The UnitSystemConversionSet ID is null or empty");
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Deletes UnitSystemConversionSet that have not been modified since the given retirement time span (in seconds)
-        /// </summary>
-        /// <param name="retirementTime">the retirement time span above which records needs to be deleted</param>
-        /// <returns>true if older UnitSystemConversionSet were successfully deleted</returns>
-        public bool DeleteUnitSystemConversionSetByDateTime(TimeSpan retirementTime)
-        {
-            if (connection_ != null)
-            {
-                var command = connection_.CreateCommand();
-                DateTimeOffset retirementDate = DateTimeOffset.UtcNow - retirementTime;
-                command.CommandText = $"SELECT ID FROM UnitSystemConversionSetTable WHERE " +
-                    $"(LastModificationDate < '{retirementDate}') OR " +
-                    $"(LastModificationDate IS NULL AND CreationDate < '{retirementDate}')";
-                try
-                {
-                    using SqliteDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Guid guid = reader.GetGuid(0);
-                        if (DeleteUnitSystemConversionSetById(guid))
-                        {
-                            logger_.LogInformation("An old UnitSystemConversionSet has been deleted from UnitSystemConversionSetTable successfully");
-                            return true;
-                        }
-                        else
-                        {
-                            logger_.LogWarning("Impossible to delete old UnitSystemConversionSet from UnitSystemConversionSetTable");
-                        }
-                    }
-                }
-                catch (SqliteException ex)
-                {
-                    logger_.LogError(ex, "Impossible to clean old UnitSystemConversionSet from UnitSystemConversionSetTable");
-                }
-            }
-            else
-            {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("The UnitSystemConversionSet ID is null or empty");
             }
             return false;
         }

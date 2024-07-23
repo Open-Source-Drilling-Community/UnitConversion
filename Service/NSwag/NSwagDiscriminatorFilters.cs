@@ -27,7 +27,8 @@ namespace OSDC.UnitConversion.Service.NSwag
                 //ShowSchema(schemaRepository, "");
 
                 var schemaGenerator = context.SchemaGenerator;
-                if (!schemaRepository.TryGetValue(abstractType.Name, out OpenApiSchema parentSchema))
+                OpenApiSchema? parentSchema;
+                if (!schemaRepository.TryGetValue(abstractType.Name, out parentSchema))
                 {
                     parentSchema = schemaGenerator.GenerateSchema(abstractType, context.SchemaRepository);
                 }
@@ -71,7 +72,8 @@ namespace OSDC.UnitConversion.Service.NSwag
                 //ShowSchema(schemaRepository, "");
 
                 var schemaGenerator = context.SchemaGenerator;
-                if (!schemaRepository.TryGetValue(abstractType.FullName, out OpenApiSchema parentSchema))
+                OpenApiSchema? parentSchema;
+                if (!schemaRepository.TryGetValue(abstractType.FullName!, out parentSchema))
                 //if (!schemaRepository.TryGetValue(abstractType.Name, out OpenApiSchema parentSchema))
                 {
                     parentSchema = schemaGenerator.GenerateSchema(abstractType, context.SchemaRepository);
@@ -151,7 +153,7 @@ namespace OSDC.UnitConversion.Service.NSwag
                     Type = schema.Type,
                     Required = schema.Required
                 };
-                if (context.SchemaRepository.Schemas.TryGetValue(typeof(T).Name, out OpenApiSchema _))
+                if (context.SchemaRepository.Schemas.TryGetValue(typeof(T).Name, out OpenApiSchema? _))
                 {
                     schema.AllOf = new List<OpenApiSchema> {
                         new OpenApiSchema { Reference = new OpenApiReference { Id = typeof(T).Name, Type = ReferenceType.Schema } },
@@ -160,9 +162,15 @@ namespace OSDC.UnitConversion.Service.NSwag
                     //Console.WriteLine($"schema actually set for {str}");
                 }
 
-                var assemblyName = Assembly.GetAssembly(type).GetName();
-                schema.Discriminator = new OpenApiDiscriminator { PropertyName = Utils.DISCRIMINATOR_NAME };
-                schema.AddExtension("x-ms-discriminator-value", new OpenApiString($"{type.Name}, {assemblyName.FullName}"));
+                var assembly = Assembly.GetAssembly(type);
+                var assemblyName = new AssemblyName();
+                if (assembly != null)
+                    assemblyName = assembly.GetName();
+                if (assemblyName != null)
+                {
+                    schema.Discriminator = new OpenApiDiscriminator { PropertyName = Utils.DISCRIMINATOR_NAME };
+                    schema.AddExtension("x-ms-discriminator-value", new OpenApiString($"{type.Name}, {assemblyName.FullName}"));
+                }
 
                 // reset properties for they are included in allOf, should be null but code does not handle it
                 schema.Properties = new Dictionary<string, OpenApiSchema>();
@@ -189,25 +197,25 @@ namespace OSDC.UnitConversion.Service.NSwag
                     Type = schema.Type,
                     Required = schema.Required
                 };
-                if (context.SchemaRepository.Schemas.TryGetValue(typeof(T).FullName, out OpenApiSchema _))
-                //if (context.SchemaRepository.Schemas.TryGetValue(typeof(T).Name, out OpenApiSchema _))
+                if (context.SchemaRepository.Schemas.TryGetValue(typeof(T).FullName!, out OpenApiSchema? _))
                 {
                     schema.AllOf = new List<OpenApiSchema> {
                         new OpenApiSchema { Reference = new OpenApiReference { Id = typeof(T).FullName, Type = ReferenceType.Schema } },
                         clonedSchema
                     };
-
-                    //schema.AllOf = new List<OpenApiSchema> {
-                    //    new OpenApiSchema { Reference = new OpenApiReference { Id = typeof(T).Name, Type = ReferenceType.Schema } },
-                    //    clonedSchema
-                    //};
                     //Console.WriteLine($"schema actually set for {str}");
                 }
 
-                var assemblyName = Assembly.GetAssembly(type).GetName();
-                schema.Discriminator = new OpenApiDiscriminator { PropertyName = Utils.DISCRIMINATOR_NAME };
-                schema.AddExtension("x-ms-discriminator-value", new OpenApiString($"{type.FullName}, {assemblyName.FullName}"));
-                //schema.AddExtension("x-ms-discriminator-value", new OpenApiString($"{type.Name}, {assemblyName.FullName}"));
+
+                var assembly = Assembly.GetAssembly(type);
+                var assemblyName = new AssemblyName();
+                if (assembly != null)
+                    assemblyName = assembly.GetName();
+                if (assemblyName != null)
+                {
+                    schema.Discriminator = new OpenApiDiscriminator { PropertyName = Utils.DISCRIMINATOR_NAME };
+                    schema.AddExtension("x-ms-discriminator-value", new OpenApiString($"{type.Name}, {assemblyName.FullName}"));
+                }
 
                 // reset properties for they are included in allOf, should be null but code does not handle it
                 schema.Properties = new Dictionary<string, OpenApiSchema>();

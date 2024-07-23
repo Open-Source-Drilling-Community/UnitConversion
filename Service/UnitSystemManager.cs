@@ -14,27 +14,28 @@ namespace OSDC.UnitConversion.Service
     /// </summary>
     public class UnitSystemManager
     {
-        private static UnitSystemManager instance_ = null;
-        private readonly ILogger logger_;
-        private readonly object lock_ = new();
-        private readonly SqliteConnection connection_;
+        private static UnitSystemManager? _instance = null;
+        private readonly ILogger _logger;
+        private readonly object _lock = new();
+        private readonly SqlConnectionManager _connectionManager;
 
-        private UnitSystemManager(ILogger logger)
+        private UnitSystemManager(ILogger<UnitSystemManager> logger, SqlConnectionManager connectionManager)
         {
-            logger_ = logger;
-            connection_ = SqlConnectionManager.GetInstance(logger_).Connection;
+            _logger = logger;
+            _connectionManager = connectionManager;
 
             // make sure database contains default UnitSystems
-            if (GetAllUnitSystemId().Count < 4)
+            List<Guid>? ids = GetAllUnitSystemId();
+            if (ids != null && ids.Count < 4)
             {
                 FillDefault();
             }
         }
 
-        public static UnitSystemManager GetInstance(ILogger logger)
+        public static UnitSystemManager GetInstance(ILogger<UnitSystemManager> logger, SqlConnectionManager connectionManager)
         {
-            instance_ ??= new UnitSystemManager(logger);
-            return instance_;
+            _instance ??= new UnitSystemManager(logger, connectionManager);
+            return _instance;
         }
 
         public int Count
@@ -42,9 +43,10 @@ namespace OSDC.UnitConversion.Service
             get
             {
                 int count = 0;
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    var command = connection_.CreateCommand();
+                    var command = connection.CreateCommand();
                     command.CommandText = "SELECT COUNT(*) FROM UnitSystemTable";
                     try
                     {
@@ -56,12 +58,12 @@ namespace OSDC.UnitConversion.Service
                     }
                     catch (SqliteException ex)
                     {
-                        logger_.LogError(ex, "Impossible to count records in the UnitSystemTable");
+                        _logger.LogError(ex, "Impossible to count records in the UnitSystemTable");
                     }
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
                 return count;
             }
@@ -69,16 +71,17 @@ namespace OSDC.UnitConversion.Service
 
         public bool Clear()
         {
-            if (connection_ != null)
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
                 bool success = false;
-                lock (lock_)
+                lock (_lock)
                 {
-                    using var transaction = connection_.BeginTransaction();
+                    using var transaction = connection.BeginTransaction();
                     try
                     {
                         //empty UnitSystemTable
-                        var command = connection_.CreateCommand();
+                        var command = connection.CreateCommand();
                         command.CommandText = "DELETE FROM UnitSystemTable";
                         command.ExecuteNonQuery();
 
@@ -88,14 +91,14 @@ namespace OSDC.UnitConversion.Service
                     catch (SqliteException ex)
                     {
                         transaction.Rollback();
-                        logger_.LogError(ex, "Impossible to clear the UnitSystemTable");
+                        _logger.LogError(ex, "Impossible to clear the UnitSystemTable");
                     }
                 }
                 return success;
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
                 return false;
             }
         }
@@ -103,9 +106,10 @@ namespace OSDC.UnitConversion.Service
         public bool Contains(Guid guid)
         {
             int count = 0;
-            if (connection_ != null)
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = $"SELECT COUNT(*) FROM UnitSystemTable WHERE ID = ' {guid}'";
                 try
                 {
@@ -117,12 +121,12 @@ namespace OSDC.UnitConversion.Service
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to count rows from UnitSystemTable");
+                    _logger.LogError(ex, "Impossible to count rows from UnitSystemTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
             return count >= 1;
         }
@@ -131,12 +135,13 @@ namespace OSDC.UnitConversion.Service
         /// Returns the list of Guid of all UnitSystem present in the microservice database 
         /// </summary>
         /// <returns>the list of Guid of all UnitSystem present in the microservice database</returns>
-        public List<Guid> GetAllUnitSystemId()
+        public List<Guid>? GetAllUnitSystemId()
         {
-            List<Guid> ids = new();
-            if (connection_ != null)
+            List<Guid> ids = [];
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = "SELECT ID FROM UnitSystemTable";
                 try
                 {
@@ -146,17 +151,19 @@ namespace OSDC.UnitConversion.Service
                         Guid id = reader.GetGuid(0);
                         ids.Add(id);
                     }
+                    _logger.LogInformation("Returning the list of ID of existing records from UnitSystemTable");
+                    return ids;
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to get IDs from UnitSystemTable");
+                    _logger.LogError(ex, "Impossible to get IDs from UnitSystemTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
-            return ids;
+            return null;
         }
 
         /// <summary>
@@ -164,14 +171,15 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="guid"></param>
         /// <returns>the UnitSystem retrieved from the database</returns>
-        public UnitSystem GetUnitSystemById(Guid guid)
+        public UnitSystem? GetUnitSystemById(Guid guid)
         {
             if (!guid.Equals(Guid.Empty))
             {
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    UnitSystem unitSystem;
-                    var command = connection_.CreateCommand();
+                    UnitSystem? unitSystem;
+                    var command = connection.CreateCommand();
                     command.CommandText = $"SELECT UnitSystem FROM UnitSystemTable WHERE ID = '{guid}'";
                     try
                     {
@@ -180,33 +188,69 @@ namespace OSDC.UnitConversion.Service
                         {
                             string data = reader.GetString(0);
                             unitSystem = JsonSerializer.Deserialize<UnitSystem>(data);
-                            if (!unitSystem.ID.Equals(guid))
+                            if (unitSystem != null && !unitSystem.ID.Equals(guid))
                                 throw (new SqliteException("SQLite database corrupted: retrieved UnitSystem is null or has been jsonified with the wrong ID.", 1));
                         }
                         else
                         {
-                            logger_.LogInformation("No UnitSystem of given ID in the database");
+                            _logger.LogInformation("No UnitSystem of given ID in the database");
                             return null;
                         }
                     }
                     catch (SqliteException ex)
                     {
-                        logger_.LogError(ex, "Impossible to get the UnitSystem with the given ID from UnitSystemTable");
+                        _logger.LogError(ex, "Impossible to get the UnitSystem with the given ID from UnitSystemTable");
                         return null;
                     }
 
                     // Finalizing
-                    logger_.LogInformation("Returning the UnitSystem of given ID from UnitSystemTable");
+                    _logger.LogInformation("Returning the UnitSystem of given ID from UnitSystemTable");
                     return unitSystem;
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The given UnitSystem ID is null or empty");
+                _logger.LogWarning("The given UnitSystem ID is null or empty");
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the list of all UnitSystem present in the microservice database 
+        /// </summary>
+        /// <returns>the list of all UnitSystem present in the microservice database</returns>
+        public List<UnitSystem?>? GetAllUnitSystem()
+        {
+            List<UnitSystem?> vals = [];
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
+            {
+                var command = connection.CreateCommand();
+                command.CommandText = "SELECT UnitSystem FROM UnitSystemTable";
+                try
+                {
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read() && !reader.IsDBNull(0))
+                    {
+                        string data = reader.GetString(0);
+                        UnitSystem? unitSystem = JsonSerializer.Deserialize<UnitSystem>(data);
+                        vals.Add(unitSystem);
+                    }
+                    _logger.LogInformation("Returning the list of existing UnitSystem from UnitSystemTable");
+                    return vals;
+                }
+                catch (SqliteException ex)
+                {
+                    _logger.LogError(ex, "Impossible to get UnitSystem from UnitSystemTable");
+                }
+            }
+            else
+            {
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
             return null;
         }
@@ -215,12 +259,13 @@ namespace OSDC.UnitConversion.Service
         /// Returns the list of all UnitSystemLight present in the microservice database 
         /// </summary>
         /// <returns>the list of all UnitSystemLight present in the microservice database</returns>
-        public List<UnitSystemLight> GetAllUnitSystemLight()
+        public List<UnitSystemLight>? GetAllUnitSystemLight()
         {
-            List<UnitSystemLight> vals = [];
-            if (connection_ != null)
+            List<UnitSystemLight>? vals = [];
+            var connection = _connectionManager.GetConnection();
+            if (connection != null)
             {
-                var command = connection_.CreateCommand();
+                var command = connection.CreateCommand();
                 command.CommandText = "SELECT ID, Name, Description, IsDefault, IsSI FROM UnitSystemTable";
                 try
                 {
@@ -242,50 +287,19 @@ namespace OSDC.UnitConversion.Service
                         };
                         vals.Add(unitSystemLight);
                     }
+                    _logger.LogInformation("Returning the list of existing UnitSystemLight from UnitSystemTable");
+                    return vals;
                 }
                 catch (SqliteException ex)
                 {
-                    logger_.LogError(ex, "Impossible to get UnitSystemLight from UnitSystemTable");
+                    _logger.LogError(ex, "Impossible to get UnitSystemLight from UnitSystemTable");
                 }
             }
             else
             {
-                logger_.LogWarning("Impossible to access the SQLite database");
+                _logger.LogWarning("Impossible to access the SQLite database");
             }
-            return vals;
-        }
-
-        /// <summary>
-        /// Returns the list of all UnitSystem present in the microservice database 
-        /// </summary>
-        /// <returns>the list of all UnitSystem present in the microservice database</returns>
-        public List<UnitSystem> GetAllUnitSystem()
-        {
-            List<UnitSystem> vals = [];
-            if (connection_ != null)
-            {
-                var command = connection_.CreateCommand();
-                command.CommandText = "SELECT UnitSystem FROM UnitSystemTable";
-                try
-                {
-                    using var reader = command.ExecuteReader();
-                    while (reader.Read() && !reader.IsDBNull(0))
-                    {
-                        string data = reader.GetString(0);
-                        UnitSystem unitSystem = JsonSerializer.Deserialize<UnitSystem>(data);
-                        vals.Add(unitSystem);
-                    }
-                }
-                catch (SqliteException ex)
-                {
-                    logger_.LogError(ex, "Impossible to get UnitSystem from UnitSystemTable");
-                }
-            }
-            else
-            {
-                logger_.LogWarning("Impossible to access the SQLite database");
-            }
-            return vals;
+            return null;
         }
 
         /// <summary>
@@ -298,59 +312,63 @@ namespace OSDC.UnitConversion.Service
             if (unitSystem != null && !unitSystem.ID.Equals(Guid.Empty))
             {
                 //update UnitSystemTable
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    lock (lock_)
+                    using SqliteTransaction transaction = connection.BeginTransaction();
+                    bool success = true;
+                    try
                     {
-                        using SqliteTransaction transaction = connection_.BeginTransaction();
-                        bool success = true;
-                        try
+                        //add the UnitSystem to the UnitSystemTable
+                        string data = JsonSerializer.Serialize(unitSystem);
+                        var command = connection.CreateCommand();
+                        command.CommandText = "INSERT INTO UnitSystemTable " +
+                            "(ID, " +
+                            "Name, " +
+                            "Description, " +
+                            "IsDefault, " +
+                            "IsSI, " +
+                            "UnitSystem" +
+                            ") VALUES (" +
+                            $"'{unitSystem.ID}', " +
+                            $"'{unitSystem.Name}', " +
+                            $"'{unitSystem.Description}', " +
+                            $"'{unitSystem.IsDefault}', " +
+                            $"'{unitSystem.IsSI}', " +
+                            $"'{data}'" +
+                            ")";
+                        int count = command.ExecuteNonQuery();
+                        if (count != 1)
                         {
-                            //add the UnitSystem to the UnitSystemTable
-                            string data = JsonSerializer.Serialize(unitSystem);
-                            var command = connection_.CreateCommand();
-                            command.CommandText = "INSERT INTO UnitSystemTable " +
-                                "(ID, Name, Description, IsDefault, IsSI, UnitSystem) VALUES (" +
-                                $"'{unitSystem.ID}', " +
-                                $"'{unitSystem.Name}', " +
-                                $"'{unitSystem.Description}', " +
-                                $"'{unitSystem.IsDefault}', " +
-                                $"'{unitSystem.IsSI}', " +
-                                $"'{data}'" +
-                                ")";
-                            int count = command.ExecuteNonQuery();
-                            if (count != 1)
-                            {
-                                logger_.LogWarning("Impossible to insert the given UnitSystem into the UnitSystemTable");
-                                success = false;
-                            }
-                        }
-                        catch (SqliteException ex)
-                        {
-                            logger_.LogError(ex, "Impossible to add the given UnitSystem into UnitSystemTable");
+                            _logger.LogWarning("Impossible to insert the given UnitSystem into the UnitSystemTable");
                             success = false;
                         }
-                        // Finalizing
-                        if (success)
-                        {
-                            transaction.Commit();
-                            logger_.LogInformation("Added the given UnitSystem of given ID into the UnitSystemTable successfully");
-                        }
-                        else
-                        {
-                            transaction.Rollback();
-                        }
-                        return success;
                     }
+                    catch (SqliteException ex)
+                    {
+                        _logger.LogError(ex, "Impossible to add the given UnitSystem into UnitSystemTable");
+                        success = false;
+                    }
+                    // Finalizing
+                    if (success)
+                    {
+                        transaction.Commit();
+                        _logger.LogInformation("Added the given UnitSystem of given ID into the UnitSystemTable successfully");
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                    }
+                    return success;
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The UnitSystem ID or the ID of its input are null or empty");
+                _logger.LogWarning("The UnitSystem ID or the ID of its input are null or empty");
             }
             return false;
         }
@@ -366,57 +384,55 @@ namespace OSDC.UnitConversion.Service
             if (!guid.Equals(Guid.Empty) && unitSystem != null && unitSystem.ID.Equals(guid))
             {
                 //update UnitSystemTable
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    lock (lock_)
+                    using SqliteTransaction transaction = connection.BeginTransaction();
+                    //update fields in UnitSystemTable
+                    try
                     {
-                        using SqliteTransaction transaction = connection_.BeginTransaction();
-                        //update fields in UnitSystemTable
-                        try
+                        string data = JsonSerializer.Serialize(unitSystem);
+                        var command = connection.CreateCommand();
+                        command.CommandText = $"UPDATE UnitSystemTable SET " +
+                            $"Name = '{unitSystem.Name}', " +
+                            $"Description = '{unitSystem.Description}', " +
+                            $"IsDefault = '{unitSystem.IsDefault}', " +
+                            $"IsSI = '{unitSystem.IsSI}', " +
+                            $"UnitSystem = '{data}' " +
+                            $"WHERE ID = '{guid}'";
+                        int count = command.ExecuteNonQuery();
+                        if (count != 1)
                         {
-                            string data = JsonSerializer.Serialize(unitSystem);
-                            var command = connection_.CreateCommand();
-                            command.CommandText = $"UPDATE UnitSystemTable SET " +
-                                $"Name = '{unitSystem.Name}', " +
-                                $"Description = '{unitSystem.Description}', " +
-                                $"IsDefault = '{unitSystem.IsDefault}', " +
-                                $"IsSI = '{unitSystem.IsSI}', " +
-                                $"UnitSystem = '{data}' " +
-                                $"WHERE ID = '{guid}'";
-                            int count = command.ExecuteNonQuery();
-                            if (count != 1)
-                            {
-                                logger_.LogWarning("Impossible to update the UnitSystem");
-                                success = false;
-                            }
-                        }
-                        catch (SqliteException ex)
-                        {
-                            logger_.LogError(ex, "Impossible to update the UnitSystem");
+                            _logger.LogWarning("Impossible to update the UnitSystem");
                             success = false;
                         }
+                    }
+                    catch (SqliteException ex)
+                    {
+                        _logger.LogError(ex, "Impossible to update the UnitSystem");
+                        success = false;
+                    }
 
-                        // Finalizing
-                        if (success)
-                        {
-                            transaction.Commit();
-                            logger_.LogInformation("Updated the given UnitSystem successfully");
-                            return true;
-                        }
-                        else
-                        {
-                            transaction.Rollback();
-                        }
+                    // Finalizing
+                    if (success)
+                    {
+                        transaction.Commit();
+                        _logger.LogInformation("Updated the given UnitSystem successfully");
+                        return true;
+                    }
+                    else
+                    {
+                        transaction.Rollback();
                     }
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The UnitSystem ID or the ID of some of its attributes are null or empty");
+                _logger.LogWarning("The UnitSystem ID or the ID of some of its attributes are null or empty");
             }
             return false;
         }
@@ -430,49 +446,47 @@ namespace OSDC.UnitConversion.Service
         {
             if (!guid.Equals(Guid.Empty))
             {
-                if (connection_ != null)
+                var connection = _connectionManager.GetConnection();
+                if (connection != null)
                 {
-                    lock (lock_)
+                    using var transaction = connection.BeginTransaction();
+                    bool success = true;
+                    //delete UnitSystem from UnitSystemTable
+                    try
                     {
-                        using var transaction = connection_.BeginTransaction();
-                        bool success = true;
-                        //delete UnitSystem from UnitSystemTable
-                        try
+                        var command = connection.CreateCommand();
+                        command.CommandText = $"DELETE FROM UnitSystemTable WHERE ID = '{guid}'";
+                        int count = command.ExecuteNonQuery();
+                        if (count < 0)
                         {
-                            var command = connection_.CreateCommand();
-                            command.CommandText = $"DELETE FROM UnitSystemTable WHERE ID = '{guid}'";
-                            int count = command.ExecuteNonQuery();
-                            if (count < 0)
-                            {
-                                logger_.LogWarning("Impossible to delete the UnitSystem of given ID from the UnitSystemTable");
-                                success = false;
-                            }
-                        }
-                        catch (SqliteException ex)
-                        {
-                            logger_.LogError(ex, "Impossible to delete the UnitSystem of given ID from UnitSystemTable");
+                            _logger.LogWarning("Impossible to delete the UnitSystem of given ID from the UnitSystemTable");
                             success = false;
                         }
-                        if (success)
-                        {
-                            transaction.Commit();
-                            logger_.LogInformation("Removed the UnitSystem of given ID from the UnitSystemTable successfully");
-                        }
-                        else
-                        {
-                            transaction.Rollback();
-                        }
-                        return success;
                     }
+                    catch (SqliteException ex)
+                    {
+                        _logger.LogError(ex, "Impossible to delete the UnitSystem of given ID from UnitSystemTable");
+                        success = false;
+                    }
+                    if (success)
+                    {
+                        transaction.Commit();
+                        _logger.LogInformation("Removed the UnitSystem of given ID from the UnitSystemTable successfully");
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                    }
+                    return success;
                 }
                 else
                 {
-                    logger_.LogWarning("Impossible to access the SQLite database");
+                    _logger.LogWarning("Impossible to access the SQLite database");
                 }
             }
             else
             {
-                logger_.LogWarning("The UnitSystem ID is null or empty");
+                _logger.LogWarning("The UnitSystem ID is null or empty");
             }
             return false;
         }

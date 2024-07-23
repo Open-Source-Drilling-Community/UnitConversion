@@ -19,7 +19,7 @@ namespace OSDC.UnitConversion.Model
         /// <summary>
         /// the formatted string to represent the converted data at meaningful precision
         /// </summary>
-        public string DataOutString { get; set; }
+        public string? DataOutString { get; set; }
         /// <summary>
         /// default constructor
         /// </summary>

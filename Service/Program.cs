@@ -2,11 +2,23 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using OSDC.UnitConversion.Service;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// registering the manager of SQLite connections through dependency injection
+builder.Services.AddSingleton(sp => new SqlConnectionManager(
+    $"Data Source={SqlConnectionManager.HOME_DIRECTORY}{SqlConnectionManager.DATABASE_FILENAME}",
+    sp.GetRequiredService<ILogger<SqlConnectionManager>>()));
+
+// registering the database cleaner service through dependency injection
+builder.Services.AddHostedService(sp => new DatabaseCleanerService(
+    sp.GetRequiredService<ILogger<DatabaseCleanerService>>(),
+    sp.GetRequiredService<SqlConnectionManager>()));
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
@@ -21,7 +33,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     //// exposes the types according to their fully qualified names / replacing + by . handles enum types that are improperly referenced in swagger.json otherwise ($ref)
     //c.CustomSchemaIds(x => x.Name);
-    c.CustomSchemaIds(x => x.FullName.Replace("+", "."));
+    c.CustomSchemaIds(x => x.FullName!.Replace("+", "."));
 
     // allows to preserve nullable enum types (warning: may have side effects https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/2378)
     c.UseAllOfToExtendReferenceSchemas();

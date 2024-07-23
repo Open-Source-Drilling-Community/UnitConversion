@@ -9,32 +9,32 @@ namespace OSDC.UnitConversion.Model
         /// <summary>
         /// a MetaInfo for the UnitConversionSet
         /// </summary>
-        public MetaInfo MetaInfo { get; set; }
+        public MetaInfo? MetaInfo { get; set; }
 
         /// <summary>
         /// name of the data
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// a description of the data
         /// </summary>
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// the date when the data was created
         /// </summary>
-        public DateTimeOffset CreationDate { get; set; }
+        public DateTimeOffset? CreationDate { get; set; }
 
         /// <summary>
         /// the date when the data was last modified
         /// </summary>
-        public DateTimeOffset LastModificationDate { get; set; }
+        public DateTimeOffset? LastModificationDate { get; set; }
 
         /// <summary>
         /// an input list of QuantityUnitConversion
         /// </summary>
-        public List<QuantityUnitConversion> QuantityUnitConversionList { get; set; }
+        public List<QuantityUnitConversion>? QuantityUnitConversionList { get; set; }
 
         /// <summary>
         /// default constructor required for parsing the data model as a json file
@@ -49,12 +49,16 @@ namespace OSDC.UnitConversion.Model
         /// <returns></returns>
         public bool Calculate()
         {
-            foreach (QuantityUnitConversion quantityUnitConversion in QuantityUnitConversionList)
+            if (QuantityUnitConversionList != null)
             {
-                if (!quantityUnitConversion.Calculate())
-                    return false;
+                foreach (QuantityUnitConversion quantityUnitConversion in QuantityUnitConversionList)
+                {
+                    if (!quantityUnitConversion.Calculate())
+                        return false;
+                }
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

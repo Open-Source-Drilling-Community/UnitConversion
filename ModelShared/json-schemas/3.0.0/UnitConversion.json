@@ -5,6 +5,84 @@
     "version": "1.0"
   },
   "paths": {
+    "/PhysicalQuantity": {
+      "get": {
+        "tags": [
+          "PhysicalQuantity"
+        ],
+        "operationId": "GetAllPhysicalQuantityId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PhysicalQuantity/{id}": {
+      "get": {
+        "tags": [
+          "PhysicalQuantity"
+        ],
+        "operationId": "GetPhysicalQuantityById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PhysicalQuantity/HeavyData": {
+      "get": {
+        "tags": [
+          "PhysicalQuantity"
+        ],
+        "operationId": "GetAllPhysicalQuantity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/UnitConversionSet": {
       "get": {
         "tags": [
@@ -684,6 +762,105 @@
         },
         "additionalProperties": false
       },
+      "OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "UsualNames": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "SIUnitName": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "SIUnitLabel": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "UnitChoices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitChoice"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "LengthDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "MassDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "TimeDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "TemperatureDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "AmountSubstanceDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "ElectricCurrentDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "LuminousIntensityDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "PlaneAngleDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "SolidAngleDimension": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "MeaningfulPrecisionInSI": {
+            "type": "number",
+            "format": "double",
+            "nullable": true,
+            "readOnly": true
+          },
+          "TypicalSymbol": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystem": {
         "type": "object",
         "properties": {
@@ -733,6 +910,35 @@
           },
           "IsDefault": {
             "type": "boolean"
+          },
+          "IsSI": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Conversion.UnitChoice": {
+        "type": "object",
+        "properties": {
+          "UnitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "UnitLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "ID": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ConversionFactorFromSI": {
+            "type": "number",
+            "format": "double"
+          },
+          "ConversionBiasFromSI": {
+            "type": "number",
+            "format": "double"
           },
           "IsSI": {
             "type": "boolean"
@@ -803,11 +1009,13 @@
           },
           "CreationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "LastModificationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "QuantityUnitConversionList": {
             "type": "array",
@@ -840,11 +1048,13 @@
           },
           "CreationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "LastModificationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "UnitSystemInID": {
             "type": "string",

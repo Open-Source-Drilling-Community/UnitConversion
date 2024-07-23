@@ -15,7 +15,7 @@ namespace OSDC.UnitConversion.Model
         /// <summary>
         /// a list of numerical data to be converted.
         /// </summary>
-        public List<ValueConversion> ValueConversionList { get; set; }
+        public List<ValueConversion>? ValueConversionList { get; set; }
 
         /// <summary>
         /// default constructor required for parsing the data model as a json file
