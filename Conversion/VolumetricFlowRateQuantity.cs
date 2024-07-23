@@ -28,7 +28,7 @@ namespace OSDC.UnitConversion.Conversion
         public VolumetricFlowRateQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Volumetric Flow Rate" };
+            UsualNames = new HashSet<string>() { "Volumetric Flow Rate", "Flow Rate (volumetric)" };
             ID = new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839");
             UnitChoices = new List<UnitChoice>()
       {
