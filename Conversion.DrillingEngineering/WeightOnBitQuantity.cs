@@ -25,7 +25,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public WeightOnBitQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Weight On Bit (drilling)" };
+            UsualNames = new HashSet<string>() { "Weight On Bit (drilling)", "WOB" };
             ID = new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce");
             Reset();
             this.UnitChoices.Add(GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Kilogram));
