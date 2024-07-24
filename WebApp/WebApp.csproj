@@ -11,11 +11,8 @@
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="6.21.0" />
     <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="2.1.0" />
+    <PackageReference Include="OSDC.UnitConversion.ModelShared" Version="3.0.0" />
     <PackageReference Include="Plotly.Blazor" Version="5.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ModelShared\ModelShared.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://docs.renovatebot.com/renovate-schema.json" /></VisualStudio></ProjectExtensions>
