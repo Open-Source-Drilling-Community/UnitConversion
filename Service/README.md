@@ -10,15 +10,14 @@ https://hub.docker.com/?namespace=digiwells
 
 The API (OpenApi schema) of the microservice is available and testable at:
 
-https://dev.digiwells.no/UnitConversion/api/swagger (development server) 
-
-https://app.digiwells.no/UnitConversion/api/swagger (production server)
+https://app.digiwells.no/UnitConversion/api/swagger
 
 The microservice itself is available at:
 
-https://dev.digiwells.no/UnitConversion/api/PhysicalQuantity
-
 https://app.digiwells.no/UnitConversion/api/PhysicalQuantity
+https://app.digiwells.no/UnitConversion/api/UnitSystem
+https://app.digiwells.no/UnitConversion/api/UnitConversionSet
+https://app.digiwells.no/UnitConversion/api/UnitSystemConversionSet
 
 # Funding
 

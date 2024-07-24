@@ -11,11 +11,13 @@
 		<Company>NORCE</Company>
 		<Title>Distributed shared model for client applications of the UnitConversion microservice</Title>
 		<PackageId>OSDC.UnitConversion.$(AssemblyName)</PackageId>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.15" />
 		<PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.8" />
+		<None Include="README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
 	<ItemGroup>
