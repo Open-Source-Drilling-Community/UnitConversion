@@ -82,52 +82,52 @@ else
 }
 @code {
     [Parameter]
-    public RenderFragment ChildContent { get; set; }
+    public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public string HttpHost { get; set; }
+    public string? HttpHost { get; set; }
 
     [Parameter]
-    public string HttpBasePath { get; set; }
+    public string? HttpBasePath { get; set; }
 
     [Parameter]
-    public string HttpController { get; set; }
+    public string? HttpController { get; set; }
 
     [Parameter]
-    public IGaugeReferencePressureSource GaugeReferencePressureSource { get; set; }
+    public IGaugeReferencePressureSource? GaugeReferencePressureSource { get; set; }
 
     [Parameter]
-    public IGridConvergenceSource GridConvergenceSource { get; set; }
+    public IGridConvergenceSource? GridConvergenceSource { get; set; }
 
     [Parameter]
-    public IMagneticDeclinationSource MagneticDeclinationSource { get; set; }
+    public IMagneticDeclinationSource? MagneticDeclinationSource { get; set; }
 
     [Parameter]
-    public ICartographicGridPositionReferenceSource CartographicGridPositionReferenceSource { get; set; }
+    public ICartographicGridPositionReferenceSource? CartographicGridPositionReferenceSource { get; set; }
 
     [Parameter]
-    public ILeaseLinePositionReferenceSource LeaseLinePositionReferenceSource { get; set; }
+    public ILeaseLinePositionReferenceSource? LeaseLinePositionReferenceSource { get; set; }
 
     [Parameter]
-    public IClusterPositionReferenceSource ClusterPositionReferenceSource { get; set; }
+    public IClusterPositionReferenceSource? ClusterPositionReferenceSource { get; set; }
 
     [Parameter]
-    public IWellHeadPositionReferenceSource WellHeadPositionReferenceSource { get; set; }
+    public IWellHeadPositionReferenceSource? WellHeadPositionReferenceSource { get; set; }
 
     [Parameter]
-    public IWellHeadDepthReferenceSource WellHeadDepthReferenceSource { get; set; }
+    public IWellHeadDepthReferenceSource? WellHeadDepthReferenceSource { get; set; }
 
     [Parameter]
-    public IGroundMudLineDepthReferenceSource GroundMudLineDepthReferenceSource { get; set; }
+    public IGroundMudLineDepthReferenceSource? GroundMudLineDepthReferenceSource { get; set; }
 
     [Parameter]
-    public ISeaWaterLevelDepthReferenceSource SeaWaterLevelDepthReferenceSource { get; set; }
+    public ISeaWaterLevelDepthReferenceSource? SeaWaterLevelDepthReferenceSource { get; set; }
 
     [Parameter]
-    public IRotaryTableDepthReferenceSource RotaryTableDepthReferenceSource { get; set; }
+    public IRotaryTableDepthReferenceSource? RotaryTableDepthReferenceSource { get; set; }
 
     [Parameter]
-    public string UnitSystemName
+    public string? UnitSystemName
     {
         get
         {
@@ -148,15 +148,15 @@ else
     [Parameter]
     public EventCallback<string> UnitSystemNameChanged { get; set; }
 
-    private string unitSystemName_;
-    private string depthReferenceName_;
-    private string positionReferenceName_;
-    private string azimuthReferenceName_;
-    private string pressureReferenceName_;
-    public string dateReferenceName;
+    private string? unitSystemName_;
+    private string? depthReferenceName_;
+    private string? positionReferenceName_;
+    private string? azimuthReferenceName_;
+    private string? pressureReferenceName_;
+    public string? dateReferenceName;
 
-    private HttpClient httpClient;
-    private List<UnitSystemLight> unitSystemLightList = new List<UnitSystemLight>();
+    private HttpClient? httpClient;
+    private List<UnitSystemLight>? unitSystemLightList = new List<UnitSystemLight>();
     private List<Tuple<Guid, string>> depthReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> positionReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> azimuthReferences = new List<Tuple<Guid, string>>();
@@ -166,7 +166,7 @@ else
     private List<IUnitAwareComponent> unitAwareComponents_ = new List<IUnitAwareComponent>();
     private List<IDateTimeReferenceAwareComponent> dateTimeAwareComponents_ = new List<IDateTimeReferenceAwareComponent>();
 
-    private BaseUnitSystem baseUnitSystem_;
+    private BaseUnitSystem? baseUnitSystem_;
 
     private bool IsHiddenPositionReference = true;
     private bool IsHiddenDepthReference = true;
@@ -1377,7 +1377,7 @@ else
 
     private async void PostProcessUnitSystem()
     {
-        BaseUnitSystem baseUnitSystem = null;
+        BaseUnitSystem? baseUnitSystem = null;
         Guid baseUnitSystemID = Guid.Empty;
         if (unitSystemLightList != null)
         {

@@ -1,9 +1,9 @@
 name: Docker run & .NET UnitTest
 
 on:
-  workflow_dispatch:
-#  push:
- #   branches: [ "main" ]
+  #workflow_dispatch:
+  push:
+    branches: [ "main" ]
   #pull_request:
    # branches: [ "main" ]
 
@@ -39,6 +39,6 @@ jobs:
       # forcing Release configuration to avoid issue with writing Service OpenApiSchema on build from Service to ModelSharedForClient
       run: dotnet build --no-restore --configuration 'Release'
 
-    - name: Test
+    - name: Run ServiceTest & ModelTest
       # forcing Release configuration to avoid issue with writing Service OpenApiSchema on build from Service to ModelSharedForClient
       run: dotnet test --no-build --verbosity normal --configuration 'Release'
