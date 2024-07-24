@@ -18,10 +18,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ModelShared\ModelShared.csproj" />
+    <PackageReference Include="OSDC.UnitConversion.ModelShared" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
