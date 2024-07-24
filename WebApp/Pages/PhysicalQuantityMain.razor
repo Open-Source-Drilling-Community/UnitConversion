@@ -1,0 +1,229 @@
+﻿@page "/PhysicalQuantity"
+@inject ILogger<PhysicalQuantity> logger
+@inject ISnackbar Snackbar
+
+@if (physicalQuantityList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MudTable T="VisualPhysicalQuantity" Items="@physicalQuantityList" Hover="true" Dense="true" Striped="true"
+              Breakpoint="Breakpoint.Sm" Filter="new Func<VisualPhysicalQuantity, bool>(physicalQuantityListFilter)">
+        <ToolBarContent>
+            <MudText Typo="Typo.h5"><strong>Physical Quantities</strong></MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <ColGroup>
+            <col />
+            <col />
+            <col />
+            <col/>
+            <col />
+        </ColGroup>
+        <HeaderContent>
+            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
+            <MudTh></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.IsDrilling)">Is Drilling</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Quantity!.Name</MudTd>
+            <MudTd>@context.Quantity!.SIUnitLabel</MudTd>
+            <MudTd>@context.Quantity!.SIUnitName</MudTd>
+            <MudTd><MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => ShowDetails(context.Quantity!.ID))">@((context.ShowDetails == true) ? "Hide" : "Show") details</MudButton></MudTd>
+            <MudTd>@context.IsDrilling</MudTd>
+        </RowTemplate>
+        <ChildRowContent>
+            @if (context.ShowDetails)
+            {
+                <MudTd colspan="1">
+                    <MudCard Outlined="true">
+                        <MudCardContent>
+                            <MudText><strong>Usual Names</strong></MudText>
+                            <MudTable Items="@context.Quantity!.UsualNames" Context="UsualNamesContext" Breakpoint="Breakpoint.Sm" Elevation="0">
+                                <RowTemplate>
+                                    <MudTd>@UsualNamesContext</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudCardContent>
+                    </MudCard>
+                    <MudCard Outlined="true">
+                        <MudCardContent>
+                            <MudText><strong>Physical dimension</strong></MudText>
+                            <MudTable Items="@context.Dimensions" Context="DimContext" Breakpoint="Breakpoint.Sm" Elevation="0">
+                                <ColGroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col />
+                                </ColGroup>
+                                <HeaderContent>
+                                    <MudTh>T</MudTh>
+                                    <MudTh>L</MudTh>
+                                    <MudTh>M</MudTh>
+                                    <MudTh>K</MudTh>
+                                    <MudTh>N</MudTh>
+                                    <MudTh>I</MudTh>
+                                    <MudTh>J</MudTh>
+                                    <MudTh>θ</MudTh>
+                                    <MudTh>Ω</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd>@DimContext.T</MudTd>
+                                    <MudTd>@DimContext.L</MudTd>
+                                    <MudTd>@DimContext.M</MudTd>
+                                    <MudTd>@DimContext.K</MudTd>
+                                    <MudTd>@DimContext.N</MudTd>
+                                    <MudTd>@DimContext.I</MudTd>
+                                    <MudTd>@DimContext.J</MudTd>
+                                    <MudTd>@DimContext.Th</MudTd>
+                                    <MudTd>@DimContext.Om</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudCardContent>
+                    </MudCard>
+                </MudTd>
+                <MudTd colspan="2">
+                    <MudCard Outlined="true">
+                        <MudCardContent>
+                            <MudText><strong>Unit Choices</strong></MudText>
+                            <MudTable Items="@context.Quantity!.UnitChoices" Context="UnitChoicesContext" Dense="true" Breakpoint="Breakpoint.Sm" Elevation="0">
+                                <ColGroup>
+                                    <col />
+                                    <col />
+                                </ColGroup>
+                                <HeaderContent>
+                                    <MudTh>Unit symbol</MudTh>
+                                    <MudTh>Unit name</MudTh>
+                                </HeaderContent>
+                                <RowTemplate>
+                                    <MudTd DataLabel="UnitLabel">@UnitChoicesContext.UnitLabel</MudTd>
+                                    <MudTd DataLabel="UnitName">@UnitChoicesContext.UnitName</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudCardContent>
+                    </MudCard>
+                </MudTd>
+                <MudTd colspan="2" />
+            }
+        </ChildRowContent>
+    </MudTable>
+}
+
+@code {
+    // PhysicalQuantity related variables
+    private List<VisualPhysicalQuantity> physicalQuantityList = new();
+
+    // UI related variables
+    private string searchString = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Starting loading task asynchronously
+            logger.LogInformation("Trying to load list of PhysicalQuantity from client: " + APIUtils.HttpClientUnitConversion);
+            var physicalQuantityTask = APIUtils.ClientUnitConversion.GetAllPhysicalQuantityAsync();
+
+            List<Task> loadingTaskList = new List<Task> { physicalQuantityTask };
+
+            // Awaiting tasks and retrieve results as they become available
+            while (loadingTaskList.Count > 0)
+            {
+                Task finishedTask = await Task.WhenAny(loadingTaskList);
+                if (finishedTask == physicalQuantityTask)
+                {
+                    // physicalQuantityTask
+                    try
+                    {
+                        var qtyCollection = await physicalQuantityTask; // awaiting the finished task allows to retrieve its result and throw exception if needed
+                        if (qtyCollection != null)
+                        {
+                            foreach (PhysicalQuantity qty in qtyCollection)
+                            {
+                                List<(double T, double L, double M, double K, double N, double I, double J, double Th, double Om)> dimensions = [];
+                                dimensions.Add((T: qty.TimeDimension,
+                                     L: qty.LengthDimension,
+                                     M: qty.MassDimension,
+                                     K: qty.TemperatureDimension,
+                                     N: qty.AmountSubstanceDimension,
+                                     I: qty.ElectricCurrentDimension,
+                                     J: qty.LuminousIntensityDimension,
+                                     Th: qty.PlaneAngleDimension,
+                                     Om: qty.SolidAngleDimension));
+
+                                physicalQuantityList.Add(
+                                    new VisualPhysicalQuantity()
+                                        {
+                                            Quantity = qty,
+                                            ShowDetails = false,
+                                            IsDrilling = qty.UsualNames.Any(s => s.Contains("Drilling", StringComparison.InvariantCultureIgnoreCase)),
+                                            Dimensions = dimensions
+                                        });
+                            }
+                            physicalQuantityList.Sort((f1, f2) => f1.Quantity!.Name.CompareTo(f2.Quantity!.Name));
+                        }
+                        else
+                        {
+                            logger.LogWarning("Returned list of PhysicalQuantity were null on initialization");
+                            Snackbar.Add("Returned list of PhysicalQuantity were null on initialization", Severity.Warning);
+                        }
+                    }
+                    catch (ApiException ex)
+                    {
+                        logger.LogError(ex, "Impossible to load PhysicalQuantity from client");
+                    }
+                }
+                loadingTaskList.Remove(finishedTask);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem PhysicalQuantity initialization");
+        }
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    internal class VisualPhysicalQuantity
+    {
+        public PhysicalQuantity? Quantity { get; set; }
+        public bool ShowDetails { get; set; } = false;
+        public bool IsDrilling { get; set; }
+        public List<(double T, double L, double M, double K, double N, double I, double J, double Th, double Om)> Dimensions { get; set; } = [];
+    }
+
+    //Quick filter - filter gobally across multiple columns with the same input
+    private Func<VisualPhysicalQuantity, bool>
+    physicalQuantityListFilter => x =>
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+
+        if ($"{x.Quantity!.Name} {String.Join(' ', x.Quantity!.UsualNames)}".Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
+            return true;
+
+        return false;
+    };
+
+    private void ShowDetails(Guid id)
+    {
+        try
+        {
+            int idx = physicalQuantityList.FindIndex(f => f.Quantity!.ID == id);
+            physicalQuantityList[idx].ShowDetails = !physicalQuantityList[idx].ShowDetails;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem while showing details for quantity");
+        }
+    }
+}

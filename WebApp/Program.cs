@@ -26,10 +26,6 @@ app.UsePathBase("/UnitConversion/webapp");
 
 if (!String.IsNullOrEmpty(builder.Configuration["UnitConversionHostURL"]))
     OSDC.UnitConversion.WebApp.Configuration.UnitConversionHostURL = builder.Configuration["UnitConversionHostURL"];
-if (!String.IsNullOrEmpty(builder.Configuration["DrillingUnitConversionHostURL"]))
-    OSDC.UnitConversion.WebApp.Configuration.DrillingUnitConversionHostURL = builder.Configuration["DrillingUnitConversionHostURL"];
-if (!String.IsNullOrEmpty(builder.Configuration["FieldHostURL"]))
-    OSDC.UnitConversion.WebApp.Configuration.FieldHostURL = builder.Configuration["FieldHostURL"];
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

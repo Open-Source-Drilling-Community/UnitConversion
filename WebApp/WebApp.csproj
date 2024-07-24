@@ -9,9 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MudBlazor" Version="7.0.0" />
-    <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="1.3.1" />
-    <PackageReference Include="OSDC.UnitConversion.DrillingRazorMudComponents" Version="1.4.4" />
+    <PackageReference Include="MudBlazor" Version="6.21.0" />
+    <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="2.1.0" />
     <PackageReference Include="Plotly.Blazor" Version="5.1.1" />
   </ItemGroup>
 

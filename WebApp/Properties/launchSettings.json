@@ -3,7 +3,7 @@
     "WebApp": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "UnitConversion/webapp/QuantityUnitConversion",
+      "launchUrl": "UnitConversion/webapp/PhysicalQuantity",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -13,7 +13,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": false,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/UnitConversion/webapp/QuantityUnitConversion",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/UnitConversion/webapp/PhysicalQuantity",
       "publishAllPorts": true,
       "useSSL": true
     },
