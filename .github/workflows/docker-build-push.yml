@@ -28,4 +28,4 @@ jobs:
       run: docker build --file "${{ github.workspace }}/WebApp/Dockerfile" --tag digiwells/osdcunitconversionwebappclient:stable --build-arg "NORCE_NUGET_USER=${{ secrets.NORCE_NUGET_USER }}" --build-arg "NORCE_NUGET_APIKEY=${{ secrets.NORCE_NUGET_APIKEY }}" .
 
     - name: Push Docker image for WebApp to DockerHub
-      run: docker push digiwells/osdcunitconversionservicewebappclient:stable
+      run: docker push digiwells/osdcunitconversionwebappclient:stable
