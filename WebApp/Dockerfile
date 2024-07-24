@@ -13,9 +13,6 @@ ADD ./NORCE_CA.cer /usr/local/share/ca-certificates/foo.crt
 RUN chmod 644 /usr/local/share/ca-certificates/foo.crt && update-ca-certificates
 
 WORKDIR /src
-# Copy the ModelShared project
-COPY ["../ModelShared/ModelShared.csproj", "ModelShared/"]
-
 COPY ["WebApp/WebApp.csproj", "WebApp/"]
 COPY ./nuget.config .
 RUN dotnet restore "WebApp/WebApp.csproj"
