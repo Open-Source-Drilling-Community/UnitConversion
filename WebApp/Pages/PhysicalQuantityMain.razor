@@ -131,8 +131,8 @@ else
         try
         {
             // Starting loading task asynchronously
-            logger.LogInformation("Trying to load list of PhysicalQuantity from client: " + APIUtils.HttpClientUnitConversion);
-            var physicalQuantityTask = APIUtils.ClientUnitConversion.GetAllPhysicalQuantityAsync();
+            logger.LogInformation("Trying to load list of PhysicalQuantity from client: " + OSDC.UnitConversion.WebApp.Utils.APIUtils.HttpClientUnitConversion);
+            var physicalQuantityTask = OSDC.UnitConversion.WebApp.Utils.APIUtils.ClientUnitConversion.GetAllPhysicalQuantityAsync();
 
             List<Task> loadingTaskList = new List<Task> { physicalQuantityTask };
 
