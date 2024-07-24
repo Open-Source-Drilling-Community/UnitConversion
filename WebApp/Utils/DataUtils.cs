@@ -1,4 +1,4 @@
-﻿namespace OSDC.UnitConversion.WebApp.Shared
+﻿namespace OSDC.UnitConversion.WebApp.Utils
 {
     public static class DataUtils
     {
