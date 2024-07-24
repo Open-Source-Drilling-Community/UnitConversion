@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OSDC.UnitConversion.Service;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
