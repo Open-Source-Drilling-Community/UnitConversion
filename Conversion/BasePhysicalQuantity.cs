@@ -52,39 +52,39 @@ namespace OSDC.UnitConversion.Conversion
         /// </summary>
         public List<UnitChoice> UnitChoices { get; protected set; } = null;
         /// <summary>
-        /// the physical dimension for length
+        /// the physical dimension for length, abbreviated L
         /// </summary>
         public virtual double LengthDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for mass
+        /// the physical dimension for mass, abbreviated M
         /// </summary>
         public virtual double MassDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for time
+        /// the physical dimension for time, abbreviated T
         /// </summary>
         public virtual double TimeDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for temperature
+        /// the physical dimension for temperature, abbreviated K
         /// </summary>
         public virtual double TemperatureDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for amount of substance
+        /// the physical dimension for amount of substance, abbreviated N
         /// </summary>
         public virtual double AmountSubstanceDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for electic current
+        /// the physical dimension for electric current, abbreviated I
         /// </summary>
         public virtual double ElectricCurrentDimension { get; } = 0;
         /// <summary>
-        /// the physicsl dimension for luminous intensity
+        /// the physicsal dimension for luminous intensity, abbreviated J
         /// </summary>
         public virtual double LuminousIntensityDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for angles in a plane
+        /// the physical dimension for angles in a plane, abbreviated θ
         /// </summary>
         public virtual double PlaneAngleDimension { get; } = 0;
         /// <summary>
-        /// the physical dimension for solid angle
+        /// the physical dimension for solid angle, abbreviated Ω
         /// </summary>
         public virtual double SolidAngleDimension { get; } = 0;
         /// the smallest absolute value of the quantity that makes any sense with regards to its usage
