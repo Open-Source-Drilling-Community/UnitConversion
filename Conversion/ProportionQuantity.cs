@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ProportionQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "Proportion";
+        public override string SIUnitName { get; } = "proportion";
         public override string SIUnitLabel { get; } = "";
         private static ProportionQuantity instance_ = null;
 
@@ -40,21 +40,21 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "Percent",
+          UnitName = "percent",
           UnitLabel = "%",
           ID = new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7"),
           ConversionFactorFromSI = 100
         },
         new UnitChoice
         {
-          UnitName = "PerThousand",
+          UnitName = "per thousand",
           UnitLabel = "‰",
           ID = new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
-          UnitName = "PartPerMillion",
+          UnitName = "part per million",
           UnitLabel = "ppm",
           ID = new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792"),
           ConversionFactorFromSI = 1000000

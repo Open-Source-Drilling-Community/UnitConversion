@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ForceGradientQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "NewtonPerMetre";
+        public override string SIUnitName { get; } = "newton per metre";
         public override string SIUnitLabel { get; } = "N/m";
         public override double LengthDimension { get; } = 0;
         public override double MassDimension { get; } = 1;
@@ -43,14 +43,14 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "NewtonPer30Metre",
+          UnitName = "newton per 30 metre",
           UnitLabel = "N/30m",
           ID = new Guid("be16e271-5ce7-445b-a8db-9014a6acc22b"),
           ConversionFactorFromSI = 30
         },
         new UnitChoice
         {
-          UnitName = "decaNewtonPerMetre",
+          UnitName = "decanewton per metre",
           UnitLabel = "daN/m",
           ID = new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5"),
           ConversionFactorFromSI = 10

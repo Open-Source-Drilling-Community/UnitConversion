@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(FrequencyRateOfChangeQuantity.Instance.GetUnitChoice(FrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond));
             this.UnitChoices.Add(new UnitChoice
             {
-                UnitName = "RPMPerSecond",
+                UnitName = "rpm per second",
                 UnitLabel = "rpm/s",
                 ID = new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb"),
                 ConversionFactorFromSI = 60

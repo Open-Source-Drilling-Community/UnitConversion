@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class LengthQuantity : SymbolizedBasePhysicalQuantity
     {
         public override string DimensionSymbol { get; } = "L";
-        public override string SIUnitName { get; } = "Metre";
+        public override string SIUnitName { get; } = "metre";
 
         public override string SIUnitLabel { get; } = "m";
         private static LengthQuantity instance_ = null;
@@ -136,14 +136,14 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "feet",
+                    UnitName = "foot",
                     UnitLabel = "ft",
                     ID = new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a"),
                     ConversionFactorFromSI = 1.0/0.3048
                 },
                 new UnitChoice
                 {
-                    UnitName = "US survey feet",
+                    UnitName = "US survey foot",
                     UnitLabel = "ft",
                     ID = new Guid("eaf5909f-c68e-4346-9517-1dafad48b161"),
                     ConversionFactorFromSI = 1.0/0.304801
@@ -206,7 +206,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "inch/32",
+                    UnitName = "inch per 32",
                     UnitLabel = "in/32",
                     ID = new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f"),
                     ConversionFactorFromSI = 32.0 / 0.0254

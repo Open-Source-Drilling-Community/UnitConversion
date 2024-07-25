@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ElectricTensionQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "Volt";
+        public override string SIUnitName { get; } = "volt";
         public override string SIUnitLabel { get; } = "V";
         public override double LengthDimension { get; } = 2;
         public override double MassDimension { get; } = 1;
@@ -37,7 +37,7 @@ namespace OSDC.UnitConversion.Conversion
             {
         new UnitChoice
         {
-          UnitName = "Volt",
+          UnitName = "volt",
           UnitLabel = "V",
           ID = new Guid("618fafff-fc9c-4d22-a64d-b7579931aa93"),
           ConversionFactorFromSI = 1.0,
@@ -45,21 +45,21 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "Millivolt",
+          UnitName = "millivolt",
           UnitLabel = "mV",
           ID = new Guid("f186f5d4-2b0b-4cfe-b24c-0c02d3155cf8"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
-          UnitName = "Centivolt",
+          UnitName = "centivolt",
           UnitLabel = "cV",
           ID = new Guid("ee01194e-dee3-4b50-8312-5fde3c8f774e"),
           ConversionFactorFromSI = 100
         },
         new UnitChoice
         {
-          UnitName = "Kilovolt",
+          UnitName = "kilovolt",
           UnitLabel = "kV",
           ID = new Guid("6ffc60bc-ec9f-44d4-961b-79d9e593bf64"),
           ConversionFactorFromSI = 0.001

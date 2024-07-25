@@ -43,7 +43,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "coulomb/second",
+                    UnitName = "coulomb per second",
                     UnitLabel = "C/s",
                     ID = new Guid("0a9cc349-3bac-4f44-9a9b-3940ae595f03"),
                     ConversionFactorFromSI = 1.0
@@ -57,21 +57,21 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "volt/ohm",
+                    UnitName = "volt per ohm",
                     UnitLabel = "V/Ω",
                     ID = new Guid("100dd38e-19ad-465c-a995-0fb1174e506b"),
                     ConversionFactorFromSI = 1.0
                 },
                 new UnitChoice
                 {
-                    UnitName = "watt/volt",
+                    UnitName = "watt per volt",
                     UnitLabel = "W/V",
                     ID = new Guid("29464509-67a2-4062-b78a-8156e54cfa88"),
                     ConversionFactorFromSI = 1.0
                 },
                 new UnitChoice
                 {
-                    UnitName = "weber/henry",
+                    UnitName = "weber per henry",
                     UnitLabel = "Wb/H",
                     ID = new Guid("bf3285f5-34be-4592-822d-f6ffc3ce4858"),
                     ConversionFactorFromSI = 1.0

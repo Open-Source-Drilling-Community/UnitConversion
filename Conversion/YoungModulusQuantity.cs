@@ -44,28 +44,28 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "MegaPascal",
+          UnitName = "megapascal",
           UnitLabel = "MPa",
           ID = new Guid("754537d8-8043-48eb-9c0c-2d5efa19562e"),
           ConversionFactorFromSI = 1E-06
         },
         new UnitChoice
         {
-          UnitName = "GigaPascal",
+          UnitName = "gigapascal",
           UnitLabel = "GPa",
           ID = new Guid("c50313fd-59ce-429c-b525-f1d7664170c7"),
           ConversionFactorFromSI = 1E-09
         },
         new UnitChoice
         {
-          UnitName = "PSI",
+          UnitName = "psi",
           UnitLabel = "psi",
           ID = new Guid("0305c2fe-1843-446b-badd-a2c02c367249"),
           ConversionFactorFromSI = 0.00014503762645158165
         },
         new UnitChoice
         {
-          UnitName = "MegapoundPerSquareInch",
+          UnitName = "megapound per square inch",
           UnitLabel = "Mpsi",
           ID = new Guid("39285bdf-1b8b-4038-bb33-ab585e702bf3"),
           ConversionFactorFromSI = 1.4503762645158166E-10

@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion
             this.UnitChoices.Add(TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Kelvin));
             this.UnitChoices.Add(new UnitChoice
             {
-                UnitName = "Relative Celcius",
+                UnitName = "relative celsius",
                 UnitLabel = "°C",
                 ID = new Guid("10ea31a1-e661-41c9-9a3d-245904b73599"),
                 ConversionFactorFromSI = 1.0
@@ -40,7 +40,7 @@ namespace OSDC.UnitConversion.Conversion
             );
             this.UnitChoices.Add(new UnitChoice()
             {
-                UnitName = "Rankine",
+                UnitName = "rankine",
                 UnitLabel = "°R",
                 ID = new Guid("62f3ffbc-eda3-400a-9fb7-8d021771f0fa"),
                 ConversionFactorFromSI = 9.0 / 5.0

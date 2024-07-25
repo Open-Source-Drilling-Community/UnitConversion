@@ -40,7 +40,7 @@ namespace OSDC.UnitConversion.Conversion
             });
             this.UnitChoices.Add(new UnitChoice
             {
-                UnitName = "RPM",
+                UnitName = "rpm",
                 UnitLabel = "rpm",
                 ID = new Guid("30880b5f-803d-412e-9736-62dca3ba5bbd"),
                 ConversionFactorFromSI = 60

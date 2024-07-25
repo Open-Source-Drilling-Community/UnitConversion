@@ -53,7 +53,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "square degree",
+                    UnitName = "degree squared",
                     UnitLabel = "(°)²",
                     ID = new Guid("ad4b94e8-1a86-42ab-bfc6-9cc7ff7a835f"),
                     ConversionFactorFromSI = (180.0*180.0)/(Math.PI*Math.PI)

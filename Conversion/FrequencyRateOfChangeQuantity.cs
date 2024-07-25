@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class FrequencyRateOfChangeQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "HertzPerSecond";
+        public override string SIUnitName { get; } = "hertz per second";
         public override string SIUnitLabel { get; } = "Hz/s";
         public override double TimeDimension { get; } = -2;
         private static FrequencyRateOfChangeQuantity instance_ = null;

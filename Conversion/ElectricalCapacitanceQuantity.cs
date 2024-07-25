@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ElectricalCapacitanceQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = "C";
-        public override string SIUnitName { get; } = "Farad";
+        public override string SIUnitName { get; } = "farad";
         public override string SIUnitLabel { get; } = "F";
         public override double LengthDimension { get; } = -2;
         public override double MassDimension { get; } = -1;
@@ -45,28 +45,28 @@ namespace OSDC.UnitConversion.Conversion
         },
          new UnitChoice
         {
-          UnitName = "CoulombPerVolt",
+          UnitName = "coulomb per volt",
           UnitLabel = "C/V",
           ID = new Guid("81ae5717-d834-4f25-800e-c42c3bcb48af"),
           ConversionFactorFromSI = 1
         },
         new UnitChoice
         {
-          UnitName = "MilliFarad",
+          UnitName = "millifarad",
           UnitLabel = "mF",
           ID = new Guid("12c8b1ad-d38a-4dbe-b418-7f3b31c23ff6"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
-          UnitName = "MicroFarad",
+          UnitName = "microfarad",
           UnitLabel = "μF",
           ID = new Guid("a5974c82-68ac-4166-81b0-123f3ae84701"),
           ConversionFactorFromSI = 1000000
         },
         new UnitChoice
         {
-          UnitName = "PicoFarad",
+          UnitName = "picofarad",
           UnitLabel = "pF",
           ID = new Guid("1a9b9112-8a9f-4c80-a2ad-ebe5d9af5eef"),
           ConversionFactorFromSI = 1000000000

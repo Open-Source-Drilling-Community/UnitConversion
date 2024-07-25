@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class VolumetricFlowRateOfChangeQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "CubicMetrePerSecondSquare";
+        public override string SIUnitName { get; } = "cubic metre per second squared";
         public override string SIUnitLabel { get; } = "m³/s²";
         public override double LengthDimension { get; } = 3;
         public override double TimeDimension { get; } = -2;
@@ -42,49 +42,49 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "LiterPerMinuteSquare",
+          UnitName = "litre per minute squared",
           UnitLabel = "l/min²",
           ID = new Guid("b27d2f54-a1f3-4abb-ba6d-a2a8b530049a"),
           ConversionFactorFromSI = 3600000
         },
         new UnitChoice
         {
-          UnitName = "LiterPerMinutePerSecond",
+          UnitName = "litre per minute per second",
           UnitLabel = "l/min/s",
           ID = new Guid("e5a265b6-a9ba-4a09-ba08-b8c417b28ffb"),
           ConversionFactorFromSI = 60000
         },
         new UnitChoice
         {
-          UnitName = "LiterPerSecondPerSecond",
+          UnitName = "litre per second squared",
           UnitLabel = "l/s²",
           ID = new Guid("a899c06f-18dd-4d2a-9743-489f0af5be91"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerMinuteSquare",
+          UnitName = "UK gallon per minute squared",
           UnitLabel = "UKGal/min²",
           ID = new Guid("c7c61175-e527-4403-8425-32f681367985"),
           ConversionFactorFromSI = 791889.293874
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerMinutePerSecond",
+          UnitName = "UK gallon per minute per second",
           UnitLabel = "UKGal/min/s",
           ID = new Guid("298e7a16-07a5-4b5b-a0de-3e49b31254b4"),
           ConversionFactorFromSI = 13198.1549
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerMinuteSquare",
+          UnitName = "US gallon per minute squared",
           UnitLabel = "USGal/min²",
           ID = new Guid("61885289-823d-4b26-bdf2-bc4744567bef"),
           ConversionFactorFromSI = 951019.38447
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerMinutePerSecond",
+          UnitName = "US gallon per minute per second",
           UnitLabel = "USGal/min/s",
           ID = new Guid("3c530e9a-9376-49d1-a6b5-0a6f93f4184b"),
           ConversionFactorFromSI = 15850.32307

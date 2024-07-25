@@ -136,7 +136,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                   UnitName = "KiloPound",
+                   UnitName = "kilopound",
                    UnitLabel = "klb",
                    ID = new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69"),
                    ConversionFactorFromSI = 0.002204622621848776
@@ -199,7 +199,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                     new UnitChoice
                 {
-                    UnitName = "hundredweights",
+                    UnitName = "hundred weights",
                     UnitLabel = "cwt",
                     ID = new Guid("83810f2a-b260-41b3-bc13-5ef60290f214"),
                     ConversionFactorFromSI = 0.019684

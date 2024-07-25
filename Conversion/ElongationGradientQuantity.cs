@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class ElongationGradientQuantity : DerivedBasePhysicalQuantity
     {
-        public override string SIUnitName { get; } = "MetrePerMetre";
+        public override string SIUnitName { get; } = "metre per metre";
         public override string SIUnitLabel { get; } = "m/m";
 
         private static ElongationGradientQuantity instance_ = null;

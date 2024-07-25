@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class RandomWalkQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "RadianPerSqrtSecond";
+        public override string SIUnitName { get; } = "radian per square root second";
         public override string SIUnitLabel { get; } = "rd/√s";
         public override double MassDimension { get; } = 0;
         public override double LengthDimension { get; } = 1;
@@ -45,49 +45,49 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "RadianPerSqrtMinute",
+          UnitName = "radian per square root minute",
           UnitLabel = "rd/√min",
           ID = new Guid("ccc41b4e-2efb-4760-969f-94614248374f"),
           ConversionFactorFromSI = Math.Sqrt(60.0)
         },
         new UnitChoice
         {
-          UnitName = "RadianPerSqrtHour",
+          UnitName = "radian per square root hour",
           UnitLabel = "rd/√h",
           ID = new Guid("e296c410-e278-4586-af95-bae6fe4f0673"),
           ConversionFactorFromSI = Math.Sqrt(3600.0)
         },
         new UnitChoice
         {
-          UnitName = "RadianPerSqrtDay",
+          UnitName = "radian per square root day",
           UnitLabel = "rd/√d",
           ID = new Guid("fb4a74f9-a648-4310-a424-9c85036bbc41"),
           ConversionFactorFromSI = Math.Sqrt(3600.0*24.0)
         },
         new UnitChoice
         {
-          UnitName = "DegreePerSqrtSecond",
+          UnitName = "degree per square root second",
           UnitLabel = "°/√s",
           ID = new Guid("87a0a4e3-a2f5-4f84-b845-c7e6276e1655"),
           ConversionFactorFromSI = 180.0/Math.PI
         },
         new UnitChoice
         {
-          UnitName = "DegreePerSqrtMinute",
+          UnitName = "degree per square root minute",
           UnitLabel = "°/√min",
           ID = new Guid("e8e3a988-4219-44a5-ae89-ce115a239d04"),
           ConversionFactorFromSI = 180.0*Math.Sqrt(60.0)/Math.PI
         },
         new UnitChoice
         {
-          UnitName = "DegreePerSqrtHour",
+          UnitName = "degree per square root hour",
           UnitLabel = "°/√h",
           ID = new Guid("ab6b85cf-54e5-4c3b-a330-f65d7e3bb926"),
           ConversionFactorFromSI = 180.0*Math.Sqrt(3600.0)/Math.PI
         },
         new UnitChoice
         {
-          UnitName = "DegreePerSqrtDay",
+          UnitName = "degree per square root day",
           UnitLabel = "°/√d",
           ID = new Guid("8f806d0f-3741-4aa8-9f37-54b4f80e307c"),
           ConversionFactorFromSI = 180.0*Math.Sqrt(3600.0*24.0)/Math.PI

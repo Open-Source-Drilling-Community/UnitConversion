@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class CurvatureQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = "κ";
-        public override string SIUnitName { get; } = "RadianPerMetre";
+        public override string SIUnitName { get; } = "radian per metre";
         public override string SIUnitLabel { get; } = "rd/m";
         public override double LengthDimension { get; } = -1;
         public override double PlaneAngleDimension { get; } = 1;
@@ -42,49 +42,49 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "DegreePer10m",
+          UnitName = "degree per 10m",
           UnitLabel = "°/10m",
           ID = new Guid("c62408d6-c3c5-47bd-8cb0-4fa9faf51598"),
           ConversionFactorFromSI = 572.9577951308232
         },
         new UnitChoice
         {
-          UnitName = "DegreePer30m",
+          UnitName = "degree per 30m",
           UnitLabel = "°/30m",
           ID = new Guid("98a4d593-c959-49fb-ba1a-b1aa61830cd7"),
           ConversionFactorFromSI = 1718.8733853924698
         },
         new UnitChoice
         {
-          UnitName = "DegreePer30ft",
+          UnitName = "degree per 30ft",
           UnitLabel = "°/30ft",
           ID = new Guid("284dca7d-b1fc-4e40-ab08-a3e0fa2ef9d0"),
           ConversionFactorFromSI = 523.9126078676247
         },
         new UnitChoice
         {
-          UnitName = "DegreePer100ft",
+          UnitName = "degree per 100ft",
           UnitLabel = "°/100ft",
           ID = new Guid("5aa20ab5-6800-48db-abb1-4c3538b0972d"),
           ConversionFactorFromSI = 1746.375359558749
         },
         new UnitChoice
         {
-          UnitName = "DegreePerFoot",
+          UnitName = "degree per foot",
           UnitLabel = "°/ft",
           ID = new Guid("363a6781-5829-4046-95d8-ce1e844343fc"),
           ConversionFactorFromSI = 17.46375359558749
         },
         new UnitChoice
         {
-          UnitName = "RadianPerFoot",
+          UnitName = "radian per foot",
           UnitLabel = "rd/ft",
           ID = new Guid("1428743e-927c-4f7a-9e15-62d37790ad51"),
           ConversionFactorFromSI = 0.3048
         },
         new UnitChoice
         {
-          UnitName = "DegreePerMetre",
+          UnitName = "degree per metre",
           UnitLabel = "°/m",
           ID = new Guid("7c47f046-0499-4108-937d-abb504883259"),
           ConversionFactorFromSI = 57.29577951308232

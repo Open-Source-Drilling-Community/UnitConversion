@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class VolumetricFlowRateQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = "Q";
-        public override string SIUnitName { get; } = "CubicMetrePerSecond";
+        public override string SIUnitName { get; } = "cubic metre per second";
         public override string SIUnitLabel { get; } = "m³/s";
         public override double LengthDimension { get; } = 3;
         public override double TimeDimension { get; } = -1;
@@ -34,7 +34,7 @@ namespace OSDC.UnitConversion.Conversion
       {
         new UnitChoice
         {
-          UnitName = "LiterPerSecond",
+          UnitName = "litre per second",
           UnitLabel = "l/s",
           ID = new Guid("6dafb683-0f61-42ba-a22c-7bd5c9cea4ae"),
           ConversionFactorFromSI = 1000
@@ -49,238 +49,238 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "CubicFootPerSecond",
+          UnitName = "cubic foot per second",
           UnitLabel = "ft³/s",
           ID = new Guid("a02fc355-34da-447b-ad1f-66cef4cc96d5"),
           ConversionFactorFromSI = 35.31467
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerSecond",
+          UnitName = "UK gallon per second",
           UnitLabel = "gpsUK",
           ID = new Guid("21ca44f5-ed4e-414d-b285-b38730600794"),
           ConversionFactorFromSI = 219.96924829908778
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerSecond",
+          UnitName = "US gallon per second",
           UnitLabel = "gpsUS",
           ID = new Guid("21fe7e3a-bf92-4c94-b6d7-e2d30dfc4cd3"),
           ConversionFactorFromSI = 264.17985364436106
         },
         new UnitChoice
         {
-          UnitName = "BarrelPerSecond",
+          UnitName = "barrel per second",
           UnitLabel = "bbl/s",
           ID = new Guid("a73caac6-062e-4f79-8374-8fb2598b6842"),
           ConversionFactorFromSI = 6.28999651534193
         },
         new UnitChoice
         {
-          UnitName = "CubicMetrePerMinute",
-          UnitLabel = " m³/min",
+          UnitName = "cubic metre per minute",
+          UnitLabel = "m³/min",
           ID = new Guid("98eec130-224c-457a-a5dd-50b55a3a28ab"),
           ConversionFactorFromSI = 60
         },
         new UnitChoice
         {
-          UnitName = "LiterPerMinute",
+          UnitName = "litre per minute",
           UnitLabel = "l/min",
           ID = new Guid("e1ff1684-02ed-41c0-a82c-40b4a6d348b5"),
           ConversionFactorFromSI = 60000
         },
         new UnitChoice
         {
-          UnitName = "CubicFootPerMinute",
-          UnitLabel = " ft³/min",
+          UnitName = "cubic foot per minute",
+          UnitLabel = "ft³/min",
           ID = new Guid("a81e08db-d8fd-4379-bc8e-c223c3fb71b3"),
           ConversionFactorFromSI = 2118.8802
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerMinute",
+          UnitName = "UK gallon per minute",
           UnitLabel = "gpmUK",
           ID = new Guid("bb1d3fbc-efc1-4cf7-9c13-33c25a874224"),
           ConversionFactorFromSI = 13198.1548979
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerMinute",
+          UnitName = "US gallon per minute",
           UnitLabel = "gpmUS",
           ID = new Guid("ceca76e7-fd1e-4220-b072-9f40467a05e3"),
           ConversionFactorFromSI = 15850.3230745
         },
         new UnitChoice
         {
-          UnitName = "BarrelPerMinute",
+          UnitName = "barrel per minute",
           UnitLabel = "bbl/m",
           ID = new Guid("3672c640-3924-4921-861b-d14c99643615"),
           ConversionFactorFromSI = 377.39979092051584
         },
         new UnitChoice
         {
-          UnitName = "CubicMetrePerHour",
+          UnitName = "cubic metre per hour",
           UnitLabel = "m³/h",
           ID = new Guid("d6607bed-0235-4838-87c8-2ff6c76be2ad"),
           ConversionFactorFromSI = 3600
         },
         new UnitChoice
         {
-          UnitName = "LiterPerHour",
+          UnitName = "litre per hour",
           UnitLabel = "l/h",
           ID = new Guid("fe2d8a01-fd2b-4652-80bd-f0da2ce990fd"),
           ConversionFactorFromSI = 3600000
         },
         new UnitChoice
         {
-          UnitName = "CubicFootPerHour",
+          UnitName = "cubic foot per hour",
           UnitLabel = "ft³/h",
           ID = new Guid("54f30d1c-670a-4566-bfb2-3ce644d68878"),
           ConversionFactorFromSI = 127132.812
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerHour",
+          UnitName = "UK gallon per hour",
           UnitLabel = "gphUK",
           ID = new Guid("85d47672-e1ce-4b33-be1d-eabc2ec1c4c1"),
           ConversionFactorFromSI = 791889.293874
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerHour",
+          UnitName = "US gallon per hour",
           UnitLabel = "gphUS",
           ID = new Guid("36892d41-4a11-4d32-9a8c-1e43ac1f8c6d"),
           ConversionFactorFromSI = 951019.38447
         },
         new UnitChoice
         {
-          UnitName = "BarrelPerHour",
+          UnitName = "barrel per hour",
           UnitLabel = "bbl/h",
           ID = new Guid("af1bd583-3a13-4d3a-8f65-ede4f8fe9789"),
           ConversionFactorFromSI = 22643.98745523095
         },
         new UnitChoice
         {
-          UnitName = "CubicMetrePerDay",
+          UnitName = "cubic metre per day",
           UnitLabel = "m³/d",
           ID = new Guid("f512755c-166c-4346-a0f7-74f09703410f"),
           ConversionFactorFromSI = 86400
         },
         new UnitChoice
         {
-          UnitName = "MillionCubicMetrePerDay",
+          UnitName = "million cubic metre per day",
           UnitLabel = "Mm³/d",
           ID = new Guid("d09b4db7-9fbe-4018-aeb7-15286ccff8d6"),
           ConversionFactorFromSI = 0.0864
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerDay",
+          UnitName = "UK gallon per day",
           UnitLabel = "gpdUK",
           ID = new Guid("334cf647-375e-4423-8ef4-e1171f938f9a"),
           ConversionFactorFromSI = 19005343.052975997
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerDay",
+          UnitName = "US gallon per day",
           UnitLabel = "gpdUS",
           ID = new Guid("c0a47cc8-8ba1-47a1-ab94-d3e4361dd063"),
           ConversionFactorFromSI = 22824465.227280002
         },
         new UnitChoice
         {
-          UnitName = "MillionUKGallonPerDay",
+          UnitName = "million UK gallon per day",
           UnitLabel = "MillionUKGallonPerDay",
           ID = new Guid("f083576e-1d99-4243-bcfa-5ca6093b6931"),
           ConversionFactorFromSI = 19.005343052976
         },
         new UnitChoice
         {
-          UnitName = "MillionUSGallonPerDay",
+          UnitName = "million US gallon per day",
           UnitLabel = "MillionUSGallonPerDay",
           ID = new Guid("ffe9958a-3daa-472d-87ab-0b1217dcb1c5"),
           ConversionFactorFromSI = 22.82446522728
         },
         new UnitChoice
         {
-          UnitName = "LiterPerDay",
+          UnitName = "litre per day",
           UnitLabel = "l/d",
           ID = new Guid("67628fe2-6a64-4ea6-94fe-5a34e7568b53"),
           ConversionFactorFromSI = 86400000
         },
         new UnitChoice
         {
-          UnitName = "MillionLiterPerDay",
+          UnitName = "million liter per day",
           UnitLabel = "MillionLiterPerDay",
           ID = new Guid("1889c1dd-5aa3-45fe-b6cb-79a760e44832"),
           ConversionFactorFromSI = 86.4
         },
         new UnitChoice
         {
-          UnitName = "CubicFootPerDay",
+          UnitName = "cubic foot per day",
           UnitLabel = "ft³/d",
           ID = new Guid("6b9a886b-b96a-473b-8dea-e850583ad5d8"),
           ConversionFactorFromSI = 3051187.488
         },
         new UnitChoice
         {
-          UnitName = "ThousandStandardCubicFootPerDay",
+          UnitName = "thousand standard cubic foot per day",
           UnitLabel = "Mscf/d",
           ID = new Guid("627a75ed-2ab8-480a-96be-b9266d34ba5d"),
           ConversionFactorFromSI = 4.087346064814815E-07
         },
         new UnitChoice
         {
-          UnitName = "MillionStandardCubicFootPerDay",
+          UnitName = "million standard cubic foot per day",
           UnitLabel = "MMscf/d",
           ID = new Guid("f1c76ab3-8e54-4ad1-a7fe-a09be2a61285"),
           ConversionFactorFromSI = 4.087346064814815E-10
         },
         new UnitChoice
         {
-          UnitName = "BarrelPerDay",
+          UnitName = "barrel per day",
           UnitLabel = "bbl/d",
           ID = new Guid("9d36ce54-5bdc-4f4b-9948-dd65c58c9db3"),
           ConversionFactorFromSI = 543455.6989255428
         },
         new UnitChoice
         {
-          UnitName = "CubicMetrePerYear",
+          UnitName = "cubic metre per year",
           UnitLabel = "m³/year",
           ID = new Guid("f0e95734-b6a0-4081-b022-8c5bc0e7dd64"),
           ConversionFactorFromSI = 31557600
         },
         new UnitChoice
         {
-          UnitName = "LiterPerYear",
+          UnitName = "litre per year",
           UnitLabel = "l/year",
           ID = new Guid("d2b8abd2-cd97-4933-8e0a-54d8a4eef7ce"),
           ConversionFactorFromSI = 31557600000
         },
         new UnitChoice
         {
-          UnitName = "CubicFootPerYear",
+          UnitName = "cubic foot per year",
           UnitLabel = "ft³/year",
           ID = new Guid("5ae7fcd3-fae0-4d81-abca-4c3d36d49e6d"),
           ConversionFactorFromSI = 1114446229.992
         },
         new UnitChoice
         {
-          UnitName = "UKGallonPerYear",
+          UnitName = "UK gallon per year",
           UnitLabel = "gpyUK",
           ID = new Guid("b7f54c43-a2ee-4b27-bccb-4c0e752e4caf"),
           ConversionFactorFromSI = 6941701550.0994835
         },
         new UnitChoice
         {
-          UnitName = "USGallonPerYear",
+          UnitName = "US gallon per year",
           UnitLabel = "gpyUS",
           ID = new Guid("94558d1e-fbe2-4f06-a985-44210a1f0bc8"),
           ConversionFactorFromSI = 8336635924.264021
         },
         new UnitChoice
         {
-          UnitName = "BarrelPerYear",
+          UnitName = "barrel per year",
           UnitLabel = "bbl/year",
           ID = new Guid("0360ea30-fbf5-4dda-bf99-670dd6983420"),
           ConversionFactorFromSI = 543455.6989255428

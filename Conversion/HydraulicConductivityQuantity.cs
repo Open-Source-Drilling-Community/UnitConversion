@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class HydraulicConductivityQuantity : VelocityQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "MetrePerSecond";
+        public override string SIUnitName { get; } = "metre per second";
         public override string SIUnitLabel { get; } = "m/s";
         private static HydraulicConductivityQuantity instance_ = null;
 

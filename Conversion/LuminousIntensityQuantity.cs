@@ -46,7 +46,7 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "lumen/steradian",
+                    UnitName = "lumen per steradian",
                     UnitLabel = "lm/st",
                     ID = new Guid("5683bf23-cd97-4141-9bf4-62a43750ceda"),
                     ConversionFactorFromSI = 1.0

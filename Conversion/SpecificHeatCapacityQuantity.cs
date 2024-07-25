@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class SpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "JoulePerKilogramKelvin";
+        public override string SIUnitName { get; } = "joule per kilogram kelvin";
         public override string SIUnitLabel { get; } = "J/kg•K";
         public override double LengthDimension { get; } = 2;
         public override double TimeDimension { get; } = -2;
@@ -43,28 +43,28 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "JoulePerGramKelvin",
+          UnitName = "joule per gram kelvin",
           UnitLabel = "J/g•k",
           ID = new Guid("0c38001b-ecba-4920-ac75-e4644d8feced"),
           ConversionFactorFromSI = 0.001
         },
         new UnitChoice
         {
-          UnitName = "JoulePerGramDegreeCelsius",
+          UnitName = "joule per gram degree celsius",
           UnitLabel = "J/g•°C",
           ID = new Guid("5b620d63-2269-42d3-8385-edca04c7ea70"),
           ConversionFactorFromSI = 0.001
         },
         new UnitChoice
         {
-          UnitName = "CaloriePerGramDegreeCelsius",
+          UnitName = "calorie per gram degree celsius",
           UnitLabel = "Cal/g•°C",
           ID = new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397"),
           ConversionFactorFromSI = 0.0002388459
         },
         new UnitChoice
         {
-          UnitName = "BritishThermalUnitPerPoundDegreeFarenheit",
+          UnitName = "british thermal unit per pound degree fahrenheit",
           UnitLabel = "BTU/lb•°F",
           ID = new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16"),
           ConversionFactorFromSI = 0.0002388459

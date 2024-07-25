@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class MassRateQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "KilogramPerSecond";
+        public override string SIUnitName { get; } = "kilogram per second";
         public override string SIUnitLabel { get; } = "kg/s";
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -1;
@@ -42,7 +42,7 @@ namespace OSDC.UnitConversion.Conversion
         },
         new UnitChoice
         {
-          UnitName = "KilogramPerMinute",
+          UnitName = "kilogram per minute",
           UnitLabel = "kg/min",
           ID = new Guid("b776ae6f-5b86-462c-b815-2608d7e98192"),
           ConversionFactorFromSI = 60

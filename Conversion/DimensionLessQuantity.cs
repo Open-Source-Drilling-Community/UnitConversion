@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class DimensionlessQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "Dimensionless";
+        public override string SIUnitName { get; } = "dimensionless";
         public override string SIUnitLabel { get; } = "";
         private static DimensionlessQuantity instance_ = null;
 
