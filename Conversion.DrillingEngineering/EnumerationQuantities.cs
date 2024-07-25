@@ -942,14 +942,14 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         {
             NewtonPerMetre,  // NewtonPerMetre
             MilliNewtonPerMetre,  // MilliNewtonPerMetre
-            DynesPerCentimetre,  // DynesPerCentimetre
+            DynePerCentimetre,  // DynePerCentimetre
             PoundPerSecondSquared // PoundPerSecondSquared
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.NewtonPerMetre, new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932")},  // NewtonPerMetre
          {UnitChoicesEnum.MilliNewtonPerMetre, new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690")},  // MilliNewtonPerMetre
-         {UnitChoicesEnum.DynesPerCentimetre, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // DynesPerCentimetre
+         {UnitChoicesEnum.DynePerCentimetre, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // DynePerCentimetre
          {UnitChoicesEnum.PoundPerSecondSquared, new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c")} // PoundPerSecondSquared
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
