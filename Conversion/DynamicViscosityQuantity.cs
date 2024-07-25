@@ -71,8 +71,8 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "dynes per square centimetre second",
-                    UnitLabel = "dynes•s/cm²",
+                    UnitName = "dyne per square centimetre second",
+                    UnitLabel = "dyne•s/cm²",
                     ID = new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132"),
                     ConversionFactorFromSI = 10.0
                 }

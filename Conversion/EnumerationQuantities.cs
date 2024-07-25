@@ -697,7 +697,7 @@ namespace OSDC.UnitConversion.Conversion
             MicroPascalSecond,  // MicroPascalSecond
             MicroPoise,  // MicroPoise
             PoundPer100SquareFootSecond,  // PoundPer100SquareFootSecond
-            DynesPerSquareCentimetreSecond // DynesPerSquareCentimetreSecond
+            DynePerSquareCentimetreSecond // DynePerSquareCentimetreSecond
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -706,7 +706,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.MicroPascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")},  // MicroPascalSecond
          {UnitChoicesEnum.MicroPoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // MicroPoise
          {UnitChoicesEnum.PoundPer100SquareFootSecond, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // PoundPer100SquareFootSecond
-         {UnitChoicesEnum.DynesPerSquareCentimetreSecond, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // DynesPerSquareCentimetreSecond
+         {UnitChoicesEnum.DynePerSquareCentimetreSecond, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // DynePerSquareCentimetreSecond
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -1442,7 +1442,7 @@ namespace OSDC.UnitConversion.Conversion
             FootWater4DegC,  // FootWater4DegC
             InchWater60DegF,  // InchWater60DegF
             FootWater60DegF,  // FootWater60DegF
-            DynesPerSquareCentimetre // DynesPerSquareCentimetre
+            DynePerSquareCentimetre // DynePerSquareCentimetre
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -1474,7 +1474,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.FootWater4DegC, new Guid("52de6721-dfec-4a54-861c-e74da72c8470")},  // FootWater4DegC
          {UnitChoicesEnum.InchWater60DegF, new Guid("80b388f3-5036-42cb-8462-91a8bfbc429e")},  // InchWater60DegF
          {UnitChoicesEnum.FootWater60DegF, new Guid("5dc3d224-5a3d-410e-8348-463f802a9b27")},  // FootWater60DegF
-         {UnitChoicesEnum.DynesPerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // DynesPerSquareCentimetre
+         {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // DynePerSquareCentimetre
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -1958,14 +1958,14 @@ namespace OSDC.UnitConversion.Conversion
         {
             NewtonPerMetre,  // NewtonPerMetre
             MilliNewtonPerMetre,  // MilliNewtonPerMetre
-            DynesPerCentimetre,  // DynesPerCentimetre
+            DynePerCentimetre,  // DynePerCentimetre
             PoundPerSecondSquared // PoundPerSecondSquared
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.NewtonPerMetre, new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932")},  // NewtonPerMetre
          {UnitChoicesEnum.MilliNewtonPerMetre, new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690")},  // MilliNewtonPerMetre
-         {UnitChoicesEnum.DynesPerCentimetre, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // DynesPerCentimetre
+         {UnitChoicesEnum.DynePerCentimetre, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // DynePerCentimetre
          {UnitChoicesEnum.PoundPerSecondSquared, new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c")} // PoundPerSecondSquared
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
@@ -2742,7 +2742,7 @@ namespace OSDC.UnitConversion.Conversion
             PoundPerSquareInch,  // PoundPerSquareInch
             PoundPerSquareFoot,  // PoundPerSquareFoot
             PoundPer100SquareFoot,  // PoundPer100SquareFoot
-            DynesPerSquareCentimetre // DynesPerSquareCentimetre
+            DynePerSquareCentimetre // DynePerSquareCentimetre
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2752,7 +2752,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // PoundPerSquareInch
          {UnitChoicesEnum.PoundPerSquareFoot, new Guid("35b28889-c076-4274-b200-cf7732b17aa3")},  // PoundPerSquareFoot
          {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")},  // PoundPer100SquareFoot
-         {UnitChoicesEnum.DynesPerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // DynesPerSquareCentimetre
+         {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // DynePerSquareCentimetre
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -2777,7 +2777,7 @@ namespace OSDC.UnitConversion.Conversion
             CentiPoise,  // CentiPoise
             MicroPoise,  // MicroPoise
             PoundPer100SquareFootSecond,  // PoundPer100SquareFootSecond
-            DynesPerSquareCentimetreSecond // DynesPerSquareCentimetreSecond
+            DynePerSquareCentimetreSecond // DynePerSquareCentimetreSecond
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2786,7 +2786,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.CentiPoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // CentiPoise
          {UnitChoicesEnum.MicroPoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // MicroPoise
          {UnitChoicesEnum.PoundPer100SquareFootSecond, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // PoundPer100SquareFootSecond
-         {UnitChoicesEnum.DynesPerSquareCentimetreSecond, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // DynesPerSquareCentimetreSecond
+         {UnitChoicesEnum.DynePerSquareCentimetreSecond, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // DynePerSquareCentimetreSecond
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
