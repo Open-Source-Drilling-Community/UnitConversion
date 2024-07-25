@@ -40,14 +40,14 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             });
             this.UnitChoices.Add(new UnitChoice
             {
-                UnitName = "ShockPerMinute",
+                UnitName = "shock per minute",
                 UnitLabel = "spm",
                 ID = new Guid("6ccbee46-cb8a-4777-b1d2-e88eedd24f73"),
                 ConversionFactorFromSI = 60
             });
             this.UnitChoices.Add(new UnitChoice
             {
-                UnitName = "ShockPerHour",
+                UnitName = "shock per hour",
                 UnitLabel = "spm",
                 ID = new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e"),
                 ConversionFactorFromSI = 3600

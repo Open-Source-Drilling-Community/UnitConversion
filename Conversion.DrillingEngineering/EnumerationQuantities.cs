@@ -188,7 +188,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         {
             Centimetre,  // centimetre
             Decimetre,  // decimetre
-            Feet,  // feet
+            Foot,  // foot
             Inch,  // inch
             Metre,  // metre
             Micrometre,  // micrometre
@@ -202,7 +202,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
          {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
          {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
@@ -265,12 +265,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public new enum UnitChoicesEnum
         {
             Metre,  // metre
-            Feet // feet
+            Foot // foot
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")} // feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")} // foot
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -551,7 +551,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             KilogramPerCubicMetrePerKelvin,  // KilogramPerCubicMetrePerKelvin
             GramPerCubicCentimetrePerCelsius,  // GramPerCubicCentimetrePerCelsius
             PoundPerGallonUKPerCelsius,  // PoundPerGallonUKPerCelsius
-            PoundPerGallonUSPerFarenheit,  // PoundPerGallonUSPerFarenheit
+            PoundPerGallonUSPerFahrenheit,  // PoundPerGallonUSPerFahrenheit
             SpecificGravityPerCelsius // SpecificGravityPerCelsius
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
@@ -559,7 +559,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KilogramPerCubicMetrePerKelvin, new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf")},  // KilogramPerCubicMetrePerKelvin
          {UnitChoicesEnum.GramPerCubicCentimetrePerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // GramPerCubicCentimetrePerCelsius
          {UnitChoicesEnum.PoundPerGallonUKPerCelsius, new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b")},  // PoundPerGallonUKPerCelsius
-         {UnitChoicesEnum.PoundPerGallonUSPerFarenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // PoundPerGallonUSPerFarenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // PoundPerGallonUSPerFahrenheit
          {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")} // SpecificGravityPerCelsius
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
@@ -1270,7 +1270,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             JoulePerGramKelvin,  // JoulePerGramKelvin
             JoulePerGramDegreeCelsius,  // JoulePerGramDegreeCelsius
             CaloriePerGramDegreeCelsius,  // CaloriePerGramDegreeCelsius
-            BritishThermalUnitPerPoundDegreeFarenheit // BritishThermalUnitPerPoundDegreeFarenheit
+            BritishThermalUnitPerPoundDegreeFahrenheit // BritishThermalUnitPerPoundDegreeFahrenheit
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -1278,7 +1278,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.JoulePerGramKelvin, new Guid("0c38001b-ecba-4920-ac75-e4644d8feced")},  // JoulePerGramKelvin
          {UnitChoicesEnum.JoulePerGramDegreeCelsius, new Guid("5b620d63-2269-42d3-8385-edca04c7ea70")},  // JoulePerGramDegreeCelsius
          {UnitChoicesEnum.CaloriePerGramDegreeCelsius, new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397")},  // CaloriePerGramDegreeCelsius
-         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")} // BritishThermalUnitPerPoundDegreeFarenheit
+         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")} // BritishThermalUnitPerPoundDegreeFahrenheit
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -1302,7 +1302,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             JoulePerGramKelvinPerKelvin,  // JoulePerGramKelvinPerKelvin
             JoulePerGramDegreeCelsiusPerCelsius,  // JoulePerGramDegreeCelsiusPerCelsius
             CaloriePerGramDegreeCelsiusPerCelsius,  // CaloriePerGramDegreeCelsiusPerCelsius
-            BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit // BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit
+            BritishThermalUnitPerPoundDegreeFahrenheitPerFahrenheit // BritishThermalUnitPerPoundDegreeFahrenheitPerFahrenheit
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -1310,7 +1310,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.JoulePerGramKelvinPerKelvin, new Guid("69520d03-c7c3-483f-bbbb-6bdf3cf74463")},  // JoulePerGramKelvinPerKelvin
          {UnitChoicesEnum.JoulePerGramDegreeCelsiusPerCelsius, new Guid("9ed03436-3032-4bee-a145-fd03b6236816")},  // JoulePerGramDegreeCelsiusPerCelsius
          {UnitChoicesEnum.CaloriePerGramDegreeCelsiusPerCelsius, new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2")},  // CaloriePerGramDegreeCelsiusPerCelsius
-         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit, new Guid("57264532-79b7-4a19-8ffe-617bba781be3")} // BritishThermalUnitPerPoundDegreeFarenheitPerFarenheit
+         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheitPerFahrenheit, new Guid("57264532-79b7-4a19-8ffe-617bba781be3")} // BritishThermalUnitPerPoundDegreeFahrenheitPerFahrenheit
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -1446,7 +1446,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ReciprocalDecametre,  // ReciprocalDecametre
             ReciprocalHectometre,  // ReciprocalHectometre
             ReciprocalKilometre,  // ReciprocalKilometre
-            ReciprocalFeet,  // ReciprocalFeet
+            ReciprocalFoot,  // ReciprocalFoot
             ReciprocalYard,  // ReciprocalYard
             ReciprocalMile // ReciprocalMile
         }
@@ -1456,7 +1456,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.ReciprocalDecametre, new Guid("a691338d-1916-4355-b6e1-3b1bff086c14")},  // ReciprocalDecametre
          {UnitChoicesEnum.ReciprocalHectometre, new Guid("4da19df4-0ff6-424b-a2ab-9d5811ba48ca")},  // ReciprocalHectometre
          {UnitChoicesEnum.ReciprocalKilometre, new Guid("a4b4ed8e-a1c6-4e3f-9421-8770cec6ff42")},  // ReciprocalKilometre
-         {UnitChoicesEnum.ReciprocalFeet, new Guid("1d6a5284-d32f-4f5a-ad27-bfc0f71069aa")},  // ReciprocalFeet
+         {UnitChoicesEnum.ReciprocalFoot, new Guid("1d6a5284-d32f-4f5a-ad27-bfc0f71069aa")},  // ReciprocalFoot
          {UnitChoicesEnum.ReciprocalYard, new Guid("be5f64c0-592a-4f3b-b2b5-6df8b9d2a31b")},  // ReciprocalYard
          {UnitChoicesEnum.ReciprocalMile, new Guid("acbb10a5-602f-423b-bc15-bdfd80cb7008")} // ReciprocalMile
     };
@@ -1589,16 +1589,16 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             WattPerMetreKelvin,  // WattPerMetreKelvin
             CaloriePerMetreSecondDegreeCelsius,  // CaloriePerMetreSecondDegreeCelsius
             CaloriePerCentimetreSecondDegreeCelsius,  // CaloriePerCentimetreSecondDegreeCelsius
-            BritishThermalUnitPerHourFootDegreeFarenheit,  // BritishThermalUnitPerHourFootDegreeFarenheit
-            BritishThermalUnitInchPerHourSquareFootDegreeFarenheit // BritishThermalUnitInchPerHourSquareFootDegreeFarenheit
+            BritishThermalUnitPerHourFootDegreeFahrenheit,  // BritishThermalUnitPerHourFootDegreeFahrenheit
+            BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit // BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.WattPerMetreKelvin, new Guid("3ddba24f-4ccf-4cb1-af6c-2829cac3b88f")},  // WattPerMetreKelvin
          {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsius, new Guid("d0386fc4-b97b-4874-8c8d-66e093c391ea")},  // CaloriePerMetreSecondDegreeCelsius
          {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsius, new Guid("5f8706ed-d938-4715-a0ca-2afff423f6e6")},  // CaloriePerCentimetreSecondDegreeCelsius
-         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheit, new Guid("43169695-8f6e-42ad-8c07-566dc7651edb")},  // BritishThermalUnitPerHourFootDegreeFarenheit
-         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFarenheit, new Guid("c79c2b27-c956-49a3-9caf-8653017777ca")} // BritishThermalUnitInchPerHourSquareFootDegreeFarenheit
+         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheit, new Guid("43169695-8f6e-42ad-8c07-566dc7651edb")},  // BritishThermalUnitPerHourFootDegreeFahrenheit
+         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit, new Guid("c79c2b27-c956-49a3-9caf-8653017777ca")} // BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit
     };
         public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
         {
@@ -1619,16 +1619,16 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public new enum UnitChoicesEnum
         {
             WattPerMetreKelvinPerKelvin,  // WattPerMetreKelvinPerKelvin
-            BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit,  // BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit
-            BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit,  // BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit
+            BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitPerFahrenheit,  // BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitPerFahrenheit
+            BritishThermalUnitPerHourFootDegreeFahrenheitPerFahrenheit,  // BritishThermalUnitPerHourFootDegreeFahrenheitPerFahrenheit
             CaloriePerCentimetreSecondDegreeCelsiusPerCelsius,  // CaloriePerCentimetreSecondDegreeCelsiusPerCelsius
             CaloriePerMetreSecondDegreeCelsiusPerCelsius // CaloriePerMetreSecondDegreeCelsiusPerCelsius
         }
         protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.WattPerMetreKelvinPerKelvin, new Guid("0459940e-d71f-4b01-9ea6-eeb05d754af2")},  // WattPerMetreKelvinPerKelvin
-         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit, new Guid("918b4e34-3986-427f-8bb6-c09740a7c299")},  // BritishThermalUnitInchPerHourSquareFootDegreeFarenheitPerFarenheit
-         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit, new Guid("b79509ea-8c03-4538-9974-208f7e0ee40e")},  // BritishThermalUnitPerHourFootDegreeFarenheitPerFarenheit
+         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitPerFahrenheit, new Guid("918b4e34-3986-427f-8bb6-c09740a7c299")},  // BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitPerFahrenheit
+         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheitPerFahrenheit, new Guid("b79509ea-8c03-4538-9974-208f7e0ee40e")},  // BritishThermalUnitPerHourFootDegreeFahrenheitPerFahrenheit
          {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsiusPerCelsius, new Guid("6c21a6cd-61fe-4086-95a7-ad6d6820c96e")},  // CaloriePerCentimetreSecondDegreeCelsiusPerCelsius
          {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsiusPerCelsius, new Guid("eb08ff8c-d542-440f-a4c7-610653018910")} // CaloriePerMetreSecondDegreeCelsiusPerCelsius
     };
@@ -2009,7 +2009,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             Hectometre,  // hectometre
             Kilometre,  // kilometre
             Inch,  // inch
-            Feet,  // feet
+            Foot,  // foot
             Yard,  // yard
             Mile // mile
         }
@@ -2022,7 +2022,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Hectometre, new Guid("cb5c81a3-b9da-42b5-a2ea-0509df445d01")},  // hectometre
          {UnitChoicesEnum.Kilometre, new Guid("93aee1b8-653d-4841-b948-10460cb84334")},  // kilometre
          {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
          {UnitChoicesEnum.Yard, new Guid("7b9156e4-7cce-41cf-a251-95412f4d91a5")},  // yard
          {UnitChoicesEnum.Mile, new Guid("95736fd3-878b-4d93-9a78-ee6f20619628")} // mile
     };
@@ -2078,7 +2078,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         {
             Centimetre,  // centimetre
             Decimetre,  // decimetre
-            Feet,  // feet
+            Foot,  // foot
             Inch,  // inch
             Metre,  // metre
             Micrometre,  // micrometre
@@ -2092,7 +2092,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
          {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
          {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
@@ -2122,7 +2122,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         {
             Centimetre,  // centimetre
             Decimetre,  // decimetre
-            Feet,  // feet
+            Foot,  // foot
             Inch,  // inch
             Metre,  // metre
             Micrometre,  // micrometre
@@ -2136,7 +2136,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
          {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
          {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
@@ -2166,7 +2166,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         {
             Centimetre,  // centimetre
             Decimetre,  // decimetre
-            Feet,  // feet
+            Foot,  // foot
             Inch,  // inch
             Metre,  // metre
             Micrometre,  // micrometre
@@ -2180,7 +2180,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
          {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
          {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
@@ -2240,8 +2240,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         {
             Metre,  // metre
             Kilometre,  // kilometre
-            Feet,  // feet
-            USSurveyFeet,  // US survey feet
+            Foot,  // foot
+            USSurveyFoot,  // US survey foot
             Yard,  // yard
             Surveyor_sChain,  // surveyor's chain
             Mile // mile
@@ -2250,8 +2250,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
          {UnitChoicesEnum.Kilometre, new Guid("93aee1b8-653d-4841-b948-10460cb84334")},  // kilometre
-         {UnitChoicesEnum.Feet, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // feet
-         {UnitChoicesEnum.USSurveyFeet, new Guid("eaf5909f-c68e-4346-9517-1dafad48b161")},  // US survey feet
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
+         {UnitChoicesEnum.USSurveyFoot, new Guid("eaf5909f-c68e-4346-9517-1dafad48b161")},  // US survey foot
          {UnitChoicesEnum.Yard, new Guid("7b9156e4-7cce-41cf-a251-95412f4d91a5")},  // yard
          {UnitChoicesEnum.Surveyor_sChain, new Guid("f101708b-ab63-4f21-ac87-4b5b3615eb30")},  // surveyor's chain
          {UnitChoicesEnum.Mile, new Guid("95736fd3-878b-4d93-9a78-ee6f20619628")} // mile
