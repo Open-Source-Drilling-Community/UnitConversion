@@ -10,5 +10,3 @@
 .vs/
 UpgradeLog*.htm
 /home
-/ModelShared/BundleFromOpenApi.json
-/ModelShared/ModelSharedFromOpenApi.cs
