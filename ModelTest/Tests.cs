@@ -186,10 +186,10 @@ namespace OSDC.UnitConversion.ModelTest
         public void Test_Calculus_LengthQuantity()
         {
             List<string> choices = LengthQuantity.Instance.GetUnitChoiceNames();
-            double actual = LengthQuantity.Instance.ToSI(1.0, "feet");
+            double actual = LengthQuantity.Instance.ToSI(1.0, "foot");
             Assert.That(actual, Is.EqualTo(0.3048));
 
-            string actualStr = LengthQuantity.Instance.ToSIString(1.0, "feet");
+            string actualStr = LengthQuantity.Instance.ToSIString(1.0, "foot");
             string expected = 0.3048.ToString(CultureInfo.InvariantCulture.NumberFormat);
             Assert.That(actualStr, Is.EqualTo(expected));
         }
@@ -198,7 +198,7 @@ namespace OSDC.UnitConversion.ModelTest
         public void Test_Calculus_DepthQuantity()
         {
             List<string> choices = DepthQuantity.Instance.GetUnitChoiceNames();
-            string actualStr = DepthQuantity.Instance.ToSIString(1.0, "feet");
+            string actualStr = DepthQuantity.Instance.ToSIString(1.0, "foot");
             string expected = 0.305.ToString(CultureInfo.InvariantCulture.NumberFormat);
             Assert.That(actualStr, Is.EqualTo(expected));
         }

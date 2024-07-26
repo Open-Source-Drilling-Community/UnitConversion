@@ -29,15 +29,15 @@ namespace OSDC.UnitConversion.Conversion
         }
         public PressureQuantity() : base()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0).ToLower();
-            UsualNames = new HashSet<string>() { "pressure" };
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Pressure" };
             ID = new Guid("0f282508-9223-489d-86e6-36307f987045");
             UnitChoices = new List<UnitChoice>()
             {
                 new UnitChoice
                 {
-                  UnitName = "pascal",
-                  UnitLabel = "Pa",
+                  UnitName = SIUnitName,
+                  UnitLabel = SIUnitLabel,
                   ID = new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb"),
                   ConversionFactorFromSI = 1.0,
                   IsSI = true
@@ -191,24 +191,52 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                  UnitName = "centimetre water at 4 degre celsius",
+                  UnitName = "centimetre water at 4 degree celsius",
                   UnitLabel = "cm Aq 4°C",
                   ID = new Guid("a1bac4cc-f37c-4aa5-aec6-ede0b4c52f09"),
                   ConversionFactorFromSI = 0.01019744289
                 },
                 new UnitChoice
                 {
-                  UnitName = "millimetre water at 4 degre celsius",
+                  UnitName = "millimetre water at 4 degree celsius",
                   UnitLabel = "mm Aq 4°C",
                   ID = new Guid("a46b3ef6-fe2a-4ff3-bc2d-7a26661ce45e"),
                   ConversionFactorFromSI = 0.1019744289
                 },
                 new UnitChoice
                 {
-                  UnitName = "inch water at 4 degre celsius",
+                  UnitName = "inch water at 4 degree celsius",
                   UnitLabel = "in Aq 4°C",
                   ID = new Guid("3015f436-b35d-455c-af23-b9bc4dd857da"),
                   ConversionFactorFromSI = 0.004014
+                },
+                new UnitChoice
+                {
+                  UnitName = "foot water at 4 degree celsius",
+                  UnitLabel = "ft Aq 4°C",
+                  ID = new Guid("52de6721-dfec-4a54-861c-e74da72c8470"),
+                  ConversionFactorFromSI = 0.0003345623
+                },
+                new UnitChoice
+                {
+                  UnitName = "inch water at 60 degree fahrenheit",
+                  UnitLabel = "in Aq 60°F",
+                  ID = new Guid("80b388f3-5036-42cb-8462-91a8bfbc429e"),
+                  ConversionFactorFromSI = 0.0040185981
+                },
+                new UnitChoice
+                {
+                  UnitName = "foot water at 60 degree fahrenheit",
+                  UnitLabel = "ft Aq 60°F",
+                  ID = new Guid("5dc3d224-5a3d-410e-8348-463f802a9b27"),
+                  ConversionFactorFromSI = 0.0003348832
+                },
+                new UnitChoice
+                {
+                  UnitName = "dyne per square centimetre",
+                  UnitLabel = "dyne/cm²",
+                  ID = new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38"),
+                  ConversionFactorFromSI = 10.0
                 }
             };
         }

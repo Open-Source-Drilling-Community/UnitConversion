@@ -644,7 +644,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VolumeQuantity.Instance.ID.ToString(), VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.Liter).ID.ToString());
                     Choices.Add(VolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.LiterPerMinutePerSecond).ID.ToString());
                     Choices.Add(VolumetricFlowRateQuantity.Instance.ID.ToString(), VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.LiterPerMinute).ID.ToString());
-                    Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice("ReciprocalMetre").ID.ToString());
+                    Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice(WaveNumberQuantity.UnitChoicesEnum.ReciprocalMetre).ID.ToString());
                     Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.MegaPascal).ID.ToString());
                 }
                 else if (defaultUnitChoice == DefaultUnitSystemEnum.US)
@@ -730,7 +730,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VolumeQuantity.Instance.ID.ToString(), VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.USGallon).ID.ToString());
                     Choices.Add(VolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.USGallonPerMinutePerSecond).ID.ToString());
                     Choices.Add(VolumetricFlowRateQuantity.Instance.ID.ToString(), VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.USGallonPerMinute).ID.ToString());
-                    Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice("ReciprocalMetre").ID.ToString());
+                    Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice(WaveNumberQuantity.UnitChoicesEnum.ReciprocalMetre).ID.ToString());
                     Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.PSI).ID.ToString());
                 }
                 else if (defaultUnitChoice == DefaultUnitSystemEnum.Imperial)
@@ -816,7 +816,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VolumeQuantity.Instance.ID.ToString(), VolumeQuantity.Instance.GetUnitChoice(VolumeQuantity.UnitChoicesEnum.UKGallon).ID.ToString());
                     Choices.Add(VolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.UKGallonPerMinutePerSecond).ID.ToString());
                     Choices.Add(VolumetricFlowRateQuantity.Instance.ID.ToString(), VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.UKGallonPerMinute).ID.ToString());
-                    Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice("ReciprocalMetre").ID.ToString());
+                    Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice(WaveNumberQuantity.UnitChoicesEnum.ReciprocalMetre).ID.ToString());
                     Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.PSI).ID.ToString());
                 }
                 CheckMissing(quantities);
