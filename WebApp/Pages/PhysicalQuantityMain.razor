@@ -1,5 +1,5 @@
 ﻿@page "/PhysicalQuantity"
-@inject ILogger<PhysicalQuantityMain> logger
+@inject ILogger<PhysicalQuantity> logger
 @inject ISnackbar Snackbar
 
 @if (physicalQuantityList == null)
@@ -148,7 +148,7 @@ else
                         var qtyCollection = await physicalQuantityTask; // awaiting the finished task allows to retrieve its result and throw exception if needed
                         if (qtyCollection != null)
                         {
-                            foreach (OSDC.UnitConversion.ModelShared.PhysicalQuantity qty in qtyCollection)
+                            foreach (PhysicalQuantity qty in qtyCollection)
                             {
                                 List<(double T, double L, double M, double K, double N, double I, double J, double Th, double Om)> dimensions = [];
                                 dimensions.Add((T: qty.TimeDimension,
@@ -178,7 +178,7 @@ else
                             Snackbar.Add("Returned list of PhysicalQuantity were null on initialization", Severity.Warning);
                         }
                     }
-                    catch (OSDC.UnitConversion.ModelShared.ApiException ex)
+                    catch (ApiException ex)
                     {
                         logger.LogError(ex, "Impossible to load PhysicalQuantity from client");
                     }
@@ -195,7 +195,7 @@ else
 
     internal class VisualPhysicalQuantity
     {
-        public OSDC.UnitConversion.ModelShared.PhysicalQuantity? Quantity { get; set; }
+        public PhysicalQuantity? Quantity { get; set; }
         public bool ShowDetails { get; set; } = false;
         public bool IsDrilling { get; set; }
         public List<(double T, double L, double M, double K, double N, double I, double J, double Th, double Om)> Dimensions { get; set; } = [];
