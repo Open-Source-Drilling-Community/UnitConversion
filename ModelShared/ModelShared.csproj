@@ -21,7 +21,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="json-schemas\" />
 		<Folder Include="json-schemas\3.0.0\" />
 	</ItemGroup>
 
