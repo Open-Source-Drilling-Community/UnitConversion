@@ -1,0 +1,53 @@
+﻿<style>
+    .align-right input {
+        text-align: right;
+    }
+</style>
+
+<MudNumericField T="double?" Value="Value" ValueChanged="UpdateFromValue"
+                 Class="align-right"
+                 Variant="Variant.Text" HideSpinButtons="true"
+                 DebounceInterval="1500" OnDebounceIntervalElapsed="HandleIntervalElapsed" />
+
+@code {
+    [CascadingParameter]
+    public MudDataGrid<QuantityUnitConversion> DataGrid { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public CellContext<QuantityUnitConversion> Context { get; set; } = default!;
+
+    private double? Value
+    {
+        get
+        {
+            if (Context.Item.ValueConversionList.Any())
+            {
+                return Context.Item.ValueConversionList.ElementAt(0).DataIn;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+
+    public async Task UpdateFromValue(double? val)
+    {
+        if (val != null)
+        {
+            Context.Item.ValueConversionList.ElementAt(0).DataIn = (double)val;
+        }
+        else
+        {
+            Context.Item.ValueConversionList.ElementAt(0).DataIn = 1;
+        }
+        await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+
+    }
+
+    private async Task HandleIntervalElapsed(string debouncedText)
+    {
+        await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+    }
+}

@@ -1,0 +1,48 @@
+﻿<MudAutocomplete T="string" Value="Quantity" ValueChanged="UpdateFromQuantity" SearchFunc="@SearchQuantity"
+                 MaxItems="null" ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
+                 AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Immediate="true">
+</MudAutocomplete>
+
+@code {
+    [CascadingParameter]
+    public MudDataGrid<QuantityUnitConversion> DataGrid { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public CellContext<QuantityUnitConversion> Context { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public List<PhysicalQuantity> PhysicalQuantityList { get; set; } = default!;
+
+    private string? Quantity
+    {
+        get => PhysicalQuantityList!.First(q => q.ID == Context.Item.QuantityID)!.Name;
+    }
+
+    public async Task UpdateFromQuantity(string qtyName)
+    {
+        if (!string.IsNullOrEmpty(qtyName))
+        {
+            var quantity = PhysicalQuantityList.First(q => q.Name == qtyName)!;
+            var siUnit = quantity.UnitChoices.First(u => u.IsSI)!;
+            Context.Item.QuantityID = quantity.ID;
+            Context.Item.UnitChoiceIDIn = siUnit.ID;
+            Context.Item.UnitChoiceIDOut = siUnit.ID;
+            await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+        }
+    }
+
+    private async Task<IEnumerable<string>> SearchQuantity(string qtyName)
+    {
+        // In real life use an asynchronous function for fetching data from an api.
+        await Task.Delay(1);
+
+        // if text is null or empty, show complete list
+        if (string.IsNullOrEmpty(qtyName))
+            return PhysicalQuantityList.Select(q => q.Name).ToList();
+        return PhysicalQuantityList.Where(x => x.Name.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase) ||
+                                               x.UsualNames.Any(uName => uName.Contains(qtyName)))
+                                   .Select(q => q.Name).ToList();
+    }
+}

@@ -1,0 +1,61 @@
+﻿<MudAutocomplete T="string" Value="Unit" ValueChanged="UpdateFromUnit" SearchFunc="@SearchUnit"
+                 ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
+                 Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Immediate="true">
+</MudAutocomplete>
+
+@code {
+    [CascadingParameter]
+    public MudDataGrid<QuantityUnitConversion> DataGrid { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public CellContext<QuantityUnitConversion> Context { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public ICollection<UnitChoice> UnitChoices { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public bool IsUnitChoiceIn { get; set; }
+
+    private string? Unit
+    {
+        get => IsUnitChoiceIn ? UnitChoices.First(u => u.ID == Context.Item.UnitChoiceIDIn)!.UnitLabel :
+                                UnitChoices.First(u => u.ID == Context.Item.UnitChoiceIDOut)!.UnitLabel;
+    }
+
+    public async Task UpdateFromUnit(string unitLabel)
+    {
+        if (!string.IsNullOrEmpty(unitLabel))
+        {
+            Guid guid = UnitChoices.First(u => u.UnitLabel == unitLabel)!.ID;
+            if (IsUnitChoiceIn)
+            {
+                Context.Item.UnitChoiceIDIn = guid;
+            }
+            else
+            {
+                Context.Item.UnitChoiceIDOut = guid;
+            }
+            await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+        }
+    }
+
+    /// <summary>
+    /// Function that searches for the given unit string inside any of the unit labels and unit names of the current unit choices
+    /// </summary>
+    /// <param name="unitString"></param>
+    /// <returns></returns>
+    private async Task<IEnumerable<string>> SearchUnit(string unitString)
+    {
+        await Task.Delay(1);
+
+        // if text is null or empty, show complete list
+        if (string.IsNullOrEmpty(unitString))
+            return UnitChoices.Select(u => u.UnitLabel).ToList();
+        return UnitChoices.Where(x => x.UnitLabel.Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
+                                      x.UnitName.Contains(unitString, StringComparison.InvariantCultureIgnoreCase))
+                          .Select(u => u.UnitLabel).ToList();
+    }
+}

@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateEnumerations", "Gen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrillingRazorMudComponents", "DrillingRazorMudComponents\DrillingRazorMudComponents.csproj", "{AB78BF81-D705-43D7-AE35-BEF2AA47D86F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTest", "ModelTest\ModelTest.csproj", "{95CA7353-E256-49A8-BC46-CD5E75E45C0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelTest", "ModelTest\ModelTest.csproj", "{95CA7353-E256-49A8-BC46-CD5E75E45C0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
