@@ -9,6 +9,8 @@ namespace OSDC.UnitConversion.Conversion
         public override string TypicalSymbol { get; } = "ω";
         public override string SIUnitName { get; } = "radian per second";
         public override string SIUnitLabel { get; } = "rd/s";
+        public override double PlaneAngleDimension { get; } = 1;
+        public override double TimeDimension { get; } = -1;
         private static AngularVelocityQuantity instance_ = null;
 
         public static AngularVelocityQuantity Instance
