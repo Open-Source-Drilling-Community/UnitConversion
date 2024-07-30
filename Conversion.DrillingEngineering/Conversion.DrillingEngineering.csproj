@@ -8,14 +8,14 @@
 		<Description>A package for unit conversion that accounts for Drilling Engineering meaningful precisions</Description>
 		<PackageProjectUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</RepositoryUrl>
-		<Version>3.0.3</Version>
+		<Version>3.0.4</Version>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageId>OSDC.UnitConversion.Conversion.DrillingEngineering</PackageId>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="OSDC.UnitConversion.Conversion" Version="3.0.3" />
+	  <PackageReference Include="OSDC.UnitConversion.Conversion" Version="3.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
