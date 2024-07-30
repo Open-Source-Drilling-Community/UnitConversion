@@ -1,4 +1,22 @@
-﻿<MudNavMenu>
-    <MudNavLink Href="/UnitConversion/webapp/UnitConversion" Match="NavLinkMatch.Prefix">Unit Conversions</MudNavLink>
-    <MudNavLink Href="/UnitConversion/webapp/PhysicalQuantity" Match="NavLinkMatch.Prefix">Physical Quantities</MudNavLink>
+﻿@inject IJSRuntime JSRuntime;
+
+<MudNavMenu>
+    <MudNavLink Href="/UnitConversion/webapp/UnitConversion" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Autorenew"><strong>Unit Conversions</strong></MudNavLink>
+    <MudNavLink Href="/UnitConversion/webapp/PhysicalQuantity" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Balance"><strong>Physical Quantities</strong></MudNavLink>
+    <MudNavGroup Title="Other converters" Icon="@Icons.Material.Filled.MoreHoriz" Expanded="false">
+        <MudNavLink Icon="@Icons.Material.Filled.Star" OnClick="@(() => NavigateInNewTab("https://www.rigzone.com/calculator/"))">Rigzone</MudNavLink>
+        <MudNavLink Icon="@Icons.Material.Filled.Star" OnClick="@(() => NavigateInNewTab("https://converter-now.web.app/#/conversions/force"))">Converter-now</MudNavLink>
+        <MudNavLink Icon="@Icons.Material.Filled.Star" OnClick="@(() => NavigateInNewTab("https://app.digiwells.no/DrillingUnitConversion/webapp/QuantityUnitConversion"))">NORCE v1</MudNavLink>
+        <MudNavLink Icon="@Icons.Material.Filled.StarHalf" OnClick="@(() => NavigateInNewTab("https://www.convertunits.com/"))">ConvertUnits</MudNavLink>
+        <MudNavLink Icon="@Icons.Material.Filled.StarBorder" OnClick="@(() => NavigateInNewTab("https://www.unitconverters.net/"))">UnitConverters</MudNavLink>
+        <MudNavLink Icon="@Icons.Material.Filled.StarBorder" OnClick="@(() => NavigateInNewTab("https://unitsplusconverter.com/"))">UnitsPlusConverter</MudNavLink>
+    </MudNavGroup>
 </MudNavMenu>
+
+@code {
+    private async Task NavigateInNewTab(string url)
+    {
+        await JSRuntime.InvokeAsync<object>("blazorOpen", new object[] { url , "_blank" });
+    }
+
+}

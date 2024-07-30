@@ -1,6 +1,8 @@
-﻿<MudAutocomplete T="string" Value="Unit" ValueChanged="UpdateFromUnit" SearchFunc="@SearchUnit"
-                 ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
-                 Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Immediate="true">
+﻿@inject ILogger<MudAutoCompleteForUnit> logger
+
+<MudAutocomplete T="string" Value="Unit" ValueChanged="UpdateFromUnit" SearchFunc="@SearchUnit"
+                 MaxItems="null" ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
+                 Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary">
 </MudAutocomplete>
 
 @code {
@@ -29,14 +31,24 @@
     {
         if (!string.IsNullOrEmpty(unitLabel))
         {
-            Guid guid = UnitChoices.First(u => u.UnitLabel == unitLabel)!.ID;
-            if (IsUnitChoiceIn)
+            try
             {
-                Context.Item.UnitChoiceIDIn = guid;
+                var unitChoice = UnitChoices.First(u => u.UnitLabel == unitLabel);
+                if (unitChoice != null)
+                {
+                    if (IsUnitChoiceIn)
+                    {
+                        Context.Item.UnitChoiceIDIn = unitChoice.ID;
+                    }
+                    else
+                    {
+                        Context.Item.UnitChoiceIDOut = unitChoice.ID;
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Context.Item.UnitChoiceIDOut = guid;
+                logger.LogError(ex, "Unit label does not belong to the available names or labels");
             }
             await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
         }

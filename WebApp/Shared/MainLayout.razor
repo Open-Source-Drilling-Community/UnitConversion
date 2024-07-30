@@ -10,13 +10,20 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">OSDC.UnitConversion</MudText>
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
+    <MudAppBar Elevation="1" Color="Color.Transparent">
+        <MudGrid>
+            <MudItem xs="3" Style="margin-top: auto; text-align: left;">
+                <MudImage Src="images/OSDC-Logo-1536x278.png" Width="250" Alt="Ooopen Source Drilling Community" />
+            </MudItem>
+            <MudItem xs="6" Style="text-align: center;">
+                <MudText Typo="Typo.h4" Class="mt-3"><strong>UNIT CONVERSION</strong></MudText>
+            </MudItem>
+            <MudItem xs="3" Style="margin-top: auto; text-align: right;">
+                <MudImage Src="images/NORCE_Logo_Skjerm_Original.png" Height="40" Alt="NORCE" />
+            </MudItem>
+        </MudGrid>
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+    <MudDrawer Open="true" ClipMode="DrawerClipMode.Always" Elevation="2">
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
@@ -25,12 +32,3 @@
         </MudContainer>
     </MudMainContent>
 </MudLayout>
-
-@code {
-    bool _drawerOpen = true;
-
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-}

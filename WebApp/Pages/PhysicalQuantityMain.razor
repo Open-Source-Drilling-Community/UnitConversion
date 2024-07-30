@@ -13,7 +13,7 @@ else
         <ToolBarContent>
             <MudText Typo="Typo.h5"><strong>Physical Quantities</strong></MudText>
             <MudSpacer />
-            <MudTextField @bind-Value="searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+            <MudTextField @bind-Value="searchString" Placeholder="Search for quantities (names/usual names) or units (names/symbols)" Adornment="Adornment.Start" Immediate="true"
                           AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
         <ColGroup>
@@ -28,14 +28,12 @@ else
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
             <MudTh></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.IsDrilling)">Is Drilling</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Quantity!.Name</MudTd>
             <MudTd>@context.Quantity!.SIUnitLabel</MudTd>
             <MudTd>@context.Quantity!.SIUnitName</MudTd>
             <MudTd><MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => ShowDetails(context.Quantity!.ID))">@((context.ShowDetails == true) ? "Hide" : "Show") details</MudButton></MudTd>
-            <MudTd>@context.IsDrilling</MudTd>
         </RowTemplate>
         <ChildRowContent>
             @if (context.ShowDetails)
@@ -166,7 +164,6 @@ else
                                         {
                                             Quantity = qty,
                                             ShowDetails = false,
-                                            IsDrilling = qty.UsualNames.Any(s => s.Contains("Drilling", StringComparison.InvariantCultureIgnoreCase)),
                                             Dimensions = dimensions
                                         });
                             }
@@ -197,7 +194,6 @@ else
     {
         public PhysicalQuantity? Quantity { get; set; }
         public bool ShowDetails { get; set; } = false;
-        public bool IsDrilling { get; set; }
         public List<(double T, double L, double M, double K, double N, double I, double J, double Th, double Om)> Dimensions { get; set; } = [];
     }
 
@@ -205,13 +201,13 @@ else
     private Func<VisualPhysicalQuantity, bool>
     physicalQuantityListFilter => x =>
     {
-        if (string.IsNullOrWhiteSpace(searchString))
-            return true;
-
-        if ($"{x.Quantity!.Name} {String.Join(' ', x.Quantity!.UsualNames)}".Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
-            return true;
-
-        return false;
+        return (
+            string.IsNullOrWhiteSpace(searchString) ||
+            x.Quantity!.Name.Contains(searchString, StringComparison.InvariantCultureIgnoreCase) ||
+            x.Quantity!.UsualNames.Any(uName => uName.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) ||
+            x.Quantity!.UnitChoices.Any(uChoice => uChoice.UnitName.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) ||
+            x.Quantity!.UnitChoices.Any(uChoice => uChoice.UnitLabel.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
+        );
     };
 
     private void ShowDetails(Guid id)

@@ -1,4 +1,6 @@
-﻿<MudAutocomplete T="string" Value="Quantity" ValueChanged="UpdateFromQuantity" SearchFunc="@SearchQuantity"
+﻿@inject ILogger<MudAutoCompleteForQuantity> logger
+
+<MudAutocomplete T="string" Value="Quantity" ValueChanged="UpdateFromQuantity" SearchFunc="@SearchQuantity"
                  MaxItems="null" ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
                  AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Immediate="true">
 </MudAutocomplete>
@@ -17,18 +19,28 @@
 
     private string? Quantity
     {
-        get => PhysicalQuantityList!.First(q => q.ID == Context.Item.QuantityID)!.Name;
+        get => PhysicalQuantityList!.First(q => q.ID == Context.Item.QuantityID)!.UsualNames.ElementAt(0);
     }
 
     public async Task UpdateFromQuantity(string qtyName)
     {
         if (!string.IsNullOrEmpty(qtyName))
         {
-            var quantity = PhysicalQuantityList.First(q => q.Name == qtyName)!;
-            var siUnit = quantity.UnitChoices.First(u => u.IsSI)!;
-            Context.Item.QuantityID = quantity.ID;
-            Context.Item.UnitChoiceIDIn = siUnit.ID;
-            Context.Item.UnitChoiceIDOut = siUnit.ID;
+            try
+            {
+                var quantity = PhysicalQuantityList.First(q => q.Name == qtyName);
+                var siUnit = quantity.UnitChoices.First(u => u.IsSI);
+                if (quantity != null && siUnit != null)
+                {
+                    Context.Item.QuantityID = quantity.ID;
+                    Context.Item.UnitChoiceIDIn = siUnit.ID;
+                    Context.Item.UnitChoiceIDOut = siUnit.ID;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Quantity name does not belong to the available names or usual names");                
+            }
             await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
         }
     }
