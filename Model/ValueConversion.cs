@@ -39,7 +39,7 @@ namespace OSDC.UnitConversion.Model
                     foreach (ValueConversion valueConversion in valueConversionList)
                     {
                         valueConversion.DataOut = valueConversion.DataIn;
-                        valueConversion.DataOutString = unitChoiceOut.ToStringInSI(valueConversion.DataIn, quantity.MeaningfulPrecisionInSI);
+                        valueConversion.DataOutString = unitChoiceOut.ToStringInSI((double)valueConversion.DataOut, quantity.MeaningfulPrecisionInSI);
                     }
                 }
                 else if (unitChoiceIn.IsSI)
@@ -47,16 +47,15 @@ namespace OSDC.UnitConversion.Model
                     foreach (ValueConversion valueConversion in valueConversionList)
                     {
                         valueConversion.DataOut = unitChoiceOut.FromSI(valueConversion.DataIn);
-                        valueConversion.DataOutString = unitChoiceOut.ToStringInSI(valueConversion.DataIn, quantity.MeaningfulPrecisionInSI);
+                        valueConversion.DataOutString = unitChoiceOut.ToStringInUnit((double)valueConversion.DataOut, quantity.MeaningfulPrecisionInSI);
                     }
                 }
                 else if (unitChoiceOut.IsSI)
                 {
                     foreach (ValueConversion valueConversion in valueConversionList)
                     {
-                        double data = unitChoiceIn.ToSI(valueConversion.DataIn);
-                        valueConversion.DataOut = data;
-                        valueConversion.DataOutString = unitChoiceOut.ToStringInSI(data, quantity.MeaningfulPrecisionInSI);
+                        valueConversion.DataOut = unitChoiceIn.ToSI(valueConversion.DataIn);
+                        valueConversion.DataOutString = unitChoiceOut.ToStringInSI((double)valueConversion.DataOut, quantity.MeaningfulPrecisionInSI);
                     }
                 }
                 else
