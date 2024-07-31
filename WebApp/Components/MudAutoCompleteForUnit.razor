@@ -71,8 +71,12 @@
         }
         else
         {
-            unitChoiceList = UnitChoices.Where(x => $"{x.UnitLabel} ({x.UnitName})".Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
-                                                    $"{x.UnitLabel} (SI, {x.UnitName})".Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
+            // case 1 and 2 account for the already present string that is been formed and which must be validated once the autocomplete is clicked
+            // case 3 accounts for the search after the SI unit choice
+            // case 4 and 5 account for the standard search of a string contained within the unit name or label
+            unitChoiceList = UnitChoices.Where(x => $"{x.UnitLabel} ({x.UnitName})".Equals(unitString, StringComparison.InvariantCultureIgnoreCase) ||
+                                                    $"{x.UnitLabel} (SI, {x.UnitName})".Equals(unitString, StringComparison.InvariantCultureIgnoreCase) ||
+                                                    (unitString.Contains("SI", StringComparison.InvariantCultureIgnoreCase) && x.IsSI) ||
                                                     x.UnitLabel.Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
                                                     x.UnitName.Contains(unitString, StringComparison.InvariantCultureIgnoreCase)).ToList();
             if (unitChoiceList == null || !unitChoiceList.Any())
