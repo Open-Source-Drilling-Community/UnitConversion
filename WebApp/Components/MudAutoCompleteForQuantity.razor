@@ -63,7 +63,7 @@
         else
         {
             qtyList = (List<string>)PhysicalQuantityList.Where(x => x.Name.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase) ||
-                                                x.UsualNames.Any(uName => uName.Contains(qtyName)))
+                                                x.UsualNames.Any(uName => uName.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase)))
                                                .Select(q => q.Name).ToList();
             if (qtyList == null || !qtyList.Any())
             {

@@ -1,7 +1,7 @@
 ﻿@inject ILogger<MudAutoCompleteForUnit> logger
 
 <MudAutocomplete T="UnitChoice" Value="Unit" ValueChanged="UpdateFromUnit"
-                 ToStringFunc="@(e=> e==null?null : $"{e.UnitLabel} ({e.UnitName})")" SearchFunc="@SearchUnit"
+                 ToStringFunc="@(e=> e==null?null : $"{e.UnitLabel} ({(e.IsSI ? "SI, " : "")}{e.UnitName})")" SearchFunc="@SearchUnit"
                  MaxItems="null" ResetValueOnEmptyText="true" CoerceText="false" CoerceValue="false"
                  Adornment="Adornment.End" adornmentIcon="@adornmentIcon" adornmentColor="@adornmentColor" Immediate="true">
     @Unit.UnitLabel
@@ -72,6 +72,7 @@
         else
         {
             unitChoiceList = UnitChoices.Where(x => $"{x.UnitLabel} ({x.UnitName})".Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
+                                                    $"{x.UnitLabel} (SI, {x.UnitName})".Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
                                                     x.UnitLabel.Contains(unitString, StringComparison.InvariantCultureIgnoreCase) ||
                                                     x.UnitName.Contains(unitString, StringComparison.InvariantCultureIgnoreCase)).ToList();
             if (unitChoiceList == null || !unitChoiceList.Any())

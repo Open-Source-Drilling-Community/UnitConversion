@@ -19,15 +19,35 @@
 
     [Parameter]
     [EditorRequired]
+    public PhysicalQuantity Quantity { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
     public bool IsDoublePrecision { get; set; }
 
     private CultureInfo cultureInfo = new CultureInfo("en-US");
 
+    /// <summary>
+    /// MeaningfulPrecisionInSI is handled in Conversion.DrillingEngineering but could be exposed better (only DataOut as a sister string rounded to the meaningful precision)
+    /// Therefore, the meaningful precision ToString() post-process, based on the below duplicated function DigitAccuracy(), is duplicated here
+    /// </summary>
     private string Format
     {
         get
         {
-            return IsDoublePrecision ? "N15" : "N";
+            int digits = 0;
+            if (Quantity != null && Quantity.MeaningfulPrecisionInSI != null)
+                digits = DigitAccuracy((double)Quantity.MeaningfulPrecisionInSI);
+            if (IsDoublePrecision)
+            {
+                return "N15";
+            }
+            else
+            {
+                if (digits <= 0)
+                    return "N";
+                return "N" + digits;
+            }
         }
     }
 
@@ -63,5 +83,23 @@
     private async Task HandleIntervalElapsed(string debouncedText)
     {
         await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+    }
+
+    /// <summary>
+    /// return the number of digits after the decimal separator that corresponds to this accuracy
+    /// 
+    /// </summary>
+    /// <param name="accuracy"></param>
+    /// <returns></returns>
+    private int DigitAccuracy(double accuracy)
+    {
+        if (accuracy <= 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return (int)Math.Round(Math.Log10(1 / accuracy));
+        }
     }
 }

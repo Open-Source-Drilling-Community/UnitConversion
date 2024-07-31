@@ -28,13 +28,13 @@
                  StartedEditingItem="@StartedEditingItem" CanceledEditingItem="@CanceledEditingItem" CommittedItemChanges="@CommittedItemChanges">
         <ColGroup>
             <col style="width: 2%" />
-            <col style="width: 34%" />
+            <col style="width: 28%" />
             <col style="width: 2%" />
-            <col style="width: 12%" />
-            <col style="width: 17%" />
+            <col style="width: 14%" />
+            <col style="width: 18%" />
             <col style="width: 2%" />
-            <col style="width: 12%" />
-            <col style="width: 17%" />
+            <col style="width: 14%" />
+            <col style="width: 18%" />
             <col style="width: 2%" />
         </ColGroup>
         <Columns>
@@ -47,7 +47,7 @@
 
             @* QuantityID *@
             <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.Name"
-                            Title="Quantity" HeaderStyle="text-align: center; text-transform: uppercase; font-size: 20px; background-color: #BEE2E2;">
+                            Title="Quantity" HeaderStyle="text-align: center; text-transform: uppercase; font-size: 20px; margin-start: 30px; background-color: #BEE2E2;">
                 <EditTemplate>
                     <MudAutoCompleteForQuantity Context="@context" PhysicalQuantityList="@PhysicalQuantityList" />
                 </EditTemplate>
@@ -64,7 +64,7 @@
             <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataIn" Sortable="false"
                             Title="" HeaderStyle="background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudNumericFieldForValue Context="@context" IsDoublePrecision="@toDoublePrecision" />
+                    <MudNumericFieldForValueIn Context="@context" Quantity="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID))" IsDoublePrecision="@toDoublePrecision" />
                 </EditTemplate>
             </PropertyColumn>
 
@@ -85,9 +85,12 @@
             </TemplateColumn>
 
             @* DataOut *@
-            <PropertyColumn Property="x => toDoublePrecision ? x.ValueConversionList.ElementAt(0).DataOut.ToString() : x.ValueConversionList.ElementAt(0).DataOutString" Sortable="false" IsEditable="false"
-                            Title="" HeaderStyle="background-color: #BEE2E2;"
-                            CellStyle="text-align: right;" />
+            <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataOut" Sortable="false"
+                            Title="" HeaderStyle="background-color: #BEE2E2;">
+                <EditTemplate>
+                    <MudNumericFieldForValueOut Context="@context" Quantity="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID))" IsDoublePrecision="@toDoublePrecision" />
+                </EditTemplate>
+            </PropertyColumn>
 
             @* UnitchoiceIDOut *@
             <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.UnitChoices!.First(u => u.ID == x.UnitChoiceIDOut)!.UnitName" Sortable="false"
