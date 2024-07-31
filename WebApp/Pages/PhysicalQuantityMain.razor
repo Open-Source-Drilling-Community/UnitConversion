@@ -42,7 +42,7 @@ else
                             <MudText><strong>Meaningful precision in SI</strong></MudText>
                             <MudTable Items="@(new[] {@context.Quantity!.MeaningfulPrecisionInSI})" Context="PrecisionContext" Breakpoint="Breakpoint.Sm" Elevation="0">
                                 <RowTemplate>
-                                    <MudTd>@(PrecisionContext.HasValue ? PrecisionContext.Value.ToString() : "none")</MudTd>
+                                    <MudTd>@(PrecisionContext.HasValue ? PrecisionContext.Value.ToString() : "not defined")</MudTd>
                                 </RowTemplate>
                             </MudTable>
                         </MudCardContent>
