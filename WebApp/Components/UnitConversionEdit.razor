@@ -16,7 +16,8 @@
         </MudItem>
         <MudItem xs="1" />
         <MudItem xs="1" Class="mt-3 mb-5">
-            <MudSwitch @bind-Value="toDoublePrecision" Color="Color.Primary">double precision</MudSwitch>
+            <MudSwitch @bind-Value="toDoublePrecision" Color="Color.Primary" Style="text-align: center;"
+                       Label="@(toDoublePrecision ? "double precision" : "meaningful precision")" />
         </MudItem>
     </MudGrid>
 </MudContainer>
