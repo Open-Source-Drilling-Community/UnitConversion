@@ -8,7 +8,9 @@
 }
 else
 {
-    <MudTable T="VisualPhysicalQuantity" Items="@physicalQuantityList" Hover="true" Dense="true" Striped="true"
+    <MudTable T="VisualPhysicalQuantity" Items="@physicalQuantityList"
+              Hover="true" OnRowClick="@ShowDetails"
+              Dense="true" Striped="true" FixedHeader="true" Height="80vh" Elevation="0"
               Breakpoint="Breakpoint.Sm" Filter="new Func<VisualPhysicalQuantity, bool>(physicalQuantityListFilter)">
         <ToolBarContent>
             <MudText Typo="Typo.h5"><strong>Physical Quantities</strong></MudText>
@@ -20,20 +22,16 @@ else
             <col />
             <col />
             <col />
-            <col/>
-            <col />
         </ColGroup>
         <HeaderContent>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.Name)">Name</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
-            <MudTh></MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Quantity!.Name</MudTd>
             <MudTd>@context.Quantity!.SIUnitLabel</MudTd>
             <MudTd>@context.Quantity!.SIUnitName</MudTd>
-            <MudTd><MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => ShowDetails(context.Quantity!.ID))">@((context.ShowDetails == true) ? "Hide" : "Show") details</MudButton></MudTd>
         </RowTemplate>
         <ChildRowContent>
             @if (context.ShowDetails)
@@ -210,11 +208,11 @@ else
         );
     };
 
-    private void ShowDetails(Guid id)
+    private void ShowDetails(TableRowClickEventArgs<VisualPhysicalQuantity> args)
     {
         try
         {
-            int idx = physicalQuantityList.FindIndex(f => f.Quantity!.ID == id);
+            int idx = physicalQuantityList.FindIndex(f => f.Quantity!.ID == args.Item.Quantity!.ID);
             physicalQuantityList[idx].ShowDetails = !physicalQuantityList[idx].ShowDetails;
         }
         catch (Exception ex)

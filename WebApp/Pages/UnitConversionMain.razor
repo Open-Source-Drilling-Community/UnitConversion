@@ -12,7 +12,8 @@ else
         <MudText Class="mt-4 mb-4" Typo="Typo.h5"><strong>Unit Conversions</strong></MudText>
         <div style="width: 90%; margin: auto">
             <MudDataGrid T="UnitConversionSet" Items="@unitConversionSetList"
-                         Hover="true" EditMode="DataGridEditMode.Cell" RowClick="@RowClicked"
+                         EditMode="DataGridEditMode.Cell"
+                         Hover="true" RowClick="@RowClicked"
                          SortMode="SortMode.Multiple" QuickFilter="@_unitConversionSetFilter" Filterable="false"
                          ReadOnly="false" ColumnResizeMode="ResizeMode.Column" Elevation="0">
                 <ToolBarContent>
@@ -193,7 +194,7 @@ else
     };
 
     //Events
-    private async Task StartedEditingItem(UnitConversionSet item)
+    private void StartedEditingItem(UnitConversionSet item)
     {
         //Activating Edit event capture with parameter StartedEditingItem="@StartedEditingItem" in MudDataGrid; arguments are specified in OnClick="@context.Actions.StartedEditingItem(...)"
     }

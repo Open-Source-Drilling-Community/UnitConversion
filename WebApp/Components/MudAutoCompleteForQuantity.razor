@@ -1,8 +1,8 @@
 ﻿@inject ILogger<MudAutoCompleteForQuantity> logger
 
 <MudAutocomplete T="string" Value="Quantity" ValueChanged="UpdateFromQuantity" SearchFunc="@SearchQuantity"
-                 MaxItems="null" ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
-                 AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" Immediate="true">
+                 MaxItems="null" ResetValueOnEmptyText="true" CoerceText="false" CoerceValue="false"
+                 adornmentIcon="@adornmentIcon" adornmentColor="@adornmentColor"  Immediate="true">
 </MudAutocomplete>
 
 @code {
@@ -22,6 +22,9 @@
         get => PhysicalQuantityList!.First(q => q.ID == Context.Item.QuantityID)!.UsualNames.ElementAt(0);
     }
 
+    private string adornmentIcon = MudBlazor.Icons.Material.Filled.Search;
+    private Color adornmentColor = Color.Primary;
+
     public async Task UpdateFromQuantity(string qtyName)
     {
         if (!string.IsNullOrEmpty(qtyName))
@@ -35,26 +38,43 @@
                     Context.Item.QuantityID = quantity.ID;
                     Context.Item.UnitChoiceIDIn = siUnit.ID;
                     Context.Item.UnitChoiceIDOut = siUnit.ID;
+                    await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
                 }
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Quantity name does not belong to the available names or usual names");                
+                logger.LogError(ex, "Quantity name does not belong to the available names or usual names");
             }
-            await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
         }
     }
 
     private async Task<IEnumerable<string>> SearchQuantity(string qtyName)
     {
+        List<string> qtyList = [];
+        
         // In real life use an asynchronous function for fetching data from an api.
         await Task.Delay(1);
 
         // if text is null or empty, show complete list
-        if (string.IsNullOrEmpty(qtyName))
-            return PhysicalQuantityList.Select(q => q.Name).ToList();
-        return PhysicalQuantityList.Where(x => x.Name.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase) ||
-                                               x.UsualNames.Any(uName => uName.Contains(qtyName)))
-                                   .Select(q => q.Name).ToList();
+        if (string.IsNullOrWhiteSpace(qtyName))
+        {
+            qtyList = (List<string>)PhysicalQuantityList.Select(q => q.Name).ToList();
+        }
+        else
+        {
+            qtyList = (List<string>)PhysicalQuantityList.Where(x => x.Name.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase) ||
+                                                x.UsualNames.Any(uName => uName.Contains(qtyName)))
+                                               .Select(q => q.Name).ToList();
+            if (qtyList == null || !qtyList.Any())
+            {
+                adornmentIcon = MudBlazor.Icons.Material.Filled.Warning;
+                adornmentColor = Color.Warning;
+                await InvokeAsync(() => { StateHasChanged(); });
+                return [];
+            }
+        }
+        adornmentIcon = MudBlazor.Icons.Material.Filled.Search;
+        adornmentColor = Color.Primary;
+        return qtyList;
     }
 }

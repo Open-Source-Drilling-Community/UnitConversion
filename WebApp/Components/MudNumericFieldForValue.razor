@@ -5,7 +5,7 @@
 </style>
 
 <MudNumericField T="double?" Value="Value" ValueChanged="UpdateFromValue"
-                 Class="align-right"
+                 Class="align-right" Culture="@cultureInfo" Format="@Format"
                  Variant="Variant.Text" HideSpinButtons="true"
                  DebounceInterval="1500" OnDebounceIntervalElapsed="HandleIntervalElapsed" />
 
@@ -16,6 +16,20 @@
     [Parameter]
     [EditorRequired]
     public CellContext<QuantityUnitConversion> Context { get; set; } = default!;
+
+    [Parameter]
+    [EditorRequired]
+    public bool IsDoublePrecision { get; set; }
+
+    private CultureInfo cultureInfo = new CultureInfo("en-US");
+
+    private string Format
+    {
+        get
+        {
+            return IsDoublePrecision ? "N15" : "N";
+        }
+    }
 
     private double? Value
     {

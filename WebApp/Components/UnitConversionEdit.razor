@@ -8,93 +8,98 @@
         <MudItem xs="3">
             <MudTextField @bind-Value="@name" Label="Name" Variant="Variant.Outlined"></MudTextField>
         </MudItem>
-        <MudItem xs="7">
+        <MudItem xs="5">
             <MudTextField @bind-Value="@descr" Label="Description" Variant="Variant.Outlined"></MudTextField>
         </MudItem>
-        <MudItem xs="1" Class="mt-3 mb-5">
-            <MudButton Variant="Variant.Filled" Color="Color.Success" Size="Size.Large" OnClick="Add">Add</MudButton>
-        </MudItem>
-        <MudItem xs="1" Class="mt-3 mb-5">
+        <MudItem xs="2" Class="mt-3 mb-5">
             <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" OnClick="Close">Close</MudButton>
+        </MudItem>
+        <MudItem xs="1" />
+        <MudItem xs="1" Class="mt-3 mb-5">
+            <MudSwitch @bind-Value="toDoublePrecision" Color="Color.Primary">double precision</MudSwitch>
         </MudItem>
     </MudGrid>
 </MudContainer>
 
-<div style="width: 90%; margin: auto">
+<div style="width: 95%; margin: auto">
     <MudDataGrid T="QuantityUnitConversion" Items="@quantityUnitConversionList"
                  ReadOnly="false" EditMode="DataGridEditMode.Cell" EditTrigger="DataGridEditTrigger.OnRowClick"
-                 Dense="false" Bordered="true" SortMode="SortMode.Single" Elevation="0"
+                 Dense="false" Bordered="true" SortMode="SortMode.Single" FixedHeader="true" Height="70vh" Elevation="0"
                  StartedEditingItem="@StartedEditingItem" CanceledEditingItem="@CanceledEditingItem" CommittedItemChanges="@CommittedItemChanges">
         <ColGroup>
-            <col style="width: 35%" />
-            <col style="width: 5%" />
-            <col style="width: 15%" />
-            <col style="width: 10%" />
-            <col style="width: 5%" />
-            <col style="width: 15%" />
-            <col style="width: 10%" />
-            <col style="width: 5%" />
+            <col style="width: 2%" />
+            <col style="width: 34%" />
+            <col style="width: 2%" />
+            <col style="width: 12%" />
+            <col style="width: 17%" />
+            <col style="width: 2%" />
+            <col style="width: 12%" />
+            <col style="width: 17%" />
+            <col style="width: 2%" />
         </ColGroup>
         <Columns>
+            @* Add value *@
+            <TemplateColumn Sortable="false" Title="add value" HeaderStyle="color: #BEE2E2; font-size: 12px; text-align:center" CellStyle="text-align: center">
+                <EditTemplate>
+                    <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Add" OnClick="(() => AddValue(context.Item))" />
+                </EditTemplate>
+            </TemplateColumn>
+
             @* QuantityID *@
             <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.Name"
-                            Title="Quantity" HeaderStyle="background-color: #BEE2E2;">
+                            Title="Quantity" HeaderStyle="text-align: center; text-transform: uppercase; font-size: 20px; background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudAutoCompleteForQuantity Context="@context"
-                                                PhysicalQuantityList="@PhysicalQuantityList" />
+                    <MudAutoCompleteForQuantity Context="@context" PhysicalQuantityList="@PhysicalQuantityList" />
                 </EditTemplate>
             </PropertyColumn>
 
-            @* Clear value *@
-            <TemplateColumn Sortable="false" CellStyle="text-align: center">
+            @* Reset value *@
+            <TemplateColumn Sortable="false" Title="reset value" HeaderStyle="color: #BEE2E2; font-size: 12px; text-align:center" CellStyle="text-align: center">
                 <EditTemplate>
                     <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Clear" OnClick="(() => ClearValue(context.Item))" />
                 </EditTemplate>
             </TemplateColumn>
 
             @* DataIn *@
-            <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataIn"
-                            Title="From" Sortable="false" HeaderStyle="background-color: #BEE2E2;">
+            <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataIn" Sortable="false"
+                            Title="" HeaderStyle="background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudNumericFieldForValue Context="@context" />
+                    <MudNumericFieldForValue Context="@context" IsDoublePrecision="@toDoublePrecision" />
                 </EditTemplate>
             </PropertyColumn>
 
             @* UnitchoiceIDIn *@
-            <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.UnitChoices!
-                                                                .First(u => u.ID == x.UnitChoiceIDIn)!.UnitName"
-                            Title="" Sortable="false" HeaderStyle="background-color: #BEE2E2;">
+            <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.UnitChoices!.First(u => u.ID == x.UnitChoiceIDIn)!.UnitName" Sortable="false"
+                            Title="From" HeaderStyle="text-align: left; text-transform: uppercase; font-size: 20px; background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudAutoCompleteForUnit Context="@context"
-                                            UnitChoices="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID)!.UnitChoices!)"
+                    <MudAutoCompleteForUnit Context="@context" UnitChoices="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID)!.UnitChoices!)"
                                             IsUnitChoiceIn="true" />
                 </EditTemplate>
             </PropertyColumn>
 
             @* Swap units *@
-            <TemplateColumn Sortable="false" CellStyle="text-align: center">
+            <TemplateColumn Sortable="false" Title="swap units" HeaderStyle="color: #BEE2E2; font-size: 12px; text-align:center" CellStyle="text-align: center">
                 <EditTemplate>
                     <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.SwapHoriz" OnClick="(() => SwapUnit(context.Item))" />
                 </EditTemplate>
             </TemplateColumn>
 
             @* DataOut *@
-            <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataOut"
-                            Title="To" IsEditable="false" CellStyle="text-align: right;" Sortable="false" HeaderStyle="background-color: #BEE2E2;" />
+            <PropertyColumn Property="x => toDoublePrecision ? x.ValueConversionList.ElementAt(0).DataOut.ToString() : x.ValueConversionList.ElementAt(0).DataOutString" Sortable="false" IsEditable="false"
+                            Title="" HeaderStyle="background-color: #BEE2E2;"
+                            CellStyle="text-align: right;" />
 
             @* UnitchoiceIDOut *@
-            <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.UnitChoices!
-                                                                .First(u => u.ID == x.UnitChoiceIDOut)!.UnitName"
-                            Title="" Sortable="false" HeaderStyle="background-color: #BEE2E2;">
+            <PropertyColumn Property="x => PhysicalQuantityList!.First(q => q.ID == x.QuantityID)!.UnitChoices!.First(u => u.ID == x.UnitChoiceIDOut)!.UnitName" Sortable="false"
+                            Title="To" HeaderStyle="text-align: left; text-transform: uppercase; font-size: 20px; background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudAutoCompleteForUnit Context="@context"
-                                            UnitChoices="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID)!.UnitChoices!)"
+                    <MudAutoCompleteForUnit Context="@context" UnitChoices="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID)!.UnitChoices!)"
                                             IsUnitChoiceIn="false" />
                 </EditTemplate>
             </PropertyColumn>
 
             @* Delete quantity *@
-            <TemplateColumn Sortable="false" CellStyle="text-align: center">
+            <TemplateColumn Sortable="false" Title="delete quantity" HeaderStyle="color: #BEE2E2; font-size: 12px; text-align:center" CellStyle="text-align: center">
                 <EditTemplate>
                     <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="(() => DeleteQuantityUnitConversion(context.Item))" />
                 </EditTemplate>
@@ -118,6 +123,7 @@
     private string? name;
     private string? descr;
     private List<QuantityUnitConversion> quantityUnitConversionList = [];
+    private bool toDoublePrecision = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -146,20 +152,6 @@
         await InvokeAsync(() => { StateHasChanged(); });
         if (!success)
             OnUpdate?.Invoke();
-    }
-
-    private async Task Add()
-    {
-        var qty = PhysicalQuantityList!.ElementAt(0);
-        Guid siUnitID = qty.UnitChoices.First(u => u.IsSI)!.ID;
-        quantityUnitConversionList.Add(new()
-            {
-                QuantityID = qty.ID,
-                UnitChoiceIDIn = siUnitID,
-                UnitChoiceIDOut = siUnitID,
-                ValueConversionList = [new ValueConversion() { DataIn = 1.0 }]
-            });
-        await Update();
     }
 
     private async Task Update()
@@ -201,10 +193,24 @@
         await OnInitializedAsync();
     }
 
-    private async Task Close()
+    private void Close()
     {
-        await Update();
         OnUpdate?.Invoke();
+    }
+
+    private async Task AddValue(QuantityUnitConversion qtyUnitConv)
+    {
+        int idx = quantityUnitConversionList.IndexOf(qtyUnitConv);
+        var qty = PhysicalQuantityList!.ElementAt(0);
+        Guid siUnitID = qty.UnitChoices.First(u => u.IsSI)!.ID;
+        quantityUnitConversionList.Insert(idx, new()
+            {
+                QuantityID = qty.ID,
+                UnitChoiceIDIn = siUnitID,
+                UnitChoiceIDOut = siUnitID,
+                ValueConversionList = [new ValueConversion() { DataIn = 1.0 }]
+            });
+        await Update();
     }
 
     private async Task ClearValue(QuantityUnitConversion qtyUnitConv)

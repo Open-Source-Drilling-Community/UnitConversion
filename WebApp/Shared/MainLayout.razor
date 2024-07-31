@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime jsRuntime;
 
 <MudThemeProvider />
 <MudDialogProvider FullWidth="true"
@@ -10,16 +11,16 @@
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1" Color="Color.Transparent">
+    <MudAppBar Elevation="1" Style="background-color: #FFFFFF">
         <MudGrid>
             <MudItem xs="3" Style="margin-top: auto; text-align: left;">
-                <MudImage Src="images/OSDC-Logo-1536x278.png" Width="250" Alt="Ooopen Source Drilling Community" />
+                <MudImage Src="images/OSDC-Logo-1536x278.png" Width="250" Alt="Ooopen Source Drilling Community" onclick="@(() => NavigateInNewTab("https://opensourcedrilling.org/"))" />
             </MudItem>
-            <MudItem xs="6" Style="text-align: center;">
+            <MudItem xs="6" Style="text-align: center; color: #000000">
                 <MudText Typo="Typo.h4" Class="mt-3"><strong>UNIT CONVERSION</strong></MudText>
             </MudItem>
             <MudItem xs="3" Style="margin-top: auto; text-align: right;">
-                <MudImage Src="images/NORCE_Logo_Skjerm_Original.png" Height="40" Alt="NORCE" />
+                <MudImage Src="images/NORCE_Logo_Skjerm_Original.png" Height="40" Alt="NORCE" onclick="@(() => NavigateInNewTab("https://www.norceresearch.no/en/research-group/energy-modelling-and-automation"))" />
             </MudItem>
         </MudGrid>
     </MudAppBar>
@@ -32,3 +33,11 @@
         </MudContainer>
     </MudMainContent>
 </MudLayout>
+
+@code {
+    private async Task NavigateInNewTab(string url)
+    {
+        await jsRuntime.InvokeAsync<object>("blazorOpen", new object[] { url, "_blank" });
+    }
+
+}
