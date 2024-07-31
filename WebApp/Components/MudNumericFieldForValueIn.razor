@@ -5,7 +5,7 @@
 </style>
 
 <MudNumericField T="double?" Value="Value" ValueChanged="UpdateFromValue"
-                 Class="align-right" Culture="@cultureInfo" Format="@Format"
+                 Class="align-right" Culture="@CultureInfo" Format="@Format"
                  Variant="Variant.Text" HideSpinButtons="true"
                  DebounceInterval="1500" OnDebounceIntervalElapsed="HandleIntervalElapsed" />
 
@@ -25,7 +25,10 @@
     [EditorRequired]
     public bool IsDoublePrecision { get; set; }
 
-    private CultureInfo cultureInfo = new CultureInfo("en-US");
+    [Parameter]
+    [EditorRequired]
+    public bool NoThousands { get; set; }
+
 
     /// <summary>
     /// MeaningfulPrecisionInSI is handled in Conversion.DrillingEngineering but could be exposed better (only DataOut as a sister string rounded to the meaningful precision)
@@ -66,6 +69,14 @@
         }
     }
 
+    private CultureInfo CultureInfo
+    {
+        get
+        {
+            return NoThousands ? DataUtils.CULTURE_EN_US_WO_SEP : DataUtils.CULTURE_EN_US;
+        }
+    }
+
     public async Task UpdateFromValue(double? val)
     {
         if (val != null)
@@ -87,7 +98,7 @@
 
     /// <summary>
     /// return the number of digits after the decimal separator that corresponds to this accuracy
-    /// 
+    ///
     /// </summary>
     /// <param name="accuracy"></param>
     /// <returns></returns>

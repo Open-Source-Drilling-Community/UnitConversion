@@ -8,16 +8,23 @@
         <MudItem xs="3">
             <MudTextField @bind-Value="@name" Label="Name" Variant="Variant.Outlined"></MudTextField>
         </MudItem>
-        <MudItem xs="5">
+        <MudItem xs="6">
             <MudTextField @bind-Value="@descr" Label="Description" Variant="Variant.Outlined"></MudTextField>
         </MudItem>
-        <MudItem xs="2" Class="mt-3 mb-5">
+        <MudItem xs="1" Class="mt-3 mb-5">
             <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" OnClick="Close">Close</MudButton>
         </MudItem>
-        <MudItem xs="1" />
-        <MudItem xs="1" Class="mt-3 mb-5">
-            <MudSwitch @bind-Value="toDoublePrecision" Color="Color.Primary" Style="text-align: center;"
-                       Label="@(toDoublePrecision ? "double precision" : "meaningful precision")" />
+        <MudItem xs="2">
+            <MudGrid>
+                <MudItem xs="7" Class="mt-3 mb-5">
+                    <MudSwitch @bind-Value="noThousands" Color="Color.Primary" Style="text-align: center;"
+                               Label="@(noThousands ? "invariant culture" : "en-US culture" )" />
+                </MudItem>
+                <MudItem xs="5" Class="mt-3 mb-5">
+                    <MudSwitch @bind-Value="toDoublePrecision" Color="Color.Primary" Style="text-align: center;"
+                               Label="@(toDoublePrecision ? "double precision" : "meaningful precision")" />
+                </MudItem>
+            </MudGrid>
         </MudItem>
     </MudGrid>
 </MudContainer>
@@ -65,7 +72,8 @@
             <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataIn" Sortable="false"
                             Title="" HeaderStyle="background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudNumericFieldForValueIn Context="@context" Quantity="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID))" IsDoublePrecision="@toDoublePrecision" />
+                    <MudNumericFieldForValueIn Context="@context" Quantity="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID))"
+                                               IsDoublePrecision="@toDoublePrecision" NoThousands="@noThousands" />
                 </EditTemplate>
             </PropertyColumn>
 
@@ -89,7 +97,8 @@
             <PropertyColumn Property="x => x.ValueConversionList.ElementAt(0).DataOut" Sortable="false"
                             Title="" HeaderStyle="background-color: #BEE2E2;">
                 <EditTemplate>
-                    <MudNumericFieldForValueOut Context="@context" Quantity="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID))" IsDoublePrecision="@toDoublePrecision" />
+                    <MudNumericFieldForValueOut Context="@context" Quantity="@(PhysicalQuantityList!.First(q => q.ID == context.Item.QuantityID))"
+                                                IsDoublePrecision="@toDoublePrecision" NoThousands="@noThousands" />
                 </EditTemplate>
             </PropertyColumn>
 
@@ -128,6 +137,7 @@
     private string? descr;
     private List<QuantityUnitConversion> quantityUnitConversionList = [];
     private bool toDoublePrecision = false;
+    private bool noThousands = false;
 
     protected override async Task OnInitializedAsync()
     {
