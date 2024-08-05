@@ -64,14 +64,14 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                    UnitName = "pound per 100 square foot second",
+                    UnitName = "pound second per 100 square foot",
                     UnitLabel = "lb•s/100ft²",
                     ID = new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01"),
                     ConversionFactorFromSI = 2.0887
                 },
                 new UnitChoice
                 {
-                    UnitName = "dyne per square centimetre second",
+                    UnitName = "dyne second per square centimetre",
                     UnitLabel = "dyne•s/cm²",
                     ID = new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132"),
                     ConversionFactorFromSI = 10.0

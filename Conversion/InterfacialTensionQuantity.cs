@@ -50,14 +50,14 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "dyne per centimetre",
-          UnitLabel = "dyn/cm",
+          UnitLabel = "dyne/cm",
           ID = new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b"),
           ConversionFactorFromSI = 1000
         },
         new UnitChoice
         {
           UnitName = "pound per second squared",
-          UnitLabel = "lbm/s²",
+          UnitLabel = "lb/s²",
           ID = new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c"),
           ConversionFactorFromSI = 2.2046244201837775
         }
