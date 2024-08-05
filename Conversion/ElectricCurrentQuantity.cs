@@ -51,7 +51,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "siemens volt",
-                    UnitLabel = "S.V",
+                    UnitLabel = "S•V",
                     ID = new Guid("52bc6bd9-f25d-470b-9068-b6e87f1f2ed0"),
                     ConversionFactorFromSI = 1.0
                 },

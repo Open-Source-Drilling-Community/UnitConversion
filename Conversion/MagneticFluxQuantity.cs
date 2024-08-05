@@ -59,7 +59,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "volt second",
-                    UnitLabel = "V.s",
+                    UnitLabel = "V•s",
                     ID = new Guid("430305c3-d672-4d68-9b16-d0517243a870"),
                     ConversionFactorFromSI = 1.0
                 },
@@ -101,21 +101,21 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "tesla square metre",
-                    UnitLabel = "T.m²",
+                    UnitLabel = "T•m²",
                     ID = new Guid("f6da9f32-0738-4014-aac6-fdc5935fd436"),
                     ConversionFactorFromSI = 1.0
                 },
                 new UnitChoice
                 {
                     UnitName = "tesla square centimetre",
-                    UnitLabel = "T.cm²",
+                    UnitLabel = "T•cm²",
                     ID = new Guid("312b97ea-6167-47b5-a046-c6c202fb7eb4"),
                     ConversionFactorFromSI = 10000.0
                 },
                 new UnitChoice
                 {
                     UnitName = "gauss square centimetre",
-                    UnitLabel = "G.cm²",
+                    UnitLabel = "G•cm²",
                     ID = new Guid("a0dc1e92-7e84-401f-bca2-a6eb618ef604"),
                     ConversionFactorFromSI = 100000000.0
                 },

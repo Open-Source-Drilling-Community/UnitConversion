@@ -57,28 +57,28 @@ namespace OSDC.UnitConversion.Conversion
                  new UnitChoice
                 {
                   UnitName = "centimetre per hour per second",
-                  UnitLabel = "cm/(h.s)",
+                  UnitLabel = "cm/(h•s)",
                   ID = new Guid("b469c349-fd35-4802-b408-dd6f86d62d27"),
                   ConversionFactorFromSI = 360000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "centimetre per minute per second",
-                  UnitLabel = "cm/(min.s)",
+                  UnitLabel = "cm/(min•s)",
                   ID = new Guid("e681e123-03d7-42eb-9ef5-33da76a6d78c"),
                   ConversionFactorFromSI = 60000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "foot per hour per second",
-                  UnitLabel = "ft/(h.s)",
+                  UnitLabel = "ft/(h•s)",
                   ID = new Guid("ccdc1097-4386-4e78-beff-438807b0d52c"),
                   ConversionFactorFromSI = 1.0/8.46667e-5
                 },
                 new UnitChoice
                 {
                   UnitName = "foot per minute per second",
-                  UnitLabel = "ft/(min.s)",
+                  UnitLabel = "ft/(min•s)",
                   ID = new Guid("eea429f4-ada7-4c40-adc0-4054dde8549a"),
                   ConversionFactorFromSI = 1.0/0.00508
                 },
@@ -99,14 +99,14 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "inch per hour per second",
-                  UnitLabel = "in/(h.s)",
+                  UnitLabel = "in/(h•s)",
                   ID = new Guid("16cc4dc1-0fb0-4bfa-acc2-55a754ab47f9"),
                   ConversionFactorFromSI = 1.0/7.05556e-6
                 },
                 new UnitChoice
                 {
                   UnitName = "inch per minute per second",
-                  UnitLabel = "in/(min.s)",
+                  UnitLabel = "in/(min•s)",
                   ID = new Guid("e33ae152-f371-4b4c-aaf7-51e5635cbcaa"),
                   ConversionFactorFromSI = 1.0/4.23333e-4
                 },
@@ -127,21 +127,21 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "metre per second per millisecond",
-                  UnitLabel = "m/(s.ms)",
+                  UnitLabel = "m/(s•ms)",
                   ID = new Guid("ecefe9c4-9d38-4fd8-8f56-482f7c54874e"),
                   ConversionFactorFromSI = 0.001
                 },
                 new UnitChoice
                 {
                   UnitName = "mile per hour per second",
-                  UnitLabel = "mi/(h.s)",
+                  UnitLabel = "mi/(h•s)",
                   ID = new Guid("622bde1c-57b2-4845-8a14-c252a0f6c0df"),
                   ConversionFactorFromSI = 1.0/0.44704
                 },
                 new UnitChoice
                 {
                   UnitName = "mile per minute per second",
-                  UnitLabel = "mi/(min.s)",
+                  UnitLabel = "mi/(min•s)",
                   ID = new Guid("f58cace4-7e55-4218-ad64-5c3e420efe02"),
                   ConversionFactorFromSI = 1.0/26.8244
                 },
@@ -162,14 +162,14 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "kilometre per hour per second",
-                  UnitLabel = "km/(h.s)",
+                  UnitLabel = "km/(h•s)",
                   ID = new Guid("9f74f510-f9ce-4393-9d9d-83518519e42a"),
                   ConversionFactorFromSI = 3.6
                 },
                 new UnitChoice
                 {
                   UnitName = "kilometre per minute per second",
-                  UnitLabel = "km/(min.s)",
+                  UnitLabel = "km/(min•s)",
                   ID = new Guid("aaaba47c-f11e-44fa-b5df-e981f6356f5a"),
                   ConversionFactorFromSI = 0.06
                 }
