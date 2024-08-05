@@ -9,6 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string TypicalSymbol { get; } = "A";
         public override string SIUnitName { get; } = "square metre";
         public override string SIUnitLabel { get; } = "m²";
+        public override double LengthDimension { get; } = 2;
         private static AreaQuantity instance_ = null;
 
         public static AreaQuantity Instance
