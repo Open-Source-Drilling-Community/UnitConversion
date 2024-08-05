@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "radian tesla";
-        public override string SIUnitLabel { get; } = "rd.T";
+        public override string SIUnitLabel { get; } = "rad.T";
         public override double PlaneAngleDimension { get; } = 1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
@@ -45,49 +45,49 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "radian gauss",
-                  UnitLabel = "rd.G",
+                  UnitLabel = "rad.G",
                   ID = new Guid("aa726b90-bd4b-420c-ae71-6f2f1fde3b58"),
                   ConversionFactorFromSI = 10000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "radian milligauss",
-                  UnitLabel = "rd.mG",
+                  UnitLabel = "rad.mG",
                   ID = new Guid("352a5b84-306d-4e38-898a-58705683fdf0"),
                   ConversionFactorFromSI = 10000000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "radian millitesla",
-                  UnitLabel = "rd.mT",
+                  UnitLabel = "rad.mT",
                   ID = new Guid("663639b3-48b8-4c04-a2eb-6ae2e16daa9b"),
                   ConversionFactorFromSI = 1000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "radian microTesla",
-                  UnitLabel = "rd.µT",
+                  UnitLabel = "rad.µT",
                   ID = new Guid("b445e592-e0ca-490f-8880-9708e4e96a01"),
                   ConversionFactorFromSI = 1000000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "radian nanoTesla",
-                  UnitLabel = "rd.nT",
+                  UnitLabel = "rad.nT",
                   ID = new Guid("b4aeee40-29fa-463a-80a4-e10fa42c743f"),
                   ConversionFactorFromSI = 1000000000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "radian maxwell per square centimetre",
-                  UnitLabel = "rd.Mx/cm²",
+                  UnitLabel = "rad.Mx/cm²",
                   ID = new Guid("02d06899-5d89-4669-a4c2-35adb9ec3924"),
                   ConversionFactorFromSI = 10000.0
                 },
                 new UnitChoice
                 {
                   UnitName = "radian weber per square metre",
-                  UnitLabel = "rd.Wb/m²",
+                  UnitLabel = "rad.Wb/m²",
                   ID = new Guid("409e8e85-0870-4529-ae0c-95ab6506c445"),
                   ConversionFactorFromSI = 1.0
                 },

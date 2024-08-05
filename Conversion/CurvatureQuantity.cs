@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "κ";
         public override string SIUnitName { get; } = "radian per metre";
-        public override string SIUnitLabel { get; } = "rd/m";
+        public override string SIUnitLabel { get; } = "rad/m";
         public override double LengthDimension { get; } = -1;
         public override double PlaneAngleDimension { get; } = 1;
         private static CurvatureQuantity instance_ = null;
@@ -78,7 +78,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "radian per foot",
-          UnitLabel = "rd/ft",
+          UnitLabel = "rad/ft",
           ID = new Guid("1428743e-927c-4f7a-9e15-62d37790ad51"),
           ConversionFactorFromSI = 0.3048
         },

@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "";
         public override string SIUnitName { get; } = "radian";
 
-        public override string SIUnitLabel { get; } = "rd";
+        public override string SIUnitLabel { get; } = "rad";
 
         public override double PlaneAngleDimension { get; } = 1;
 

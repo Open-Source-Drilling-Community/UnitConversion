@@ -7,8 +7,8 @@ namespace OSDC.UnitConversion.Conversion
     public partial class TorqueQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
-        public override string SIUnitName { get; } = "metre newton";
-        public override string SIUnitLabel { get; } = "m.N";
+        public override string SIUnitName { get; } = "newton metre";
+        public override string SIUnitLabel { get; } = "N.m";
         public override double LengthDimension { get; } = 2;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;

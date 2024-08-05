@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "radian per square root second";
-        public override string SIUnitLabel { get; } = "rd/√s";
+        public override string SIUnitLabel { get; } = "rad/√s";
         public override double MassDimension { get; } = 0;
         public override double LengthDimension { get; } = 1;
         public override double TimeDimension { get; } = -1/2;
@@ -46,21 +46,21 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "radian per square root minute",
-          UnitLabel = "rd/√min",
+          UnitLabel = "rad/√min",
           ID = new Guid("ccc41b4e-2efb-4760-969f-94614248374f"),
           ConversionFactorFromSI = Math.Sqrt(60.0)
         },
         new UnitChoice
         {
           UnitName = "radian per square root hour",
-          UnitLabel = "rd/√h",
+          UnitLabel = "rad/√h",
           ID = new Guid("e296c410-e278-4586-af95-bae6fe4f0673"),
           ConversionFactorFromSI = Math.Sqrt(3600.0)
         },
         new UnitChoice
         {
           UnitName = "radian per square root day",
-          UnitLabel = "rd/√d",
+          UnitLabel = "rad/√d",
           ID = new Guid("fb4a74f9-a648-4310-a424-9c85036bbc41"),
           ConversionFactorFromSI = Math.Sqrt(3600.0*24.0)
         },

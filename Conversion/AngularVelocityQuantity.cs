@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "ω";
         public override string SIUnitName { get; } = "radian per second";
-        public override string SIUnitLabel { get; } = "rd/s";
+        public override string SIUnitLabel { get; } = "rad/s";
         public override double PlaneAngleDimension { get; } = 1;
         public override double TimeDimension { get; } = -1;
         private static AngularVelocityQuantity instance_ = null;
@@ -50,21 +50,21 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "radian per day",
-                  UnitLabel = "rd/d",
+                  UnitLabel = "rad/d",
                   ID = new Guid("53f2a55b-beb6-4e4d-b696-e817c5b0eaed"),
                   ConversionFactorFromSI = 86400
                 },
                 new UnitChoice
                 {
                   UnitName = "radian per hour",
-                  UnitLabel = "rd/h",
+                  UnitLabel = "rad/h",
                   ID = new Guid("c2f0e82b-236b-4eb5-9c77-b2c500ab60ab"),
                   ConversionFactorFromSI = 3600
                 },
                 new UnitChoice
                 {
                   UnitName = "radian per minute",
-                  UnitLabel = "rd/min",
+                  UnitLabel = "rad/min",
                   ID = new Guid("5267eb8c-36bc-4ab9-bd62-26f05f852c35"),
                   ConversionFactorFromSI = 60
                 },
