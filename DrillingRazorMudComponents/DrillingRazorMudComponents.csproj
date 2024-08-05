@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>3.0.5</Version>
+    <Version>3.0.6</Version>
     <Authors>Gilles Pelfrene</Authors>
     <Company>NORCE Norwegian Research Centre</Company>
     <Description>A package with MudBlazor components to manage unit and reference conversions.</Description>
@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="6.21.0" />
     <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="2.1.0" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="3.0.5" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="3.0.6" />
   </ItemGroup>
 
   <ItemGroup>
