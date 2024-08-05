@@ -47,9 +47,18 @@
             }
             else
             {
-                if (digits <= 0)
+                if (digits < 0)
+                {
+                    return "N0";
+                }
+                else if (digits == 0)
+                {
                     return "N";
-                return "N" + digits;
+                }
+                else
+                {
+                    return "N" + digits;
+                }
             }
         }
     }
