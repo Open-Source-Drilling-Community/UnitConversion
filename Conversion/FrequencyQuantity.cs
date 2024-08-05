@@ -45,7 +45,6 @@ namespace OSDC.UnitConversion.Conversion
                     UnitLabel = "1/s",
                     ID = new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9"),
                     ConversionFactorFromSI = 1.0,
-                    IsSI = false
                 },
                 new UnitChoice
                 {
