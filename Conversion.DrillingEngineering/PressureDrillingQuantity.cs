@@ -27,7 +27,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public PressureDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Pressure (drilling)", "MSE (as a pressure)" };
+            UsualNames = new HashSet<string>() { "Pressure (drilling)" };
             ID = new Guid("d9db6bb4-77af-4fc3-a683-7bedd781fcba");
             Reset();
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Pascal));
