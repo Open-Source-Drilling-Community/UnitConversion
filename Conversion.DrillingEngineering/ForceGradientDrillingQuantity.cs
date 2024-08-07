@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             Reset();
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPerMetre));
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPer30Metre));
-            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecaNewtonPerMetre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecanewtonPerMetre));
         }
     }
 }

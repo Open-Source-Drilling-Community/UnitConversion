@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion
             ID = new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9");
             Reset();
             this.UnitChoices.Add(RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Hertz));
-            this.UnitChoices.Add(RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.RPM));
+            this.UnitChoices.Add(RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Rpm));
         }
 
     }

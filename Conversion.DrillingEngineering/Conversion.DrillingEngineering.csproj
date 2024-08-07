@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="OSDC.UnitConversion.Conversion" Version="3.0.7" />
+	  <PackageReference Include="OSDC.UnitConversion.Conversion" Version="3.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>

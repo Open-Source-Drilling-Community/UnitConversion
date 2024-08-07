@@ -29,10 +29,10 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("559ae484-42ed-4379-86f5-67dae451a9c9");
             Reset();
             this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.WattPerMetreKelvinPerKelvin));
-            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitPerFahrenheit));
-            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheitPerFahrenheit));
-            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsiusPerCelsius));
-            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsiusPerCelsius));
+            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitSquared));
+            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheitSquared));
+            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsiusSquared));
+            this.UnitChoices.Add(ThermalConductivityTemperatureGradientQuantity.Instance.GetUnitChoice(ThermalConductivityTemperatureGradientQuantity.UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsiusSquared));
         }
 
     }

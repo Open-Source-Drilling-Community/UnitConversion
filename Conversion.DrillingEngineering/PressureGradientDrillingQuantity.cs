@@ -30,8 +30,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             Reset();
             this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PascalPerMetre));
             this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.BarPerMetre));
-            this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PSIPerFoot));
-            this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PSIPerMetre));
+            this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PsiPerFoot));
+            this.UnitChoices.Add(PressureGradientQuantity.Instance.GetUnitChoice(PressureGradientQuantity.UnitChoicesEnum.PsiPerMetre));
         }
 
     }

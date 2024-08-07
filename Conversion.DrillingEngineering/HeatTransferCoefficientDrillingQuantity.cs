@@ -29,7 +29,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             UsualNames = new HashSet<string>() { "Heat Transfer Coefficient (drilling)" };
             ID = new Guid("c99547c5-b545-4060-bd82-eadc13772493");
             Reset();
-            this.UnitChoices.Add(HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.WattPerMetreSquaredPerKelvin));
+            this.UnitChoices.Add(HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.WattPerSquareMetrePerKelvin));
             this.UnitChoices.Add(HeatTransferCoefficientQuantity.Instance.GetUnitChoice(HeatTransferCoefficientQuantity.UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit));
         }
 

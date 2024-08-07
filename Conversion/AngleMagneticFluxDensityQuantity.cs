@@ -58,21 +58,21 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
-                  UnitName = "radin millitesla",
+                  UnitName = "radian millitesla",
                   UnitLabel = "rad•mT",
                   ID = new Guid("663639b3-48b8-4c04-a2eb-6ae2e16daa9b"),
                   ConversionFactorFromSI = 1000.0
                 },
                 new UnitChoice
                 {
-                  UnitName = "radian microTesla",
+                  UnitName = "radian microtesla",
                   UnitLabel = "rad•µT",
                   ID = new Guid("b445e592-e0ca-490f-8880-9708e4e96a01"),
                   ConversionFactorFromSI = 1000000.0
                 },
                 new UnitChoice
                 {
-                  UnitName = "radian nanoTesla",
+                  UnitName = "radian nanotesla",
                   UnitLabel = "rad•nT",
                   ID = new Guid("b4aeee40-29fa-463a-80a4-e10fa42c743f"),
                   ConversionFactorFromSI = 1000000000.0

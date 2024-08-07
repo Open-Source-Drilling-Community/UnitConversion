@@ -31,8 +31,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("d7f0d3a8-2d15-4ae9-897a-5d1ef7feef8a");
             Reset();
             this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt));
-            this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.KiloWatt));
-            this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.MegaWatt));
+            this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Kilowatt));
+            this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Megawatt));
         }
     }
 }

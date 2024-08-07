@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("1bf5cf90-84c4-4dcc-ac74-92223d3c3c46");
             Reset();
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.NewtonPerMetre));
-            this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.MilliNewtonPerMetre));
+            this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.MillinewtonPerMetre));
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.DynePerCentimetre));
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.PoundPerSecondSquared));
         }

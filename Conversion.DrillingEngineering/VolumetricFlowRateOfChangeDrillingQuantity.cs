@@ -30,8 +30,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             UsualNames = new HashSet<string>() { "Volumetric Flow Rate Of Change (drilling)" };
             ID = new Guid("244ade8c-591d-44d4-bca6-3798046d90a1");
             Reset();
-            this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.CubicMetrePerSecondSquare));
-            this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.LiterPerMinutePerSecond));
+            this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.CubicMetrePerSecondSquared));
+            this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.LitrePerMinutePerSecond));
             this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.UKGallonPerMinutePerSecond));
             this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.USGallonPerMinutePerSecond));
         }

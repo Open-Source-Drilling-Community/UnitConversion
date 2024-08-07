@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             Reset();
             this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.Weber));
             this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.Milliweber));
-            this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.MicroWeber));
+            this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.Microweber));
             this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.TeslaSquareMetre));
             this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.TeslaSquareCentimetre));
             this.UnitChoices.Add(MagneticFluxQuantity.Instance.GetUnitChoice(MagneticFluxQuantity.UnitChoicesEnum.GaussSquareCentimetre));

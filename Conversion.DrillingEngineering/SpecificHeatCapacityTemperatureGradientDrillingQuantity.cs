@@ -28,11 +28,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             UsualNames = new HashSet<string>() { "Specific Heat Capacity Temperature Gradient (drilling)" };
             ID = new Guid("5f180166-bc44-4855-916f-236a5a31893d");
             Reset();
-            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerKilogramKelvinPerKelvin));
-            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerGramKelvinPerKelvin));
-            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerGramDegreeCelsiusPerCelsius));
-            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.CaloriePerGramDegreeCelsiusPerCelsius));
-            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheitPerFahrenheit));
+            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerKilogramSquaredKelvin));
+            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerGramSquaredKelvin));
+            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.JoulePerGramDegreeSquaredCelsius));
+            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.CaloriePerGramDegreeSquaredCelsius));
+            this.UnitChoices.Add(SpecificHeatCapacityTemperatureGradientQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundSquaredDegreeFahrenheit));
         }
 
     }

@@ -32,9 +32,9 @@ namespace OSDC.UnitConversion.Conversion
             Reset();
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Tesla));
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Gauss));
-            this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.MilliGauss));
-            this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.MicroTesla));
-            this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.NanoTesla));
+            this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Milligauss));
+            this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Microtesla));
+            this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Nanotesla));
         }
     }
 }

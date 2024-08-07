@@ -17,7 +17,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             List<BasePhysicalQuantity> quantities = BaseUnitSystem.AvailableBasePhysicalQuantities;
             if (quantities != null)
             {
-                GenerateFile(baseFolder + "OSDC.UnitConversion.Conversion\\EnumerationQuantities.cs", typeof(BasePhysicalQuantity), quantities);
+                GenerateFile(baseFolder + "Conversion\\EnumerationQuantities.cs", typeof(BasePhysicalQuantity), quantities);
                 BaseUnitSystem SI = BaseUnitSystem.SIBaseUnitSystem;
                 BaseUnitSystem metric = BaseUnitSystem.MetricBaseUnitSystem;
                 BaseUnitSystem imperial = BaseUnitSystem.ImperialBaseUnitSystem;
@@ -26,7 +26,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             quantities = UnitSystem.AvailableQuantities;
             if (quantities != null)
             {
-                GenerateFile(baseFolder + "OSDC.UnitConversion.Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(PhysicalQuantity), quantities);
+                GenerateFile(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(PhysicalQuantity), quantities);
                 UnitSystem SI = UnitSystem.SIUnitSystem;
                 UnitSystem metric = UnitSystem.MetricUnitSystem;
                 UnitSystem imperial = UnitSystem.ImperialUnitSystem;
@@ -134,6 +134,9 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                     capitalizedToken = capitalizedToken.Replace('\'', '_');
                     capitalizedToken = capitalizedToken.Replace('\\', '_');
                     capitalizedToken = capitalizedToken.Replace('/', '_');
+                    capitalizedToken = capitalizedToken.Replace("(", "");
+                    capitalizedToken = capitalizedToken.Replace(")", "");
+                    capitalizedToken = capitalizedToken.Replace("-", "");
                     convertedName += capitalizedToken;
                 }
             }

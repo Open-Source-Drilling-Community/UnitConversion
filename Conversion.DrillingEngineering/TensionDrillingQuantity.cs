@@ -30,11 +30,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("fe8fd6fd-814c-44c9-9462-f034dd46dc85");
             Reset();
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Newton));
-            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.DecaNewton));
-            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KiloDecaNewton));
+            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Decanewton));
+            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Kilodecanewton));
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KilogramForce));
-            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KiloNewton));
-            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KiloPoundForce));
+            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Kilonewton));
+            this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.KilopoundForce));
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.PoundForce));
         }
 

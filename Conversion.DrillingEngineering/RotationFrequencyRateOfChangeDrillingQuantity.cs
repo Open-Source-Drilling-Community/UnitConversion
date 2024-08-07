@@ -31,7 +31,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("4950170a-7882-4673-9d27-3402dbbca2bb");
             Reset();
             this.UnitChoices.Add(RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond));
-            this.UnitChoices.Add(RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RPMPerSecond));
+            this.UnitChoices.Add(RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RpmPerSecond));
         }
 
     }
