@@ -622,28 +622,28 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
   {
     public new enum UnitChoicesEnum 
       {
-         GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
+         GramPerCubicCentimetrePerSecond,  // gram per cubic centimetre per second
          KilogramPerCubicMetrePerSecond,  // kilogram per cubic metre per second
+         PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
+         GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
+         GramPerCubicCentimetrePerMinute,  // gram per cubic centimetre per minute
+         PoundPerGallonUSPerSecond,  // pound per gallon (US) per second
          PoundPerGallonUKPerHour,  // pound per gallon (UK) per hour
          PoundPerGallonUKPerMinute,  // pound per gallon (UK) per minute
-         PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
-         PoundPerGallonUSPerHour,  // pound per gallon (US) per hour
-         PoundPerGallonUSPerMinute,  // pound per gallon (US) per minute
-         PoundPerGallonUSPerSecond,  // pound per gallon (US) per second
          SpecificGravityPerHour,  // specific gravity per hour
          SpecificGravityPerMinute,  // specific gravity per minute
          SpecificGravityPerSecond // specific gravity per second
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
+         {UnitChoicesEnum.GramPerCubicCentimetrePerSecond, new Guid("e26f57a2-9659-40fd-a670-38a3b83fd36f")},  // gram per cubic centimetre per second
          {UnitChoicesEnum.KilogramPerCubicMetrePerSecond, new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377")},  // kilogram per cubic metre per second
+         {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
+         {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
+         {UnitChoicesEnum.GramPerCubicCentimetrePerMinute, new Guid("93777f41-0e47-46aa-9ab6-413987553817")},  // gram per cubic centimetre per minute
+         {UnitChoicesEnum.PoundPerGallonUSPerSecond, new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11")},  // pound per gallon (US) per second
          {UnitChoicesEnum.PoundPerGallonUKPerHour, new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070")},  // pound per gallon (UK) per hour
          {UnitChoicesEnum.PoundPerGallonUKPerMinute, new Guid("e79c74b9-774d-4695-81d5-75042f268b96")},  // pound per gallon (UK) per minute
-         {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
-         {UnitChoicesEnum.PoundPerGallonUSPerHour, new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643")},  // pound per gallon (US) per hour
-         {UnitChoicesEnum.PoundPerGallonUSPerMinute, new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea")},  // pound per gallon (US) per minute
-         {UnitChoicesEnum.PoundPerGallonUSPerSecond, new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11")},  // pound per gallon (US) per second
          {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // specific gravity per hour
          {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // specific gravity per minute
          {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")} // specific gravity per second

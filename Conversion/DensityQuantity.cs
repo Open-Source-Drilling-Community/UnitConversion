@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = 1.0/Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -45,42 +46,56 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "gram per cubic metre",
                     UnitLabel = "g/m³",
                     ID = new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a"),
-                    ConversionFactorFromSI = 1000
+                    ConversionFactorFromSI = 1.0/Factors.Milli
                 },
                 new UnitChoice
                 {
                     UnitName = "specific gravity",
                     UnitLabel = "s.g.",
                     ID = new Guid("da94ba95-4494-45af-bf99-31f00031c680"),
-                    ConversionFactorFromSI = 0.001
+                    ConversionFactorFromSI = 1.0/Factors.SpecificGavity4degC
                 },
                 new UnitChoice
                 {
                     UnitName = "gram per cubic centimetre",
                     UnitLabel = "g/cm³",
                     ID = new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450"),
-                    ConversionFactorFromSI = 0.001
+                    ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi / Factors.Milli
                 },
                 new UnitChoice
                 {
                     UnitName = "pound per gallon (UK)",
                     UnitLabel = "ppgUK",
                     ID = new Guid("75ecf787-8778-4d74-afc7-498e117d27bf"),
-                    ConversionFactorFromSI = 0.0100224
+                    ConversionFactorFromSI = 1.0/Factors.PPGUK
                 },
                 new UnitChoice
                 {
                     UnitName = "pound per gallon (US)",
                     UnitLabel = "ppgUS",
                     ID = new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da"),
-                    ConversionFactorFromSI = 0.0083454
+                    ConversionFactorFromSI = 1.0/Factors.PPGUS
                 },
                 new UnitChoice
                 {
                     UnitName = "pound per cubic foot",
                     UnitLabel = "lb/ft³",
                     ID = new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935"),
-                    ConversionFactorFromSI = 0.0624279606
+                    ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic inch",
+                    UnitLabel = "lb/in³",
+                    ID = new Guid("d549658a-76ab-4507-8a9e-e62a5cf47e23"),
+                    ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic yard",
+                    UnitLabel = "lb/yd³",
+                    ID = new Guid("8199e187-5283-42cc-891e-b3887c3aa450"),
+                    ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound
                 }
             };
         }

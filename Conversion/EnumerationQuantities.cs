@@ -690,7 +690,9 @@ namespace OSDC.UnitConversion.Conversion
          GramPerCubicCentimetre,  // gram per cubic centimetre
          PoundPerGallonUK,  // pound per gallon (UK)
          PoundPerGallonUS,  // pound per gallon (US)
-         PoundPerCubicFoot // pound per cubic foot
+         PoundPerCubicFoot,  // pound per cubic foot
+         PoundPerCubicInch,  // pound per cubic inch
+         PoundPerCubicYard // pound per cubic yard
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -700,7 +702,9 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.GramPerCubicCentimetre, new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450")},  // gram per cubic centimetre
          {UnitChoicesEnum.PoundPerGallonUK, new Guid("75ecf787-8778-4d74-afc7-498e117d27bf")},  // pound per gallon (UK)
          {UnitChoicesEnum.PoundPerGallonUS, new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da")},  // pound per gallon (US)
-         {UnitChoicesEnum.PoundPerCubicFoot, new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935")} // pound per cubic foot
+         {UnitChoicesEnum.PoundPerCubicFoot, new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935")},  // pound per cubic foot
+         {UnitChoicesEnum.PoundPerCubicInch, new Guid("d549658a-76ab-4507-8a9e-e62a5cf47e23")},  // pound per cubic inch
+         {UnitChoicesEnum.PoundPerCubicYard, new Guid("8199e187-5283-42cc-891e-b3887c3aa450")} // pound per cubic yard
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
