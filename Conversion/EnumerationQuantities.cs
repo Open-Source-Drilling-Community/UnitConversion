@@ -1127,7 +1127,10 @@ namespace OSDC.UnitConversion.Conversion
          Megajoule,  // megajoule
          Gigajoule,  // gigajoule
          Calorie,  // calorie
-         Kilocalorie // kilocalorie
+         Kilocalorie,  // kilocalorie
+         BritishThermalUnit,  // british thermal unit
+         KiloBritishThermalUnit,  // kilo british thermal unit
+         MegaBritishThermalUnit // mega british thermal unit
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -1136,7 +1139,10 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Megajoule, new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126")},  // megajoule
          {UnitChoicesEnum.Gigajoule, new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2")},  // gigajoule
          {UnitChoicesEnum.Calorie, new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12")},  // calorie
-         {UnitChoicesEnum.Kilocalorie, new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578")} // kilocalorie
+         {UnitChoicesEnum.Kilocalorie, new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578")},  // kilocalorie
+         {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
+         {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
+         {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
