@@ -1005,11 +1005,17 @@ namespace OSDC.UnitConversion.Conversion
     public new enum UnitChoicesEnum 
       {
          JoulePerCubicMetre,  // joule per cubic metre
+         JoulePerLitre,  // joule per litre
          KilojoulePerCubicMetre,  // kilojoule per cubic metre
+         KilojoulePerLitre,  // kilojoule per litre
          MegajoulePerCubicMetre,  // megajoule per cubic metre
+         MegajoulePerLitre,  // megajoule per litre
          GigajoulePerCubicMetre,  // gigajoule per cubic metre
+         GigajoulePerLitre,  // gigajoule per litre
          CaloriePerCubicMetre,  // calorie per cubic metre
+         CaloriePerLitre,  // calorie per litre
          KilocaloriePerCubicMetre,  // kilocalorie per cubic metre
+         KilocaloriePerLitre,  // kilocalorie per litre
          JoulePerCubicFoot,  // joule per cubic foot
          KilojoulePerCubicFoot,  // kilojoule per cubic foot
          MegajoulePerCubicFoot,  // megajoule per cubic foot
@@ -1033,16 +1039,34 @@ namespace OSDC.UnitConversion.Conversion
          MegajoulePerGallonUS,  // megajoule per gallon (US)
          GigajoulePerGallonUS,  // gigajoule per gallon (US)
          CaloriePerGallonUS,  // calorie per gallon (US)
-         KilocaloriePerGallonUS // kilocalorie per gallon (US)
+         KilocaloriePerGallonUS,  // kilocalorie per gallon (US)
+         BritishThermalUnitPerCubicMetre,  // british thermal unit per cubic metre
+         BritishThermalUnitPerLitre,  // british thermal unit per litre
+         BritishThermalUnitPerCubicFoot,  // british thermal unit per cubic foot
+         BritishThermalUnitPerCubicInch,  // british thermal unit per cubic inch
+         BritishThermalUnitPerGallonUK,  // british thermal unit per gallon (UK)
+         BritishThermalUnitPerGallonUS,  // british thermal unit per gallon (US)
+         KiloBritishThermalUnitPerCubicMetre,  // kilo british thermal unit per cubic metre
+         KiloBritishThermalUnitPerLitre,  // kilo british thermal unit per litre
+         KiloBritishThermalUnitPerCubicFoot,  // kilo british thermal unit per cubic foot
+         KiloBritishThermalUnitPerCubicInch,  // kilo british thermal unit per cubic inch
+         KiloBritishThermalUnitPerGallonUK,  // kilo british thermal unit per gallon (UK)
+         KiloBritishThermalUnitPerGallonUS // kilo british thermal unit per gallon (US)
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.JoulePerCubicMetre, new Guid("bac0aae1-8b3b-403d-b1ea-874a74da849a")},  // joule per cubic metre
+         {UnitChoicesEnum.JoulePerLitre, new Guid("c3ae0b19-e3b1-4433-8075-ffb1444f447d")},  // joule per litre
          {UnitChoicesEnum.KilojoulePerCubicMetre, new Guid("ebc0ab24-af1b-4315-a41e-c66ef83e02f0")},  // kilojoule per cubic metre
+         {UnitChoicesEnum.KilojoulePerLitre, new Guid("5cfaa1c0-7155-4eb6-b1ab-48db0dab2043")},  // kilojoule per litre
          {UnitChoicesEnum.MegajoulePerCubicMetre, new Guid("a5d1096b-9900-46ff-8a81-17313266dfdd")},  // megajoule per cubic metre
+         {UnitChoicesEnum.MegajoulePerLitre, new Guid("f57f2f8d-3998-4ff3-ab50-bf1e8fdf99f4")},  // megajoule per litre
          {UnitChoicesEnum.GigajoulePerCubicMetre, new Guid("7728780b-66c7-4832-b905-25cb4e0b3edf")},  // gigajoule per cubic metre
+         {UnitChoicesEnum.GigajoulePerLitre, new Guid("37e4f478-4e24-4735-9c31-30047d48828b")},  // gigajoule per litre
          {UnitChoicesEnum.CaloriePerCubicMetre, new Guid("ea4ac69b-351f-43d6-b6f0-847e6a73a069")},  // calorie per cubic metre
+         {UnitChoicesEnum.CaloriePerLitre, new Guid("66d4c95b-5281-45d2-ba67-ee513f64f8dc")},  // calorie per litre
          {UnitChoicesEnum.KilocaloriePerCubicMetre, new Guid("b8d2b560-8541-4ad0-bb63-e2f755e92cb3")},  // kilocalorie per cubic metre
+         {UnitChoicesEnum.KilocaloriePerLitre, new Guid("5bb757ee-b4b4-4340-b05b-d15988369ea0")},  // kilocalorie per litre
          {UnitChoicesEnum.JoulePerCubicFoot, new Guid("5c91efe6-c268-4d31-bff8-768344290db6")},  // joule per cubic foot
          {UnitChoicesEnum.KilojoulePerCubicFoot, new Guid("2b21249b-3eb3-4f86-9d05-407e42d8d1c5")},  // kilojoule per cubic foot
          {UnitChoicesEnum.MegajoulePerCubicFoot, new Guid("6bf78807-e679-4930-9e73-e52968821d9b")},  // megajoule per cubic foot
@@ -1066,7 +1090,19 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.MegajoulePerGallonUS, new Guid("38d388bf-bbb8-4c84-9ec8-e78c6d81ae07")},  // megajoule per gallon (US)
          {UnitChoicesEnum.GigajoulePerGallonUS, new Guid("b3360ab2-cd97-4e2f-b29d-1470c0b34c1f")},  // gigajoule per gallon (US)
          {UnitChoicesEnum.CaloriePerGallonUS, new Guid("30d202d9-0a80-4d71-b4c8-e434d714ee9a")},  // calorie per gallon (US)
-         {UnitChoicesEnum.KilocaloriePerGallonUS, new Guid("05fa77bf-3dcb-4df0-bf4d-7394e9f8854d")} // kilocalorie per gallon (US)
+         {UnitChoicesEnum.KilocaloriePerGallonUS, new Guid("05fa77bf-3dcb-4df0-bf4d-7394e9f8854d")},  // kilocalorie per gallon (US)
+         {UnitChoicesEnum.BritishThermalUnitPerCubicMetre, new Guid("550355a8-bfbe-4045-ab32-28325513db51")},  // british thermal unit per cubic metre
+         {UnitChoicesEnum.BritishThermalUnitPerLitre, new Guid("2458887d-ee5f-4502-9446-cb6a7ae55c9d")},  // british thermal unit per litre
+         {UnitChoicesEnum.BritishThermalUnitPerCubicFoot, new Guid("ce9d74ec-ecfc-454a-a00f-818e59c55895")},  // british thermal unit per cubic foot
+         {UnitChoicesEnum.BritishThermalUnitPerCubicInch, new Guid("dd01b982-428b-4798-9cf6-091317d8fe93")},  // british thermal unit per cubic inch
+         {UnitChoicesEnum.BritishThermalUnitPerGallonUK, new Guid("49e1a251-6a46-4715-a399-8953b25b7ce8")},  // british thermal unit per gallon (UK)
+         {UnitChoicesEnum.BritishThermalUnitPerGallonUS, new Guid("f03e145b-26fc-4597-8cd6-1f468e574644")},  // british thermal unit per gallon (US)
+         {UnitChoicesEnum.KiloBritishThermalUnitPerCubicMetre, new Guid("982cde20-c1a6-4dcf-8e37-c3784a427bc0")},  // kilo british thermal unit per cubic metre
+         {UnitChoicesEnum.KiloBritishThermalUnitPerLitre, new Guid("2a64cc42-f2ab-43df-858f-04659d9a1306")},  // kilo british thermal unit per litre
+         {UnitChoicesEnum.KiloBritishThermalUnitPerCubicFoot, new Guid("fdf14475-d109-4450-b5c0-9462c7ef8ec8")},  // kilo british thermal unit per cubic foot
+         {UnitChoicesEnum.KiloBritishThermalUnitPerCubicInch, new Guid("8d6b0b9d-8f02-4a6a-9df5-575ebebaaba3")},  // kilo british thermal unit per cubic inch
+         {UnitChoicesEnum.KiloBritishThermalUnitPerGallonUK, new Guid("24f9799f-4918-4f1c-9155-6b87c99703b0")},  // kilo british thermal unit per gallon (UK)
+         {UnitChoicesEnum.KiloBritishThermalUnitPerGallonUS, new Guid("d8751a32-b0bd-425a-a9df-0ef7f5f0cb1f")} // kilo british thermal unit per gallon (US)
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

@@ -98,7 +98,11 @@ namespace Conversion
 
         public static readonly double Calorie = 4.184; // exact https://en.wikipedia.org/wiki/Calorie
 
+        public static readonly double Litre = 0.001; // exact
         public static readonly double GallonUK = 4.54609e-3; // exact https://en.wikipedia.org/wiki/Gallon
         public static readonly double GallonUS = 231.0 * Inch * Inch * Inch; // exact https://en.wikipedia.org/wiki/Gallon
+
+        public static readonly double BTU = 1054.35; // approximate https://en.wikipedia.org/wiki/British_thermal_unit
+        public static readonly double BTUGasPrice = 1054.80; // approximate https://en.wikipedia.org/wiki/British_thermal_unit
     }
 }

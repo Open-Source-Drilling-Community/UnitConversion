@@ -849,18 +849,18 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public new enum UnitChoicesEnum 
       {
          JoulePerCubicMetre,  // joule per cubic metre
+         GigajoulePerCubicMetre,  // gigajoule per cubic metre
          JoulePerCubicFoot,  // joule per cubic foot
          JoulePerCubicInch,  // joule per cubic inch
-         JoulePerGallonUK,  // joule per gallon (UK)
-         JoulePerGallonUS // joule per gallon (US)
+         JoulePerGallonUK // joule per gallon (UK)
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.JoulePerCubicMetre, new Guid("bac0aae1-8b3b-403d-b1ea-874a74da849a")},  // joule per cubic metre
+         {UnitChoicesEnum.GigajoulePerCubicMetre, new Guid("7728780b-66c7-4832-b905-25cb4e0b3edf")},  // gigajoule per cubic metre
          {UnitChoicesEnum.JoulePerCubicFoot, new Guid("5c91efe6-c268-4d31-bff8-768344290db6")},  // joule per cubic foot
          {UnitChoicesEnum.JoulePerCubicInch, new Guid("daba8c83-b6f5-40bb-8c9d-e476e5d1bce2")},  // joule per cubic inch
-         {UnitChoicesEnum.JoulePerGallonUK, new Guid("1c3b4a46-1cfa-44e4-b10e-4ed0f74e2994")},  // joule per gallon (UK)
-         {UnitChoicesEnum.JoulePerGallonUS, new Guid("357a5df6-6df1-43fa-8be8-652e8d97db7c")} // joule per gallon (US)
+         {UnitChoicesEnum.JoulePerGallonUK, new Guid("1c3b4a46-1cfa-44e4-b10e-4ed0f74e2994")} // joule per gallon (UK)
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
