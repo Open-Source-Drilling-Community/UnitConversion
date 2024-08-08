@@ -222,6 +222,7 @@ Unit conversions can be handled:
 |---|---|---|---|---|
 |AccelerationDrilling|Acceleration (drilling)||||||
 |AngleVariationGradientDrilling|Angle Variation Gradient (drilling)|||
+|AngularAccelerationDrilling|Angular Acceleration (drilling)||||||
 |AngularVelocityDrilling|Angular Velocity (drilling)||||||
 |AreaDrilling|Area (drilling)||||||
 |AxialVelocityDrilling|Axial Velocity (drilling)||||||
@@ -240,6 +241,7 @@ Unit conversions can be handled:
 |DurationDrilling|Duration (drilling)||||||
 |DynamicViscosityDrilling|Dynamic Viscosity (drilling)||||||
 |ElongationGradientDrilling|Elongation Gradient (drilling)||||||
+|EnergyDensityDrilling|Energy Density (drilling)||||||
 |FluidVelocityDrilling|Fluid Velocity (drilling)||||||
 |ForceDrilling|Force (drilling)||||||
 |ForceGradientDrilling|Force Gradient (drilling)||||||
