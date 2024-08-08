@@ -51,18 +51,19 @@ namespace Conversion
         public static readonly double Furlong = 660.0 * Foot; // exact value https://www.britannica.com/science/furlong
 
         public static readonly double Degree = 180.0 / Math.PI;
+        public static readonly double Grad = 200.0 / Math.PI;
 
         public static readonly double Minute = 60.0;
         public static readonly double Hour = 60.0 * Minute;
         public static readonly double Day = 24.0 * Hour;
         public static readonly double Week = 7.0 * Day;
         public static readonly double Fortnight = 14.0 * Day;
+        public static readonly double YearJulian = 365.25 * Day;
         public static readonly double MonthCommon = YearJulian / 12.0; 
         public static readonly double MonthSideral = 27.32166 * Day; // approxmiate https://en.wikipedia.org/wiki/Month
         public static readonly double MonthSynodic = 29.53059 * Day; // approximate https://en.wikipedia.org/wiki/Month
         public static readonly double QuarterCommon = YearJulian / 4.0;
         public static readonly double YearCommon = 365 * Day;
-        public static readonly double YearJulian = 365.25 * Day;
         public static readonly double YearAverageGregorian = (365.0 + 97 / 400) * Day; // https://en.wikipedia.org/wiki/Gregorian_calendar
         public static readonly double YearLeap = 366 * Day;
         public static readonly double YearTropical = 365.2422 * Day; // https://www.grc.nasa.gov/www/k-12/Numbers/Math/Mathematical_Thinking/calendar_calculations.htm
@@ -71,8 +72,33 @@ namespace Conversion
         public static readonly double Millenia = 10.0 * Century;
         public static readonly double MillionYear = 1000.0 * Millenia;
 
+        public static readonly double ZeroCelsius = 273.15; // exact https://www.nist.gov/pml/owm/si-units-temperature
+        public static readonly double FarenheitSlope = 5.0 / 9.0; // exact https://nn.wikipedia.org/wiki/Fahrenheit
+        public static readonly double FarenheitBias = 459.67; // exact https://nn.wikipedia.org/wiki/Fahrenheit
+        public static readonly double ReaumurSlope = 5.0 / 4.0; // exact https://en.wikipedia.org/wiki/R%C3%A9aumur_scale
+        public static readonly double ReaumurBias = ZeroCelsius / ReaumurSlope;
 
+        public static readonly double C_cgs = 2.99792458e10; // https://en.wikipedia.org/wiki/Statampere
 
+        public static readonly double Hefnerkerze = 0.92; // approximate https://en.wikipedia.org/wiki/Hefner_lamp
+        public static readonly double InternationalCandle = 1.02; // approximate 
+        public static readonly double DVGWCandle = 1.162 * Hefnerkerze; // approximate https://fr.wikipedia.org/wiki/Bougie_(unit%C3%A9)
+        public static readonly double Violle = 60.0; // exact https://en.wikipedia.org/wiki/Jules_Violle
+        public static readonly double Carcel = 9.74; // approximate https://en.wikipedia.org/wiki/Carcel
 
+        public static readonly double AtomicMass = 1.66053906660e-27; // approximate https://en.wikipedia.org/wiki/Atomic_mass
+        public static readonly double Pound = 0.45359237; // legal https://en.wikipedia.org/wiki/Pound_(mass)
+        public static readonly double Ounce = (1.0 / 16.0) * Pound; // exact https://en.wikipedia.org/wiki/Ounce
+        public static readonly double Stone = 14.0 * Pound; // exact https://simple.wikipedia.org/wiki/Stone_(unit)
+        public static readonly double TonUK = 2240.0 * Pound; // exact https://en.wikipedia.org/wiki/Ton
+        public static readonly double TonUS = 2000.0 * Pound; // exact https://en.wikipedia.org/wiki/Ton
+        public static readonly double EarthMass = 5.9722e24; // approximate https://en.wikipedia.org/wiki/Earth_mass
+        public static readonly double SolarMass = 332946.0487 * EarthMass; // approximate https://en.wikipedia.org/wiki/Earth_mass
+        public static readonly double Grain = (1.0 / 7000.0) * Pound; // exact https://en.wikipedia.org/wiki/Grain_(unit)
+
+        public static readonly double Calorie = 4.184; // exact https://en.wikipedia.org/wiki/Calorie
+
+        public static readonly double GallonUK = 4.54609e-3; // exact https://en.wikipedia.org/wiki/Gallon
+        public static readonly double GallonUS = 231.0 * Inch * Inch * Inch; // exact https://en.wikipedia.org/wiki/Gallon
     }
 }

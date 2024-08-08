@@ -86,6 +86,7 @@ namespace ConversionUnitTest
             Assert.AreEqual(0, LengthQuantity.Instance.ElectricCurrentDimension);
             Assert.AreEqual(0, LengthQuantity.Instance.AmountSubstanceDimension);
             Assert.AreEqual(0, LengthQuantity.Instance.LuminousIntensityDimension);
+            Assert.AreEqual(0, LengthQuantity.Instance.SolidAngleDimension);
         }
     }
 }

@@ -904,7 +904,6 @@ namespace OSDC.UnitConversion.Conversion
          Megaampere,  // megaampere
          Gigaampere,  // gigaampere
          Teraampere,  // teraampere
-         Gilbert,  // gilbert
          Statampere // statampere
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
@@ -927,7 +926,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Megaampere, new Guid("978af2aa-e776-43d6-bfe6-4055b6d602e8")},  // megaampere
          {UnitChoicesEnum.Gigaampere, new Guid("eb1b76cd-4863-4cf3-b421-1cd80d2fb0b4")},  // gigaampere
          {UnitChoicesEnum.Teraampere, new Guid("4bf45d0a-e177-45b9-8a40-f8f51d5b15c6")},  // teraampere
-         {UnitChoicesEnum.Gilbert, new Guid("2f036ab5-992d-4dff-beef-2e2fad2f5379")},  // gilbert
          {UnitChoicesEnum.Statampere, new Guid("7d9a22ac-62d8-476d-8429-bc41febbe707")} // statampere
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
@@ -1239,7 +1237,6 @@ namespace OSDC.UnitConversion.Conversion
          Hefnerkerze,  // hefnerkerze
          InternationalCandle,  // international candle
          DecimalCandle,  // decimal candle
-         Candlepower,  // candlepower
          BerlinerLichteinheit,  // berliner lichteinheit
          DVWGCandle,  // DVWG candle
          Violle,  // violle
@@ -1254,7 +1251,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Hefnerkerze, new Guid("8059d89c-1ed5-43d3-a9dc-a11de6cd0f8d")},  // hefnerkerze
          {UnitChoicesEnum.InternationalCandle, new Guid("fa25c6d3-c832-42a1-8490-c31131378ee2")},  // international candle
          {UnitChoicesEnum.DecimalCandle, new Guid("a07a3c15-4679-4a6a-a79b-64fe27fa5799")},  // decimal candle
-         {UnitChoicesEnum.Candlepower, new Guid("55509967-f1e5-4d79-a707-fcf27a850f98")},  // candlepower
          {UnitChoicesEnum.BerlinerLichteinheit, new Guid("ffd07aaa-486b-495d-bb63-a93d122c35e4")},  // berliner lichteinheit
          {UnitChoicesEnum.DVWGCandle, new Guid("b2fa4a9a-4c5d-4a31-8002-a7bc9e857af5")},  // DVWG candle
          {UnitChoicesEnum.Violle, new Guid("1e53e27a-3e4f-4b68-833f-c7a05fdf094e")},  // violle
@@ -1299,7 +1295,6 @@ namespace OSDC.UnitConversion.Conversion
          TonUS,  // ton US
          SolarMass,  // solar mass
          EarthMass,  // earth mass
-         Cental,  // cental
          Grain,  // grain
          HundredWeights // hundred weights
       }
@@ -1326,7 +1321,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.TonUS, new Guid("443af797-a62f-4137-a852-ad1c9163dd7b")},  // ton US
          {UnitChoicesEnum.SolarMass, new Guid("432e73bf-a448-47f6-9c65-9339d5bac5a3")},  // solar mass
          {UnitChoicesEnum.EarthMass, new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e")},  // earth mass
-         {UnitChoicesEnum.Cental, new Guid("51c7e932-7cff-4c81-95a9-066241d5f010")},  // cental
          {UnitChoicesEnum.Grain, new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2")},  // grain
          {UnitChoicesEnum.HundredWeights, new Guid("83810f2a-b260-41b3-bc13-5ef60290f214")} // hundred weights
     };
@@ -1497,14 +1491,16 @@ namespace OSDC.UnitConversion.Conversion
          Kelvin,  // kelvin
          Celsius,  // celsius
          Fahrenheit,  // fahrenheit
-         Réaumure // réaumure
+         Rankine,  // rankine
+         Réaumur // réaumur
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Kelvin, new Guid("8fc5fa10-2d89-4064-8ace-b852d9a8d31f")},  // kelvin
          {UnitChoicesEnum.Celsius, new Guid("5d69048e-fe18-4923-9341-cb80c2ccf8cc")},  // celsius
          {UnitChoicesEnum.Fahrenheit, new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f")},  // fahrenheit
-         {UnitChoicesEnum.Réaumure, new Guid("968def6c-bc85-49b0-84a8-3ac7ad37efc6")} // réaumure
+         {UnitChoicesEnum.Rankine, new Guid("b4d6c55d-cf05-46e1-a09b-d0b26eba634a")},  // rankine
+         {UnitChoicesEnum.Réaumur, new Guid("968def6c-bc85-49b0-84a8-3ac7ad37efc6")} // réaumur
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1536,8 +1532,9 @@ namespace OSDC.UnitConversion.Conversion
          Week,  // week
          Fortnight,  // fortnight
          MonthCommon,  // month common
+         MonthSideral,  // month sideral
          MonthSynodic,  // month synodic
-         QuaterCommon,  // quater common
+         QuarterCommon,  // quarter common
          YearCommon,  // year common
          YearAverageGregorian,  // year average gregorian
          YearJulian,  // year julian
@@ -1562,8 +1559,9 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Week, new Guid("4dd50f01-60b3-4d44-82ea-ff8ededd797d")},  // week
          {UnitChoicesEnum.Fortnight, new Guid("bc87f864-3dc1-4f1a-87bc-4123a47c53dc")},  // fortnight
          {UnitChoicesEnum.MonthCommon, new Guid("41cceaa2-1a1d-40f1-9195-5183be9770d4")},  // month common
+         {UnitChoicesEnum.MonthSideral, new Guid("2e7446c0-5b0e-44e1-9a27-f0bc7d8aeb98")},  // month sideral
          {UnitChoicesEnum.MonthSynodic, new Guid("31edcda9-df8f-4d15-83a9-7dafd8a7e404")},  // month synodic
-         {UnitChoicesEnum.QuaterCommon, new Guid("71f0e01a-c1a2-49ba-a25b-c11854f8867c")},  // quater common
+         {UnitChoicesEnum.QuarterCommon, new Guid("71f0e01a-c1a2-49ba-a25b-c11854f8867c")},  // quarter common
          {UnitChoicesEnum.YearCommon, new Guid("38481414-3b9d-472d-ac31-04b00dcc9d5c")},  // year common
          {UnitChoicesEnum.YearAverageGregorian, new Guid("fc33008b-9517-440f-a56b-189c5d80621b")},  // year average gregorian
          {UnitChoicesEnum.YearJulian, new Guid("281f6c7b-da23-4aab-89e1-994e52280658")},  // year julian

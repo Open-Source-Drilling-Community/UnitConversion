@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Conversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("a71fc712-342a-48c2-8e45-b56ee31c7ae0"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -49,28 +50,28 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "milliradian",
                     UnitLabel = "mrad",
                     ID = new Guid("34a37faf-dfb9-4a34-899c-c9fa78f295a5"),
-                    ConversionFactorFromSI = 1000.0
+                    ConversionFactorFromSI = 1.0/Factors.Milli
                 },
                 new UnitChoice
                 {
                     UnitName = "degree",
                     UnitLabel = "°",
                     ID = new Guid("023a3393-a01e-499f-967a-a76b1a78d586"),
-                    ConversionFactorFromSI = 180.0/Math.PI
+                    ConversionFactorFromSI = Factors.Degree
                 },
                 new UnitChoice
                 {
                     UnitName = "grad",
                     UnitLabel = "grad",
                     ID = new Guid("584314cf-a10f-49b6-a5e9-1cfa0ec0f355"),
-                    ConversionFactorFromSI = 200.0/Math.PI
+                    ConversionFactorFromSI = Factors.Grad
                 },
                 new UnitChoice
                 {
                     UnitName = "gon",
                     UnitLabel = "gon",
                     ID = new Guid("feefeed5-2df2-4c66-84f1-0de998ba44db"),
-                    ConversionFactorFromSI = 200.0/Math.PI
+                    ConversionFactorFromSI = Factors.Grad
                 },
 
                 new UnitChoice
@@ -113,14 +114,14 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "arc minute",
                     UnitLabel = "\'",
                     ID = new Guid("e1ce9562-ecd0-46e2-82e2-bcec1b6ac113"),
-                    ConversionFactorFromSI = 180.0*60.0/Math.PI
+                    ConversionFactorFromSI = 60.0*Factors.Degree
                 },
                 new UnitChoice
                 {
                     UnitName = "arc second",
                     UnitLabel = "\"",
                     ID = new Guid("bea092da-34d6-4130-bc65-41fb7702597a"),
-                    ConversionFactorFromSI = 180.0*60.0*60.0/Math.PI
+                    ConversionFactorFromSI = 60.0*60.0*Factors.Degree
                 }
             };
         }

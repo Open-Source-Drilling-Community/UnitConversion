@@ -136,6 +136,7 @@ Unit conversions can be handled:
 |AmountSubstance|Amount Substance||||
 |AngleMagneticFluxDensity|Angle Magnetic Flux Density||||
 |AngleVariationGradient|Angle Variation Gradient||||
+|AngularAcceleration|Angular Acceleration||||
 |AngularVelocity|Angular Velocity||||
 |Area|Area||||
 |Compressibility|Compressibility||||
@@ -152,6 +153,7 @@ Unit conversions can be handled:
 |ElectricTension|Electric Tension||||
 |ElongationGradient|Elongation Gradient||||
 |Energy|Energy||||
+|EnergyDensity|EnergyDensiy||||
 |FluidShearRate|Fluid Shear Rate||||
 |FluidShearStress|Fluid Shear Stress||||
 |Force|Force||||

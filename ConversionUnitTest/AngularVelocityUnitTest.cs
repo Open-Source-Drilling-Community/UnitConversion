@@ -42,6 +42,7 @@ namespace ConversionUnitTest
             Assert.AreEqual(0, AngularVelocityQuantity.Instance.ElectricCurrentDimension);
             Assert.AreEqual(0, AngularVelocityQuantity.Instance.AmountSubstanceDimension);
             Assert.AreEqual(0, AngularVelocityQuantity.Instance.LuminousIntensityDimension);
+            Assert.AreEqual(0, AngularVelocityQuantity.Instance.SolidAngleDimension);
         }
     }
 }

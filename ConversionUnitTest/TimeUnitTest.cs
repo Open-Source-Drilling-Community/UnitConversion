@@ -43,7 +43,7 @@ namespace ConversionUnitTest
             Assert.AreEqual(1.0 / Factors.Nano, unitVal);
             unitVal = TimeQuantity.Instance.FromSI(val, TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.Picosecond).ID);
             Assert.AreEqual(1.0 / Factors.Pico, unitVal);
-            unitVal = TimeQuantity.Instance.FromSI(val, TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.QuaterCommon).ID);
+            unitVal = TimeQuantity.Instance.FromSI(val, TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.QuarterCommon).ID);
             Assert.AreEqual(1.0 / Factors.QuarterCommon, unitVal);
             unitVal = TimeQuantity.Instance.FromSI(val, TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.Second).ID);
             Assert.AreEqual(1.0 / Factors.Unit, unitVal);
@@ -72,6 +72,7 @@ namespace ConversionUnitTest
             Assert.AreEqual(0, TimeQuantity.Instance.ElectricCurrentDimension);
             Assert.AreEqual(0, TimeQuantity.Instance.AmountSubstanceDimension);
             Assert.AreEqual(0, TimeQuantity.Instance.LuminousIntensityDimension);
+            Assert.AreEqual(0, TimeQuantity.Instance.SolidAngleDimension);
         }
     }
 }

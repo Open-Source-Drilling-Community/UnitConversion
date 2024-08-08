@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Conversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("8fc5fa10-2d89-4064-8ace-b852d9a8d31f"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -48,24 +49,32 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "celsius",
                     UnitLabel = "°C",
                     ID = new Guid("5d69048e-fe18-4923-9341-cb80c2ccf8cc"),
-                    ConversionFactorFromSI = 1.0,
-                    ConversionBiasFromSI = -273.15
+                    ConversionFactorFromSI = Factors.Unit,
+                    ConversionBiasFromSI = -Factors.ZeroCelsius
                 },
                 new UnitChoice
                 {
                     UnitName = "fahrenheit",
                     UnitLabel = "°F",
                     ID = new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f"),
-                    ConversionFactorFromSI = 9.0/5.0,
-                    ConversionBiasFromSI = -459.67
+                    ConversionFactorFromSI = 1.0/Factors.FarenheitSlope,
+                    ConversionBiasFromSI = -Factors.FarenheitBias
                 },
                 new UnitChoice
                 {
-                    UnitName = "réaumure",
+                    UnitName = "rankine",
+                    UnitLabel = "°R",
+                    ID = new Guid("b4d6c55d-cf05-46e1-a09b-d0b26eba634a"),
+                    ConversionFactorFromSI = 1.0/Factors.FarenheitSlope,
+                    ConversionBiasFromSI = 0
+                },
+                new UnitChoice
+                {
+                    UnitName = "réaumur",
                     UnitLabel = "°Ré",
                     ID = new Guid("968def6c-bc85-49b0-84a8-3ac7ad37efc6"),
-                    ConversionFactorFromSI = 4.0/5.0,
-                    ConversionBiasFromSI = -273.15 *4.0/5.0
+                    ConversionFactorFromSI = 1.0/Factors.ReaumurSlope,
+                    ConversionBiasFromSI = -Factors.ReaumurBias
                 }
             };
         }
