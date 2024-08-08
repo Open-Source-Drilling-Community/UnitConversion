@@ -949,14 +949,24 @@ namespace OSDC.UnitConversion.Conversion
          Volt,  // volt
          Millivolt,  // millivolt
          Centivolt,  // centivolt
-         Kilovolt // kilovolt
+         Microvolt,  // microvolt
+         Nanovolt,  // nanovolt
+         Picovolt,  // picovolt
+         Kilovolt,  // kilovolt
+         Megavolt,  // megavolt
+         Gigavolt // gigavolt
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.Volt, new Guid("618fafff-fc9c-4d22-a64d-b7579931aa93")},  // volt
          {UnitChoicesEnum.Millivolt, new Guid("f186f5d4-2b0b-4cfe-b24c-0c02d3155cf8")},  // millivolt
          {UnitChoicesEnum.Centivolt, new Guid("ee01194e-dee3-4b50-8312-5fde3c8f774e")},  // centivolt
-         {UnitChoicesEnum.Kilovolt, new Guid("6ffc60bc-ec9f-44d4-961b-79d9e593bf64")} // kilovolt
+         {UnitChoicesEnum.Microvolt, new Guid("ede7e093-3e7d-429a-8c22-3b35ab5b20f2")},  // microvolt
+         {UnitChoicesEnum.Nanovolt, new Guid("86dfcbe1-af8c-4081-b6ed-481eb44ab890")},  // nanovolt
+         {UnitChoicesEnum.Picovolt, new Guid("19fb81d7-4991-4902-a1fd-55420789ac59")},  // picovolt
+         {UnitChoicesEnum.Kilovolt, new Guid("6ffc60bc-ec9f-44d4-961b-79d9e593bf64")},  // kilovolt
+         {UnitChoicesEnum.Megavolt, new Guid("3342ddbc-b1b2-46f8-addc-216ce94a616a")},  // megavolt
+         {UnitChoicesEnum.Gigavolt, new Guid("640f2693-dd92-472b-b2ec-0052fc7b7a11")} // gigavolt
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -977,14 +987,46 @@ namespace OSDC.UnitConversion.Conversion
     public new enum UnitChoicesEnum 
       {
          MetrePerMetre,  // metre per metre
+         DecimetrePerMetre,  // decimetre per metre
+         CentimetrePerMetre,  // centimetre per metre
          MillimetrePerMetre,  // millimetre per metre
-         InchPerFoot // inch per foot
+         MicrometrePerMetre,  // micrometre per metre
+         MetrePerKilometre,  // metre per kilometre
+         DecimetrePerKilometre,  // decimetre per kilometre
+         CentimetrePerKilometre,  // centimetre per kilometre
+         MillimetrePerKilometre,  // millimetre per kilometre
+         MicrometrePerKilometre,  // micrometre per kilometre
+         InchPerFoot,  // inch per foot
+         InchPerYard,  // inch per yard
+         InchPerMile,  // inch per mile
+         FootPerFoot,  // foot per foot
+         FootPerYard,  // foot per yard
+         FootPerMile,  // foot per mile
+         YardPerFoot,  // yard per foot
+         YardPerYard,  // yard per yard
+         YardPerMile // yard per mile
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.MetrePerMetre, new Guid("cc12967b-4c7d-4c70-95cf-d2f23bd6f76b")},  // metre per metre
+         {UnitChoicesEnum.DecimetrePerMetre, new Guid("337d67e2-b28c-4ab8-9817-3f9951fdb67b")},  // decimetre per metre
+         {UnitChoicesEnum.CentimetrePerMetre, new Guid("4a7ce144-b35f-401f-bfbc-276b7c4ec4a9")},  // centimetre per metre
          {UnitChoicesEnum.MillimetrePerMetre, new Guid("4e241b59-388a-428f-82e7-b9971f9e1df5")},  // millimetre per metre
-         {UnitChoicesEnum.InchPerFoot, new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2")} // inch per foot
+         {UnitChoicesEnum.MicrometrePerMetre, new Guid("bbd912b2-06e2-46fe-82da-af87bab150dc")},  // micrometre per metre
+         {UnitChoicesEnum.MetrePerKilometre, new Guid("5b583a4c-7838-48e7-8201-420f43eef9e1")},  // metre per kilometre
+         {UnitChoicesEnum.DecimetrePerKilometre, new Guid("7dc93254-9a25-4215-b2bc-9f2d8dc14d6e")},  // decimetre per kilometre
+         {UnitChoicesEnum.CentimetrePerKilometre, new Guid("f539c676-e969-4235-9524-42e860e84966")},  // centimetre per kilometre
+         {UnitChoicesEnum.MillimetrePerKilometre, new Guid("59f50e71-7796-4559-9e55-7fc420d9c20c")},  // millimetre per kilometre
+         {UnitChoicesEnum.MicrometrePerKilometre, new Guid("73d8d799-d9f5-40f9-9216-4bc0bbf1c044")},  // micrometre per kilometre
+         {UnitChoicesEnum.InchPerFoot, new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2")},  // inch per foot
+         {UnitChoicesEnum.InchPerYard, new Guid("ec1fbeee-cbf4-41f0-94d8-573e241c22b2")},  // inch per yard
+         {UnitChoicesEnum.InchPerMile, new Guid("998afd92-de3a-4f10-90b6-a252b8e59181")},  // inch per mile
+         {UnitChoicesEnum.FootPerFoot, new Guid("a53ffdb6-a2db-4984-85aa-53763ba3aabb")},  // foot per foot
+         {UnitChoicesEnum.FootPerYard, new Guid("ba9062f9-68be-4b9c-ba61-57c8543ed6f9")},  // foot per yard
+         {UnitChoicesEnum.FootPerMile, new Guid("89b73d98-2818-43c5-8d31-8aa1bb78d3bc")},  // foot per mile
+         {UnitChoicesEnum.YardPerFoot, new Guid("a6c2cf06-e21a-4387-90db-89d7d46b1b28")},  // yard per foot
+         {UnitChoicesEnum.YardPerYard, new Guid("56f75af0-7213-43d9-b23f-bc74da6382e9")},  // yard per yard
+         {UnitChoicesEnum.YardPerMile, new Guid("3283a57e-ec6d-4487-ab32-cdc0c5de2020")} // yard per mile
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

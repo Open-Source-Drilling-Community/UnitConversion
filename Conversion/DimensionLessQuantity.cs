@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         }
       };

@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public partial class ElongationGradientDrillingQuantity : ElongationGradientQuantity
     {
         
-        public override double? MeaningfulPrecisionInSI { get; } = 0.01;
+        public override double? MeaningfulPrecisionInSI { get; } = 0.00001;
         private static ElongationGradientDrillingQuantity instance_ = null;
 
         public static new ElongationGradientDrillingQuantity Instance
@@ -31,8 +31,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             Reset();
             this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.MetrePerMetre));
             this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.MillimetrePerMetre));
+            this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.MillimetrePerKilometre));
             this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.InchPerFoot));
+            this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.InchPerYard));
+            this.UnitChoices.Add(ElongationGradientQuantity.Instance.GetUnitChoice(ElongationGradientQuantity.UnitChoicesEnum.InchPerMile));
         }
-        
+
     }
 }
