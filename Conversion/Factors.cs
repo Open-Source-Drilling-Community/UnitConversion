@@ -104,5 +104,9 @@ namespace Conversion
 
         public static readonly double BTU = 1054.35; // approximate https://en.wikipedia.org/wiki/British_thermal_unit
         public static readonly double BTUGasPrice = 1054.80; // approximate https://en.wikipedia.org/wiki/British_thermal_unit
+
+        public static readonly double Poise = 0.1; // exact https://en.wikipedia.org/wiki/Poise_(unit)
+
+        public static readonly double G = 9.80665; // standard https://en.wikipedia.org/wiki/Gravity_of_Earth
     }
 }

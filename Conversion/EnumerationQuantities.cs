@@ -789,19 +789,29 @@ namespace OSDC.UnitConversion.Conversion
     public new enum UnitChoicesEnum 
       {
          PascalSecond,  // pascal second
-         Centipoise,  // centipoise
+         MillipascalSecond,  // millipascal second
          MicropascalSecond,  // micropascal second
+         Poise,  // poise
+         Centipoise,  // centipoise
+         Millipoise,  // millipoise
          Micropoise,  // micropoise
+         PoundSecondPerSquareFoot,  // pound second per square foot
          PoundSecondPer100SquareFoot,  // pound second per 100 square foot
+         PoundSecondPerSquareInch,  // pound second per square inch
          DyneSecondPerSquareCentimetre // dyne second per square centimetre
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // pascal second
-         {UnitChoicesEnum.Centipoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // centipoise
+         {UnitChoicesEnum.MillipascalSecond, new Guid("640f2693-dd92-472b-b2ec-0052fc7b7a11")},  // millipascal second
          {UnitChoicesEnum.MicropascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")},  // micropascal second
+         {UnitChoicesEnum.Poise, new Guid("79e600d1-05f1-46ef-b47a-951b04f6666e")},  // poise
+         {UnitChoicesEnum.Centipoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // centipoise
+         {UnitChoicesEnum.Millipoise, new Guid("f20c7109-bf60-413b-8f41-6f1d2f3bff45")},  // millipoise
          {UnitChoicesEnum.Micropoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // micropoise
+         {UnitChoicesEnum.PoundSecondPerSquareFoot, new Guid("1397525b-b5b6-4b3c-82e8-b562f01e9a42")},  // pound second per square foot
          {UnitChoicesEnum.PoundSecondPer100SquareFoot, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // pound second per 100 square foot
+         {UnitChoicesEnum.PoundSecondPerSquareInch, new Guid("70b7471d-6a62-4ce9-8def-ceb3d6d7495f")},  // pound second per square inch
          {UnitChoicesEnum.DyneSecondPerSquareCentimetre, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // dyne second per square centimetre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
