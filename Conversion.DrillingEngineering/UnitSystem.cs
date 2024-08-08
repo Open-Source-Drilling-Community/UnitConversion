@@ -88,6 +88,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 
                     Choices.Add(AccelerationDrillingQuantity.Instance.ID.ToString(), AccelerationDrillingQuantity.Instance.GetUnitChoice(AccelerationDrillingQuantity.UnitChoicesEnum.MetrePerSecondSquared).ID.ToString());
                     Choices.Add(AngleVariationGradientDrillingQuantity.Instance.ID.ToString(), AngleVariationGradientDrillingQuantity.Instance.GetUnitChoice(AngleVariationGradientDrillingQuantity.UnitChoicesEnum.DegreePerMetre).ID.ToString());
+                    Choices.Add(AngularAccelerationDrillingQuantity.Instance.ID.ToString(), AngularAccelerationDrillingQuantity.Instance.GetUnitChoice("radian per second squared").ID.ToString());
                     Choices.Add(AngularVelocityDrillingQuantity.Instance.ID.ToString(), AngularVelocityDrillingQuantity.Instance.GetUnitChoice(AngularVelocityDrillingQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
                     Choices.Add(AreaDrillingQuantity.Instance.ID.ToString(), AreaDrillingQuantity.Instance.GetUnitChoice(AreaDrillingQuantity.UnitChoicesEnum.SquareMetre).ID.ToString());
                     Choices.Add(AxialVelocityDrillingQuantity.Instance.ID.ToString(), AxialVelocityDrillingQuantity.Instance.GetUnitChoice(AxialVelocityDrillingQuantity.UnitChoicesEnum.MetrePerSecond).ID.ToString());
@@ -106,6 +107,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(DurationDrillingQuantity.Instance.ID.ToString(), DurationDrillingQuantity.Instance.GetUnitChoice(DurationDrillingQuantity.UnitChoicesEnum.Second).ID.ToString());
                     Choices.Add(DynamicViscosityDrillingQuantity.Instance.ID.ToString(), DynamicViscosityDrillingQuantity.Instance.GetUnitChoice(DynamicViscosityDrillingQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
                     Choices.Add(ElongationGradientDrillingQuantity.Instance.ID.ToString(), ElongationGradientDrillingQuantity.Instance.GetUnitChoice(ElongationGradientDrillingQuantity.UnitChoicesEnum.MillimetrePerMetre).ID.ToString()); ;
+                    Choices.Add(EnergyDensityDrillingQuantity.Instance.ID.ToString(), EnergyDensityDrillingQuantity.Instance.GetUnitChoice("joule per cubic metre").ID.ToString()); ;
                     Choices.Add(FluidVelocityDrillingQuantity.Instance.ID.ToString(), FluidVelocityDrillingQuantity.Instance.GetUnitChoice(FluidVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceDrillingQuantity.Instance.ID.ToString(), ForceDrillingQuantity.Instance.GetUnitChoice(ForceDrillingQuantity.UnitChoicesEnum.Decanewton).ID.ToString());
                     Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPerMetre).ID.ToString());
@@ -163,6 +165,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 
                     Choices.Add(AccelerationDrillingQuantity.Instance.ID.ToString(), AccelerationDrillingQuantity.Instance.GetUnitChoice(AccelerationDrillingQuantity.UnitChoicesEnum.FootPerSecondSquared).ID.ToString());
                     Choices.Add(AngleVariationGradientDrillingQuantity.Instance.ID.ToString(), AngleVariationGradientDrillingQuantity.Instance.GetUnitChoice(AngleVariationGradientDrillingQuantity.UnitChoicesEnum.DegreePerFoot).ID.ToString());
+                    Choices.Add(AngularAccelerationDrillingQuantity.Instance.ID.ToString(), AngularAccelerationDrillingQuantity.Instance.GetUnitChoice("radian per second squared").ID.ToString());
                     Choices.Add(AngularVelocityDrillingQuantity.Instance.ID.ToString(), AngularVelocityDrillingQuantity.Instance.GetUnitChoice(AngularVelocityDrillingQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
                     Choices.Add(AreaDrillingQuantity.Instance.ID.ToString(), AreaDrillingQuantity.Instance.GetUnitChoice(AreaDrillingQuantity.UnitChoicesEnum.SquareFoot).ID.ToString());
                     Choices.Add(AxialVelocityDrillingQuantity.Instance.ID.ToString(), AxialVelocityDrillingQuantity.Instance.GetUnitChoice(AxialVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
@@ -181,6 +184,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(DurationDrillingQuantity.Instance.ID.ToString(), DurationDrillingQuantity.Instance.GetUnitChoice(DurationDrillingQuantity.UnitChoicesEnum.Second).ID.ToString());
                     Choices.Add(DynamicViscosityDrillingQuantity.Instance.ID.ToString(), DynamicViscosityDrillingQuantity.Instance.GetUnitChoice(DynamicViscosityDrillingQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
                     Choices.Add(ElongationGradientDrillingQuantity.Instance.ID.ToString(), ElongationGradientDrillingQuantity.Instance.GetUnitChoice(ElongationGradientDrillingQuantity.UnitChoicesEnum.InchPerFoot).ID.ToString()); ;
+                    Choices.Add(EnergyDensityDrillingQuantity.Instance.ID.ToString(), EnergyDensityDrillingQuantity.Instance.GetUnitChoice("joule per cubic metre").ID.ToString()); ;
                     Choices.Add(FluidVelocityDrillingQuantity.Instance.ID.ToString(), FluidVelocityDrillingQuantity.Instance.GetUnitChoice(FluidVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceDrillingQuantity.Instance.ID.ToString(), ForceDrillingQuantity.Instance.GetUnitChoice(ForceDrillingQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
                     Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPerMetre).ID.ToString());
@@ -238,6 +242,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 
                     Choices.Add(AccelerationDrillingQuantity.Instance.ID.ToString(), AccelerationDrillingQuantity.Instance.GetUnitChoice(AccelerationDrillingQuantity.UnitChoicesEnum.FootPerSecondSquared).ID.ToString());
                     Choices.Add(AngleVariationGradientDrillingQuantity.Instance.ID.ToString(), AngleVariationGradientDrillingQuantity.Instance.GetUnitChoice(AngleVariationGradientDrillingQuantity.UnitChoicesEnum.DegreePerFoot).ID.ToString());
+                    Choices.Add(AngularAccelerationDrillingQuantity.Instance.ID.ToString(), AngularAccelerationDrillingQuantity.Instance.GetUnitChoice("radian per second squared").ID.ToString());
                     Choices.Add(AngularVelocityDrillingQuantity.Instance.ID.ToString(), AngularVelocityDrillingQuantity.Instance.GetUnitChoice(AngularVelocityDrillingQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
                     Choices.Add(AreaDrillingQuantity.Instance.ID.ToString(), AreaDrillingQuantity.Instance.GetUnitChoice(AreaDrillingQuantity.UnitChoicesEnum.SquareFoot).ID.ToString());
                     Choices.Add(AxialVelocityDrillingQuantity.Instance.ID.ToString(), AxialVelocityDrillingQuantity.Instance.GetUnitChoice(AxialVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
@@ -256,6 +261,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(DurationDrillingQuantity.Instance.ID.ToString(), DurationDrillingQuantity.Instance.GetUnitChoice(DurationDrillingQuantity.UnitChoicesEnum.Second).ID.ToString());
                     Choices.Add(DynamicViscosityDrillingQuantity.Instance.ID.ToString(), DynamicViscosityDrillingQuantity.Instance.GetUnitChoice(DynamicViscosityDrillingQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
                     Choices.Add(ElongationGradientDrillingQuantity.Instance.ID.ToString(), ElongationGradientDrillingQuantity.Instance.GetUnitChoice(ElongationGradientDrillingQuantity.UnitChoicesEnum.InchPerFoot).ID.ToString()); ;
+                    Choices.Add(EnergyDensityDrillingQuantity.Instance.ID.ToString(), EnergyDensityDrillingQuantity.Instance.GetUnitChoice("joule per cubic metre").ID.ToString()); ;
                     Choices.Add(FluidVelocityDrillingQuantity.Instance.ID.ToString(), FluidVelocityDrillingQuantity.Instance.GetUnitChoice(FluidVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceDrillingQuantity.Instance.ID.ToString(), ForceDrillingQuantity.Instance.GetUnitChoice(ForceDrillingQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
                     Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPerMetre).ID.ToString());

@@ -9,6 +9,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
        {
          AccelerationDrilling,  // AccelerationDrilling
          AngleVariationGradientDrilling,  // AngleVariationGradientDrilling
+         AngularAccelerationDrilling,  // AngularAccelerationDrilling
          AngularVelocityDrilling,  // AngularVelocityDrilling
          AreaDrilling,  // AreaDrilling
          AxialVelocityDrilling,  // AxialVelocityDrilling
@@ -27,6 +28,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          DurationDrilling,  // DurationDrilling
          DynamicViscosityDrilling,  // DynamicViscosityDrilling
          ElongationGradientDrilling,  // ElongationGradientDrilling
+         EnergyDensityDrilling,  // EnergyDensityDrilling
          FluidVelocityDrilling,  // FluidVelocityDrilling
          ForceGradientDrilling,  // ForceGradientDrilling
          ForceDrilling,  // ForceDrilling
@@ -79,6 +81,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {QuantityEnum.AccelerationDrilling, new Guid("b6c99136-8e57-4eea-9a31-fb804bc8ae4b")},  // AccelerationDrilling
          {QuantityEnum.AngleVariationGradientDrilling, new Guid("e6f22876-ca88-4d0e-a4a5-c76b0db3556f")},  // AngleVariationGradientDrilling
+         {QuantityEnum.AngularAccelerationDrilling, new Guid("0077dbf8-bd21-4cc7-a180-b2c75229dd87")},  // AngularAccelerationDrilling
          {QuantityEnum.AngularVelocityDrilling, new Guid("046cb449-8cab-4d0c-bb28-3e2060f292e5")},  // AngularVelocityDrilling
          {QuantityEnum.AreaDrilling, new Guid("21fc0373-6eda-460b-bacb-070abf2f3add")},  // AreaDrilling
          {QuantityEnum.AxialVelocityDrilling, new Guid("e278ace8-d577-4fb4-8d1d-dd8a3d072027")},  // AxialVelocityDrilling
@@ -97,6 +100,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.DurationDrilling, new Guid("22443197-6bcf-45f7-9079-4f710585af60")},  // DurationDrilling
          {QuantityEnum.DynamicViscosityDrilling, new Guid("e9b32538-f7f4-4f99-a206-0601a4e4a5f8")},  // DynamicViscosityDrilling
          {QuantityEnum.ElongationGradientDrilling, new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9")},  // ElongationGradientDrilling
+         {QuantityEnum.EnergyDensityDrilling, new Guid("04bc9209-c5c0-4f42-98b1-f1f63a3bee52")},  // EnergyDensityDrilling
          {QuantityEnum.FluidVelocityDrilling, new Guid("dac9cee1-59a3-42d5-98c6-0c7baf5083bb")},  // FluidVelocityDrilling
          {QuantityEnum.ForceGradientDrilling, new Guid("78942f39-d764-42f1-b270-47a3b35e5112")},  // ForceGradientDrilling
          {QuantityEnum.ForceDrilling, new Guid("30c08b42-6a89-4d99-879b-882eb7ed46d0")},  // ForceDrilling
@@ -193,6 +197,32 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.DegreePerFoot, new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b")},  // degree per foot
          {UnitChoicesEnum.DegreePerCentimetre, new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7")},  // degree per centimetre
          {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")} // degree per inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class AngularAccelerationDrillingQuantity : AngularAccelerationQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerSecondSquared,  // radian per second squared
+         DegreePerSecondSquared // degree per second squared
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerSecondSquared, new Guid("15d7ab2b-c0c3-4d33-8242-670ba2f937ff")},  // radian per second squared
+         {UnitChoicesEnum.DegreePerSecondSquared, new Guid("6fcc944b-fd7e-4368-baa4-3bb8eeba63a2")} // degree per second squared
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -799,6 +829,38 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.MetrePerMetre, new Guid("cc12967b-4c7d-4c70-95cf-d2f23bd6f76b")},  // metre per metre
          {UnitChoicesEnum.MillimetrePerMetre, new Guid("4e241b59-388a-428f-82e7-b9971f9e1df5")},  // millimetre per metre
          {UnitChoicesEnum.InchPerFoot, new Guid("3df1af23-afd0-41ed-9442-a3af6ae944d2")} // inch per foot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class EnergyDensityDrillingQuantity : EnergyDensityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         JoulePerCubicMetre,  // joule per cubic metre
+         JoulePerCubicFoot,  // joule per cubic foot
+         JoulePerCubicInch,  // joule per cubic inch
+         JoulePerGallonUK,  // joule per gallon (UK)
+         JoulePerGallonUS // joule per gallon (US)
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.JoulePerCubicMetre, new Guid("bac0aae1-8b3b-403d-b1ea-874a74da849a")},  // joule per cubic metre
+         {UnitChoicesEnum.JoulePerCubicFoot, new Guid("5c91efe6-c268-4d31-bff8-768344290db6")},  // joule per cubic foot
+         {UnitChoicesEnum.JoulePerCubicInch, new Guid("daba8c83-b6f5-40bb-8c9d-e476e5d1bce2")},  // joule per cubic inch
+         {UnitChoicesEnum.JoulePerGallonUK, new Guid("1c3b4a46-1cfa-44e4-b10e-4ed0f74e2994")},  // joule per gallon (UK)
+         {UnitChoicesEnum.JoulePerGallonUS, new Guid("357a5df6-6df1-43fa-8be8-652e8d97db7c")} // joule per gallon (US)
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
