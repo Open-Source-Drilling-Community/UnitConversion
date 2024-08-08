@@ -73,8 +73,8 @@ namespace Conversion
         public static readonly double MillionYear = 1000.0 * Millenia;
 
         public static readonly double ZeroCelsius = 273.15; // exact https://www.nist.gov/pml/owm/si-units-temperature
-        public static readonly double FarenheitSlope = 5.0 / 9.0; // exact https://nn.wikipedia.org/wiki/Fahrenheit
-        public static readonly double FarenheitBias = 459.67; // exact https://nn.wikipedia.org/wiki/Fahrenheit
+        public static readonly double FahrenheitSlope = 5.0 / 9.0; // exact https://nn.wikipedia.org/wiki/Fahrenheit
+        public static readonly double FahrenheitBias = 459.67; // exact https://nn.wikipedia.org/wiki/Fahrenheit
         public static readonly double ReaumurSlope = 5.0 / 4.0; // exact https://en.wikipedia.org/wiki/R%C3%A9aumur_scale
         public static readonly double ReaumurBias = ZeroCelsius / ReaumurSlope;
 

@@ -57,15 +57,15 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "fahrenheit",
                     UnitLabel = "°F",
                     ID = new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f"),
-                    ConversionFactorFromSI = 1.0/Factors.FarenheitSlope,
-                    ConversionBiasFromSI = -Factors.FarenheitBias
+                    ConversionFactorFromSI = 1.0/Factors.FahrenheitSlope,
+                    ConversionBiasFromSI = -Factors.FahrenheitBias
                 },
                 new UnitChoice
                 {
                     UnitName = "rankine",
                     UnitLabel = "°R",
                     ID = new Guid("b4d6c55d-cf05-46e1-a09b-d0b26eba634a"),
-                    ConversionFactorFromSI = 1.0/Factors.FarenheitSlope,
+                    ConversionFactorFromSI = 1.0/Factors.FahrenheitSlope,
                     ConversionBiasFromSI = 0
                 },
                 new UnitChoice

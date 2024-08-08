@@ -656,7 +656,15 @@ namespace OSDC.UnitConversion.Conversion
          SpecificGravityPerCelsius,  // specific gravity per celsius
          GramPerCubicCentimetrePerCelsius,  // gram per cubic centimetre per celsius
          PoundPerGallonUKPerCelsius,  // pound per gallon (UK) per celsius
-         PoundPerGallonUSPerFahrenheit // pound per gallon (US) per fahrenheit
+         PoundPerGallonUSPerFahrenheit,  // pound per gallon (US) per fahrenheit
+         PoundPerGallonUKPerFahrenheit,  // pound per gallon (UK) per fahrenheit
+         PoundPerGallonUSPerCelsius,  // pound per gallon (US) per celsius
+         PoundPerCubicFootPerCelsius,  // pound per cubic foot per celsius
+         PoundPerCubicFootPerFahrenheit,  // pound per cubic foot per fahrenheit
+         PoundPerCubicInchPerCelsius,  // pound per cubic inch per celsius
+         PoundPerCubicInchPerFahrenheit,  // pound per cubic inch per fahrenheit
+         PoundPerCubicYardPerCelsius,  // pound per cubic yard per celsius
+         PoundPerCubicYeardPerFahrenheit // pound per cubic yeard per fahrenheit
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -664,7 +672,15 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")},  // specific gravity per celsius
          {UnitChoicesEnum.GramPerCubicCentimetrePerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // gram per cubic centimetre per celsius
          {UnitChoicesEnum.PoundPerGallonUKPerCelsius, new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b")},  // pound per gallon (UK) per celsius
-         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")} // pound per gallon (US) per fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // pound per gallon (US) per fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerFahrenheit, new Guid("24485846-7944-4903-a5c5-975298daf450")},  // pound per gallon (UK) per fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerCelsius, new Guid("8b642465-acee-4a4a-9cb5-6fc16ace5bc3")},  // pound per gallon (US) per celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerCelsius, new Guid("592a60a7-71e1-40dc-bfe0-573e407b893c")},  // pound per cubic foot per celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerFahrenheit, new Guid("64b97848-5c42-49ec-a09e-05c7bd0cea6b")},  // pound per cubic foot per fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerCelsius, new Guid("10e845fe-c8c1-4847-bf6a-874c1f746325")},  // pound per cubic inch per celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerFahrenheit, new Guid("586d023b-3c87-4354-bce9-5704c8d1ae0a")},  // pound per cubic inch per fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerCelsius, new Guid("ea5147c2-d35b-4e0c-8c47-e9f04a6e0fa1")},  // pound per cubic yard per celsius
+         {UnitChoicesEnum.PoundPerCubicYeardPerFahrenheit, new Guid("e15f8f82-0d58-487a-9d70-8f14f3606177")} // pound per cubic yeard per fahrenheit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
