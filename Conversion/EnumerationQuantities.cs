@@ -724,6 +724,8 @@ namespace OSDC.UnitConversion.Conversion
          SpecificGravityPerSecond,  // specific gravity per second
          SpecificGravityPerMinute,  // specific gravity per minute
          SpecificGravityPerHour,  // specific gravity per hour
+         GramPerCubicCentimetrePerSecond,  // gram per cubic centimetre per second
+         GramPerCubicCentimetrePerMinute,  // gram per cubic centimetre per minute
          GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
          PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
          PoundPerGallonUKPerMinute,  // pound per gallon (UK) per minute
@@ -738,6 +740,8 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")},  // specific gravity per second
          {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // specific gravity per minute
          {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // specific gravity per hour
+         {UnitChoicesEnum.GramPerCubicCentimetrePerSecond, new Guid("e26f57a2-9659-40fd-a670-38a3b83fd36f")},  // gram per cubic centimetre per second
+         {UnitChoicesEnum.GramPerCubicCentimetrePerMinute, new Guid("93777f41-0e47-46aa-9ab6-413987553817")},  // gram per cubic centimetre per minute
          {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
          {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
          {UnitChoicesEnum.PoundPerGallonUKPerMinute, new Guid("e79c74b9-774d-4695-81d5-75042f268b96")},  // pound per gallon (UK) per minute

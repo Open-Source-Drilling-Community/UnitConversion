@@ -791,15 +791,15 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public new enum UnitChoicesEnum 
       {
          PascalSecond,  // pascal second
-         Centipoise,  // centipoise
-         Micropoise,  // micropoise
+         MillipascalSecond,  // millipascal second
+         Poise,  // poise
          MicropascalSecond // micropascal second
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // pascal second
-         {UnitChoicesEnum.Centipoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // centipoise
-         {UnitChoicesEnum.Micropoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // micropoise
+         {UnitChoicesEnum.MillipascalSecond, new Guid("640f2693-dd92-472b-b2ec-0052fc7b7a11")},  // millipascal second
+         {UnitChoicesEnum.Poise, new Guid("79e600d1-05f1-46ef-b47a-951b04f6666e")},  // poise
          {UnitChoicesEnum.MicropascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")} // micropascal second
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)

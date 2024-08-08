@@ -108,5 +108,9 @@ namespace Conversion
         public static readonly double Poise = 0.1; // exact https://en.wikipedia.org/wiki/Poise_(unit)
 
         public static readonly double G = 9.80665; // standard https://en.wikipedia.org/wiki/Gravity_of_Earth
+        public static readonly double WaterDensity4degC1Atm = 999.9720; // approximate https://en.wikipedia.org/wiki/Relative_density
+        public static readonly double SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm;
+        public static readonly double PPGUK = Pound / GallonUK;
+        public static readonly double PPGUS = Pound / GallonUS;
     }
 }
