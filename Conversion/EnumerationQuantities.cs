@@ -542,13 +542,15 @@ namespace OSDC.UnitConversion.Conversion
       {
          InversePascal,  // inverse pascal
          InverseBar,  // inverse bar
-         InversePoundPerSquareInch // inverse pound per square inch
+         InversePoundPerSquareInch,  // inverse pound per square inch
+         InverseAtmosphere // inverse atmosphere
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.InversePascal, new Guid("0e259998-c8bb-4a4d-b281-afb8008b2693")},  // inverse pascal
          {UnitChoicesEnum.InverseBar, new Guid("4a0f6df4-0d2d-489b-80f1-511be7713101")},  // inverse bar
-         {UnitChoicesEnum.InversePoundPerSquareInch, new Guid("282ab24c-6c43-4710-8e52-433bdf90cc2e")} // inverse pound per square inch
+         {UnitChoicesEnum.InversePoundPerSquareInch, new Guid("282ab24c-6c43-4710-8e52-433bdf90cc2e")},  // inverse pound per square inch
+         {UnitChoicesEnum.InverseAtmosphere, new Guid("92c19398-ac0f-41fc-8a22-516c3dc59c82")} // inverse atmosphere
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

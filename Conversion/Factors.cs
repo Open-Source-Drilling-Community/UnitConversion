@@ -114,5 +114,11 @@ namespace Conversion
         public static readonly double PPGUS = Pound / GallonUS;
 
         public static readonly double Knot = 1.852 * Kilo / Hour; // exact https://en.wikipedia.org/wiki/Knot_(unit)
+
+        public static readonly double PoundForce = Pound * G / Foot; // exact https://en.wikipedia.org/wiki/Pound_(force)
+
+        public static readonly double Bar = 1e5; // exact https://en.wikipedia.org/wiki/Bar_(unit)
+        public static readonly double PSI = PoundForce / (Inch * Inch); // exact https://en.wikipedia.org/wiki/Pound_per_square_inch
+        public static readonly double Atmosphere = 101325.0; // standard https://en.wikipedia.org/wiki/Atmospheric_pressure
     }
 }
