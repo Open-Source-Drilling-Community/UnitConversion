@@ -342,7 +342,14 @@ namespace OSDC.UnitConversion.Conversion
          DegreePerMetre,  // degree per metre
          DegreePerCentimetre,  // degree per centimetre
          DegreePerFoot,  // degree per foot
-         DegreePerInch // degree per inch
+         DegreePerInch,  // degree per inch
+         DegreePerDecimetre,  // degree per decimetre
+         DegreePerMillimetre,  // degree per millimetre
+         RadianPerMillimetre,  // radian per millimetre
+         RadianPerCentimetre,  // radian per centimetre
+         RadianPerDecimetre,  // radian per decimetre
+         RadianPerFoot,  // radian per foot
+         RadianPerInch // radian per inch
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -350,7 +357,14 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.DegreePerMetre, new Guid("2fcd4219-8879-4494-9563-5173ec2292fa")},  // degree per metre
          {UnitChoicesEnum.DegreePerCentimetre, new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7")},  // degree per centimetre
          {UnitChoicesEnum.DegreePerFoot, new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b")},  // degree per foot
-         {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")} // degree per inch
+         {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")},  // degree per inch
+         {UnitChoicesEnum.DegreePerDecimetre, new Guid("452edd17-d501-487b-8cc1-90c08f7b1417")},  // degree per decimetre
+         {UnitChoicesEnum.DegreePerMillimetre, new Guid("5cc72a73-70c0-4ccf-83ae-38e8a45391b4")},  // degree per millimetre
+         {UnitChoicesEnum.RadianPerMillimetre, new Guid("dbd20525-128b-43c5-9de4-a8e604cbf6bf")},  // radian per millimetre
+         {UnitChoicesEnum.RadianPerCentimetre, new Guid("5552abca-e21b-48ca-aedc-4518a32b8de3")},  // radian per centimetre
+         {UnitChoicesEnum.RadianPerDecimetre, new Guid("47e72ab7-444d-4d4b-8cd2-01d2fb8efa2d")},  // radian per decimetre
+         {UnitChoicesEnum.RadianPerFoot, new Guid("e1ab7dd2-48c7-4ac8-ac5e-bc50fdcae5df")},  // radian per foot
+         {UnitChoicesEnum.RadianPerInch, new Guid("c36cf9c1-d4f2-4654-99eb-5d84eac21c66")} // radian per inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
