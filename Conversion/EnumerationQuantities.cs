@@ -617,7 +617,22 @@ namespace OSDC.UnitConversion.Conversion
          PoundPerGallonUKPer100Foot,  // pound per gallon (UK) per 100 foot
          PoundPerGallonUSPerFoot,  // pound per gallon (US) per foot
          PoundPerGallonUSPer30Foot,  // pound per gallon (US) per 30 foot
-         PoundPerGallonUSPer100Foot // pound per gallon (US) per 100 foot
+         PoundPerGallonUSPer100Foot,  // pound per gallon (US) per 100 foot
+         KilogramPerCubicMetrePer10Metre,  // kilogram per cubic metre per 10 metre
+         KilogramPerCubicMetrePer30Metre,  // kilogram per cubic metre per 30 metre
+         KilogramPerCubicMetrePer100Metre,  // kilogram per cubic metre per 100 metre
+         GramPerCubicCentimetrePerMetre,  // gram per cubic centimetre per metre
+         GramPerCubicCentimetrePer10Metre,  // gram per cubic centimetre per 10 metre
+         GramPerCubicCentimetrePer30Metre,  // gram per cubic centimetre per 30 metre
+         PoundPerCubicFootPerFoot,  // pound per cubic foot per foot
+         PoundPerCubicFootPer30Foot,  // pound per cubic foot per 30 foot
+         PoundPerCubicFootPer100Foot,  // pound per cubic foot per 100 foot
+         PoundPerCubicInchPerFoot,  // pound per cubic inch per foot
+         PoundPerCubicInchPer30Foot,  // pound per cubic inch per 30 foot
+         PoundPerCubicInchPer100Foot,  // pound per cubic inch per 100 foot
+         PoundPerCubicYardPerFoot,  // pound per cubic yard per foot
+         PoundPerCubicYardPer30Foot,  // pound per cubic yard per 30 foot
+         PoundPerCubicYardPer100Foot // pound per cubic yard per 100 foot
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -632,7 +647,22 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.PoundPerGallonUKPer100Foot, new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567")},  // pound per gallon (UK) per 100 foot
          {UnitChoicesEnum.PoundPerGallonUSPerFoot, new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1")},  // pound per gallon (US) per foot
          {UnitChoicesEnum.PoundPerGallonUSPer30Foot, new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0")},  // pound per gallon (US) per 30 foot
-         {UnitChoicesEnum.PoundPerGallonUSPer100Foot, new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3")} // pound per gallon (US) per 100 foot
+         {UnitChoicesEnum.PoundPerGallonUSPer100Foot, new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3")},  // pound per gallon (US) per 100 foot
+         {UnitChoicesEnum.KilogramPerCubicMetrePer10Metre, new Guid("2d0ed7e8-2b80-46ff-9566-bd1429aa3129")},  // kilogram per cubic metre per 10 metre
+         {UnitChoicesEnum.KilogramPerCubicMetrePer30Metre, new Guid("dccaa4b1-cf9f-4075-a9f2-50931e38af01")},  // kilogram per cubic metre per 30 metre
+         {UnitChoicesEnum.KilogramPerCubicMetrePer100Metre, new Guid("ccca234e-8626-4f75-beed-4da4abad1317")},  // kilogram per cubic metre per 100 metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePerMetre, new Guid("91fe264e-6f5f-4a4d-b7f7-1532810ad5bd")},  // gram per cubic centimetre per metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePer10Metre, new Guid("836701f1-1fbd-4ae3-aba8-17a97379272c")},  // gram per cubic centimetre per 10 metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePer30Metre, new Guid("faaa4f2f-4dd4-419a-a985-ea16c5fc6d49")},  // gram per cubic centimetre per 30 metre
+         {UnitChoicesEnum.PoundPerCubicFootPerFoot, new Guid("2c75c006-8ab5-475e-87aa-f5b0501b5ad7")},  // pound per cubic foot per foot
+         {UnitChoicesEnum.PoundPerCubicFootPer30Foot, new Guid("cd7e9b61-06e9-41ca-b1dd-c2dd0b2cce55")},  // pound per cubic foot per 30 foot
+         {UnitChoicesEnum.PoundPerCubicFootPer100Foot, new Guid("bd3c10c7-aa1b-438a-a61d-791f05de5a64")},  // pound per cubic foot per 100 foot
+         {UnitChoicesEnum.PoundPerCubicInchPerFoot, new Guid("8997f813-9692-4f1a-b281-42260799f2ab")},  // pound per cubic inch per foot
+         {UnitChoicesEnum.PoundPerCubicInchPer30Foot, new Guid("394876ee-1779-4ac0-a306-ad64fd9b640f")},  // pound per cubic inch per 30 foot
+         {UnitChoicesEnum.PoundPerCubicInchPer100Foot, new Guid("11826f55-a121-498c-b03d-e51431f00476")},  // pound per cubic inch per 100 foot
+         {UnitChoicesEnum.PoundPerCubicYardPerFoot, new Guid("09c728a5-da92-4a0c-a5bb-3aa166c2564d")},  // pound per cubic yard per foot
+         {UnitChoicesEnum.PoundPerCubicYardPer30Foot, new Guid("82a23b2f-56a9-4345-97ec-61e6ec250915")},  // pound per cubic yard per 30 foot
+         {UnitChoicesEnum.PoundPerCubicYardPer100Foot, new Guid("6f82e6f2-2cb8-467f-8baa-6d766056acf7")} // pound per cubic yard per 100 foot
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
