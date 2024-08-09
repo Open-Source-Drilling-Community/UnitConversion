@@ -924,6 +924,7 @@ namespace OSDC.UnitConversion.Conversion
          CoulombPerVolt,  // coulomb per volt
          Millifarad,  // millifarad
          Microfarad,  // microfarad
+         Nanofarad,  // nanofarad
          Picofarad // picofarad
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
@@ -932,6 +933,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.CoulombPerVolt, new Guid("81ae5717-d834-4f25-800e-c42c3bcb48af")},  // coulomb per volt
          {UnitChoicesEnum.Millifarad, new Guid("12c8b1ad-d38a-4dbe-b418-7f3b31c23ff6")},  // millifarad
          {UnitChoicesEnum.Microfarad, new Guid("a5974c82-68ac-4166-81b0-123f3ae84701")},  // microfarad
+         {UnitChoicesEnum.Nanofarad, new Guid("c1af9df8-69d5-41d3-9027-3c89aa151777")},  // nanofarad
          {UnitChoicesEnum.Picofarad, new Guid("1a9b9112-8a9f-4c80-a2ad-ebe5d9af5eef")} // picofarad
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)

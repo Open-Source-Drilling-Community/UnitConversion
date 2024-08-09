@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("11dd208b-bcf2-4415-b7a9-4161791166c7"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
          new UnitChoice
@@ -48,28 +49,35 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "coulomb per volt",
           UnitLabel = "C/V",
           ID = new Guid("81ae5717-d834-4f25-800e-c42c3bcb48af"),
-          ConversionFactorFromSI = 1
+          ConversionFactorFromSI = 1.0/Factors.Unit
         },
         new UnitChoice
         {
           UnitName = "millifarad",
           UnitLabel = "mF",
           ID = new Guid("12c8b1ad-d38a-4dbe-b418-7f3b31c23ff6"),
-          ConversionFactorFromSI = 1000
+          ConversionFactorFromSI = 1.0/Factors.Milli
         },
         new UnitChoice
         {
           UnitName = "microfarad",
           UnitLabel = "μF",
           ID = new Guid("a5974c82-68ac-4166-81b0-123f3ae84701"),
-          ConversionFactorFromSI = 1000000
+          ConversionFactorFromSI = 1.0/Factors.Micro
+        },
+        new UnitChoice
+        {
+          UnitName = "nanofarad",
+          UnitLabel = "nF",
+          ID = new Guid("c1af9df8-69d5-41d3-9027-3c89aa151777"),
+          ConversionFactorFromSI = 1.0/Factors.Nano
         },
         new UnitChoice
         {
           UnitName = "picofarad",
           UnitLabel = "pF",
           ID = new Guid("1a9b9112-8a9f-4c80-a2ad-ebe5d9af5eef"),
-          ConversionFactorFromSI = 1000000000
+          ConversionFactorFromSI = 1.0/Factors.Pico
         }
       };
         }
