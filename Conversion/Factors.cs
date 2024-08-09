@@ -112,5 +112,7 @@ namespace Conversion
         public static readonly double SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm;
         public static readonly double PPGUK = Pound / GallonUK;
         public static readonly double PPGUS = Pound / GallonUS;
+
+        public static readonly double Knot = 1.852 * Kilo / Hour; // exact https://en.wikipedia.org/wiki/Knot_(unit)
     }
 }
