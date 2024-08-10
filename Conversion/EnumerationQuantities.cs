@@ -591,7 +591,27 @@ namespace OSDC.UnitConversion.Conversion
          DegreePer100ft,  // degree per 100ft
          DegreePerFoot,  // degree per foot
          RadianPerFoot,  // radian per foot
-         DegreePerMetre // degree per metre
+         DegreePerMetre,  // degree per metre
+         DegreePerDecimeter,  // degree per decimeter
+         DegreePerCentimeter,  // degree per centimeter
+         DegreePerMillimeter,  // degree per millimeter
+         DegreePerMicrometer,  // degree per micrometer
+         DegreePerNanometer,  // degree per nanometer
+         DegreePerDecameter,  // degree per decameter
+         DegreePerHectometer,  // degree per hectometer
+         DegreePerKilometer,  // degree per kilometer
+         RadianPerDecimeter,  // radian per decimeter
+         RadianPerCentimeter,  // radian per centimeter
+         RadianPerMillimeter,  // radian per millimeter
+         RadianPerMicrometer,  // radian per micrometer
+         RadianPerNanometer,  // radian per nanometer
+         RadianPerDecameter,  // radian per decameter
+         RadianPerHectometer,  // radian per hectometer
+         RadianPerKilometer,  // radian per kilometer
+         DegreePerYard,  // degree per yard
+         DegreePerMile,  // degree per mile
+         RadianPerYard,  // radian per yard
+         RadianPerMile // radian per mile
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -602,7 +622,27 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.DegreePer100ft, new Guid("5aa20ab5-6800-48db-abb1-4c3538b0972d")},  // degree per 100ft
          {UnitChoicesEnum.DegreePerFoot, new Guid("363a6781-5829-4046-95d8-ce1e844343fc")},  // degree per foot
          {UnitChoicesEnum.RadianPerFoot, new Guid("1428743e-927c-4f7a-9e15-62d37790ad51")},  // radian per foot
-         {UnitChoicesEnum.DegreePerMetre, new Guid("7c47f046-0499-4108-937d-abb504883259")} // degree per metre
+         {UnitChoicesEnum.DegreePerMetre, new Guid("7c47f046-0499-4108-937d-abb504883259")},  // degree per metre
+         {UnitChoicesEnum.DegreePerDecimeter, new Guid("ed1db27f-5f42-4678-8d0b-8e4e91208a83")},  // degree per decimeter
+         {UnitChoicesEnum.DegreePerCentimeter, new Guid("0440cec4-b070-4b03-a065-453c2fafbf24")},  // degree per centimeter
+         {UnitChoicesEnum.DegreePerMillimeter, new Guid("c6e0bc05-2ee5-4dd1-85fa-71de7a235ef4")},  // degree per millimeter
+         {UnitChoicesEnum.DegreePerMicrometer, new Guid("996e89d6-3b4a-4893-81f5-e4f539e93cf8")},  // degree per micrometer
+         {UnitChoicesEnum.DegreePerNanometer, new Guid("e15c78f0-7a6c-47e5-bd3f-4f02571fabe5")},  // degree per nanometer
+         {UnitChoicesEnum.DegreePerDecameter, new Guid("970e611b-87ee-4006-aee7-c6d500c33ff0")},  // degree per decameter
+         {UnitChoicesEnum.DegreePerHectometer, new Guid("5cca6250-fd0e-47a7-a64f-01b8025950ad")},  // degree per hectometer
+         {UnitChoicesEnum.DegreePerKilometer, new Guid("91ef582e-ee8b-4f48-a1f6-c5d96eb634ca")},  // degree per kilometer
+         {UnitChoicesEnum.RadianPerDecimeter, new Guid("c6d2c02d-83a6-4043-9a7d-392415a74b12")},  // radian per decimeter
+         {UnitChoicesEnum.RadianPerCentimeter, new Guid("f101a0b8-f710-4010-b9a5-6ced681bcf0a")},  // radian per centimeter
+         {UnitChoicesEnum.RadianPerMillimeter, new Guid("80e5d9d6-c1fa-4273-8134-33ff4bc46b40")},  // radian per millimeter
+         {UnitChoicesEnum.RadianPerMicrometer, new Guid("777ca6bc-48da-4353-a00d-0bf0931a4328")},  // radian per micrometer
+         {UnitChoicesEnum.RadianPerNanometer, new Guid("eceb51ee-d3ad-4a42-a877-6b20f927fc01")},  // radian per nanometer
+         {UnitChoicesEnum.RadianPerDecameter, new Guid("2e8079f1-260e-4524-be2f-cee1195c7fdd")},  // radian per decameter
+         {UnitChoicesEnum.RadianPerHectometer, new Guid("cb2c22fb-ac24-4c65-96d3-2437c8942662")},  // radian per hectometer
+         {UnitChoicesEnum.RadianPerKilometer, new Guid("e9a7a647-092a-4349-bb58-0d096a1477c7")},  // radian per kilometer
+         {UnitChoicesEnum.DegreePerYard, new Guid("9cb7c45f-56d8-4b03-b514-6b5fc687919c")},  // degree per yard
+         {UnitChoicesEnum.DegreePerMile, new Guid("d155bdde-da22-4f3a-9050-9f5f7e69b57d")},  // degree per mile
+         {UnitChoicesEnum.RadianPerYard, new Guid("7409e987-f5cb-4d24-93a8-50fc993fe949")},  // radian per yard
+         {UnitChoicesEnum.RadianPerMile, new Guid("59e78258-2739-41b4-aa50-8e077bad6678")} // radian per mile
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
