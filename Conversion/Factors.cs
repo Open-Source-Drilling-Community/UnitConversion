@@ -116,10 +116,18 @@ namespace Conversion
         public static readonly double Knot = 1.852 * Kilo / Hour; // exact https://en.wikipedia.org/wiki/Knot_(unit)
 
         public static readonly double PoundForce = Pound * G / Foot; // exact https://en.wikipedia.org/wiki/Pound_(force)
+        public static readonly double Dyne = 1e-5; // exact https://en.wikipedia.org/wiki/Dyne
 
         public static readonly double Bar = 1e5; // exact https://en.wikipedia.org/wiki/Bar_(unit)
         public static readonly double PSI = PoundForce / (Inch * Inch); // exact https://en.wikipedia.org/wiki/Pound_per_square_inch
         public static readonly double Atmosphere = 101325.0; // standard https://en.wikipedia.org/wiki/Atmospheric_pressure
+        public static readonly double Torr = (1.0 / 760.0) * Atmosphere; //exact https://en.wikipedia.org/wiki/Torr
+        public static readonly double MillimetreMercury = 133.322387415; // exact https://en.wikipedia.org/wiki/Millimetre_of_mercury
+        public static readonly double InchMercury32degF = 1.0/3386.389; // convention https://en.wikipedia.org/wiki/Inch_of_mercury
+        public static readonly double InchMercury60degF = 1.0 / 3376.85; // convention https://en.wikipedia.org/wiki/Inch_of_mercury
+        public static readonly double MillimetreWater4degC = 9.89665; // convention https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water
+        public static readonly double InchWater4degC = 249.082; // convention https://en.wikipedia.org/wiki/Inch_of_water
+        public static readonly double FootWater4degC = 2989.067; // convention https://en.wikipedia.org/wiki/Inch_of_water
 
         public static readonly double Gauss = 1e-4; // exact https://en.wikipedia.org/wiki/Gauss_(unit)
 

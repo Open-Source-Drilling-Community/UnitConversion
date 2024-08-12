@@ -1824,8 +1824,6 @@ namespace OSDC.UnitConversion.Conversion
          MillimetreWaterAt4DegreeCelsius,  // millimetre water at 4 degree celsius
          InchWaterAt4DegreeCelsius,  // inch water at 4 degree celsius
          FootWaterAt4DegreeCelsius,  // foot water at 4 degree celsius
-         InchWaterAt60DegreeFahrenheit,  // inch water at 60 degree fahrenheit
-         FootWaterAt60DegreeFahrenheit,  // foot water at 60 degree fahrenheit
          DynePerSquareCentimetre // dyne per square centimetre
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
@@ -1856,8 +1854,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.MillimetreWaterAt4DegreeCelsius, new Guid("a46b3ef6-fe2a-4ff3-bc2d-7a26661ce45e")},  // millimetre water at 4 degree celsius
          {UnitChoicesEnum.InchWaterAt4DegreeCelsius, new Guid("3015f436-b35d-455c-af23-b9bc4dd857da")},  // inch water at 4 degree celsius
          {UnitChoicesEnum.FootWaterAt4DegreeCelsius, new Guid("52de6721-dfec-4a54-861c-e74da72c8470")},  // foot water at 4 degree celsius
-         {UnitChoicesEnum.InchWaterAt60DegreeFahrenheit, new Guid("80b388f3-5036-42cb-8462-91a8bfbc429e")},  // inch water at 60 degree fahrenheit
-         {UnitChoicesEnum.FootWaterAt60DegreeFahrenheit, new Guid("5dc3d224-5a3d-410e-8348-463f802a9b27")},  // foot water at 60 degree fahrenheit
          {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // dyne per square centimetre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
