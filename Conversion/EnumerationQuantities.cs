@@ -1874,8 +1874,8 @@ namespace OSDC.UnitConversion.Conversion
   {
     public new enum UnitChoicesEnum 
       {
-         LitrePerSecond,  // litre per second
          CubicMetrePerSecond,  // cubic metre per second
+         LitrePerSecond,  // litre per second
          CubicFootPerSecond,  // cubic foot per second
          UKGallonPerSecond,  // UK gallon per second
          USGallonPerSecond,  // US gallon per second
@@ -1913,8 +1913,8 @@ namespace OSDC.UnitConversion.Conversion
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.LitrePerSecond, new Guid("6dafb683-0f61-42ba-a22c-7bd5c9cea4ae")},  // litre per second
          {UnitChoicesEnum.CubicMetrePerSecond, new Guid("fabe7a23-1ba2-4f5d-b3f5-d5729166c7a0")},  // cubic metre per second
+         {UnitChoicesEnum.LitrePerSecond, new Guid("6dafb683-0f61-42ba-a22c-7bd5c9cea4ae")},  // litre per second
          {UnitChoicesEnum.CubicFootPerSecond, new Guid("a02fc355-34da-447b-ad1f-66cef4cc96d5")},  // cubic foot per second
          {UnitChoicesEnum.UKGallonPerSecond, new Guid("21ca44f5-ed4e-414d-b285-b38730600794")},  // UK gallon per second
          {UnitChoicesEnum.USGallonPerSecond, new Guid("21fe7e3a-bf92-4c94-b6d7-e2d30dfc4cd3")},  // US gallon per second
@@ -2616,11 +2616,17 @@ namespace OSDC.UnitConversion.Conversion
   {
     public new enum UnitChoicesEnum 
       {
-         OhmMetre // ohm metre
+         OhmMetre,  // ohm metre
+         KiloOhmMetre,  // kilo ohm metre
+         MegaOhmMetre,  // mega ohm metre
+         GigaOhmMetre // giga ohm metre
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.OhmMetre, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")} // ohm metre
+         {UnitChoicesEnum.OhmMetre, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")},  // ohm metre
+         {UnitChoicesEnum.KiloOhmMetre, new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962")},  // kilo ohm metre
+         {UnitChoicesEnum.MegaOhmMetre, new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6")},  // mega ohm metre
+         {UnitChoicesEnum.GigaOhmMetre, new Guid("eecfdf24-7a8e-4783-a627-d4387831767d")} // giga ohm metre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

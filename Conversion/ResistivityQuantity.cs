@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "ohm metre";
-        public override string SIUnitLabel { get; } = "Ohm•m";
+        public override string SIUnitLabel { get; } = "Ω•m";
         public override double LengthDimension { get; } = 3;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;
@@ -39,8 +40,29 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = SIUnitName,
                   UnitLabel = SIUnitLabel,
                   ID = new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb"),
-                  ConversionFactorFromSI = 1.0,
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
                   IsSI = true
+                },
+                new UnitChoice
+                {
+                  UnitName = "kilo ohm metre",
+                  UnitLabel = "kΩ•m",
+                  ID = new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962"),
+                  ConversionFactorFromSI = 1.0/Factors.Kilo
+                },
+                new UnitChoice
+                {
+                  UnitName = "mega ohm metre",
+                  UnitLabel = "MΩ•m",
+                  ID = new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6"),
+                  ConversionFactorFromSI = 1.0/Factors.Mega
+                },
+                new UnitChoice
+                {
+                  UnitName = "giga ohm metre",
+                  UnitLabel = "GΩ•m",
+                  ID = new Guid("eecfdf24-7a8e-4783-a627-d4387831767d"),
+                  ConversionFactorFromSI = 1.0/Factors.Giga
                 }
             };
         }
