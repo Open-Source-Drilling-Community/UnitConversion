@@ -269,20 +269,20 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public new enum UnitChoicesEnum 
       {
          SquareMetre,  // square metre
-         SquareMicrometre,  // square micrometre
-         SquareDecametre,  // square decametre
-         SquareInch,  // square inch
+         SquareFoot,  // square foot
          SquareDecimetre,  // square decimetre
-         SquareFoot // square foot
+         SquareYard,  // square yard
+         SquareCentimetre,  // square centimetre
+         SquareInch // square inch
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.SquareMetre, new Guid("6225a0d7-d2f1-4bb1-9721-5b260bac26ee")},  // square metre
-         {UnitChoicesEnum.SquareMicrometre, new Guid("bec98c97-72c7-4485-9138-058ed14e7fbe")},  // square micrometre
-         {UnitChoicesEnum.SquareDecametre, new Guid("df9417fc-1c08-4c76-a177-e8ea803b2e2f")},  // square decametre
-         {UnitChoicesEnum.SquareInch, new Guid("294bc6d0-5be7-4c70-95f3-ad9dc50f02cf")},  // square inch
+         {UnitChoicesEnum.SquareFoot, new Guid("5a59332e-17b3-4fa2-9527-12d06a2b4248")},  // square foot
          {UnitChoicesEnum.SquareDecimetre, new Guid("125fd8d6-d1eb-4826-a952-5219603409ab")},  // square decimetre
-         {UnitChoicesEnum.SquareFoot, new Guid("5a59332e-17b3-4fa2-9527-12d06a2b4248")} // square foot
+         {UnitChoicesEnum.SquareYard, new Guid("ae3df24c-e5db-4b88-9e81-228f29855f1b")},  // square yard
+         {UnitChoicesEnum.SquareCentimetre, new Guid("d74bb2bc-9c86-4be4-bff1-88cac7b1049b")},  // square centimetre
+         {UnitChoicesEnum.SquareInch, new Guid("294bc6d0-5be7-4c70-95f3-ad9dc50f02cf")} // square inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2247,16 +2247,16 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public new enum UnitChoicesEnum 
       {
          SquareMetre,  // square metre
-         SquareCentimetre,  // square centimetre
          SquareMillimetre,  // square millimetre
-         SquareMicrometre // square micrometre
+         SquareMicrometre,  // square micrometre
+         SquareFoot // square foot
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.SquareMetre, new Guid("6225a0d7-d2f1-4bb1-9721-5b260bac26ee")},  // square metre
-         {UnitChoicesEnum.SquareCentimetre, new Guid("d74bb2bc-9c86-4be4-bff1-88cac7b1049b")},  // square centimetre
          {UnitChoicesEnum.SquareMillimetre, new Guid("0b87d221-284a-4e8c-8a60-50c522f9ade4")},  // square millimetre
-         {UnitChoicesEnum.SquareMicrometre, new Guid("bec98c97-72c7-4485-9138-058ed14e7fbe")} // square micrometre
+         {UnitChoicesEnum.SquareMicrometre, new Guid("bec98c97-72c7-4485-9138-058ed14e7fbe")},  // square micrometre
+         {UnitChoicesEnum.SquareFoot, new Guid("5a59332e-17b3-4fa2-9527-12d06a2b4248")} // square foot
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

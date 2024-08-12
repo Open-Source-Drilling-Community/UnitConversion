@@ -134,5 +134,12 @@ namespace Conversion
         public static readonly double Gauss = 1e-4; // exact https://en.wikipedia.org/wiki/Gauss_(unit)
 
         public static readonly double Acre = SurveyorChain * Furlong; // exact https://en.wikipedia.org/wiki/Acre
+
+        public static readonly double PlanckConstant = 6.62607015e-34; // exact https://en.wikipedia.org/wiki/Planck_constant
+        public static readonly double ElectronCharge = 1.602176634e-19; // exact https://en.wikipedia.org/wiki/Elementary_charge
+
+        public static readonly double Maxwell = 1e-8; //exact https://en.wikipedia.org/wiki/Maxwell_(unit)
+        public static readonly double Line = 1e-8; // exact https://en.wikipedia.org/wiki/Maxwell_(unit)
+        public static readonly double MagneticFluxQuantum = PlanckConstant / (2.0*ElectronCharge); //exact https://en.wikipedia.org/wiki/Magnetic_flux_quantum
     }
 }

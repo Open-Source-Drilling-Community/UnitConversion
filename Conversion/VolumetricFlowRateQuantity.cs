@@ -44,7 +44,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "litre per second",
-          UnitLabel = "l/s",
+          UnitLabel = "L/s",
           ID = new Guid("6dafb683-0f61-42ba-a22c-7bd5c9cea4ae"),
           ConversionFactorFromSI = 1.0/Factors.Milli
         },
@@ -86,7 +86,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "litre per minute",
-          UnitLabel = "l/min",
+          UnitLabel = "L/min",
           ID = new Guid("e1ff1684-02ed-41c0-a82c-40b4a6d348b5"),
           ConversionFactorFromSI = Factors.Minute / Factors.Milli
         },
@@ -128,7 +128,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "litre per hour",
-          UnitLabel = "l/h",
+          UnitLabel = "L/h",
           ID = new Guid("fe2d8a01-fd2b-4652-80bd-f0da2ce990fd"),
           ConversionFactorFromSI = Factors.Hour/ Factors.Milli
         },
@@ -205,7 +205,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "litre per day",
-          UnitLabel = "l/d",
+          UnitLabel = "L/d",
           ID = new Guid("67628fe2-6a64-4ea6-94fe-5a34e7568b53"),
           ConversionFactorFromSI = Factors.Day / Factors.Milli
         },
@@ -254,7 +254,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "litre per year",
-          UnitLabel = "l/year",
+          UnitLabel = "L/year",
           ID = new Guid("d2b8abd2-cd97-4933-8e0a-54d8a4eef7ce"),
           ConversionFactorFromSI = Factors.YearJulian/Factors.Milli
         },
