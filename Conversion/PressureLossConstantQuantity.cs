@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,21 +45,21 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "pressure loss constant metric",
                     UnitLabel = "(l/min)²•sg/bar",
                     ID = new Guid("043fbd34-1e4f-45bc-9935-b1797b606fd6"),
-                    ConversionFactorFromSI = 360000000000
+                    ConversionFactorFromSI = Factors.Minute*Factors.Minute*Factors.Bar*Factors.SpecificGavity4degC/(Factors.Milli*Factors.Milli) //360000000000
                 },
                 new UnitChoice
                 {
                     UnitName = "pressure loss constant UK",
                     UnitLabel = "gpmuk²•ppguk/psi",
                     ID = new Guid("d5a97f2d-cb2f-449f-8f60-0ad292a01b87"),
-                    ConversionFactorFromSI = 12036978643.119
+                    ConversionFactorFromSI = Factors.Minute*Factors.Minute*Factors.PSI/(Factors.PPGUK*Factors.GallonUK*Factors.GallonUK) //12036978643.119
                 },
                 new UnitChoice
                 {
                     UnitName = "pressure loss constant US",
                     UnitLabel = "gpmus²•ppgus/psi",
                     ID = new Guid("b5cb21d1-0e71-4ab2-8d9d-42de21753edc"),
-                    ConversionFactorFromSI = 14455817187.722
+                    ConversionFactorFromSI = Factors.Minute*Factors.Minute*Factors.PSI/(Factors.PPGUS*Factors.GallonUS*Factors.GallonUS) //14455817187.722
                 }
             };
         }

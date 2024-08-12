@@ -115,7 +115,7 @@ namespace Conversion
 
         public static readonly double Knot = 1.852 * Kilo / Hour; // exact https://en.wikipedia.org/wiki/Knot_(unit)
 
-        public static readonly double PoundForce = Pound * G / Foot; // exact https://en.wikipedia.org/wiki/Pound_(force)
+        public static readonly double PoundForce = Pound * G; // exact https://en.wikipedia.org/wiki/Pound_(force)
         public static readonly double Dyne = 1e-5; // exact https://en.wikipedia.org/wiki/Dyne
 
         public static readonly double Bar = 1e5; // exact https://en.wikipedia.org/wiki/Bar_(unit)

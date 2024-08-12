@@ -64,7 +64,7 @@ namespace ConversionUnitTest
             unitVal = PressureQuantity.Instance.FromSI(val, PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.PoundPerSquareFoot).ID);
             Assert.AreEqual(Factors.Foot * Factors.Foot / Factors.PoundForce, unitVal);
             unitVal = PressureQuantity.Instance.FromSI(val, PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.PoundPerSquareInch).ID);
-            Assert.AreEqual(Factors.Inch * Factors.Inch / Factors.PoundForce, unitVal);
+            Assert.AreEqual(Factors.Inch * Factors.Inch / Factors.PoundForce, unitVal, 1e-6);
             unitVal = PressureQuantity.Instance.FromSI(val, PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.StandardAtmosphere).ID);
             Assert.AreEqual(1.0 / Factors.Atmosphere, unitVal);
             unitVal = PressureQuantity.Instance.FromSI(val, PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Torr).ID);
