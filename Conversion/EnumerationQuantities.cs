@@ -2646,11 +2646,49 @@ namespace OSDC.UnitConversion.Conversion
   {
     public new enum UnitChoicesEnum 
       {
-         HertzPerSecond // hertz per second
+         HertzPerSecond,  // hertz per second
+         KiloHertzPerSecond,  // kilo hertz per second
+         MegaHertzPerSecond,  // mega hertz per second
+         GigaHertzPerSecond,  // giga hertz per second
+         HertzPerMinute,  // hertz per minute
+         KiloHertzPerMinute,  // kilo hertz per minute
+         MegaHertzPerMinute,  // mega hertz per minute
+         GigaHertzPerMinute,  // giga hertz per minute
+         HertzPerHour,  // hertz per hour
+         KiloHertzPerHour,  // kilo hertz per hour
+         MegaHertzPerHour,  // mega hertz per hour
+         GigaHertzPerHour,  // giga hertz per hour
+         HertzPerDay,  // hertz per day
+         KiloHertzPerDay,  // kilo hertz per day
+         MegaHertzPerDay,  // mega hertz per day
+         GigaHertzPerDay,  // giga hertz per day
+         HertzPerYear,  // hertz per year
+         KiloHertzPerYear,  // kilo hertz per year
+         MegaHertzPerYear,  // mega hertz per year
+         GigaHertzPerYear // giga hertz per year
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.HertzPerSecond, new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd")} // hertz per second
+         {UnitChoicesEnum.HertzPerSecond, new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd")},  // hertz per second
+         {UnitChoicesEnum.KiloHertzPerSecond, new Guid("e197e7ca-93f7-4348-9508-74e61ce97f94")},  // kilo hertz per second
+         {UnitChoicesEnum.MegaHertzPerSecond, new Guid("8c9671f4-54b6-40a0-94c1-5cfb25378f88")},  // mega hertz per second
+         {UnitChoicesEnum.GigaHertzPerSecond, new Guid("46ad2062-982c-461f-95d8-ddd888e5d4f8")},  // giga hertz per second
+         {UnitChoicesEnum.HertzPerMinute, new Guid("af3fcbbf-4fc8-4b5d-b555-33340d3c2f0f")},  // hertz per minute
+         {UnitChoicesEnum.KiloHertzPerMinute, new Guid("0fabfb82-03fb-4855-aaea-578e36c9c7cf")},  // kilo hertz per minute
+         {UnitChoicesEnum.MegaHertzPerMinute, new Guid("97c4e6e3-a8b3-4aa6-a742-1900a239e282")},  // mega hertz per minute
+         {UnitChoicesEnum.GigaHertzPerMinute, new Guid("8d8d140d-00cd-4e80-aaa5-8d2d5ddcbc73")},  // giga hertz per minute
+         {UnitChoicesEnum.HertzPerHour, new Guid("424100d5-ab81-4061-9429-74a9e3638453")},  // hertz per hour
+         {UnitChoicesEnum.KiloHertzPerHour, new Guid("0963dc43-168a-483c-be3f-3c9054b0c692")},  // kilo hertz per hour
+         {UnitChoicesEnum.MegaHertzPerHour, new Guid("a1b30880-ba44-4675-b808-6d93ba8aa8d2")},  // mega hertz per hour
+         {UnitChoicesEnum.GigaHertzPerHour, new Guid("cd42ca67-9d8b-411c-bcce-e9e5ce6d1259")},  // giga hertz per hour
+         {UnitChoicesEnum.HertzPerDay, new Guid("fe28723d-23e5-45f3-b286-50705746d643")},  // hertz per day
+         {UnitChoicesEnum.KiloHertzPerDay, new Guid("0dc10fed-83a5-4570-a997-f2422d71d7fd")},  // kilo hertz per day
+         {UnitChoicesEnum.MegaHertzPerDay, new Guid("c5743df5-a0be-41d2-99a1-b1f760940007")},  // mega hertz per day
+         {UnitChoicesEnum.GigaHertzPerDay, new Guid("56e88229-8197-4ca2-aa69-e4100234d344")},  // giga hertz per day
+         {UnitChoicesEnum.HertzPerYear, new Guid("1195a495-ea6e-4b5a-92b6-6ef0d2ca23d5")},  // hertz per year
+         {UnitChoicesEnum.KiloHertzPerYear, new Guid("2e2a0d0f-5658-4ba2-8799-53bb06f197e7")},  // kilo hertz per year
+         {UnitChoicesEnum.MegaHertzPerYear, new Guid("665c1c2a-57f6-4696-8b7b-524f8ad6084f")},  // mega hertz per year
+         {UnitChoicesEnum.GigaHertzPerYear, new Guid("2c756b88-bbed-4650-8307-86bc7513caee")} // giga hertz per year
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
