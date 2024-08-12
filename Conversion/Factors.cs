@@ -101,6 +101,7 @@ namespace Conversion
         public static readonly double Litre = 0.001; // exact
         public static readonly double GallonUK = 4.54609e-3; // exact https://en.wikipedia.org/wiki/Gallon
         public static readonly double GallonUS = 231.0 * Inch * Inch * Inch; // exact https://en.wikipedia.org/wiki/Gallon
+        public static readonly double Barrel = 42.0 * GallonUS; // exact https://en.wikipedia.org/wiki/Barrel_(unit)
 
         public static readonly double BTU = 1054.35; // approximate https://en.wikipedia.org/wiki/British_thermal_unit
         public static readonly double BTUGasPrice = 1054.80; // approximate https://en.wikipedia.org/wiki/British_thermal_unit
@@ -117,6 +118,7 @@ namespace Conversion
 
         public static readonly double PoundForce = Pound * G; // exact https://en.wikipedia.org/wiki/Pound_(force)
         public static readonly double Dyne = 1e-5; // exact https://en.wikipedia.org/wiki/Dyne
+        public static readonly double KilogramForce = 1.0 * G; // standard https://en.wikipedia.org/wiki/Kilogram-force
 
         public static readonly double Bar = 1e5; // exact https://en.wikipedia.org/wiki/Bar_(unit)
         public static readonly double PSI = PoundForce / (Inch * Inch); // exact https://en.wikipedia.org/wiki/Pound_per_square_inch
