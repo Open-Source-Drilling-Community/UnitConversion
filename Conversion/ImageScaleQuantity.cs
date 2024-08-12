@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Conversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = SIUnitName,
                 UnitLabel = SIUnitLabel,
                 ID = new Guid("acc723b8-083c-49f3-a208-184d2da3347d"),
-                ConversionFactorFromSI = 1.0,
+                ConversionFactorFromSI = 1.0/Factors.Unit,
                 IsSI = true
             });
             this.UnitChoices.Add(new UnitChoice
@@ -47,21 +48,21 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = "dot per inch",
                 UnitLabel = "dpi",
                 ID = new Guid("e042b571-b7d0-477d-abf6-8b8998e5ba6c"),
-                ConversionFactorFromSI = 1.0 / 39.37007874
+                ConversionFactorFromSI = Factors.Inch
             });
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "dot per millimetre",
                 UnitLabel = "dpmm",
                 ID = new Guid("6d4d5f26-8812-4002-a2bf-27ec7871c1f4"),
-                ConversionFactorFromSI = 1.0 / 1000.0
+                ConversionFactorFromSI = Factors.Milli
             });
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "dot per micrometre",
                 UnitLabel = "dpµm",
                 ID = new Guid("76e21d1d-54f5-4bbb-81c6-1b92b8b30bfe"),
-                ConversionFactorFromSI = 1.0 / 1000000.0
+                ConversionFactorFromSI = Factors.Micro
             });
         }
 
