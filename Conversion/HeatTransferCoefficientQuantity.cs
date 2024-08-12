@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("e1737353-c10b-46cd-aa4e-9c90afb2f01e"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = 1.0/Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -46,7 +47,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "british thermal unit per hour per square foot per degree fahrenheit",
                     UnitLabel = "BTU/h/ft²/°F",
                     ID = new Guid("6963db25-2bd9-4017-9c83-cc578a11abbf"),
-                    ConversionFactorFromSI = 0.176110184
+                    ConversionFactorFromSI = Factors.Hour * Factors.Foot*Factors.Foot * Factors.FahrenheitSlope / Factors.BTU 
                 }
             };
         }
