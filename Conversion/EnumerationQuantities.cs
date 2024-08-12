@@ -511,6 +511,7 @@ namespace OSDC.UnitConversion.Conversion
          SquareMetre,  // square metre
          SquareKilometre,  // square kilometre
          Hectare,  // hectare
+         SquareDecametre,  // square decametre
          SquareDecimetre,  // square decimetre
          SquareCentimetre,  // square centimetre
          SquareMillimetre,  // square millimetre
@@ -526,6 +527,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.SquareMetre, new Guid("6225a0d7-d2f1-4bb1-9721-5b260bac26ee")},  // square metre
          {UnitChoicesEnum.SquareKilometre, new Guid("6353513a-6e38-4a58-b20c-d3e8d7b70fb8")},  // square kilometre
          {UnitChoicesEnum.Hectare, new Guid("14313265-7985-4010-a19a-5ffaebe05092")},  // hectare
+         {UnitChoicesEnum.SquareDecametre, new Guid("df9417fc-1c08-4c76-a177-e8ea803b2e2f")},  // square decametre
          {UnitChoicesEnum.SquareDecimetre, new Guid("125fd8d6-d1eb-4826-a952-5219603409ab")},  // square decimetre
          {UnitChoicesEnum.SquareCentimetre, new Guid("d74bb2bc-9c86-4be4-bff1-88cac7b1049b")},  // square centimetre
          {UnitChoicesEnum.SquareMillimetre, new Guid("0b87d221-284a-4e8c-8a60-50c522f9ade4")},  // square millimetre

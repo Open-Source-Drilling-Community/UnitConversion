@@ -120,5 +120,9 @@ namespace Conversion
         public static readonly double Bar = 1e5; // exact https://en.wikipedia.org/wiki/Bar_(unit)
         public static readonly double PSI = PoundForce / (Inch * Inch); // exact https://en.wikipedia.org/wiki/Pound_per_square_inch
         public static readonly double Atmosphere = 101325.0; // standard https://en.wikipedia.org/wiki/Atmospheric_pressure
+
+        public static readonly double Gauss = 1e-4; // exact https://en.wikipedia.org/wiki/Gauss_(unit)
+
+        public static readonly double Acre = SurveyorChain * Furlong; // exact https://en.wikipedia.org/wiki/Acre
     }
 }
