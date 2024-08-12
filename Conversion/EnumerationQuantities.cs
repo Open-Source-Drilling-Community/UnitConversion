@@ -2016,7 +2016,28 @@ namespace OSDC.UnitConversion.Conversion
          FootPerMinute,  // foot per minute
          FootPerSecond,  // foot per second
          InchPerSecond,  // inch per second
-         MilePerHour // mile per hour
+         MilePerHour,  // mile per hour
+         KilometrePerHour,  // kilometre per hour
+         KilometrePerMinute,  // kilometre per minute
+         KilometrePerSecond,  // kilometre per second
+         KilometrePerDay,  // kilometre per day
+         MilePerMinute,  // mile per minute
+         MilePerSecond,  // mile per second
+         MilePerDay,  // mile per day
+         InchPerMinute,  // inch per minute
+         InchPerHour,  // inch per hour
+         InchPerDay,  // inch per day
+         CentimetrePerMinute,  // centimetre per minute
+         CentimetrePerHour,  // centimetre per hour
+         CentimetrePerDay,  // centimetre per day
+         MillimetrePerSecond,  // millimetre per second
+         MillimetrePerMinute,  // millimetre per minute
+         MillimetrePerHour,  // millimetre per hour
+         MillimetrePerDay,  // millimetre per day
+         DecimetrePerSecond,  // decimetre per second
+         DecimetrePerMinute,  // decimetre per minute
+         DecimetrePerHour,  // decimetre per hour
+         DecimetrePerDay // decimetre per day
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2030,7 +2051,28 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.FootPerMinute, new Guid("2d139d2c-1063-4f8d-99ae-bf71a98a1076")},  // foot per minute
          {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")},  // foot per second
          {UnitChoicesEnum.InchPerSecond, new Guid("8cd16c97-5c7a-4ee9-b59b-cbe2decd8ff9")},  // inch per second
-         {UnitChoicesEnum.MilePerHour, new Guid("6c6d0be3-5b60-4b8a-9fd6-8b7afb261081")} // mile per hour
+         {UnitChoicesEnum.MilePerHour, new Guid("6c6d0be3-5b60-4b8a-9fd6-8b7afb261081")},  // mile per hour
+         {UnitChoicesEnum.KilometrePerHour, new Guid("a1bab5e0-221c-4555-bd37-cf2b8004fd53")},  // kilometre per hour
+         {UnitChoicesEnum.KilometrePerMinute, new Guid("b37519e1-5d78-4d34-ad7b-37bc3f0bc775")},  // kilometre per minute
+         {UnitChoicesEnum.KilometrePerSecond, new Guid("3944bb76-5675-49bf-ae2f-143d3ff8e41a")},  // kilometre per second
+         {UnitChoicesEnum.KilometrePerDay, new Guid("2d09bf7b-0f99-42c0-9732-f9923c11bde1")},  // kilometre per day
+         {UnitChoicesEnum.MilePerMinute, new Guid("959dcb48-193b-48a9-9b86-554ea6b6e755")},  // mile per minute
+         {UnitChoicesEnum.MilePerSecond, new Guid("5ec77a90-200b-4e6e-877b-8df0edb7adc2")},  // mile per second
+         {UnitChoicesEnum.MilePerDay, new Guid("340ef6b0-53c2-447c-b8dd-f8f184bce71d")},  // mile per day
+         {UnitChoicesEnum.InchPerMinute, new Guid("d6421f59-0d0f-49e3-9f2c-37590569beb4")},  // inch per minute
+         {UnitChoicesEnum.InchPerHour, new Guid("06115ddb-4f51-41cd-a502-8c4f443d66b2")},  // inch per hour
+         {UnitChoicesEnum.InchPerDay, new Guid("38991fcc-56f6-4447-bd1e-86159681e8d0")},  // inch per day
+         {UnitChoicesEnum.CentimetrePerMinute, new Guid("b52fb69d-f8f7-4e46-9223-626e7497854d")},  // centimetre per minute
+         {UnitChoicesEnum.CentimetrePerHour, new Guid("9a4d693e-cb18-4587-a465-48aec69369bf")},  // centimetre per hour
+         {UnitChoicesEnum.CentimetrePerDay, new Guid("d34eba86-b8e2-4f28-92bb-8a26132ccfc6")},  // centimetre per day
+         {UnitChoicesEnum.MillimetrePerSecond, new Guid("8d787bbf-81b0-4ba4-b913-c71cfe4b7025")},  // millimetre per second
+         {UnitChoicesEnum.MillimetrePerMinute, new Guid("87a2da8b-a5e8-43f4-af18-859f6e8dc822")},  // millimetre per minute
+         {UnitChoicesEnum.MillimetrePerHour, new Guid("4628ccfb-2837-40b3-9141-222af23fa7be")},  // millimetre per hour
+         {UnitChoicesEnum.MillimetrePerDay, new Guid("c1540a11-a20e-43e2-9d1b-e173b928c94b")},  // millimetre per day
+         {UnitChoicesEnum.DecimetrePerSecond, new Guid("0f9aa2e1-b66f-4728-bf57-79526ffce563")},  // decimetre per second
+         {UnitChoicesEnum.DecimetrePerMinute, new Guid("980c51cc-a185-44a6-a69c-34f52e2b1fe2")},  // decimetre per minute
+         {UnitChoicesEnum.DecimetrePerHour, new Guid("1d3b5a3c-81ff-4698-b92f-9b721f946220")},  // decimetre per hour
+         {UnitChoicesEnum.DecimetrePerDay, new Guid("dcb77826-7550-4681-b3ce-a59cfdb7620d")} // decimetre per day
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
