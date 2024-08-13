@@ -2595,12 +2595,24 @@ namespace OSDC.UnitConversion.Conversion
     public new enum UnitChoicesEnum 
       {
          KilogramPerSecond,  // kilogram per second
-         KilogramPerMinute // kilogram per minute
+         KilogramPerMinute,  // kilogram per minute
+         KilogramPerHour,  // kilogram per hour
+         KilogramPerYear,  // kilogram per year
+         PoundPerSecond,  // pound per second
+         PoundPerMinute,  // pound per minute
+         PoundPerHour,  // pound per hour
+         PoundPerYear // pound per year
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.KilogramPerSecond, new Guid("a2daceb8-7705-4c97-9945-b354ea1ff78d")},  // kilogram per second
-         {UnitChoicesEnum.KilogramPerMinute, new Guid("b776ae6f-5b86-462c-b815-2608d7e98192")} // kilogram per minute
+         {UnitChoicesEnum.KilogramPerMinute, new Guid("b776ae6f-5b86-462c-b815-2608d7e98192")},  // kilogram per minute
+         {UnitChoicesEnum.KilogramPerHour, new Guid("736e4fcd-434f-4442-b025-a480a1532543")},  // kilogram per hour
+         {UnitChoicesEnum.KilogramPerYear, new Guid("0ce50feb-a755-4a62-a50b-4af417bc2702")},  // kilogram per year
+         {UnitChoicesEnum.PoundPerSecond, new Guid("48ac7515-ce4e-4ed6-a198-fe3ed3451a38")},  // pound per second
+         {UnitChoicesEnum.PoundPerMinute, new Guid("92d18443-9357-42cf-86d2-fa78996c838a")},  // pound per minute
+         {UnitChoicesEnum.PoundPerHour, new Guid("d4e0791c-eb4c-47a4-9e71-af3ad1b707cc")},  // pound per hour
+         {UnitChoicesEnum.PoundPerYear, new Guid("a461e40b-48ea-49b1-8a55-8e75b26fbb8e")} // pound per year
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
