@@ -2832,7 +2832,8 @@ namespace OSDC.UnitConversion.Conversion
          JoulePerGramKelvin,  // joule per gram kelvin
          JoulePerGramDegreeCelsius,  // joule per gram degree celsius
          CaloriePerGramDegreeCelsius,  // calorie per gram degree celsius
-         BritishThermalUnitPerPoundDegreeFahrenheit // british thermal unit per pound degree fahrenheit
+         BritishThermalUnitPerPoundDegreeFahrenheit,  // british thermal unit per pound degree fahrenheit
+         KilocaloriePerGramDegreeCelsius // kilocalorie per gram degree celsius
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2840,7 +2841,8 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.JoulePerGramKelvin, new Guid("0c38001b-ecba-4920-ac75-e4644d8feced")},  // joule per gram kelvin
          {UnitChoicesEnum.JoulePerGramDegreeCelsius, new Guid("5b620d63-2269-42d3-8385-edca04c7ea70")},  // joule per gram degree celsius
          {UnitChoicesEnum.CaloriePerGramDegreeCelsius, new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397")},  // calorie per gram degree celsius
-         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")} // british thermal unit per pound degree fahrenheit
+         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")},  // british thermal unit per pound degree fahrenheit
+         {UnitChoicesEnum.KilocaloriePerGramDegreeCelsius, new Guid("b283ecf7-20e4-4a6c-b62b-b07f56fa6614")} // kilocalorie per gram degree celsius
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

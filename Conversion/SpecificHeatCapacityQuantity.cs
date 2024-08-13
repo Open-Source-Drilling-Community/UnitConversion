@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,37 +39,45 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("52d9523e-546b-41dd-b283-a125447433a3"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
         new UnitChoice
         {
           UnitName = "joule per gram kelvin",
-          UnitLabel = "J/g•k",
+          UnitLabel = "J/g•K",
           ID = new Guid("0c38001b-ecba-4920-ac75-e4644d8feced"),
-          ConversionFactorFromSI = 0.001
+          ConversionFactorFromSI = Factors.Milli/Factors.Unit
         },
         new UnitChoice
         {
           UnitName = "joule per gram degree celsius",
           UnitLabel = "J/g•°C",
           ID = new Guid("5b620d63-2269-42d3-8385-edca04c7ea70"),
-          ConversionFactorFromSI = 0.001
+          ConversionFactorFromSI = Factors.Milli/Factors.Unit
         },
         new UnitChoice
         {
           UnitName = "calorie per gram degree celsius",
-          UnitLabel = "Cal/g•°C",
+          UnitLabel = "cal/g•°C",
           ID = new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397"),
-          ConversionFactorFromSI = 0.0002388459
+          ConversionFactorFromSI = Factors.Milli/Factors.Calorie
         },
         new UnitChoice
         {
           UnitName = "british thermal unit per pound degree fahrenheit",
           UnitLabel = "BTU/lb•°F",
           ID = new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16"),
-          ConversionFactorFromSI = 0.0002388459
+          ConversionFactorFromSI = Factors.Pound*Factors.FahrenheitSlope/Factors.BTU
+        },
+        new UnitChoice
+        {
+          UnitName = "kilocalorie per gram degree celsius",
+          UnitLabel = "Cal/g•°C",
+          ID = new Guid("b283ecf7-20e4-4a6c-b62b-b07f56fa6614"),
+          ConversionFactorFromSI = Factors.Milli/(Factors.Kilo*Factors.Calorie)
         }
+
       };
         }
     }
