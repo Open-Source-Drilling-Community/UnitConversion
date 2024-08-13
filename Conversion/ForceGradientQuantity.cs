@@ -189,6 +189,34 @@ namespace OSDC.UnitConversion.Conversion
           ID = new Guid("fa6a4a38-b070-48d1-a747-be22ab0e57b6"),
           ConversionFactorFromSI = Factors.Inch/(Factors.Kilo*Factors.PoundForce)
         },
+        new UnitChoice
+        {
+          UnitName = "pound per 30 foot",
+          UnitLabel = "lbf/30ft",
+          ID = new Guid("0d0926be-19fa-4687-88d1-35f1acc58717"),
+          ConversionFactorFromSI = 30.0*Factors.Foot/Factors.PoundForce
+        },
+        new UnitChoice
+        {
+          UnitName = "pound per 100 foot",
+          UnitLabel = "lbf/100ft",
+          ID = new Guid("dcaa5f41-da2f-49d2-be41-80fb6f0a06ec"),
+          ConversionFactorFromSI = 100.0*Factors.Foot/Factors.PoundForce
+        },
+        new UnitChoice
+        {
+          UnitName = "kilopound per 30 foot",
+          UnitLabel = "klbf/30ft",
+          ID = new Guid("27a355cf-36ae-458d-acbd-2a5ad931bbab"),
+          ConversionFactorFromSI = 30.0*Factors.Foot/(Factors.Kilo*Factors.PoundForce)
+        },
+        new UnitChoice
+        {
+          UnitName = "kilopound per 100 foot",
+          UnitLabel = "klbf/100ft",
+          ID = new Guid("0d5c841e-b259-4fdf-93d7-e39cca391adb"),
+          ConversionFactorFromSI = 100.0*Factors.Foot/(Factors.Kilo*Factors.PoundForce)
+        },
       };
         }
     }

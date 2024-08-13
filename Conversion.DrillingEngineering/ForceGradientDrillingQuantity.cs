@@ -30,8 +30,20 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("78942f39-d764-42f1-b270-47a3b35e5112");
             Reset();
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPerMetre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPer10Metre));
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.NewtonPer30Metre));
             this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecanewtonPerMetre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecanewtonPer10Metre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.DecanewtonPer30Metre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.KilonewtonPerMetre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.KilonewtonPer10Metre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.KilonewtonPer30Metre));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.PoundPerFoot));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.PoundPer30Foot));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.PoundPer100Foot));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.KilopoundPerFoot));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.KilopoundPer30Foot));
+            this.UnitChoices.Add(ForceGradientQuantity.Instance.GetUnitChoice(ForceGradientQuantity.UnitChoicesEnum.KilopoundPer100Foot));
         }
     }
 }

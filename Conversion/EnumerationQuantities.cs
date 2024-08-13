@@ -2113,7 +2113,11 @@ namespace OSDC.UnitConversion.Conversion
          PoundPerFoot,  // pound per foot
          PoundPerInch,  // pound per inch
          KilopoundPerFoot,  // kilopound per foot
-         KilopoundPerInch // kilopound per inch
+         KilopoundPerInch,  // kilopound per inch
+         PoundPer30Foot,  // pound per 30 foot
+         PoundPer100Foot,  // pound per 100 foot
+         KilopoundPer30Foot,  // kilopound per 30 foot
+         KilopoundPer100Foot // kilopound per 100 foot
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2138,7 +2142,11 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.PoundPerFoot, new Guid("516e4b02-2f1a-49a7-8cd9-3fa4e28c8fce")},  // pound per foot
          {UnitChoicesEnum.PoundPerInch, new Guid("8a5772d2-1253-4269-958a-af9f779aecc6")},  // pound per inch
          {UnitChoicesEnum.KilopoundPerFoot, new Guid("bf63e80f-97df-48d1-afbf-c83415654e44")},  // kilopound per foot
-         {UnitChoicesEnum.KilopoundPerInch, new Guid("fa6a4a38-b070-48d1-a747-be22ab0e57b6")} // kilopound per inch
+         {UnitChoicesEnum.KilopoundPerInch, new Guid("fa6a4a38-b070-48d1-a747-be22ab0e57b6")},  // kilopound per inch
+         {UnitChoicesEnum.PoundPer30Foot, new Guid("0d0926be-19fa-4687-88d1-35f1acc58717")},  // pound per 30 foot
+         {UnitChoicesEnum.PoundPer100Foot, new Guid("dcaa5f41-da2f-49d2-be41-80fb6f0a06ec")},  // pound per 100 foot
+         {UnitChoicesEnum.KilopoundPer30Foot, new Guid("27a355cf-36ae-458d-acbd-2a5ad931bbab")},  // kilopound per 30 foot
+         {UnitChoicesEnum.KilopoundPer100Foot, new Guid("0d5c841e-b259-4fdf-93d7-e39cca391adb")} // kilopound per 100 foot
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2459,7 +2467,10 @@ namespace OSDC.UnitConversion.Conversion
          MillionUKGallon,  // million UK gallon
          MillionBarrel,  // million barrel
          ThousandStandardCubicFoot,  // thousand standard cubic foot
-         MillionStandardCubicFoot // million standard cubic foot
+         MillionStandardCubicFoot,  // million standard cubic foot
+         CubicFoot,  // cubic foot
+         CubicInch,  // cubic inch
+         MillionUSGallon // million US gallon
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2476,7 +2487,10 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.MillionUKGallon, new Guid("ab9a2938-f519-47c0-bcaa-d61c8fa23c7b")},  // million UK gallon
          {UnitChoicesEnum.MillionBarrel, new Guid("9d03120c-2c74-4666-8e24-98e143ab88db")},  // million barrel
          {UnitChoicesEnum.ThousandStandardCubicFoot, new Guid("e50b6a47-cf4c-4a74-8c1c-758000df5d67")},  // thousand standard cubic foot
-         {UnitChoicesEnum.MillionStandardCubicFoot, new Guid("387b78ff-d51b-4684-b059-4c813407d767")} // million standard cubic foot
+         {UnitChoicesEnum.MillionStandardCubicFoot, new Guid("387b78ff-d51b-4684-b059-4c813407d767")},  // million standard cubic foot
+         {UnitChoicesEnum.CubicFoot, new Guid("1da2384d-f463-4b08-9c0b-1de06b51268c")},  // cubic foot
+         {UnitChoicesEnum.CubicInch, new Guid("dacec282-dacd-4687-9943-8fa741124116")},  // cubic inch
+         {UnitChoicesEnum.MillionUSGallon, new Guid("a1d1c28d-8d55-417e-93af-e7302b68ed13")} // million US gallon
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

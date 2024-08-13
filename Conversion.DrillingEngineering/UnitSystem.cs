@@ -110,7 +110,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(EnergyDensityDrillingQuantity.Instance.ID.ToString(), EnergyDensityDrillingQuantity.Instance.GetUnitChoice(EnergyDensityDrillingQuantity.UnitChoicesEnum.JoulePerCubicMetre).ID.ToString()); ;
                     Choices.Add(FluidVelocityDrillingQuantity.Instance.ID.ToString(), FluidVelocityDrillingQuantity.Instance.GetUnitChoice(FluidVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceDrillingQuantity.Instance.ID.ToString(), ForceDrillingQuantity.Instance.GetUnitChoice(ForceDrillingQuantity.UnitChoicesEnum.Decanewton).ID.ToString());
-                    Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPerMetre).ID.ToString());
+                    Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPer30Metre).ID.ToString());
                     Choices.Add(FormationResistivityQuantity.Instance.ID.ToString(), FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMetre).ID.ToString());
                     Choices.Add(FormationStrengthQuantity.Instance.ID.ToString(), FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.Megapascal).ID.ToString());
                     Choices.Add(GammaRayQuantity.Instance.ID.ToString(), GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID.ToString());
@@ -187,7 +187,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(EnergyDensityDrillingQuantity.Instance.ID.ToString(), EnergyDensityDrillingQuantity.Instance.GetUnitChoice(EnergyDensityDrillingQuantity.UnitChoicesEnum.JoulePerCubicFoot).ID.ToString()); ;
                     Choices.Add(FluidVelocityDrillingQuantity.Instance.ID.ToString(), FluidVelocityDrillingQuantity.Instance.GetUnitChoice(FluidVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceDrillingQuantity.Instance.ID.ToString(), ForceDrillingQuantity.Instance.GetUnitChoice(ForceDrillingQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
-                    Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPerMetre).ID.ToString());
+                    Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.PoundPer100Foot).ID.ToString());
                     Choices.Add(FormationResistivityQuantity.Instance.ID.ToString(), FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMetre).ID.ToString());
                     Choices.Add(FormationStrengthQuantity.Instance.ID.ToString(), FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.Psi).ID.ToString());
                     Choices.Add(GammaRayQuantity.Instance.ID.ToString(), GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID.ToString());
@@ -264,7 +264,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(EnergyDensityDrillingQuantity.Instance.ID.ToString(), EnergyDensityDrillingQuantity.Instance.GetUnitChoice(EnergyDensityDrillingQuantity.UnitChoicesEnum.JoulePerCubicFoot).ID.ToString()); ;
                     Choices.Add(FluidVelocityDrillingQuantity.Instance.ID.ToString(), FluidVelocityDrillingQuantity.Instance.GetUnitChoice(FluidVelocityDrillingQuantity.UnitChoicesEnum.FootPerSecond).ID.ToString());
                     Choices.Add(ForceDrillingQuantity.Instance.ID.ToString(), ForceDrillingQuantity.Instance.GetUnitChoice(ForceDrillingQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
-                    Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.DecanewtonPerMetre).ID.ToString());
+                    Choices.Add(ForceGradientDrillingQuantity.Instance.ID.ToString(), ForceGradientDrillingQuantity.Instance.GetUnitChoice(ForceGradientDrillingQuantity.UnitChoicesEnum.PoundPer100Foot).ID.ToString());
                     Choices.Add(FormationResistivityQuantity.Instance.ID.ToString(), FormationResistivityQuantity.Instance.GetUnitChoice(FormationResistivityQuantity.UnitChoicesEnum.OhmMetre).ID.ToString());
                     Choices.Add(FormationStrengthQuantity.Instance.ID.ToString(), FormationStrengthQuantity.Instance.GetUnitChoice(FormationStrengthQuantity.UnitChoicesEnum.Psi).ID.ToString());
                     Choices.Add(GammaRayQuantity.Instance.ID.ToString(), GammaRayQuantity.Instance.GetUnitChoice(GammaRayQuantity.UnitChoicesEnum.GammaAPI).ID.ToString());
