@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string SIUnitLabel { get; } = "Pa";
         public override double MassDimension { get; } = 1;
         public override double LengthDimension { get; } = -1;
-        public override double TimeDimension { get; } = -1;
+        public override double TimeDimension { get; } = -2;
         private static MaterialStrengthQuantity instance_ = null;
 
         public static MaterialStrengthQuantity Instance
@@ -38,7 +39,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("159e99d3-c79d-4dc6-974f-05cc38af001e"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = 1.0/Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -46,35 +47,35 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "megapascal",
                     UnitLabel = "MPa",
                     ID = new Guid("38b95b61-a825-4393-a0e8-ecd686575735"),
-                    ConversionFactorFromSI = 1E-06
+                    ConversionFactorFromSI = 1.0/Factors.Mega
                 },
                 new UnitChoice
                 {
                     UnitName = "gigapascal",
                     UnitLabel = "GPa",
                     ID = new Guid("c9aa0a18-02ac-42a0-9afe-8a08b4f03331"),
-                    ConversionFactorFromSI = 1E-09
+                    ConversionFactorFromSI = 1.0/Factors.Giga
                 },
                 new UnitChoice
                 {
                     UnitName = "psi",
                     UnitLabel = "psi",
                     ID = new Guid("4adf2a33-05c3-49bb-ba61-59dd76f4621e"),
-                    ConversionFactorFromSI = 0.00014503762645158165
+                    ConversionFactorFromSI = 1.0/Factors.PSI
                 },
                 new UnitChoice
                 {
                     UnitName = "pound per 100 square foot",
-                    UnitLabel = "lb/100ft²",
+                    UnitLabel = "lbf/100ft²",
                     ID = new Guid("eb1e2a52-3de3-4338-ad4d-40e8ce90e40b"),
-                    ConversionFactorFromSI = 2.0887
+                    ConversionFactorFromSI = 100.0*Factors.Foot*Factors.Foot/(Factors.PoundForce)
                 },
                 new UnitChoice
                 {
                     UnitName = "megapound per square inch",
                     UnitLabel = "Mpsi",
                     ID = new Guid("197a8b98-190d-4d45-91d7-85af12deab02"),
-                    ConversionFactorFromSI = 1.4503762645158166E-10
+                    ConversionFactorFromSI = 1.0/(Factors.Mega*Factors.PSI)
                 }
             };
         }

@@ -81,7 +81,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "pound per 100 square foot",
-                  UnitLabel = "lb/100ft²",
+                  UnitLabel = "lbf/100ft²",
                   ID = new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1"),
                   ConversionFactorFromSI = 100.0*Factors.Foot*Factors.Foot/Factors.PoundForce
                 },
