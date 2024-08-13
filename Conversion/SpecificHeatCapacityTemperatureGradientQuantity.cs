@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("9570fd84-ff2e-4a74-93b7-39bcf6558301"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
         new UnitChoice
@@ -46,28 +47,28 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "joule per gram squared kelvin",
           UnitLabel = "J/g•K²",
           ID = new Guid("69520d03-c7c3-483f-bbbb-6bdf3cf74463"),
-          ConversionFactorFromSI = 0.001
+          ConversionFactorFromSI = Factors.Milli
         },
         new UnitChoice
         {
           UnitName = "joule per gram degree squared celsius",
           UnitLabel = "J/g•°C²",
           ID = new Guid("9ed03436-3032-4bee-a145-fd03b6236816"),
-          ConversionFactorFromSI = 0.001
+          ConversionFactorFromSI = Factors.Milli
         },
         new UnitChoice
         {
           UnitName = "calorie per gram degree squared celsius",
-          UnitLabel = "Cal/g•°C²",
+          UnitLabel = "cal/g•°C²",
           ID = new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2"),
-          ConversionFactorFromSI = 0.0002388459
+          ConversionFactorFromSI = Factors.Milli/Factors.Calorie
         },
         new UnitChoice
         {
           UnitName = "british thermal unit per pound squared degree fahrenheit ",
           UnitLabel = "BTU/lb•°F²",
           ID = new Guid("57264532-79b7-4a19-8ffe-617bba781be3"),
-          ConversionFactorFromSI = 0.00013269216666666667
+          ConversionFactorFromSI = Factors.Pound*Factors.FahrenheitSlope*Factors.FahrenheitSlope/Factors.BTU
         }
       };
         }
