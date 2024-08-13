@@ -2240,7 +2240,8 @@ namespace OSDC.UnitConversion.Conversion
          ReciprocalSecond,  // reciprocal second
          Kilohertz,  // kilohertz
          Megahertz,  // megahertz
-         Gigahertz // gigahertz
+         Gigahertz,  // gigahertz
+         Terahertz // terahertz
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2248,7 +2249,8 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")},  // reciprocal second
          {UnitChoicesEnum.Kilohertz, new Guid("acf483c1-5d7a-4914-afa2-de7abed9be3e")},  // kilohertz
          {UnitChoicesEnum.Megahertz, new Guid("6dea9f29-d4f4-49a7-86fe-0205d4bab45e")},  // megahertz
-         {UnitChoicesEnum.Gigahertz, new Guid("655ee4f9-1782-4ec0-894a-afff9b75cac7")} // gigahertz
+         {UnitChoicesEnum.Gigahertz, new Guid("655ee4f9-1782-4ec0-894a-afff9b75cac7")},  // gigahertz
+         {UnitChoicesEnum.Terahertz, new Guid("9ca52ae4-2fc5-4e60-b774-79c73442de13")} // terahertz
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
