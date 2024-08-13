@@ -2094,13 +2094,51 @@ namespace OSDC.UnitConversion.Conversion
       {
          NewtonPerMetre,  // newton per metre
          NewtonPer30Metre,  // newton per 30 metre
-         DecanewtonPerMetre // decanewton per metre
+         NewtonPer10Metre,  // newton per 10 metre
+         NewtonPerDecimetre,  // newton per decimetre
+         NewtonPerCentimetre,  // newton per centimetre
+         NewtonPerMillimetre,  // newton per millimetre
+         DecanewtonPerMetre,  // decanewton per metre
+         DecanewtonPer30Metre,  // decanewton per 30 metre
+         DecanewtonPer10Metre,  // decanewton per 10 metre
+         DecanewtonPerDecimetre,  // decanewton per decimetre
+         DecanewtonPerCentimetre,  // decanewton per centimetre
+         DecanewtonPerMillimetre,  // decanewton per millimetre
+         KilonewtonPerMetre,  // kilonewton per metre
+         KilonewtonPer30Metre,  // kilonewton per 30 metre
+         KilonewtonPer10Metre,  // kilonewton per 10 metre
+         KilonewtonPerDecimetre,  // kilonewton per decimetre
+         KilonewtonPerCentimetre,  // kilonewton per centimetre
+         KilonewtonPerMillimetre,  // kilonewton per millimetre
+         PoundPerFoot,  // pound per foot
+         PoundPerInch,  // pound per inch
+         KilopoundPerFoot,  // kilopound per foot
+         KilopoundPerInch // kilopound per inch
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.NewtonPerMetre, new Guid("e503a1d3-1815-4321-8087-6e3d6dc641c8")},  // newton per metre
          {UnitChoicesEnum.NewtonPer30Metre, new Guid("be16e271-5ce7-445b-a8db-9014a6acc22b")},  // newton per 30 metre
-         {UnitChoicesEnum.DecanewtonPerMetre, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")} // decanewton per metre
+         {UnitChoicesEnum.NewtonPer10Metre, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")},  // newton per 10 metre
+         {UnitChoicesEnum.NewtonPerDecimetre, new Guid("dcd21076-ecb6-481e-8b8b-1cd5ccc68915")},  // newton per decimetre
+         {UnitChoicesEnum.NewtonPerCentimetre, new Guid("739cb2cd-2c9f-4efc-ad17-306b8f09de57")},  // newton per centimetre
+         {UnitChoicesEnum.NewtonPerMillimetre, new Guid("9375f700-72fb-4212-a51d-0f4500e7b13c")},  // newton per millimetre
+         {UnitChoicesEnum.DecanewtonPerMetre, new Guid("2566918f-f1b1-4ffb-906b-adb3680812e1")},  // decanewton per metre
+         {UnitChoicesEnum.DecanewtonPer30Metre, new Guid("20de7177-2099-4f86-89da-fdfa68bf67ed")},  // decanewton per 30 metre
+         {UnitChoicesEnum.DecanewtonPer10Metre, new Guid("4f30206a-b381-4a28-9e2d-fafc026e71d5")},  // decanewton per 10 metre
+         {UnitChoicesEnum.DecanewtonPerDecimetre, new Guid("cf20b9bb-aab1-4f1a-832c-1cfbe8ffc825")},  // decanewton per decimetre
+         {UnitChoicesEnum.DecanewtonPerCentimetre, new Guid("47704d55-35cc-4bfc-9f93-7cf7f29c81ac")},  // decanewton per centimetre
+         {UnitChoicesEnum.DecanewtonPerMillimetre, new Guid("1f418c90-f2e6-4bc8-8c06-f281e56ef6cc")},  // decanewton per millimetre
+         {UnitChoicesEnum.KilonewtonPerMetre, new Guid("9ec7912e-9506-43ce-9089-80000d7ddd3f")},  // kilonewton per metre
+         {UnitChoicesEnum.KilonewtonPer30Metre, new Guid("b08fae49-fdc3-409e-8b0f-3349ab189dc9")},  // kilonewton per 30 metre
+         {UnitChoicesEnum.KilonewtonPer10Metre, new Guid("f57cb3e9-4da5-4960-aff6-a27167276e4a")},  // kilonewton per 10 metre
+         {UnitChoicesEnum.KilonewtonPerDecimetre, new Guid("f3033c1b-1be8-4110-832a-4b60c31043e6")},  // kilonewton per decimetre
+         {UnitChoicesEnum.KilonewtonPerCentimetre, new Guid("4db740c5-df92-4f65-b0da-2119ad80cbfc")},  // kilonewton per centimetre
+         {UnitChoicesEnum.KilonewtonPerMillimetre, new Guid("14578d1b-6d43-441a-8f1b-aa77ab10a9bf")},  // kilonewton per millimetre
+         {UnitChoicesEnum.PoundPerFoot, new Guid("516e4b02-2f1a-49a7-8cd9-3fa4e28c8fce")},  // pound per foot
+         {UnitChoicesEnum.PoundPerInch, new Guid("8a5772d2-1253-4269-958a-af9f779aecc6")},  // pound per inch
+         {UnitChoicesEnum.KilopoundPerFoot, new Guid("bf63e80f-97df-48d1-afbf-c83415654e44")},  // kilopound per foot
+         {UnitChoicesEnum.KilopoundPerInch, new Guid("fa6a4a38-b070-48d1-a747-be22ab0e57b6")} // kilopound per inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

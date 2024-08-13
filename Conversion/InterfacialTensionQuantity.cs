@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
         new UnitChoice
@@ -45,21 +46,21 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "millinewton per metre",
           UnitLabel = "mN/m",
           ID = new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690"),
-          ConversionFactorFromSI = 1000
+          ConversionFactorFromSI = 1.0/Factors.Milli
         },
         new UnitChoice
         {
           UnitName = "dyne per centimetre",
           UnitLabel = "dyne/cm",
           ID = new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b"),
-          ConversionFactorFromSI = 1000
+          ConversionFactorFromSI = Factors.Centi/Factors.Dyne
         },
         new UnitChoice
         {
           UnitName = "pound per second squared",
           UnitLabel = "lb/s²",
           ID = new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c"),
-          ConversionFactorFromSI = 2.2046244201837775
+          ConversionFactorFromSI = 1.0/Factors.Pound //2.2046244201837775
         }
       };
         }

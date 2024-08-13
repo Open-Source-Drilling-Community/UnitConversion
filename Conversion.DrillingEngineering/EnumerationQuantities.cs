@@ -914,13 +914,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
       {
          NewtonPerMetre,  // newton per metre
          NewtonPer30Metre,  // newton per 30 metre
-         DecanewtonPerMetre // decanewton per metre
+         NewtonPer10Metre // newton per 10 metre
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
          {UnitChoicesEnum.NewtonPerMetre, new Guid("e503a1d3-1815-4321-8087-6e3d6dc641c8")},  // newton per metre
          {UnitChoicesEnum.NewtonPer30Metre, new Guid("be16e271-5ce7-445b-a8db-9014a6acc22b")},  // newton per 30 metre
-         {UnitChoicesEnum.DecanewtonPerMetre, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")} // decanewton per metre
+         {UnitChoicesEnum.NewtonPer10Metre, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")} // newton per 10 metre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
