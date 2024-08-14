@@ -13,6 +13,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageId>OSDC.UnitConversion.Conversion</PackageId>
+		<RootNamespace>OSDC.UnitConversion.Conversion</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

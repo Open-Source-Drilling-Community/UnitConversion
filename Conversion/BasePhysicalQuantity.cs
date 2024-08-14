@@ -161,6 +161,11 @@ namespace OSDC.UnitConversion.Conversion
                 }
             }
         }
+
+        protected virtual void InitializeUnitChoices()
+        {
+
+        }
         public static BasePhysicalQuantity GetQuantity(Guid ID)
         {
             BasePhysicalQuantity quantity = null;

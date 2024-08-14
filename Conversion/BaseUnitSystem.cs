@@ -536,12 +536,15 @@ namespace OSDC.UnitConversion.Conversion
                         if (quantity.ID != Guid.Empty)
                         {
                             Guid unitChoiceID = Guid.Empty;
-                            foreach (UnitChoice unitChoice in quantity.UnitChoices)
+                            if (quantity.UnitChoices != null)
                             {
-                                if (unitChoice.IsSI)
+                                foreach (UnitChoice unitChoice in quantity.UnitChoices)
                                 {
-                                    unitChoiceID = unitChoice.ID;
-                                    break;
+                                    if (unitChoice.IsSI)
+                                    {
+                                        unitChoiceID = unitChoice.ID;
+                                        break;
+                                    }
                                 }
                             }
                             if (unitChoiceID != Guid.Empty)

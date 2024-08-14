@@ -12,6 +12,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageId>OSDC.UnitConversion.Conversion.DrillingEngineering</PackageId>
+		<RootNamespace>OSDC.UnitConversion.Conversion.DrillingEngineering</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

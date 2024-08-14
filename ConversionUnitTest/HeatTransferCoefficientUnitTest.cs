@@ -1,5 +1,4 @@
-﻿using Conversion;
-using OSDC.UnitConversion.Conversion;
+﻿using OSDC.UnitConversion.Conversion;
 
 namespace ConversionUnitTest
 {
