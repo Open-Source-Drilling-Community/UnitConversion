@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("c8b4a6ea-29bf-4e5a-b7ce-9142cefc0752"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = 1.0/Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -45,14 +46,14 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "pound per foot",
                     UnitLabel = "lb/ft",
                     ID = new Guid("6fdf4cb6-a43b-482d-9bc8-d4ad49770f9e"),
-                    ConversionFactorFromSI = 0.6719689753966845
+                    ConversionFactorFromSI = Factors.Foot/Factors.Pound
                 },
                 new UnitChoice
                 {
                     UnitName = "gram per metre",
                     UnitLabel = "g/m",
                     ID = new Guid("0cea1e32-9adb-4882-9070-d027cd0eef8e"),
-                    ConversionFactorFromSI = 1000
+                    ConversionFactorFromSI = 1.0/Factors.Milli
                 }
             };
         }
