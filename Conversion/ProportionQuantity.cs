@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
         new UnitChoice
@@ -43,21 +44,21 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "percent",
           UnitLabel = "%",
           ID = new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7"),
-          ConversionFactorFromSI = 100
+          ConversionFactorFromSI = 1.0/Factors.Centi
         },
         new UnitChoice
         {
           UnitName = "per thousand",
           UnitLabel = "‰",
           ID = new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2"),
-          ConversionFactorFromSI = 1000
+          ConversionFactorFromSI = 1.0/Factors.Milli
         },
         new UnitChoice
         {
           UnitName = "part per million",
           UnitLabel = "ppm",
           ID = new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792"),
-          ConversionFactorFromSI = 1000000
+          ConversionFactorFromSI = 1.0/Factors.Micro
         }
       };
         }
