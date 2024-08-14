@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,36 +41,36 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("3ddba24f-4ccf-4cb1-af6c-2829cac3b88f"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
         new UnitChoice
         {
           UnitName = "calorie per metre second degree celsius",
-          UnitLabel = "Cal/m•s•°C",
+          UnitLabel = "cal/m•s•°C",
           ID = new Guid("d0386fc4-b97b-4874-8c8d-66e093c391ea"),
-          ConversionFactorFromSI = 0.238846
+          ConversionFactorFromSI = 1.0/Factors.Calorie
         },
         new UnitChoice
         {
           UnitName = "calorie per centimetre second degree celsius",
-          UnitLabel = "Cal/cm•s•°C",
+          UnitLabel = "cal/cm•s•°C",
           ID = new Guid("5f8706ed-d938-4715-a0ca-2afff423f6e6"),
-          ConversionFactorFromSI = 0.00238846
+          ConversionFactorFromSI = Factors.Centi/Factors.Calorie
         },
         new UnitChoice
         {
           UnitName = "british thermal unit per hour foot degree fahrenheit",
-          UnitLabel = "BUT/h•ft•°F",
+          UnitLabel = "BTU/h•ft•°F",
           ID = new Guid("43169695-8f6e-42ad-8c07-566dc7651edb"),
-          ConversionFactorFromSI = 0.5777893
+          ConversionFactorFromSI = Factors.Hour*Factors.Foot*Factors.FahrenheitSlope/Factors.BTU
         },
         new UnitChoice
         {
           UnitName = "british thermal unit inch per hour square foot degree fahrenheit",
-          UnitLabel = "BUT•in/h•ft²•°F",
+          UnitLabel = "BTU•in/h•ft²•°F",
           ID = new Guid("c79c2b27-c956-49a3-9caf-8653017777ca"),
-          ConversionFactorFromSI = 6.933472
+          ConversionFactorFromSI = Factors.Hour*Factors.Foot*Factors.Foot*Factors.FahrenheitSlope/(Factors.BTU*Factors.Inch)
         }
       };
         }
