@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = SIUnitName,
                     UnitLabel = SIUnitLabel,
                     ID = new Guid("f5a37831-4a70-44de-af34-4f6ce1a54af3"),
-                    ConversionFactorFromSI = 1.0,
+                    ConversionFactorFromSI = 1.0/Factors.Unit,
                     IsSI = true
                 },
                 new UnitChoice
@@ -46,21 +47,21 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "bar per metre",
                     UnitLabel = "bar/m",
                     ID = new Guid("73a70891-87cf-44fc-8437-94938f034eec"),
-                    ConversionFactorFromSI = 1E-05
+                    ConversionFactorFromSI = 1.0/Factors.Bar
                 },
                 new UnitChoice
                 {
                     UnitName = "psi per metre",
                     UnitLabel = "psi/m",
                     ID = new Guid("2235a51b-cdf2-4f53-9664-b7a968dbbba3"),
-                    ConversionFactorFromSI = 0.00014503762645158165
+                    ConversionFactorFromSI = 1.0/Factors.PSI
                 },
                 new UnitChoice
                 {
                     UnitName = "psi per foot",
                     UnitLabel = "psi/ft",
                     ID = new Guid("b99cef5c-d6df-4803-b52b-6050cf7e7ff8"),
-                    ConversionFactorFromSI = 4.4207468542442094E-05
+                    ConversionFactorFromSI = Factors.Foot/Factors.PSI
                 }
             };
         }
