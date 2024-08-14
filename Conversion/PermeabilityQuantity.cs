@@ -30,7 +30,14 @@ namespace OSDC.UnitConversion.Conversion
             UsualNames = new HashSet<string>() { "Permeability" };
             ID = new Guid("413da2c1-ebad-454a-ae14-1a8620f8f59c");
             Reset();
-            this.UnitChoices.Add(AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareMetre));
+            this.UnitChoices.Add(new UnitChoice
+            {
+                UnitName = "square metre",
+                UnitLabel = "m²",
+                ID = new Guid("5e27ad4a-b541-4807-9a36-4bd159b33f52"),
+                ConversionFactorFromSI = 1.0 / Factors.Unit,
+                IsSI = true
+            });
             this.UnitChoices.Add(new UnitChoice
             {
                 UnitName = "darcy",

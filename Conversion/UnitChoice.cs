@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting;
 
 namespace OSDC.UnitConversion.Conversion
 {
@@ -62,7 +60,6 @@ namespace OSDC.UnitConversion.Conversion
         /// </summary>
         public UnitChoice() : base()
         {
-            Init();
         }
         /// <summary>
         /// copy constructor. Copy only the name and conversion parametres
@@ -78,40 +75,8 @@ namespace OSDC.UnitConversion.Conversion
                 ConversionFactorFromSI = reference.ConversionFactorFromSI;
                 ConversionBiasFromSI = reference.ConversionBiasFromSI;
             }
-            Init();
         }
 
-        private void Init()
-        {
-            if (!string.IsNullOrEmpty(ConversionFactorFromSIFormula))
-            {
-                try
-                {
-                    double result = CSharpScript.EvaluateAsync<double>(ConversionFactorFromSIFormula, ScriptOptions.Default.WithReferences(AppDomain.CurrentDomain.GetAssemblies()).WithImports("OSDC.UnitConversion.Conversion")).GetAwaiter().GetResult();
-                    if (!double.IsNaN(result) && !double.IsInfinity(result))
-                    {
-                        ConversionFactorFromSI = result;
-                    }
-                }
-                catch (Exception e1)
-                {
-                }
-            }
-            if (!string.IsNullOrEmpty(ConversionBiasFromSIFormula))
-            {
-                try
-                {
-                    double result = CSharpScript.EvaluateAsync<double>(ConversionBiasFromSIFormula, ScriptOptions.Default.WithReferences(AppDomain.CurrentDomain.GetAssemblies()).WithImports("OSDC.UnitConversion.Conversion")).GetAwaiter().GetResult();
-                    if (!double.IsNaN(result) && !double.IsInfinity(result))
-                    {
-                        ConversionBiasFromSI = result;
-                    }
-                }
-                catch (Exception e2)
-                {
-                }
-            }
-        }
 
         /// <summary>
         /// convert a SI value into the unit choice

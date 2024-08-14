@@ -26,19 +26,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-        public CompressibilityQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Compressibility" };
-            ID = new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14");
-            UnitChoices = new List<UnitChoice>()
-            {
-    new UnitChoice
+            new UnitChoice
     {
-      UnitName = SIUnitName,
-      UnitLabel = SIUnitLabel,
+      UnitName = "inverse pascal",
+      UnitLabel = "1/Pa",
       ID = new Guid("0e259998-c8bb-4a4d-b281-afb8008b2693"),
-      ConversionFactorFromSI = 1.0/Factors.Unit,
+      ConversionFactorFromSIFormula = "1.0/Factors.Unit",
       IsSI = true
     },
     new UnitChoice
@@ -46,23 +41,29 @@ namespace OSDC.UnitConversion.Conversion
       UnitName = "inverse bar",
       UnitLabel = "1/bar",
       ID = new Guid("4a0f6df4-0d2d-489b-80f1-511be7713101"),
-      ConversionFactorFromSI = Factors.Bar
+      ConversionFactorFromSIFormula = "Factors.Bar"
     },
     new UnitChoice
     {
       UnitName = "inverse pound per square inch",
       UnitLabel = "1/psi",
       ID = new Guid("282ab24c-6c43-4710-8e52-433bdf90cc2e"),
-      ConversionFactorFromSI = Factors.PSI
+      ConversionFactorFromSIFormula = "Factors.PSI"
     },
         new UnitChoice
     {
       UnitName = "inverse atmosphere",
       UnitLabel = "1/atm",
       ID = new Guid("92c19398-ac0f-41fc-8a22-516c3dc59c82"),
-      ConversionFactorFromSI = Factors.Atmosphere
+      ConversionFactorFromSIFormula = "Factors.Atmosphere"
     }
-  };
+        };
+        public CompressibilityQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Compressibility" };
+            ID = new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14");
+            InitializeUnitChoices();
         }
     }
 }

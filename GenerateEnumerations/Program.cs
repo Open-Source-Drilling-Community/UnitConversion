@@ -159,14 +159,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             };
             using (StreamWriter writer = new StreamWriter(filename))
             {
-                writer.WriteLine("using System;");
                 writer.WriteLine("using System.Collections.Generic;");
-                writer.WriteLine("using System.Reflection;");
-                writer.WriteLine("using System.Linq;");
-                writer.WriteLine("using System.Text;");
-                writer.WriteLine("using System.Threading.Tasks;");
-                writer.WriteLine("using Microsoft.CodeAnalysis.CSharp.Scripting;");
-                writer.WriteLine("using Microsoft.CodeAnalysis.Scripting;");
                 writer.WriteLine("");
                 writer.WriteLine("namespace OSDC.UnitConversion.Conversion");
                 writer.WriteLine("{");
