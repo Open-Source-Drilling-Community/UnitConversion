@@ -1,3 +1,4 @@
+using Conversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = SIUnitName,
           UnitLabel = SIUnitLabel,
           ID = new Guid("0459940e-d71f-4b01-9ea6-eeb05d754af2"),
-          ConversionFactorFromSI = 1.0,
+          ConversionFactorFromSI = 1.0/Factors.Unit,
           IsSI = true
         },
         new UnitChoice
@@ -47,28 +48,28 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "calorie per metre second degree celsius squared",
           UnitLabel = "Cal/m•s•°C²",
           ID = new Guid("eb08ff8c-d542-440f-a4c7-610653018910"),
-          ConversionFactorFromSI = 0.238846
+          ConversionFactorFromSI = 1.0/Factors.Calorie
         },
         new UnitChoice
         {
           UnitName = "calorie per centimetre second degree celsius squared",
           UnitLabel = "Cal/cm•s•°C²",
           ID = new Guid("6c21a6cd-61fe-4086-95a7-ad6d6820c96e"),
-          ConversionFactorFromSI = 0.00238846
+          ConversionFactorFromSI = Factors.Centi/Factors.Calorie
         },
         new UnitChoice
         {
           UnitName = "british thermal unit per hour foot degree fahrenheit squared",
-          UnitLabel = "BUT/h•ft•°F²",
+          UnitLabel = "BTU/h•ft•°F²",
           ID = new Guid("b79509ea-8c03-4538-9974-208f7e0ee40e"),
-          ConversionFactorFromSI = 0.32099405555555555
+          ConversionFactorFromSI = Factors.Hour*Factors.Foot*Factors.FahrenheitSlope*Factors.FahrenheitSlope/Factors.BTU
         },
         new UnitChoice
         {
           UnitName = "british thermal unit inch per hour square foot degree fahrenheit squared",
-          UnitLabel = "BUT•in/h•ft²•°F²",
+          UnitLabel = "BTU•in/h•ft²•°F²",
           ID = new Guid("918b4e34-3986-427f-8bb6-c09740a7c299"),
-          ConversionFactorFromSI = 3.8519288888888887
+          ConversionFactorFromSI = Factors.Hour*Factors.Foot*Factors.Foot*Factors.FahrenheitSlope*Factors.FahrenheitSlope/(Factors.BTU*Factors.Inch)
         }
       };
         }
