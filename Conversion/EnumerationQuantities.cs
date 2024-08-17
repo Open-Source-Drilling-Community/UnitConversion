@@ -67,9 +67,9 @@ namespace OSDC.UnitConversion.Conversion
          VolumetricFlowRateOfChange,  // VolumetricFlowRateOfChange
          VolumetricFlowRate,  // VolumetricFlowRate
          WaveNumber,  // WaveNumber
+         Mass,  // Mass
          EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
          Energy,  // Energy
-         Mass,  // Mass
          SmallLength,  // SmallLength
          RotationFrequency,  // RotationFrequency
          GravitationalLoad,  // GravitationalLoad
@@ -154,9 +154,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.VolumetricFlowRateOfChange, new Guid("7f4f645c-e23e-41bc-bbcc-1dbcef53318e")},  // VolumetricFlowRateOfChange
          {QuantityEnum.VolumetricFlowRate, new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839")},  // VolumetricFlowRate
          {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
+         {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
          {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
          {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
-         {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
          {QuantityEnum.SmallLength, new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed")},  // SmallLength
          {QuantityEnum.RotationFrequency, new Guid("f6f7ab6f-3003-49d2-a17d-92a0f81938f2")},  // RotationFrequency
          {QuantityEnum.GravitationalLoad, new Guid("55682046-ff04-4a77-9311-a9f738f790b6")},  // GravitationalLoad
@@ -3174,6 +3174,74 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class MassQuantity : SymbolizedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Kilogram,  // kilogram
+         Hectogram,  // hectogram
+         Decagram,  // decagram
+         Gram,  // gram
+         Centigram,  // centigram
+         Milligram,  // milligram
+         Microgram,  // microgram
+         Nanogram,  // nanogram
+         AtomMassUnit,  // atom mass unit
+         TonneMetric,  // tonne metric
+         Kilotonne,  // kilotonne
+         Megatonne,  // megatonne
+         Gigatonne,  // gigatonne
+         Pound,  // pound
+         Kilopound,  // kilopound
+         Ounce,  // ounce
+         Stone,  // stone
+         TonUK,  // ton UK
+         TonUS,  // ton US
+         SolarMass,  // solar mass
+         EarthMass,  // earth mass
+         Grain,  // grain
+         HundredWeights // hundred weights
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
+         {UnitChoicesEnum.Hectogram, new Guid("2fb79e4b-3eb5-4aa3-9f12-2c66b1784902")},  // hectogram
+         {UnitChoicesEnum.Decagram, new Guid("1b3f72cb-55b1-4027-b6ad-309cd7d6c1a3")},  // decagram
+         {UnitChoicesEnum.Gram, new Guid("049ba04e-4c70-41f5-bb29-6b54bb5b2103")},  // gram
+         {UnitChoicesEnum.Centigram, new Guid("e56aa2fa-80b7-417f-8e08-91b9b8a1198c")},  // centigram
+         {UnitChoicesEnum.Milligram, new Guid("322b0e70-c8e5-482e-a9db-682d15baacf9")},  // milligram
+         {UnitChoicesEnum.Microgram, new Guid("eb831d52-2690-4b8a-a1a4-83e9bdb07dbc")},  // microgram
+         {UnitChoicesEnum.Nanogram, new Guid("93db8c40-4dd0-46a4-ade6-db51bcbca66f")},  // nanogram
+         {UnitChoicesEnum.AtomMassUnit, new Guid("f470168e-1e20-458e-b6da-6bee551cb6d6")},  // atom mass unit
+         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
+         {UnitChoicesEnum.Kilotonne, new Guid("2a767cda-fc61-4aa4-81dd-1a4f6d6af755")},  // kilotonne
+         {UnitChoicesEnum.Megatonne, new Guid("92c4b624-4205-4596-aabf-1dd4aa442718")},  // megatonne
+         {UnitChoicesEnum.Gigatonne, new Guid("51cd0591-d741-4769-bd22-e36959d1adcf")},  // gigatonne
+         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
+         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
+         {UnitChoicesEnum.Ounce, new Guid("4e64e69b-2276-46c8-a918-06ab6980178c")},  // ounce
+         {UnitChoicesEnum.Stone, new Guid("6894dc1c-21e2-42aa-9569-759c0e6e6d6e")},  // stone
+         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")},  // ton UK
+         {UnitChoicesEnum.TonUS, new Guid("443af797-a62f-4137-a852-ad1c9163dd7b")},  // ton US
+         {UnitChoicesEnum.SolarMass, new Guid("432e73bf-a448-47f6-9c65-9339d5bac5a3")},  // solar mass
+         {UnitChoicesEnum.EarthMass, new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e")},  // earth mass
+         {UnitChoicesEnum.Grain, new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2")},  // grain
+         {UnitChoicesEnum.HundredWeights, new Guid("83810f2a-b260-41b3-bc13-5ef60290f214")} // hundred weights
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
   {
     public new enum UnitChoicesEnum 
@@ -3231,74 +3299,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
          {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
          {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassQuantity : SymbolizedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Kilogram,  // kilogram
-         Hectogram,  // hectogram
-         Decagram,  // decagram
-         Gram,  // gram
-         Centigram,  // centigram
-         Milligram,  // milligram
-         Microgram,  // microgram
-         Nanogram,  // nanogram
-         AtomMassUnit,  // atom mass unit
-         TonneMetric,  // tonne metric
-         Kilotonne,  // kilotonne
-         Megatonne,  // megatonne
-         Gigatonne,  // gigatonne
-         Pound,  // pound
-         Kilopound,  // kilopound
-         Ounce,  // ounce
-         Stone,  // stone
-         TonUK,  // ton UK
-         TonUS,  // ton US
-         SolarMass,  // solar mass
-         EarthMass,  // earth mass
-         Grain,  // grain
-         HundredWeights // hundred weights
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
-         {UnitChoicesEnum.Hectogram, new Guid("2fb79e4b-3eb5-4aa3-9f12-2c66b1784902")},  // hectogram
-         {UnitChoicesEnum.Decagram, new Guid("1b3f72cb-55b1-4027-b6ad-309cd7d6c1a3")},  // decagram
-         {UnitChoicesEnum.Gram, new Guid("049ba04e-4c70-41f5-bb29-6b54bb5b2103")},  // gram
-         {UnitChoicesEnum.Centigram, new Guid("e56aa2fa-80b7-417f-8e08-91b9b8a1198c")},  // centigram
-         {UnitChoicesEnum.Milligram, new Guid("322b0e70-c8e5-482e-a9db-682d15baacf9")},  // milligram
-         {UnitChoicesEnum.Microgram, new Guid("eb831d52-2690-4b8a-a1a4-83e9bdb07dbc")},  // microgram
-         {UnitChoicesEnum.Nanogram, new Guid("93db8c40-4dd0-46a4-ade6-db51bcbca66f")},  // nanogram
-         {UnitChoicesEnum.AtomMassUnit, new Guid("f470168e-1e20-458e-b6da-6bee551cb6d6")},  // atom mass unit
-         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
-         {UnitChoicesEnum.Kilotonne, new Guid("2a767cda-fc61-4aa4-81dd-1a4f6d6af755")},  // kilotonne
-         {UnitChoicesEnum.Megatonne, new Guid("92c4b624-4205-4596-aabf-1dd4aa442718")},  // megatonne
-         {UnitChoicesEnum.Gigatonne, new Guid("51cd0591-d741-4769-bd22-e36959d1adcf")},  // gigatonne
-         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
-         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
-         {UnitChoicesEnum.Ounce, new Guid("4e64e69b-2276-46c8-a918-06ab6980178c")},  // ounce
-         {UnitChoicesEnum.Stone, new Guid("6894dc1c-21e2-42aa-9569-759c0e6e6d6e")},  // stone
-         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")},  // ton UK
-         {UnitChoicesEnum.TonUS, new Guid("443af797-a62f-4137-a852-ad1c9163dd7b")},  // ton US
-         {UnitChoicesEnum.SolarMass, new Guid("432e73bf-a448-47f6-9c65-9339d5bac5a3")},  // solar mass
-         {UnitChoicesEnum.EarthMass, new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e")},  // earth mass
-         {UnitChoicesEnum.Grain, new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2")},  // grain
-         {UnitChoicesEnum.HundredWeights, new Guid("83810f2a-b260-41b3-bc13-5ef60290f214")} // hundred weights
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

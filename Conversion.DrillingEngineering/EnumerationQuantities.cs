@@ -73,7 +73,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          Position,  // Position
          RateOfPenetration,  // RateOfPenetration
          WeightOnBit,  // WeightOnBit
-         ShockRate,  // ShockRate
          ThermalConductivityTemperatureGradientDrilling,  // ThermalConductivityTemperatureGradientDrilling
          TorqueGradientDrilling // TorqueGradientDrilling
        }
@@ -145,7 +144,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.Position, new Guid("20f58500-7e00-41e7-acc4-99e9de9bfd07")},  // Position
          {QuantityEnum.RateOfPenetration, new Guid("c2581b41-944c-410b-9805-62c4b54de510")},  // RateOfPenetration
          {QuantityEnum.WeightOnBit, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")},  // WeightOnBit
-         {QuantityEnum.ShockRate, new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff")},  // ShockRate
          {QuantityEnum.ThermalConductivityTemperatureGradientDrilling, new Guid("559ae484-42ed-4379-86f5-67dae451a9c9")},  // ThermalConductivityTemperatureGradientDrilling
          {QuantityEnum.TorqueGradientDrilling, new Guid("6ad57f76-fb74-4099-a257-1d47216bfe65")} // TorqueGradientDrilling
     };
@@ -2379,34 +2377,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
          {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
          {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class ShockRateQuantity : FrequencyQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Hertz,  // hertz
-         ShockPerMinute,  // shock per minute
-         ShockPerHour // shock per hour
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Hertz, new Guid("8acb8ee8-4cb7-44ef-b702-81c9f3008bf3")},  // hertz
-         {UnitChoicesEnum.ShockPerMinute, new Guid("6ccbee46-cb8a-4777-b1d2-e88eedd24f73")},  // shock per minute
-         {UnitChoicesEnum.ShockPerHour, new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e")} // shock per hour
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

@@ -455,11 +455,11 @@
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.ShockRateQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.AngularAccelerationDrillingQuantity" Collapsed="true">
     <Position X="21" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
+      <FileName>AngularAccelerationDrillingQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.ThermalConductivityTemperatureGradientDrillingQuantity" Collapsed="true">
@@ -474,13 +474,6 @@
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystem" Collapsed="true">
-    <Position X="14" Y="10.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AgYAEAQAIAACAQBQCAAAAoEgAQEAAAAABAAACAAEAAg=</HashCode>
-      <FileName>UnitSystem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystemLight" Collapsed="true">
