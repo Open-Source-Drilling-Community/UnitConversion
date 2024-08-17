@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class SmallRotationFrequencyQuantity :TorqueQuantity
+    public partial class SmallRotationFrequencyQuantity : RotationFrequencyQuantity
     {
         public override double? MeaningfulPrecisionInSI { get; } = 1.6666e-4;
 
@@ -30,8 +30,8 @@ namespace OSDC.UnitConversion.Conversion
             UsualNames = new HashSet<string>() { "Small Rotation Frequency", "Small rotary speed", "Small RPM" };
             ID = new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9");
             Reset();
-            this.UnitChoices.Add(RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Hertz));
-            this.UnitChoices.Add(RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Rpm));
+            this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz));
+            this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Rpm));
         }
 
     }

@@ -26,42 +26,45 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
+        {
+            new UnitChoice
+            {
+                UnitName = "dot per metre",
+                UnitLabel = "dpm",
+                ID = new Guid("acc723b8-083c-49f3-a208-184d2da3347d"),
+                ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                IsSI = true
+            },
+            new UnitChoice
+            {
+                UnitName = "dot per inch",
+                UnitLabel = "dpi",
+                ID = new Guid("e042b571-b7d0-477d-abf6-8b8998e5ba6c"),
+                ConversionFactorFromSIFormula = "Factors.Inch"
+            },
+            new UnitChoice
+            {
+                UnitName = "dot per millimetre",
+                UnitLabel = "dpmm",
+                ID = new Guid("6d4d5f26-8812-4002-a2bf-27ec7871c1f4"),
+                ConversionFactorFromSIFormula = "Factors.Milli"
+            },
+            new UnitChoice
+            {
+                UnitName = "dot per micrometre",
+                UnitLabel = "dpµm",
+                ID = new Guid("76e21d1d-54f5-4bbb-81c6-1b92b8b30bfe"),
+                ConversionFactorFromSIFormula = "Factors.Micro"
+            }
+        };
 
         public ImageScaleQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "Image Scale" };
             ID = new Guid("a3f230b0-a70b-40dd-9305-39e63bb1821b");
-            Reset();
-            this.UnitChoices.Add(new UnitChoice
-            {
-                UnitName = SIUnitName,
-                UnitLabel = SIUnitLabel,
-                ID = new Guid("acc723b8-083c-49f3-a208-184d2da3347d"),
-                ConversionFactorFromSI = 1.0/Factors.Unit,
-                IsSI = true
-            });
-            this.UnitChoices.Add(new UnitChoice
-            {
-                UnitName = "dot per inch",
-                UnitLabel = "dpi",
-                ID = new Guid("e042b571-b7d0-477d-abf6-8b8998e5ba6c"),
-                ConversionFactorFromSI = Factors.Inch
-            });
-            this.UnitChoices.Add(new UnitChoice
-            {
-                UnitName = "dot per millimetre",
-                UnitLabel = "dpmm",
-                ID = new Guid("6d4d5f26-8812-4002-a2bf-27ec7871c1f4"),
-                ConversionFactorFromSI = Factors.Milli
-            });
-            this.UnitChoices.Add(new UnitChoice
-            {
-                UnitName = "dot per micrometre",
-                UnitLabel = "dpµm",
-                ID = new Guid("76e21d1d-54f5-4bbb-81c6-1b92b8b30bfe"),
-                ConversionFactorFromSI = Factors.Micro
-            });
+            InitializeUnitChoices();       
         }
 
     }

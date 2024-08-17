@@ -26,19 +26,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-        public HeatTransferCoefficientQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Heat Transfer Coefficient" };
-            ID = new Guid("08c247bc-a55b-460e-a9a7-150faf10bdff");
-            UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
+            new UnitChoice
                 {
-                    UnitName = SIUnitName,
-                    UnitLabel = SIUnitLabel,
+                    UnitName = "watt per square metre per kelvin",
+                    UnitLabel = "W/m²/K",
                     ID = new Guid("e1737353-c10b-46cd-aa4e-9c90afb2f01e"),
-                    ConversionFactorFromSI = 1.0/Factors.Unit,
+                    ConversionFactorFromSIFormula = "1.0/Factors.Unit",
                     IsSI = true
                 },
                 new UnitChoice
@@ -46,9 +41,15 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "british thermal unit per hour per square foot per degree fahrenheit",
                     UnitLabel = "BTU/h/ft²/°F",
                     ID = new Guid("6963db25-2bd9-4017-9c83-cc578a11abbf"),
-                    ConversionFactorFromSI = Factors.Hour * Factors.Foot*Factors.Foot * Factors.FahrenheitSlope / Factors.BTU 
+                    ConversionFactorFromSIFormula = "Factors.Hour * Factors.Foot*Factors.Foot * Factors.FahrenheitSlope / Factors.BTU"
                 }
-            };
+        };
+        public HeatTransferCoefficientQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Heat Transfer Coefficient" };
+            ID = new Guid("08c247bc-a55b-460e-a9a7-150faf10bdff");
+            InitializeUnitChoices();
         }
     }
 }

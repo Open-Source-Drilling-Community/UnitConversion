@@ -27,20 +27,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-
-        public SolidAngleQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Solid Angle" };
-            ID = new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f");
-            UnitChoices = new List<UnitChoice>()
-            {
                 new UnitChoice
                 {
-                    UnitName = SIUnitName,
-                    UnitLabel = SIUnitLabel,
+                    UnitName = "steradian",
+                    UnitLabel = "sr",
                     ID = new Guid("aee057f5-3235-4976-b6e6-a57179f0173e"),
-                    ConversionFactorFromSI = 1.0/Factors.Unit,
+                    ConversionFactorFromSIFormula = "1.0/Factors.Unit",
                     IsSI = true
                 },
                 new UnitChoice
@@ -48,16 +42,22 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "spat",
                     UnitLabel = "spat",
                     ID = new Guid("44abc0c0-d564-442a-ac80-b08c9d499867"),
-                    ConversionFactorFromSI = 1/(4.0*Math.PI)
+                    ConversionFactorFromSIFormula = "1/(4.0*System.Math.PI)"
                 },
                 new UnitChoice
                 {
                     UnitName = "degree squared",
                     UnitLabel = "(°)²",
                     ID = new Guid("ad4b94e8-1a86-42ab-bfc6-9cc7ff7a835f"),
-                    ConversionFactorFromSI = (180.0*180.0)/(Math.PI*Math.PI)
+                    ConversionFactorFromSIFormula = "(180.0*180.0)/(System.Math.PI*System.Math.PI)"
                 }
-            };
+        };
+        public SolidAngleQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Solid Angle" };
+            ID = new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f");
+            InitializeUnitChoices();
         }
     }
 }

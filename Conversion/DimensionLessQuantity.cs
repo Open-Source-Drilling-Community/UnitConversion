@@ -23,22 +23,23 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
+        {
+            new UnitChoice
+        {
+          UnitName = "dimensionless",
+          UnitLabel = "",
+          ID = new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945"),
+          ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+          IsSI = true
+        }
+        };
         public DimensionlessQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "Dimensionless" };
             ID = new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43");
-            UnitChoices = new List<UnitChoice>()
-      {
-        new UnitChoice
-        {
-          UnitName = SIUnitName,
-          UnitLabel = SIUnitLabel,
-          ID = new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945"),
-          ConversionFactorFromSI = 1.0/Factors.Unit,
-          IsSI = true
-        }
-      };
+            InitializeUnitChoices();
         }
     }
 }

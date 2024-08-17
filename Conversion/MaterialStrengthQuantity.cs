@@ -26,19 +26,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-        public MaterialStrengthQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Material Strength" };
-            ID = new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40");
-            UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
+               new UnitChoice
                 {
-                    UnitName = SIUnitName,
-                    UnitLabel = SIUnitLabel,
+                    UnitName = "pascal",
+                    UnitLabel = "Pa",
                     ID = new Guid("159e99d3-c79d-4dc6-974f-05cc38af001e"),
-                    ConversionFactorFromSI = 1.0/Factors.Unit,
+                    ConversionFactorFromSIFormula = "1.0/Factors.Unit",
                     IsSI = true
                 },
                 new UnitChoice
@@ -46,37 +41,43 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "megapascal",
                     UnitLabel = "MPa",
                     ID = new Guid("38b95b61-a825-4393-a0e8-ecd686575735"),
-                    ConversionFactorFromSI = 1.0/Factors.Mega
+                    ConversionFactorFromSIFormula = "1.0/Factors.Mega"
                 },
                 new UnitChoice
                 {
                     UnitName = "gigapascal",
                     UnitLabel = "GPa",
                     ID = new Guid("c9aa0a18-02ac-42a0-9afe-8a08b4f03331"),
-                    ConversionFactorFromSI = 1.0/Factors.Giga
+                    ConversionFactorFromSIFormula = "1.0/Factors.Giga"
                 },
                 new UnitChoice
                 {
                     UnitName = "psi",
                     UnitLabel = "psi",
                     ID = new Guid("4adf2a33-05c3-49bb-ba61-59dd76f4621e"),
-                    ConversionFactorFromSI = 1.0/Factors.PSI
+                    ConversionFactorFromSIFormula = "1.0/Factors.PSI"
                 },
                 new UnitChoice
                 {
                     UnitName = "pound per 100 square foot",
                     UnitLabel = "lbf/100ft²",
                     ID = new Guid("eb1e2a52-3de3-4338-ad4d-40e8ce90e40b"),
-                    ConversionFactorFromSI = 100.0*Factors.Foot*Factors.Foot/(Factors.PoundForce)
+                    ConversionFactorFromSIFormula = "100.0*Factors.Foot*Factors.Foot/(Factors.PoundForce)"
                 },
                 new UnitChoice
                 {
                     UnitName = "megapound per square inch",
                     UnitLabel = "Mpsi",
                     ID = new Guid("197a8b98-190d-4d45-91d7-85af12deab02"),
-                    ConversionFactorFromSI = 1.0/(Factors.Mega*Factors.PSI)
+                    ConversionFactorFromSIFormula = "1.0/(Factors.Mega*Factors.PSI)"
                 }
-            };
+        };
+        public MaterialStrengthQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Material Strength" };
+            ID = new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40");
+            InitializeUnitChoices();
         }
     }
 }

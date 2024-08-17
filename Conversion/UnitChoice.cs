@@ -1,11 +1,22 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Microsoft.CodeAnalysis.Scripting;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace OSDC.UnitConversion.Conversion
 {
     public class UnitChoice
     {
-        private byte unitSystem_ = 0;
+        /// <summary>
+        /// true if it is the standard SI unit
+        /// </summary>
+        public bool IsSI { get; set; }
+        /// <summary>
+        /// true if it is a unit choice of one the default unit systems
+        /// </summary>
+        public bool IsDefault { get; set; }
 
         /// <summary>
         /// the name for that unit choice
@@ -15,6 +26,10 @@ namespace OSDC.UnitConversion.Conversion
         /// the label used for that unit choice
         /// </summary>
         public string UnitLabel { get; set; }
+        /// <summary>
+        /// the SI Unit name corresponding to this unit choice
+        /// </summary>
+        public string? SIUnitName { get; set; } = null;
         /// <summary>
         /// a global unique identifier
         /// </summary>
@@ -35,26 +50,6 @@ namespace OSDC.UnitConversion.Conversion
         /// the conversion bias used when converting from SI unit: value_in_unit_choice = ConversionFactorFromSI * value_in_SI + ConversionBiasFromSI
         /// </summary>
         public double ConversionBiasFromSI { get; set; } = 0.0;
-        /// <summary>
-        /// true if it is the standard SI unit
-        /// </summary>
-        public bool IsSI
-        {
-            get { return (unitSystem_ & (byte)BaseUnitSystem.DefaultUnitSystemEnum.SI) != 0; }
-            set
-            {
-                unitSystem_ |= (byte)BaseUnitSystem.DefaultUnitSystemEnum.SI;
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="choice"></param>
-        /// <returns></returns>
-        internal bool IsDefault(BaseUnitSystem.DefaultUnitSystemEnum choice)
-        {
-            return (unitSystem_ & (byte)choice) != 0;
-        }
         /// <summary>
         /// default constructor
         /// </summary>
@@ -150,6 +145,192 @@ namespace OSDC.UnitConversion.Conversion
             {
                 return valInSI.ToString(CultureInfo.InvariantCulture.NumberFormat);
             }
+        }
+
+        public string GetConversionDescription()
+        {
+            string desc = string.Empty;
+            if (!string.IsNullOrEmpty(UnitName))
+            {
+                List<string> factors = new List<string>();
+                if (IsSI)
+                {
+                    desc += "No conversion necessary as the unit choice is SI" + Environment.NewLine; ;
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(ConversionFactorFromSIFormula) && !string.IsNullOrEmpty(ConversionBiasFromSIFormula))
+                    {
+                        desc += "[v] = a * [SI] + b" + Environment.NewLine;
+                        desc += "where\n";
+                        desc += "[v] is the value in " + UnitName + Environment.NewLine;
+                        desc += "[SI] is the value in SI";
+                        if (!string.IsNullOrEmpty(SIUnitName))
+                        {
+                            desc += ", i.e., in " + SIUnitName;
+                        }
+                        desc += Environment.NewLine;
+                        desc += "a = " + GetFactorFormulaDescription(factors);
+                        desc += "b = " + GetBiasFormulaDescription(factors);
+                    }
+                    else if (!string.IsNullOrEmpty(ConversionFactorFromSIFormula))
+                    {
+                        desc += "[v] = a * [SI]" + Environment.NewLine;
+                        desc += "where" + Environment.NewLine;
+                        desc += "[v] is the value in " + UnitName + Environment.NewLine;
+                        desc += "[SI] is the value in SI";
+                        if (!string.IsNullOrEmpty(SIUnitName))
+                        {
+                            desc += ", i.e., in " + SIUnitName;
+                        }
+                        desc += Environment.NewLine;
+                        desc += "a = " + GetFactorFormulaDescription(factors);
+                    }
+                    else if (!string.IsNullOrEmpty(ConversionBiasFromSIFormula))
+                    {
+                        desc += "[v] = [SI] - b" + Environment.NewLine;
+                        desc += "where" + Environment.NewLine;
+                        desc += "[v] is the value in " + UnitName + Environment.NewLine;
+                        desc += "[SI] is the value in SI";
+                        if (!string.IsNullOrEmpty(SIUnitName))
+                        {
+                            desc += ", i.e., in " + SIUnitName;
+                        }
+                        desc += Environment.NewLine;
+                        desc += "b = " + GetBiasFormulaDescription(factors);
+                    }
+                }
+                if (factors.Count > 0)
+                {
+                    GetFactors(factors);
+                    desc += "and" + Environment.NewLine;
+                    foreach (string factor in factors)
+                    {
+                        desc += GetFactorDescription(factor);
+                    }
+                }
+            }
+            return desc;
+        }
+        private string GetFactorFormulaDescription(List<string> factors)
+        {
+            string desc = string.Empty;
+            if (!string.IsNullOrEmpty(ConversionFactorFromSIFormula))
+            {
+                desc += GetDescription(ConversionFactorFromSIFormula);
+                GetFactors(ConversionFactorFromSIFormula, factors);
+            }
+            return desc;
+        }
+        public string GetBiasFormulaDescription(List<string> factors)
+        {
+            string desc = string.Empty;
+            if (!string.IsNullOrEmpty(ConversionBiasFromSIFormula))
+            {
+                desc += GetDescription(ConversionBiasFromSIFormula);
+                GetFactors(ConversionBiasFromSIFormula, factors);
+            }
+            return desc;
+        }
+
+        private bool GetFactors(string desc, List<string> factors)
+        {
+            bool found = false;
+            if (!string.IsNullOrEmpty(desc))
+            {
+                int pos = desc.IndexOf("Factors.");
+                if (pos >= 0)
+                {
+                    pos += "Factors.".Length;
+                    desc = desc.Substring(pos);
+                    string factor = new string(desc.TakeWhile(c => Char.IsLetterOrDigit(c) || c == '_').ToArray());
+                    if (!string.IsNullOrEmpty(factor))
+                    {
+                        pos = factor.Length;
+                        factor = "Factors." + factor;
+                        if (!factors.Contains(factor))
+                        {
+                            factors.Add(factor);
+                            found = true;
+                        }
+                        desc = desc.Substring(pos);
+                        GetFactors(desc, factors);
+                    }
+                }
+            }
+            return found;
+        }
+
+        private bool GetFactors(List<string> factors)
+        {
+            bool found = false;
+            List<string> src = new List<string>(factors);
+            foreach (var factor in src)
+            {
+                if (!string.IsNullOrEmpty(factor))
+                {
+                    string f = factor.Replace("Factors.", "");
+                    if (Factors.Descriptions.ContainsKey(f))
+                    {
+                        string def = Factors.Descriptions[f].Definition;
+                        if (!string.IsNullOrEmpty(def))
+                        {
+                            found |= GetFactors(def, factors);
+                        }
+                    }
+                }
+            }
+            if (found)
+            {
+                GetFactors(factors);
+            }
+            return found;
+        }
+
+        private string GetFactorDescription(string factor)
+        {
+            string desc = string.Empty;
+            if (!string.IsNullOrEmpty(factor))
+            {
+                factor = factor.Replace("Factors.", "");
+                if (Factors.Descriptions.ContainsKey(factor))
+                {
+                    string def = Factors.Descriptions[factor].Definition;
+                    if (!string.IsNullOrEmpty(def))
+                    {
+                        desc += factor + " = " + def.Replace("Factors.", "");
+                        if (!string.IsNullOrEmpty(Factors.Descriptions[factor].Reference))
+                        {
+                            desc += " reference: " + Factors.Descriptions[factor].Reference;
+                        }
+                        desc += Environment.NewLine;
+                    }
+                }
+            }
+            return desc;
+        }
+
+        private string GetDescription(string desc)
+        {
+            string res = string.Empty;
+            if (!string.IsNullOrEmpty(desc))
+            {
+                res += desc.Replace("Factors.", "").Replace("System.Math.", "");
+                try
+                {
+                    var assies = AppDomain.CurrentDomain.GetAssemblies().Where(assembly => !string.IsNullOrEmpty(assembly.Location));
+                    double dres = CSharpScript.EvaluateAsync<double>(desc, ScriptOptions.Default.WithReferences(assies).WithImports("OSDC.UnitConversion.Conversion", "System.Math")).GetAwaiter().GetResult();
+                    if (!double.IsNaN(dres) && !double.IsInfinity(dres))
+                    {
+                        res += ", i.e., " + dres.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                res += Environment.NewLine;
+            }
+            return res;
         }
         /// <summary>
         /// return the number of digits after the decimal separator that corresponds to this accuracy

@@ -26,6 +26,8 @@ namespace ConversionUnitTest
             Assert.AreEqual(1.0 / Factors.Unit, unitVal);
             unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Terahertz).ID);
             Assert.AreEqual(1.0 / Factors.Tera, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Rpm).ID);
+            Assert.AreEqual(60.0, unitVal);
         }
 
         [Test]

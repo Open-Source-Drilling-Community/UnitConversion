@@ -23,19 +23,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-        public ProportionQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Proportion" };
-            ID = new Guid("10d2d588-19b8-4822-9240-e1d278d99e32");
-            UnitChoices = new List<UnitChoice>()
-      {
         new UnitChoice
         {
-          UnitName = SIUnitName,
-          UnitLabel = SIUnitLabel,
+          UnitName = "proportion",
+          UnitLabel = "",
           ID = new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9"),
-          ConversionFactorFromSI = 1.0/Factors.Unit,
+          ConversionFactorFromSIFormula = "1.0/Factors.Unit",
           IsSI = true
         },
         new UnitChoice
@@ -43,23 +38,29 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "percent",
           UnitLabel = "%",
           ID = new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7"),
-          ConversionFactorFromSI = 1.0/Factors.Centi
+          ConversionFactorFromSIFormula = "1.0/Factors.Centi"
         },
         new UnitChoice
         {
           UnitName = "per thousand",
           UnitLabel = "‰",
           ID = new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2"),
-          ConversionFactorFromSI = 1.0/Factors.Milli
+          ConversionFactorFromSIFormula = "1.0/Factors.Milli"
         },
         new UnitChoice
         {
           UnitName = "part per million",
           UnitLabel = "ppm",
           ID = new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792"),
-          ConversionFactorFromSI = 1.0/Factors.Micro
+          ConversionFactorFromSIFormula = "1.0/Factors.Micro"
         }
-      };
+        };
+        public ProportionQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Proportion" };
+            ID = new Guid("10d2d588-19b8-4822-9240-e1d278d99e32");
+            InitializeUnitChoices();
         }
     }
 }

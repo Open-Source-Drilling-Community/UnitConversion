@@ -26,19 +26,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-        public SpecificHeatCapacityTemperatureGradientQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Specific Heat Capacity Temperature Gradient" };
-            ID = new Guid("3a317540-3db4-47a1-a566-33b6f39b7540");
-            UnitChoices = new List<UnitChoice>()
-      {
         new UnitChoice
         {
-          UnitName = SIUnitName,
-          UnitLabel = SIUnitLabel,
+          UnitName = "joule per kilogram squared kelvin",
+          UnitLabel = "J/kg•K²",
           ID = new Guid("9570fd84-ff2e-4a74-93b7-39bcf6558301"),
-          ConversionFactorFromSI = 1.0/Factors.Unit,
+          ConversionFactorFromSIFormula = "1.0/Factors.Unit",
           IsSI = true
         },
         new UnitChoice
@@ -46,30 +41,36 @@ namespace OSDC.UnitConversion.Conversion
           UnitName = "joule per gram squared kelvin",
           UnitLabel = "J/g•K²",
           ID = new Guid("69520d03-c7c3-483f-bbbb-6bdf3cf74463"),
-          ConversionFactorFromSI = Factors.Milli
+          ConversionFactorFromSIFormula = "Factors.Milli"
         },
         new UnitChoice
         {
           UnitName = "joule per gram degree squared celsius",
           UnitLabel = "J/g•°C²",
           ID = new Guid("9ed03436-3032-4bee-a145-fd03b6236816"),
-          ConversionFactorFromSI = Factors.Milli
+          ConversionFactorFromSIFormula = "Factors.Milli"
         },
         new UnitChoice
         {
           UnitName = "calorie per gram degree squared celsius",
           UnitLabel = "cal/g•°C²",
           ID = new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2"),
-          ConversionFactorFromSI = Factors.Milli/Factors.Calorie
+          ConversionFactorFromSIFormula = "Factors.Milli/Factors.Calorie"
         },
         new UnitChoice
         {
           UnitName = "british thermal unit per pound squared degree fahrenheit ",
           UnitLabel = "BTU/lb•°F²",
           ID = new Guid("57264532-79b7-4a19-8ffe-617bba781be3"),
-          ConversionFactorFromSI = Factors.Pound*Factors.FahrenheitSlope*Factors.FahrenheitSlope/Factors.BTU
+          ConversionFactorFromSIFormula = "Factors.Pound*Factors.FahrenheitSlope*Factors.FahrenheitSlope/Factors.BTU"
         }
-      };
+        };
+        public SpecificHeatCapacityTemperatureGradientQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Specific Heat Capacity Temperature Gradient" };
+            ID = new Guid("3a317540-3db4-47a1-a566-33b6f39b7540");
+            InitializeUnitChoices();
         }
     }
 }

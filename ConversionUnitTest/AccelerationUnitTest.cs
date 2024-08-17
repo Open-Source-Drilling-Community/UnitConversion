@@ -12,6 +12,7 @@ namespace ConversionUnitTest
         [Test]
         public void Test1()
         {
+            string desc = LengthQuantity.Instance.GetUnitChoice(LengthQuantity.UnitChoicesEnum.Furlong).GetConversionDescription();
             double val = 1.0;
             double unitVal;
             unitVal = AccelerationQuantity.Instance.FromSI(val, AccelerationQuantity.Instance.GetUnitChoice(AccelerationQuantity.UnitChoicesEnum.CentimetrePerHourPerSecond).ID);

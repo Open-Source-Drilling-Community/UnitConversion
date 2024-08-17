@@ -27,19 +27,14 @@ namespace OSDC.UnitConversion.Conversion
                 return instance_;
             }
         }
-        public ResistivityQuantity() : base()
+        public static List<UnitChoice> UnitChoiceDescriptions = new List<UnitChoice>()
         {
-            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Resistivity" };
-            ID = new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80");
-            UnitChoices = new List<UnitChoice>()
-            {
                 new UnitChoice
                 {
-                  UnitName = SIUnitName,
-                  UnitLabel = SIUnitLabel,
+                  UnitName = "ohm metre",
+                  UnitLabel = "Ω•m",
                   ID = new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb"),
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
                   IsSI = true
                 },
                 new UnitChoice
@@ -47,23 +42,29 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "kilo ohm metre",
                   UnitLabel = "kΩ•m",
                   ID = new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962"),
-                  ConversionFactorFromSI = 1.0/Factors.Kilo
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo"
                 },
                 new UnitChoice
                 {
                   UnitName = "mega ohm metre",
                   UnitLabel = "MΩ•m",
                   ID = new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6"),
-                  ConversionFactorFromSI = 1.0/Factors.Mega
+                  ConversionFactorFromSIFormula = "1.0/Factors.Mega"
                 },
                 new UnitChoice
                 {
                   UnitName = "giga ohm metre",
                   UnitLabel = "GΩ•m",
                   ID = new Guid("eecfdf24-7a8e-4783-a627-d4387831767d"),
-                  ConversionFactorFromSI = 1.0/Factors.Giga
+                  ConversionFactorFromSIFormula = "1.0/Factors.Giga"
                 }
-            };
+        };
+        public ResistivityQuantity() : base()
+        {
+            Name = this.GetType().Name.Split("Quantity").ElementAt(0);
+            UsualNames = new HashSet<string>() { "Resistivity" };
+            ID = new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80");
+            InitializeUnitChoices();
         }
     }
 }

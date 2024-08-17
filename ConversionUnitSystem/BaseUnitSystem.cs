@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 
-namespace OSDC.UnitConversion.Conversion
+namespace OSDC.UnitConversion.Conversion.UnitSystem
 {
     public class BaseUnitSystem
     {
@@ -172,20 +172,20 @@ namespace OSDC.UnitConversion.Conversion
 
         }
 
-        public static List<BasePhysicalQuantity> AvailableBasePhysicalQuantities
+        public static List<BasePhysicalQuantity>? AvailableBasePhysicalQuantities
         {
             get
             {
                 if (availableBasePhysicalQuantities_ == null)
                 {
-                    Assembly assembly = Assembly.GetAssembly(typeof(BaseUnitSystem));
-                    if (assembly != null)
+                    List<Type> subclasses = GetAllSubclasses(typeof(BasePhysicalQuantity));
+                    if (subclasses != null)
                     {
-                        foreach (Type typ in assembly.GetTypes())
+                        foreach (Type typ in subclasses)
                         {
                             if (typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
                             {
-                                MethodInfo method = null;
+                                MethodInfo? method = null;
                                 foreach (MethodInfo meth in typ.GetMethods())
                                 {
                                     if (meth.IsStatic &&
@@ -199,7 +199,7 @@ namespace OSDC.UnitConversion.Conversion
                                 // call the method
                                 if (method != null)
                                 {
-                                    object obj = method.Invoke(null, null);
+                                    object? obj = method.Invoke(null, null);
                                     if (obj != null)
                                     {
                                         var res = (BasePhysicalQuantity)obj;
@@ -216,6 +216,35 @@ namespace OSDC.UnitConversion.Conversion
                 }
                 return availableBasePhysicalQuantities_;
             }
+        }
+
+        private static List<Type> GetAllSubclasses(Type baseType)
+        {
+            List<Type> result = new List<Type>();
+            Assembly? assy = Assembly.GetAssembly(baseType);
+            if (assy != null)
+            {
+                Queue<Type> typesToProcess = new Queue<Type>();
+
+                typesToProcess.Enqueue(baseType);
+
+                while (typesToProcess.Count > 0)
+                {
+                    Type currentType = typesToProcess.Dequeue();
+
+                    IEnumerable<Type> subclasses = assy.GetTypes().Where(t => t.IsClass && t.IsSubclassOf(currentType));
+
+                    foreach (var subclass in subclasses)
+                    {
+                        if (!result.Contains(subclass))
+                        {
+                            result.Add(subclass);
+                            typesToProcess.Enqueue(subclass);
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         protected virtual BasePhysicalQuantity GetQuantity(Guid quantityID)
@@ -628,6 +657,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(RheologyConsistencyIndexQuantity.Instance.ID.ToString(), RheologyConsistencyIndexQuantity.Instance.GetUnitChoice(RheologyConsistencyIndexQuantity.UnitChoicesEnum.PascalSecond).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Rpm).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RpmPerSecond).ID.ToString());
+                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(ShockRateQuantity.UnitChoicesEnum.ShockPerMinute).ID.ToString());
                     Choices.Add(SmallDiameterQuantity.Instance.ID.ToString(), SmallDiameterQuantity.Instance.GetUnitChoice(SmallDiameterQuantity.UnitChoicesEnum.Millimetre).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Millimetre).ID.ToString());
                     Choices.Add(SmallProportionQuantity.Instance.ID.ToString(), SmallProportionQuantity.Instance.GetUnitChoice(SmallProportionQuantity.UnitChoicesEnum.PartPerMillion).ID.ToString());
@@ -718,6 +748,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(RheologyConsistencyIndexQuantity.Instance.ID.ToString(), RheologyConsistencyIndexQuantity.Instance.GetUnitChoice(RheologyConsistencyIndexQuantity.UnitChoicesEnum.PoundSecondPer100SquareFoot).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Rpm).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RpmPerSecond).ID.ToString());
+                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(ShockRateQuantity.UnitChoicesEnum.ShockPerMinute).ID.ToString());
                     Choices.Add(SmallDiameterQuantity.Instance.ID.ToString(), SmallDiameterQuantity.Instance.GetUnitChoice(SmallDiameterQuantity.UnitChoicesEnum.InchPer32).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch).ID.ToString());
                     Choices.Add(SmallProportionQuantity.Instance.ID.ToString(), SmallProportionQuantity.Instance.GetUnitChoice(SmallProportionQuantity.UnitChoicesEnum.PartPerMillion).ID.ToString());
@@ -743,7 +774,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.USGallonPerMinutePerSecond).ID.ToString());
                     Choices.Add(VolumetricFlowRateQuantity.Instance.ID.ToString(), VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.USGallonPerMinute).ID.ToString());
                     Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice(WaveNumberQuantity.UnitChoicesEnum.ReciprocalMetre).ID.ToString());
-                    Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.Psi).ID.ToString());
+                    Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
                 }
                 else if (defaultUnitChoice == DefaultUnitSystemEnum.Imperial)
                 {
@@ -808,6 +839,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(RheologyConsistencyIndexQuantity.Instance.ID.ToString(), RheologyConsistencyIndexQuantity.Instance.GetUnitChoice(RheologyConsistencyIndexQuantity.UnitChoicesEnum.PoundSecondPer100SquareFoot).ID.ToString());
                     Choices.Add(RotationFrequencyQuantity.Instance.ID.ToString(), RotationFrequencyQuantity.Instance.GetUnitChoice(RotationFrequencyQuantity.UnitChoicesEnum.Rpm).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeQuantity.UnitChoicesEnum.RpmPerSecond).ID.ToString());
+                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(ShockRateQuantity.UnitChoicesEnum.ShockPerMinute).ID.ToString());
                     Choices.Add(SmallDiameterQuantity.Instance.ID.ToString(), SmallDiameterQuantity.Instance.GetUnitChoice(SmallDiameterQuantity.UnitChoicesEnum.InchPer32).ID.ToString());
                     Choices.Add(SmallLengthQuantity.Instance.ID.ToString(), SmallLengthQuantity.Instance.GetUnitChoice(SmallLengthQuantity.UnitChoicesEnum.Inch).ID.ToString());
                     Choices.Add(SmallProportionQuantity.Instance.ID.ToString(), SmallProportionQuantity.Instance.GetUnitChoice(SmallProportionQuantity.UnitChoicesEnum.PartPerMillion).ID.ToString());
@@ -833,7 +865,7 @@ namespace OSDC.UnitConversion.Conversion
                     Choices.Add(VolumetricFlowRateOfChangeQuantity.Instance.ID.ToString(), VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.UKGallonPerMinutePerSecond).ID.ToString());
                     Choices.Add(VolumetricFlowRateQuantity.Instance.ID.ToString(), VolumetricFlowRateQuantity.Instance.GetUnitChoice(VolumetricFlowRateQuantity.UnitChoicesEnum.UKGallonPerMinute).ID.ToString());
                     Choices.Add(WaveNumberQuantity.Instance.ID.ToString(), WaveNumberQuantity.Instance.GetUnitChoice(WaveNumberQuantity.UnitChoicesEnum.ReciprocalMetre).ID.ToString());
-                    Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.Psi).ID.ToString());
+                    Choices.Add(YoungModulusQuantity.Instance.ID.ToString(), YoungModulusQuantity.Instance.GetUnitChoice(YoungModulusQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
                 }
                 CheckMissing(quantities);
             }

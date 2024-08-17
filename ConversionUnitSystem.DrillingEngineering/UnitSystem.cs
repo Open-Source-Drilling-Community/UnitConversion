@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
+using OSDC.UnitConversion.Conversion.UnitSystem;
+using OSDC.UnitConversion.Conversion;
+using OSDC.UnitConversion.Conversion.DrillingEngineering;
 
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
 {
     public class UnitSystem : BaseUnitSystem
     {
@@ -137,7 +138,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(RandomWalkDrillingQuantity.Instance.ID.ToString(), RandomWalkDrillingQuantity.Instance.GetUnitChoice(RandomWalkDrillingQuantity.UnitChoicesEnum.DegreePerSquareRootHour).ID.ToString());
                     Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.MetrePerHour).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeDrillingQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeDrillingQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeDrillingQuantity.UnitChoicesEnum.RpmPerSecond).ID.ToString());
-                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(ShockRateQuantity.UnitChoicesEnum.ShockPerMinute).ID.ToString());
+                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Spm).ID.ToString());
                     Choices.Add(SpecificHeatCapacityDrillingQuantity.Instance.ID.ToString(), SpecificHeatCapacityDrillingQuantity.Instance.GetUnitChoice(SpecificHeatCapacityDrillingQuantity.UnitChoicesEnum.JoulePerKilogramKelvin).ID.ToString());
                     Choices.Add(SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance.ID.ToString(), SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientDrillingQuantity.UnitChoicesEnum.JoulePerKilogramSquaredKelvin).ID.ToString());
                     Choices.Add(StickDurationDrillingQuantity.Instance.ID.ToString(), StickDurationDrillingQuantity.Instance.GetUnitChoice(StickDurationDrillingQuantity.UnitChoicesEnum.Second).ID.ToString());
@@ -214,7 +215,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(RandomWalkDrillingQuantity.Instance.ID.ToString(), RandomWalkDrillingQuantity.Instance.GetUnitChoice(RandomWalkDrillingQuantity.UnitChoicesEnum.DegreePerSquareRootHour).ID.ToString());
                     Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeDrillingQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeDrillingQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeDrillingQuantity.UnitChoicesEnum.RpmPerSecond).ID.ToString());
-                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(ShockRateQuantity.UnitChoicesEnum.ShockPerMinute).ID.ToString());
                     Choices.Add(SpecificHeatCapacityDrillingQuantity.Instance.ID.ToString(), SpecificHeatCapacityDrillingQuantity.Instance.GetUnitChoice(SpecificHeatCapacityDrillingQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit).ID.ToString());
                     Choices.Add(SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance.ID.ToString(), SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientDrillingQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundSquaredDegreeFahrenheit).ID.ToString());
                     Choices.Add(StickDurationDrillingQuantity.Instance.ID.ToString(), StickDurationDrillingQuantity.Instance.GetUnitChoice(StickDurationDrillingQuantity.UnitChoicesEnum.Second).ID.ToString());
@@ -291,7 +291,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                     Choices.Add(RandomWalkDrillingQuantity.Instance.ID.ToString(), RandomWalkDrillingQuantity.Instance.GetUnitChoice(RandomWalkDrillingQuantity.UnitChoicesEnum.DegreePerSquareRootHour).ID.ToString());
                     Choices.Add(RateOfPenetrationQuantity.Instance.ID.ToString(), RateOfPenetrationQuantity.Instance.GetUnitChoice(RateOfPenetrationQuantity.UnitChoicesEnum.FootPerHour).ID.ToString());
                     Choices.Add(RotationFrequencyRateOfChangeDrillingQuantity.Instance.ID.ToString(), RotationFrequencyRateOfChangeDrillingQuantity.Instance.GetUnitChoice(RotationFrequencyRateOfChangeDrillingQuantity.UnitChoicesEnum.RpmPerSecond).ID.ToString());
-                    Choices.Add(ShockRateQuantity.Instance.ID.ToString(), ShockRateQuantity.Instance.GetUnitChoice(ShockRateQuantity.UnitChoicesEnum.ShockPerMinute).ID.ToString());
                     Choices.Add(SpecificHeatCapacityDrillingQuantity.Instance.ID.ToString(), SpecificHeatCapacityDrillingQuantity.Instance.GetUnitChoice(SpecificHeatCapacityDrillingQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit).ID.ToString());
                     Choices.Add(SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance.ID.ToString(), SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance.GetUnitChoice(SpecificHeatCapacityTemperatureGradientDrillingQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundSquaredDegreeFahrenheit).ID.ToString());
                     Choices.Add(StickDurationDrillingQuantity.Instance.ID.ToString(), StickDurationDrillingQuantity.Instance.GetUnitChoice(StickDurationDrillingQuantity.UnitChoicesEnum.Second).ID.ToString());

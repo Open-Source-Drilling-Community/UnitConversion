@@ -133,6 +133,7 @@ namespace OSDC.UnitConversion.Conversion
 ,{ "Maxwell", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Maxwell_(unit)")}
 ,{ "Line", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Maxwell_(unit)")}
 ,{ "MagneticFluxQuantum", new FactorDescription("Factors.PlanckConstant / (2.0*Factors.ElectronCharge)", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Magnetic_flux_quantum")}
+,{ "Darcy", new FactorDescription("0.0000001 / Factors.Atmosphere", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Darcy_(unit)")}
       };
     public static readonly double Unit = 1.0;
     public static readonly double Deca = 10.0;
@@ -248,5 +249,6 @@ namespace OSDC.UnitConversion.Conversion
     public static readonly double Maxwell = 1e-8;
     public static readonly double Line = 1e-8;
     public static readonly double MagneticFluxQuantum = Factors.PlanckConstant / (2.0*Factors.ElectronCharge);
+    public static readonly double Darcy = 0.0000001 / Factors.Atmosphere;
   }
 }

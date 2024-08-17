@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Globalization;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
+using Microsoft.CodeAnalysis.Scripting;
+using System.Linq.Expressions;
 
 namespace OSDC.UnitConversion.Conversion
 {
@@ -164,7 +167,51 @@ namespace OSDC.UnitConversion.Conversion
 
         protected virtual void InitializeUnitChoices()
         {
-
+            if (UnitChoices == null || UnitChoices.Count == 0)
+            {
+                Type typ = this.GetType();
+                if (typ != null && !string.IsNullOrEmpty(typ.Namespace) && typ.BaseType != null)
+                {
+                    FieldInfo[] staticFields = typ.GetFields(BindingFlags.Static | BindingFlags.Public);
+                    FieldInfo? unitChoiceDescriptions = null;
+                    foreach (var field in staticFields)
+                    {
+                        if (field != null && "UnitChoiceDescriptions".Equals(field.Name) && field.FieldType == typeof(List<UnitChoice>))
+                        {
+                            unitChoiceDescriptions = field;
+                            break;
+                        }
+                    }
+                    if (unitChoiceDescriptions != null)
+                    {
+                        var assies = AppDomain.CurrentDomain.GetAssemblies().Where(assembly => !string.IsNullOrEmpty(assembly.Location));
+                        object? res = unitChoiceDescriptions.GetValue(null);
+                        if (res != null && res is List<UnitChoice>)
+                        {
+                            UnitChoices = (List<UnitChoice>)res;
+                            foreach (var unitChoice in UnitChoices)
+                            {
+                                if (unitChoice != null && !string.IsNullOrEmpty(unitChoice.ConversionFactorFromSIFormula))
+                                {
+                                    double dres = CSharpScript.EvaluateAsync<double>(unitChoice.ConversionFactorFromSIFormula, ScriptOptions.Default.WithReferences(assies).WithImports("OSDC.UnitConversion.Conversion", "System.Math")).GetAwaiter().GetResult();
+                                    if (!double.IsNaN(dres) && !double.IsInfinity(dres))
+                                    {
+                                        unitChoice.ConversionFactorFromSI = dres;
+                                    }
+                                }
+                                if (unitChoice != null && !string.IsNullOrEmpty(unitChoice.ConversionBiasFromSIFormula))
+                                {
+                                    double dres = CSharpScript.EvaluateAsync<double>(unitChoice.ConversionBiasFromSIFormula, ScriptOptions.Default.WithReferences(assies).WithImports("OSDC.UnitConversion.Conversion", "System.Math")).GetAwaiter().GetResult();
+                                    if (!double.IsNaN(dres) && !double.IsInfinity(dres))
+                                    {
+                                        unitChoice.ConversionBiasFromSI = dres;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         public static BasePhysicalQuantity GetQuantity(Guid ID)
         {

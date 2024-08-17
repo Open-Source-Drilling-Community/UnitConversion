@@ -1,5 +1,7 @@
 ﻿using OSDC.UnitConversion.Conversion;
+using OSDC.UnitConversion.Conversion.UnitSystem;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
+using OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering;
 using System;
 using System.Reflection;
 
@@ -23,19 +25,19 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             {
                 GenerateConstructors(baseFolder + "Conversion\\Constructors.cs", quantities);
                 GenerateEnumerations(baseFolder + "Conversion\\EnumerationQuantities.cs", typeof(BasePhysicalQuantity), quantities);
-                BaseUnitSystem SI = BaseUnitSystem.SIBaseUnitSystem;
-                BaseUnitSystem metric = BaseUnitSystem.MetricBaseUnitSystem;
-                BaseUnitSystem imperial = BaseUnitSystem.ImperialBaseUnitSystem;
-                BaseUnitSystem us = BaseUnitSystem.USBaseUnitSystem;
+                //BaseUnitSystem SI = BaseUnitSystem.SIBaseUnitSystem;
+                //BaseUnitSystem metric = BaseUnitSystem.MetricBaseUnitSystem;
+                //BaseUnitSystem imperial = BaseUnitSystem.ImperialBaseUnitSystem;
+                //BaseUnitSystem us = BaseUnitSystem.USBaseUnitSystem;
             }
             quantities = UnitSystem.AvailableQuantities;
             if (quantities != null)
             {
                 GenerateEnumerations(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(PhysicalQuantity), quantities);
-                UnitSystem SI = UnitSystem.SIUnitSystem;
-                UnitSystem metric = UnitSystem.MetricUnitSystem;
-                UnitSystem imperial = UnitSystem.ImperialUnitSystem;
-                UnitSystem us = UnitSystem.USUnitSystem;
+                //UnitSystem SI = UnitSystem.SIUnitSystem;
+                //UnitSystem metric = UnitSystem.MetricUnitSystem;
+                //UnitSystem imperial = UnitSystem.ImperialUnitSystem;
+                //UnitSystem us = UnitSystem.USUnitSystem;
             }
         }
 
@@ -155,7 +157,8 @@ namespace OSDC.UnitConversion.GenerateEnumerations
               { "ElectronCharge", new FactorDescription("1.602176634e-19", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Elementary_charge")},
               { "Maxwell", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Maxwell_(unit)")},
               { "Line", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Maxwell_(unit)")},
-              { "MagneticFluxQuantum", new FactorDescription("Factors.PlanckConstant / (2.0*Factors.ElectronCharge)", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Magnetic_flux_quantum")}
+              { "MagneticFluxQuantum", new FactorDescription("Factors.PlanckConstant / (2.0*Factors.ElectronCharge)", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Magnetic_flux_quantum")},
+              { "Darcy", new FactorDescription("0.0000001 / Factors.Atmosphere", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Darcy_(unit)")}
             };
             using (StreamWriter writer = new StreamWriter(filename))
             {
@@ -235,6 +238,16 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                 writer.WriteLine("      {");
                                 writer.WriteLine("          UnitChoices = new List<UnitChoice>()");
                                 writer.WriteLine("            {");
+                                // find the SI Unit choice
+                                UnitChoice? SIUnitChoice = null;
+                                foreach (UnitChoice choice in choices)
+                                {
+                                    if (choice != null && choice.IsSI)
+                                    {
+                                        SIUnitChoice = choice;
+                                        break;
+                                    }
+                                }
                                 bool first = true;
                                 foreach (UnitChoice choice in choices)
                                 {
@@ -251,7 +264,11 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                     writer.WriteLine("new UnitChoice");
                                     writer.WriteLine("                {");
                                     writer.WriteLine("                  UnitName = \"" + choice.UnitName + "\",");
-                                    writer.WriteLine("                  UnitLabel = \"" + choice.UnitLabel + "\",");
+                                    writer.WriteLine("                  UnitLabel = \"" + Process(choice.UnitLabel) + "\",");
+                                    if (SIUnitChoice != null && !string.IsNullOrEmpty(SIUnitChoice.UnitName))
+                                    {
+                                        writer.WriteLine("                  SIUnitName = \"" + Process(SIUnitChoice.UnitName) + "\",");
+                                    }
                                     writer.WriteLine("                  ID = new Guid(\"" + choice.ID.ToString() + "\"),");
                                     if (!string.IsNullOrEmpty(choice.ConversionFactorFromSIFormula))
                                     {
@@ -261,7 +278,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                     if (!string.IsNullOrEmpty(choice.ConversionBiasFromSIFormula))
                                     {
                                         writer.WriteLine("                  ConversionBiasFromSIFormula = \"" + choice.ConversionBiasFromSIFormula + "\",");
-                                        writer.WriteLine("                  ConversionBiasFromSI = " + choice.ConversionBiasFromSI + ",");
+                                        writer.WriteLine("                  ConversionBiasFromSI = " + choice.ConversionBiasFromSIFormula + ",");
                                     }
                                     if (choice.IsSI)
                                     {
@@ -372,6 +389,14 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                     }
                 }
             }
+        }
+        static string Process(string str)
+        {
+            if (!string.IsNullOrEmpty(str) && str.Contains("\""))
+            {
+                str = str.Replace("\"", "\\\"");
+            }
+            return str;
         }
         static string Convert(string name)
         {

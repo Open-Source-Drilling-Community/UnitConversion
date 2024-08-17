@@ -22,54 +22,61 @@ namespace OSDC.UnitConversion.Conversion
          DensityRateOfChange,  // DensityRateOfChange
          Dimensionless,  // Dimensionless
          DynamicViscosity,  // DynamicViscosity
-         EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
          ElectricalCapacitance,  // ElectricalCapacitance
          ElectricCurrent,  // ElectricCurrent
          ElectricTension,  // ElectricTension
          ElongationGradient,  // ElongationGradient
          EnergyDensity,  // EnergyDensity
-         Energy,  // Energy
-         ImageScale,  // ImageScale
-         Length,  // Length
-         LuminousIntensity,  // LuminousIntensity
-         Mass,  // Mass
-         PlaneAngle,  // PlaneAngle
-         RelativeTemperature,  // RelativeTemperature
-         SmallLength,  // SmallLength
-         SolidAngle,  // SolidAngle
-         Temperature,  // Temperature
-         Time,  // Time
-         Pressure,  // Pressure
-         VolumetricFlowRate,  // VolumetricFlowRate
-         VolumetricFlowRateOfChange,  // VolumetricFlowRateOfChange
-         Velocity,  // Velocity
          ForceGradient,  // ForceGradient
          Force,  // Force
-         MaterialStrength,  // MaterialStrength
          Frequency,  // Frequency
-         RotationFrequency,  // RotationFrequency
-         Proportion,  // Proportion
+         FrequencyRateOfChange,  // FrequencyRateOfChange
          HeatTransferCoefficient,  // HeatTransferCoefficient
-         GravitationalLoad,  // GravitationalLoad
-         HydraulicConductivity,  // HydraulicConductivity
+         ImageScale,  // ImageScale
          InterfacialTension,  // InterfacialTension
-         Volume,  // Volume
-         LargeVolume,  // LargeVolume
+         Length,  // Length
+         LuminousIntensity,  // LuminousIntensity
          MagneticFluxDensity,  // MagneticFluxDensity
+         MagneticFlux,  // MagneticFlux
+         MassGradient,  // MassGradient
          MassRate,  // MassRate
+         MaterialStrength,  // MaterialStrength
          Permeability,  // Permeability
+         PlaneAngle,  // PlaneAngle
+         Power,  // Power
          PressureGradient,  // PressureGradient
          PressureLossConstant,  // PressureLossConstant
+         Pressure,  // Pressure
+         Proportion,  // Proportion
+         RandomWalk,  // RandomWalk
+         RelativeTemperature,  // RelativeTemperature
          Resistivity,  // Resistivity
-         FrequencyRateOfChange,  // FrequencyRateOfChange
-         RotationFrequencyRateOfChange,  // RotationFrequencyRateOfChange
+         SolidAngle,  // SolidAngle
          SpecificHeatCapacity,  // SpecificHeatCapacity
          SpecificHeatCapacityTemperatureGradient,  // SpecificHeatCapacityTemperatureGradient
+         Stress,  // Stress
          TemperatureGradient,  // TemperatureGradient
-         Tension,  // Tension
+         Temperature,  // Temperature
          ThermalConductivity,  // ThermalConductivity
-         MassGradient,  // MassGradient
+         ThermalConductivityTemperatureGradient,  // ThermalConductivityTemperatureGradient
+         Time,  // Time
+         TorqueGradient,  // TorqueGradient
          Torque,  // Torque
+         Velocity,  // Velocity
+         Volume,  // Volume
+         VolumetricFlowRateOfChange,  // VolumetricFlowRateOfChange
+         VolumetricFlowRate,  // VolumetricFlowRate
+         WaveNumber,  // WaveNumber
+         EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
+         Energy,  // Energy
+         Mass,  // Mass
+         SmallLength,  // SmallLength
+         RotationFrequency,  // RotationFrequency
+         GravitationalLoad,  // GravitationalLoad
+         HydraulicConductivity,  // HydraulicConductivity
+         LargeVolume,  // LargeVolume
+         RotationFrequencyRateOfChange,  // RotationFrequencyRateOfChange
+         Tension,  // Tension
          YoungModulus,  // YoungModulus
          StandardProportion,  // StandardProportion
          StandardDimensionless,  // StandardDimensionless
@@ -80,15 +87,10 @@ namespace OSDC.UnitConversion.Conversion
          SmallDiameter,  // SmallDiameter
          SmallTorque,  // SmallTorque
          SmallRotationFrequency,  // SmallRotationFrequency
-         MagneticFlux,  // MagneticFlux
-         RandomWalk,  // RandomWalk
          SmallProportion,  // SmallProportion
-         WaveNumber,  // WaveNumber
          Porosity,  // Porosity
-         Power,  // Power
-         TorqueGradient,  // TorqueGradient
-         ThermalConductivityTemperatureGradient,  // ThermalConductivityTemperatureGradient
-         Stress // Stress
+         StrokeFrequency,  // StrokeFrequency
+         ShockRate // ShockRate
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -107,54 +109,61 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.DensityRateOfChange, new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11")},  // DensityRateOfChange
          {QuantityEnum.Dimensionless, new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43")},  // Dimensionless
          {QuantityEnum.DynamicViscosity, new Guid("c830517f-5915-4a8f-ba83-bd102c0a935f")},  // DynamicViscosity
-         {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
          {QuantityEnum.ElectricalCapacitance, new Guid("9b284ff7-57bb-4ee0-bdbc-5fb7b80f3ae3")},  // ElectricalCapacitance
          {QuantityEnum.ElectricCurrent, new Guid("a322deae-e965-41bf-b4fe-a7530d33c9a0")},  // ElectricCurrent
          {QuantityEnum.ElectricTension, new Guid("da5094a4-7481-4246-9def-1bd3b6f893a1")},  // ElectricTension
          {QuantityEnum.ElongationGradient, new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120")},  // ElongationGradient
          {QuantityEnum.EnergyDensity, new Guid("9e82436a-392e-428a-8ee9-0998027c3c46")},  // EnergyDensity
-         {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
-         {QuantityEnum.ImageScale, new Guid("a3f230b0-a70b-40dd-9305-39e63bb1821b")},  // ImageScale
-         {QuantityEnum.Length, new Guid("96058475-80c4-4394-b21a-afd2fb1594c8")},  // Length
-         {QuantityEnum.LuminousIntensity, new Guid("fd02d171-cd96-4a41-84cc-431b50ba879b")},  // LuminousIntensity
-         {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
-         {QuantityEnum.PlaneAngle, new Guid("751a8f44-d938-4319-a422-a753962fd91f")},  // PlaneAngle
-         {QuantityEnum.RelativeTemperature, new Guid("58dadec7-7858-414b-8d7b-66504d5c2793")},  // RelativeTemperature
-         {QuantityEnum.SmallLength, new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed")},  // SmallLength
-         {QuantityEnum.SolidAngle, new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f")},  // SolidAngle
-         {QuantityEnum.Temperature, new Guid("16130f2d-72a8-44a5-beaa-adbb5a1a7b21")},  // Temperature
-         {QuantityEnum.Time, new Guid("7106f7cb-ddf2-4e2f-9e21-b19bc83eb248")},  // Time
-         {QuantityEnum.Pressure, new Guid("0f282508-9223-489d-86e6-36307f987045")},  // Pressure
-         {QuantityEnum.VolumetricFlowRate, new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839")},  // VolumetricFlowRate
-         {QuantityEnum.VolumetricFlowRateOfChange, new Guid("7f4f645c-e23e-41bc-bbcc-1dbcef53318e")},  // VolumetricFlowRateOfChange
-         {QuantityEnum.Velocity, new Guid("b3fd17fe-ce71-4ef3-ac99-cf4f5756e81a")},  // Velocity
          {QuantityEnum.ForceGradient, new Guid("e5212340-1147-4cad-9f71-5cd9d4208ffd")},  // ForceGradient
          {QuantityEnum.Force, new Guid("af9fd237-14d8-4b75-8d0b-34ea8961c20b")},  // Force
-         {QuantityEnum.MaterialStrength, new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40")},  // MaterialStrength
          {QuantityEnum.Frequency, new Guid("8a1ff3d9-95c9-43e1-abb4-4ae9b8df861e")},  // Frequency
-         {QuantityEnum.RotationFrequency, new Guid("f6f7ab6f-3003-49d2-a17d-92a0f81938f2")},  // RotationFrequency
-         {QuantityEnum.Proportion, new Guid("10d2d588-19b8-4822-9240-e1d278d99e32")},  // Proportion
+         {QuantityEnum.FrequencyRateOfChange, new Guid("e9d5bfe9-428b-4df0-9fe5-d9ad17e6a0cb")},  // FrequencyRateOfChange
          {QuantityEnum.HeatTransferCoefficient, new Guid("08c247bc-a55b-460e-a9a7-150faf10bdff")},  // HeatTransferCoefficient
-         {QuantityEnum.GravitationalLoad, new Guid("55682046-ff04-4a77-9311-a9f738f790b6")},  // GravitationalLoad
-         {QuantityEnum.HydraulicConductivity, new Guid("04df2b82-aff0-485a-855e-3d2aa53e12eb")},  // HydraulicConductivity
+         {QuantityEnum.ImageScale, new Guid("a3f230b0-a70b-40dd-9305-39e63bb1821b")},  // ImageScale
          {QuantityEnum.InterfacialTension, new Guid("6c2da24b-fa92-415d-9161-150de87dad4c")},  // InterfacialTension
-         {QuantityEnum.Volume, new Guid("69151432-d2ed-4473-a3dc-334f8e6daaa6")},  // Volume
-         {QuantityEnum.LargeVolume, new Guid("f8ab1afa-7b99-403b-9410-93598bbb4089")},  // LargeVolume
+         {QuantityEnum.Length, new Guid("96058475-80c4-4394-b21a-afd2fb1594c8")},  // Length
+         {QuantityEnum.LuminousIntensity, new Guid("fd02d171-cd96-4a41-84cc-431b50ba879b")},  // LuminousIntensity
          {QuantityEnum.MagneticFluxDensity, new Guid("b9a3f96b-8861-4b03-9c8a-3c0d7d6ec139")},  // MagneticFluxDensity
+         {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")},  // MagneticFlux
+         {QuantityEnum.MassGradient, new Guid("b8694592-8f8d-4684-b0ba-c88de50c8486")},  // MassGradient
          {QuantityEnum.MassRate, new Guid("3dd05c4c-3d6d-49ae-a878-5a5e4a6e7acf")},  // MassRate
+         {QuantityEnum.MaterialStrength, new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40")},  // MaterialStrength
          {QuantityEnum.Permeability, new Guid("413da2c1-ebad-454a-ae14-1a8620f8f59c")},  // Permeability
+         {QuantityEnum.PlaneAngle, new Guid("751a8f44-d938-4319-a422-a753962fd91f")},  // PlaneAngle
+         {QuantityEnum.Power, new Guid("6fd69f30-a219-4d56-a1dd-000d8175e2ed")},  // Power
          {QuantityEnum.PressureGradient, new Guid("62eb6afe-bd7d-48dd-b4fd-de40e9f3c632")},  // PressureGradient
          {QuantityEnum.PressureLossConstant, new Guid("6417f6e0-969d-43f2-bee6-249199ec1697")},  // PressureLossConstant
+         {QuantityEnum.Pressure, new Guid("0f282508-9223-489d-86e6-36307f987045")},  // Pressure
+         {QuantityEnum.Proportion, new Guid("10d2d588-19b8-4822-9240-e1d278d99e32")},  // Proportion
+         {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
+         {QuantityEnum.RelativeTemperature, new Guid("58dadec7-7858-414b-8d7b-66504d5c2793")},  // RelativeTemperature
          {QuantityEnum.Resistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // Resistivity
-         {QuantityEnum.FrequencyRateOfChange, new Guid("e9d5bfe9-428b-4df0-9fe5-d9ad17e6a0cb")},  // FrequencyRateOfChange
-         {QuantityEnum.RotationFrequencyRateOfChange, new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e")},  // RotationFrequencyRateOfChange
+         {QuantityEnum.SolidAngle, new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f")},  // SolidAngle
          {QuantityEnum.SpecificHeatCapacity, new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9")},  // SpecificHeatCapacity
          {QuantityEnum.SpecificHeatCapacityTemperatureGradient, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // SpecificHeatCapacityTemperatureGradient
+         {QuantityEnum.Stress, new Guid("e4aa819b-a385-418b-bbca-cfb1421093f5")},  // Stress
          {QuantityEnum.TemperatureGradient, new Guid("4c1819d5-008b-4613-b62a-3f5d91b08ee7")},  // TemperatureGradient
-         {QuantityEnum.Tension, new Guid("7c4e127d-aa65-4796-a962-c2c666c4fdd0")},  // Tension
+         {QuantityEnum.Temperature, new Guid("16130f2d-72a8-44a5-beaa-adbb5a1a7b21")},  // Temperature
          {QuantityEnum.ThermalConductivity, new Guid("ca23212e-8f2d-4041-89f6-ac8bfa8604fa")},  // ThermalConductivity
-         {QuantityEnum.MassGradient, new Guid("b8694592-8f8d-4684-b0ba-c88de50c8486")},  // MassGradient
+         {QuantityEnum.ThermalConductivityTemperatureGradient, new Guid("5e509f43-8fb4-490e-b9a5-59d7393761c0")},  // ThermalConductivityTemperatureGradient
+         {QuantityEnum.Time, new Guid("7106f7cb-ddf2-4e2f-9e21-b19bc83eb248")},  // Time
+         {QuantityEnum.TorqueGradient, new Guid("002104cd-25d6-438d-afe3-065ff392b294")},  // TorqueGradient
          {QuantityEnum.Torque, new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4")},  // Torque
+         {QuantityEnum.Velocity, new Guid("b3fd17fe-ce71-4ef3-ac99-cf4f5756e81a")},  // Velocity
+         {QuantityEnum.Volume, new Guid("69151432-d2ed-4473-a3dc-334f8e6daaa6")},  // Volume
+         {QuantityEnum.VolumetricFlowRateOfChange, new Guid("7f4f645c-e23e-41bc-bbcc-1dbcef53318e")},  // VolumetricFlowRateOfChange
+         {QuantityEnum.VolumetricFlowRate, new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839")},  // VolumetricFlowRate
+         {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
+         {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
+         {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
+         {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
+         {QuantityEnum.SmallLength, new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed")},  // SmallLength
+         {QuantityEnum.RotationFrequency, new Guid("f6f7ab6f-3003-49d2-a17d-92a0f81938f2")},  // RotationFrequency
+         {QuantityEnum.GravitationalLoad, new Guid("55682046-ff04-4a77-9311-a9f738f790b6")},  // GravitationalLoad
+         {QuantityEnum.HydraulicConductivity, new Guid("04df2b82-aff0-485a-855e-3d2aa53e12eb")},  // HydraulicConductivity
+         {QuantityEnum.LargeVolume, new Guid("f8ab1afa-7b99-403b-9410-93598bbb4089")},  // LargeVolume
+         {QuantityEnum.RotationFrequencyRateOfChange, new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e")},  // RotationFrequencyRateOfChange
+         {QuantityEnum.Tension, new Guid("7c4e127d-aa65-4796-a962-c2c666c4fdd0")},  // Tension
          {QuantityEnum.YoungModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // YoungModulus
          {QuantityEnum.StandardProportion, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // StandardProportion
          {QuantityEnum.StandardDimensionless, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionless
@@ -165,15 +174,10 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.SmallDiameter, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // SmallDiameter
          {QuantityEnum.SmallTorque, new Guid("adf7b170-8d24-4c9f-93e1-40179f361d8c")},  // SmallTorque
          {QuantityEnum.SmallRotationFrequency, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")},  // SmallRotationFrequency
-         {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")},  // MagneticFlux
-         {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
          {QuantityEnum.SmallProportion, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // SmallProportion
-         {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
          {QuantityEnum.Porosity, new Guid("2f6516a1-47cc-498f-8271-e84150183665")},  // Porosity
-         {QuantityEnum.Power, new Guid("6fd69f30-a219-4d56-a1dd-000d8175e2ed")},  // Power
-         {QuantityEnum.TorqueGradient, new Guid("002104cd-25d6-438d-afe3-065ff392b294")},  // TorqueGradient
-         {QuantityEnum.ThermalConductivityTemperatureGradient, new Guid("5e509f43-8fb4-490e-b9a5-59d7393761c0")},  // ThermalConductivityTemperatureGradient
-         {QuantityEnum.Stress, new Guid("e4aa819b-a385-418b-bbca-cfb1421093f5")} // Stress
+         {QuantityEnum.StrokeFrequency, new Guid("86fd37e4-3ebf-42ec-9eb2-1e65f7abf29e")},  // StrokeFrequency
+         {QuantityEnum.ShockRate, new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff")} // ShockRate
     };
   }
 }
@@ -940,38 +944,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Tesla,  // tesla
-         Gauss,  // gauss
-         Milligauss,  // milligauss
-         Microtesla,  // microtesla
-         Nanotesla // nanotesla
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Tesla, new Guid("33c3b59d-9876-4918-9f31-f22de88d7bde")},  // tesla
-         {UnitChoicesEnum.Gauss, new Guid("c09cd87d-8a84-45d0-88d3-20bb5cc48559")},  // gauss
-         {UnitChoicesEnum.Milligauss, new Guid("41ace729-a2ff-4047-adc3-375829de64c6")},  // milligauss
-         {UnitChoicesEnum.Microtesla, new Guid("c6b30197-be6b-41b7-803d-a8de61338612")},  // microtesla
-         {UnitChoicesEnum.Nanotesla, new Guid("9bef9def-8cd3-4f7b-b991-290d3441b3d4")} // nanotesla
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class ElectricalCapacitanceQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -1284,31 +1256,245 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
+  public partial class ForceGradientQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Joule,  // joule
-         Kilojoule,  // kilojoule
-         Megajoule,  // megajoule
-         Gigajoule,  // gigajoule
-         Calorie,  // calorie
-         Kilocalorie,  // kilocalorie
-         BritishThermalUnit,  // british thermal unit
-         KiloBritishThermalUnit,  // kilo british thermal unit
-         MegaBritishThermalUnit // mega british thermal unit
+         NewtonPerMetre,  // newton per metre
+         NewtonPer30Metre,  // newton per 30 metre
+         NewtonPer10Metre,  // newton per 10 metre
+         NewtonPerDecimetre,  // newton per decimetre
+         NewtonPerCentimetre,  // newton per centimetre
+         NewtonPerMillimetre,  // newton per millimetre
+         DecanewtonPerMetre,  // decanewton per metre
+         DecanewtonPer30Metre,  // decanewton per 30 metre
+         DecanewtonPer10Metre,  // decanewton per 10 metre
+         DecanewtonPerDecimetre,  // decanewton per decimetre
+         DecanewtonPerCentimetre,  // decanewton per centimetre
+         DecanewtonPerMillimetre,  // decanewton per millimetre
+         KilonewtonPerMetre,  // kilonewton per metre
+         KilonewtonPer30Metre,  // kilonewton per 30 metre
+         KilonewtonPer10Metre,  // kilonewton per 10 metre
+         KilonewtonPerDecimetre,  // kilonewton per decimetre
+         KilonewtonPerCentimetre,  // kilonewton per centimetre
+         KilonewtonPerMillimetre,  // kilonewton per millimetre
+         PoundPerFoot,  // pound per foot
+         PoundPerInch,  // pound per inch
+         KilopoundPerFoot,  // kilopound per foot
+         KilopoundPerInch,  // kilopound per inch
+         PoundPer30Foot,  // pound per 30 foot
+         PoundPer100Foot,  // pound per 100 foot
+         KilopoundPer30Foot,  // kilopound per 30 foot
+         KilopoundPer100Foot // kilopound per 100 foot
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Joule, new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076")},  // joule
-         {UnitChoicesEnum.Kilojoule, new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0")},  // kilojoule
-         {UnitChoicesEnum.Megajoule, new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126")},  // megajoule
-         {UnitChoicesEnum.Gigajoule, new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2")},  // gigajoule
-         {UnitChoicesEnum.Calorie, new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12")},  // calorie
-         {UnitChoicesEnum.Kilocalorie, new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578")},  // kilocalorie
-         {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
-         {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
-         {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
+         {UnitChoicesEnum.NewtonPerMetre, new Guid("e503a1d3-1815-4321-8087-6e3d6dc641c8")},  // newton per metre
+         {UnitChoicesEnum.NewtonPer30Metre, new Guid("be16e271-5ce7-445b-a8db-9014a6acc22b")},  // newton per 30 metre
+         {UnitChoicesEnum.NewtonPer10Metre, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")},  // newton per 10 metre
+         {UnitChoicesEnum.NewtonPerDecimetre, new Guid("dcd21076-ecb6-481e-8b8b-1cd5ccc68915")},  // newton per decimetre
+         {UnitChoicesEnum.NewtonPerCentimetre, new Guid("739cb2cd-2c9f-4efc-ad17-306b8f09de57")},  // newton per centimetre
+         {UnitChoicesEnum.NewtonPerMillimetre, new Guid("9375f700-72fb-4212-a51d-0f4500e7b13c")},  // newton per millimetre
+         {UnitChoicesEnum.DecanewtonPerMetre, new Guid("2566918f-f1b1-4ffb-906b-adb3680812e1")},  // decanewton per metre
+         {UnitChoicesEnum.DecanewtonPer30Metre, new Guid("20de7177-2099-4f86-89da-fdfa68bf67ed")},  // decanewton per 30 metre
+         {UnitChoicesEnum.DecanewtonPer10Metre, new Guid("4f30206a-b381-4a28-9e2d-fafc026e71d5")},  // decanewton per 10 metre
+         {UnitChoicesEnum.DecanewtonPerDecimetre, new Guid("cf20b9bb-aab1-4f1a-832c-1cfbe8ffc825")},  // decanewton per decimetre
+         {UnitChoicesEnum.DecanewtonPerCentimetre, new Guid("47704d55-35cc-4bfc-9f93-7cf7f29c81ac")},  // decanewton per centimetre
+         {UnitChoicesEnum.DecanewtonPerMillimetre, new Guid("1f418c90-f2e6-4bc8-8c06-f281e56ef6cc")},  // decanewton per millimetre
+         {UnitChoicesEnum.KilonewtonPerMetre, new Guid("9ec7912e-9506-43ce-9089-80000d7ddd3f")},  // kilonewton per metre
+         {UnitChoicesEnum.KilonewtonPer30Metre, new Guid("b08fae49-fdc3-409e-8b0f-3349ab189dc9")},  // kilonewton per 30 metre
+         {UnitChoicesEnum.KilonewtonPer10Metre, new Guid("f57cb3e9-4da5-4960-aff6-a27167276e4a")},  // kilonewton per 10 metre
+         {UnitChoicesEnum.KilonewtonPerDecimetre, new Guid("f3033c1b-1be8-4110-832a-4b60c31043e6")},  // kilonewton per decimetre
+         {UnitChoicesEnum.KilonewtonPerCentimetre, new Guid("4db740c5-df92-4f65-b0da-2119ad80cbfc")},  // kilonewton per centimetre
+         {UnitChoicesEnum.KilonewtonPerMillimetre, new Guid("14578d1b-6d43-441a-8f1b-aa77ab10a9bf")},  // kilonewton per millimetre
+         {UnitChoicesEnum.PoundPerFoot, new Guid("516e4b02-2f1a-49a7-8cd9-3fa4e28c8fce")},  // pound per foot
+         {UnitChoicesEnum.PoundPerInch, new Guid("8a5772d2-1253-4269-958a-af9f779aecc6")},  // pound per inch
+         {UnitChoicesEnum.KilopoundPerFoot, new Guid("bf63e80f-97df-48d1-afbf-c83415654e44")},  // kilopound per foot
+         {UnitChoicesEnum.KilopoundPerInch, new Guid("fa6a4a38-b070-48d1-a747-be22ab0e57b6")},  // kilopound per inch
+         {UnitChoicesEnum.PoundPer30Foot, new Guid("0d0926be-19fa-4687-88d1-35f1acc58717")},  // pound per 30 foot
+         {UnitChoicesEnum.PoundPer100Foot, new Guid("dcaa5f41-da2f-49d2-be41-80fb6f0a06ec")},  // pound per 100 foot
+         {UnitChoicesEnum.KilopoundPer30Foot, new Guid("27a355cf-36ae-458d-acbd-2a5ad931bbab")},  // kilopound per 30 foot
+         {UnitChoicesEnum.KilopoundPer100Foot, new Guid("0d5c841e-b259-4fdf-93d7-e39cca391adb")} // kilopound per 100 foot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ForceQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Newton,  // newton
+         Decanewton,  // decanewton
+         Kilonewton,  // kilonewton
+         Kilodecanewton,  // kilodecanewton
+         KilogramForce,  // kilogram force
+         PoundForce,  // pound force
+         KilopoundForce // kilopound force
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Newton, new Guid("2e6b218c-0f85-4e8d-b9c5-73b78d207ef8")},  // newton
+         {UnitChoicesEnum.Decanewton, new Guid("fc48e3a8-deb9-4cf6-aaad-5b18f7e37972")},  // decanewton
+         {UnitChoicesEnum.Kilonewton, new Guid("e30d6f94-7887-4746-8d4f-eb720239b702")},  // kilonewton
+         {UnitChoicesEnum.Kilodecanewton, new Guid("8ad7ae81-602b-4694-bc6d-c18f520f1266")},  // kilodecanewton
+         {UnitChoicesEnum.KilogramForce, new Guid("ea771c51-4078-4aa6-b2df-db6f77a140ad")},  // kilogram force
+         {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")},  // pound force
+         {UnitChoicesEnum.KilopoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")} // kilopound force
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class FrequencyQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Hertz,  // hertz
+         ReciprocalSecond,  // reciprocal second
+         Kilohertz,  // kilohertz
+         Megahertz,  // megahertz
+         Gigahertz,  // gigahertz
+         Terahertz,  // terahertz
+         Rpm,  // rpm
+         Spm,  // spm
+         RotationPerSecond,  // rotation per second
+         StrokePerSecond,  // stroke per second
+         StrokePerHour,  // stroke per hour
+         RotationPerHour,  // rotation per hour
+         ShockPerSecond,  // shock per second
+         ShockPerMinute,  // shock per minute
+         ShockPerHour // shock per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
+         {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")},  // reciprocal second
+         {UnitChoicesEnum.Kilohertz, new Guid("acf483c1-5d7a-4914-afa2-de7abed9be3e")},  // kilohertz
+         {UnitChoicesEnum.Megahertz, new Guid("6dea9f29-d4f4-49a7-86fe-0205d4bab45e")},  // megahertz
+         {UnitChoicesEnum.Gigahertz, new Guid("655ee4f9-1782-4ec0-894a-afff9b75cac7")},  // gigahertz
+         {UnitChoicesEnum.Terahertz, new Guid("9ca52ae4-2fc5-4e60-b774-79c73442de13")},  // terahertz
+         {UnitChoicesEnum.Rpm, new Guid("30880b5f-803d-412e-9736-62dca3ba5bbd")},  // rpm
+         {UnitChoicesEnum.Spm, new Guid("426b000b-235f-41d5-8806-b2e47fbfb53b")},  // spm
+         {UnitChoicesEnum.RotationPerSecond, new Guid("6e0ff63e-ef67-440d-a0f7-a17ff73cfff2")},  // rotation per second
+         {UnitChoicesEnum.StrokePerSecond, new Guid("fe114eaf-117a-480e-9dbc-2db244b6d210")},  // stroke per second
+         {UnitChoicesEnum.StrokePerHour, new Guid("b0f63a0c-9a53-4bdc-9166-03eb4254d3d8")},  // stroke per hour
+         {UnitChoicesEnum.RotationPerHour, new Guid("cdc5dd34-dc2d-4bd8-85ac-13f6d71ea188")},  // rotation per hour
+         {UnitChoicesEnum.ShockPerSecond, new Guid("b5318133-64e9-43c7-b7bf-3c86140fe7aa")},  // shock per second
+         {UnitChoicesEnum.ShockPerMinute, new Guid("6ccbee46-cb8a-4777-b1d2-e88eedd24f73")},  // shock per minute
+         {UnitChoicesEnum.ShockPerHour, new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e")} // shock per hour
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class FrequencyRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         HertzPerSecond,  // hertz per second
+         KiloHertzPerSecond,  // kilo hertz per second
+         MegaHertzPerSecond,  // mega hertz per second
+         GigaHertzPerSecond,  // giga hertz per second
+         HertzPerMinute,  // hertz per minute
+         KiloHertzPerMinute,  // kilo hertz per minute
+         MegaHertzPerMinute,  // mega hertz per minute
+         GigaHertzPerMinute,  // giga hertz per minute
+         HertzPerHour,  // hertz per hour
+         KiloHertzPerHour,  // kilo hertz per hour
+         MegaHertzPerHour,  // mega hertz per hour
+         GigaHertzPerHour,  // giga hertz per hour
+         HertzPerDay,  // hertz per day
+         KiloHertzPerDay,  // kilo hertz per day
+         MegaHertzPerDay,  // mega hertz per day
+         GigaHertzPerDay,  // giga hertz per day
+         HertzPerYear,  // hertz per year
+         KiloHertzPerYear,  // kilo hertz per year
+         MegaHertzPerYear,  // mega hertz per year
+         GigaHertzPerYear,  // giga hertz per year
+         RpmPerSecond,  // rpm per second
+         SpmPerSecond // spm per second
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.HertzPerSecond, new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd")},  // hertz per second
+         {UnitChoicesEnum.KiloHertzPerSecond, new Guid("e197e7ca-93f7-4348-9508-74e61ce97f94")},  // kilo hertz per second
+         {UnitChoicesEnum.MegaHertzPerSecond, new Guid("8c9671f4-54b6-40a0-94c1-5cfb25378f88")},  // mega hertz per second
+         {UnitChoicesEnum.GigaHertzPerSecond, new Guid("46ad2062-982c-461f-95d8-ddd888e5d4f8")},  // giga hertz per second
+         {UnitChoicesEnum.HertzPerMinute, new Guid("af3fcbbf-4fc8-4b5d-b555-33340d3c2f0f")},  // hertz per minute
+         {UnitChoicesEnum.KiloHertzPerMinute, new Guid("0fabfb82-03fb-4855-aaea-578e36c9c7cf")},  // kilo hertz per minute
+         {UnitChoicesEnum.MegaHertzPerMinute, new Guid("97c4e6e3-a8b3-4aa6-a742-1900a239e282")},  // mega hertz per minute
+         {UnitChoicesEnum.GigaHertzPerMinute, new Guid("8d8d140d-00cd-4e80-aaa5-8d2d5ddcbc73")},  // giga hertz per minute
+         {UnitChoicesEnum.HertzPerHour, new Guid("424100d5-ab81-4061-9429-74a9e3638453")},  // hertz per hour
+         {UnitChoicesEnum.KiloHertzPerHour, new Guid("0963dc43-168a-483c-be3f-3c9054b0c692")},  // kilo hertz per hour
+         {UnitChoicesEnum.MegaHertzPerHour, new Guid("a1b30880-ba44-4675-b808-6d93ba8aa8d2")},  // mega hertz per hour
+         {UnitChoicesEnum.GigaHertzPerHour, new Guid("cd42ca67-9d8b-411c-bcce-e9e5ce6d1259")},  // giga hertz per hour
+         {UnitChoicesEnum.HertzPerDay, new Guid("fe28723d-23e5-45f3-b286-50705746d643")},  // hertz per day
+         {UnitChoicesEnum.KiloHertzPerDay, new Guid("0dc10fed-83a5-4570-a997-f2422d71d7fd")},  // kilo hertz per day
+         {UnitChoicesEnum.MegaHertzPerDay, new Guid("c5743df5-a0be-41d2-99a1-b1f760940007")},  // mega hertz per day
+         {UnitChoicesEnum.GigaHertzPerDay, new Guid("56e88229-8197-4ca2-aa69-e4100234d344")},  // giga hertz per day
+         {UnitChoicesEnum.HertzPerYear, new Guid("1195a495-ea6e-4b5a-92b6-6ef0d2ca23d5")},  // hertz per year
+         {UnitChoicesEnum.KiloHertzPerYear, new Guid("2e2a0d0f-5658-4ba2-8799-53bb06f197e7")},  // kilo hertz per year
+         {UnitChoicesEnum.MegaHertzPerYear, new Guid("665c1c2a-57f6-4696-8b7b-524f8ad6084f")},  // mega hertz per year
+         {UnitChoicesEnum.GigaHertzPerYear, new Guid("2c756b88-bbed-4650-8307-86bc7513caee")},  // giga hertz per year
+         {UnitChoicesEnum.RpmPerSecond, new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb")},  // rpm per second
+         {UnitChoicesEnum.SpmPerSecond, new Guid("abcb24f7-c949-41dd-bf7d-acc23dc7e5e3")} // spm per second
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class HeatTransferCoefficientQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         WattPerSquareMetrePerKelvin,  // watt per square metre per kelvin
+         BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit // british thermal unit per hour per square foot per degree fahrenheit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.WattPerSquareMetrePerKelvin, new Guid("e1737353-c10b-46cd-aa4e-9c90afb2f01e")},  // watt per square metre per kelvin
+         {UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit, new Guid("6963db25-2bd9-4017-9c83-cc578a11abbf")} // british thermal unit per hour per square foot per degree fahrenheit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1339,6 +1525,36 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.DotPerInch, new Guid("e042b571-b7d0-477d-abf6-8b8998e5ba6c")},  // dot per inch
          {UnitChoicesEnum.DotPerMillimetre, new Guid("6d4d5f26-8812-4002-a2bf-27ec7871c1f4")},  // dot per millimetre
          {UnitChoicesEnum.DotPerMicrometre, new Guid("76e21d1d-54f5-4bbb-81c6-1b92b8b30bfe")} // dot per micrometre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class InterfacialTensionQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonPerMetre,  // newton per metre
+         MillinewtonPerMetre,  // millinewton per metre
+         DynePerCentimetre,  // dyne per centimetre
+         PoundPerSecondSquared // pound per second squared
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonPerMetre, new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932")},  // newton per metre
+         {UnitChoicesEnum.MillinewtonPerMetre, new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690")},  // millinewton per metre
+         {UnitChoicesEnum.DynePerCentimetre, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // dyne per centimetre
+         {UnitChoicesEnum.PoundPerSecondSquared, new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c")} // pound per second squared
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1478,59 +1694,209 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MassQuantity : SymbolizedBasePhysicalQuantity
+  public partial class MagneticFluxDensityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Kilogram,  // kilogram
-         Hectogram,  // hectogram
-         Decagram,  // decagram
-         Gram,  // gram
-         Centigram,  // centigram
-         Milligram,  // milligram
-         Microgram,  // microgram
-         Nanogram,  // nanogram
-         AtomMassUnit,  // atom mass unit
-         TonneMetric,  // tonne metric
-         Kilotonne,  // kilotonne
-         Megatonne,  // megatonne
-         Gigatonne,  // gigatonne
-         Pound,  // pound
-         Kilopound,  // kilopound
-         Ounce,  // ounce
-         Stone,  // stone
-         TonUK,  // ton UK
-         TonUS,  // ton US
-         SolarMass,  // solar mass
-         EarthMass,  // earth mass
-         Grain,  // grain
-         HundredWeights // hundred weights
+         Tesla,  // tesla
+         Gauss,  // gauss
+         Milligauss,  // milligauss
+         Millitesla,  // millitesla
+         Microtesla,  // microtesla
+         Nanotesla,  // nanotesla
+         MaxwellPerSquareCentimetre,  // maxwell per square centimetre
+         WeberPerSquareMetre // weber per square metre
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
-         {UnitChoicesEnum.Hectogram, new Guid("2fb79e4b-3eb5-4aa3-9f12-2c66b1784902")},  // hectogram
-         {UnitChoicesEnum.Decagram, new Guid("1b3f72cb-55b1-4027-b6ad-309cd7d6c1a3")},  // decagram
-         {UnitChoicesEnum.Gram, new Guid("049ba04e-4c70-41f5-bb29-6b54bb5b2103")},  // gram
-         {UnitChoicesEnum.Centigram, new Guid("e56aa2fa-80b7-417f-8e08-91b9b8a1198c")},  // centigram
-         {UnitChoicesEnum.Milligram, new Guid("322b0e70-c8e5-482e-a9db-682d15baacf9")},  // milligram
-         {UnitChoicesEnum.Microgram, new Guid("eb831d52-2690-4b8a-a1a4-83e9bdb07dbc")},  // microgram
-         {UnitChoicesEnum.Nanogram, new Guid("93db8c40-4dd0-46a4-ade6-db51bcbca66f")},  // nanogram
-         {UnitChoicesEnum.AtomMassUnit, new Guid("f470168e-1e20-458e-b6da-6bee551cb6d6")},  // atom mass unit
-         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
-         {UnitChoicesEnum.Kilotonne, new Guid("2a767cda-fc61-4aa4-81dd-1a4f6d6af755")},  // kilotonne
-         {UnitChoicesEnum.Megatonne, new Guid("92c4b624-4205-4596-aabf-1dd4aa442718")},  // megatonne
-         {UnitChoicesEnum.Gigatonne, new Guid("51cd0591-d741-4769-bd22-e36959d1adcf")},  // gigatonne
-         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
-         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
-         {UnitChoicesEnum.Ounce, new Guid("4e64e69b-2276-46c8-a918-06ab6980178c")},  // ounce
-         {UnitChoicesEnum.Stone, new Guid("6894dc1c-21e2-42aa-9569-759c0e6e6d6e")},  // stone
-         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")},  // ton UK
-         {UnitChoicesEnum.TonUS, new Guid("443af797-a62f-4137-a852-ad1c9163dd7b")},  // ton US
-         {UnitChoicesEnum.SolarMass, new Guid("432e73bf-a448-47f6-9c65-9339d5bac5a3")},  // solar mass
-         {UnitChoicesEnum.EarthMass, new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e")},  // earth mass
-         {UnitChoicesEnum.Grain, new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2")},  // grain
-         {UnitChoicesEnum.HundredWeights, new Guid("83810f2a-b260-41b3-bc13-5ef60290f214")} // hundred weights
+         {UnitChoicesEnum.Tesla, new Guid("33c3b59d-9876-4918-9f31-f22de88d7bde")},  // tesla
+         {UnitChoicesEnum.Gauss, new Guid("c09cd87d-8a84-45d0-88d3-20bb5cc48559")},  // gauss
+         {UnitChoicesEnum.Milligauss, new Guid("41ace729-a2ff-4047-adc3-375829de64c6")},  // milligauss
+         {UnitChoicesEnum.Millitesla, new Guid("9b6d864e-6775-4668-a59d-e1ab432f8960")},  // millitesla
+         {UnitChoicesEnum.Microtesla, new Guid("c6b30197-be6b-41b7-803d-a8de61338612")},  // microtesla
+         {UnitChoicesEnum.Nanotesla, new Guid("9bef9def-8cd3-4f7b-b991-290d3441b3d4")},  // nanotesla
+         {UnitChoicesEnum.MaxwellPerSquareCentimetre, new Guid("d1b202cb-87c6-417a-947c-5247e5cdfe82")},  // maxwell per square centimetre
+         {UnitChoicesEnum.WeberPerSquareMetre, new Guid("fefe997a-f3a6-4663-a1de-32889ee0cf15")} // weber per square metre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MagneticFluxQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Weber,  // weber
+         Milliweber,  // milliweber
+         Microweber,  // microweber
+         VoltSecond,  // volt second
+         UnitPole,  // unit pole
+         Megaline,  // megaline
+         Kiloline,  // kiloline
+         Line,  // line
+         Maxwell,  // maxwell
+         TeslaSquareMetre,  // tesla square metre
+         TeslaSquareCentimetre,  // tesla square centimetre
+         GaussSquareCentimetre,  // gauss square centimetre
+         MagneticFluxQuantum // magnetic flux quantum
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Weber, new Guid("d790689d-e7dd-43d8-a3c0-c17ccc8073e5")},  // weber
+         {UnitChoicesEnum.Milliweber, new Guid("94f03fc7-b0bb-4356-8787-c9e33f6559d2")},  // milliweber
+         {UnitChoicesEnum.Microweber, new Guid("200b9de7-0635-40eb-8ebd-9cef7c01ac10")},  // microweber
+         {UnitChoicesEnum.VoltSecond, new Guid("430305c3-d672-4d68-9b16-d0517243a870")},  // volt second
+         {UnitChoicesEnum.UnitPole, new Guid("3bac78d4-5601-4cb2-bea1-01d952597a4d")},  // unit pole
+         {UnitChoicesEnum.Megaline, new Guid("cca39e15-ee2e-4b8f-8843-527b329f3e81")},  // megaline
+         {UnitChoicesEnum.Kiloline, new Guid("85862477-e913-4bcf-9d24-8248ec975d43")},  // kiloline
+         {UnitChoicesEnum.Line, new Guid("40d608dd-b19f-4489-aac3-a3a6b7a55413")},  // line
+         {UnitChoicesEnum.Maxwell, new Guid("8c1fcd01-4a3d-469a-a019-d3b35f7ef8b5")},  // maxwell
+         {UnitChoicesEnum.TeslaSquareMetre, new Guid("f6da9f32-0738-4014-aac6-fdc5935fd436")},  // tesla square metre
+         {UnitChoicesEnum.TeslaSquareCentimetre, new Guid("312b97ea-6167-47b5-a046-c6c202fb7eb4")},  // tesla square centimetre
+         {UnitChoicesEnum.GaussSquareCentimetre, new Guid("a0dc1e92-7e84-401f-bca2-a6eb618ef604")},  // gauss square centimetre
+         {UnitChoicesEnum.MagneticFluxQuantum, new Guid("f768bd79-1119-401c-b0df-39a5207273e0")} // magnetic flux quantum
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassGradientQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerMetre,  // kilogram per metre
+         PoundPerFoot,  // pound per foot
+         GramPerMetre // gram per metre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerMetre, new Guid("c8b4a6ea-29bf-4e5a-b7ce-9142cefc0752")},  // kilogram per metre
+         {UnitChoicesEnum.PoundPerFoot, new Guid("6fdf4cb6-a43b-482d-9bc8-d4ad49770f9e")},  // pound per foot
+         {UnitChoicesEnum.GramPerMetre, new Guid("0cea1e32-9adb-4882-9070-d027cd0eef8e")} // gram per metre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassRateQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerSecond,  // kilogram per second
+         KilogramPerMinute,  // kilogram per minute
+         KilogramPerHour,  // kilogram per hour
+         KilogramPerYear,  // kilogram per year
+         PoundPerSecond,  // pound per second
+         PoundPerMinute,  // pound per minute
+         PoundPerHour,  // pound per hour
+         PoundPerYear // pound per year
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerSecond, new Guid("a2daceb8-7705-4c97-9945-b354ea1ff78d")},  // kilogram per second
+         {UnitChoicesEnum.KilogramPerMinute, new Guid("b776ae6f-5b86-462c-b815-2608d7e98192")},  // kilogram per minute
+         {UnitChoicesEnum.KilogramPerHour, new Guid("736e4fcd-434f-4442-b025-a480a1532543")},  // kilogram per hour
+         {UnitChoicesEnum.KilogramPerYear, new Guid("0ce50feb-a755-4a62-a50b-4af417bc2702")},  // kilogram per year
+         {UnitChoicesEnum.PoundPerSecond, new Guid("48ac7515-ce4e-4ed6-a198-fe3ed3451a38")},  // pound per second
+         {UnitChoicesEnum.PoundPerMinute, new Guid("92d18443-9357-42cf-86d2-fa78996c838a")},  // pound per minute
+         {UnitChoicesEnum.PoundPerHour, new Guid("d4e0791c-eb4c-47a4-9e71-af3ad1b707cc")},  // pound per hour
+         {UnitChoicesEnum.PoundPerYear, new Guid("a461e40b-48ea-49b1-8a55-8e75b26fbb8e")} // pound per year
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MaterialStrengthQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Pascal,  // pascal
+         Megapascal,  // megapascal
+         Gigapascal,  // gigapascal
+         Psi,  // psi
+         PoundPer100SquareFoot,  // pound per 100 square foot
+         MegapoundPerSquareInch // megapound per square inch
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Pascal, new Guid("159e99d3-c79d-4dc6-974f-05cc38af001e")},  // pascal
+         {UnitChoicesEnum.Megapascal, new Guid("38b95b61-a825-4393-a0e8-ecd686575735")},  // megapascal
+         {UnitChoicesEnum.Gigapascal, new Guid("c9aa0a18-02ac-42a0-9afe-8a08b4f03331")},  // gigapascal
+         {UnitChoicesEnum.Psi, new Guid("4adf2a33-05c3-49bb-ba61-59dd76f4621e")},  // psi
+         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("eb1e2a52-3de3-4338-ad4d-40e8ce90e40b")},  // pound per 100 square foot
+         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("197a8b98-190d-4d45-91d7-85af12deab02")} // megapound per square inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PermeabilityQuantity : AreaQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         SquareMetre,  // square metre
+         Darcy,  // darcy
+         Millidarcy,  // millidarcy
+         Microdarcy,  // microdarcy
+         Nanodarcy // nanodarcy
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.SquareMetre, new Guid("5e27ad4a-b541-4807-9a36-4bd159b33f52")},  // square metre
+         {UnitChoicesEnum.Darcy, new Guid("9a89bcc3-dc77-4e3a-a492-fcdabc24ec41")},  // darcy
+         {UnitChoicesEnum.Millidarcy, new Guid("8d7a6767-6c6b-4daf-8617-d35e4055d457")},  // millidarcy
+         {UnitChoicesEnum.Microdarcy, new Guid("b552f28d-c68a-4c59-853c-fe6e03dd5f4c")},  // microdarcy
+         {UnitChoicesEnum.Nanodarcy, new Guid("f35b05c7-8b2f-4194-9336-d42cec5f3ba5")} // nanodarcy
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1592,6 +1958,266 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class PowerQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Watt,  // watt
+         Decawatt,  // decawatt
+         Hectowatt,  // hectowatt
+         Kilowatt,  // kilowatt
+         Megawatt,  // megawatt
+         Gigawatt,  // gigawatt
+         Terawatt,  // terawatt
+         Petawatt,  // petawatt
+         Exawatt,  // exawatt
+         Deciwatt,  // deciwatt
+         Centiwatt,  // centiwatt
+         Milliwatt,  // milliwatt
+         Microwatt,  // microwatt
+         Nanowatt,  // nanowatt
+         Picowatt,  // picowatt
+         Femtowatt,  // femtowatt
+         Attowatt // attowatt
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Watt, new Guid("9d986a0c-700f-4448-a48c-a028bbd22049")},  // watt
+         {UnitChoicesEnum.Decawatt, new Guid("fa888306-f2ef-420a-9ce2-8c56fe64ea3c")},  // decawatt
+         {UnitChoicesEnum.Hectowatt, new Guid("1f159f0d-635a-4bc8-9020-6c09d72b3f63")},  // hectowatt
+         {UnitChoicesEnum.Kilowatt, new Guid("016b23c7-0231-45bb-8723-5d3d4cc5c054")},  // kilowatt
+         {UnitChoicesEnum.Megawatt, new Guid("5719b5f3-5c24-46d2-8ccd-0a06cc6b49ae")},  // megawatt
+         {UnitChoicesEnum.Gigawatt, new Guid("ba67ba92-cdf5-46a8-a5f5-56c1ad102417")},  // gigawatt
+         {UnitChoicesEnum.Terawatt, new Guid("b3e60a20-9e0f-479b-903b-16b22d86a515")},  // terawatt
+         {UnitChoicesEnum.Petawatt, new Guid("bafba6b7-8a58-46b0-b4c7-c9a008c5e8f4")},  // petawatt
+         {UnitChoicesEnum.Exawatt, new Guid("457950e4-0d4c-4f18-87ae-c35a7d2f512a")},  // exawatt
+         {UnitChoicesEnum.Deciwatt, new Guid("6a3cd886-1c2c-41c8-8214-b21aff588b1e")},  // deciwatt
+         {UnitChoicesEnum.Centiwatt, new Guid("ac6c67e1-0912-44f2-9496-ed82aca2b925")},  // centiwatt
+         {UnitChoicesEnum.Milliwatt, new Guid("4b9e8b24-6c84-423e-8f79-b2bec161f219")},  // milliwatt
+         {UnitChoicesEnum.Microwatt, new Guid("f0345b17-3e67-4c27-a787-69cd6feb7b1b")},  // microwatt
+         {UnitChoicesEnum.Nanowatt, new Guid("622ee208-1b04-42c4-ba6e-552e6e328e02")},  // nanowatt
+         {UnitChoicesEnum.Picowatt, new Guid("5b46567b-0571-4ca7-90d5-6304a0b7f938")},  // picowatt
+         {UnitChoicesEnum.Femtowatt, new Guid("325622ea-c161-4f4f-9ee4-86d9e802f21c")},  // femtowatt
+         {UnitChoicesEnum.Attowatt, new Guid("7bc1807f-90ac-41b0-a15f-9d1c81101f6d")} // attowatt
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PressureGradientQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         PascalPerMetre,  // pascal per metre
+         BarPerMetre,  // bar per metre
+         PsiPerMetre,  // psi per metre
+         PsiPerFoot // psi per foot
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.PascalPerMetre, new Guid("f5a37831-4a70-44de-af34-4f6ce1a54af3")},  // pascal per metre
+         {UnitChoicesEnum.BarPerMetre, new Guid("73a70891-87cf-44fc-8437-94938f034eec")},  // bar per metre
+         {UnitChoicesEnum.PsiPerMetre, new Guid("2235a51b-cdf2-4f53-9664-b7a968dbbba3")},  // psi per metre
+         {UnitChoicesEnum.PsiPerFoot, new Guid("b99cef5c-d6df-4803-b52b-6050cf7e7ff8")} // psi per foot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PressureLossConstantQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         PressureLossConstantSI,  // pressure loss constant SI
+         PressureLossConstantMetric,  // pressure loss constant metric
+         PressureLossConstantUK,  // pressure loss constant UK
+         PressureLossConstantUS // pressure loss constant US
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.PressureLossConstantSI, new Guid("e0b334c4-2e44-4b1b-891f-9deae86a4d17")},  // pressure loss constant SI
+         {UnitChoicesEnum.PressureLossConstantMetric, new Guid("043fbd34-1e4f-45bc-9935-b1797b606fd6")},  // pressure loss constant metric
+         {UnitChoicesEnum.PressureLossConstantUK, new Guid("d5a97f2d-cb2f-449f-8f60-0ad292a01b87")},  // pressure loss constant UK
+         {UnitChoicesEnum.PressureLossConstantUS, new Guid("b5cb21d1-0e71-4ab2-8d9d-42de21753edc")} // pressure loss constant US
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PressureQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Pascal,  // pascal
+         Kilopascal,  // kilopascal
+         Bar,  // bar
+         Millibar,  // millibar
+         Microbar,  // microbar
+         PoundPerSquareInch,  // pound per square inch
+         PoundPer100SquareFoot,  // pound per 100 square foot
+         KilopoundPerSquareInch,  // kilopound per square inch
+         StandardAtmosphere,  // standard atmosphere
+         PoundPerSquareFoot,  // pound per square foot
+         Megapascal,  // megapascal
+         Gigapascal,  // gigapascal
+         NewtonPerSquareMetre,  // newton per square metre
+         NewtonPerSquareCentimetre,  // newton per square centimetre
+         NewtonPerSquareMillimetre,  // newton per square millimetre
+         KilonewtonPerSquareMetre,  // kilonewton per square metre
+         MegapoundPerSquareInch,  // megapound per square inch
+         Torr,  // torr
+         CentimetreMercuryAtZeroDegreeCelsius,  // centimetre mercury at zero degree celsius
+         MillimetreMercuryAtZeroDegreeCelsius,  // millimetre mercury at zero degree celsius
+         InchMercuryAt32DegreeFahrenheit,  // inch mercury at 32 degree fahrenheit
+         InchMercuryAt60DegreeFahrenheit,  // inch mercury at 60 degree fahrenheit
+         CentimetreWaterAt4DegreeCelsius,  // centimetre water at 4 degree celsius
+         MillimetreWaterAt4DegreeCelsius,  // millimetre water at 4 degree celsius
+         InchWaterAt4DegreeCelsius,  // inch water at 4 degree celsius
+         FootWaterAt4DegreeCelsius,  // foot water at 4 degree celsius
+         DynePerSquareCentimetre // dyne per square centimetre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // pascal
+         {UnitChoicesEnum.Kilopascal, new Guid("a41c04f5-198b-4a04-b90a-5700412a2a29")},  // kilopascal
+         {UnitChoicesEnum.Bar, new Guid("0d182739-f8f6-47a6-afcb-71feac973307")},  // bar
+         {UnitChoicesEnum.Millibar, new Guid("43e4fe86-948d-4765-a69d-513ce6dc2b5b")},  // millibar
+         {UnitChoicesEnum.Microbar, new Guid("7fb9e41f-4748-4457-b8b9-efb73da52d94")},  // microbar
+         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // pound per square inch
+         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")},  // pound per 100 square foot
+         {UnitChoicesEnum.KilopoundPerSquareInch, new Guid("a07b5fe5-87e3-4422-afe1-f54de24deeb8")},  // kilopound per square inch
+         {UnitChoicesEnum.StandardAtmosphere, new Guid("93839971-33f2-43e9-82eb-9f869846f999")},  // standard atmosphere
+         {UnitChoicesEnum.PoundPerSquareFoot, new Guid("35b28889-c076-4274-b200-cf7732b17aa3")},  // pound per square foot
+         {UnitChoicesEnum.Megapascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // megapascal
+         {UnitChoicesEnum.Gigapascal, new Guid("5c81fb9b-36ad-47b7-9a8e-c999f7fdbfe3")},  // gigapascal
+         {UnitChoicesEnum.NewtonPerSquareMetre, new Guid("101e92c3-47ab-4d55-8982-93061bc82dea")},  // newton per square metre
+         {UnitChoicesEnum.NewtonPerSquareCentimetre, new Guid("2aa59deb-84d9-41c5-969f-8c8bb9d0c369")},  // newton per square centimetre
+         {UnitChoicesEnum.NewtonPerSquareMillimetre, new Guid("e5e9cb06-38a8-4ac2-a8a5-8b74689a31a8")},  // newton per square millimetre
+         {UnitChoicesEnum.KilonewtonPerSquareMetre, new Guid("eaa46677-af1c-4922-bf61-d82f2925534b")},  // kilonewton per square metre
+         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("bb49de0a-fbf3-4914-b6b9-fc60ab502522")},  // megapound per square inch
+         {UnitChoicesEnum.Torr, new Guid("f5afdfee-624e-46fa-b798-0ab1b04d2181")},  // torr
+         {UnitChoicesEnum.CentimetreMercuryAtZeroDegreeCelsius, new Guid("412602dc-837b-4fab-afc9-3bf4798a9bed")},  // centimetre mercury at zero degree celsius
+         {UnitChoicesEnum.MillimetreMercuryAtZeroDegreeCelsius, new Guid("d91f64fe-4df4-4ddd-943c-d985fbd1659b")},  // millimetre mercury at zero degree celsius
+         {UnitChoicesEnum.InchMercuryAt32DegreeFahrenheit, new Guid("ab729585-0716-4f24-9502-fcd07ba051bc")},  // inch mercury at 32 degree fahrenheit
+         {UnitChoicesEnum.InchMercuryAt60DegreeFahrenheit, new Guid("83ed97cc-526c-41cc-be78-ea0c86412080")},  // inch mercury at 60 degree fahrenheit
+         {UnitChoicesEnum.CentimetreWaterAt4DegreeCelsius, new Guid("a1bac4cc-f37c-4aa5-aec6-ede0b4c52f09")},  // centimetre water at 4 degree celsius
+         {UnitChoicesEnum.MillimetreWaterAt4DegreeCelsius, new Guid("a46b3ef6-fe2a-4ff3-bc2d-7a26661ce45e")},  // millimetre water at 4 degree celsius
+         {UnitChoicesEnum.InchWaterAt4DegreeCelsius, new Guid("3015f436-b35d-455c-af23-b9bc4dd857da")},  // inch water at 4 degree celsius
+         {UnitChoicesEnum.FootWaterAt4DegreeCelsius, new Guid("52de6721-dfec-4a54-861c-e74da72c8470")},  // foot water at 4 degree celsius
+         {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // dyne per square centimetre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ProportionQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Proportion,  // proportion
+         Percent,  // percent
+         PerThousand,  // per thousand
+         PartPerMillion // part per million
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Proportion, new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9")},  // proportion
+         {UnitChoicesEnum.Percent, new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7")},  // percent
+         {UnitChoicesEnum.PerThousand, new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2")},  // per thousand
+         {UnitChoicesEnum.PartPerMillion, new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792")} // part per million
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class RandomWalkQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerSquareRootSecond,  // radian per square root second
+         RadianPerSquareRootMinute,  // radian per square root minute
+         RadianPerSquareRootHour,  // radian per square root hour
+         RadianPerSquareRootDay,  // radian per square root day
+         DegreePerSquareRootSecond,  // degree per square root second
+         DegreePerSquareRootMinute,  // degree per square root minute
+         DegreePerSquareRootHour,  // degree per square root hour
+         DegreePerSquareRootDay // degree per square root day
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerSquareRootSecond, new Guid("557ea59e-a1da-438b-b04d-ccfc5539f87f")},  // radian per square root second
+         {UnitChoicesEnum.RadianPerSquareRootMinute, new Guid("ccc41b4e-2efb-4760-969f-94614248374f")},  // radian per square root minute
+         {UnitChoicesEnum.RadianPerSquareRootHour, new Guid("e296c410-e278-4586-af95-bae6fe4f0673")},  // radian per square root hour
+         {UnitChoicesEnum.RadianPerSquareRootDay, new Guid("fb4a74f9-a648-4310-a424-9c85036bbc41")},  // radian per square root day
+         {UnitChoicesEnum.DegreePerSquareRootSecond, new Guid("87a0a4e3-a2f5-4f84-b845-c7e6276e1655")},  // degree per square root second
+         {UnitChoicesEnum.DegreePerSquareRootMinute, new Guid("e8e3a988-4219-44a5-ae89-ce115a239d04")},  // degree per square root minute
+         {UnitChoicesEnum.DegreePerSquareRootHour, new Guid("ab6b85cf-54e5-4c3b-a330-f65d7e3bb926")},  // degree per square root hour
+         {UnitChoicesEnum.DegreePerSquareRootDay, new Guid("8f806d0f-3741-4aa8-9f37-54b4f80e307c")} // degree per square root day
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class RelativeTemperatureQuantity : TemperatureQuantity
   {
     public new enum UnitChoicesEnum 
@@ -1620,35 +2246,21 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SmallLengthQuantity : LengthQuantity
+  public partial class ResistivityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Centimetre,  // centimetre
-         Decimetre,  // decimetre
-         Foot,  // foot
-         Inch,  // inch
-         Metre,  // metre
-         Micrometre,  // micrometre
-         Millimetre,  // millimetre
-         Nanometre,  // nanometre
-         Picometre,  // picometre
-         Ångstrøm,  // ångstrøm
-         InchPer32 // inch per 32
+         OhmMetre,  // ohm metre
+         KiloOhmMetre,  // kilo ohm metre
+         MegaOhmMetre,  // mega ohm metre
+         GigaOhmMetre // giga ohm metre
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
-         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
-         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
-         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
-         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
-         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
-         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
-         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
-         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
-         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
+         {UnitChoicesEnum.OhmMetre, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")},  // ohm metre
+         {UnitChoicesEnum.KiloOhmMetre, new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962")},  // kilo ohm metre
+         {UnitChoicesEnum.MegaOhmMetre, new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6")},  // mega ohm metre
+         {UnitChoicesEnum.GigaOhmMetre, new Guid("eecfdf24-7a8e-4783-a627-d4387831767d")} // giga ohm metre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1692,6 +2304,172 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class SpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         JoulePerKilogramKelvin,  // joule per kilogram kelvin
+         JoulePerGramKelvin,  // joule per gram kelvin
+         JoulePerGramDegreeCelsius,  // joule per gram degree celsius
+         CaloriePerGramDegreeCelsius,  // calorie per gram degree celsius
+         BritishThermalUnitPerPoundDegreeFahrenheit,  // british thermal unit per pound degree fahrenheit
+         KilocaloriePerGramDegreeCelsius // kilocalorie per gram degree celsius
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.JoulePerKilogramKelvin, new Guid("52d9523e-546b-41dd-b283-a125447433a3")},  // joule per kilogram kelvin
+         {UnitChoicesEnum.JoulePerGramKelvin, new Guid("0c38001b-ecba-4920-ac75-e4644d8feced")},  // joule per gram kelvin
+         {UnitChoicesEnum.JoulePerGramDegreeCelsius, new Guid("5b620d63-2269-42d3-8385-edca04c7ea70")},  // joule per gram degree celsius
+         {UnitChoicesEnum.CaloriePerGramDegreeCelsius, new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397")},  // calorie per gram degree celsius
+         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")},  // british thermal unit per pound degree fahrenheit
+         {UnitChoicesEnum.KilocaloriePerGramDegreeCelsius, new Guid("b283ecf7-20e4-4a6c-b62b-b07f56fa6614")} // kilocalorie per gram degree celsius
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class SpecificHeatCapacityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         JoulePerKilogramSquaredKelvin,  // joule per kilogram squared kelvin
+         JoulePerGramSquaredKelvin,  // joule per gram squared kelvin
+         JoulePerGramDegreeSquaredCelsius,  // joule per gram degree squared celsius
+         CaloriePerGramDegreeSquaredCelsius,  // calorie per gram degree squared celsius
+         BritishThermalUnitPerPoundSquaredDegreeFahrenheit // british thermal unit per pound squared degree fahrenheit 
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.JoulePerKilogramSquaredKelvin, new Guid("9570fd84-ff2e-4a74-93b7-39bcf6558301")},  // joule per kilogram squared kelvin
+         {UnitChoicesEnum.JoulePerGramSquaredKelvin, new Guid("69520d03-c7c3-483f-bbbb-6bdf3cf74463")},  // joule per gram squared kelvin
+         {UnitChoicesEnum.JoulePerGramDegreeSquaredCelsius, new Guid("9ed03436-3032-4bee-a145-fd03b6236816")},  // joule per gram degree squared celsius
+         {UnitChoicesEnum.CaloriePerGramDegreeSquaredCelsius, new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2")},  // calorie per gram degree squared celsius
+         {UnitChoicesEnum.BritishThermalUnitPerPoundSquaredDegreeFahrenheit, new Guid("57264532-79b7-4a19-8ffe-617bba781be3")} // british thermal unit per pound squared degree fahrenheit 
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class StressQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Pascal,  // pascal
+         Kilopascal,  // kilopascal
+         Bar,  // bar
+         Millibar,  // millibar
+         Microbar,  // microbar
+         PoundPerSquareInch,  // pound per square inch
+         PoundPer100SquareFoot,  // pound per 100 square foot
+         KilopoundPerSquareInch,  // kilopound per square inch
+         PoundPerSquareFoot,  // pound per square foot
+         Megapascal,  // megapascal
+         Gigapascal,  // gigapascal
+         NewtonPerSquareMetre,  // newton per square metre
+         NewtonPerSquareCentimetre,  // newton per square centimetre
+         NewtonPerSquareMillimetre,  // newton per square millimetre
+         KilonewtonPerSquareMetre,  // kilonewton per square metre
+         MegapoundPerSquareInch,  // megapound per square inch
+         DynePerSquareCentimetre // dyne per square centimetre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Pascal, new Guid("7a4c7d2e-62f1-43c7-9c9d-8ff8664b0d98")},  // pascal
+         {UnitChoicesEnum.Kilopascal, new Guid("8f070021-4cc7-424d-a325-e2e57fc82874")},  // kilopascal
+         {UnitChoicesEnum.Bar, new Guid("69864a1c-bb6b-400e-be3b-527bc94a9a96")},  // bar
+         {UnitChoicesEnum.Millibar, new Guid("cf58a57a-381b-4864-9ab3-bbe42589d871")},  // millibar
+         {UnitChoicesEnum.Microbar, new Guid("b3ae1880-5d17-4f4b-b837-c6dc13c44cae")},  // microbar
+         {UnitChoicesEnum.PoundPerSquareInch, new Guid("0e385d5b-5d3a-4360-8695-a934f0152a09")},  // pound per square inch
+         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("d1aade96-1038-4902-9c4a-95f96933d54d")},  // pound per 100 square foot
+         {UnitChoicesEnum.KilopoundPerSquareInch, new Guid("02b3acd6-0715-4ef6-b8e4-6134a3cdc3a6")},  // kilopound per square inch
+         {UnitChoicesEnum.PoundPerSquareFoot, new Guid("2d835d44-2ffd-4239-b0dd-c9c36a763d4a")},  // pound per square foot
+         {UnitChoicesEnum.Megapascal, new Guid("b6de095b-2800-4faf-931b-e8b2b9b2e35f")},  // megapascal
+         {UnitChoicesEnum.Gigapascal, new Guid("213a896e-47e4-4745-baed-c28861f938bb")},  // gigapascal
+         {UnitChoicesEnum.NewtonPerSquareMetre, new Guid("23d4c68e-a606-4fc0-a2b8-74998f6c2862")},  // newton per square metre
+         {UnitChoicesEnum.NewtonPerSquareCentimetre, new Guid("b42eccea-4c35-42af-ba98-5101a3c10b6b")},  // newton per square centimetre
+         {UnitChoicesEnum.NewtonPerSquareMillimetre, new Guid("9f96d22c-9021-4ed6-9904-344d6cd2417a")},  // newton per square millimetre
+         {UnitChoicesEnum.KilonewtonPerSquareMetre, new Guid("ff05dc39-74f1-4bc8-b2d4-e9ee518d3e43")},  // kilonewton per square metre
+         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("c1b8c4db-7a1e-4201-b0aa-e23d1df40871")},  // megapound per square inch
+         {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("eee0197b-0fbd-4a21-8023-61403c9417fe")} // dyne per square centimetre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class TemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KelvinPerMetre,  // kelvin per metre
+         CelsiusPerMetre,  // celsius per metre
+         CelsiusPer10Metre,  // celsius per 10 metre
+         CelsiusPer30Metre,  // celsius per 30 metre
+         CelsiusPer100Metre,  // celsius per 100 metre
+         CelsiusPerFoot,  // celsius per foot
+         CelsiusPer30Foot,  // celsius per 30 foot
+         CelsiusPer100Foot,  // celsius per 100 foot
+         FahrenheitPerFoot,  // fahrenheit per foot
+         FahrenheitPer30Foot,  // fahrenheit per 30 foot
+         FahrenheitPer100Foot // fahrenheit per 100 foot
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KelvinPerMetre, new Guid("f1fe19d2-12e3-43d1-ba97-3ef9e8ec9e73")},  // kelvin per metre
+         {UnitChoicesEnum.CelsiusPerMetre, new Guid("40dbbdfe-b680-403a-8326-2c217ba85d52")},  // celsius per metre
+         {UnitChoicesEnum.CelsiusPer10Metre, new Guid("5e4ff2bf-4788-4258-bd4a-7b18a13364ff")},  // celsius per 10 metre
+         {UnitChoicesEnum.CelsiusPer30Metre, new Guid("d17464c4-a7ef-4dcd-b783-bafe6e9b92de")},  // celsius per 30 metre
+         {UnitChoicesEnum.CelsiusPer100Metre, new Guid("b47f299a-913a-46b7-ad20-c683fa0f02d0")},  // celsius per 100 metre
+         {UnitChoicesEnum.CelsiusPerFoot, new Guid("e7b05420-41f6-4812-bc54-9c14f05a9cbd")},  // celsius per foot
+         {UnitChoicesEnum.CelsiusPer30Foot, new Guid("bea3df4f-78e9-4e1a-bbee-22086da043b4")},  // celsius per 30 foot
+         {UnitChoicesEnum.CelsiusPer100Foot, new Guid("f9bae95a-b282-44a7-8ae0-54728ef3c7a3")},  // celsius per 100 foot
+         {UnitChoicesEnum.FahrenheitPerFoot, new Guid("d08596f1-77c4-4a8e-9245-6bf563fa7345")},  // fahrenheit per foot
+         {UnitChoicesEnum.FahrenheitPer30Foot, new Guid("a1664cb0-db5c-4933-9b57-d075c4975f46")},  // fahrenheit per 30 foot
+         {UnitChoicesEnum.FahrenheitPer100Foot, new Guid("232e2d6d-cb65-4b56-9277-457e4ff678fa")} // fahrenheit per 100 foot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class TemperatureQuantity : SymbolizedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -1709,6 +2487,70 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Fahrenheit, new Guid("55c289ab-6975-439f-9b7a-fdca6d219a9f")},  // fahrenheit
          {UnitChoicesEnum.Rankine, new Guid("b4d6c55d-cf05-46e1-a09b-d0b26eba634a")},  // rankine
          {UnitChoicesEnum.Réaumur, new Guid("968def6c-bc85-49b0-84a8-3ac7ad37efc6")} // réaumur
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ThermalConductivityQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         WattPerMetreKelvin,  // watt per metre kelvin
+         CaloriePerMetreSecondDegreeCelsius,  // calorie per metre second degree celsius
+         CaloriePerCentimetreSecondDegreeCelsius,  // calorie per centimetre second degree celsius
+         BritishThermalUnitPerHourFootDegreeFahrenheit,  // british thermal unit per hour foot degree fahrenheit
+         BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit // british thermal unit inch per hour square foot degree fahrenheit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.WattPerMetreKelvin, new Guid("3ddba24f-4ccf-4cb1-af6c-2829cac3b88f")},  // watt per metre kelvin
+         {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsius, new Guid("d0386fc4-b97b-4874-8c8d-66e093c391ea")},  // calorie per metre second degree celsius
+         {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsius, new Guid("5f8706ed-d938-4715-a0ca-2afff423f6e6")},  // calorie per centimetre second degree celsius
+         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheit, new Guid("43169695-8f6e-42ad-8c07-566dc7651edb")},  // british thermal unit per hour foot degree fahrenheit
+         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit, new Guid("c79c2b27-c956-49a3-9caf-8653017777ca")} // british thermal unit inch per hour square foot degree fahrenheit
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ThermalConductivityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         WattPerMetreKelvinPerKelvin,  // watt per metre kelvin per kelvin
+         CaloriePerMetreSecondDegreeCelsiusSquared,  // calorie per metre second degree celsius squared
+         CaloriePerCentimetreSecondDegreeCelsiusSquared,  // calorie per centimetre second degree celsius squared
+         BritishThermalUnitPerHourFootDegreeFahrenheitSquared,  // british thermal unit per hour foot degree fahrenheit squared
+         BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitSquared // british thermal unit inch per hour square foot degree fahrenheit squared
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.WattPerMetreKelvinPerKelvin, new Guid("0459940e-d71f-4b01-9ea6-eeb05d754af2")},  // watt per metre kelvin per kelvin
+         {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsiusSquared, new Guid("eb08ff8c-d542-440f-a4c7-610653018910")},  // calorie per metre second degree celsius squared
+         {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsiusSquared, new Guid("6c21a6cd-61fe-4086-95a7-ad6d6820c96e")},  // calorie per centimetre second degree celsius squared
+         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheitSquared, new Guid("b79509ea-8c03-4538-9974-208f7e0ee40e")},  // british thermal unit per hour foot degree fahrenheit squared
+         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitSquared, new Guid("918b4e34-3986-427f-8bb6-c09740a7c299")} // british thermal unit inch per hour square foot degree fahrenheit squared
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1794,67 +2636,355 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class PressureQuantity : DerivedBasePhysicalQuantity
+  public partial class TorqueGradientQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Pascal,  // pascal
-         Kilopascal,  // kilopascal
-         Bar,  // bar
-         Millibar,  // millibar
-         Microbar,  // microbar
-         PoundPerSquareInch,  // pound per square inch
-         PoundPer100SquareFoot,  // pound per 100 square foot
-         KilopoundPerSquareInch,  // kilopound per square inch
-         StandardAtmosphere,  // standard atmosphere
-         PoundPerSquareFoot,  // pound per square foot
-         Megapascal,  // megapascal
-         Gigapascal,  // gigapascal
-         NewtonPerSquareMetre,  // newton per square metre
-         NewtonPerSquareCentimetre,  // newton per square centimetre
-         NewtonPerSquareMillimetre,  // newton per square millimetre
-         KilonewtonPerSquareMetre,  // kilonewton per square metre
-         MegapoundPerSquareInch,  // megapound per square inch
-         Torr,  // torr
-         CentimetreMercuryAtZeroDegreeCelsius,  // centimetre mercury at zero degree celsius
-         MillimetreMercuryAtZeroDegreeCelsius,  // millimetre mercury at zero degree celsius
-         InchMercuryAt32DegreeFahrenheit,  // inch mercury at 32 degree fahrenheit
-         InchMercuryAt60DegreeFahrenheit,  // inch mercury at 60 degree fahrenheit
-         CentimetreWaterAt4DegreeCelsius,  // centimetre water at 4 degree celsius
-         MillimetreWaterAt4DegreeCelsius,  // millimetre water at 4 degree celsius
-         InchWaterAt4DegreeCelsius,  // inch water at 4 degree celsius
-         FootWaterAt4DegreeCelsius,  // foot water at 4 degree celsius
-         DynePerSquareCentimetre // dyne per square centimetre
+         NewtonMetrePerMetre,  // newton metre per metre
+         DecanewtonMetrePerMetre,  // decanewton metre per metre
+         KilogramForceMetrePerMetre,  // kilogram force metre per metre
+         KilonewtonMetrePerMetre,  // kilonewton metre per metre
+         FootPoundPerMetre,  // foot pound per metre
+         KilofootPoundPerMetre,  // kilofoot pound per metre
+         NewtonDecimetrePerMetre,  // newton decimetre per metre
+         NewtonCentimetrePerMetre,  // newton centimetre per metre
+         NewtonMillimetrePerMetre,  // newton millimetre per metre
+         InchPoundPerMetre,  // inch pound per metre
+         NewtonMetrePerDecimetre,  // Newton metre per decimetre
+         DecanewtonMetrePerDecimetre,  // decanewton metre per decimetre
+         KilogramForceMetrePerDecimetre,  // kilogram force metre per decimetre
+         KilonewtonMetrePerDecimetre,  // kilonewton metre per decimetre
+         FootPoundPerDecimetre,  // foot pound per decimetre
+         KilofootPoundPerDecimetre,  // kilofoot pound per decimetre
+         NewtonDecimetrePerDecimetre,  // newton decimetre per decimetre
+         NewtonCentimetrePerDecimetre,  // newton centimetre per decimetre
+         NewtonMillimetrePerDecimetre,  // newton millimetre per decimetre
+         InchPoundPerDecimetre,  // inch pound per decimetre
+         NewtonMetrePerCentimetre,  // Newton metre per centimetre
+         DecanewtonMetrePerCentimetre,  // decanewton metre per centimetre
+         KilogramForceMetrePerCentimetre,  // kilogram force metre per centimetre
+         KilonewtonMetrePerCentimetre,  // kilonewton metre per centimetre
+         FootPoundPerCentimetre,  // foot pound per centimetre
+         KilofootPoundPerCentimetre,  // kilofoot pound per centimetre
+         NewtonDecimetrePerCentimetre,  // newton decimetre per centimetre
+         NewtonCentimetrePerCentimetre,  // newton centimetre per centimetre
+         NewtonMillimetrePerCentimetre,  // newton millimetre per centimetre
+         InchPoundPerCentimetre,  // inch pound per centimetre
+         NewtonMetrePerMillimetre,  // Newton metre per millimetre
+         DecanewtonMetrePerMillimetre,  // decanewton metre per millimetre
+         KilogramForceMetrePerMillimetre,  // kilogram force metre per millimetre
+         KilonewtonMetrePerMillimetre,  // kilonewton metre per millimetre
+         FootPoundPerMillimetre,  // foot pound per millimetre
+         KilofootPoundPerMillimetre,  // kilofoot pound per millimetre
+         NewtonDecimetrePerMillimetre,  // newton decimetre per millimetre
+         NewtonCentimetrePerMillimetre,  // newton centimetre per millimetre
+         NewtonMillimetrePerMillimetre,  // newton millimetre per millimetre
+         InchPoundPerMillimetre,  // inch pound per millimetre
+         NewtonMetrePerFoot,  // Newton metre per foot
+         DecanewtonMetrePerFoot,  // decanewton metre per foot
+         KilogramForceMetrePerFoot,  // kilogram force metre per foot
+         KilonewtonMetrePerFoot,  // kilonewton metre per foot
+         FootPoundPerFoot,  // foot pound per foot
+         KilofootPoundPerFoot,  // kilofoot pound per foot
+         NewtonDecimetrePerFoot,  // newton decimetre per foot
+         NewtonCentimetrePerFoot,  // newton centimetre per foot
+         NewtonMillimetrePerFoot,  // newton millimetre per foot
+         InchPoundPerFoot,  // inch pound per foot
+         NewtonMetrePerInch,  // Newton metre per inch
+         DecanewtonMetrePerInch,  // decanewton metre per inch
+         KilogramForceMetrePerInch,  // kilogram force metre per inch
+         KilonewtonMetrePerInch,  // kilonewton metre per inch
+         FootPoundPerInch,  // foot pound per inch
+         KilofootPoundPerInch,  // kilofoot pound per inch
+         NewtonDecimetrePerInch,  // newton decimetre per inch
+         NewtonCentimetrePerInch,  // newton centimetre per inch
+         NewtonMillimetrePerInch,  // newton millimetre per inch
+         InchPoundPerInch // inch pound per inch
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // pascal
-         {UnitChoicesEnum.Kilopascal, new Guid("a41c04f5-198b-4a04-b90a-5700412a2a29")},  // kilopascal
-         {UnitChoicesEnum.Bar, new Guid("0d182739-f8f6-47a6-afcb-71feac973307")},  // bar
-         {UnitChoicesEnum.Millibar, new Guid("43e4fe86-948d-4765-a69d-513ce6dc2b5b")},  // millibar
-         {UnitChoicesEnum.Microbar, new Guid("7fb9e41f-4748-4457-b8b9-efb73da52d94")},  // microbar
-         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // pound per square inch
-         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("e3b95821-d782-4f12-a492-489cbcd6d2a1")},  // pound per 100 square foot
-         {UnitChoicesEnum.KilopoundPerSquareInch, new Guid("a07b5fe5-87e3-4422-afe1-f54de24deeb8")},  // kilopound per square inch
-         {UnitChoicesEnum.StandardAtmosphere, new Guid("93839971-33f2-43e9-82eb-9f869846f999")},  // standard atmosphere
-         {UnitChoicesEnum.PoundPerSquareFoot, new Guid("35b28889-c076-4274-b200-cf7732b17aa3")},  // pound per square foot
-         {UnitChoicesEnum.Megapascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // megapascal
-         {UnitChoicesEnum.Gigapascal, new Guid("5c81fb9b-36ad-47b7-9a8e-c999f7fdbfe3")},  // gigapascal
-         {UnitChoicesEnum.NewtonPerSquareMetre, new Guid("101e92c3-47ab-4d55-8982-93061bc82dea")},  // newton per square metre
-         {UnitChoicesEnum.NewtonPerSquareCentimetre, new Guid("2aa59deb-84d9-41c5-969f-8c8bb9d0c369")},  // newton per square centimetre
-         {UnitChoicesEnum.NewtonPerSquareMillimetre, new Guid("e5e9cb06-38a8-4ac2-a8a5-8b74689a31a8")},  // newton per square millimetre
-         {UnitChoicesEnum.KilonewtonPerSquareMetre, new Guid("eaa46677-af1c-4922-bf61-d82f2925534b")},  // kilonewton per square metre
-         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("bb49de0a-fbf3-4914-b6b9-fc60ab502522")},  // megapound per square inch
-         {UnitChoicesEnum.Torr, new Guid("f5afdfee-624e-46fa-b798-0ab1b04d2181")},  // torr
-         {UnitChoicesEnum.CentimetreMercuryAtZeroDegreeCelsius, new Guid("412602dc-837b-4fab-afc9-3bf4798a9bed")},  // centimetre mercury at zero degree celsius
-         {UnitChoicesEnum.MillimetreMercuryAtZeroDegreeCelsius, new Guid("d91f64fe-4df4-4ddd-943c-d985fbd1659b")},  // millimetre mercury at zero degree celsius
-         {UnitChoicesEnum.InchMercuryAt32DegreeFahrenheit, new Guid("ab729585-0716-4f24-9502-fcd07ba051bc")},  // inch mercury at 32 degree fahrenheit
-         {UnitChoicesEnum.InchMercuryAt60DegreeFahrenheit, new Guid("83ed97cc-526c-41cc-be78-ea0c86412080")},  // inch mercury at 60 degree fahrenheit
-         {UnitChoicesEnum.CentimetreWaterAt4DegreeCelsius, new Guid("a1bac4cc-f37c-4aa5-aec6-ede0b4c52f09")},  // centimetre water at 4 degree celsius
-         {UnitChoicesEnum.MillimetreWaterAt4DegreeCelsius, new Guid("a46b3ef6-fe2a-4ff3-bc2d-7a26661ce45e")},  // millimetre water at 4 degree celsius
-         {UnitChoicesEnum.InchWaterAt4DegreeCelsius, new Guid("3015f436-b35d-455c-af23-b9bc4dd857da")},  // inch water at 4 degree celsius
-         {UnitChoicesEnum.FootWaterAt4DegreeCelsius, new Guid("52de6721-dfec-4a54-861c-e74da72c8470")},  // foot water at 4 degree celsius
-         {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("04ca59b8-90e1-4903-ac82-ee95cac0ca38")} // dyne per square centimetre
+         {UnitChoicesEnum.NewtonMetrePerMetre, new Guid("33baa8d7-6987-4217-959b-1e3aa5b04752")},  // newton metre per metre
+         {UnitChoicesEnum.DecanewtonMetrePerMetre, new Guid("50a1ea8d-9a46-4e24-9e9f-dad66e8bb9ca")},  // decanewton metre per metre
+         {UnitChoicesEnum.KilogramForceMetrePerMetre, new Guid("66f7449d-5a06-4dd0-bf27-0bed2d2e4bed")},  // kilogram force metre per metre
+         {UnitChoicesEnum.KilonewtonMetrePerMetre, new Guid("d07e4c6c-fea3-4545-b020-9cc2402e1ca5")},  // kilonewton metre per metre
+         {UnitChoicesEnum.FootPoundPerMetre, new Guid("e3b4fe22-6590-4b2d-b2fa-0250f1ca8b26")},  // foot pound per metre
+         {UnitChoicesEnum.KilofootPoundPerMetre, new Guid("e9bff76e-5388-4ea0-85af-62c772d919c5")},  // kilofoot pound per metre
+         {UnitChoicesEnum.NewtonDecimetrePerMetre, new Guid("87ef9e2b-7e3b-4bda-a406-9f0b7f06e8fa")},  // newton decimetre per metre
+         {UnitChoicesEnum.NewtonCentimetrePerMetre, new Guid("c03b845d-f2e5-4a16-afca-efab2591c526")},  // newton centimetre per metre
+         {UnitChoicesEnum.NewtonMillimetrePerMetre, new Guid("fb1bb6bb-9c4a-4ecd-99fc-4af502271614")},  // newton millimetre per metre
+         {UnitChoicesEnum.InchPoundPerMetre, new Guid("18259cf1-1f96-4ace-b7ad-657a78254baf")},  // inch pound per metre
+         {UnitChoicesEnum.NewtonMetrePerDecimetre, new Guid("5ceaa09f-0de4-4025-ba23-d3b76f55a8b1")},  // Newton metre per decimetre
+         {UnitChoicesEnum.DecanewtonMetrePerDecimetre, new Guid("902dd7b3-0b4f-40a3-a089-02bb39367219")},  // decanewton metre per decimetre
+         {UnitChoicesEnum.KilogramForceMetrePerDecimetre, new Guid("2c83dced-5b36-49f1-bd4a-c95d558fb868")},  // kilogram force metre per decimetre
+         {UnitChoicesEnum.KilonewtonMetrePerDecimetre, new Guid("a3949720-a023-4c5d-9a5e-4194af30005f")},  // kilonewton metre per decimetre
+         {UnitChoicesEnum.FootPoundPerDecimetre, new Guid("a6b11edb-e9bc-4a7e-9af9-ace7ca62b93b")},  // foot pound per decimetre
+         {UnitChoicesEnum.KilofootPoundPerDecimetre, new Guid("92cb8e61-c58d-461a-a69c-ad9fe7324e2a")},  // kilofoot pound per decimetre
+         {UnitChoicesEnum.NewtonDecimetrePerDecimetre, new Guid("61261367-5cb0-4038-bcfb-6c8395758a21")},  // newton decimetre per decimetre
+         {UnitChoicesEnum.NewtonCentimetrePerDecimetre, new Guid("1eee8ef4-cb7b-451a-9658-d1704ccf81d2")},  // newton centimetre per decimetre
+         {UnitChoicesEnum.NewtonMillimetrePerDecimetre, new Guid("6c49e6aa-7d4c-4c92-96e5-5e3f26c3a367")},  // newton millimetre per decimetre
+         {UnitChoicesEnum.InchPoundPerDecimetre, new Guid("e638f5ee-bbf9-4e7b-ae6a-9613eb9792cc")},  // inch pound per decimetre
+         {UnitChoicesEnum.NewtonMetrePerCentimetre, new Guid("d8c63694-bf19-48be-b9bd-0f5b462ce2ec")},  // Newton metre per centimetre
+         {UnitChoicesEnum.DecanewtonMetrePerCentimetre, new Guid("e87d21e6-2191-4cee-aea8-1929df1d8bd0")},  // decanewton metre per centimetre
+         {UnitChoicesEnum.KilogramForceMetrePerCentimetre, new Guid("6ee38a6b-907d-4de9-94f1-0d979ef58340")},  // kilogram force metre per centimetre
+         {UnitChoicesEnum.KilonewtonMetrePerCentimetre, new Guid("2149c60b-d6a8-4056-9818-f7fe6d10c409")},  // kilonewton metre per centimetre
+         {UnitChoicesEnum.FootPoundPerCentimetre, new Guid("730e5c03-816e-4f88-b7bf-632a8a30c3ca")},  // foot pound per centimetre
+         {UnitChoicesEnum.KilofootPoundPerCentimetre, new Guid("6249a894-93d9-45b6-a188-eb2d4bef800e")},  // kilofoot pound per centimetre
+         {UnitChoicesEnum.NewtonDecimetrePerCentimetre, new Guid("0dbdd140-66d3-4f47-bbea-f5025b804b20")},  // newton decimetre per centimetre
+         {UnitChoicesEnum.NewtonCentimetrePerCentimetre, new Guid("2f7c8e32-f865-4b68-8a3c-4d8c862fd5f2")},  // newton centimetre per centimetre
+         {UnitChoicesEnum.NewtonMillimetrePerCentimetre, new Guid("830ae4b8-76d5-404a-b0c7-90db357a68ec")},  // newton millimetre per centimetre
+         {UnitChoicesEnum.InchPoundPerCentimetre, new Guid("6822172d-adf0-4a71-b883-f4bc825ee9ea")},  // inch pound per centimetre
+         {UnitChoicesEnum.NewtonMetrePerMillimetre, new Guid("a6416087-d525-4d98-aa45-2006ceb4a474")},  // Newton metre per millimetre
+         {UnitChoicesEnum.DecanewtonMetrePerMillimetre, new Guid("6acab23d-3952-4eed-b1a0-7c38f03109b0")},  // decanewton metre per millimetre
+         {UnitChoicesEnum.KilogramForceMetrePerMillimetre, new Guid("cdd4e6aa-ee0b-4679-97be-82553960efd1")},  // kilogram force metre per millimetre
+         {UnitChoicesEnum.KilonewtonMetrePerMillimetre, new Guid("1335bebf-fcda-4a39-afa8-7de3ed24fa0c")},  // kilonewton metre per millimetre
+         {UnitChoicesEnum.FootPoundPerMillimetre, new Guid("73a284d2-8900-44bb-96ab-897416a525e1")},  // foot pound per millimetre
+         {UnitChoicesEnum.KilofootPoundPerMillimetre, new Guid("bad7b651-25f9-4687-875f-7624388228d6")},  // kilofoot pound per millimetre
+         {UnitChoicesEnum.NewtonDecimetrePerMillimetre, new Guid("ecfa262e-1242-4c36-8325-b98de1ef4ffd")},  // newton decimetre per millimetre
+         {UnitChoicesEnum.NewtonCentimetrePerMillimetre, new Guid("0f0cd3a8-84ec-4b58-b100-3f413bea1e05")},  // newton centimetre per millimetre
+         {UnitChoicesEnum.NewtonMillimetrePerMillimetre, new Guid("b20d7cec-c1f6-4f64-9b60-e77ea699d940")},  // newton millimetre per millimetre
+         {UnitChoicesEnum.InchPoundPerMillimetre, new Guid("cd28eba2-c7ea-40d0-ac32-fb67a8f581bc")},  // inch pound per millimetre
+         {UnitChoicesEnum.NewtonMetrePerFoot, new Guid("2ce8e697-3a8a-4a73-ac23-4730790b4812")},  // Newton metre per foot
+         {UnitChoicesEnum.DecanewtonMetrePerFoot, new Guid("c6e8f7e7-0239-47bc-b230-0f5870c94b82")},  // decanewton metre per foot
+         {UnitChoicesEnum.KilogramForceMetrePerFoot, new Guid("7b2d82cc-0ac5-4945-9914-c91e62ac61dd")},  // kilogram force metre per foot
+         {UnitChoicesEnum.KilonewtonMetrePerFoot, new Guid("8b5be3db-bc7a-4107-b751-53d3d2772eb8")},  // kilonewton metre per foot
+         {UnitChoicesEnum.FootPoundPerFoot, new Guid("85a75741-c967-4e10-b195-01e5e7297eda")},  // foot pound per foot
+         {UnitChoicesEnum.KilofootPoundPerFoot, new Guid("65606e85-199d-4fee-8cd4-97715431d868")},  // kilofoot pound per foot
+         {UnitChoicesEnum.NewtonDecimetrePerFoot, new Guid("cdd6f7a0-954c-4826-8263-bb2d7fb06764")},  // newton decimetre per foot
+         {UnitChoicesEnum.NewtonCentimetrePerFoot, new Guid("1767c385-e868-457a-b0be-aac0a4db42ff")},  // newton centimetre per foot
+         {UnitChoicesEnum.NewtonMillimetrePerFoot, new Guid("ba4691ad-7575-4b9d-a6c6-9c98dde239ca")},  // newton millimetre per foot
+         {UnitChoicesEnum.InchPoundPerFoot, new Guid("d5f1dfc6-80ec-4780-a4ad-8df68c179eee")},  // inch pound per foot
+         {UnitChoicesEnum.NewtonMetrePerInch, new Guid("394cc997-ae71-47d1-91be-8aa69fdb71d7")},  // Newton metre per inch
+         {UnitChoicesEnum.DecanewtonMetrePerInch, new Guid("1f8786b1-4aae-45b9-9875-7fe63bddb6cb")},  // decanewton metre per inch
+         {UnitChoicesEnum.KilogramForceMetrePerInch, new Guid("df62fa6d-b983-4960-ad7b-853e00ccf45c")},  // kilogram force metre per inch
+         {UnitChoicesEnum.KilonewtonMetrePerInch, new Guid("cbc02a54-98e8-4b10-a028-152a5c92f2ce")},  // kilonewton metre per inch
+         {UnitChoicesEnum.FootPoundPerInch, new Guid("9c9771ff-d194-4e9f-b663-7f817da4d207")},  // foot pound per inch
+         {UnitChoicesEnum.KilofootPoundPerInch, new Guid("70978437-cf05-4138-8389-ec633fdc1fce")},  // kilofoot pound per inch
+         {UnitChoicesEnum.NewtonDecimetrePerInch, new Guid("0f34a9e2-dc04-4ce7-ac42-6cc12e2c98b5")},  // newton decimetre per inch
+         {UnitChoicesEnum.NewtonCentimetrePerInch, new Guid("622d36f4-6fed-4d16-a246-14477f724bca")},  // newton centimetre per inch
+         {UnitChoicesEnum.NewtonMillimetrePerInch, new Guid("31169945-1b67-4225-a2c6-6e850c39cb2f")},  // newton millimetre per inch
+         {UnitChoicesEnum.InchPoundPerInch, new Guid("2e16e0be-2037-413d-9f43-6316a24d1fca")} // inch pound per inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class TorqueQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonMetre,  // newton metre
+         DecanewtonMetre,  // decanewton metre
+         KilogramForceMetre,  // kilogram force metre
+         KilonewtonMetre,  // kilonewton metre
+         FootPound,  // foot pound
+         KilofootPound,  // kilofoot pound
+         NewtonDecimetre,  // newton decimetre
+         NewtonCentimetre,  // newton centimetre
+         NewtonMillimetre,  // newton millimetre
+         InchPound // inch pound
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonMetre, new Guid("50b017fa-8d81-4076-a485-61de1d8301b5")},  // newton metre
+         {UnitChoicesEnum.DecanewtonMetre, new Guid("501ce02c-8a5d-46e6-9ab6-ce443df70402")},  // decanewton metre
+         {UnitChoicesEnum.KilogramForceMetre, new Guid("282f97a0-df2a-4016-9ab0-796db49ff384")},  // kilogram force metre
+         {UnitChoicesEnum.KilonewtonMetre, new Guid("2e417a6e-1acc-4901-8704-7dfeb3f67546")},  // kilonewton metre
+         {UnitChoicesEnum.FootPound, new Guid("700d9fc7-17e1-4ad6-84f1-39cacbe5fe51")},  // foot pound
+         {UnitChoicesEnum.KilofootPound, new Guid("ee9be6ed-df75-4915-be6a-e3941dacd6bd")},  // kilofoot pound
+         {UnitChoicesEnum.NewtonDecimetre, new Guid("e70db590-c5fb-4ab9-a2c4-3ad611cb7f63")},  // newton decimetre
+         {UnitChoicesEnum.NewtonCentimetre, new Guid("4acf4542-8df0-4f57-a852-7c0184dbeec9")},  // newton centimetre
+         {UnitChoicesEnum.NewtonMillimetre, new Guid("a933225d-7c8e-4ce4-b0ea-4c1c6e9f7e34")},  // newton millimetre
+         {UnitChoicesEnum.InchPound, new Guid("0d40553e-d8c4-4b75-ad05-61199b15a0a1")} // inch pound
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class VelocityQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         MetrePerSecond,  // metre per second
+         MetrePerMinute,  // metre per minute
+         CentimetrePerSecond,  // centimetre per second
+         MetrePerHour,  // metre per hour
+         MetrePerDay,  // metre per day
+         FootPerHour,  // foot per hour
+         FootPerDay,  // foot per day
+         FootPerMinute,  // foot per minute
+         FootPerSecond,  // foot per second
+         InchPerSecond,  // inch per second
+         MilePerHour,  // mile per hour
+         KilometrePerHour,  // kilometre per hour
+         KilometrePerMinute,  // kilometre per minute
+         KilometrePerSecond,  // kilometre per second
+         KilometrePerDay,  // kilometre per day
+         MilePerMinute,  // mile per minute
+         MilePerSecond,  // mile per second
+         MilePerDay,  // mile per day
+         InchPerMinute,  // inch per minute
+         InchPerHour,  // inch per hour
+         InchPerDay,  // inch per day
+         CentimetrePerMinute,  // centimetre per minute
+         CentimetrePerHour,  // centimetre per hour
+         CentimetrePerDay,  // centimetre per day
+         MillimetrePerSecond,  // millimetre per second
+         MillimetrePerMinute,  // millimetre per minute
+         MillimetrePerHour,  // millimetre per hour
+         MillimetrePerDay,  // millimetre per day
+         DecimetrePerSecond,  // decimetre per second
+         DecimetrePerMinute,  // decimetre per minute
+         DecimetrePerHour,  // decimetre per hour
+         DecimetrePerDay // decimetre per day
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.MetrePerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // metre per second
+         {UnitChoicesEnum.MetrePerMinute, new Guid("824d3b5b-1e51-446a-99a4-39c02377f303")},  // metre per minute
+         {UnitChoicesEnum.CentimetrePerSecond, new Guid("d32f84d7-f076-49ab-8bd5-1ccd27e0eba6")},  // centimetre per second
+         {UnitChoicesEnum.MetrePerHour, new Guid("b4867c19-0668-4043-b3b9-f666f7552b02")},  // metre per hour
+         {UnitChoicesEnum.MetrePerDay, new Guid("aa10055f-1ef6-460d-841c-b6dc69f6a7f2")},  // metre per day
+         {UnitChoicesEnum.FootPerHour, new Guid("adb3b459-aa7e-4639-ad07-6d19c80f8170")},  // foot per hour
+         {UnitChoicesEnum.FootPerDay, new Guid("aa58ec87-0dbc-4ed4-b8aa-8553b02c7b14")},  // foot per day
+         {UnitChoicesEnum.FootPerMinute, new Guid("2d139d2c-1063-4f8d-99ae-bf71a98a1076")},  // foot per minute
+         {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")},  // foot per second
+         {UnitChoicesEnum.InchPerSecond, new Guid("8cd16c97-5c7a-4ee9-b59b-cbe2decd8ff9")},  // inch per second
+         {UnitChoicesEnum.MilePerHour, new Guid("6c6d0be3-5b60-4b8a-9fd6-8b7afb261081")},  // mile per hour
+         {UnitChoicesEnum.KilometrePerHour, new Guid("a1bab5e0-221c-4555-bd37-cf2b8004fd53")},  // kilometre per hour
+         {UnitChoicesEnum.KilometrePerMinute, new Guid("b37519e1-5d78-4d34-ad7b-37bc3f0bc775")},  // kilometre per minute
+         {UnitChoicesEnum.KilometrePerSecond, new Guid("3944bb76-5675-49bf-ae2f-143d3ff8e41a")},  // kilometre per second
+         {UnitChoicesEnum.KilometrePerDay, new Guid("2d09bf7b-0f99-42c0-9732-f9923c11bde1")},  // kilometre per day
+         {UnitChoicesEnum.MilePerMinute, new Guid("959dcb48-193b-48a9-9b86-554ea6b6e755")},  // mile per minute
+         {UnitChoicesEnum.MilePerSecond, new Guid("5ec77a90-200b-4e6e-877b-8df0edb7adc2")},  // mile per second
+         {UnitChoicesEnum.MilePerDay, new Guid("340ef6b0-53c2-447c-b8dd-f8f184bce71d")},  // mile per day
+         {UnitChoicesEnum.InchPerMinute, new Guid("d6421f59-0d0f-49e3-9f2c-37590569beb4")},  // inch per minute
+         {UnitChoicesEnum.InchPerHour, new Guid("06115ddb-4f51-41cd-a502-8c4f443d66b2")},  // inch per hour
+         {UnitChoicesEnum.InchPerDay, new Guid("38991fcc-56f6-4447-bd1e-86159681e8d0")},  // inch per day
+         {UnitChoicesEnum.CentimetrePerMinute, new Guid("b52fb69d-f8f7-4e46-9223-626e7497854d")},  // centimetre per minute
+         {UnitChoicesEnum.CentimetrePerHour, new Guid("9a4d693e-cb18-4587-a465-48aec69369bf")},  // centimetre per hour
+         {UnitChoicesEnum.CentimetrePerDay, new Guid("d34eba86-b8e2-4f28-92bb-8a26132ccfc6")},  // centimetre per day
+         {UnitChoicesEnum.MillimetrePerSecond, new Guid("8d787bbf-81b0-4ba4-b913-c71cfe4b7025")},  // millimetre per second
+         {UnitChoicesEnum.MillimetrePerMinute, new Guid("87a2da8b-a5e8-43f4-af18-859f6e8dc822")},  // millimetre per minute
+         {UnitChoicesEnum.MillimetrePerHour, new Guid("4628ccfb-2837-40b3-9141-222af23fa7be")},  // millimetre per hour
+         {UnitChoicesEnum.MillimetrePerDay, new Guid("c1540a11-a20e-43e2-9d1b-e173b928c94b")},  // millimetre per day
+         {UnitChoicesEnum.DecimetrePerSecond, new Guid("0f9aa2e1-b66f-4728-bf57-79526ffce563")},  // decimetre per second
+         {UnitChoicesEnum.DecimetrePerMinute, new Guid("980c51cc-a185-44a6-a69c-34f52e2b1fe2")},  // decimetre per minute
+         {UnitChoicesEnum.DecimetrePerHour, new Guid("1d3b5a3c-81ff-4698-b92f-9b721f946220")},  // decimetre per hour
+         {UnitChoicesEnum.DecimetrePerDay, new Guid("dcb77826-7550-4681-b3ce-a59cfdb7620d")} // decimetre per day
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class VolumeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         CubicMetre,  // cubic metre
+         Litre,  // litre
+         Decilitre,  // decilitre
+         Centilitre,  // centilitre
+         Millilitre,  // millilitre
+         USGallon,  // US gallon
+         UKGallon,  // UK gallon
+         Barrel,  // barrel
+         MillionCubicMetre,  // million cubic metre
+         MillionLitre,  // million litre
+         MillionUKGallon,  // million UK gallon
+         MillionBarrel,  // million barrel
+         ThousandStandardCubicFoot,  // thousand standard cubic foot
+         MillionStandardCubicFoot,  // million standard cubic foot
+         CubicFoot,  // cubic foot
+         CubicInch,  // cubic inch
+         MillionUSGallon // million US gallon
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.CubicMetre, new Guid("a465ba87-53d6-456c-8e74-315a1a212498")},  // cubic metre
+         {UnitChoicesEnum.Litre, new Guid("3f713743-6248-4b0b-8f3b-c97b6fab76b1")},  // litre
+         {UnitChoicesEnum.Decilitre, new Guid("3d7dde61-a9e9-4df6-8ee4-1eb4a4be1147")},  // decilitre
+         {UnitChoicesEnum.Centilitre, new Guid("8d9baa02-5c3e-46f8-b909-7ca92d7bfa7a")},  // centilitre
+         {UnitChoicesEnum.Millilitre, new Guid("6eb0d045-36e5-448d-be94-96a24a03f3e6")},  // millilitre
+         {UnitChoicesEnum.USGallon, new Guid("1377d8ac-d203-48ed-bad4-733b0dc9d496")},  // US gallon
+         {UnitChoicesEnum.UKGallon, new Guid("78f1cef7-c489-498c-96fb-d37474e242a9")},  // UK gallon
+         {UnitChoicesEnum.Barrel, new Guid("b0f03925-d158-48ee-8c33-bf72c08cae68")},  // barrel
+         {UnitChoicesEnum.MillionCubicMetre, new Guid("4c021db5-327b-44d3-9c4f-5a9b84af602f")},  // million cubic metre
+         {UnitChoicesEnum.MillionLitre, new Guid("4f3f67df-28af-4398-966f-b23de678f50c")},  // million litre
+         {UnitChoicesEnum.MillionUKGallon, new Guid("ab9a2938-f519-47c0-bcaa-d61c8fa23c7b")},  // million UK gallon
+         {UnitChoicesEnum.MillionBarrel, new Guid("9d03120c-2c74-4666-8e24-98e143ab88db")},  // million barrel
+         {UnitChoicesEnum.ThousandStandardCubicFoot, new Guid("e50b6a47-cf4c-4a74-8c1c-758000df5d67")},  // thousand standard cubic foot
+         {UnitChoicesEnum.MillionStandardCubicFoot, new Guid("387b78ff-d51b-4684-b059-4c813407d767")},  // million standard cubic foot
+         {UnitChoicesEnum.CubicFoot, new Guid("1da2384d-f463-4b08-9c0b-1de06b51268c")},  // cubic foot
+         {UnitChoicesEnum.CubicInch, new Guid("dacec282-dacd-4687-9943-8fa741124116")},  // cubic inch
+         {UnitChoicesEnum.MillionUSGallon, new Guid("a1d1c28d-8d55-417e-93af-e7302b68ed13")} // million US gallon
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class VolumetricFlowRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         CubicMetrePerSecondSquared,  // cubic metre per second squared
+         LitrePerMinuteSquared,  // litre per minute squared
+         LitrePerMinutePerSecond,  // litre per minute per second
+         LitrePerSecondSquared,  // litre per second squared
+         UKGallonPerMinuteSquared,  // UK gallon per minute squared
+         UKGallonPerMinutePerSecond,  // UK gallon per minute per second
+         USGallonPerMinuteSquared,  // US gallon per minute squared
+         USGallonPerMinutePerSecond // US gallon per minute per second
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.CubicMetrePerSecondSquared, new Guid("aef20431-be0b-44ea-8770-a59db19b7f94")},  // cubic metre per second squared
+         {UnitChoicesEnum.LitrePerMinuteSquared, new Guid("b27d2f54-a1f3-4abb-ba6d-a2a8b530049a")},  // litre per minute squared
+         {UnitChoicesEnum.LitrePerMinutePerSecond, new Guid("e5a265b6-a9ba-4a09-ba08-b8c417b28ffb")},  // litre per minute per second
+         {UnitChoicesEnum.LitrePerSecondSquared, new Guid("a899c06f-18dd-4d2a-9743-489f0af5be91")},  // litre per second squared
+         {UnitChoicesEnum.UKGallonPerMinuteSquared, new Guid("c7c61175-e527-4403-8425-32f681367985")},  // UK gallon per minute squared
+         {UnitChoicesEnum.UKGallonPerMinutePerSecond, new Guid("298e7a16-07a5-4b5b-a0de-3e49b31254b4")},  // UK gallon per minute per second
+         {UnitChoicesEnum.USGallonPerMinuteSquared, new Guid("61885289-823d-4b26-bdf2-bc4744567bef")},  // US gallon per minute squared
+         {UnitChoicesEnum.USGallonPerMinutePerSecond, new Guid("3c530e9a-9376-49d1-a6b5-0a6f93f4184b")} // US gallon per minute per second
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1964,29 +3094,71 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class VolumetricFlowRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  public partial class WaveNumberQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         CubicMetrePerSecondSquared,  // cubic metre per second squared
-         LitrePerMinuteSquared,  // litre per minute squared
-         LitrePerMinutePerSecond,  // litre per minute per second
-         LitrePerSecondSquared,  // litre per second squared
-         UKGallonPerMinuteSquared,  // UK gallon per minute squared
-         UKGallonPerMinutePerSecond,  // UK gallon per minute per second
-         USGallonPerMinuteSquared,  // US gallon per minute squared
-         USGallonPerMinutePerSecond // US gallon per minute per second
+         ReciprocalMetre,  // reciprocal metre
+         ReciprocalDecimetre,  // reciprocal decimetre
+         ReciprocalCentimetre,  // reciprocal centimetre
+         ReciprocalMillimetre,  // reciprocal millimetre
+         ReciprocalMicrometre,  // reciprocal micrometre
+         ReciprocalNanometre,  // reciprocal nanometre
+         ReciprocalÅngstrøm,  // reciprocal ångstrøm
+         ReciprocalPicometre,  // reciprocal picometre
+         ReciprocalDecametre,  // reciprocal decametre
+         ReciprocalHectometre,  // reciprocal hectometre
+         ReciprocalKilometre,  // reciprocal kilometre
+         ReciprocalAstronomicalUnit,  // reciprocal astronomical unit
+         ReciprocalLightYear,  // reciprocal light year
+         ReciprocalParsec,  // reciprocal parsec
+         ReciprocalFoot,  // reciprocal foot
+         ReciprocalUSSurveyFoot,  // reciprocal US survey foot
+         ReciprocalInch,  // reciprocal inch
+         ReciprocalYard,  // reciprocal yard
+         ReciprocalFathom,  // reciprocal fathom
+         ReciprocalSurveyorsChain,  // reciprocal surveyors chain
+         ReciprocalMile,  // reciprocal mile
+         ReciprocalInternationalNauticalMile,  // reciprocal international nautical mile
+         ReciprocalUKNauticalMile,  // reciprocal UK nautical mile
+         ReciprocalScandinavianMile,  // reciprocal scandinavian mile
+         ReciprocalInchPer32,  // reciprocal inch per 32
+         ReciprocalMil,  // reciprocal mil
+         ReciprocalThou,  // reciprocal thou
+         ReciprocalHand,  // reciprocal hand
+         ReciprocalFurlong // reciprocal furlong
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.CubicMetrePerSecondSquared, new Guid("aef20431-be0b-44ea-8770-a59db19b7f94")},  // cubic metre per second squared
-         {UnitChoicesEnum.LitrePerMinuteSquared, new Guid("b27d2f54-a1f3-4abb-ba6d-a2a8b530049a")},  // litre per minute squared
-         {UnitChoicesEnum.LitrePerMinutePerSecond, new Guid("e5a265b6-a9ba-4a09-ba08-b8c417b28ffb")},  // litre per minute per second
-         {UnitChoicesEnum.LitrePerSecondSquared, new Guid("a899c06f-18dd-4d2a-9743-489f0af5be91")},  // litre per second squared
-         {UnitChoicesEnum.UKGallonPerMinuteSquared, new Guid("c7c61175-e527-4403-8425-32f681367985")},  // UK gallon per minute squared
-         {UnitChoicesEnum.UKGallonPerMinutePerSecond, new Guid("298e7a16-07a5-4b5b-a0de-3e49b31254b4")},  // UK gallon per minute per second
-         {UnitChoicesEnum.USGallonPerMinuteSquared, new Guid("61885289-823d-4b26-bdf2-bc4744567bef")},  // US gallon per minute squared
-         {UnitChoicesEnum.USGallonPerMinutePerSecond, new Guid("3c530e9a-9376-49d1-a6b5-0a6f93f4184b")} // US gallon per minute per second
+         {UnitChoicesEnum.ReciprocalMetre, new Guid("3cd38922-b99f-45bb-af6e-a38ebf1240f0")},  // reciprocal metre
+         {UnitChoicesEnum.ReciprocalDecimetre, new Guid("cf8a931b-eaa9-4b0c-8894-53d54e93cba1")},  // reciprocal decimetre
+         {UnitChoicesEnum.ReciprocalCentimetre, new Guid("4f2c38c2-86ff-4842-afdd-3a9fcf8a623e")},  // reciprocal centimetre
+         {UnitChoicesEnum.ReciprocalMillimetre, new Guid("2d484d0f-7d29-48e9-8d5b-ff82fca6f1c5")},  // reciprocal millimetre
+         {UnitChoicesEnum.ReciprocalMicrometre, new Guid("ddbbb734-ddd2-4d26-84ba-9995fff479e6")},  // reciprocal micrometre
+         {UnitChoicesEnum.ReciprocalNanometre, new Guid("25412abd-9c3e-4b67-b809-d92926eb2b58")},  // reciprocal nanometre
+         {UnitChoicesEnum.ReciprocalÅngstrøm, new Guid("7c28c943-c084-48f6-804c-87e6c6902b35")},  // reciprocal ångstrøm
+         {UnitChoicesEnum.ReciprocalPicometre, new Guid("bca4fde9-e17a-4a27-9a3f-34beab644ee2")},  // reciprocal picometre
+         {UnitChoicesEnum.ReciprocalDecametre, new Guid("a691338d-1916-4355-b6e1-3b1bff086c14")},  // reciprocal decametre
+         {UnitChoicesEnum.ReciprocalHectometre, new Guid("4da19df4-0ff6-424b-a2ab-9d5811ba48ca")},  // reciprocal hectometre
+         {UnitChoicesEnum.ReciprocalKilometre, new Guid("a4b4ed8e-a1c6-4e3f-9421-8770cec6ff42")},  // reciprocal kilometre
+         {UnitChoicesEnum.ReciprocalAstronomicalUnit, new Guid("4d58ee46-e637-4f5a-a1ff-33f002154fec")},  // reciprocal astronomical unit
+         {UnitChoicesEnum.ReciprocalLightYear, new Guid("81c8c5d9-a892-4702-921b-9946abbef6b0")},  // reciprocal light year
+         {UnitChoicesEnum.ReciprocalParsec, new Guid("b8f6a954-7fe6-4f31-94cc-e53bb5603cd5")},  // reciprocal parsec
+         {UnitChoicesEnum.ReciprocalFoot, new Guid("1d6a5284-d32f-4f5a-ad27-bfc0f71069aa")},  // reciprocal foot
+         {UnitChoicesEnum.ReciprocalUSSurveyFoot, new Guid("16c3f209-e890-4b35-807e-7115545406e0")},  // reciprocal US survey foot
+         {UnitChoicesEnum.ReciprocalInch, new Guid("95cd773d-b6da-4148-bd9c-bed66b4a72d8")},  // reciprocal inch
+         {UnitChoicesEnum.ReciprocalYard, new Guid("be5f64c0-592a-4f3b-b2b5-6df8b9d2a31b")},  // reciprocal yard
+         {UnitChoicesEnum.ReciprocalFathom, new Guid("ae9e314e-de19-405e-a897-6a68cd4845f6")},  // reciprocal fathom
+         {UnitChoicesEnum.ReciprocalSurveyorsChain, new Guid("90da0d97-195c-4c30-85d8-51d70b75f071")},  // reciprocal surveyors chain
+         {UnitChoicesEnum.ReciprocalMile, new Guid("acbb10a5-602f-423b-bc15-bdfd80cb7008")},  // reciprocal mile
+         {UnitChoicesEnum.ReciprocalInternationalNauticalMile, new Guid("78474000-3cd8-4102-b7b4-360b4c2130fc")},  // reciprocal international nautical mile
+         {UnitChoicesEnum.ReciprocalUKNauticalMile, new Guid("8a55784f-b5f4-4aa7-b5f9-d19742857349")},  // reciprocal UK nautical mile
+         {UnitChoicesEnum.ReciprocalScandinavianMile, new Guid("f766575d-9bfa-45fb-8bfd-50f12a0e6a6a")},  // reciprocal scandinavian mile
+         {UnitChoicesEnum.ReciprocalInchPer32, new Guid("ac9c8b52-22f0-476d-a038-023695c24f25")},  // reciprocal inch per 32
+         {UnitChoicesEnum.ReciprocalMil, new Guid("09d27104-6452-4976-98e0-6fd087e22eb1")},  // reciprocal mil
+         {UnitChoicesEnum.ReciprocalThou, new Guid("e732fd46-ddf3-433e-8baf-cc531ca69160")},  // reciprocal thou
+         {UnitChoicesEnum.ReciprocalHand, new Guid("844ed023-9f47-4147-8b50-cf03c99071b5")},  // reciprocal hand
+         {UnitChoicesEnum.ReciprocalFurlong, new Guid("79a3f3db-0ac8-4bcb-b93c-fca2a673147b")} // reciprocal furlong
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2002,77 +3174,23 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class VelocityQuantity : DerivedBasePhysicalQuantity
+  public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         MetrePerSecond,  // metre per second
-         MetrePerMinute,  // metre per minute
-         CentimetrePerSecond,  // centimetre per second
-         MetrePerHour,  // metre per hour
-         MetrePerDay,  // metre per day
-         FootPerHour,  // foot per hour
-         FootPerDay,  // foot per day
-         FootPerMinute,  // foot per minute
-         FootPerSecond,  // foot per second
-         InchPerSecond,  // inch per second
-         MilePerHour,  // mile per hour
-         KilometrePerHour,  // kilometre per hour
-         KilometrePerMinute,  // kilometre per minute
-         KilometrePerSecond,  // kilometre per second
-         KilometrePerDay,  // kilometre per day
-         MilePerMinute,  // mile per minute
-         MilePerSecond,  // mile per second
-         MilePerDay,  // mile per day
-         InchPerMinute,  // inch per minute
-         InchPerHour,  // inch per hour
-         InchPerDay,  // inch per day
-         CentimetrePerMinute,  // centimetre per minute
-         CentimetrePerHour,  // centimetre per hour
-         CentimetrePerDay,  // centimetre per day
-         MillimetrePerSecond,  // millimetre per second
-         MillimetrePerMinute,  // millimetre per minute
-         MillimetrePerHour,  // millimetre per hour
-         MillimetrePerDay,  // millimetre per day
-         DecimetrePerSecond,  // decimetre per second
-         DecimetrePerMinute,  // decimetre per minute
-         DecimetrePerHour,  // decimetre per hour
-         DecimetrePerDay // decimetre per day
+         Tesla,  // tesla
+         Gauss,  // gauss
+         Milligauss,  // milligauss
+         Microtesla,  // microtesla
+         Nanotesla // nanotesla
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.MetrePerSecond, new Guid("919ac736-9a37-45d1-8c02-54bc453d65dc")},  // metre per second
-         {UnitChoicesEnum.MetrePerMinute, new Guid("824d3b5b-1e51-446a-99a4-39c02377f303")},  // metre per minute
-         {UnitChoicesEnum.CentimetrePerSecond, new Guid("d32f84d7-f076-49ab-8bd5-1ccd27e0eba6")},  // centimetre per second
-         {UnitChoicesEnum.MetrePerHour, new Guid("b4867c19-0668-4043-b3b9-f666f7552b02")},  // metre per hour
-         {UnitChoicesEnum.MetrePerDay, new Guid("aa10055f-1ef6-460d-841c-b6dc69f6a7f2")},  // metre per day
-         {UnitChoicesEnum.FootPerHour, new Guid("adb3b459-aa7e-4639-ad07-6d19c80f8170")},  // foot per hour
-         {UnitChoicesEnum.FootPerDay, new Guid("aa58ec87-0dbc-4ed4-b8aa-8553b02c7b14")},  // foot per day
-         {UnitChoicesEnum.FootPerMinute, new Guid("2d139d2c-1063-4f8d-99ae-bf71a98a1076")},  // foot per minute
-         {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")},  // foot per second
-         {UnitChoicesEnum.InchPerSecond, new Guid("8cd16c97-5c7a-4ee9-b59b-cbe2decd8ff9")},  // inch per second
-         {UnitChoicesEnum.MilePerHour, new Guid("6c6d0be3-5b60-4b8a-9fd6-8b7afb261081")},  // mile per hour
-         {UnitChoicesEnum.KilometrePerHour, new Guid("a1bab5e0-221c-4555-bd37-cf2b8004fd53")},  // kilometre per hour
-         {UnitChoicesEnum.KilometrePerMinute, new Guid("b37519e1-5d78-4d34-ad7b-37bc3f0bc775")},  // kilometre per minute
-         {UnitChoicesEnum.KilometrePerSecond, new Guid("3944bb76-5675-49bf-ae2f-143d3ff8e41a")},  // kilometre per second
-         {UnitChoicesEnum.KilometrePerDay, new Guid("2d09bf7b-0f99-42c0-9732-f9923c11bde1")},  // kilometre per day
-         {UnitChoicesEnum.MilePerMinute, new Guid("959dcb48-193b-48a9-9b86-554ea6b6e755")},  // mile per minute
-         {UnitChoicesEnum.MilePerSecond, new Guid("5ec77a90-200b-4e6e-877b-8df0edb7adc2")},  // mile per second
-         {UnitChoicesEnum.MilePerDay, new Guid("340ef6b0-53c2-447c-b8dd-f8f184bce71d")},  // mile per day
-         {UnitChoicesEnum.InchPerMinute, new Guid("d6421f59-0d0f-49e3-9f2c-37590569beb4")},  // inch per minute
-         {UnitChoicesEnum.InchPerHour, new Guid("06115ddb-4f51-41cd-a502-8c4f443d66b2")},  // inch per hour
-         {UnitChoicesEnum.InchPerDay, new Guid("38991fcc-56f6-4447-bd1e-86159681e8d0")},  // inch per day
-         {UnitChoicesEnum.CentimetrePerMinute, new Guid("b52fb69d-f8f7-4e46-9223-626e7497854d")},  // centimetre per minute
-         {UnitChoicesEnum.CentimetrePerHour, new Guid("9a4d693e-cb18-4587-a465-48aec69369bf")},  // centimetre per hour
-         {UnitChoicesEnum.CentimetrePerDay, new Guid("d34eba86-b8e2-4f28-92bb-8a26132ccfc6")},  // centimetre per day
-         {UnitChoicesEnum.MillimetrePerSecond, new Guid("8d787bbf-81b0-4ba4-b913-c71cfe4b7025")},  // millimetre per second
-         {UnitChoicesEnum.MillimetrePerMinute, new Guid("87a2da8b-a5e8-43f4-af18-859f6e8dc822")},  // millimetre per minute
-         {UnitChoicesEnum.MillimetrePerHour, new Guid("4628ccfb-2837-40b3-9141-222af23fa7be")},  // millimetre per hour
-         {UnitChoicesEnum.MillimetrePerDay, new Guid("c1540a11-a20e-43e2-9d1b-e173b928c94b")},  // millimetre per day
-         {UnitChoicesEnum.DecimetrePerSecond, new Guid("0f9aa2e1-b66f-4728-bf57-79526ffce563")},  // decimetre per second
-         {UnitChoicesEnum.DecimetrePerMinute, new Guid("980c51cc-a185-44a6-a69c-34f52e2b1fe2")},  // decimetre per minute
-         {UnitChoicesEnum.DecimetrePerHour, new Guid("1d3b5a3c-81ff-4698-b92f-9b721f946220")},  // decimetre per hour
-         {UnitChoicesEnum.DecimetrePerDay, new Guid("dcb77826-7550-4681-b3ce-a59cfdb7620d")} // decimetre per day
+         {UnitChoicesEnum.Tesla, new Guid("33c3b59d-9876-4918-9f31-f22de88d7bde")},  // tesla
+         {UnitChoicesEnum.Gauss, new Guid("c09cd87d-8a84-45d0-88d3-20bb5cc48559")},  // gauss
+         {UnitChoicesEnum.Milligauss, new Guid("41ace729-a2ff-4047-adc3-375829de64c6")},  // milligauss
+         {UnitChoicesEnum.Microtesla, new Guid("c6b30197-be6b-41b7-803d-a8de61338612")},  // microtesla
+         {UnitChoicesEnum.Nanotesla, new Guid("9bef9def-8cd3-4f7b-b991-290d3441b3d4")} // nanotesla
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2088,65 +3206,31 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ForceGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         NewtonPerMetre,  // newton per metre
-         NewtonPer30Metre,  // newton per 30 metre
-         NewtonPer10Metre,  // newton per 10 metre
-         NewtonPerDecimetre,  // newton per decimetre
-         NewtonPerCentimetre,  // newton per centimetre
-         NewtonPerMillimetre,  // newton per millimetre
-         DecanewtonPerMetre,  // decanewton per metre
-         DecanewtonPer30Metre,  // decanewton per 30 metre
-         DecanewtonPer10Metre,  // decanewton per 10 metre
-         DecanewtonPerDecimetre,  // decanewton per decimetre
-         DecanewtonPerCentimetre,  // decanewton per centimetre
-         DecanewtonPerMillimetre,  // decanewton per millimetre
-         KilonewtonPerMetre,  // kilonewton per metre
-         KilonewtonPer30Metre,  // kilonewton per 30 metre
-         KilonewtonPer10Metre,  // kilonewton per 10 metre
-         KilonewtonPerDecimetre,  // kilonewton per decimetre
-         KilonewtonPerCentimetre,  // kilonewton per centimetre
-         KilonewtonPerMillimetre,  // kilonewton per millimetre
-         PoundPerFoot,  // pound per foot
-         PoundPerInch,  // pound per inch
-         KilopoundPerFoot,  // kilopound per foot
-         KilopoundPerInch,  // kilopound per inch
-         PoundPer30Foot,  // pound per 30 foot
-         PoundPer100Foot,  // pound per 100 foot
-         KilopoundPer30Foot,  // kilopound per 30 foot
-         KilopoundPer100Foot // kilopound per 100 foot
+         Joule,  // joule
+         Kilojoule,  // kilojoule
+         Megajoule,  // megajoule
+         Gigajoule,  // gigajoule
+         Calorie,  // calorie
+         Kilocalorie,  // kilocalorie
+         BritishThermalUnit,  // british thermal unit
+         KiloBritishThermalUnit,  // kilo british thermal unit
+         MegaBritishThermalUnit // mega british thermal unit
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.NewtonPerMetre, new Guid("e503a1d3-1815-4321-8087-6e3d6dc641c8")},  // newton per metre
-         {UnitChoicesEnum.NewtonPer30Metre, new Guid("be16e271-5ce7-445b-a8db-9014a6acc22b")},  // newton per 30 metre
-         {UnitChoicesEnum.NewtonPer10Metre, new Guid("46defe0c-4a00-45d1-83bb-f898e00a78c5")},  // newton per 10 metre
-         {UnitChoicesEnum.NewtonPerDecimetre, new Guid("dcd21076-ecb6-481e-8b8b-1cd5ccc68915")},  // newton per decimetre
-         {UnitChoicesEnum.NewtonPerCentimetre, new Guid("739cb2cd-2c9f-4efc-ad17-306b8f09de57")},  // newton per centimetre
-         {UnitChoicesEnum.NewtonPerMillimetre, new Guid("9375f700-72fb-4212-a51d-0f4500e7b13c")},  // newton per millimetre
-         {UnitChoicesEnum.DecanewtonPerMetre, new Guid("2566918f-f1b1-4ffb-906b-adb3680812e1")},  // decanewton per metre
-         {UnitChoicesEnum.DecanewtonPer30Metre, new Guid("20de7177-2099-4f86-89da-fdfa68bf67ed")},  // decanewton per 30 metre
-         {UnitChoicesEnum.DecanewtonPer10Metre, new Guid("4f30206a-b381-4a28-9e2d-fafc026e71d5")},  // decanewton per 10 metre
-         {UnitChoicesEnum.DecanewtonPerDecimetre, new Guid("cf20b9bb-aab1-4f1a-832c-1cfbe8ffc825")},  // decanewton per decimetre
-         {UnitChoicesEnum.DecanewtonPerCentimetre, new Guid("47704d55-35cc-4bfc-9f93-7cf7f29c81ac")},  // decanewton per centimetre
-         {UnitChoicesEnum.DecanewtonPerMillimetre, new Guid("1f418c90-f2e6-4bc8-8c06-f281e56ef6cc")},  // decanewton per millimetre
-         {UnitChoicesEnum.KilonewtonPerMetre, new Guid("9ec7912e-9506-43ce-9089-80000d7ddd3f")},  // kilonewton per metre
-         {UnitChoicesEnum.KilonewtonPer30Metre, new Guid("b08fae49-fdc3-409e-8b0f-3349ab189dc9")},  // kilonewton per 30 metre
-         {UnitChoicesEnum.KilonewtonPer10Metre, new Guid("f57cb3e9-4da5-4960-aff6-a27167276e4a")},  // kilonewton per 10 metre
-         {UnitChoicesEnum.KilonewtonPerDecimetre, new Guid("f3033c1b-1be8-4110-832a-4b60c31043e6")},  // kilonewton per decimetre
-         {UnitChoicesEnum.KilonewtonPerCentimetre, new Guid("4db740c5-df92-4f65-b0da-2119ad80cbfc")},  // kilonewton per centimetre
-         {UnitChoicesEnum.KilonewtonPerMillimetre, new Guid("14578d1b-6d43-441a-8f1b-aa77ab10a9bf")},  // kilonewton per millimetre
-         {UnitChoicesEnum.PoundPerFoot, new Guid("516e4b02-2f1a-49a7-8cd9-3fa4e28c8fce")},  // pound per foot
-         {UnitChoicesEnum.PoundPerInch, new Guid("8a5772d2-1253-4269-958a-af9f779aecc6")},  // pound per inch
-         {UnitChoicesEnum.KilopoundPerFoot, new Guid("bf63e80f-97df-48d1-afbf-c83415654e44")},  // kilopound per foot
-         {UnitChoicesEnum.KilopoundPerInch, new Guid("fa6a4a38-b070-48d1-a747-be22ab0e57b6")},  // kilopound per inch
-         {UnitChoicesEnum.PoundPer30Foot, new Guid("0d0926be-19fa-4687-88d1-35f1acc58717")},  // pound per 30 foot
-         {UnitChoicesEnum.PoundPer100Foot, new Guid("dcaa5f41-da2f-49d2-be41-80fb6f0a06ec")},  // pound per 100 foot
-         {UnitChoicesEnum.KilopoundPer30Foot, new Guid("27a355cf-36ae-458d-acbd-2a5ad931bbab")},  // kilopound per 30 foot
-         {UnitChoicesEnum.KilopoundPer100Foot, new Guid("0d5c841e-b259-4fdf-93d7-e39cca391adb")} // kilopound per 100 foot
+         {UnitChoicesEnum.Joule, new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076")},  // joule
+         {UnitChoicesEnum.Kilojoule, new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0")},  // kilojoule
+         {UnitChoicesEnum.Megajoule, new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126")},  // megajoule
+         {UnitChoicesEnum.Gigajoule, new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2")},  // gigajoule
+         {UnitChoicesEnum.Calorie, new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12")},  // calorie
+         {UnitChoicesEnum.Kilocalorie, new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578")},  // kilocalorie
+         {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
+         {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
+         {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2162,27 +3246,59 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ForceQuantity : DerivedBasePhysicalQuantity
+  public partial class MassQuantity : SymbolizedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Newton,  // newton
-         Decanewton,  // decanewton
-         Kilonewton,  // kilonewton
-         Kilodecanewton,  // kilodecanewton
-         KilogramForce,  // kilogram force
-         PoundForce,  // pound force
-         KilopoundForce // kilopound force
+         Kilogram,  // kilogram
+         Hectogram,  // hectogram
+         Decagram,  // decagram
+         Gram,  // gram
+         Centigram,  // centigram
+         Milligram,  // milligram
+         Microgram,  // microgram
+         Nanogram,  // nanogram
+         AtomMassUnit,  // atom mass unit
+         TonneMetric,  // tonne metric
+         Kilotonne,  // kilotonne
+         Megatonne,  // megatonne
+         Gigatonne,  // gigatonne
+         Pound,  // pound
+         Kilopound,  // kilopound
+         Ounce,  // ounce
+         Stone,  // stone
+         TonUK,  // ton UK
+         TonUS,  // ton US
+         SolarMass,  // solar mass
+         EarthMass,  // earth mass
+         Grain,  // grain
+         HundredWeights // hundred weights
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Newton, new Guid("2e6b218c-0f85-4e8d-b9c5-73b78d207ef8")},  // newton
-         {UnitChoicesEnum.Decanewton, new Guid("fc48e3a8-deb9-4cf6-aaad-5b18f7e37972")},  // decanewton
-         {UnitChoicesEnum.Kilonewton, new Guid("e30d6f94-7887-4746-8d4f-eb720239b702")},  // kilonewton
-         {UnitChoicesEnum.Kilodecanewton, new Guid("8ad7ae81-602b-4694-bc6d-c18f520f1266")},  // kilodecanewton
-         {UnitChoicesEnum.KilogramForce, new Guid("ea771c51-4078-4aa6-b2df-db6f77a140ad")},  // kilogram force
-         {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")},  // pound force
-         {UnitChoicesEnum.KilopoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")} // kilopound force
+         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
+         {UnitChoicesEnum.Hectogram, new Guid("2fb79e4b-3eb5-4aa3-9f12-2c66b1784902")},  // hectogram
+         {UnitChoicesEnum.Decagram, new Guid("1b3f72cb-55b1-4027-b6ad-309cd7d6c1a3")},  // decagram
+         {UnitChoicesEnum.Gram, new Guid("049ba04e-4c70-41f5-bb29-6b54bb5b2103")},  // gram
+         {UnitChoicesEnum.Centigram, new Guid("e56aa2fa-80b7-417f-8e08-91b9b8a1198c")},  // centigram
+         {UnitChoicesEnum.Milligram, new Guid("322b0e70-c8e5-482e-a9db-682d15baacf9")},  // milligram
+         {UnitChoicesEnum.Microgram, new Guid("eb831d52-2690-4b8a-a1a4-83e9bdb07dbc")},  // microgram
+         {UnitChoicesEnum.Nanogram, new Guid("93db8c40-4dd0-46a4-ade6-db51bcbca66f")},  // nanogram
+         {UnitChoicesEnum.AtomMassUnit, new Guid("f470168e-1e20-458e-b6da-6bee551cb6d6")},  // atom mass unit
+         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
+         {UnitChoicesEnum.Kilotonne, new Guid("2a767cda-fc61-4aa4-81dd-1a4f6d6af755")},  // kilotonne
+         {UnitChoicesEnum.Megatonne, new Guid("92c4b624-4205-4596-aabf-1dd4aa442718")},  // megatonne
+         {UnitChoicesEnum.Gigatonne, new Guid("51cd0591-d741-4769-bd22-e36959d1adcf")},  // gigatonne
+         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
+         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
+         {UnitChoicesEnum.Ounce, new Guid("4e64e69b-2276-46c8-a918-06ab6980178c")},  // ounce
+         {UnitChoicesEnum.Stone, new Guid("6894dc1c-21e2-42aa-9569-759c0e6e6d6e")},  // stone
+         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")},  // ton UK
+         {UnitChoicesEnum.TonUS, new Guid("443af797-a62f-4137-a852-ad1c9163dd7b")},  // ton US
+         {UnitChoicesEnum.SolarMass, new Guid("432e73bf-a448-47f6-9c65-9339d5bac5a3")},  // solar mass
+         {UnitChoicesEnum.EarthMass, new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e")},  // earth mass
+         {UnitChoicesEnum.Grain, new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2")},  // grain
+         {UnitChoicesEnum.HundredWeights, new Guid("83810f2a-b260-41b3-bc13-5ef60290f214")} // hundred weights
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2198,59 +3314,35 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MaterialStrengthQuantity : DerivedBasePhysicalQuantity
+  public partial class SmallLengthQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Pascal,  // pascal
-         Megapascal,  // megapascal
-         Gigapascal,  // gigapascal
-         Psi,  // psi
-         PoundPer100SquareFoot,  // pound per 100 square foot
-         MegapoundPerSquareInch // megapound per square inch
+         Centimetre,  // centimetre
+         Decimetre,  // decimetre
+         Foot,  // foot
+         Inch,  // inch
+         Metre,  // metre
+         Micrometre,  // micrometre
+         Millimetre,  // millimetre
+         Nanometre,  // nanometre
+         Picometre,  // picometre
+         Ångstrøm,  // ångstrøm
+         InchPer32 // inch per 32
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Pascal, new Guid("159e99d3-c79d-4dc6-974f-05cc38af001e")},  // pascal
-         {UnitChoicesEnum.Megapascal, new Guid("38b95b61-a825-4393-a0e8-ecd686575735")},  // megapascal
-         {UnitChoicesEnum.Gigapascal, new Guid("c9aa0a18-02ac-42a0-9afe-8a08b4f03331")},  // gigapascal
-         {UnitChoicesEnum.Psi, new Guid("4adf2a33-05c3-49bb-ba61-59dd76f4621e")},  // psi
-         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("eb1e2a52-3de3-4338-ad4d-40e8ce90e40b")},  // pound per 100 square foot
-         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("197a8b98-190d-4d45-91d7-85af12deab02")} // megapound per square inch
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class FrequencyQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Hertz,  // hertz
-         ReciprocalSecond,  // reciprocal second
-         Kilohertz,  // kilohertz
-         Megahertz,  // megahertz
-         Gigahertz,  // gigahertz
-         Terahertz // terahertz
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
-         {UnitChoicesEnum.ReciprocalSecond, new Guid("39240f8f-8c82-4026-9db7-f72ec60cb4c9")},  // reciprocal second
-         {UnitChoicesEnum.Kilohertz, new Guid("acf483c1-5d7a-4914-afa2-de7abed9be3e")},  // kilohertz
-         {UnitChoicesEnum.Megahertz, new Guid("6dea9f29-d4f4-49a7-86fe-0205d4bab45e")},  // megahertz
-         {UnitChoicesEnum.Gigahertz, new Guid("655ee4f9-1782-4ec0-894a-afff9b75cac7")},  // gigahertz
-         {UnitChoicesEnum.Terahertz, new Guid("9ca52ae4-2fc5-4e60-b774-79c73442de13")} // terahertz
+         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
+         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
+         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
+         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
+         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
+         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
+         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
+         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
+         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
+         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2275,64 +3367,8 @@ namespace OSDC.UnitConversion.Conversion
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Hertz, new Guid("59d8be09-9eee-4a88-926c-72e1c7c1242e")},  // hertz
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
          {UnitChoicesEnum.Rpm, new Guid("30880b5f-803d-412e-9736-62dca3ba5bbd")} // rpm
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class ProportionQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Proportion,  // proportion
-         Percent,  // percent
-         PerThousand,  // per thousand
-         PartPerMillion // part per million
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Proportion, new Guid("03eb339b-61aa-4b42-aa35-4a20c547fdb9")},  // proportion
-         {UnitChoicesEnum.Percent, new Guid("1a825e84-bc53-4da8-a089-118fdf40b8f7")},  // percent
-         {UnitChoicesEnum.PerThousand, new Guid("141465a2-9c3c-4dda-82ec-eb35e72250c2")},  // per thousand
-         {UnitChoicesEnum.PartPerMillion, new Guid("af33bf27-c3b8-4746-8b08-826ed1d21792")} // part per million
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class HeatTransferCoefficientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         WattPerSquareMetrePerKelvin,  // watt per square metre per kelvin
-         BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit // british thermal unit per hour per square foot per degree fahrenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.WattPerSquareMetrePerKelvin, new Guid("e1737353-c10b-46cd-aa4e-9c90afb2f01e")},  // watt per square metre per kelvin
-         {UnitChoicesEnum.BritishThermalUnitPerHourPerSquareFootPerDegreeFahrenheit, new Guid("6963db25-2bd9-4017-9c83-cc578a11abbf")} // british thermal unit per hour per square foot per degree fahrenheit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2422,92 +3458,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class InterfacialTensionQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         NewtonPerMetre,  // newton per metre
-         MillinewtonPerMetre,  // millinewton per metre
-         DynePerCentimetre,  // dyne per centimetre
-         PoundPerSecondSquared // pound per second squared
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.NewtonPerMetre, new Guid("7ee9eca6-2704-442a-bd50-c8a0826da932")},  // newton per metre
-         {UnitChoicesEnum.MillinewtonPerMetre, new Guid("7b1b363c-cbb0-4499-9d7c-762adc43e690")},  // millinewton per metre
-         {UnitChoicesEnum.DynePerCentimetre, new Guid("a3c12fb9-6936-44bf-ad66-f4139163d11b")},  // dyne per centimetre
-         {UnitChoicesEnum.PoundPerSecondSquared, new Guid("03db472b-b8e8-4ad0-b2b1-b8970686210c")} // pound per second squared
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class VolumeQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         CubicMetre,  // cubic metre
-         Litre,  // litre
-         Decilitre,  // decilitre
-         Centilitre,  // centilitre
-         Millilitre,  // millilitre
-         USGallon,  // US gallon
-         UKGallon,  // UK gallon
-         Barrel,  // barrel
-         MillionCubicMetre,  // million cubic metre
-         MillionLitre,  // million litre
-         MillionUKGallon,  // million UK gallon
-         MillionBarrel,  // million barrel
-         ThousandStandardCubicFoot,  // thousand standard cubic foot
-         MillionStandardCubicFoot,  // million standard cubic foot
-         CubicFoot,  // cubic foot
-         CubicInch,  // cubic inch
-         MillionUSGallon // million US gallon
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.CubicMetre, new Guid("a465ba87-53d6-456c-8e74-315a1a212498")},  // cubic metre
-         {UnitChoicesEnum.Litre, new Guid("3f713743-6248-4b0b-8f3b-c97b6fab76b1")},  // litre
-         {UnitChoicesEnum.Decilitre, new Guid("3d7dde61-a9e9-4df6-8ee4-1eb4a4be1147")},  // decilitre
-         {UnitChoicesEnum.Centilitre, new Guid("8d9baa02-5c3e-46f8-b909-7ca92d7bfa7a")},  // centilitre
-         {UnitChoicesEnum.Millilitre, new Guid("6eb0d045-36e5-448d-be94-96a24a03f3e6")},  // millilitre
-         {UnitChoicesEnum.USGallon, new Guid("1377d8ac-d203-48ed-bad4-733b0dc9d496")},  // US gallon
-         {UnitChoicesEnum.UKGallon, new Guid("78f1cef7-c489-498c-96fb-d37474e242a9")},  // UK gallon
-         {UnitChoicesEnum.Barrel, new Guid("b0f03925-d158-48ee-8c33-bf72c08cae68")},  // barrel
-         {UnitChoicesEnum.MillionCubicMetre, new Guid("4c021db5-327b-44d3-9c4f-5a9b84af602f")},  // million cubic metre
-         {UnitChoicesEnum.MillionLitre, new Guid("4f3f67df-28af-4398-966f-b23de678f50c")},  // million litre
-         {UnitChoicesEnum.MillionUKGallon, new Guid("ab9a2938-f519-47c0-bcaa-d61c8fa23c7b")},  // million UK gallon
-         {UnitChoicesEnum.MillionBarrel, new Guid("9d03120c-2c74-4666-8e24-98e143ab88db")},  // million barrel
-         {UnitChoicesEnum.ThousandStandardCubicFoot, new Guid("e50b6a47-cf4c-4a74-8c1c-758000df5d67")},  // thousand standard cubic foot
-         {UnitChoicesEnum.MillionStandardCubicFoot, new Guid("387b78ff-d51b-4684-b059-4c813407d767")},  // million standard cubic foot
-         {UnitChoicesEnum.CubicFoot, new Guid("1da2384d-f463-4b08-9c0b-1de06b51268c")},  // cubic foot
-         {UnitChoicesEnum.CubicInch, new Guid("dacec282-dacd-4687-9943-8fa741124116")},  // cubic inch
-         {UnitChoicesEnum.MillionUSGallon, new Guid("a1d1c28d-8d55-417e-93af-e7302b68ed13")} // million US gallon
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class LargeVolumeQuantity : VolumeQuantity
   {
     public new enum UnitChoicesEnum 
@@ -2552,266 +3502,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MagneticFluxDensityQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Tesla,  // tesla
-         Gauss,  // gauss
-         Milligauss,  // milligauss
-         Millitesla,  // millitesla
-         Microtesla,  // microtesla
-         Nanotesla,  // nanotesla
-         MaxwellPerSquareCentimetre,  // maxwell per square centimetre
-         WeberPerSquareMetre // weber per square metre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Tesla, new Guid("33c3b59d-9876-4918-9f31-f22de88d7bde")},  // tesla
-         {UnitChoicesEnum.Gauss, new Guid("c09cd87d-8a84-45d0-88d3-20bb5cc48559")},  // gauss
-         {UnitChoicesEnum.Milligauss, new Guid("41ace729-a2ff-4047-adc3-375829de64c6")},  // milligauss
-         {UnitChoicesEnum.Millitesla, new Guid("9b6d864e-6775-4668-a59d-e1ab432f8960")},  // millitesla
-         {UnitChoicesEnum.Microtesla, new Guid("c6b30197-be6b-41b7-803d-a8de61338612")},  // microtesla
-         {UnitChoicesEnum.Nanotesla, new Guid("9bef9def-8cd3-4f7b-b991-290d3441b3d4")},  // nanotesla
-         {UnitChoicesEnum.MaxwellPerSquareCentimetre, new Guid("d1b202cb-87c6-417a-947c-5247e5cdfe82")},  // maxwell per square centimetre
-         {UnitChoicesEnum.WeberPerSquareMetre, new Guid("fefe997a-f3a6-4663-a1de-32889ee0cf15")} // weber per square metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassRateQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerSecond,  // kilogram per second
-         KilogramPerMinute,  // kilogram per minute
-         KilogramPerHour,  // kilogram per hour
-         KilogramPerYear,  // kilogram per year
-         PoundPerSecond,  // pound per second
-         PoundPerMinute,  // pound per minute
-         PoundPerHour,  // pound per hour
-         PoundPerYear // pound per year
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerSecond, new Guid("a2daceb8-7705-4c97-9945-b354ea1ff78d")},  // kilogram per second
-         {UnitChoicesEnum.KilogramPerMinute, new Guid("b776ae6f-5b86-462c-b815-2608d7e98192")},  // kilogram per minute
-         {UnitChoicesEnum.KilogramPerHour, new Guid("736e4fcd-434f-4442-b025-a480a1532543")},  // kilogram per hour
-         {UnitChoicesEnum.KilogramPerYear, new Guid("0ce50feb-a755-4a62-a50b-4af417bc2702")},  // kilogram per year
-         {UnitChoicesEnum.PoundPerSecond, new Guid("48ac7515-ce4e-4ed6-a198-fe3ed3451a38")},  // pound per second
-         {UnitChoicesEnum.PoundPerMinute, new Guid("92d18443-9357-42cf-86d2-fa78996c838a")},  // pound per minute
-         {UnitChoicesEnum.PoundPerHour, new Guid("d4e0791c-eb4c-47a4-9e71-af3ad1b707cc")},  // pound per hour
-         {UnitChoicesEnum.PoundPerYear, new Guid("a461e40b-48ea-49b1-8a55-8e75b26fbb8e")} // pound per year
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class PermeabilityQuantity : AreaQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         SquareMetre,  // square metre
-         Darcy,  // darcy
-         Millidarcy,  // millidarcy
-         Microdarcy,  // microdarcy
-         Nanodarcy // nanodarcy
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.SquareMetre, new Guid("5e27ad4a-b541-4807-9a36-4bd159b33f52")},  // square metre
-         {UnitChoicesEnum.Darcy, new Guid("9a89bcc3-dc77-4e3a-a492-fcdabc24ec41")},  // darcy
-         {UnitChoicesEnum.Millidarcy, new Guid("8d7a6767-6c6b-4daf-8617-d35e4055d457")},  // millidarcy
-         {UnitChoicesEnum.Microdarcy, new Guid("b552f28d-c68a-4c59-853c-fe6e03dd5f4c")},  // microdarcy
-         {UnitChoicesEnum.Nanodarcy, new Guid("f35b05c7-8b2f-4194-9336-d42cec5f3ba5")} // nanodarcy
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class PressureGradientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         PascalPerMetre,  // pascal per metre
-         BarPerMetre,  // bar per metre
-         PsiPerMetre,  // psi per metre
-         PsiPerFoot // psi per foot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.PascalPerMetre, new Guid("f5a37831-4a70-44de-af34-4f6ce1a54af3")},  // pascal per metre
-         {UnitChoicesEnum.BarPerMetre, new Guid("73a70891-87cf-44fc-8437-94938f034eec")},  // bar per metre
-         {UnitChoicesEnum.PsiPerMetre, new Guid("2235a51b-cdf2-4f53-9664-b7a968dbbba3")},  // psi per metre
-         {UnitChoicesEnum.PsiPerFoot, new Guid("b99cef5c-d6df-4803-b52b-6050cf7e7ff8")} // psi per foot
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class PressureLossConstantQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         PressureLossConstantSI,  // pressure loss constant SI
-         PressureLossConstantMetric,  // pressure loss constant metric
-         PressureLossConstantUK,  // pressure loss constant UK
-         PressureLossConstantUS // pressure loss constant US
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.PressureLossConstantSI, new Guid("e0b334c4-2e44-4b1b-891f-9deae86a4d17")},  // pressure loss constant SI
-         {UnitChoicesEnum.PressureLossConstantMetric, new Guid("043fbd34-1e4f-45bc-9935-b1797b606fd6")},  // pressure loss constant metric
-         {UnitChoicesEnum.PressureLossConstantUK, new Guid("d5a97f2d-cb2f-449f-8f60-0ad292a01b87")},  // pressure loss constant UK
-         {UnitChoicesEnum.PressureLossConstantUS, new Guid("b5cb21d1-0e71-4ab2-8d9d-42de21753edc")} // pressure loss constant US
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class ResistivityQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         OhmMetre,  // ohm metre
-         KiloOhmMetre,  // kilo ohm metre
-         MegaOhmMetre,  // mega ohm metre
-         GigaOhmMetre // giga ohm metre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.OhmMetre, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")},  // ohm metre
-         {UnitChoicesEnum.KiloOhmMetre, new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962")},  // kilo ohm metre
-         {UnitChoicesEnum.MegaOhmMetre, new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6")},  // mega ohm metre
-         {UnitChoicesEnum.GigaOhmMetre, new Guid("eecfdf24-7a8e-4783-a627-d4387831767d")} // giga ohm metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class FrequencyRateOfChangeQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         HertzPerSecond,  // hertz per second
-         KiloHertzPerSecond,  // kilo hertz per second
-         MegaHertzPerSecond,  // mega hertz per second
-         GigaHertzPerSecond,  // giga hertz per second
-         HertzPerMinute,  // hertz per minute
-         KiloHertzPerMinute,  // kilo hertz per minute
-         MegaHertzPerMinute,  // mega hertz per minute
-         GigaHertzPerMinute,  // giga hertz per minute
-         HertzPerHour,  // hertz per hour
-         KiloHertzPerHour,  // kilo hertz per hour
-         MegaHertzPerHour,  // mega hertz per hour
-         GigaHertzPerHour,  // giga hertz per hour
-         HertzPerDay,  // hertz per day
-         KiloHertzPerDay,  // kilo hertz per day
-         MegaHertzPerDay,  // mega hertz per day
-         GigaHertzPerDay,  // giga hertz per day
-         HertzPerYear,  // hertz per year
-         KiloHertzPerYear,  // kilo hertz per year
-         MegaHertzPerYear,  // mega hertz per year
-         GigaHertzPerYear // giga hertz per year
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.HertzPerSecond, new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd")},  // hertz per second
-         {UnitChoicesEnum.KiloHertzPerSecond, new Guid("e197e7ca-93f7-4348-9508-74e61ce97f94")},  // kilo hertz per second
-         {UnitChoicesEnum.MegaHertzPerSecond, new Guid("8c9671f4-54b6-40a0-94c1-5cfb25378f88")},  // mega hertz per second
-         {UnitChoicesEnum.GigaHertzPerSecond, new Guid("46ad2062-982c-461f-95d8-ddd888e5d4f8")},  // giga hertz per second
-         {UnitChoicesEnum.HertzPerMinute, new Guid("af3fcbbf-4fc8-4b5d-b555-33340d3c2f0f")},  // hertz per minute
-         {UnitChoicesEnum.KiloHertzPerMinute, new Guid("0fabfb82-03fb-4855-aaea-578e36c9c7cf")},  // kilo hertz per minute
-         {UnitChoicesEnum.MegaHertzPerMinute, new Guid("97c4e6e3-a8b3-4aa6-a742-1900a239e282")},  // mega hertz per minute
-         {UnitChoicesEnum.GigaHertzPerMinute, new Guid("8d8d140d-00cd-4e80-aaa5-8d2d5ddcbc73")},  // giga hertz per minute
-         {UnitChoicesEnum.HertzPerHour, new Guid("424100d5-ab81-4061-9429-74a9e3638453")},  // hertz per hour
-         {UnitChoicesEnum.KiloHertzPerHour, new Guid("0963dc43-168a-483c-be3f-3c9054b0c692")},  // kilo hertz per hour
-         {UnitChoicesEnum.MegaHertzPerHour, new Guid("a1b30880-ba44-4675-b808-6d93ba8aa8d2")},  // mega hertz per hour
-         {UnitChoicesEnum.GigaHertzPerHour, new Guid("cd42ca67-9d8b-411c-bcce-e9e5ce6d1259")},  // giga hertz per hour
-         {UnitChoicesEnum.HertzPerDay, new Guid("fe28723d-23e5-45f3-b286-50705746d643")},  // hertz per day
-         {UnitChoicesEnum.KiloHertzPerDay, new Guid("0dc10fed-83a5-4570-a997-f2422d71d7fd")},  // kilo hertz per day
-         {UnitChoicesEnum.MegaHertzPerDay, new Guid("c5743df5-a0be-41d2-99a1-b1f760940007")},  // mega hertz per day
-         {UnitChoicesEnum.GigaHertzPerDay, new Guid("56e88229-8197-4ca2-aa69-e4100234d344")},  // giga hertz per day
-         {UnitChoicesEnum.HertzPerYear, new Guid("1195a495-ea6e-4b5a-92b6-6ef0d2ca23d5")},  // hertz per year
-         {UnitChoicesEnum.KiloHertzPerYear, new Guid("2e2a0d0f-5658-4ba2-8799-53bb06f197e7")},  // kilo hertz per year
-         {UnitChoicesEnum.MegaHertzPerYear, new Guid("665c1c2a-57f6-4696-8b7b-524f8ad6084f")},  // mega hertz per year
-         {UnitChoicesEnum.GigaHertzPerYear, new Guid("2c756b88-bbed-4650-8307-86bc7513caee")} // giga hertz per year
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class RotationFrequencyRateOfChangeQuantity : FrequencyRateOfChangeQuantity
   {
     public new enum UnitChoicesEnum 
@@ -2823,116 +3513,6 @@ namespace OSDC.UnitConversion.Conversion
     {
          {UnitChoicesEnum.HertzPerSecond, new Guid("4d7e4b49-df76-4259-a96c-8c1250d5ecdd")},  // hertz per second
          {UnitChoicesEnum.RpmPerSecond, new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb")} // rpm per second
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class SpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         JoulePerKilogramKelvin,  // joule per kilogram kelvin
-         JoulePerGramKelvin,  // joule per gram kelvin
-         JoulePerGramDegreeCelsius,  // joule per gram degree celsius
-         CaloriePerGramDegreeCelsius,  // calorie per gram degree celsius
-         BritishThermalUnitPerPoundDegreeFahrenheit,  // british thermal unit per pound degree fahrenheit
-         KilocaloriePerGramDegreeCelsius // kilocalorie per gram degree celsius
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.JoulePerKilogramKelvin, new Guid("52d9523e-546b-41dd-b283-a125447433a3")},  // joule per kilogram kelvin
-         {UnitChoicesEnum.JoulePerGramKelvin, new Guid("0c38001b-ecba-4920-ac75-e4644d8feced")},  // joule per gram kelvin
-         {UnitChoicesEnum.JoulePerGramDegreeCelsius, new Guid("5b620d63-2269-42d3-8385-edca04c7ea70")},  // joule per gram degree celsius
-         {UnitChoicesEnum.CaloriePerGramDegreeCelsius, new Guid("bb241c58-e76c-4d96-81c1-356b3f2ad397")},  // calorie per gram degree celsius
-         {UnitChoicesEnum.BritishThermalUnitPerPoundDegreeFahrenheit, new Guid("ad9274f2-4c1a-45fe-97c1-710f00deca16")},  // british thermal unit per pound degree fahrenheit
-         {UnitChoicesEnum.KilocaloriePerGramDegreeCelsius, new Guid("b283ecf7-20e4-4a6c-b62b-b07f56fa6614")} // kilocalorie per gram degree celsius
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class SpecificHeatCapacityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         JoulePerKilogramSquaredKelvin,  // joule per kilogram squared kelvin
-         JoulePerGramSquaredKelvin,  // joule per gram squared kelvin
-         JoulePerGramDegreeSquaredCelsius,  // joule per gram degree squared celsius
-         CaloriePerGramDegreeSquaredCelsius,  // calorie per gram degree squared celsius
-         BritishThermalUnitPerPoundSquaredDegreeFahrenheit // british thermal unit per pound squared degree fahrenheit 
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.JoulePerKilogramSquaredKelvin, new Guid("9570fd84-ff2e-4a74-93b7-39bcf6558301")},  // joule per kilogram squared kelvin
-         {UnitChoicesEnum.JoulePerGramSquaredKelvin, new Guid("69520d03-c7c3-483f-bbbb-6bdf3cf74463")},  // joule per gram squared kelvin
-         {UnitChoicesEnum.JoulePerGramDegreeSquaredCelsius, new Guid("9ed03436-3032-4bee-a145-fd03b6236816")},  // joule per gram degree squared celsius
-         {UnitChoicesEnum.CaloriePerGramDegreeSquaredCelsius, new Guid("ad3fe4d1-3286-4313-9f45-f2110b7ca6f2")},  // calorie per gram degree squared celsius
-         {UnitChoicesEnum.BritishThermalUnitPerPoundSquaredDegreeFahrenheit, new Guid("57264532-79b7-4a19-8ffe-617bba781be3")} // british thermal unit per pound squared degree fahrenheit 
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class TemperatureGradientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KelvinPerMetre,  // kelvin per metre
-         CelsiusPerMetre,  // celsius per metre
-         CelsiusPer10Metre,  // celsius per 10 metre
-         CelsiusPer30Metre,  // celsius per 30 metre
-         CelsiusPer100Metre,  // celsius per 100 metre
-         CelsiusPerFoot,  // celsius per foot
-         CelsiusPer30Foot,  // celsius per 30 foot
-         CelsiusPer100Foot,  // celsius per 100 foot
-         FahrenheitPerFoot,  // fahrenheit per foot
-         FahrenheitPer30Foot,  // fahrenheit per 30 foot
-         FahrenheitPer100Foot // fahrenheit per 100 foot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KelvinPerMetre, new Guid("f1fe19d2-12e3-43d1-ba97-3ef9e8ec9e73")},  // kelvin per metre
-         {UnitChoicesEnum.CelsiusPerMetre, new Guid("40dbbdfe-b680-403a-8326-2c217ba85d52")},  // celsius per metre
-         {UnitChoicesEnum.CelsiusPer10Metre, new Guid("5e4ff2bf-4788-4258-bd4a-7b18a13364ff")},  // celsius per 10 metre
-         {UnitChoicesEnum.CelsiusPer30Metre, new Guid("d17464c4-a7ef-4dcd-b783-bafe6e9b92de")},  // celsius per 30 metre
-         {UnitChoicesEnum.CelsiusPer100Metre, new Guid("b47f299a-913a-46b7-ad20-c683fa0f02d0")},  // celsius per 100 metre
-         {UnitChoicesEnum.CelsiusPerFoot, new Guid("e7b05420-41f6-4812-bc54-9c14f05a9cbd")},  // celsius per foot
-         {UnitChoicesEnum.CelsiusPer30Foot, new Guid("bea3df4f-78e9-4e1a-bbee-22086da043b4")},  // celsius per 30 foot
-         {UnitChoicesEnum.CelsiusPer100Foot, new Guid("f9bae95a-b282-44a7-8ae0-54728ef3c7a3")},  // celsius per 100 foot
-         {UnitChoicesEnum.FahrenheitPerFoot, new Guid("d08596f1-77c4-4a8e-9245-6bf563fa7345")},  // fahrenheit per foot
-         {UnitChoicesEnum.FahrenheitPer30Foot, new Guid("a1664cb0-db5c-4933-9b57-d075c4975f46")},  // fahrenheit per 30 foot
-         {UnitChoicesEnum.FahrenheitPer100Foot, new Guid("232e2d6d-cb65-4b56-9277-457e4ff678fa")} // fahrenheit per 100 foot
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2984,108 +3564,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ThermalConductivityQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         WattPerMetreKelvin,  // watt per metre kelvin
-         CaloriePerMetreSecondDegreeCelsius,  // calorie per metre second degree celsius
-         CaloriePerCentimetreSecondDegreeCelsius,  // calorie per centimetre second degree celsius
-         BritishThermalUnitPerHourFootDegreeFahrenheit,  // british thermal unit per hour foot degree fahrenheit
-         BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit // british thermal unit inch per hour square foot degree fahrenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.WattPerMetreKelvin, new Guid("3ddba24f-4ccf-4cb1-af6c-2829cac3b88f")},  // watt per metre kelvin
-         {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsius, new Guid("d0386fc4-b97b-4874-8c8d-66e093c391ea")},  // calorie per metre second degree celsius
-         {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsius, new Guid("5f8706ed-d938-4715-a0ca-2afff423f6e6")},  // calorie per centimetre second degree celsius
-         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheit, new Guid("43169695-8f6e-42ad-8c07-566dc7651edb")},  // british thermal unit per hour foot degree fahrenheit
-         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheit, new Guid("c79c2b27-c956-49a3-9caf-8653017777ca")} // british thermal unit inch per hour square foot degree fahrenheit
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassGradientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerMetre,  // kilogram per metre
-         PoundPerFoot,  // pound per foot
-         GramPerMetre // gram per metre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerMetre, new Guid("c8b4a6ea-29bf-4e5a-b7ce-9142cefc0752")},  // kilogram per metre
-         {UnitChoicesEnum.PoundPerFoot, new Guid("6fdf4cb6-a43b-482d-9bc8-d4ad49770f9e")},  // pound per foot
-         {UnitChoicesEnum.GramPerMetre, new Guid("0cea1e32-9adb-4882-9070-d027cd0eef8e")} // gram per metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class TorqueQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         NewtonMetre,  // newton metre
-         DecanewtonMetre,  // decanewton metre
-         KilogramForceMetre,  // kilogram force metre
-         KilonewtonMetre,  // kilonewton metre
-         FootPound,  // foot pound
-         KilofootPound,  // kilofoot pound
-         NewtonDecimetre,  // newton decimetre
-         NewtonCentimetre,  // newton centimetre
-         NewtonMillimetre,  // newton millimetre
-         InchPound // inch pound
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.NewtonMetre, new Guid("50b017fa-8d81-4076-a485-61de1d8301b5")},  // newton metre
-         {UnitChoicesEnum.DecanewtonMetre, new Guid("501ce02c-8a5d-46e6-9ab6-ce443df70402")},  // decanewton metre
-         {UnitChoicesEnum.KilogramForceMetre, new Guid("282f97a0-df2a-4016-9ab0-796db49ff384")},  // kilogram force metre
-         {UnitChoicesEnum.KilonewtonMetre, new Guid("2e417a6e-1acc-4901-8704-7dfeb3f67546")},  // kilonewton metre
-         {UnitChoicesEnum.FootPound, new Guid("700d9fc7-17e1-4ad6-84f1-39cacbe5fe51")},  // foot pound
-         {UnitChoicesEnum.KilofootPound, new Guid("ee9be6ed-df75-4915-be6a-e3941dacd6bd")},  // kilofoot pound
-         {UnitChoicesEnum.NewtonDecimetre, new Guid("e70db590-c5fb-4ab9-a2c4-3ad611cb7f63")},  // newton decimetre
-         {UnitChoicesEnum.NewtonCentimetre, new Guid("4acf4542-8df0-4f57-a852-7c0184dbeec9")},  // newton centimetre
-         {UnitChoicesEnum.NewtonMillimetre, new Guid("a933225d-7c8e-4ce4-b0ea-4c1c6e9f7e34")},  // newton millimetre
-         {UnitChoicesEnum.InchPound, new Guid("0d40553e-d8c4-4b75-ad05-61199b15a0a1")} // inch pound
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class YoungModulusQuantity : PressureQuantity
   {
     public new enum UnitChoicesEnum 
@@ -3093,16 +3571,16 @@ namespace OSDC.UnitConversion.Conversion
          Pascal,  // pascal
          Megapascal,  // megapascal
          Gigapascal,  // gigapascal
-         Psi,  // psi
+         PoundPerSquareInch,  // pound per square inch
          MegapoundPerSquareInch // megapound per square inch
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Pascal, new Guid("1c02aa67-6ec3-4cd1-a61e-b3f1fe4fe0c7")},  // pascal
-         {UnitChoicesEnum.Megapascal, new Guid("754537d8-8043-48eb-9c0c-2d5efa19562e")},  // megapascal
-         {UnitChoicesEnum.Gigapascal, new Guid("c50313fd-59ce-429c-b525-f1d7664170c7")},  // gigapascal
-         {UnitChoicesEnum.Psi, new Guid("0305c2fe-1843-446b-badd-a2c02c367249")},  // psi
-         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("39285bdf-1b8b-4038-bb33-ab585e702bf3")} // megapound per square inch
+         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // pascal
+         {UnitChoicesEnum.Megapascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // megapascal
+         {UnitChoicesEnum.Gigapascal, new Guid("5c81fb9b-36ad-47b7-9a8e-c999f7fdbfe3")},  // gigapascal
+         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // pound per square inch
+         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("bb49de0a-fbf3-4914-b6b9-fc60ab502522")} // megapound per square inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -3382,7 +3860,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SmallRotationFrequencyQuantity : TorqueQuantity
+  public partial class SmallRotationFrequencyQuantity : RotationFrequencyQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3391,94 +3869,8 @@ namespace OSDC.UnitConversion.Conversion
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Hertz, new Guid("59d8be09-9eee-4a88-926c-72e1c7c1242e")},  // hertz
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
          {UnitChoicesEnum.Rpm, new Guid("30880b5f-803d-412e-9736-62dca3ba5bbd")} // rpm
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MagneticFluxQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Weber,  // weber
-         Milliweber,  // milliweber
-         Microweber,  // microweber
-         VoltSecond,  // volt second
-         UnitPole,  // unit pole
-         Megaline,  // megaline
-         Kiloline,  // kiloline
-         Line,  // line
-         Maxwell,  // maxwell
-         TeslaSquareMetre,  // tesla square metre
-         TeslaSquareCentimetre,  // tesla square centimetre
-         GaussSquareCentimetre,  // gauss square centimetre
-         MagneticFluxQuantum // magnetic flux quantum
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Weber, new Guid("d790689d-e7dd-43d8-a3c0-c17ccc8073e5")},  // weber
-         {UnitChoicesEnum.Milliweber, new Guid("94f03fc7-b0bb-4356-8787-c9e33f6559d2")},  // milliweber
-         {UnitChoicesEnum.Microweber, new Guid("200b9de7-0635-40eb-8ebd-9cef7c01ac10")},  // microweber
-         {UnitChoicesEnum.VoltSecond, new Guid("430305c3-d672-4d68-9b16-d0517243a870")},  // volt second
-         {UnitChoicesEnum.UnitPole, new Guid("3bac78d4-5601-4cb2-bea1-01d952597a4d")},  // unit pole
-         {UnitChoicesEnum.Megaline, new Guid("cca39e15-ee2e-4b8f-8843-527b329f3e81")},  // megaline
-         {UnitChoicesEnum.Kiloline, new Guid("85862477-e913-4bcf-9d24-8248ec975d43")},  // kiloline
-         {UnitChoicesEnum.Line, new Guid("40d608dd-b19f-4489-aac3-a3a6b7a55413")},  // line
-         {UnitChoicesEnum.Maxwell, new Guid("8c1fcd01-4a3d-469a-a019-d3b35f7ef8b5")},  // maxwell
-         {UnitChoicesEnum.TeslaSquareMetre, new Guid("f6da9f32-0738-4014-aac6-fdc5935fd436")},  // tesla square metre
-         {UnitChoicesEnum.TeslaSquareCentimetre, new Guid("312b97ea-6167-47b5-a046-c6c202fb7eb4")},  // tesla square centimetre
-         {UnitChoicesEnum.GaussSquareCentimetre, new Guid("a0dc1e92-7e84-401f-bca2-a6eb618ef604")},  // gauss square centimetre
-         {UnitChoicesEnum.MagneticFluxQuantum, new Guid("f768bd79-1119-401c-b0df-39a5207273e0")} // magnetic flux quantum
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class RandomWalkQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianPerSquareRootSecond,  // radian per square root second
-         RadianPerSquareRootMinute,  // radian per square root minute
-         RadianPerSquareRootHour,  // radian per square root hour
-         RadianPerSquareRootDay,  // radian per square root day
-         DegreePerSquareRootSecond,  // degree per square root second
-         DegreePerSquareRootMinute,  // degree per square root minute
-         DegreePerSquareRootHour,  // degree per square root hour
-         DegreePerSquareRootDay // degree per square root day
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.RadianPerSquareRootSecond, new Guid("557ea59e-a1da-438b-b04d-ccfc5539f87f")},  // radian per square root second
-         {UnitChoicesEnum.RadianPerSquareRootMinute, new Guid("ccc41b4e-2efb-4760-969f-94614248374f")},  // radian per square root minute
-         {UnitChoicesEnum.RadianPerSquareRootHour, new Guid("e296c410-e278-4586-af95-bae6fe4f0673")},  // radian per square root hour
-         {UnitChoicesEnum.RadianPerSquareRootDay, new Guid("fb4a74f9-a648-4310-a424-9c85036bbc41")},  // radian per square root day
-         {UnitChoicesEnum.DegreePerSquareRootSecond, new Guid("87a0a4e3-a2f5-4f84-b845-c7e6276e1655")},  // degree per square root second
-         {UnitChoicesEnum.DegreePerSquareRootMinute, new Guid("e8e3a988-4219-44a5-ae89-ce115a239d04")},  // degree per square root minute
-         {UnitChoicesEnum.DegreePerSquareRootHour, new Guid("ab6b85cf-54e5-4c3b-a330-f65d7e3bb926")},  // degree per square root hour
-         {UnitChoicesEnum.DegreePerSquareRootDay, new Guid("8f806d0f-3741-4aa8-9f37-54b4f80e307c")} // degree per square root day
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -3524,86 +3916,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class WaveNumberQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         ReciprocalMetre,  // reciprocal metre
-         ReciprocalDecimetre,  // reciprocal decimetre
-         ReciprocalCentimetre,  // reciprocal centimetre
-         ReciprocalMillimetre,  // reciprocal millimetre
-         ReciprocalMicrometre,  // reciprocal micrometre
-         ReciprocalNanometre,  // reciprocal nanometre
-         ReciprocalÅngstrøm,  // reciprocal ångstrøm
-         ReciprocalPicometre,  // reciprocal picometre
-         ReciprocalDecametre,  // reciprocal decametre
-         ReciprocalHectometre,  // reciprocal hectometre
-         ReciprocalKilometre,  // reciprocal kilometre
-         ReciprocalAstronomicalUnit,  // reciprocal astronomical unit
-         ReciprocalLightYear,  // reciprocal light year
-         ReciprocalParsec,  // reciprocal parsec
-         ReciprocalFoot,  // reciprocal foot
-         ReciprocalUSSurveyFoot,  // reciprocal US survey foot
-         ReciprocalInch,  // reciprocal inch
-         ReciprocalYard,  // reciprocal yard
-         ReciprocalFathom,  // reciprocal fathom
-         ReciprocalSurveyorsChain,  // reciprocal surveyors chain
-         ReciprocalMile,  // reciprocal mile
-         ReciprocalInternationalNauticalMile,  // reciprocal international nautical mile
-         ReciprocalUKNauticalMile,  // reciprocal UK nautical mile
-         ReciprocalScandinavianMile,  // reciprocal scandinavian mile
-         ReciprocalInchPer32,  // reciprocal inch per 32
-         ReciprocalMil,  // reciprocal mil
-         ReciprocalThou,  // reciprocal thou
-         ReciprocalHand,  // reciprocal hand
-         ReciprocalFurlong // reciprocal furlong
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.ReciprocalMetre, new Guid("3cd38922-b99f-45bb-af6e-a38ebf1240f0")},  // reciprocal metre
-         {UnitChoicesEnum.ReciprocalDecimetre, new Guid("cf8a931b-eaa9-4b0c-8894-53d54e93cba1")},  // reciprocal decimetre
-         {UnitChoicesEnum.ReciprocalCentimetre, new Guid("4f2c38c2-86ff-4842-afdd-3a9fcf8a623e")},  // reciprocal centimetre
-         {UnitChoicesEnum.ReciprocalMillimetre, new Guid("2d484d0f-7d29-48e9-8d5b-ff82fca6f1c5")},  // reciprocal millimetre
-         {UnitChoicesEnum.ReciprocalMicrometre, new Guid("ddbbb734-ddd2-4d26-84ba-9995fff479e6")},  // reciprocal micrometre
-         {UnitChoicesEnum.ReciprocalNanometre, new Guid("25412abd-9c3e-4b67-b809-d92926eb2b58")},  // reciprocal nanometre
-         {UnitChoicesEnum.ReciprocalÅngstrøm, new Guid("7c28c943-c084-48f6-804c-87e6c6902b35")},  // reciprocal ångstrøm
-         {UnitChoicesEnum.ReciprocalPicometre, new Guid("bca4fde9-e17a-4a27-9a3f-34beab644ee2")},  // reciprocal picometre
-         {UnitChoicesEnum.ReciprocalDecametre, new Guid("a691338d-1916-4355-b6e1-3b1bff086c14")},  // reciprocal decametre
-         {UnitChoicesEnum.ReciprocalHectometre, new Guid("4da19df4-0ff6-424b-a2ab-9d5811ba48ca")},  // reciprocal hectometre
-         {UnitChoicesEnum.ReciprocalKilometre, new Guid("a4b4ed8e-a1c6-4e3f-9421-8770cec6ff42")},  // reciprocal kilometre
-         {UnitChoicesEnum.ReciprocalAstronomicalUnit, new Guid("4d58ee46-e637-4f5a-a1ff-33f002154fec")},  // reciprocal astronomical unit
-         {UnitChoicesEnum.ReciprocalLightYear, new Guid("81c8c5d9-a892-4702-921b-9946abbef6b0")},  // reciprocal light year
-         {UnitChoicesEnum.ReciprocalParsec, new Guid("b8f6a954-7fe6-4f31-94cc-e53bb5603cd5")},  // reciprocal parsec
-         {UnitChoicesEnum.ReciprocalFoot, new Guid("1d6a5284-d32f-4f5a-ad27-bfc0f71069aa")},  // reciprocal foot
-         {UnitChoicesEnum.ReciprocalUSSurveyFoot, new Guid("16c3f209-e890-4b35-807e-7115545406e0")},  // reciprocal US survey foot
-         {UnitChoicesEnum.ReciprocalInch, new Guid("95cd773d-b6da-4148-bd9c-bed66b4a72d8")},  // reciprocal inch
-         {UnitChoicesEnum.ReciprocalYard, new Guid("be5f64c0-592a-4f3b-b2b5-6df8b9d2a31b")},  // reciprocal yard
-         {UnitChoicesEnum.ReciprocalFathom, new Guid("ae9e314e-de19-405e-a897-6a68cd4845f6")},  // reciprocal fathom
-         {UnitChoicesEnum.ReciprocalSurveyorsChain, new Guid("90da0d97-195c-4c30-85d8-51d70b75f071")},  // reciprocal surveyors chain
-         {UnitChoicesEnum.ReciprocalMile, new Guid("acbb10a5-602f-423b-bc15-bdfd80cb7008")},  // reciprocal mile
-         {UnitChoicesEnum.ReciprocalInternationalNauticalMile, new Guid("78474000-3cd8-4102-b7b4-360b4c2130fc")},  // reciprocal international nautical mile
-         {UnitChoicesEnum.ReciprocalUKNauticalMile, new Guid("8a55784f-b5f4-4aa7-b5f9-d19742857349")},  // reciprocal UK nautical mile
-         {UnitChoicesEnum.ReciprocalScandinavianMile, new Guid("f766575d-9bfa-45fb-8bfd-50f12a0e6a6a")},  // reciprocal scandinavian mile
-         {UnitChoicesEnum.ReciprocalInchPer32, new Guid("ac9c8b52-22f0-476d-a038-023695c24f25")},  // reciprocal inch per 32
-         {UnitChoicesEnum.ReciprocalMil, new Guid("09d27104-6452-4976-98e0-6fd087e22eb1")},  // reciprocal mil
-         {UnitChoicesEnum.ReciprocalThou, new Guid("e732fd46-ddf3-433e-8baf-cc531ca69160")},  // reciprocal thou
-         {UnitChoicesEnum.ReciprocalHand, new Guid("844ed023-9f47-4147-8b50-cf03c99071b5")},  // reciprocal hand
-         {UnitChoicesEnum.ReciprocalFurlong, new Guid("79a3f3db-0ac8-4bcb-b93c-fca2a673147b")} // reciprocal furlong
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class PorosityQuantity : ProportionQuantity
   {
     public new enum UnitChoicesEnum 
@@ -3632,47 +3944,17 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class PowerQuantity : DerivedBasePhysicalQuantity
+  public partial class StrokeFrequencyQuantity : FrequencyQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Watt,  // watt
-         Decawatt,  // decawatt
-         Hectowatt,  // hectowatt
-         Kilowatt,  // kilowatt
-         Megawatt,  // megawatt
-         Gigawatt,  // gigawatt
-         Terawatt,  // terawatt
-         Petawatt,  // petawatt
-         Exawatt,  // exawatt
-         Deciwatt,  // deciwatt
-         Centiwatt,  // centiwatt
-         Milliwatt,  // milliwatt
-         Microwatt,  // microwatt
-         Nanowatt,  // nanowatt
-         Picowatt,  // picowatt
-         Femtowatt,  // femtowatt
-         Attowatt // attowatt
+         Hertz,  // hertz
+         Spm // spm
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Watt, new Guid("9d986a0c-700f-4448-a48c-a028bbd22049")},  // watt
-         {UnitChoicesEnum.Decawatt, new Guid("fa888306-f2ef-420a-9ce2-8c56fe64ea3c")},  // decawatt
-         {UnitChoicesEnum.Hectowatt, new Guid("1f159f0d-635a-4bc8-9020-6c09d72b3f63")},  // hectowatt
-         {UnitChoicesEnum.Kilowatt, new Guid("016b23c7-0231-45bb-8723-5d3d4cc5c054")},  // kilowatt
-         {UnitChoicesEnum.Megawatt, new Guid("5719b5f3-5c24-46d2-8ccd-0a06cc6b49ae")},  // megawatt
-         {UnitChoicesEnum.Gigawatt, new Guid("ba67ba92-cdf5-46a8-a5f5-56c1ad102417")},  // gigawatt
-         {UnitChoicesEnum.Terawatt, new Guid("b3e60a20-9e0f-479b-903b-16b22d86a515")},  // terawatt
-         {UnitChoicesEnum.Petawatt, new Guid("bafba6b7-8a58-46b0-b4c7-c9a008c5e8f4")},  // petawatt
-         {UnitChoicesEnum.Exawatt, new Guid("457950e4-0d4c-4f18-87ae-c35a7d2f512a")},  // exawatt
-         {UnitChoicesEnum.Deciwatt, new Guid("6a3cd886-1c2c-41c8-8214-b21aff588b1e")},  // deciwatt
-         {UnitChoicesEnum.Centiwatt, new Guid("ac6c67e1-0912-44f2-9496-ed82aca2b925")},  // centiwatt
-         {UnitChoicesEnum.Milliwatt, new Guid("4b9e8b24-6c84-423e-8f79-b2bec161f219")},  // milliwatt
-         {UnitChoicesEnum.Microwatt, new Guid("f0345b17-3e67-4c27-a787-69cd6feb7b1b")},  // microwatt
-         {UnitChoicesEnum.Nanowatt, new Guid("622ee208-1b04-42c4-ba6e-552e6e328e02")},  // nanowatt
-         {UnitChoicesEnum.Picowatt, new Guid("5b46567b-0571-4ca7-90d5-6304a0b7f938")},  // picowatt
-         {UnitChoicesEnum.Femtowatt, new Guid("325622ea-c161-4f4f-9ee4-86d9e802f21c")},  // femtowatt
-         {UnitChoicesEnum.Attowatt, new Guid("7bc1807f-90ac-41b0-a15f-9d1c81101f6d")} // attowatt
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
+         {UnitChoicesEnum.Spm, new Guid("426b000b-235f-41d5-8806-b2e47fbfb53b")} // spm
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -3688,221 +3970,19 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class TorqueGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ShockRateQuantity : FrequencyQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         NewtonMetrePerMetre,  // newton metre per metre
-         DecanewtonMetrePerMetre,  // decanewton metre per metre
-         KilogramForceMetrePerMetre,  // kilogram force metre per metre
-         KilonewtonMetrePerMetre,  // kilonewton metre per metre
-         FootPoundPerMetre,  // foot pound per metre
-         KilofootPoundPerMetre,  // kilofoot pound per metre
-         NewtonDecimetrePerMetre,  // newton decimetre per metre
-         NewtonCentimetrePerMetre,  // newton centimetre per metre
-         NewtonMillimetrePerMetre,  // newton millimetre per metre
-         InchPoundPerMetre,  // inch pound per metre
-         NewtonMetrePerDecimetre,  // Newton metre per decimetre
-         DecanewtonMetrePerDecimetre,  // decanewton metre per decimetre
-         KilogramForceMetrePerDecimetre,  // kilogram force metre per decimetre
-         KilonewtonMetrePerDecimetre,  // kilonewton metre per decimetre
-         FootPoundPerDecimetre,  // foot pound per decimetre
-         KilofootPoundPerDecimetre,  // kilofoot pound per decimetre
-         NewtonDecimetrePerDecimetre,  // newton decimetre per decimetre
-         NewtonCentimetrePerDecimetre,  // newton centimetre per decimetre
-         NewtonMillimetrePerDecimetre,  // newton millimetre per decimetre
-         InchPoundPerDecimetre,  // inch pound per decimetre
-         NewtonMetrePerCentimetre,  // Newton metre per centimetre
-         DecanewtonMetrePerCentimetre,  // decanewton metre per centimetre
-         KilogramForceMetrePerCentimetre,  // kilogram force metre per centimetre
-         KilonewtonMetrePerCentimetre,  // kilonewton metre per centimetre
-         FootPoundPerCentimetre,  // foot pound per centimetre
-         KilofootPoundPerCentimetre,  // kilofoot pound per centimetre
-         NewtonDecimetrePerCentimetre,  // newton decimetre per centimetre
-         NewtonCentimetrePerCentimetre,  // newton centimetre per centimetre
-         NewtonMillimetrePerCentimetre,  // newton millimetre per centimetre
-         InchPoundPerCentimetre,  // inch pound per centimetre
-         NewtonMetrePerMillimetre,  // Newton metre per millimetre
-         DecanewtonMetrePerMillimetre,  // decanewton metre per millimetre
-         KilogramForceMetrePerMillimetre,  // kilogram force metre per millimetre
-         KilonewtonMetrePerMillimetre,  // kilonewton metre per millimetre
-         FootPoundPerMillimetre,  // foot pound per millimetre
-         KilofootPoundPerMillimetre,  // kilofoot pound per millimetre
-         NewtonDecimetrePerMillimetre,  // newton decimetre per millimetre
-         NewtonCentimetrePerMillimetre,  // newton centimetre per millimetre
-         NewtonMillimetrePerMillimetre,  // newton millimetre per millimetre
-         InchPoundPerMillimetre,  // inch pound per millimetre
-         NewtonMetrePerFoot,  // Newton metre per foot
-         DecanewtonMetrePerFoot,  // decanewton metre per foot
-         KilogramForceMetrePerFoot,  // kilogram force metre per foot
-         KilonewtonMetrePerFoot,  // kilonewton metre per foot
-         FootPoundPerFoot,  // foot pound per foot
-         KilofootPoundPerFoot,  // kilofoot pound per foot
-         NewtonDecimetrePerFoot,  // newton decimetre per foot
-         NewtonCentimetrePerFoot,  // newton centimetre per foot
-         NewtonMillimetrePerFoot,  // newton millimetre per foot
-         InchPoundPerFoot,  // inch pound per foot
-         NewtonMetrePerInch,  // Newton metre per inch
-         DecanewtonMetrePerInch,  // decanewton metre per inch
-         KilogramForceMetrePerInch,  // kilogram force metre per inch
-         KilonewtonMetrePerInch,  // kilonewton metre per inch
-         FootPoundPerInch,  // foot pound per inch
-         KilofootPoundPerInch,  // kilofoot pound per inch
-         NewtonDecimetrePerInch,  // newton decimetre per inch
-         NewtonCentimetrePerInch,  // newton centimetre per inch
-         NewtonMillimetrePerInch,  // newton millimetre per inch
-         InchPoundPerInch // inch pound per inch
+         Hertz,  // hertz
+         ShockPerMinute,  // shock per minute
+         ShockPerHour // shock per hour
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.NewtonMetrePerMetre, new Guid("33baa8d7-6987-4217-959b-1e3aa5b04752")},  // newton metre per metre
-         {UnitChoicesEnum.DecanewtonMetrePerMetre, new Guid("50a1ea8d-9a46-4e24-9e9f-dad66e8bb9ca")},  // decanewton metre per metre
-         {UnitChoicesEnum.KilogramForceMetrePerMetre, new Guid("66f7449d-5a06-4dd0-bf27-0bed2d2e4bed")},  // kilogram force metre per metre
-         {UnitChoicesEnum.KilonewtonMetrePerMetre, new Guid("d07e4c6c-fea3-4545-b020-9cc2402e1ca5")},  // kilonewton metre per metre
-         {UnitChoicesEnum.FootPoundPerMetre, new Guid("e3b4fe22-6590-4b2d-b2fa-0250f1ca8b26")},  // foot pound per metre
-         {UnitChoicesEnum.KilofootPoundPerMetre, new Guid("e9bff76e-5388-4ea0-85af-62c772d919c5")},  // kilofoot pound per metre
-         {UnitChoicesEnum.NewtonDecimetrePerMetre, new Guid("87ef9e2b-7e3b-4bda-a406-9f0b7f06e8fa")},  // newton decimetre per metre
-         {UnitChoicesEnum.NewtonCentimetrePerMetre, new Guid("c03b845d-f2e5-4a16-afca-efab2591c526")},  // newton centimetre per metre
-         {UnitChoicesEnum.NewtonMillimetrePerMetre, new Guid("fb1bb6bb-9c4a-4ecd-99fc-4af502271614")},  // newton millimetre per metre
-         {UnitChoicesEnum.InchPoundPerMetre, new Guid("18259cf1-1f96-4ace-b7ad-657a78254baf")},  // inch pound per metre
-         {UnitChoicesEnum.NewtonMetrePerDecimetre, new Guid("5ceaa09f-0de4-4025-ba23-d3b76f55a8b1")},  // Newton metre per decimetre
-         {UnitChoicesEnum.DecanewtonMetrePerDecimetre, new Guid("902dd7b3-0b4f-40a3-a089-02bb39367219")},  // decanewton metre per decimetre
-         {UnitChoicesEnum.KilogramForceMetrePerDecimetre, new Guid("2c83dced-5b36-49f1-bd4a-c95d558fb868")},  // kilogram force metre per decimetre
-         {UnitChoicesEnum.KilonewtonMetrePerDecimetre, new Guid("a3949720-a023-4c5d-9a5e-4194af30005f")},  // kilonewton metre per decimetre
-         {UnitChoicesEnum.FootPoundPerDecimetre, new Guid("a6b11edb-e9bc-4a7e-9af9-ace7ca62b93b")},  // foot pound per decimetre
-         {UnitChoicesEnum.KilofootPoundPerDecimetre, new Guid("92cb8e61-c58d-461a-a69c-ad9fe7324e2a")},  // kilofoot pound per decimetre
-         {UnitChoicesEnum.NewtonDecimetrePerDecimetre, new Guid("61261367-5cb0-4038-bcfb-6c8395758a21")},  // newton decimetre per decimetre
-         {UnitChoicesEnum.NewtonCentimetrePerDecimetre, new Guid("1eee8ef4-cb7b-451a-9658-d1704ccf81d2")},  // newton centimetre per decimetre
-         {UnitChoicesEnum.NewtonMillimetrePerDecimetre, new Guid("6c49e6aa-7d4c-4c92-96e5-5e3f26c3a367")},  // newton millimetre per decimetre
-         {UnitChoicesEnum.InchPoundPerDecimetre, new Guid("e638f5ee-bbf9-4e7b-ae6a-9613eb9792cc")},  // inch pound per decimetre
-         {UnitChoicesEnum.NewtonMetrePerCentimetre, new Guid("d8c63694-bf19-48be-b9bd-0f5b462ce2ec")},  // Newton metre per centimetre
-         {UnitChoicesEnum.DecanewtonMetrePerCentimetre, new Guid("e87d21e6-2191-4cee-aea8-1929df1d8bd0")},  // decanewton metre per centimetre
-         {UnitChoicesEnum.KilogramForceMetrePerCentimetre, new Guid("6ee38a6b-907d-4de9-94f1-0d979ef58340")},  // kilogram force metre per centimetre
-         {UnitChoicesEnum.KilonewtonMetrePerCentimetre, new Guid("2149c60b-d6a8-4056-9818-f7fe6d10c409")},  // kilonewton metre per centimetre
-         {UnitChoicesEnum.FootPoundPerCentimetre, new Guid("730e5c03-816e-4f88-b7bf-632a8a30c3ca")},  // foot pound per centimetre
-         {UnitChoicesEnum.KilofootPoundPerCentimetre, new Guid("6249a894-93d9-45b6-a188-eb2d4bef800e")},  // kilofoot pound per centimetre
-         {UnitChoicesEnum.NewtonDecimetrePerCentimetre, new Guid("0dbdd140-66d3-4f47-bbea-f5025b804b20")},  // newton decimetre per centimetre
-         {UnitChoicesEnum.NewtonCentimetrePerCentimetre, new Guid("2f7c8e32-f865-4b68-8a3c-4d8c862fd5f2")},  // newton centimetre per centimetre
-         {UnitChoicesEnum.NewtonMillimetrePerCentimetre, new Guid("830ae4b8-76d5-404a-b0c7-90db357a68ec")},  // newton millimetre per centimetre
-         {UnitChoicesEnum.InchPoundPerCentimetre, new Guid("6822172d-adf0-4a71-b883-f4bc825ee9ea")},  // inch pound per centimetre
-         {UnitChoicesEnum.NewtonMetrePerMillimetre, new Guid("a6416087-d525-4d98-aa45-2006ceb4a474")},  // Newton metre per millimetre
-         {UnitChoicesEnum.DecanewtonMetrePerMillimetre, new Guid("6acab23d-3952-4eed-b1a0-7c38f03109b0")},  // decanewton metre per millimetre
-         {UnitChoicesEnum.KilogramForceMetrePerMillimetre, new Guid("cdd4e6aa-ee0b-4679-97be-82553960efd1")},  // kilogram force metre per millimetre
-         {UnitChoicesEnum.KilonewtonMetrePerMillimetre, new Guid("1335bebf-fcda-4a39-afa8-7de3ed24fa0c")},  // kilonewton metre per millimetre
-         {UnitChoicesEnum.FootPoundPerMillimetre, new Guid("73a284d2-8900-44bb-96ab-897416a525e1")},  // foot pound per millimetre
-         {UnitChoicesEnum.KilofootPoundPerMillimetre, new Guid("bad7b651-25f9-4687-875f-7624388228d6")},  // kilofoot pound per millimetre
-         {UnitChoicesEnum.NewtonDecimetrePerMillimetre, new Guid("ecfa262e-1242-4c36-8325-b98de1ef4ffd")},  // newton decimetre per millimetre
-         {UnitChoicesEnum.NewtonCentimetrePerMillimetre, new Guid("0f0cd3a8-84ec-4b58-b100-3f413bea1e05")},  // newton centimetre per millimetre
-         {UnitChoicesEnum.NewtonMillimetrePerMillimetre, new Guid("b20d7cec-c1f6-4f64-9b60-e77ea699d940")},  // newton millimetre per millimetre
-         {UnitChoicesEnum.InchPoundPerMillimetre, new Guid("cd28eba2-c7ea-40d0-ac32-fb67a8f581bc")},  // inch pound per millimetre
-         {UnitChoicesEnum.NewtonMetrePerFoot, new Guid("2ce8e697-3a8a-4a73-ac23-4730790b4812")},  // Newton metre per foot
-         {UnitChoicesEnum.DecanewtonMetrePerFoot, new Guid("c6e8f7e7-0239-47bc-b230-0f5870c94b82")},  // decanewton metre per foot
-         {UnitChoicesEnum.KilogramForceMetrePerFoot, new Guid("7b2d82cc-0ac5-4945-9914-c91e62ac61dd")},  // kilogram force metre per foot
-         {UnitChoicesEnum.KilonewtonMetrePerFoot, new Guid("8b5be3db-bc7a-4107-b751-53d3d2772eb8")},  // kilonewton metre per foot
-         {UnitChoicesEnum.FootPoundPerFoot, new Guid("85a75741-c967-4e10-b195-01e5e7297eda")},  // foot pound per foot
-         {UnitChoicesEnum.KilofootPoundPerFoot, new Guid("65606e85-199d-4fee-8cd4-97715431d868")},  // kilofoot pound per foot
-         {UnitChoicesEnum.NewtonDecimetrePerFoot, new Guid("cdd6f7a0-954c-4826-8263-bb2d7fb06764")},  // newton decimetre per foot
-         {UnitChoicesEnum.NewtonCentimetrePerFoot, new Guid("1767c385-e868-457a-b0be-aac0a4db42ff")},  // newton centimetre per foot
-         {UnitChoicesEnum.NewtonMillimetrePerFoot, new Guid("ba4691ad-7575-4b9d-a6c6-9c98dde239ca")},  // newton millimetre per foot
-         {UnitChoicesEnum.InchPoundPerFoot, new Guid("d5f1dfc6-80ec-4780-a4ad-8df68c179eee")},  // inch pound per foot
-         {UnitChoicesEnum.NewtonMetrePerInch, new Guid("394cc997-ae71-47d1-91be-8aa69fdb71d7")},  // Newton metre per inch
-         {UnitChoicesEnum.DecanewtonMetrePerInch, new Guid("1f8786b1-4aae-45b9-9875-7fe63bddb6cb")},  // decanewton metre per inch
-         {UnitChoicesEnum.KilogramForceMetrePerInch, new Guid("df62fa6d-b983-4960-ad7b-853e00ccf45c")},  // kilogram force metre per inch
-         {UnitChoicesEnum.KilonewtonMetrePerInch, new Guid("cbc02a54-98e8-4b10-a028-152a5c92f2ce")},  // kilonewton metre per inch
-         {UnitChoicesEnum.FootPoundPerInch, new Guid("9c9771ff-d194-4e9f-b663-7f817da4d207")},  // foot pound per inch
-         {UnitChoicesEnum.KilofootPoundPerInch, new Guid("70978437-cf05-4138-8389-ec633fdc1fce")},  // kilofoot pound per inch
-         {UnitChoicesEnum.NewtonDecimetrePerInch, new Guid("0f34a9e2-dc04-4ce7-ac42-6cc12e2c98b5")},  // newton decimetre per inch
-         {UnitChoicesEnum.NewtonCentimetrePerInch, new Guid("622d36f4-6fed-4d16-a246-14477f724bca")},  // newton centimetre per inch
-         {UnitChoicesEnum.NewtonMillimetrePerInch, new Guid("31169945-1b67-4225-a2c6-6e850c39cb2f")},  // newton millimetre per inch
-         {UnitChoicesEnum.InchPoundPerInch, new Guid("2e16e0be-2037-413d-9f43-6316a24d1fca")} // inch pound per inch
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class ThermalConductivityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         WattPerMetreKelvinPerKelvin,  // watt per metre kelvin per kelvin
-         CaloriePerMetreSecondDegreeCelsiusSquared,  // calorie per metre second degree celsius squared
-         CaloriePerCentimetreSecondDegreeCelsiusSquared,  // calorie per centimetre second degree celsius squared
-         BritishThermalUnitPerHourFootDegreeFahrenheitSquared,  // british thermal unit per hour foot degree fahrenheit squared
-         BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitSquared // british thermal unit inch per hour square foot degree fahrenheit squared
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.WattPerMetreKelvinPerKelvin, new Guid("0459940e-d71f-4b01-9ea6-eeb05d754af2")},  // watt per metre kelvin per kelvin
-         {UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsiusSquared, new Guid("eb08ff8c-d542-440f-a4c7-610653018910")},  // calorie per metre second degree celsius squared
-         {UnitChoicesEnum.CaloriePerCentimetreSecondDegreeCelsiusSquared, new Guid("6c21a6cd-61fe-4086-95a7-ad6d6820c96e")},  // calorie per centimetre second degree celsius squared
-         {UnitChoicesEnum.BritishThermalUnitPerHourFootDegreeFahrenheitSquared, new Guid("b79509ea-8c03-4538-9974-208f7e0ee40e")},  // british thermal unit per hour foot degree fahrenheit squared
-         {UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitSquared, new Guid("918b4e34-3986-427f-8bb6-c09740a7c299")} // british thermal unit inch per hour square foot degree fahrenheit squared
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class StressQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Pascal,  // pascal
-         Kilopascal,  // kilopascal
-         Bar,  // bar
-         Millibar,  // millibar
-         Microbar,  // microbar
-         PoundPerSquareInch,  // pound per square inch
-         PoundPer100SquareFoot,  // pound per 100 square foot
-         KilopoundPerSquareInch,  // kilopound per square inch
-         PoundPerSquareFoot,  // pound per square foot
-         Megapascal,  // megapascal
-         Gigapascal,  // gigapascal
-         NewtonPerSquareMetre,  // newton per square metre
-         NewtonPerSquareCentimetre,  // newton per square centimetre
-         NewtonPerSquareMillimetre,  // newton per square millimetre
-         KilonewtonPerSquareMetre,  // kilonewton per square metre
-         MegapoundPerSquareInch,  // megapound per square inch
-         DynePerSquareCentimetre // dyne per square centimetre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Pascal, new Guid("7a4c7d2e-62f1-43c7-9c9d-8ff8664b0d98")},  // pascal
-         {UnitChoicesEnum.Kilopascal, new Guid("8f070021-4cc7-424d-a325-e2e57fc82874")},  // kilopascal
-         {UnitChoicesEnum.Bar, new Guid("69864a1c-bb6b-400e-be3b-527bc94a9a96")},  // bar
-         {UnitChoicesEnum.Millibar, new Guid("cf58a57a-381b-4864-9ab3-bbe42589d871")},  // millibar
-         {UnitChoicesEnum.Microbar, new Guid("b3ae1880-5d17-4f4b-b837-c6dc13c44cae")},  // microbar
-         {UnitChoicesEnum.PoundPerSquareInch, new Guid("0e385d5b-5d3a-4360-8695-a934f0152a09")},  // pound per square inch
-         {UnitChoicesEnum.PoundPer100SquareFoot, new Guid("d1aade96-1038-4902-9c4a-95f96933d54d")},  // pound per 100 square foot
-         {UnitChoicesEnum.KilopoundPerSquareInch, new Guid("02b3acd6-0715-4ef6-b8e4-6134a3cdc3a6")},  // kilopound per square inch
-         {UnitChoicesEnum.PoundPerSquareFoot, new Guid("2d835d44-2ffd-4239-b0dd-c9c36a763d4a")},  // pound per square foot
-         {UnitChoicesEnum.Megapascal, new Guid("b6de095b-2800-4faf-931b-e8b2b9b2e35f")},  // megapascal
-         {UnitChoicesEnum.Gigapascal, new Guid("213a896e-47e4-4745-baed-c28861f938bb")},  // gigapascal
-         {UnitChoicesEnum.NewtonPerSquareMetre, new Guid("23d4c68e-a606-4fc0-a2b8-74998f6c2862")},  // newton per square metre
-         {UnitChoicesEnum.NewtonPerSquareCentimetre, new Guid("b42eccea-4c35-42af-ba98-5101a3c10b6b")},  // newton per square centimetre
-         {UnitChoicesEnum.NewtonPerSquareMillimetre, new Guid("9f96d22c-9021-4ed6-9904-344d6cd2417a")},  // newton per square millimetre
-         {UnitChoicesEnum.KilonewtonPerSquareMetre, new Guid("ff05dc39-74f1-4bc8-b2d4-e9ee518d3e43")},  // kilonewton per square metre
-         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("c1b8c4db-7a1e-4201-b0aa-e23d1df40871")},  // megapound per square inch
-         {UnitChoicesEnum.DynePerSquareCentimetre, new Guid("eee0197b-0fbd-4a21-8023-61403c9417fe")} // dyne per square centimetre
+         {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
+         {UnitChoicesEnum.ShockPerMinute, new Guid("6ccbee46-cb8a-4777-b1d2-e88eedd24f73")},  // shock per minute
+         {UnitChoicesEnum.ShockPerHour, new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e")} // shock per hour
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
