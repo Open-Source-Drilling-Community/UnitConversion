@@ -26,7 +26,7 @@ class Program
     private static bool finished_ = false;
     private static readonly object lock_ = new object();
 
-    private static readonly string VERSION = "3.0.0"; // must match the one in ModelShared/Program.cs and Service.csproj
+    private static readonly string VERSION = "3.2.0"; // must match the one in ModelShared/Program.cs and Service.csproj
     private static readonly string JSON_BUNDLE = "BundleFromOpenApi.json";
     private static readonly string CSHARP_MODEL = "ModelSharedFromOpenApi.cs";
     private static readonly string NAMESPACE = "OSDC.UnitConversion.ModelShared";

@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
+using OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering;
 
 namespace OSDC.UnitConversion.Service
 {
