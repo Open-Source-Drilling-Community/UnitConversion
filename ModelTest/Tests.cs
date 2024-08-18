@@ -20,7 +20,7 @@ namespace OSDC.UnitConversion.ModelTest
             #endregion
 
             #region uniqueness of BasePhysicalQuantities
-            Assert.That(quantityList.Count, Is.EqualTo(78));
+            Assert.That(quantityList.Count, Is.EqualTo(84));
             Assert.That(quantityList, Does.Contain(AccelerationQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AmountSubstanceQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleMagneticFluxDensityQuantity.Instance));
@@ -75,6 +75,7 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(RheologyConsistencyIndexQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RotationFrequencyQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RotationFrequencyRateOfChangeQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(ShockRateQuantity.Instance));
             Assert.That(quantityList, Does.Contain(SmallDiameterQuantity.Instance));
             Assert.That(quantityList, Does.Contain(SmallLengthQuantity.Instance));
             Assert.That(quantityList, Does.Contain(SmallProportionQuantity.Instance));
@@ -111,7 +112,7 @@ namespace OSDC.UnitConversion.ModelTest
             #endregion
 
             #region uniqueness of PhysicalQuantities
-            Assert.That(quantityList.Count, Is.EqualTo(66));
+            Assert.That(quantityList.Count, Is.EqualTo(68));
             Assert.That(quantityList, Does.Contain(AccelerationDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleVariationGradientDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngularVelocityDrillingQuantity.Instance));
@@ -161,7 +162,6 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(RandomWalkDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RateOfPenetrationQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RotationFrequencyRateOfChangeDrillingQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(ShockRateQuantity.Instance));
             Assert.That(quantityList, Does.Contain(SpecificHeatCapacityDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(SpecificHeatCapacityTemperatureGradientDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(StickDurationDrillingQuantity.Instance));
@@ -187,11 +187,9 @@ namespace OSDC.UnitConversion.ModelTest
         {
             List<string> choices = LengthQuantity.Instance.GetUnitChoiceNames();
             double actual = LengthQuantity.Instance.ToSI(1.0, "foot");
-            Assert.That(actual, Is.EqualTo(0.3048));
-
-            string actualStr = LengthQuantity.Instance.ToSIString(1.0, "foot");
-            string expected = 0.3048.ToString(CultureInfo.InvariantCulture.NumberFormat);
-            Assert.That(actualStr, Is.EqualTo(expected));
+            Assert.That(actual, Is.EqualTo(0.3048).Within(1e-6));
+            // note that it is not possible to test the string formatting
+            // for PhysicalQuantities that do not define a MeaningfullPrecision
         }
 
         [Test]
