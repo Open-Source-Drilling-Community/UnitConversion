@@ -2132,30 +2132,6 @@ namespace OSDC.UnitConversion.ModelShared
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class UnitSystem
-    {
-
-        [System.Text.Json.Serialization.JsonPropertyName("Choices")]
-        public System.Collections.Generic.IDictionary<string, string> Choices { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("ID")]
-        public System.Guid ID { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("Name")]
-        public string Name { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("Description")]
-        public string Description { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("IsDefault")]
-        public bool IsDefault { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("IsSI")]
-        public bool IsSI { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class UnitSystemLight
     {
 
@@ -2180,20 +2156,56 @@ namespace OSDC.UnitConversion.ModelShared
     public partial class UnitChoice
     {
 
+        [System.Text.Json.Serialization.JsonPropertyName("IsSI")]
+        public bool IsSI { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("IsDefault")]
+        public bool IsDefault { get; set; }
+
         [System.Text.Json.Serialization.JsonPropertyName("UnitName")]
         public string UnitName { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("UnitLabel")]
         public string UnitLabel { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("SIUnitName")]
+        public string SIUnitName { get; set; }
+
         [System.Text.Json.Serialization.JsonPropertyName("ID")]
         public System.Guid ID { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("ConversionFactorFromSIFormula")]
+        public string ConversionFactorFromSIFormula { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("ConversionBiasFromSIFormula")]
+        public string ConversionBiasFromSIFormula { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("ConversionFactorFromSI")]
         public double ConversionFactorFromSI { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("ConversionBiasFromSI")]
         public double ConversionBiasFromSI { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class UnitSystem
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("Choices")]
+        public System.Collections.Generic.IDictionary<string, string> Choices { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("ID")]
+        public System.Guid ID { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("Name")]
+        public string Name { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("Description")]
+        public string Description { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("IsDefault")]
+        public bool IsDefault { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("IsSI")]
         public bool IsSI { get; set; }

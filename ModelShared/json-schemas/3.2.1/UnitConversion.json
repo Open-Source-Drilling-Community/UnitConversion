@@ -1,9 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "ModelShared (Service)",
-    "description": "Data model containing model dependencies of the clients of the current microservice (WebApp, ServiceTest)",
-    "version": "3.2.1"
+    "title": "Service, Version=3.2.1.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
   },
   "paths": {
     "/PhysicalQuantity": {

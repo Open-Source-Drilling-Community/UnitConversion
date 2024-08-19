@@ -17,11 +17,12 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.OpenApi.Readers" Version="1.6.15" />
 		<PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.8" />
-		<None Include="README.md" Pack="true" PackagePath="\"/>
+		<None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="json-schemas\3.0.0\" />
+		<Folder Include="json-schemas\3.2.1\" />
 	</ItemGroup>
 
 </Project>
