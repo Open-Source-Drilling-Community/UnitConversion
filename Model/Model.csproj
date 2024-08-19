@@ -20,10 +20,7 @@
 	<ItemGroup>
 		<PackageReference Include="OSDC.DotnetLibraries.General.Common" Version="1.0.9" />
 		<PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="2.1.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj" />
+		<PackageReference Include="OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering" Version="3.2.3" />
 	</ItemGroup>
 
 </Project>
