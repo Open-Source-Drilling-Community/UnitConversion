@@ -21,7 +21,9 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": false,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/UnitConversion/api/DataUnitConversionSet"
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/UnitConversion/api/DataUnitConversionSet",
+      "httpPort": 8080,
+      "sslPort": 443
     },
     "IIS Express": {
       "commandName": "IISExpress",

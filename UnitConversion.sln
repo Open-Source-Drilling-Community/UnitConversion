@@ -33,7 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitTest", "Conve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystem", "ConversionUnitSystem\ConversionUnitSystem.csproj", "{46CB30A1-1379-48E9-A2B9-0D9EF7A1B9A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionUnitSystem.DrillingEngineering", "ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj", "{7B1473CF-8837-436C-8B53-BCD4BB252E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystem.DrillingEngineering", "ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj", "{7B1473CF-8837-436C-8B53-BCD4BB252E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionUnitSystemTest", "ConversionUnitSystemTest\ConversionUnitSystemTest.csproj", "{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionUnitSystemDrillingEngineeringTest", "ConversionUnitSystemDrillingEngineeringTest\ConversionUnitSystemDrillingEngineeringTest.csproj", "{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +97,14 @@ Global
 		{7B1473CF-8837-436C-8B53-BCD4BB252E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B1473CF-8837-436C-8B53-BCD4BB252E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B1473CF-8837-436C-8B53-BCD4BB252E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

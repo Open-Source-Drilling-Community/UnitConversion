@@ -670,6 +670,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(StandardLengthQuantity.Instance.ID.ToString(), StandardLengthQuantity.Instance.GetUnitChoice(StandardLengthQuantity.UnitChoicesEnum.Metre).ID.ToString());
                     Choices.Add(StandardProportionQuantity.Instance.ID.ToString(), StandardProportionQuantity.Instance.GetUnitChoice(StandardProportionQuantity.UnitChoicesEnum.Percent).ID.ToString());
                     Choices.Add(StressQuantity.Instance.ID.ToString(), StressQuantity.Instance.GetUnitChoice("pascal").ID.ToString());
+                    Choices.Add(StrokeFrequencyQuantity.Instance.ID.ToString(), StrokeFrequencyQuantity.Instance.GetUnitChoice(StrokeFrequencyQuantity.UnitChoicesEnum.Spm).ID.ToString());
                     Choices.Add(TemperatureGradientQuantity.Instance.ID.ToString(), TemperatureGradientQuantity.Instance.GetUnitChoice(TemperatureGradientQuantity.UnitChoicesEnum.CelsiusPerMetre).ID.ToString());
                     Choices.Add(TemperatureQuantity.Instance.ID.ToString(), TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Celsius).ID.ToString());
                     Choices.Add(TensionQuantity.Instance.ID.ToString(), TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Decanewton).ID.ToString());
@@ -761,6 +762,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(StandardLengthQuantity.Instance.ID.ToString(), StandardLengthQuantity.Instance.GetUnitChoice(StandardLengthQuantity.UnitChoicesEnum.Foot).ID.ToString());
                     Choices.Add(StandardProportionQuantity.Instance.ID.ToString(), StandardProportionQuantity.Instance.GetUnitChoice(StandardProportionQuantity.UnitChoicesEnum.Percent).ID.ToString());
                     Choices.Add(StressQuantity.Instance.ID.ToString(), StressQuantity.Instance.GetUnitChoice("pascal").ID.ToString());
+                    Choices.Add(StrokeFrequencyQuantity.Instance.ID.ToString(), StrokeFrequencyQuantity.Instance.GetUnitChoice(StrokeFrequencyQuantity.UnitChoicesEnum.Spm).ID.ToString());
                     Choices.Add(TemperatureGradientQuantity.Instance.ID.ToString(), TemperatureGradientQuantity.Instance.GetUnitChoice(TemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPer100Foot).ID.ToString());
                     Choices.Add(TemperatureQuantity.Instance.ID.ToString(), TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Fahrenheit).ID.ToString());
                     Choices.Add(TensionQuantity.Instance.ID.ToString(), TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
@@ -852,6 +854,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(StandardLengthQuantity.Instance.ID.ToString(), StandardLengthQuantity.Instance.GetUnitChoice(StandardLengthQuantity.UnitChoicesEnum.Foot).ID.ToString());
                     Choices.Add(StandardProportionQuantity.Instance.ID.ToString(), StandardProportionQuantity.Instance.GetUnitChoice(StandardProportionQuantity.UnitChoicesEnum.Percent).ID.ToString());
                     Choices.Add(StressQuantity.Instance.ID.ToString(), StressQuantity.Instance.GetUnitChoice("pascal").ID.ToString());
+                    Choices.Add(StrokeFrequencyQuantity.Instance.ID.ToString(), StrokeFrequencyQuantity.Instance.GetUnitChoice(StrokeFrequencyQuantity.UnitChoicesEnum.Spm).ID.ToString());
                     Choices.Add(TemperatureGradientQuantity.Instance.ID.ToString(), TemperatureGradientQuantity.Instance.GetUnitChoice(TemperatureGradientQuantity.UnitChoicesEnum.FahrenheitPer100Foot).ID.ToString());
                     Choices.Add(TemperatureQuantity.Instance.ID.ToString(), TemperatureQuantity.Instance.GetUnitChoice(TemperatureQuantity.UnitChoicesEnum.Fahrenheit).ID.ToString());
                     Choices.Add(TensionQuantity.Instance.ID.ToString(), TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.PoundForce).ID.ToString());
