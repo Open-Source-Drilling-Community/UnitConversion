@@ -50,6 +50,7 @@ namespace OSDC.UnitConversion.Conversion
         /// the conversion bias used when converting from SI unit: value_in_unit_choice = ConversionFactorFromSI * value_in_SI + ConversionBiasFromSI
         /// </summary>
         public double ConversionBiasFromSI { get; set; } = 0.0;
+        public string? ConversionDescription { get; set; } = null;
         /// <summary>
         /// default constructor
         /// </summary>
@@ -69,6 +70,8 @@ namespace OSDC.UnitConversion.Conversion
                 ConversionBiasFromSIFormula = reference.ConversionBiasFromSIFormula;
                 ConversionFactorFromSI = reference.ConversionFactorFromSI;
                 ConversionBiasFromSI = reference.ConversionBiasFromSI;
+                ConversionDescription = reference.ConversionDescription;
+                SIUnitName = reference.SIUnitName;
             }
         }
 
@@ -162,7 +165,7 @@ namespace OSDC.UnitConversion.Conversion
                     if (!string.IsNullOrEmpty(ConversionFactorFromSIFormula) && !string.IsNullOrEmpty(ConversionBiasFromSIFormula))
                     {
                         desc += "[v] = a * [SI] + b" + Environment.NewLine;
-                        desc += "where\n";
+                        desc += "where" + Environment.NewLine;
                         desc += "[v] is the value in " + UnitName + Environment.NewLine;
                         desc += "[SI] is the value in SI";
                         if (!string.IsNullOrEmpty(SIUnitName))

@@ -280,6 +280,33 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                         writer.WriteLine("                  ConversionBiasFromSIFormula = \"" + choice.ConversionBiasFromSIFormula + "\",");
                                         writer.WriteLine("                  ConversionBiasFromSI = " + choice.ConversionBiasFromSIFormula + ",");
                                     }
+                                    try
+                                    {
+                                        string desc = choice.GetConversionDescription();
+                                        if (!string.IsNullOrEmpty(desc))
+                                        {
+                                            string[] lines = desc.Split(Environment.NewLine);
+                                            if (lines != null && lines.Length > 0)
+                                            {
+                                                writer.WriteLine("                  ConversionDescription = ");
+                                                bool firstLine = true;
+                                                foreach (var line in lines)
+                                                {
+                                                    if (!firstLine)
+                                                    {
+                                                        writer.WriteLine();
+                                                        writer.Write(" + Environment.NewLine + ");
+                                                    }
+                                                    firstLine = false;
+                                                    writer.Write("\"" + line + "\"");
+                                                }
+                                                writer.WriteLine(",");
+                                            }
+                                        }
+                                    } catch (Exception e)
+                                    {
+
+                                    }
                                     if (choice.IsSI)
                                     {
                                         writer.WriteLine("                  IsSI = " + choice.IsSI.ToString().ToLower() + "");

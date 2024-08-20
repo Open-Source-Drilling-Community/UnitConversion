@@ -108,12 +108,16 @@ else
                                     <col />
                                 </ColGroup>
                                 <HeaderContent>
-                                    <MudTh>Unit symbol</MudTh>
-                                    <MudTh>Unit name</MudTh>
+                                    <MudTh Style="width: 20%">Unit symbol</MudTh>
+                                    <MudTh Style="width: 30%">Unit name</MudTh>
+                                    <MudTh Style="width: 50%">Conversion</MudTh>
                                 </HeaderContent>
                                 <RowTemplate>
-                                    <MudTd DataLabel="UnitLabel">@UnitChoicesContext.UnitLabel</MudTd>
-                                    <MudTd DataLabel="UnitName">@UnitChoicesContext.UnitName</MudTd>
+                                    <MudTd Style="width: 20%" DataLabel="UnitLabel">@UnitChoicesContext.UnitLabel</MudTd>
+                                    <MudTd Style="width: 30%" DataLabel="UnitName">@UnitChoicesContext.UnitName</MudTd>
+                                    <MudTd Style="width: 50%">
+                                        <MudTextField @bind-Value="@UnitChoicesContext.ConversionFactorFromSIFormula" Lines="4" />
+                                    </MudTd>
                                 </RowTemplate>
                             </MudTable>
                         </MudCardContent>
