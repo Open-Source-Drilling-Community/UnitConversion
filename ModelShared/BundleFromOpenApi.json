@@ -776,6 +776,11 @@
             "format": "uuid",
             "readOnly": true
           },
+          "DescriptionMD": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "UsualNames": {
             "uniqueItems": true,
             "type": "array",

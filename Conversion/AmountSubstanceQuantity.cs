@@ -92,6 +92,13 @@ namespace OSDC.UnitConversion.Conversion
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "Amount Substance" };
             ID = new Guid("200be1eb-c278-447c-9b15-32d20fc778b9");
+            DescriptionMD = string.Empty;
+            DescriptionMD += "The **amount of substance** refers to the quantity of entities (such as atoms, molecules, ions, or other particles) in a system.";
+            DescriptionMD += "The standard unit used to measure the amount of substance is the **mole** (mol). One mole corresponds to $6.022×10^{23}$ entities (Avogadro's number) of the given substance." + Environment.NewLine;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "This is one of the nine fundamental dimensions in the International System of Units (SI).";
+            DescriptionMD += "A fundamental quantity does not depend on any combinations of other fundamental dimensions.";
+            DescriptionMD += "It is denoted $[N]$.";
             InitializeUnitChoices();
         }
     }

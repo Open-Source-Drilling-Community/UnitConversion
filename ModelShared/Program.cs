@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
 using NJsonSchema;
 using NSwag.CodeGeneration.CSharp;
+using OSDC.UnitConversion.ModelShared;
 using System.Text;
 
 /// <summary>
@@ -107,8 +108,7 @@ class Program
                         //    }
                         //}
                         //Thread.Sleep(1000); // make sure files are written
-
-                        // a bundle OpenApi schema (json format) is created to combine OpenApi schema dependencies (Microsoft.OpenApi.Models.OpenApiDocument is used)
+                        // a bundle OpenApi schema (json format) is created to combine OpenApi schema dependencies (Microsoft.OpenApi.Models.OpenApiDocument is used)                       
                         OpenApiDocument document = new OpenApiDocument
                         {
                             Info = new OpenApiInfo

@@ -118,6 +118,16 @@ namespace OSDC.UnitConversion.Conversion
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "Angle Variation Gradient" };
             ID = new Guid("aed9c464-1073-448b-be62-a6a0c2a53dbc");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Consider a situation where you have a length $L$ along which an angle $\theta$ changes. The angle variation gradient is defined as the **rate of change of the angle** per unit change in length. Mathematically, it can be expressed as: " + Environment.NewLine;
+            DescriptionMD += @"$$\text{ Angle Variation Gradient} = \frac{ d\theta}{ dL}$$" + Environment.NewLine;
+            DescriptionMD += @"where: " + Environment.NewLine;
+            DescriptionMD += @"- **$d\theta$** is the infinitesimal change in the angle. " + Environment.NewLine;
+            DescriptionMD += @"- **$dL$** is the infinitesimal change in the length along the direction of interest. " + Environment.NewLine;
+            DescriptionMD += @"1. **Dimension**: The angle $\theta$ has the dimension of **plane angle**, and the length $L$ is one of the fundamental dimensions. Therefore, the dimension of **angle variation gradient** is: " + Environment.NewLine;
+            DescriptionMD += @"$$[\theta][L^{-1}]$$ " + Environment.NewLine;
+            DescriptionMD += @"2. **Interpretation**: This gradient describes how quickly the angle changes as you move along the length. For example, in fields like physics or engineering, this could describe the bending of a beam(where the angle describes the deflection) or the rate of turning along a curved path. " + Environment.NewLine;
+            DescriptionMD += @"3. **Applications**: This concept is common in areas like differential geometry, mechanics (bending beams or wires), and in the analysis of curvature in space (where curvature can be described as the rate of change of the angle with respect to the arc length). " + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

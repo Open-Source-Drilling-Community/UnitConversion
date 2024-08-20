@@ -148,6 +148,24 @@ namespace OSDC.UnitConversion.Conversion
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "Angle Magnetic Flux Density" };
             ID = new Guid("03bb57e6-ca8b-4741-a211-9cf57c8fd177");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"The **angle magnetic flux density** is the product of an angle by a magnetic flux density. Let's break it down step by step:" + Environment.NewLine;
+            DescriptionMD += @"1. Magnetic Flux Density" + Environment.NewLine;
+            DescriptionMD += @"The **magnetic flux density** $\mathbf{B}$ is a measure of the strength and direction of the magnetic field at ";
+            DescriptionMD += @"a particular point in space. It represents the amount of magnetic flux passing through a unit area perpendicular to the direction of the magnetic field. ";
+            DescriptionMD += @"In simpler terms, it describes how dense or concentrated the magnetic field lines are in a given region.";
+            DescriptionMD += @"It can be expressed in terms of the fundamental dimensions as:" + Environment.NewLine;
+            DescriptionMD += @"$$[M][T]^{-2}[I]^{-1}$$" + Environment.NewLine;
+            DescriptionMD += @"Where:" + Environment.NewLine;
+            DescriptionMD += @"- $[M]$ represents mass" + Environment.NewLine;
+            DescriptionMD += @"- $[I]$ represents electric current" + Environment.NewLine;
+            DescriptionMD += @"- $[T]$ represents time" + Environment.NewLine;
+            DescriptionMD += @"2. Plane Angle" + Environment.NewLine;
+            DescriptionMD += @"A **plane angle** is one of the nine fundamental dimensions in the International Unit System (SI). It is denoted: ";
+            DescriptionMD += @"$$[\theta]$$" + Environment.NewLine;
+            DescriptionMD += @"3. Angle Magnetic Flux Density" + Environment.NewLine;
+            DescriptionMD += @"So the dimension of **angle magnetic flux density** is:" + Environment.NewLine;
+            DescriptionMD += @"$$[\theta][M][T]^{-2}[I]^{-1}$$" + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

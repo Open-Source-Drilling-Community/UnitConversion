@@ -1,6 +1,7 @@
 ﻿@page "/PhysicalQuantity"
 @inject ILogger<PhysicalQuantity> logger
 @inject ISnackbar Snackbar
+@inject IJSRuntime JS
 
 @if (physicalQuantityList == null)
 {
@@ -37,6 +38,11 @@ else
             @if (context.ShowDetails)
             {
                 <MudTd colspan="1">
+                    <MudCard Outlined="true">
+                        <MudCardContent>
+                            <MudMarkdown Value="@context.Quantity.DescriptionMD" />
+                        </MudCardContent>
+                    </MudCard>
                     <MudCard Outlined="true">
                         <MudCardContent>
                             <MudText><strong>Meaningful precision in SI</strong></MudText>
@@ -130,12 +136,21 @@ else
 }
 
 @code {
+    private string DescriptionMD = string.Empty;
+
     // PhysicalQuantity related variables
     private List<VisualPhysicalQuantity> physicalQuantityList = new();
 
     // UI related variables
     private string searchString = "";
-
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Call the JavaScript function after rendering
+            //await JS.InvokeVoidAsync("renderMathInMarkdown");
+        }
+    }
     protected override async Task OnInitializedAsync()
     {
         try
@@ -228,6 +243,8 @@ else
         {
             int idx = physicalQuantityList.FindIndex(f => f.Quantity!.ID == args.Item.Quantity!.ID);
             physicalQuantityList[idx].ShowDetails = !physicalQuantityList[idx].ShowDetails;
+            //InvokeAsync(StateHasChanged).GetAwaiter().GetResult();  // Ensures the content is updated in the DOM
+            //JS.InvokeVoidAsync("renderMathInMarkdown").GetAwaiter().GetResult();
         }
         catch (Exception ex)
         {

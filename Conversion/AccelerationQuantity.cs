@@ -178,23 +178,19 @@ namespace OSDC.UnitConversion.Conversion
             UsualNames = new HashSet<string>() { "Acceleration" };
             ID = new Guid("454a7b6b-a921-428e-8aa7-a4a636a58e34");
             DescriptionMD = string.Empty;
-            DescriptionMD += "**Acceleration** is defined as the rate of change of velocity with respect to time. Velocity itself is the rate of change of displacement(or position) with respect to time. Therefore, acceleration is the rate of change of displacement twice with respect to time." + Environment.NewLine;
+            DescriptionMD += "**Acceleration** is defined as the rate of change of velocity with respect to time. Velocity itself is the rate of change of displacement (or position) with respect to time. Therefore, acceleration is the rate of change of displacement twice with respect to time." + Environment.NewLine;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "Let's break this down:" + Environment.NewLine;
             DescriptionMD += Environment.NewLine;
-            DescriptionMD += "1. **Displacement ** (or position) has the dimension of **Length(L)**." + Environment.NewLine;
+            DescriptionMD += "1. **Displacement** (or position) has the dimension of **Length(L)**." + Environment.NewLine;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "2. **Velocity** is displacement per unit time:" + Environment.NewLine;
-            DescriptionMD += "\\[" + Environment.NewLine;
-            DescriptionMD += "\\text{Velocity} = \\frac{\\text{Length}}{\\text{Time}} = \\frac{L}{T}" + Environment.NewLine;
-            DescriptionMD += "\\]" + Environment.NewLine;
-            DescriptionMD += "So, the dimension of velocity is **\\[L T^{ -1}\\]**." + Environment.NewLine;
+            DescriptionMD += "$$\\text{Velocity} = \\frac{\\text{Length}}{\\text{Time}} = \\frac{L}{T}$$" + Environment.NewLine;
+            DescriptionMD += "So, the dimension of velocity is **$[L T^{ -1}]$**." + Environment.NewLine;
             DescriptionMD += Environment.NewLine;
-            DescriptionMD += "3. **Acceleration ** is the rate of change of velocity with respect to time:" + Environment.NewLine;
-            DescriptionMD += "\\[" + Environment.NewLine;
-            DescriptionMD += "\\text{Acceleration} = \\frac{\\text{Velocity}}{\\text{Time}} = \\frac{L T^{ -1}}{T} = L T ^{-2}" + Environment.NewLine;
-            DescriptionMD += "\\]" + Environment.NewLine;
-            DescriptionMD += "Therefore, the dimension of acceleration is **\\[L T^{-2}\\]**." + Environment.NewLine;
+            DescriptionMD += "3. **Acceleration** is the rate of change of velocity with respect to time:" + Environment.NewLine;
+            DescriptionMD += "$$\\text{Acceleration} = \\frac{\\text{Velocity}}{\\text{Time}} = \\frac{L T^{ -1}}{T} = L T ^{-2}$$" + Environment.NewLine;
+            DescriptionMD += "Therefore, the dimension of acceleration is **$[L T^{-2}]$**." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }
