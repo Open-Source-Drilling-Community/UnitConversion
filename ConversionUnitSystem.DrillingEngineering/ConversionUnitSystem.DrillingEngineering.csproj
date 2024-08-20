@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering</RootNamespace>
-    <Version>3.2.7</Version>
+    <Version>3.2.9</Version>
     <PackageId>OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering</PackageId>
     <Authors>Eric Cayeux</Authors>
     <Company>NORCE Norwegian Research Centre</Company>
@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="3.2.8" />
+    <PackageReference Include="OSDC.UnitConversion.Conversion.DrillingEngineering" Version="3.2.9" />
     <PackageReference Include="OSDC.UnitConversion.Conversion.UnitSystem" Version="3.2.7" />
   </ItemGroup>
 
