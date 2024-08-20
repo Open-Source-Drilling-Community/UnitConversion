@@ -39,6 +39,10 @@ namespace OSDC.UnitConversion.Conversion
         /// </summary>
         public Guid ID { get; protected set; } = Guid.Empty;
         /// <summary>
+        /// Description using the Markdown style
+        /// </summary>
+        public string DescriptionMD { get; protected set; } = string.Empty;
+        /// <summary>
         /// usual names of the physical quantity
         /// </summary>
         public HashSet<string> UsualNames { get; protected set; }

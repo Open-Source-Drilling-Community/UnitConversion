@@ -2186,6 +2186,9 @@ namespace OSDC.UnitConversion.ModelShared
         [System.Text.Json.Serialization.JsonPropertyName("ConversionBiasFromSI")]
         public double ConversionBiasFromSI { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("ConversionDescription")]
+        public string ConversionDescription { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]

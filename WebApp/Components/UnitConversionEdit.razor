@@ -149,7 +149,59 @@
             {
                 name = unitConversionSet.Name;
                 descr = unitConversionSet.Description;
-                quantityUnitConversionList = (List<QuantityUnitConversion>)unitConversionSet.QuantityUnitConversionList;
+                if (unitConversionSet.QuantityUnitConversionList != null)
+                {
+                    List<QuantityUnitConversion> list = (List<QuantityUnitConversion>)unitConversionSet.QuantityUnitConversionList;
+                    List<QuantityUnitConversion> reducedList = new List<QuantityUnitConversion>();
+                    foreach (QuantityUnitConversion x in list)
+                    {
+                        try
+                        {
+                            if (x != null && PhysicalQuantityList != null)
+                            {
+                                PhysicalQuantity? quantity = PhysicalQuantityList!.First(q => q.ID == x.QuantityID);
+                                if (quantity != null)
+                                {
+                                    UnitChoice? unitChoiceIn = quantity.UnitChoices!.First(u => u.ID == x.UnitChoiceIDIn);
+                                    if (unitChoiceIn != null && !string.IsNullOrEmpty(unitChoiceIn.UnitName))
+                                    {
+                                        UnitChoice? unitChoiceOut = quantity.UnitChoices!.First(u => u.ID == x.UnitChoiceIDOut);
+                                        if (unitChoiceOut != null && !string.IsNullOrEmpty(unitChoiceOut.UnitName))
+                                        {
+                                            reducedList.Add(x);
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                        catch (Exception e1) 
+                        {
+                            logger.LogWarning("Problem in QuantityUnitConversion of a UnitConversionSet");
+                        }
+                    }
+                    if (reducedList.Count == 0 && PhysicalQuantityList != null && PhysicalQuantityList.Count > 0)
+                    {
+                        QuantityUnitConversion def = new QuantityUnitConversion();
+                        PhysicalQuantity? quantity = PhysicalQuantityList.First();
+                        if (quantity != null && quantity.UnitChoices != null && quantity.UnitChoices.Count > 0) 
+                        {
+                            def.QuantityID = quantity.ID;
+                            UnitChoice? unitChoice = quantity.UnitChoices.First();
+                            if (unitChoice != null)
+                            {
+                                def.UnitChoiceIDIn = unitChoice.ID;
+                                def.UnitChoiceIDOut = unitChoice.ID;
+                                def.ValueConversionList = new List<ValueConversion>() { new ValueConversion() { DataIn = 1.0 } };
+                                reducedList.Add(def);
+                            }
+                        }
+                    }
+                    quantityUnitConversionList = reducedList;
+                }
+                else 
+                {
+                    quantityUnitConversionList = [];
+                }
                 success = true;
             }
             else

@@ -926,6 +926,10 @@
           "ConversionBiasFromSI": {
             "type": "number",
             "format": "double"
+          },
+          "ConversionDescription": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
