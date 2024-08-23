@@ -26,8 +26,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public TensionDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Tension (drilling)" };
+            UsualNames = new HashSet<string>() { "tension (drilling)" };
             ID = new Guid("fe8fd6fd-814c-44c9-9462-f034dd46dc85");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of tension in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Newton).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Newton));
             this.UnitChoices.Add(TensionQuantity.Instance.GetUnitChoice(TensionQuantity.UnitChoicesEnum.Decanewton));

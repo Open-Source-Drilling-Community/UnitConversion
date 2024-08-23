@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public VolumetricFlowRateOfChangeDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Volumetric Flow Rate Of Change (drilling)" };
+            UsualNames = new HashSet<string>() { "volumetric flow rate of change (drilling)" };
             ID = new Guid("244ade8c-591d-44d4-bca6-3798046d90a1");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of volumetric flow rate of change in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.CubicMetrePerSecondSquared).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.CubicMetrePerSecondSquared));
             this.UnitChoices.Add(VolumetricFlowRateOfChangeQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeQuantity.UnitChoicesEnum.LitrePerMinutePerSecond));

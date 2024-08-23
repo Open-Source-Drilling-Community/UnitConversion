@@ -153,8 +153,12 @@ namespace OSDC.UnitConversion.Conversion
         public PowerQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Power" };
+            UsualNames = new HashSet<string>() { "power" };
             ID = new Guid("6fd69f30-a219-4d56-a1dd-000d8175e2ed");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Power is the rate at which work is done or energy is transferred over time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of power is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

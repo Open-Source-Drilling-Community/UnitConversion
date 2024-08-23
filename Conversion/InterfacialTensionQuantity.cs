@@ -60,8 +60,12 @@ namespace OSDC.UnitConversion.Conversion
         public InterfacialTensionQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Interfacial Tension" };
+            UsualNames = new HashSet<string>() { "interfacial tension", "surface tension" };
             ID = new Guid("6c2da24b-fa92-415d-9161-150de87dad4c");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Interfacial tension is the force per unit length acting along the boundary between two immiscible liquids, resisting their mixing." + Environment.NewLine;
+            DescriptionMD += @"The dimension of interfacial tension is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

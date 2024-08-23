@@ -55,8 +55,12 @@ namespace OSDC.UnitConversion.Conversion
         public SolidAngleQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Solid Angle" };
+            UsualNames = new HashSet<string>() { "solid angle" };
             ID = new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A solid angle is a three-dimensional angle that measures the portion of a sphere's surface subtended by an object. It is the 3D equivalent of a planar angle in two dimensions." + Environment.NewLine;
+            DescriptionMD += @"The dimension of solid angle is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

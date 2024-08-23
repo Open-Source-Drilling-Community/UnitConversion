@@ -25,8 +25,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public ThermalConductivityDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Thermal Conductivity (drilling)" };
+            UsualNames = new HashSet<string>() { "thermal conductivity (drilling)" };
             ID = new Guid("186eef6a-9da3-4b97-a6d0-d496bdf59321");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of thermal conductivity in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ThermalConductivityQuantity.Instance.GetUnitChoice(ThermalConductivityQuantity.UnitChoicesEnum.WattPerMetreKelvin).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(ThermalConductivityQuantity.Instance.GetUnitChoice(ThermalConductivityQuantity.UnitChoicesEnum.WattPerMetreKelvin));
             this.UnitChoices.Add(ThermalConductivityQuantity.Instance.GetUnitChoice(ThermalConductivityQuantity.UnitChoicesEnum.CaloriePerMetreSecondDegreeCelsius));

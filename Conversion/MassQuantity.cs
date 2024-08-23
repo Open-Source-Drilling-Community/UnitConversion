@@ -196,8 +196,12 @@ namespace OSDC.UnitConversion.Conversion
         public MassQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Mass" };
+            UsualNames = new HashSet<string>() { "mass" };
             ID = new Guid("99d13248-c303-4b3d-b062-af98de701d6f");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Mass can be experimentally defined as a measure of the body's inertia, meaning the resistance to acceleration (change of velocity) when a net force is applied. The object's mass also determines the strength of its gravitational attraction to other bodies." + Environment.NewLine;
+            DescriptionMD += @"The dimension of mass is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

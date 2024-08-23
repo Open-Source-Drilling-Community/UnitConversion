@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public DynamicViscosityDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Dynamic Viscosity (drilling)" };
+            UsualNames = new HashSet<string>() { "dynamic viscosity (drilling)" };
             ID = new Guid("e9b32538-f7f4-4f99-a206-0601a4e4a5f8");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of dynamic viscosity in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PascalSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.PascalSecond));
             this.UnitChoices.Add(DynamicViscosityQuantity.Instance.GetUnitChoice(DynamicViscosityQuantity.UnitChoicesEnum.Centipoise));

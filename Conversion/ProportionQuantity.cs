@@ -58,8 +58,11 @@ namespace OSDC.UnitConversion.Conversion
         public ProportionQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Proportion" };
+            UsualNames = new HashSet<string>() { "proportion" };
             ID = new Guid("10d2d588-19b8-4822-9240-e1d278d99e32");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A proportion is the ratio of two quantities with the same dimension. It represents how one quantity compares to another in relative terms." + Environment.NewLine;
+            DescriptionMD += @"A proportion is dimensionless:" + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

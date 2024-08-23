@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class VolumetricFlowRateOfChangeQuantity : DerivedBasePhysicalQuantity
     {
-        public override string TypicalSymbol { get; } = null;
+        public override string TypicalSymbol { get; } = "Q̇";
         public override string SIUnitName { get; } = "cubic metre per second squared";
         public override string SIUnitLabel { get; } = "m³/s²";
         public override double LengthDimension { get; } = 3;
@@ -88,8 +88,12 @@ namespace OSDC.UnitConversion.Conversion
         public VolumetricFlowRateOfChangeQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Volumetric Flow Rate Rate Of Change" };
+            UsualNames = new HashSet<string>() { "volumetric flow Rate rate of change" };
             ID = new Guid("7f4f645c-e23e-41bc-bbcc-1dbcef53318e");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A volumetric flow rate of change is the time derivative of a volumetric flowrate: $\frac{dQ}{dt}$, where $Q$ is a volumetric flowrate and $t$ is time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of volumetric flow rate of change is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

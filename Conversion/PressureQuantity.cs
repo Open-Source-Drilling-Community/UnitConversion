@@ -223,8 +223,12 @@ namespace OSDC.UnitConversion.Conversion
         public PressureQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Pressure" };
+            UsualNames = new HashSet<string>() { "pressure" };
             ID = new Guid("0f282508-9223-489d-86e6-36307f987045");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Pressure is the force applied per unit area on a surface." + Environment.NewLine;
+            DescriptionMD += @"The dimension of pressure is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

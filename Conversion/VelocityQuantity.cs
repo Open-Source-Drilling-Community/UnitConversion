@@ -251,13 +251,24 @@ namespace OSDC.UnitConversion.Conversion
                   UnitLabel = "dm/d",
                   ID = new Guid("dcb77826-7550-4681-b3ce-a59cfdb7620d"),
                   ConversionFactorFromSIFormula = "Factors.Day/Factors.Deci"
+                },
+                new UnitChoice
+                {
+                  UnitName = "furlong per fortnight",
+                  UnitLabel = "furlong/14d",
+                  ID = new Guid("028ad001-b80d-49d8-8d18-8e10c1f0239f"),
+                  ConversionFactorFromSIFormula = "Factors.Fortnight/Factors.Furlong"
                 }
         };
         public VelocityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Velocity" };
+            UsualNames = new HashSet<string>() { "velocity" };
             ID = new Guid("b3fd17fe-ce71-4ef3-ac99-cf4f5756e81a");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A velocity is the time derivative of a position or a displacement: $\frac{dx}{dt}$, where $x$ is a position and $t$ is time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of velocity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

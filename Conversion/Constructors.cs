@@ -552,6 +552,236 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class AngleGradientPerLengthQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "radian per metre",
+                  UnitLabel = "rad/m",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("5d9782b6-c4c7-47ca-a86b-dce3f63c3747"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per metre",
+                  UnitLabel = "°/m",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("2fcd4219-8879-4494-9563-5173ec2292fa"),
+                  ConversionFactorFromSIFormula = "Factors.Degree",
+                  ConversionFactorFromSI = Factors.Degree,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Degree, i.e., 57.29577951308232"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per centimetre",
+                  UnitLabel = "°/cm",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7"),
+                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Centi",
+                  ConversionFactorFromSI = Factors.Degree*Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per centimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Degree*Centi, i.e., 0.5729577951308232"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per foot",
+                  UnitLabel = "°/ft",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b"),
+                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Foot",
+                  ConversionFactorFromSI = Factors.Degree*Factors.Foot,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Degree*Foot, i.e., 17.46375359558749"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per inch",
+                  UnitLabel = "°/in",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4"),
+                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Inch",
+                  ConversionFactorFromSI = Factors.Degree*Factors.Inch,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per inch"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Degree*Inch, i.e., 1.455312799632291"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per decimetre",
+                  UnitLabel = "°/dm",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("452edd17-d501-487b-8cc1-90c08f7b1417"),
+                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Deci",
+                  ConversionFactorFromSI = Factors.Degree*Factors.Deci,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per decimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Degree*Deci, i.e., 5.729577951308233"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Deci = 0.1"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per millimetre",
+                  UnitLabel = "°/mm",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("5cc72a73-70c0-4ccf-83ae-38e8a45391b4"),
+                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Milli",
+                  ConversionFactorFromSI = Factors.Degree*Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per millimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Degree*Milli, i.e., 0.057295779513082325"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per millimetre",
+                  UnitLabel = "rad/mm",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("dbd20525-128b-43c5-9de4-a8e604cbf6bf"),
+                  ConversionFactorFromSIFormula = "Factors.Milli",
+                  ConversionFactorFromSI = Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per millimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Milli, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per centimetre",
+                  UnitLabel = "rad/cm",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("5552abca-e21b-48ca-aedc-4518a32b8de3"),
+                  ConversionFactorFromSIFormula = "Factors.Centi",
+                  ConversionFactorFromSI = Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per centimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi, i.e., 0.01"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per decimetre",
+                  UnitLabel = "rad/dm",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("47e72ab7-444d-4d4b-8cd2-01d2fb8efa2d"),
+                  ConversionFactorFromSIFormula = "Factors.Deci",
+                  ConversionFactorFromSI = Factors.Deci,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per decimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Deci, i.e., 0.1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deci = 0.1"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per foot",
+                  UnitLabel = "rad/ft",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("e1ab7dd2-48c7-4ac8-ac5e-bc50fdcae5df"),
+                  ConversionFactorFromSIFormula = "Factors.Foot",
+                  ConversionFactorFromSI = Factors.Foot,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot, i.e., 0.30479999999999996"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per inch",
+                  UnitLabel = "rad/in",
+                  SIUnitName = "radian per metre",
+                  ID = new Guid("c36cf9c1-d4f2-4654-99eb-5d84eac21c66"),
+                  ConversionFactorFromSIFormula = "Factors.Inch",
+                  ConversionFactorFromSI = Factors.Inch,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per inch"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch, i.e., 0.0254"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class AngleMagneticFluxDensityQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
@@ -849,236 +1079,6 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "and"
  + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
  + Environment.NewLine + "Unit = 1.0"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class AngleVariationGradientQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "radian per metre",
-                  UnitLabel = "rad/m",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("5d9782b6-c4c7-47ca-a86b-dce3f63c3747"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "degree per metre",
-                  UnitLabel = "°/m",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("2fcd4219-8879-4494-9563-5173ec2292fa"),
-                  ConversionFactorFromSIFormula = "Factors.Degree",
-                  ConversionFactorFromSI = Factors.Degree,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in degree per metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Degree, i.e., 57.29577951308232"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "degree per centimetre",
-                  UnitLabel = "°/cm",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7"),
-                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Centi",
-                  ConversionFactorFromSI = Factors.Degree*Factors.Centi,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in degree per centimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Degree*Centi, i.e., 0.5729577951308232"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "degree per foot",
-                  UnitLabel = "°/ft",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b"),
-                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Foot",
-                  ConversionFactorFromSI = Factors.Degree*Factors.Foot,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in degree per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Degree*Foot, i.e., 17.46375359558749"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "degree per inch",
-                  UnitLabel = "°/in",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4"),
-                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Inch",
-                  ConversionFactorFromSI = Factors.Degree*Factors.Inch,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in degree per inch"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Degree*Inch, i.e., 1.455312799632291"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "degree per decimetre",
-                  UnitLabel = "°/dm",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("452edd17-d501-487b-8cc1-90c08f7b1417"),
-                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Deci",
-                  ConversionFactorFromSI = Factors.Degree*Factors.Deci,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in degree per decimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Degree*Deci, i.e., 5.729577951308233"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
- + Environment.NewLine + "Deci = 0.1"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "degree per millimetre",
-                  UnitLabel = "°/mm",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("5cc72a73-70c0-4ccf-83ae-38e8a45391b4"),
-                  ConversionFactorFromSIFormula = "Factors.Degree*Factors.Milli",
-                  ConversionFactorFromSI = Factors.Degree*Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in degree per millimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Degree*Milli, i.e., 0.057295779513082325"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "radian per millimetre",
-                  UnitLabel = "rad/mm",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("dbd20525-128b-43c5-9de4-a8e604cbf6bf"),
-                  ConversionFactorFromSIFormula = "Factors.Milli",
-                  ConversionFactorFromSI = Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in radian per millimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Milli, i.e., 0.001"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "radian per centimetre",
-                  UnitLabel = "rad/cm",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("5552abca-e21b-48ca-aedc-4518a32b8de3"),
-                  ConversionFactorFromSIFormula = "Factors.Centi",
-                  ConversionFactorFromSI = Factors.Centi,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in radian per centimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi, i.e., 0.01"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "radian per decimetre",
-                  UnitLabel = "rad/dm",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("47e72ab7-444d-4d4b-8cd2-01d2fb8efa2d"),
-                  ConversionFactorFromSIFormula = "Factors.Deci",
-                  ConversionFactorFromSI = Factors.Deci,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in radian per decimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Deci, i.e., 0.1"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Deci = 0.1"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "radian per foot",
-                  UnitLabel = "rad/ft",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("e1ab7dd2-48c7-4ac8-ac5e-bc50fdcae5df"),
-                  ConversionFactorFromSIFormula = "Factors.Foot",
-                  ConversionFactorFromSI = Factors.Foot,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in radian per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot, i.e., 0.30479999999999996"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "radian per inch",
-                  UnitLabel = "rad/in",
-                  SIUnitName = "radian per metre",
-                  ID = new Guid("c36cf9c1-d4f2-4654-99eb-5d84eac21c66"),
-                  ConversionFactorFromSIFormula = "Factors.Inch",
-                  ConversionFactorFromSI = Factors.Inch,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in radian per inch"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch, i.e., 0.0254"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
  + Environment.NewLine + "",
                 }
             };
@@ -2762,7 +2762,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityGradientDepthQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -3311,7 +3311,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityGradientTemperatureQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -3577,7 +3577,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -3759,7 +3759,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -4268,7 +4268,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ElectricalCapacitanceQuantity : DerivedBasePhysicalQuantity
+  public partial class ElectricCapacitanceQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -4901,7 +4901,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ElongationGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ElongationGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -6213,7 +6213,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ForceGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ForceGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -8937,7 +8937,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MassGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class MassGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -9294,7 +9294,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class PermeabilityQuantity : AreaQuantity
+  public partial class PorousMediumPermeabilityQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -9924,7 +9924,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class PressureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class PressureGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -11189,7 +11189,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SpecificHeatCapacityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class SpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -11630,7 +11630,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class TemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class TemperatureGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -12073,7 +12073,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ThermalConductivityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ThermalConductivityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -12371,7 +12371,7 @@ namespace OSDC.UnitConversion.Conversion
               , new UnitChoice
                 {
                   UnitName = "fortnight",
-                  UnitLabel = "fortnight",
+                  UnitLabel = "14d",
                   SIUnitName = "second",
                   ID = new Guid("bc87f864-3dc1-4f1a-87bc-4123a47c53dc"),
                   ConversionFactorFromSIFormula = "1.0/Factors.Fortnight",
@@ -12680,7 +12680,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class TorqueGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class TorqueGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -14752,6 +14752,30 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "Day = 24.0 * Hour"
  + Environment.NewLine + "Deci = 0.1"
  + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "furlong per fortnight",
+                  UnitLabel = "furlong/14d",
+                  SIUnitName = "metre per second",
+                  ID = new Guid("028ad001-b80d-49d8-8d18-8e10c1f0239f"),
+                  ConversionFactorFromSIFormula = "Factors.Fortnight/Factors.Furlong",
+                  ConversionFactorFromSI = Factors.Fortnight/Factors.Furlong,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in furlong per fortnight"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Fortnight/Furlong, i.e., 6012.884753042234"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Fortnight = 14.0 * Day"
+ + Environment.NewLine + "Furlong = 660.0 * Foot reference: https://www.britannica.com/science/furlong"
+ + Environment.NewLine + "Day = 24.0 * Hour"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
  + Environment.NewLine + "Minute = 60.0"
  + Environment.NewLine + "",
                 }
@@ -16982,6 +17006,178 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "a = 1.0/(100.0*Pound), i.e., 0.022046226218487758"
  + Environment.NewLine + "and"
  + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "joule",
+                  UnitLabel = "J",
+                  SIUnitName = "joule",
+                  ID = new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilojoule",
+                  UnitLabel = "kJ",
+                  SIUnitName = "joule",
+                  ID = new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilojoule"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megajoule",
+                  UnitLabel = "MJ",
+                  SIUnitName = "joule",
+                  ID = new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Mega",
+                  ConversionFactorFromSI = 1.0/Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megajoule"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Mega, i.e., 1E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gigajoule",
+                  UnitLabel = "GJ",
+                  SIUnitName = "joule",
+                  ID = new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Giga",
+                  ConversionFactorFromSI = 1.0/Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gigajoule"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Giga, i.e., 1E-09"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "calorie",
+                  UnitLabel = "cal",
+                  SIUnitName = "joule",
+                  ID = new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Calorie",
+                  ConversionFactorFromSI = 1.0/Factors.Calorie,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in calorie"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Calorie, i.e., 0.2390057361376673"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Calorie = 4.184 reference: https://en.wikipedia.org/wiki/Calorie"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilocalorie",
+                  UnitLabel = "Cal",
+                  SIUnitName = "joule",
+                  ID = new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo * Factors.Calorie)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo * Factors.Calorie),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilocalorie"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo * Calorie), i.e., 0.0002390057361376673"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Calorie = 4.184 reference: https://en.wikipedia.org/wiki/Calorie"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "british thermal unit",
+                  UnitLabel = "BTU",
+                  SIUnitName = "joule",
+                  ID = new Guid("8548500e-e3a9-4e36-aecb-024836b8a012"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.BTU",
+                  ConversionFactorFromSI = 1.0/Factors.BTU,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in british thermal unit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/BTU, i.e., 0.0009484516526770049"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilo british thermal unit",
+                  UnitLabel = "kBTU",
+                  SIUnitName = "joule",
+                  ID = new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo * Factors.BTU)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo * Factors.BTU),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilo british thermal unit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo * BTU), i.e., 9.484516526770048E-07"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "mega british thermal unit",
+                  UnitLabel = "MMBTU",
+                  SIUnitName = "joule",
+                  ID = new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Mega * Factors.BTU)",
+                  ConversionFactorFromSI = 1.0/(Factors.Mega * Factors.BTU),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in mega british thermal unit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Mega * BTU), i.e., 9.48451652677005E-10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
  + Environment.NewLine + "",
                 }
             };

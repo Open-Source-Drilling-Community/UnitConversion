@@ -90,7 +90,7 @@ namespace OSDC.UnitConversion.Conversion
         public AmountSubstanceQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Amount Substance" };
+            UsualNames = new HashSet<string>() { "amount substance" };
             ID = new Guid("200be1eb-c278-447c-9b15-32d20fc778b9");
             DescriptionMD = string.Empty;
             DescriptionMD += "The **amount of substance** refers to the quantity of entities (such as atoms, molecules, ions, or other particles) in a system.";
@@ -98,7 +98,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "This is one of the nine fundamental dimensions in the International System of Units (SI).";
             DescriptionMD += "A fundamental quantity does not depend on any combinations of other fundamental dimensions.";
-            DescriptionMD += "It is denoted $[N]$.";
+            DescriptionMD += "It is denoted \" + GetDimensionsMD() + \".";
             InitializeUnitChoices();
         }
     }

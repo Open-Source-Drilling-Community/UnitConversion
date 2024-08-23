@@ -89,8 +89,12 @@ namespace OSDC.UnitConversion.Conversion
         public MagneticFluxDensityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Magnetic Flux Density" };
+            UsualNames = new HashSet<string>() { "magnetic flux density" };
             ID = new Guid("b9a3f96b-8861-4b03-9c8a-3c0d7d6ec139");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Magnetic flux density is the measure of the strength of a magnetic field per unit area through which the magnetic flux passes. It indicates how concentrated the magnetic field is." + Environment.NewLine;
+            DescriptionMD += @"The dimension of magnetic flux density is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

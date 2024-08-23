@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public MassRateDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Mass Rate (drilling)" };
+            UsualNames = new HashSet<string>() { "mass rate (drilling)" };
             ID = new Guid("0e218b8e-bc7c-4902-b88d-1cdab4a5dc94");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of mass rate in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerSecond));
             this.UnitChoices.Add(MassRateQuantity.Instance.GetUnitChoice(MassRateQuantity.UnitChoicesEnum.KilogramPerMinute));

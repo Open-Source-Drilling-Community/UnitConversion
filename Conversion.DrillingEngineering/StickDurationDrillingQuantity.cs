@@ -28,8 +28,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public StickDurationDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Stick Duration (drilling)" };
+            UsualNames = new HashSet<string>() { "stick duration (drilling)" };
             ID = new Guid("1e9bafaa-bbf1-4a29-9811-39b5e2280499");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of stick duration in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.Second).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.Second));
             this.UnitChoices.Add(TimeQuantity.Instance.GetUnitChoice(TimeQuantity.UnitChoicesEnum.Millisecond));

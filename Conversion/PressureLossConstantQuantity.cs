@@ -59,8 +59,12 @@ namespace OSDC.UnitConversion.Conversion
         public PressureLossConstantQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Pressure Loss Constant" };
+            UsualNames = new HashSet<string>() { "pressure loss constant" };
             ID = new Guid("6417f6e0-969d-43f2-bee6-249199ec1697");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"The pressure loss constant is a parameter used to quantify the resistance to flow in a system, such as a pipe or more complex tubulars, which leads to a reduction in pressure. It helps in calculating the pressure drop due to friction or other factors in fluid dynamics." + Environment.NewLine;
+            DescriptionMD += @"The dimension of pressure loss constant is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

@@ -82,8 +82,12 @@ namespace OSDC.UnitConversion.Conversion
         public ForceQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Force" };
+            UsualNames = new HashSet<string>() { "force" };
             ID = new Guid("af9fd237-14d8-4b75-8d0b-34ea8961c20b");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A force is an influence that can cause an object to change its velocity unless counterbalanced by other forces." + Environment.NewLine;
+            DescriptionMD += @"The dimension of force is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

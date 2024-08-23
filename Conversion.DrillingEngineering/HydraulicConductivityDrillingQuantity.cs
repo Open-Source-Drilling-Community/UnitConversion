@@ -26,8 +26,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public HydraulicConductivityDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Hydraulic Conductivity (drilling)" };
+            UsualNames = new HashSet<string>() { "hydraulic conductivity (drilling)" };
             ID = new Guid("6cc821d6-b979-4bf9-b1cc-ac266b221330");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of hydraulic conductivity in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MetrePerSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MetrePerSecond));
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MetrePerMinute));

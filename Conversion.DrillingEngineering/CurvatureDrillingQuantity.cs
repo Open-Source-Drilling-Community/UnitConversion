@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public CurvatureDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Curvature (drilling)", "Dogleg severity", "DLS" };
+            UsualNames = new HashSet<string>() { "curvature (drilling)", "dogleg severity", "DLS" };
             ID = new Guid("0e41ce3a-a0e4-44a3-bf6e-6c2a70f4a28b");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of curvature in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.RadianPerMetre).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.RadianPerMetre));
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer10m));

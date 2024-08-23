@@ -24,7 +24,7 @@ namespace OSDC.UnitConversion.Conversion
         public HydraulicConductivityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Hydraulic Conductivity" };
+            UsualNames = new HashSet<string>() { "hydraulic conductivity" };
             ID = new Guid("04df2b82-aff0-485a-855e-3d2aa53e12eb");
             Reset();
             this.UnitChoices.Add(VelocityQuantity.Instance.GetUnitChoice(VelocityQuantity.UnitChoicesEnum.MetrePerSecond));

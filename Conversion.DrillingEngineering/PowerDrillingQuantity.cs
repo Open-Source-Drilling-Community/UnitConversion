@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public PowerDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Power (drilling)" };
+            UsualNames = new HashSet<string>() { "power (drilling)" };
             ID = new Guid("d7f0d3a8-2d15-4ae9-897a-5d1ef7feef8a");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of power in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt));
             this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Kilowatt));

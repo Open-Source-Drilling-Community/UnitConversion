@@ -228,8 +228,12 @@ namespace OSDC.UnitConversion.Conversion
         public CurvatureQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Curvature" };
+            UsualNames = new HashSet<string>() { "curvature" };
             ID = new Guid("bbfe7349-8cf5-4ca0-8a84-ffe66d7f33d0");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A curvature is the second derivative of a position compared to the curvilinear abscissa: $\frac{d^2x}{ds^2}$, where $x$ is the position and $s$ is the curvilinear abscissa." + Environment.NewLine;
+            DescriptionMD += @"The dimension of curvature is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

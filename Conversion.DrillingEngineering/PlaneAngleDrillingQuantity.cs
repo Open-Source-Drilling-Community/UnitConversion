@@ -25,8 +25,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public PlaneAngleDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Plane Angle (drilling)" };
+            UsualNames = new HashSet<string>() { "plane angle (drilling)" };
             ID = new Guid("94ad3e73-2a44-4c60-bbca-188b941f3357");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of plane angle in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Radian).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Radian));
             this.UnitChoices.Add(PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree));

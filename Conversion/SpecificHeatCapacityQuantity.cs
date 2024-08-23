@@ -75,8 +75,12 @@ namespace OSDC.UnitConversion.Conversion
         public SpecificHeatCapacityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Specific Heat Capacity" };
+            UsualNames = new HashSet<string>() { "specific heat capacity" };
             ID = new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Specific heat capacity is the amount of heat required to raise the temperature of one unit mass of a substance by one unit of temperature. It indicates how much heat energy a material can store." + Environment.NewLine;
+            DescriptionMD += @"The dimension of specific heat capacity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

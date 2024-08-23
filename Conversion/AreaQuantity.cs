@@ -122,8 +122,12 @@ namespace OSDC.UnitConversion.Conversion
         protected AreaQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Area" };
+            UsualNames = new HashSet<string>() { "area" };
             ID = new Guid("2a892bab-1b39-4ae4-b2d2-989621b09557");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Area is the measure of the extent of a surface or the size of a two-dimensional shape." + Environment.NewLine;
+            DescriptionMD += @"The dimension of area is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

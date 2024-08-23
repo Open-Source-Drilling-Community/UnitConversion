@@ -8,50 +8,52 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
      public new enum QuantityEnum 
        {
          AccelerationDrilling,  // AccelerationDrilling
-         AngleVariationGradientDrilling,  // AngleVariationGradientDrilling
+         AngleGradientPerLengthDrilling,  // AngleGradientPerLengthDrilling
+         AngleMagneticFluxDensitySurveyInstrumentDrilling,  // AngleMagneticFluxDensitySurveyInstrumentDrilling
          AngularAccelerationDrilling,  // AngularAccelerationDrilling
          AngularVelocityDrilling,  // AngularVelocityDrilling
+         AngularVelocitySurveyInstrumentDrilling,  // AngularVelocitySurveyInstrumentDrilling
          AreaDrilling,  // AreaDrilling
          AxialVelocityDrilling,  // AxialVelocityDrilling
-         BlockVelocity,  // BlockVelocity
-         CableDiameter,  // CableDiameter
-         CapillaryPressure,  // CapillaryPressure
+         BlockVelocityDrilling,  // BlockVelocityDrilling
+         CableDiameterDrilling,  // CableDiameterDrilling
+         CapillaryPressureDrilling,  // CapillaryPressureDrilling
          CompressibilityDrilling,  // CompressibilityDrilling
          CurvatureDrilling,  // CurvatureDrilling
-         DensityDrilling,  // DensityDrilling
-         DensityGradientDepthDrilling,  // DensityGradientDepthDrilling
-         DensityGradientTemperatureDrilling,  // DensityGradientTemperatureDrilling
-         DensityRateOfChangeDrilling,  // DensityRateOfChangeDrilling
-         Depth,  // Depth
-         DrillStemMaterialStrength,  // DrillStemMaterialStrength
+         DepthDrilling,  // DepthDrilling
+         DiameterPipeDrilling,  // DiameterPipeDrilling
+         DiameterPoreDrilling,  // DiameterPoreDrilling
+         DrillStemMaterialStrengthDrilling,  // DrillStemMaterialStrengthDrilling
          DrillStringMagneticFluxDrilling,  // DrillStringMagneticFluxDrilling
          DurationDrilling,  // DurationDrilling
          DynamicViscosityDrilling,  // DynamicViscosityDrilling
-         ElongationGradientDrilling,  // ElongationGradientDrilling
+         ElongationGradientPerLengthDrilling,  // ElongationGradientPerLengthDrilling
          EnergyDensityDrilling,  // EnergyDensityDrilling
+         MassDensityRateOfChangeDrilling,  // MassDensityRateOfChangeDrilling
+         MassDensityGradientPerTemperatureDrilling,  // MassDensityGradientPerTemperatureDrilling
+         MassDensityGradientPerLengthDrilling,  // MassDensityGradientPerLengthDrilling
+         MassDensityDrilling,  // MassDensityDrilling
          FluidVelocityDrilling,  // FluidVelocityDrilling
-         ForceGradientDrilling,  // ForceGradientDrilling
+         ForceGradientPerLengthDrilling,  // ForceGradientPerLengthDrilling
          ForceDrilling,  // ForceDrilling
          HeatTransferCoefficientDrilling,  // HeatTransferCoefficientDrilling
          HydraulicConductivityDrilling,  // HydraulicConductivityDrilling
          InterfacialTensionDrilling,  // InterfacialTensionDrilling
-         MassGradientDrilling,  // MassGradientDrilling
+         MassGradientPerLengthDrilling,  // MassGradientPerLengthDrilling
          MassDrilling,  // MassDrilling
          MassRateDrilling,  // MassRateDrilling
          PlaneAngleDrilling,  // PlaneAngleDrilling
          PowerDrilling,  // PowerDrilling
-         PressureGradientDrilling,  // PressureGradientDrilling
+         PressureGradientPerLengthDrilling,  // PressureGradientPerLengthDrilling
          PressureLossConstantDrilling,  // PressureLossConstantDrilling
          PressureDrilling,  // PressureDrilling
          RandomWalkDrilling,  // RandomWalkDrilling
-         RotationFrequencyRateOfChangeDrilling,  // RotationFrequencyRateOfChangeDrilling
+         RotationalFrequencyRateOfChangeDrilling,  // RotationalFrequencyRateOfChangeDrilling
          SpecificHeatCapacityDrilling,  // SpecificHeatCapacityDrilling
-         SpecificHeatCapacityTemperatureGradientDrilling,  // SpecificHeatCapacityTemperatureGradientDrilling
+         SpecificHeatCapacityGradientPerTemperatureDrilling,  // SpecificHeatCapacityGradientPerTemperatureDrilling
          StickDurationDrilling,  // StickDurationDrilling
-         SurveyInstrumentAngleMagneticFluxDensityDrilling,  // SurveyInstrumentAngleMagneticFluxDensityDrilling
-         SurveyInstrumentAngularVelocityDrilling,  // SurveyInstrumentAngularVelocityDrilling
-         SurveyInstrumentReciprocalLengthDrilling,  // SurveyInstrumentReciprocalLengthDrilling
-         TemperatureGradientDrilling,  // TemperatureGradientDrilling
+         ReciprocalLengthSurveyInstrumentDrilling,  // ReciprocalLengthSurveyInstrumentDrilling
+         TemperatureGradientPerLengthDrilling,  // TemperatureGradientPerLengthDrilling
          TemperatureDrilling,  // TemperatureDrilling
          TensionDrilling,  // TensionDrilling
          ThermalConductivityDrilling,  // ThermalConductivityDrilling
@@ -59,70 +61,71 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          VolumeDrilling,  // VolumeDrilling
          VolumetricFlowRateOfChangeDrilling,  // VolumetricFlowRateOfChangeDrilling
          VolumetricFlowrateDrilling,  // VolumetricFlowrateDrilling
-         FormationResistivity,  // FormationResistivity
-         FormationStrength,  // FormationStrength
-         GammaRay,  // GammaRay
-         GasShow,  // GasShow
-         GasVolumetricFlowRate,  // GasVolumetricFlowRate
-         Height,  // Height
-         HookLoad,  // HookLoad
-         NozzleDiameter,  // NozzleDiameter
-         PipeDiameter,  // PipeDiameter
-         PoreDiameter,  // PoreDiameter
-         PoreSurface,  // PoreSurface
-         Position,  // Position
-         RateOfPenetration,  // RateOfPenetration
-         WeightOnBit,  // WeightOnBit
-         ThermalConductivityTemperatureGradientDrilling,  // ThermalConductivityTemperatureGradientDrilling
-         TorqueGradientDrilling // TorqueGradientDrilling
+         FormationResistivityDrilling,  // FormationResistivityDrilling
+         FormationStrengthDrilling,  // FormationStrengthDrilling
+         GammaRayIndexDrilling,  // GammaRayIndexDrilling
+         GasShowDrilling,  // GasShowDrilling
+         GasVolumetricFlowRateDrilling,  // GasVolumetricFlowRateDrilling
+         HeightDrilling,  // HeightDrilling
+         HookLoadDrilling,  // HookLoadDrilling
+         NozzleDiameterDrilling,  // NozzleDiameterDrilling
+         SurfacePoreDrilling,  // SurfacePoreDrilling
+         PositionDrilling,  // PositionDrilling
+         RateOfPenetrationDrilling,  // RateOfPenetrationDrilling
+         WeightOnBitDrilling,  // WeightOnBitDrilling
+         ThermalConductivityGradientPerTemperatureDrilling,  // ThermalConductivityGradientPerTemperatureDrilling
+         TorqueGradientPerLengthDrilling,  // TorqueGradientPerLengthDrilling
+         PorousMediumPermeabilityDrilling // PorousMediumPermeabilityDrilling
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
          {QuantityEnum.AccelerationDrilling, new Guid("b6c99136-8e57-4eea-9a31-fb804bc8ae4b")},  // AccelerationDrilling
-         {QuantityEnum.AngleVariationGradientDrilling, new Guid("e6f22876-ca88-4d0e-a4a5-c76b0db3556f")},  // AngleVariationGradientDrilling
+         {QuantityEnum.AngleGradientPerLengthDrilling, new Guid("e6f22876-ca88-4d0e-a4a5-c76b0db3556f")},  // AngleGradientPerLengthDrilling
+         {QuantityEnum.AngleMagneticFluxDensitySurveyInstrumentDrilling, new Guid("a3ad9fd6-a516-42c8-98a5-14e178dc62f2")},  // AngleMagneticFluxDensitySurveyInstrumentDrilling
          {QuantityEnum.AngularAccelerationDrilling, new Guid("0077dbf8-bd21-4cc7-a180-b2c75229dd87")},  // AngularAccelerationDrilling
          {QuantityEnum.AngularVelocityDrilling, new Guid("046cb449-8cab-4d0c-bb28-3e2060f292e5")},  // AngularVelocityDrilling
+         {QuantityEnum.AngularVelocitySurveyInstrumentDrilling, new Guid("76dd6ac8-8b67-416c-b41f-07bbf4065cdb")},  // AngularVelocitySurveyInstrumentDrilling
          {QuantityEnum.AreaDrilling, new Guid("21fc0373-6eda-460b-bacb-070abf2f3add")},  // AreaDrilling
          {QuantityEnum.AxialVelocityDrilling, new Guid("e278ace8-d577-4fb4-8d1d-dd8a3d072027")},  // AxialVelocityDrilling
-         {QuantityEnum.BlockVelocity, new Guid("82a2b5fc-9edd-45ea-80cb-1cd46d516fdb")},  // BlockVelocity
-         {QuantityEnum.CableDiameter, new Guid("6b3db5b2-7e30-47f7-91c5-5951dd3f9246")},  // CableDiameter
-         {QuantityEnum.CapillaryPressure, new Guid("72228ff1-9ba8-44f0-b9b1-85fa8dfb32ea")},  // CapillaryPressure
+         {QuantityEnum.BlockVelocityDrilling, new Guid("82a2b5fc-9edd-45ea-80cb-1cd46d516fdb")},  // BlockVelocityDrilling
+         {QuantityEnum.CableDiameterDrilling, new Guid("6b3db5b2-7e30-47f7-91c5-5951dd3f9246")},  // CableDiameterDrilling
+         {QuantityEnum.CapillaryPressureDrilling, new Guid("72228ff1-9ba8-44f0-b9b1-85fa8dfb32ea")},  // CapillaryPressureDrilling
          {QuantityEnum.CompressibilityDrilling, new Guid("bfec67e2-839f-47d7-968c-69287567835d")},  // CompressibilityDrilling
          {QuantityEnum.CurvatureDrilling, new Guid("0e41ce3a-a0e4-44a3-bf6e-6c2a70f4a28b")},  // CurvatureDrilling
-         {QuantityEnum.DensityDrilling, new Guid("60f2af98-56e4-4f9c-8438-59646a35fc0d")},  // DensityDrilling
-         {QuantityEnum.DensityGradientDepthDrilling, new Guid("787c3f65-b6d5-4866-885b-12571b1d9734")},  // DensityGradientDepthDrilling
-         {QuantityEnum.DensityGradientTemperatureDrilling, new Guid("b5ccd49c-a9fd-4cfd-8dd1-fb4d3f8c3ad5")},  // DensityGradientTemperatureDrilling
-         {QuantityEnum.DensityRateOfChangeDrilling, new Guid("af63f164-0fb7-42c0-ac55-06e40b6c12e5")},  // DensityRateOfChangeDrilling
-         {QuantityEnum.Depth, new Guid("c0d965b2-a153-420a-9d03-7a2a272d619e")},  // Depth
-         {QuantityEnum.DrillStemMaterialStrength, new Guid("fd58fca3-6221-4e85-a7aa-a021ee04e8a8")},  // DrillStemMaterialStrength
+         {QuantityEnum.DepthDrilling, new Guid("c0d965b2-a153-420a-9d03-7a2a272d619e")},  // DepthDrilling
+         {QuantityEnum.DiameterPipeDrilling, new Guid("28a2fe65-db50-46ec-8b1d-2a26286a5813")},  // DiameterPipeDrilling
+         {QuantityEnum.DiameterPoreDrilling, new Guid("781affbc-fae3-40a0-a110-fd3bdfd7d41f")},  // DiameterPoreDrilling
+         {QuantityEnum.DrillStemMaterialStrengthDrilling, new Guid("fd58fca3-6221-4e85-a7aa-a021ee04e8a8")},  // DrillStemMaterialStrengthDrilling
          {QuantityEnum.DrillStringMagneticFluxDrilling, new Guid("3a58147b-88db-4474-8390-dd0e0f7d206b")},  // DrillStringMagneticFluxDrilling
          {QuantityEnum.DurationDrilling, new Guid("22443197-6bcf-45f7-9079-4f710585af60")},  // DurationDrilling
          {QuantityEnum.DynamicViscosityDrilling, new Guid("e9b32538-f7f4-4f99-a206-0601a4e4a5f8")},  // DynamicViscosityDrilling
-         {QuantityEnum.ElongationGradientDrilling, new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9")},  // ElongationGradientDrilling
+         {QuantityEnum.ElongationGradientPerLengthDrilling, new Guid("4410a514-a65a-48ca-82d1-ab788b3d2df9")},  // ElongationGradientPerLengthDrilling
          {QuantityEnum.EnergyDensityDrilling, new Guid("04bc9209-c5c0-4f42-98b1-f1f63a3bee52")},  // EnergyDensityDrilling
+         {QuantityEnum.MassDensityRateOfChangeDrilling, new Guid("af63f164-0fb7-42c0-ac55-06e40b6c12e5")},  // MassDensityRateOfChangeDrilling
+         {QuantityEnum.MassDensityGradientPerTemperatureDrilling, new Guid("b5ccd49c-a9fd-4cfd-8dd1-fb4d3f8c3ad5")},  // MassDensityGradientPerTemperatureDrilling
+         {QuantityEnum.MassDensityGradientPerLengthDrilling, new Guid("787c3f65-b6d5-4866-885b-12571b1d9734")},  // MassDensityGradientPerLengthDrilling
+         {QuantityEnum.MassDensityDrilling, new Guid("60f2af98-56e4-4f9c-8438-59646a35fc0d")},  // MassDensityDrilling
          {QuantityEnum.FluidVelocityDrilling, new Guid("dac9cee1-59a3-42d5-98c6-0c7baf5083bb")},  // FluidVelocityDrilling
-         {QuantityEnum.ForceGradientDrilling, new Guid("78942f39-d764-42f1-b270-47a3b35e5112")},  // ForceGradientDrilling
+         {QuantityEnum.ForceGradientPerLengthDrilling, new Guid("78942f39-d764-42f1-b270-47a3b35e5112")},  // ForceGradientPerLengthDrilling
          {QuantityEnum.ForceDrilling, new Guid("30c08b42-6a89-4d99-879b-882eb7ed46d0")},  // ForceDrilling
          {QuantityEnum.HeatTransferCoefficientDrilling, new Guid("c99547c5-b545-4060-bd82-eadc13772493")},  // HeatTransferCoefficientDrilling
          {QuantityEnum.HydraulicConductivityDrilling, new Guid("6cc821d6-b979-4bf9-b1cc-ac266b221330")},  // HydraulicConductivityDrilling
          {QuantityEnum.InterfacialTensionDrilling, new Guid("1bf5cf90-84c4-4dcc-ac74-92223d3c3c46")},  // InterfacialTensionDrilling
-         {QuantityEnum.MassGradientDrilling, new Guid("dc474098-a2b5-44fb-b56a-0ae20ff62ad6")},  // MassGradientDrilling
+         {QuantityEnum.MassGradientPerLengthDrilling, new Guid("dc474098-a2b5-44fb-b56a-0ae20ff62ad6")},  // MassGradientPerLengthDrilling
          {QuantityEnum.MassDrilling, new Guid("f4c0a6fd-5000-4507-8612-ae4374c0cacc")},  // MassDrilling
          {QuantityEnum.MassRateDrilling, new Guid("0e218b8e-bc7c-4902-b88d-1cdab4a5dc94")},  // MassRateDrilling
          {QuantityEnum.PlaneAngleDrilling, new Guid("94ad3e73-2a44-4c60-bbca-188b941f3357")},  // PlaneAngleDrilling
          {QuantityEnum.PowerDrilling, new Guid("d7f0d3a8-2d15-4ae9-897a-5d1ef7feef8a")},  // PowerDrilling
-         {QuantityEnum.PressureGradientDrilling, new Guid("92a284e7-9898-41f7-950d-4ba9f1ec550b")},  // PressureGradientDrilling
+         {QuantityEnum.PressureGradientPerLengthDrilling, new Guid("92a284e7-9898-41f7-950d-4ba9f1ec550b")},  // PressureGradientPerLengthDrilling
          {QuantityEnum.PressureLossConstantDrilling, new Guid("fd799f5c-0963-4201-aec3-e531df6b226e")},  // PressureLossConstantDrilling
          {QuantityEnum.PressureDrilling, new Guid("d9db6bb4-77af-4fc3-a683-7bedd781fcba")},  // PressureDrilling
          {QuantityEnum.RandomWalkDrilling, new Guid("8817dc80-eb46-42d5-b85f-703fa8845f32")},  // RandomWalkDrilling
-         {QuantityEnum.RotationFrequencyRateOfChangeDrilling, new Guid("4950170a-7882-4673-9d27-3402dbbca2bb")},  // RotationFrequencyRateOfChangeDrilling
+         {QuantityEnum.RotationalFrequencyRateOfChangeDrilling, new Guid("4950170a-7882-4673-9d27-3402dbbca2bb")},  // RotationalFrequencyRateOfChangeDrilling
          {QuantityEnum.SpecificHeatCapacityDrilling, new Guid("05c59293-4e3b-4fc0-b579-12c241109610")},  // SpecificHeatCapacityDrilling
-         {QuantityEnum.SpecificHeatCapacityTemperatureGradientDrilling, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // SpecificHeatCapacityTemperatureGradientDrilling
+         {QuantityEnum.SpecificHeatCapacityGradientPerTemperatureDrilling, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // SpecificHeatCapacityGradientPerTemperatureDrilling
          {QuantityEnum.StickDurationDrilling, new Guid("1e9bafaa-bbf1-4a29-9811-39b5e2280499")},  // StickDurationDrilling
-         {QuantityEnum.SurveyInstrumentAngleMagneticFluxDensityDrilling, new Guid("a3ad9fd6-a516-42c8-98a5-14e178dc62f2")},  // SurveyInstrumentAngleMagneticFluxDensityDrilling
-         {QuantityEnum.SurveyInstrumentAngularVelocityDrilling, new Guid("76dd6ac8-8b67-416c-b41f-07bbf4065cdb")},  // SurveyInstrumentAngularVelocityDrilling
-         {QuantityEnum.SurveyInstrumentReciprocalLengthDrilling, new Guid("c198aa3b-3b24-402d-b60b-f54ff9430f33")},  // SurveyInstrumentReciprocalLengthDrilling
-         {QuantityEnum.TemperatureGradientDrilling, new Guid("82b91f3f-d1ec-476b-98e0-eedbba6281ec")},  // TemperatureGradientDrilling
+         {QuantityEnum.ReciprocalLengthSurveyInstrumentDrilling, new Guid("c198aa3b-3b24-402d-b60b-f54ff9430f33")},  // ReciprocalLengthSurveyInstrumentDrilling
+         {QuantityEnum.TemperatureGradientPerLengthDrilling, new Guid("82b91f3f-d1ec-476b-98e0-eedbba6281ec")},  // TemperatureGradientPerLengthDrilling
          {QuantityEnum.TemperatureDrilling, new Guid("84ce5a77-fd76-4014-ad8e-03f194c3e329")},  // TemperatureDrilling
          {QuantityEnum.TensionDrilling, new Guid("fe8fd6fd-814c-44c9-9462-f034dd46dc85")},  // TensionDrilling
          {QuantityEnum.ThermalConductivityDrilling, new Guid("186eef6a-9da3-4b97-a6d0-d496bdf59321")},  // ThermalConductivityDrilling
@@ -130,22 +133,21 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.VolumeDrilling, new Guid("b8c9f810-d576-4523-a26f-921305c7f7b4")},  // VolumeDrilling
          {QuantityEnum.VolumetricFlowRateOfChangeDrilling, new Guid("244ade8c-591d-44d4-bca6-3798046d90a1")},  // VolumetricFlowRateOfChangeDrilling
          {QuantityEnum.VolumetricFlowrateDrilling, new Guid("7b12c115-3c20-4d45-b4cf-86af29255b14")},  // VolumetricFlowrateDrilling
-         {QuantityEnum.FormationResistivity, new Guid("ed01d6da-225d-4bcc-beac-55ccdb6fb0b9")},  // FormationResistivity
-         {QuantityEnum.FormationStrength, new Guid("55a8119f-4609-4d51-91b4-e2281c46c779")},  // FormationStrength
-         {QuantityEnum.GammaRay, new Guid("15280017-0ac6-4dad-a6e1-1efdb05e64c5")},  // GammaRay
-         {QuantityEnum.GasShow, new Guid("c81adbce-b90b-4889-8b79-921d95b35179")},  // GasShow
-         {QuantityEnum.GasVolumetricFlowRate, new Guid("453bbddf-4979-4557-ba76-3fd3420fd97e")},  // GasVolumetricFlowRate
-         {QuantityEnum.Height, new Guid("8ec20e78-3307-4363-9fc1-97c64a4b6e6e")},  // Height
-         {QuantityEnum.HookLoad, new Guid("126be5e9-ed09-459e-92ce-32a5fcd81f0a")},  // HookLoad
-         {QuantityEnum.NozzleDiameter, new Guid("1fbe2318-851d-4fd7-b711-9c23ffe544c7")},  // NozzleDiameter
-         {QuantityEnum.PipeDiameter, new Guid("28a2fe65-db50-46ec-8b1d-2a26286a5813")},  // PipeDiameter
-         {QuantityEnum.PoreDiameter, new Guid("781affbc-fae3-40a0-a110-fd3bdfd7d41f")},  // PoreDiameter
-         {QuantityEnum.PoreSurface, new Guid("c88cc254-b870-44a6-b896-5863472bdcd0")},  // PoreSurface
-         {QuantityEnum.Position, new Guid("20f58500-7e00-41e7-acc4-99e9de9bfd07")},  // Position
-         {QuantityEnum.RateOfPenetration, new Guid("c2581b41-944c-410b-9805-62c4b54de510")},  // RateOfPenetration
-         {QuantityEnum.WeightOnBit, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")},  // WeightOnBit
-         {QuantityEnum.ThermalConductivityTemperatureGradientDrilling, new Guid("559ae484-42ed-4379-86f5-67dae451a9c9")},  // ThermalConductivityTemperatureGradientDrilling
-         {QuantityEnum.TorqueGradientDrilling, new Guid("6ad57f76-fb74-4099-a257-1d47216bfe65")} // TorqueGradientDrilling
+         {QuantityEnum.FormationResistivityDrilling, new Guid("ed01d6da-225d-4bcc-beac-55ccdb6fb0b9")},  // FormationResistivityDrilling
+         {QuantityEnum.FormationStrengthDrilling, new Guid("55a8119f-4609-4d51-91b4-e2281c46c779")},  // FormationStrengthDrilling
+         {QuantityEnum.GammaRayIndexDrilling, new Guid("15280017-0ac6-4dad-a6e1-1efdb05e64c5")},  // GammaRayIndexDrilling
+         {QuantityEnum.GasShowDrilling, new Guid("c81adbce-b90b-4889-8b79-921d95b35179")},  // GasShowDrilling
+         {QuantityEnum.GasVolumetricFlowRateDrilling, new Guid("453bbddf-4979-4557-ba76-3fd3420fd97e")},  // GasVolumetricFlowRateDrilling
+         {QuantityEnum.HeightDrilling, new Guid("8ec20e78-3307-4363-9fc1-97c64a4b6e6e")},  // HeightDrilling
+         {QuantityEnum.HookLoadDrilling, new Guid("126be5e9-ed09-459e-92ce-32a5fcd81f0a")},  // HookLoadDrilling
+         {QuantityEnum.NozzleDiameterDrilling, new Guid("1fbe2318-851d-4fd7-b711-9c23ffe544c7")},  // NozzleDiameterDrilling
+         {QuantityEnum.SurfacePoreDrilling, new Guid("c88cc254-b870-44a6-b896-5863472bdcd0")},  // SurfacePoreDrilling
+         {QuantityEnum.PositionDrilling, new Guid("20f58500-7e00-41e7-acc4-99e9de9bfd07")},  // PositionDrilling
+         {QuantityEnum.RateOfPenetrationDrilling, new Guid("c2581b41-944c-410b-9805-62c4b54de510")},  // RateOfPenetrationDrilling
+         {QuantityEnum.WeightOnBitDrilling, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")},  // WeightOnBitDrilling
+         {QuantityEnum.ThermalConductivityGradientPerTemperatureDrilling, new Guid("559ae484-42ed-4379-86f5-67dae451a9c9")},  // ThermalConductivityGradientPerTemperatureDrilling
+         {QuantityEnum.TorqueGradientPerLengthDrilling, new Guid("6ad57f76-fb74-4099-a257-1d47216bfe65")},  // TorqueGradientPerLengthDrilling
+         {QuantityEnum.PorousMediumPermeabilityDrilling, new Guid("040ff93a-d03a-4d01-9c52-8e456647ccb9")} // PorousMediumPermeabilityDrilling
     };
   }
 }
@@ -178,7 +180,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class AngleVariationGradientDrillingQuantity : AngleVariationGradientQuantity
+  public partial class AngleGradientPerLengthDrillingQuantity : AngleGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -195,6 +197,60 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.DegreePerFoot, new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b")},  // degree per foot
          {UnitChoicesEnum.DegreePerCentimetre, new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7")},  // degree per centimetre
          {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")} // degree per inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class AngleMagneticFluxDensitySurveyInstrumentDrillingQuantity : AngleMagneticFluxDensityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianTesla,  // radian tesla
+         DegreeGauss,  // degree gauss
+         DegreeMaxwellPerSquareCentimetre,  // degree maxwell per square centimetre
+         DegreeMicrotesla,  // degree microtesla
+         DegreeMilligauss,  // degree milligauss
+         DegreeMillitesla,  // degree millitesla
+         DegreeNanotesla,  // degree nanotesla
+         DegreeTesla,  // degree tesla
+         DegreeWeberPerSquareMetre,  // degree weber per square metre
+         RadianGauss,  // radian gauss
+         RadianMaxwellPerSquareCentimetre,  // radian maxwell per square centimetre
+         RadianMicrotesla,  // radian microtesla
+         RadianMilligauss,  // radian milligauss
+         RadianMillitesla,  // radian millitesla
+         RadianNanotesla,  // radian nanotesla
+         RadianWeberPerSquareMetre // radian weber per square metre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianTesla, new Guid("242bd328-96ef-4a1b-9a78-1e2eb8366955")},  // radian tesla
+         {UnitChoicesEnum.DegreeGauss, new Guid("73bb1de0-ccc0-42e6-b88e-44ecfb6fe7e4")},  // degree gauss
+         {UnitChoicesEnum.DegreeMaxwellPerSquareCentimetre, new Guid("092e8231-a6e6-4b29-bdd6-2ae490aa583a")},  // degree maxwell per square centimetre
+         {UnitChoicesEnum.DegreeMicrotesla, new Guid("50782201-236e-4537-843b-121e8dca28c6")},  // degree microtesla
+         {UnitChoicesEnum.DegreeMilligauss, new Guid("e74c9ae3-6e17-48e1-896b-e6c1877d68d7")},  // degree milligauss
+         {UnitChoicesEnum.DegreeMillitesla, new Guid("812a3461-ae4a-405b-ae5d-73eb23e8a71f")},  // degree millitesla
+         {UnitChoicesEnum.DegreeNanotesla, new Guid("0d9bf20d-2b10-4e73-ae8e-3d3e91862ec0")},  // degree nanotesla
+         {UnitChoicesEnum.DegreeTesla, new Guid("13df770f-6e77-4de4-91c6-137206e53fbb")},  // degree tesla
+         {UnitChoicesEnum.DegreeWeberPerSquareMetre, new Guid("2d7e1d60-6401-41c0-b436-612116be9ad4")},  // degree weber per square metre
+         {UnitChoicesEnum.RadianGauss, new Guid("aa726b90-bd4b-420c-ae71-6f2f1fde3b58")},  // radian gauss
+         {UnitChoicesEnum.RadianMaxwellPerSquareCentimetre, new Guid("02d06899-5d89-4669-a4c2-35adb9ec3924")},  // radian maxwell per square centimetre
+         {UnitChoicesEnum.RadianMicrotesla, new Guid("b445e592-e0ca-490f-8880-9708e4e96a01")},  // radian microtesla
+         {UnitChoicesEnum.RadianMilligauss, new Guid("352a5b84-306d-4e38-898a-58705683fdf0")},  // radian milligauss
+         {UnitChoicesEnum.RadianMillitesla, new Guid("663639b3-48b8-4c04-a2eb-6ae2e16daa9b")},  // radian millitesla
+         {UnitChoicesEnum.RadianNanotesla, new Guid("b4aeee40-29fa-463a-80a4-e10fa42c743f")},  // radian nanotesla
+         {UnitChoicesEnum.RadianWeberPerSquareMetre, new Guid("409e8e85-0870-4529-ae0c-95ab6506c445")} // radian weber per square metre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -247,6 +303,38 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
          {UnitChoicesEnum.RadianPerSecond, new Guid("8889fafb-cc58-4c4e-a52d-696219dfcf4a")},  // radian per second
          {UnitChoicesEnum.DegreePerSecond, new Guid("c6c0676e-c8a6-407d-be44-1691fd6b5d9e")} // degree per second
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class AngularVelocitySurveyInstrumentDrillingQuantity : AngularVelocityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerSecond,  // radian per second
+         DegreePerSecond,  // degree per second
+         DegreePerMinute,  // degree per minute
+         DegreePerHour,  // degree per hour
+         DegreePerDay // degree per day
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerSecond, new Guid("8889fafb-cc58-4c4e-a52d-696219dfcf4a")},  // radian per second
+         {UnitChoicesEnum.DegreePerSecond, new Guid("c6c0676e-c8a6-407d-be44-1691fd6b5d9e")},  // degree per second
+         {UnitChoicesEnum.DegreePerMinute, new Guid("0a3ad50c-bbfa-456c-9613-84f37b4a80f1")},  // degree per minute
+         {UnitChoicesEnum.DegreePerHour, new Guid("44cc8b17-2f87-49c9-8ab7-7f4ed36d9eb6")},  // degree per hour
+         {UnitChoicesEnum.DegreePerDay, new Guid("ec049b3d-134b-44a3-9746-0419a368beef")} // degree per day
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -330,7 +418,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class BlockVelocityQuantity : VelocityQuantity
+  public partial class BlockVelocityDrillingQuantity : VelocityQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -364,7 +452,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class CableDiameterQuantity : SmallLengthQuantity
+  public partial class CableDiameterDrillingQuantity : LengthSmallQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -408,7 +496,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class CapillaryPressureQuantity : PressureQuantity
+  public partial class CapillaryPressureDrillingQuantity : PressureQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -446,14 +534,14 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
   {
     public new enum UnitChoicesEnum 
       {
-         InverseBar,  // inverse bar
          InversePascal,  // inverse pascal
+         InverseBar,  // inverse bar
          InversePoundPerSquareInch // inverse pound per square inch
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.InverseBar, new Guid("4a0f6df4-0d2d-489b-80f1-511be7713101")},  // inverse bar
          {UnitChoicesEnum.InversePascal, new Guid("0e259998-c8bb-4a4d-b281-afb8008b2693")},  // inverse pascal
+         {UnitChoicesEnum.InverseBar, new Guid("4a0f6df4-0d2d-489b-80f1-511be7713101")},  // inverse bar
          {UnitChoicesEnum.InversePoundPerSquareInch, new Guid("282ab24c-6c43-4710-8e52-433bdf90cc2e")} // inverse pound per square inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
@@ -502,165 +590,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DensityDrillingQuantity : DensityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         GramPerCubicCentimetre,  // gram per cubic centimetre
-         GramPerCubicMetre,  // gram per cubic metre
-         KilogramPerCubicMetre,  // kilogram per cubic metre
-         PoundPerCubicFoot,  // pound per cubic foot
-         PoundPerGallonUK,  // pound per gallon (UK)
-         PoundPerGallonUS,  // pound per gallon (US)
-         SpecificGravity // specific gravity
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.GramPerCubicCentimetre, new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450")},  // gram per cubic centimetre
-         {UnitChoicesEnum.GramPerCubicMetre, new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a")},  // gram per cubic metre
-         {UnitChoicesEnum.KilogramPerCubicMetre, new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf")},  // kilogram per cubic metre
-         {UnitChoicesEnum.PoundPerCubicFoot, new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935")},  // pound per cubic foot
-         {UnitChoicesEnum.PoundPerGallonUK, new Guid("75ecf787-8778-4d74-afc7-498e117d27bf")},  // pound per gallon (UK)
-         {UnitChoicesEnum.PoundPerGallonUS, new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da")},  // pound per gallon (US)
-         {UnitChoicesEnum.SpecificGravity, new Guid("da94ba95-4494-45af-bf99-31f00031c680")} // specific gravity
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class DensityGradientDepthDrillingQuantity : DensityGradientDepthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMetrePerMetre,  // kilogram per cubic metre per metre
-         GramPerCubicCentimetrePer100Metre,  // gram per cubic centimetre per 100 metre
-         PoundPerGallonUKPer100Foot,  // pound per gallon (UK) per 100 foot
-         PoundPerGallonUKPer30Foot,  // pound per gallon (UK) per 30 foot
-         PoundPerGallonUKPerFoot,  // pound per gallon (UK) per foot
-         PoundPerGallonUSPer100Foot,  // pound per gallon (US) per 100 foot
-         PoundPerGallonUSPer30Foot,  // pound per gallon (US) per 30 foot
-         PoundPerGallonUSPerFoot,  // pound per gallon (US) per foot
-         SpecificGravityPer100Metre,  // specific gravity per 100 metre
-         SpecificGravityPer10Metre,  // specific gravity per 10 metre
-         SpecificGravityPer30Metre,  // specific gravity per 30 metre
-         SpecificGravityPerMetre // specific gravity per metre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerCubicMetrePerMetre, new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1")},  // kilogram per cubic metre per metre
-         {UnitChoicesEnum.GramPerCubicCentimetrePer100Metre, new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06")},  // gram per cubic centimetre per 100 metre
-         {UnitChoicesEnum.PoundPerGallonUKPer100Foot, new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567")},  // pound per gallon (UK) per 100 foot
-         {UnitChoicesEnum.PoundPerGallonUKPer30Foot, new Guid("684acd16-b420-4952-bc42-ffb47044074d")},  // pound per gallon (UK) per 30 foot
-         {UnitChoicesEnum.PoundPerGallonUKPerFoot, new Guid("f2e67c73-3706-4c14-b23a-afe474b2ecbe")},  // pound per gallon (UK) per foot
-         {UnitChoicesEnum.PoundPerGallonUSPer100Foot, new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3")},  // pound per gallon (US) per 100 foot
-         {UnitChoicesEnum.PoundPerGallonUSPer30Foot, new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0")},  // pound per gallon (US) per 30 foot
-         {UnitChoicesEnum.PoundPerGallonUSPerFoot, new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1")},  // pound per gallon (US) per foot
-         {UnitChoicesEnum.SpecificGravityPer100Metre, new Guid("af987ef2-c8e5-470a-bc53-b2fff05d2c6a")},  // specific gravity per 100 metre
-         {UnitChoicesEnum.SpecificGravityPer10Metre, new Guid("4af1c9f0-480c-4e80-a62b-c6b57b486c3f")},  // specific gravity per 10 metre
-         {UnitChoicesEnum.SpecificGravityPer30Metre, new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92")},  // specific gravity per 30 metre
-         {UnitChoicesEnum.SpecificGravityPerMetre, new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2")} // specific gravity per metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class DensityGradientTemperatureDrillingQuantity : DensityGradientTemperatureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMetrePerKelvin,  // kilogram per cubic metre per kelvin
-         GramPerCubicCentimetrePerCelsius,  // gram per cubic centimetre per celsius
-         PoundPerGallonUKPerCelsius,  // pound per gallon (UK) per celsius
-         PoundPerGallonUSPerFahrenheit,  // pound per gallon (US) per fahrenheit
-         SpecificGravityPerCelsius // specific gravity per celsius
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerCubicMetrePerKelvin, new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf")},  // kilogram per cubic metre per kelvin
-         {UnitChoicesEnum.GramPerCubicCentimetrePerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // gram per cubic centimetre per celsius
-         {UnitChoicesEnum.PoundPerGallonUKPerCelsius, new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b")},  // pound per gallon (UK) per celsius
-         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // pound per gallon (US) per fahrenheit
-         {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")} // specific gravity per celsius
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class DensityRateOfChangeDrillingQuantity : DensityRateOfChangeQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
-         KilogramPerCubicMetrePerSecond,  // kilogram per cubic metre per second
-         PoundPerGallonUKPerHour,  // pound per gallon (UK) per hour
-         PoundPerGallonUKPerMinute,  // pound per gallon (UK) per minute
-         PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
-         PoundPerGallonUSPerHour,  // pound per gallon (US) per hour
-         PoundPerGallonUSPerMinute,  // pound per gallon (US) per minute
-         PoundPerGallonUSPerSecond,  // pound per gallon (US) per second
-         SpecificGravityPerHour,  // specific gravity per hour
-         SpecificGravityPerMinute,  // specific gravity per minute
-         SpecificGravityPerSecond // specific gravity per second
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
-         {UnitChoicesEnum.KilogramPerCubicMetrePerSecond, new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377")},  // kilogram per cubic metre per second
-         {UnitChoicesEnum.PoundPerGallonUKPerHour, new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070")},  // pound per gallon (UK) per hour
-         {UnitChoicesEnum.PoundPerGallonUKPerMinute, new Guid("e79c74b9-774d-4695-81d5-75042f268b96")},  // pound per gallon (UK) per minute
-         {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
-         {UnitChoicesEnum.PoundPerGallonUSPerHour, new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643")},  // pound per gallon (US) per hour
-         {UnitChoicesEnum.PoundPerGallonUSPerMinute, new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea")},  // pound per gallon (US) per minute
-         {UnitChoicesEnum.PoundPerGallonUSPerSecond, new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11")},  // pound per gallon (US) per second
-         {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // specific gravity per hour
-         {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // specific gravity per minute
-         {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")} // specific gravity per second
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class DepthQuantity : LengthQuantity
+  public partial class DepthDrillingQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -686,7 +616,95 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class DrillStemMaterialStrengthQuantity : MaterialStrengthQuantity
+  public partial class DiameterPipeDrillingQuantity : LengthSmallQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Centimetre,  // centimetre
+         Decimetre,  // decimetre
+         Foot,  // foot
+         Inch,  // inch
+         Metre,  // metre
+         Micrometre,  // micrometre
+         Millimetre,  // millimetre
+         Nanometre,  // nanometre
+         Picometre,  // picometre
+         Ångstrøm,  // ångstrøm
+         InchPer32 // inch per 32
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
+         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
+         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
+         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
+         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
+         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
+         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
+         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
+         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
+         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DiameterPoreDrillingQuantity : LengthSmallQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Centimetre,  // centimetre
+         Decimetre,  // decimetre
+         Foot,  // foot
+         Inch,  // inch
+         Metre,  // metre
+         Micrometre,  // micrometre
+         Millimetre,  // millimetre
+         Nanometre,  // nanometre
+         Picometre,  // picometre
+         Ångstrøm,  // ångstrøm
+         InchPer32 // inch per 32
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
+         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
+         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
+         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
+         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
+         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
+         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
+         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
+         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
+         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class DrillStemMaterialStrengthDrillingQuantity : MaterialStrengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -814,7 +832,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class ElongationGradientDrillingQuantity : ElongationGradientQuantity
+  public partial class ElongationGradientPerLengthDrillingQuantity : ElongationGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -880,6 +898,164 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
+  public partial class MassDensityRateOfChangeDrillingQuantity : MassDensityRateOfChangeQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerSecond,  // kilogram per cubic metre per second
+         GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
+         PoundPerGallonUKPerHour,  // pound per gallon (UK) per hour
+         PoundPerGallonUKPerMinute,  // pound per gallon (UK) per minute
+         PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
+         PoundPerGallonUSPerHour,  // pound per gallon (US) per hour
+         PoundPerGallonUSPerMinute,  // pound per gallon (US) per minute
+         PoundPerGallonUSPerSecond,  // pound per gallon (US) per second
+         SpecificGravityPerHour,  // specific gravity per hour
+         SpecificGravityPerMinute,  // specific gravity per minute
+         SpecificGravityPerSecond // specific gravity per second
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerSecond, new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377")},  // kilogram per cubic metre per second
+         {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
+         {UnitChoicesEnum.PoundPerGallonUKPerHour, new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070")},  // pound per gallon (UK) per hour
+         {UnitChoicesEnum.PoundPerGallonUKPerMinute, new Guid("e79c74b9-774d-4695-81d5-75042f268b96")},  // pound per gallon (UK) per minute
+         {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
+         {UnitChoicesEnum.PoundPerGallonUSPerHour, new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643")},  // pound per gallon (US) per hour
+         {UnitChoicesEnum.PoundPerGallonUSPerMinute, new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea")},  // pound per gallon (US) per minute
+         {UnitChoicesEnum.PoundPerGallonUSPerSecond, new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11")},  // pound per gallon (US) per second
+         {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // specific gravity per hour
+         {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // specific gravity per minute
+         {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")} // specific gravity per second
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class MassDensityGradientPerTemperatureDrillingQuantity : MassDensityGradientPerTemperatureQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerKelvin,  // kilogram per cubic metre per kelvin
+         GramPerCubicCentimetrePerCelsius,  // gram per cubic centimetre per celsius
+         PoundPerGallonUKPerCelsius,  // pound per gallon (UK) per celsius
+         PoundPerGallonUSPerFahrenheit,  // pound per gallon (US) per fahrenheit
+         SpecificGravityPerCelsius // specific gravity per celsius
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerKelvin, new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf")},  // kilogram per cubic metre per kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // gram per cubic centimetre per celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerCelsius, new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b")},  // pound per gallon (UK) per celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // pound per gallon (US) per fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")} // specific gravity per celsius
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class MassDensityGradientPerLengthDrillingQuantity : MassDensityGradientPerLengthQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerMetre,  // kilogram per cubic metre per metre
+         GramPerCubicCentimetrePer100Metre,  // gram per cubic centimetre per 100 metre
+         PoundPerGallonUKPer100Foot,  // pound per gallon (UK) per 100 foot
+         PoundPerGallonUKPer30Foot,  // pound per gallon (UK) per 30 foot
+         PoundPerGallonUKPerFoot,  // pound per gallon (UK) per foot
+         PoundPerGallonUSPer100Foot,  // pound per gallon (US) per 100 foot
+         PoundPerGallonUSPer30Foot,  // pound per gallon (US) per 30 foot
+         PoundPerGallonUSPerFoot,  // pound per gallon (US) per foot
+         SpecificGravityPer100Metre,  // specific gravity per 100 metre
+         SpecificGravityPer10Metre,  // specific gravity per 10 metre
+         SpecificGravityPer30Metre,  // specific gravity per 30 metre
+         SpecificGravityPerMetre // specific gravity per metre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerMetre, new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1")},  // kilogram per cubic metre per metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePer100Metre, new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06")},  // gram per cubic centimetre per 100 metre
+         {UnitChoicesEnum.PoundPerGallonUKPer100Foot, new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567")},  // pound per gallon (UK) per 100 foot
+         {UnitChoicesEnum.PoundPerGallonUKPer30Foot, new Guid("684acd16-b420-4952-bc42-ffb47044074d")},  // pound per gallon (UK) per 30 foot
+         {UnitChoicesEnum.PoundPerGallonUKPerFoot, new Guid("f2e67c73-3706-4c14-b23a-afe474b2ecbe")},  // pound per gallon (UK) per foot
+         {UnitChoicesEnum.PoundPerGallonUSPer100Foot, new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3")},  // pound per gallon (US) per 100 foot
+         {UnitChoicesEnum.PoundPerGallonUSPer30Foot, new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0")},  // pound per gallon (US) per 30 foot
+         {UnitChoicesEnum.PoundPerGallonUSPerFoot, new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1")},  // pound per gallon (US) per foot
+         {UnitChoicesEnum.SpecificGravityPer100Metre, new Guid("af987ef2-c8e5-470a-bc53-b2fff05d2c6a")},  // specific gravity per 100 metre
+         {UnitChoicesEnum.SpecificGravityPer10Metre, new Guid("4af1c9f0-480c-4e80-a62b-c6b57b486c3f")},  // specific gravity per 10 metre
+         {UnitChoicesEnum.SpecificGravityPer30Metre, new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92")},  // specific gravity per 30 metre
+         {UnitChoicesEnum.SpecificGravityPerMetre, new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2")} // specific gravity per metre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class MassDensityDrillingQuantity : MassDensityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetre,  // kilogram per cubic metre
+         GramPerCubicCentimetre,  // gram per cubic centimetre
+         GramPerCubicMetre,  // gram per cubic metre
+         PoundPerCubicFoot,  // pound per cubic foot
+         PoundPerGallonUK,  // pound per gallon (UK)
+         PoundPerGallonUS,  // pound per gallon (US)
+         SpecificGravity // specific gravity
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetre, new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf")},  // kilogram per cubic metre
+         {UnitChoicesEnum.GramPerCubicCentimetre, new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450")},  // gram per cubic centimetre
+         {UnitChoicesEnum.GramPerCubicMetre, new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a")},  // gram per cubic metre
+         {UnitChoicesEnum.PoundPerCubicFoot, new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935")},  // pound per cubic foot
+         {UnitChoicesEnum.PoundPerGallonUK, new Guid("75ecf787-8778-4d74-afc7-498e117d27bf")},  // pound per gallon (UK)
+         {UnitChoicesEnum.PoundPerGallonUS, new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da")},  // pound per gallon (US)
+         {UnitChoicesEnum.SpecificGravity, new Guid("da94ba95-4494-45af-bf99-31f00031c680")} // specific gravity
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
   public partial class FluidVelocityDrillingQuantity : VelocityQuantity
   {
     public new enum UnitChoicesEnum 
@@ -906,7 +1082,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class ForceGradientDrillingQuantity : ForceGradientQuantity
+  public partial class ForceGradientPerLengthDrillingQuantity : ForceGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1092,7 +1268,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class MassGradientDrillingQuantity : MassGradientQuantity
+  public partial class MassGradientPerLengthDrillingQuantity : MassGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1230,7 +1406,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PressureGradientDrillingQuantity : PressureGradientQuantity
+  public partial class PressureGradientPerLengthDrillingQuantity : PressureGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1362,7 +1538,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class RotationFrequencyRateOfChangeDrillingQuantity : RotationFrequencyRateOfChangeQuantity
+  public partial class RotationalFrequencyRateOfChangeDrillingQuantity : RotationalFrequencyRateOfChangeQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1420,7 +1596,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class SpecificHeatCapacityTemperatureGradientDrillingQuantity : SpecificHeatCapacityTemperatureGradientQuantity
+  public partial class SpecificHeatCapacityGradientPerTemperatureDrillingQuantity : SpecificHeatCapacityGradientPerTemperatureQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1478,93 +1654,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class SurveyInstrumentAngleMagneticFluxDensityDrillingQuantity : AngleMagneticFluxDensityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianTesla,  // radian tesla
-         DegreeGauss,  // degree gauss
-         DegreeMaxwellPerSquareCentimetre,  // degree maxwell per square centimetre
-         DegreeMicrotesla,  // degree microtesla
-         DegreeMilligauss,  // degree milligauss
-         DegreeMillitesla,  // degree millitesla
-         DegreeNanotesla,  // degree nanotesla
-         DegreeTesla,  // degree tesla
-         DegreeWeberPerSquareMetre,  // degree weber per square metre
-         RadianGauss,  // radian gauss
-         RadianMaxwellPerSquareCentimetre,  // radian maxwell per square centimetre
-         RadianMicrotesla,  // radian microtesla
-         RadianMilligauss,  // radian milligauss
-         RadianMillitesla,  // radian millitesla
-         RadianNanotesla,  // radian nanotesla
-         RadianWeberPerSquareMetre // radian weber per square metre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.RadianTesla, new Guid("242bd328-96ef-4a1b-9a78-1e2eb8366955")},  // radian tesla
-         {UnitChoicesEnum.DegreeGauss, new Guid("73bb1de0-ccc0-42e6-b88e-44ecfb6fe7e4")},  // degree gauss
-         {UnitChoicesEnum.DegreeMaxwellPerSquareCentimetre, new Guid("092e8231-a6e6-4b29-bdd6-2ae490aa583a")},  // degree maxwell per square centimetre
-         {UnitChoicesEnum.DegreeMicrotesla, new Guid("50782201-236e-4537-843b-121e8dca28c6")},  // degree microtesla
-         {UnitChoicesEnum.DegreeMilligauss, new Guid("e74c9ae3-6e17-48e1-896b-e6c1877d68d7")},  // degree milligauss
-         {UnitChoicesEnum.DegreeMillitesla, new Guid("812a3461-ae4a-405b-ae5d-73eb23e8a71f")},  // degree millitesla
-         {UnitChoicesEnum.DegreeNanotesla, new Guid("0d9bf20d-2b10-4e73-ae8e-3d3e91862ec0")},  // degree nanotesla
-         {UnitChoicesEnum.DegreeTesla, new Guid("13df770f-6e77-4de4-91c6-137206e53fbb")},  // degree tesla
-         {UnitChoicesEnum.DegreeWeberPerSquareMetre, new Guid("2d7e1d60-6401-41c0-b436-612116be9ad4")},  // degree weber per square metre
-         {UnitChoicesEnum.RadianGauss, new Guid("aa726b90-bd4b-420c-ae71-6f2f1fde3b58")},  // radian gauss
-         {UnitChoicesEnum.RadianMaxwellPerSquareCentimetre, new Guid("02d06899-5d89-4669-a4c2-35adb9ec3924")},  // radian maxwell per square centimetre
-         {UnitChoicesEnum.RadianMicrotesla, new Guid("b445e592-e0ca-490f-8880-9708e4e96a01")},  // radian microtesla
-         {UnitChoicesEnum.RadianMilligauss, new Guid("352a5b84-306d-4e38-898a-58705683fdf0")},  // radian milligauss
-         {UnitChoicesEnum.RadianMillitesla, new Guid("663639b3-48b8-4c04-a2eb-6ae2e16daa9b")},  // radian millitesla
-         {UnitChoicesEnum.RadianNanotesla, new Guid("b4aeee40-29fa-463a-80a4-e10fa42c743f")},  // radian nanotesla
-         {UnitChoicesEnum.RadianWeberPerSquareMetre, new Guid("409e8e85-0870-4529-ae0c-95ab6506c445")} // radian weber per square metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class SurveyInstrumentAngularVelocityDrillingQuantity : AngularVelocityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianPerSecond,  // radian per second
-         DegreePerSecond,  // degree per second
-         DegreePerMinute,  // degree per minute
-         DegreePerHour,  // degree per hour
-         DegreePerDay // degree per day
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.RadianPerSecond, new Guid("8889fafb-cc58-4c4e-a52d-696219dfcf4a")},  // radian per second
-         {UnitChoicesEnum.DegreePerSecond, new Guid("c6c0676e-c8a6-407d-be44-1691fd6b5d9e")},  // degree per second
-         {UnitChoicesEnum.DegreePerMinute, new Guid("0a3ad50c-bbfa-456c-9613-84f37b4a80f1")},  // degree per minute
-         {UnitChoicesEnum.DegreePerHour, new Guid("44cc8b17-2f87-49c9-8ab7-7f4ed36d9eb6")},  // degree per hour
-         {UnitChoicesEnum.DegreePerDay, new Guid("ec049b3d-134b-44a3-9746-0419a368beef")} // degree per day
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class SurveyInstrumentReciprocalLengthDrillingQuantity : WaveNumberQuantity
+  public partial class ReciprocalLengthSurveyInstrumentDrillingQuantity : WaveNumberQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1600,7 +1690,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class TemperatureGradientDrillingQuantity : TemperatureGradientQuantity
+  public partial class TemperatureGradientPerLengthDrillingQuantity : TemperatureGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1864,7 +1954,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class FormationResistivityQuantity : ResistivityQuantity
+  public partial class FormationResistivityDrillingQuantity : ResistivityQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1888,7 +1978,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class FormationStrengthQuantity : MaterialStrengthQuantity
+  public partial class FormationStrengthDrillingQuantity : MaterialStrengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1922,15 +2012,15 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class GammaRayQuantity : DerivedBasePhysicalQuantity
+  public partial class GammaRayIndexDrillingQuantity : DimensionlessQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         GammaAPI // GammaAPI
+         Dimensionless // dimensionless
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.GammaAPI, new Guid("526a7d9b-514c-4b2d-9ff3-e69d64c299a9")} // GammaAPI
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // dimensionless
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1946,7 +2036,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class GasShowQuantity : ProportionQuantity
+  public partial class GasShowDrillingQuantity : ProportionQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1976,7 +2066,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class GasVolumetricFlowRateQuantity : VolumetricFlowRateQuantity
+  public partial class GasVolumetricFlowRateDrillingQuantity : VolumetricFlowRateQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2058,7 +2148,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class HeightQuantity : LengthQuantity
+  public partial class HeightDrillingQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2100,7 +2190,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class HookLoadQuantity : GravitationalLoadQuantity
+  public partial class HookLoadDrillingQuantity : GravitationalLoadQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2132,7 +2222,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class NozzleDiameterQuantity : SmallLengthQuantity
+  public partial class NozzleDiameterDrillingQuantity : LengthSmallQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2176,95 +2266,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PipeDiameterQuantity : SmallLengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimetre,  // centimetre
-         Decimetre,  // decimetre
-         Foot,  // foot
-         Inch,  // inch
-         Metre,  // metre
-         Micrometre,  // micrometre
-         Millimetre,  // millimetre
-         Nanometre,  // nanometre
-         Picometre,  // picometre
-         Ångstrøm,  // ångstrøm
-         InchPer32 // inch per 32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
-         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
-         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
-         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
-         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
-         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
-         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
-         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
-         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
-         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class PoreDiameterQuantity : SmallLengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimetre,  // centimetre
-         Decimetre,  // decimetre
-         Foot,  // foot
-         Inch,  // inch
-         Metre,  // metre
-         Micrometre,  // micrometre
-         Millimetre,  // millimetre
-         Nanometre,  // nanometre
-         Picometre,  // picometre
-         Ångstrøm,  // ångstrøm
-         InchPer32 // inch per 32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
-         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
-         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
-         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
-         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
-         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
-         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
-         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
-         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
-         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion.DrillingEngineering
-{
-  public partial class PoreSurfaceQuantity : AreaQuantity
+  public partial class SurfacePoreDrillingQuantity : AreaQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2294,7 +2296,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PositionQuantity : LengthQuantity
+  public partial class PositionDrillingQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2330,7 +2332,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class RateOfPenetrationQuantity : VelocityQuantity
+  public partial class RateOfPenetrationDrillingQuantity : VelocityQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2360,7 +2362,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class WeightOnBitQuantity : GravitationalLoadQuantity
+  public partial class WeightOnBitDrillingQuantity : GravitationalLoadQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2392,7 +2394,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class ThermalConductivityTemperatureGradientDrillingQuantity : ThermalConductivityTemperatureGradientQuantity
+  public partial class ThermalConductivityGradientPerTemperatureDrillingQuantity : ThermalConductivityGradientPerTemperatureQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2424,7 +2426,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class TorqueGradientDrillingQuantity : TorqueGradientQuantity
+  public partial class TorqueGradientPerLengthDrillingQuantity : TorqueGradientPerLengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2445,6 +2447,38 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.KilofootPoundPerFoot, new Guid("65606e85-199d-4fee-8cd4-97715431d868")},  // kilofoot pound per foot
          {UnitChoicesEnum.FootPoundPerMetre, new Guid("e3b4fe22-6590-4b2d-b2fa-0250f1ca8b26")},  // foot pound per metre
          {UnitChoicesEnum.KilofootPoundPerMetre, new Guid("e9bff76e-5388-4ea0-85af-62c772d919c5")} // kilofoot pound per metre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class PorousMediumPermeabilityDrillingQuantity : PorousMediumPermeabilityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         SquareMetre,  // square metre
+         Darcy,  // darcy
+         Millidarcy,  // millidarcy
+         Microdarcy,  // microdarcy
+         Nanodarcy // nanodarcy
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.SquareMetre, new Guid("5e27ad4a-b541-4807-9a36-4bd159b33f52")},  // square metre
+         {UnitChoicesEnum.Darcy, new Guid("9a89bcc3-dc77-4e3a-a492-fcdabc24ec41")},  // darcy
+         {UnitChoicesEnum.Millidarcy, new Guid("8d7a6767-6c6b-4daf-8617-d35e4055d457")},  // millidarcy
+         {UnitChoicesEnum.Microdarcy, new Guid("b552f28d-c68a-4c59-853c-fe6e03dd5f4c")},  // microdarcy
+         {UnitChoicesEnum.Nanodarcy, new Guid("f35b05c7-8b2f-4194-9336-d42cec5f3ba5")} // nanodarcy
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

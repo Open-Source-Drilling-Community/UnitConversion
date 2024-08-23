@@ -136,8 +136,12 @@ namespace OSDC.UnitConversion.Conversion
         public FrequencyQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Frequency" };
+            UsualNames = new HashSet<string>() { "frequency" };
             ID = new Guid("8a1ff3d9-95c9-43e1-abb4-4ae9b8df861e");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Frequency is the number of occurrences of a repeating event per unit of time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of frequency is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

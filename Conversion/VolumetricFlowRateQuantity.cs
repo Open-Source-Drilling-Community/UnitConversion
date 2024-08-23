@@ -284,8 +284,12 @@ namespace OSDC.UnitConversion.Conversion
         public VolumetricFlowRateQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Volumetric Flow Rate", "Flow Rate (volumetric)" };
+            UsualNames = new HashSet<string>() { "volumetric flow rate", "flow rate (volumetric)" };
             ID = new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A volumetric flowrate is the volume of fluid that passes per unit time: $\frac{dV}{dt}$, where $V$ is a volume and $t$ is time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of volumetric flowrate is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

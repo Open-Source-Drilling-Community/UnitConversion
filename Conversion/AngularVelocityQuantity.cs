@@ -88,8 +88,12 @@ namespace OSDC.UnitConversion.Conversion
         public AngularVelocityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Angular Velocity" };
+            UsualNames = new HashSet<string>() { "angular velocity" };
             ID = new Guid("688ccd2b-6a30-4ccc-8580-a80c3a5803fa");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"An angular velocity is the first derivative compared to time of a plan angle: $\frac{d\theta}{dt}$." + Environment.NewLine;
+            DescriptionMD += @"The dimension of angular velocity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

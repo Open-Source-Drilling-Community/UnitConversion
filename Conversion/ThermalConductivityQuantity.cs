@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class ThermalConductivityQuantity : DerivedBasePhysicalQuantity
     {
-        public override string TypicalSymbol { get; } = null;
+        public override string TypicalSymbol { get; } = "k";
         public override string SIUnitName { get; } = "watt per metre kelvin";
         public override string SIUnitLabel { get; } = "W/m•K";
         public override double LengthDimension { get; } = 1;
@@ -70,8 +70,12 @@ namespace OSDC.UnitConversion.Conversion
         public ThermalConductivityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Thermal Conductivity" };
+            UsualNames = new HashSet<string>() { "thermal conductivity" };
             ID = new Guid("ca23212e-8f2d-4041-89f6-ac8bfa8604fa");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Thermal conductivity is a material's ability to conduct heat. It measures how efficiently heat is transferred through a material when there is a temperature difference." + Environment.NewLine;
+            DescriptionMD += @"The dimension of thermal conductivity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

@@ -37,8 +37,10 @@ namespace OSDC.UnitConversion.Conversion
         public DimensionlessQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Dimensionless" };
+            UsualNames = new HashSet<string>() { "dimensionless" };
             ID = new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"As its name indicates, a dimensionless quantity has no dimension:" + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

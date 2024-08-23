@@ -368,8 +368,12 @@ namespace OSDC.UnitConversion.Conversion
         public EnergyDensityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Energy Density" };
+            UsualNames = new HashSet<string>() { "energy density" };
             ID = new Guid("9e82436a-392e-428a-8ee9-0998027c3c46");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Energy density is the amount of energy stored per unit volume or mass of a substance or system." + Environment.NewLine;
+            DescriptionMD += @"The dimension of energy density is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

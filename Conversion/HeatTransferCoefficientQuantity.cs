@@ -47,8 +47,12 @@ namespace OSDC.UnitConversion.Conversion
         public HeatTransferCoefficientQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Heat Transfer Coefficient" };
+            UsualNames = new HashSet<string>() { "heat transfer coefficient" };
             ID = new Guid("08c247bc-a55b-460e-a9a7-150faf10bdff");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Heat transfer coefficient is a measure of the efficiency with which heat is transferred between a solid surface and a fluid (or between two fluids) per unit area and temperature difference." + Environment.NewLine;
+            DescriptionMD += @"The dimension of heat transfer coefficient is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

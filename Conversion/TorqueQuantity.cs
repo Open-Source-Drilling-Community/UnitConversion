@@ -103,8 +103,12 @@ namespace OSDC.UnitConversion.Conversion
         public TorqueQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Torque", "Bending moment" };
+            UsualNames = new HashSet<string>() { "torque", "bending moment" };
             ID = new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A torque is a measure of the rotational force applied to a body around an axis." + Environment.NewLine;
+            DescriptionMD += @"The dimension of torque is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

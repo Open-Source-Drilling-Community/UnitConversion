@@ -257,8 +257,12 @@ namespace OSDC.UnitConversion.Conversion
         public AngularAccelerationQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Angular Acceleration" };
+            UsualNames = new HashSet<string>() { "angular acceleration" };
             ID = new Guid("8b33d305-f77e-4631-9818-7ef574bd0c02");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"An angular acceleration is the second derivative compared to time of a plan angle: $\frac{d^2\theta}{dt^2}$." + Environment.NewLine;
+            DescriptionMD += @"The dimension of angular acceleration is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

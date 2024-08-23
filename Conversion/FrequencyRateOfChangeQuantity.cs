@@ -185,8 +185,12 @@ namespace OSDC.UnitConversion.Conversion
         public FrequencyRateOfChangeQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Frequency Rate Of Change" };
+            UsualNames = new HashSet<string>() { "frequency rate of change" };
             ID = new Guid("e9d5bfe9-428b-4df0-9fe5-d9ad17e6a0cb");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A frequency rate of change is the time derivative of a frequency: $\frac{df}{dt}$, where $f$ is a frequency and $t$ is time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of frequency rate of change is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

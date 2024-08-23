@@ -125,8 +125,12 @@ namespace OSDC.UnitConversion.Conversion
         public MagneticFluxQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Magnetic Flux" };
+            UsualNames = new HashSet<string>() { "magnetic flux" };
             ID = new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Magnetic flux is the measure of the total magnetic field passing through a given area. It quantifies the strength and distribution of a magnetic field over a surface." + Environment.NewLine;
+            DescriptionMD += @"The dimension of magnetic flux is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

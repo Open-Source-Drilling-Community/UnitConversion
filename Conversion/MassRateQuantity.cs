@@ -89,8 +89,12 @@ namespace OSDC.UnitConversion.Conversion
         public MassRateQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Mass Rate" };
+            UsualNames = new HashSet<string>() { "mass rate" };
             ID = new Guid("3dd05c4c-3d6d-49ae-a878-5a5e4a6e7acf");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A mass rate is the time derivative of a mass: $\frac{dm}{dt}$, where $m$ is a mass and $t$ is time." + Environment.NewLine;
+            DescriptionMD += @"The dimension of mass rate is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

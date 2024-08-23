@@ -101,7 +101,7 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                     UnitName = "fortnight",
-                    UnitLabel = "fortnight",
+                    UnitLabel = "14d",
                     ID = new Guid("bc87f864-3dc1-4f1a-87bc-4123a47c53dc"),
                     ConversionFactorFromSIFormula = "1.0/Factors.Fortnight"
                 },
@@ -200,8 +200,12 @@ namespace OSDC.UnitConversion.Conversion
         public TimeQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Time" };
+            UsualNames = new HashSet<string>() { "time" };
             ID = new Guid("7106f7cb-ddf2-4e2f-9e21-b19bc83eb248");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Time is a continuous, measurable progression in which events occur, from the past through the present to the future." + Environment.NewLine;
+            DescriptionMD += @"The dimension of time is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

@@ -25,8 +25,12 @@ namespace OSDC.UnitConversion.Conversion
         public FluidShearRateQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Fluid Shear Rate" };
+            UsualNames = new HashSet<string>() { "fluid shear rate" };
             ID = new Guid("d3aa72c5-2fc0-4024-902e-6775d63f3231");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += @"Shear rate in a fluid is the rate at which adjacent layers of the fluid move relative to each other, typically expressed as the change in velocity per unit distance between the layers. It measures how quickly the fluid is being deformed by shear stress." + Environment.NewLine;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += @"The meaningful precision of a shear rate for a fluid is typically: " + MeaningfulPrecisionInSI.ToString() + " " + FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz));
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.ReciprocalSecond));

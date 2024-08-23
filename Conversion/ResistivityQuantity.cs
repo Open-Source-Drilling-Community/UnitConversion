@@ -62,8 +62,12 @@ namespace OSDC.UnitConversion.Conversion
         public ResistivityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Resistivity" };
+            UsualNames = new HashSet<string>() { "resistivity" };
             ID = new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Resistivity is a material's inherent property that measures how strongly it resists the flow of electric current." + Environment.NewLine;
+            DescriptionMD += @"The dimension of resistivity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

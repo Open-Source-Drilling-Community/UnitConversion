@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public RandomWalkDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Random Walk (drilling)" };
+            UsualNames = new HashSet<string>() { "random walk (drilling)" };
             ID = new Guid("8817dc80-eb46-42d5-b85f-703fa8845f32");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of random walk in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + RandomWalkQuantity.Instance.GetUnitChoice(RandomWalkQuantity.UnitChoicesEnum.RadianPerSquareRootSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(RandomWalkQuantity.Instance.GetUnitChoice(RandomWalkQuantity.UnitChoicesEnum.RadianPerSquareRootSecond));
             this.UnitChoices.Add(RandomWalkQuantity.Instance.GetUnitChoice(RandomWalkQuantity.UnitChoicesEnum.RadianPerSquareRootMinute));

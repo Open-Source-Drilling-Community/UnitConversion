@@ -217,6 +217,106 @@ namespace OSDC.UnitConversion.Conversion
                 }
             }
         }
+
+        public string GetDimensionsMD()
+        {
+            string dimensions = string.Empty;
+            if (LengthDimension != 0)
+            {
+                dimensions += "[L";
+                if (LengthDimension != 1)
+                {
+                    dimensions += "^{" + LengthDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (MassDimension != 0)
+            {
+                dimensions += "[M";
+                if (MassDimension != 1)
+                {
+                    dimensions += "^{" + MassDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (TimeDimension != 0)
+            {
+                dimensions += "[T";
+                if (TimeDimension != 1)
+                {
+                    dimensions += "^{" + MassDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (TemperatureDimension != 0)
+            {
+                dimensions += "[K";
+                if (TemperatureDimension != 1)
+                {
+                    dimensions += "^{" + TemperatureDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (AmountSubstanceDimension != 0)
+            {
+                dimensions += "[N";
+                if (AmountSubstanceDimension != 1)
+                {
+                    dimensions += "^{" + AmountSubstanceDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (ElectricCurrentDimension != 0)
+            {
+                dimensions += "[I";
+                if (ElectricCurrentDimension != 1)
+                {
+                    dimensions += "^{" + ElectricCurrentDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (LuminousIntensityDimension != 0)
+            {
+                dimensions += "[J";
+                if (LuminousIntensityDimension != 1)
+                {
+                    dimensions += "^{" + LuminousIntensityDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (PlaneAngleDimension != 0)
+            {
+                dimensions += "[θ";
+                if (PlaneAngleDimension != 1)
+                {
+                    dimensions += "^{" + PlaneAngleDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (PlaneAngleDimension != 0)
+            {
+                dimensions += "[\\theta";
+                if (PlaneAngleDimension != 1)
+                {
+                    dimensions += "^{" + PlaneAngleDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (SolidAngleDimension != 0)
+            {
+                dimensions += "[\\Omega";
+                if (SolidAngleDimension != 1)
+                {
+                    dimensions += "^{" + SolidAngleDimension + "}";
+                }
+                dimensions += "]";
+            }
+            if (!string.IsNullOrEmpty(dimensions))
+            {
+                dimensions = "$" + dimensions + "$";
+            }
+            return dimensions;
+        }
         public static BasePhysicalQuantity GetQuantity(Guid ID)
         {
             BasePhysicalQuantity quantity = null;

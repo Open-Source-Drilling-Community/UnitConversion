@@ -74,8 +74,12 @@ namespace OSDC.UnitConversion.Conversion
         public TemperatureQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Temperature" };
+            UsualNames = new HashSet<string>() { "temperature" };
             ID = new Guid("16130f2d-72a8-44a5-beaa-adbb5a1a7b21");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Temperature is a measure of the average kinetic energy of particles in a substance, indicating how hot or cold the substance is." + Environment.NewLine;
+            DescriptionMD += @"The dimension of temperature is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

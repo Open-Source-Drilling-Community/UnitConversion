@@ -236,8 +236,12 @@ namespace OSDC.UnitConversion.Conversion
         public LengthQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Length" };
+            UsualNames = new HashSet<string>() { "length" };
             ID = new Guid("96058475-80c4-4394-b21a-afd2fb1594c8");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Length is a measure of distance." + Environment.NewLine;
+            DescriptionMD += @"The dimension of length is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

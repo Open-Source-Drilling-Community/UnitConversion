@@ -61,8 +61,12 @@ namespace OSDC.UnitConversion.Conversion
         public CompressibilityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Compressibility" };
+            UsualNames = new HashSet<string>() { "compressibility" };
             ID = new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Compressibility is the measure of how much a substance's volume decreases under pressure. It indicates how easily a material or fluid can be compressed and is typically expressed as a change in volume per unit change in pressure." + Environment.NewLine;
+            DescriptionMD += @"The dimension of compressibility is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

@@ -25,8 +25,11 @@ namespace OSDC.UnitConversion.Conversion
         public FluidShearStressQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Fluid Shear Stress" };
+            UsualNames = new HashSet<string>() { "fluid shear stress" };
             ID = new Guid("b8f8f4f5-1925-4eaf-87c2-2adfdf618454");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += @"Shear stress in a fluid is the force per unit area exerted parallel to the fluid's surface, causing layers of the fluid to slide relative to each other. It measures the fluid's resistance to this shearing action." + Environment.NewLine;
+            DescriptionMD += @"The meaningful precision of a shear stress for a fluid is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Pascal).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Pascal));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Kilopascal));

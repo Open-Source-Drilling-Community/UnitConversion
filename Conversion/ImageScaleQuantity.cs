@@ -62,8 +62,12 @@ namespace OSDC.UnitConversion.Conversion
         public ImageScaleQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Image Scale" };
+            UsualNames = new HashSet<string>() { "image scale" };
             ID = new Guid("a3f230b0-a70b-40dd-9305-39e63bb1821b");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Image scale refers to the resolution or level of detail in an image." + Environment.NewLine;
+            DescriptionMD += @"The dimension of image scale is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();       
         }
 

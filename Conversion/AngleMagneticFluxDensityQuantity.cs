@@ -146,7 +146,7 @@ namespace OSDC.UnitConversion.Conversion
         public AngleMagneticFluxDensityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Angle Magnetic Flux Density" };
+            UsualNames = new HashSet<string>() { "angle magnetic flux density" };
             ID = new Guid("03bb57e6-ca8b-4741-a211-9cf57c8fd177");
             DescriptionMD = string.Empty;
             DescriptionMD += @"The **angle magnetic flux density** is the product of an angle by a magnetic flux density. Let's break it down step by step:" + Environment.NewLine;
@@ -165,7 +165,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"$$[\theta]$$" + Environment.NewLine;
             DescriptionMD += @"3. Angle Magnetic Flux Density" + Environment.NewLine;
             DescriptionMD += @"So the dimension of **angle magnetic flux density** is:" + Environment.NewLine;
-            DescriptionMD += @"$$[\theta][M][T]^{-2}[I]^{-1}$$" + Environment.NewLine;
+            DescriptionMD += @"$" + GetDimensionsMD() + "$" + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

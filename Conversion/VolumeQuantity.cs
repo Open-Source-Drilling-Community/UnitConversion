@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Conversion
 {
     public partial class VolumeQuantity : DerivedBasePhysicalQuantity
     {
-        public override string TypicalSymbol { get; } = null;
+        public override string TypicalSymbol { get; } = "V";
         public override string SIUnitName { get; } = "cubic metre";
         public override string SIUnitLabel { get; } = "m³";
         public override double LengthDimension { get; } = 3;
@@ -150,8 +150,12 @@ namespace OSDC.UnitConversion.Conversion
         public VolumeQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Volume" };
+            UsualNames = new HashSet<string>() { "volume" };
             ID = new Guid("69151432-d2ed-4473-a3dc-334f8e6daaa6");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A volume is the amount of three-dimensional space occupied by a body." + Environment.NewLine;
+            DescriptionMD += @"The dimension of volume is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

@@ -165,8 +165,12 @@ namespace OSDC.UnitConversion.Conversion
         public ElectricCurrentQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Electrical Current" };
+            UsualNames = new HashSet<string>() { "electric current" };
             ID = new Guid("a322deae-e965-41bf-b4fe-a7530d33c9a0");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Electric current is the flow of electric charge through a conductor or circuit." + Environment.NewLine;
+            DescriptionMD += @"The dimension of electric current is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

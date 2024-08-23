@@ -27,11 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public AccelerationDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Acceleration (drilling)" };
+            UsualNames = new HashSet<string>() { "acceleration (drilling)" };
             ID = new Guid("b6c99136-8e57-4eea-9a31-fb804bc8ae4b");
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
-            DescriptionMD += "In a drilling engineering perspective, the meaningful precision of an acceleration is: " + MeaningfulPrecisionInSI.ToString() + " " + AccelerationQuantity.Instance.GetUnitChoice(AccelerationQuantity.UnitChoicesEnum.MetrePerSecondSquared).UnitLabel + Environment.NewLine;
+            DescriptionMD += @"The meaningful precision of acceleration in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + AccelerationQuantity.Instance.GetUnitChoice(AccelerationQuantity.UnitChoicesEnum.MetrePerSecondSquared).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(AccelerationQuantity.Instance.GetUnitChoice(AccelerationQuantity.UnitChoicesEnum.MetrePerSecondSquared));
             this.UnitChoices.Add(AccelerationQuantity.Instance.GetUnitChoice(AccelerationQuantity.UnitChoicesEnum.FootPerSecondSquared));

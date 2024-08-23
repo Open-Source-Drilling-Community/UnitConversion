@@ -235,8 +235,12 @@ namespace OSDC.UnitConversion.Conversion
         public WaveNumberQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Wave Number" };
+            UsualNames = new HashSet<string>() { "wave number" };
             ID = new Guid("3709c98d-d471-41dd-bfde-81c4458757e5");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A wave number is the number of wave lengths per unit distance." + Environment.NewLine;
+            DescriptionMD += @"The dimension of wave number is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

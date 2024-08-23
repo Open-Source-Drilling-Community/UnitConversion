@@ -25,8 +25,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public MassDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Mass (drilling)" };
+            UsualNames = new HashSet<string>() { "mass (drilling)" };
             ID = new Guid("f4c0a6fd-5000-4507-8612-ae4374c0cacc");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of mass density in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Kilogram).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Kilogram));
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.TonneMetric));

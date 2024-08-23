@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion
         public EarthMagneticFluxDensityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Earth Magnetic Flux Density" };
+            UsualNames = new HashSet<string>() { "earth magnetic flux density" };
             ID = new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += @"Earth's magnetic flux density refers to the strength and direction of the Earth's magnetic field at a specific location." + Environment.NewLine;
+            DescriptionMD += @"The meaningful precision of earth magnetic flux density is: " + MeaningfulPrecisionInSI.ToString() + " " + MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Tesla).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Tesla));
             this.UnitChoices.Add(MagneticFluxDensityQuantity.Instance.GetUnitChoice(MagneticFluxDensityQuantity.UnitChoicesEnum.Gauss));

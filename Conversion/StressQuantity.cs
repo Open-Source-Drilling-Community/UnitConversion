@@ -153,8 +153,12 @@ namespace OSDC.UnitConversion.Conversion
         public StressQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Stress" };
+            UsualNames = new HashSet<string>() { "stress" };
             ID = new Guid("e4aa819b-a385-418b-bbca-cfb1421093f5");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Stress in a material is the internal force per unit area that arises when the material is subjected to external forces or loads. It reflects how much the material is being compressed, stretched, or sheared." + Environment.NewLine;
+            DescriptionMD += @"The dimension of stress is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

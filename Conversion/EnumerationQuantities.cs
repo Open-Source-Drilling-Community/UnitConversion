@@ -9,25 +9,26 @@ namespace OSDC.UnitConversion.Conversion
        {
          Acceleration,  // Acceleration
          AmountSubstance,  // AmountSubstance
+         AngleGradientPerLength,  // AngleGradientPerLength
          AngleMagneticFluxDensity,  // AngleMagneticFluxDensity
-         AngleVariationGradient,  // AngleVariationGradient
          AngularAcceleration,  // AngularAcceleration
          AngularVelocity,  // AngularVelocity
          Area,  // Area
          Compressibility,  // Compressibility
+         ConsistencyIndexRheology,  // ConsistencyIndexRheology
          Curvature,  // Curvature
-         DensityGradientDepth,  // DensityGradientDepth
-         DensityGradientTemperature,  // DensityGradientTemperature
-         Density,  // Density
-         DensityRateOfChange,  // DensityRateOfChange
+         MassDensityGradientPerLength,  // MassDensityGradientPerLength
+         MassDensityGradientPerTemperature,  // MassDensityGradientPerTemperature
+         MassDensity,  // MassDensity
+         MassDensityRateOfChange,  // MassDensityRateOfChange
          Dimensionless,  // Dimensionless
          DynamicViscosity,  // DynamicViscosity
-         ElectricalCapacitance,  // ElectricalCapacitance
+         ElectricCapacitance,  // ElectricCapacitance
          ElectricCurrent,  // ElectricCurrent
          ElectricTension,  // ElectricTension
-         ElongationGradient,  // ElongationGradient
+         ElongationGradientPerLength,  // ElongationGradientPerLength
          EnergyDensity,  // EnergyDensity
-         ForceGradient,  // ForceGradient
+         ForceGradientPerLength,  // ForceGradientPerLength
          Force,  // Force
          Frequency,  // Frequency
          FrequencyRateOfChange,  // FrequencyRateOfChange
@@ -38,13 +39,13 @@ namespace OSDC.UnitConversion.Conversion
          LuminousIntensity,  // LuminousIntensity
          MagneticFluxDensity,  // MagneticFluxDensity
          MagneticFlux,  // MagneticFlux
-         MassGradient,  // MassGradient
+         MassGradientPerLength,  // MassGradientPerLength
          MassRate,  // MassRate
          MaterialStrength,  // MaterialStrength
-         Permeability,  // Permeability
+         PorousMediumPermeability,  // PorousMediumPermeability
          PlaneAngle,  // PlaneAngle
          Power,  // Power
-         PressureGradient,  // PressureGradient
+         PressureGradientPerLength,  // PressureGradientPerLength
          PressureLossConstant,  // PressureLossConstant
          Pressure,  // Pressure
          Proportion,  // Proportion
@@ -53,14 +54,14 @@ namespace OSDC.UnitConversion.Conversion
          Resistivity,  // Resistivity
          SolidAngle,  // SolidAngle
          SpecificHeatCapacity,  // SpecificHeatCapacity
-         SpecificHeatCapacityTemperatureGradient,  // SpecificHeatCapacityTemperatureGradient
+         SpecificHeatCapacityGradientPerTemperature,  // SpecificHeatCapacityGradientPerTemperature
          Stress,  // Stress
-         TemperatureGradient,  // TemperatureGradient
+         TemperatureGradientPerLength,  // TemperatureGradientPerLength
          Temperature,  // Temperature
          ThermalConductivity,  // ThermalConductivity
-         ThermalConductivityTemperatureGradient,  // ThermalConductivityTemperatureGradient
+         ThermalConductivityGradientPerTemperature,  // ThermalConductivityGradientPerTemperature
          Time,  // Time
-         TorqueGradient,  // TorqueGradient
+         TorqueGradientPerLength,  // TorqueGradientPerLength
          Torque,  // Torque
          Velocity,  // Velocity
          Volume,  // Volume
@@ -68,26 +69,25 @@ namespace OSDC.UnitConversion.Conversion
          VolumetricFlowRate,  // VolumetricFlowRate
          WaveNumber,  // WaveNumber
          Mass,  // Mass
-         EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
          Energy,  // Energy
-         SmallLength,  // SmallLength
-         RotationFrequency,  // RotationFrequency
+         DiameterSmall,  // DiameterSmall
+         DimensionLessStandard,  // DimensionLessStandard
+         EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
+         ElasticModulus,  // ElasticModulus
+         LengthSmall,  // LengthSmall
+         RotationalFrequency,  // RotationalFrequency
          GravitationalLoad,  // GravitationalLoad
          HydraulicConductivity,  // HydraulicConductivity
-         LargeVolume,  // LargeVolume
-         RotationFrequencyRateOfChange,  // RotationFrequencyRateOfChange
+         VolumeLarge,  // VolumeLarge
+         RotationalFrequencyRateOfChange,  // RotationalFrequencyRateOfChange
          Tension,  // Tension
-         YoungModulus,  // YoungModulus
-         StandardProportion,  // StandardProportion
-         StandardDimensionless,  // StandardDimensionless
-         StandardLength,  // StandardLength
+         ProportionStandard,  // ProportionStandard
+         LengthStandard,  // LengthStandard
          FluidShearRate,  // FluidShearRate
          FluidShearStress,  // FluidShearStress
-         RheologyConsistencyIndex,  // RheologyConsistencyIndex
-         SmallDiameter,  // SmallDiameter
-         SmallTorque,  // SmallTorque
-         SmallRotationFrequency,  // SmallRotationFrequency
-         SmallProportion,  // SmallProportion
+         TorqueSmall,  // TorqueSmall
+         RotationalFrequencySmall,  // RotationalFrequencySmall
+         ProportionSmall,  // ProportionSmall
          Porosity,  // Porosity
          StrokeFrequency,  // StrokeFrequency
          ShockRate // ShockRate
@@ -96,25 +96,26 @@ namespace OSDC.UnitConversion.Conversion
     {
          {QuantityEnum.Acceleration, new Guid("454a7b6b-a921-428e-8aa7-a4a636a58e34")},  // Acceleration
          {QuantityEnum.AmountSubstance, new Guid("200be1eb-c278-447c-9b15-32d20fc778b9")},  // AmountSubstance
+         {QuantityEnum.AngleGradientPerLength, new Guid("aed9c464-1073-448b-be62-a6a0c2a53dbc")},  // AngleGradientPerLength
          {QuantityEnum.AngleMagneticFluxDensity, new Guid("03bb57e6-ca8b-4741-a211-9cf57c8fd177")},  // AngleMagneticFluxDensity
-         {QuantityEnum.AngleVariationGradient, new Guid("aed9c464-1073-448b-be62-a6a0c2a53dbc")},  // AngleVariationGradient
          {QuantityEnum.AngularAcceleration, new Guid("8b33d305-f77e-4631-9818-7ef574bd0c02")},  // AngularAcceleration
          {QuantityEnum.AngularVelocity, new Guid("688ccd2b-6a30-4ccc-8580-a80c3a5803fa")},  // AngularVelocity
          {QuantityEnum.Area, new Guid("2a892bab-1b39-4ae4-b2d2-989621b09557")},  // Area
          {QuantityEnum.Compressibility, new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14")},  // Compressibility
+         {QuantityEnum.ConsistencyIndexRheology, new Guid("05571702-00e6-47d7-8590-fd3983645406")},  // ConsistencyIndexRheology
          {QuantityEnum.Curvature, new Guid("bbfe7349-8cf5-4ca0-8a84-ffe66d7f33d0")},  // Curvature
-         {QuantityEnum.DensityGradientDepth, new Guid("037e0326-5095-4c82-ba1b-4df594243cda")},  // DensityGradientDepth
-         {QuantityEnum.DensityGradientTemperature, new Guid("2d788f1e-db66-49c3-8eb6-313152cd8e3c")},  // DensityGradientTemperature
-         {QuantityEnum.Density, new Guid("5754358c-9359-4bb0-8eb4-08602d19c6af")},  // Density
-         {QuantityEnum.DensityRateOfChange, new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11")},  // DensityRateOfChange
+         {QuantityEnum.MassDensityGradientPerLength, new Guid("037e0326-5095-4c82-ba1b-4df594243cda")},  // MassDensityGradientPerLength
+         {QuantityEnum.MassDensityGradientPerTemperature, new Guid("2d788f1e-db66-49c3-8eb6-313152cd8e3c")},  // MassDensityGradientPerTemperature
+         {QuantityEnum.MassDensity, new Guid("5754358c-9359-4bb0-8eb4-08602d19c6af")},  // MassDensity
+         {QuantityEnum.MassDensityRateOfChange, new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11")},  // MassDensityRateOfChange
          {QuantityEnum.Dimensionless, new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43")},  // Dimensionless
          {QuantityEnum.DynamicViscosity, new Guid("c830517f-5915-4a8f-ba83-bd102c0a935f")},  // DynamicViscosity
-         {QuantityEnum.ElectricalCapacitance, new Guid("9b284ff7-57bb-4ee0-bdbc-5fb7b80f3ae3")},  // ElectricalCapacitance
+         {QuantityEnum.ElectricCapacitance, new Guid("9b284ff7-57bb-4ee0-bdbc-5fb7b80f3ae3")},  // ElectricCapacitance
          {QuantityEnum.ElectricCurrent, new Guid("a322deae-e965-41bf-b4fe-a7530d33c9a0")},  // ElectricCurrent
          {QuantityEnum.ElectricTension, new Guid("da5094a4-7481-4246-9def-1bd3b6f893a1")},  // ElectricTension
-         {QuantityEnum.ElongationGradient, new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120")},  // ElongationGradient
+         {QuantityEnum.ElongationGradientPerLength, new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120")},  // ElongationGradientPerLength
          {QuantityEnum.EnergyDensity, new Guid("9e82436a-392e-428a-8ee9-0998027c3c46")},  // EnergyDensity
-         {QuantityEnum.ForceGradient, new Guid("e5212340-1147-4cad-9f71-5cd9d4208ffd")},  // ForceGradient
+         {QuantityEnum.ForceGradientPerLength, new Guid("e5212340-1147-4cad-9f71-5cd9d4208ffd")},  // ForceGradientPerLength
          {QuantityEnum.Force, new Guid("af9fd237-14d8-4b75-8d0b-34ea8961c20b")},  // Force
          {QuantityEnum.Frequency, new Guid("8a1ff3d9-95c9-43e1-abb4-4ae9b8df861e")},  // Frequency
          {QuantityEnum.FrequencyRateOfChange, new Guid("e9d5bfe9-428b-4df0-9fe5-d9ad17e6a0cb")},  // FrequencyRateOfChange
@@ -125,13 +126,13 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.LuminousIntensity, new Guid("fd02d171-cd96-4a41-84cc-431b50ba879b")},  // LuminousIntensity
          {QuantityEnum.MagneticFluxDensity, new Guid("b9a3f96b-8861-4b03-9c8a-3c0d7d6ec139")},  // MagneticFluxDensity
          {QuantityEnum.MagneticFlux, new Guid("0d36345b-624d-47c1-9d20-e627a6c6c13a")},  // MagneticFlux
-         {QuantityEnum.MassGradient, new Guid("b8694592-8f8d-4684-b0ba-c88de50c8486")},  // MassGradient
+         {QuantityEnum.MassGradientPerLength, new Guid("b8694592-8f8d-4684-b0ba-c88de50c8486")},  // MassGradientPerLength
          {QuantityEnum.MassRate, new Guid("3dd05c4c-3d6d-49ae-a878-5a5e4a6e7acf")},  // MassRate
          {QuantityEnum.MaterialStrength, new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40")},  // MaterialStrength
-         {QuantityEnum.Permeability, new Guid("413da2c1-ebad-454a-ae14-1a8620f8f59c")},  // Permeability
+         {QuantityEnum.PorousMediumPermeability, new Guid("413da2c1-ebad-454a-ae14-1a8620f8f59c")},  // PorousMediumPermeability
          {QuantityEnum.PlaneAngle, new Guid("751a8f44-d938-4319-a422-a753962fd91f")},  // PlaneAngle
          {QuantityEnum.Power, new Guid("6fd69f30-a219-4d56-a1dd-000d8175e2ed")},  // Power
-         {QuantityEnum.PressureGradient, new Guid("62eb6afe-bd7d-48dd-b4fd-de40e9f3c632")},  // PressureGradient
+         {QuantityEnum.PressureGradientPerLength, new Guid("62eb6afe-bd7d-48dd-b4fd-de40e9f3c632")},  // PressureGradientPerLength
          {QuantityEnum.PressureLossConstant, new Guid("6417f6e0-969d-43f2-bee6-249199ec1697")},  // PressureLossConstant
          {QuantityEnum.Pressure, new Guid("0f282508-9223-489d-86e6-36307f987045")},  // Pressure
          {QuantityEnum.Proportion, new Guid("10d2d588-19b8-4822-9240-e1d278d99e32")},  // Proportion
@@ -140,14 +141,14 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Resistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // Resistivity
          {QuantityEnum.SolidAngle, new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f")},  // SolidAngle
          {QuantityEnum.SpecificHeatCapacity, new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9")},  // SpecificHeatCapacity
-         {QuantityEnum.SpecificHeatCapacityTemperatureGradient, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // SpecificHeatCapacityTemperatureGradient
+         {QuantityEnum.SpecificHeatCapacityGradientPerTemperature, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // SpecificHeatCapacityGradientPerTemperature
          {QuantityEnum.Stress, new Guid("e4aa819b-a385-418b-bbca-cfb1421093f5")},  // Stress
-         {QuantityEnum.TemperatureGradient, new Guid("4c1819d5-008b-4613-b62a-3f5d91b08ee7")},  // TemperatureGradient
+         {QuantityEnum.TemperatureGradientPerLength, new Guid("4c1819d5-008b-4613-b62a-3f5d91b08ee7")},  // TemperatureGradientPerLength
          {QuantityEnum.Temperature, new Guid("16130f2d-72a8-44a5-beaa-adbb5a1a7b21")},  // Temperature
          {QuantityEnum.ThermalConductivity, new Guid("ca23212e-8f2d-4041-89f6-ac8bfa8604fa")},  // ThermalConductivity
-         {QuantityEnum.ThermalConductivityTemperatureGradient, new Guid("5e509f43-8fb4-490e-b9a5-59d7393761c0")},  // ThermalConductivityTemperatureGradient
+         {QuantityEnum.ThermalConductivityGradientPerTemperature, new Guid("5e509f43-8fb4-490e-b9a5-59d7393761c0")},  // ThermalConductivityGradientPerTemperature
          {QuantityEnum.Time, new Guid("7106f7cb-ddf2-4e2f-9e21-b19bc83eb248")},  // Time
-         {QuantityEnum.TorqueGradient, new Guid("002104cd-25d6-438d-afe3-065ff392b294")},  // TorqueGradient
+         {QuantityEnum.TorqueGradientPerLength, new Guid("002104cd-25d6-438d-afe3-065ff392b294")},  // TorqueGradientPerLength
          {QuantityEnum.Torque, new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4")},  // Torque
          {QuantityEnum.Velocity, new Guid("b3fd17fe-ce71-4ef3-ac99-cf4f5756e81a")},  // Velocity
          {QuantityEnum.Volume, new Guid("69151432-d2ed-4473-a3dc-334f8e6daaa6")},  // Volume
@@ -155,26 +156,25 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.VolumetricFlowRate, new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839")},  // VolumetricFlowRate
          {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
          {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
-         {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
          {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
-         {QuantityEnum.SmallLength, new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed")},  // SmallLength
-         {QuantityEnum.RotationFrequency, new Guid("f6f7ab6f-3003-49d2-a17d-92a0f81938f2")},  // RotationFrequency
+         {QuantityEnum.DiameterSmall, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // DiameterSmall
+         {QuantityEnum.DimensionLessStandard, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // DimensionLessStandard
+         {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
+         {QuantityEnum.ElasticModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // ElasticModulus
+         {QuantityEnum.LengthSmall, new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed")},  // LengthSmall
+         {QuantityEnum.RotationalFrequency, new Guid("f6f7ab6f-3003-49d2-a17d-92a0f81938f2")},  // RotationalFrequency
          {QuantityEnum.GravitationalLoad, new Guid("55682046-ff04-4a77-9311-a9f738f790b6")},  // GravitationalLoad
          {QuantityEnum.HydraulicConductivity, new Guid("04df2b82-aff0-485a-855e-3d2aa53e12eb")},  // HydraulicConductivity
-         {QuantityEnum.LargeVolume, new Guid("f8ab1afa-7b99-403b-9410-93598bbb4089")},  // LargeVolume
-         {QuantityEnum.RotationFrequencyRateOfChange, new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e")},  // RotationFrequencyRateOfChange
+         {QuantityEnum.VolumeLarge, new Guid("f8ab1afa-7b99-403b-9410-93598bbb4089")},  // VolumeLarge
+         {QuantityEnum.RotationalFrequencyRateOfChange, new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e")},  // RotationalFrequencyRateOfChange
          {QuantityEnum.Tension, new Guid("7c4e127d-aa65-4796-a962-c2c666c4fdd0")},  // Tension
-         {QuantityEnum.YoungModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // YoungModulus
-         {QuantityEnum.StandardProportion, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // StandardProportion
-         {QuantityEnum.StandardDimensionless, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // StandardDimensionless
-         {QuantityEnum.StandardLength, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")},  // StandardLength
+         {QuantityEnum.ProportionStandard, new Guid("97555d61-9fc3-4769-9143-6bc2bf51b2d7")},  // ProportionStandard
+         {QuantityEnum.LengthStandard, new Guid("3716ad37-2b0c-4c0b-8936-6c9cdb47ad1d")},  // LengthStandard
          {QuantityEnum.FluidShearRate, new Guid("d3aa72c5-2fc0-4024-902e-6775d63f3231")},  // FluidShearRate
          {QuantityEnum.FluidShearStress, new Guid("b8f8f4f5-1925-4eaf-87c2-2adfdf618454")},  // FluidShearStress
-         {QuantityEnum.RheologyConsistencyIndex, new Guid("05571702-00e6-47d7-8590-fd3983645406")},  // RheologyConsistencyIndex
-         {QuantityEnum.SmallDiameter, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // SmallDiameter
-         {QuantityEnum.SmallTorque, new Guid("adf7b170-8d24-4c9f-93e1-40179f361d8c")},  // SmallTorque
-         {QuantityEnum.SmallRotationFrequency, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")},  // SmallRotationFrequency
-         {QuantityEnum.SmallProportion, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // SmallProportion
+         {QuantityEnum.TorqueSmall, new Guid("adf7b170-8d24-4c9f-93e1-40179f361d8c")},  // TorqueSmall
+         {QuantityEnum.RotationalFrequencySmall, new Guid("b7ab1664-3d56-4ae5-842a-e4d6d0475ef9")},  // RotationalFrequencySmall
+         {QuantityEnum.ProportionSmall, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // ProportionSmall
          {QuantityEnum.Porosity, new Guid("2f6516a1-47cc-498f-8271-e84150183665")},  // Porosity
          {QuantityEnum.StrokeFrequency, new Guid("86fd37e4-3ebf-42ec-9eb2-1e65f7abf29e")},  // StrokeFrequency
          {QuantityEnum.ShockRate, new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff")} // ShockRate
@@ -284,6 +284,52 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class AngleGradientPerLengthQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         RadianPerMetre,  // radian per metre
+         DegreePerMetre,  // degree per metre
+         DegreePerCentimetre,  // degree per centimetre
+         DegreePerFoot,  // degree per foot
+         DegreePerInch,  // degree per inch
+         DegreePerDecimetre,  // degree per decimetre
+         DegreePerMillimetre,  // degree per millimetre
+         RadianPerMillimetre,  // radian per millimetre
+         RadianPerCentimetre,  // radian per centimetre
+         RadianPerDecimetre,  // radian per decimetre
+         RadianPerFoot,  // radian per foot
+         RadianPerInch // radian per inch
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.RadianPerMetre, new Guid("5d9782b6-c4c7-47ca-a86b-dce3f63c3747")},  // radian per metre
+         {UnitChoicesEnum.DegreePerMetre, new Guid("2fcd4219-8879-4494-9563-5173ec2292fa")},  // degree per metre
+         {UnitChoicesEnum.DegreePerCentimetre, new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7")},  // degree per centimetre
+         {UnitChoicesEnum.DegreePerFoot, new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b")},  // degree per foot
+         {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")},  // degree per inch
+         {UnitChoicesEnum.DegreePerDecimetre, new Guid("452edd17-d501-487b-8cc1-90c08f7b1417")},  // degree per decimetre
+         {UnitChoicesEnum.DegreePerMillimetre, new Guid("5cc72a73-70c0-4ccf-83ae-38e8a45391b4")},  // degree per millimetre
+         {UnitChoicesEnum.RadianPerMillimetre, new Guid("dbd20525-128b-43c5-9de4-a8e604cbf6bf")},  // radian per millimetre
+         {UnitChoicesEnum.RadianPerCentimetre, new Guid("5552abca-e21b-48ca-aedc-4518a32b8de3")},  // radian per centimetre
+         {UnitChoicesEnum.RadianPerDecimetre, new Guid("47e72ab7-444d-4d4b-8cd2-01d2fb8efa2d")},  // radian per decimetre
+         {UnitChoicesEnum.RadianPerFoot, new Guid("e1ab7dd2-48c7-4ac8-ac5e-bc50fdcae5df")},  // radian per foot
+         {UnitChoicesEnum.RadianPerInch, new Guid("c36cf9c1-d4f2-4654-99eb-5d84eac21c66")} // radian per inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class AngleMagneticFluxDensityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -323,52 +369,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.DegreeNanotesla, new Guid("0d9bf20d-2b10-4e73-ae8e-3d3e91862ec0")},  // degree nanotesla
          {UnitChoicesEnum.DegreeMaxwellPerSquareCentimetre, new Guid("092e8231-a6e6-4b29-bdd6-2ae490aa583a")},  // degree maxwell per square centimetre
          {UnitChoicesEnum.DegreeWeberPerSquareMetre, new Guid("2d7e1d60-6401-41c0-b436-612116be9ad4")} // degree weber per square metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class AngleVariationGradientQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         RadianPerMetre,  // radian per metre
-         DegreePerMetre,  // degree per metre
-         DegreePerCentimetre,  // degree per centimetre
-         DegreePerFoot,  // degree per foot
-         DegreePerInch,  // degree per inch
-         DegreePerDecimetre,  // degree per decimetre
-         DegreePerMillimetre,  // degree per millimetre
-         RadianPerMillimetre,  // radian per millimetre
-         RadianPerCentimetre,  // radian per centimetre
-         RadianPerDecimetre,  // radian per decimetre
-         RadianPerFoot,  // radian per foot
-         RadianPerInch // radian per inch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.RadianPerMetre, new Guid("5d9782b6-c4c7-47ca-a86b-dce3f63c3747")},  // radian per metre
-         {UnitChoicesEnum.DegreePerMetre, new Guid("2fcd4219-8879-4494-9563-5173ec2292fa")},  // degree per metre
-         {UnitChoicesEnum.DegreePerCentimetre, new Guid("7f4f63d6-5ea8-4c6b-8be4-81f52b7060c7")},  // degree per centimetre
-         {UnitChoicesEnum.DegreePerFoot, new Guid("23bf7716-5779-4607-aef7-1e0eeb7f201b")},  // degree per foot
-         {UnitChoicesEnum.DegreePerInch, new Guid("271db65d-2a9f-4fec-a52a-21e13e106dd4")},  // degree per inch
-         {UnitChoicesEnum.DegreePerDecimetre, new Guid("452edd17-d501-487b-8cc1-90c08f7b1417")},  // degree per decimetre
-         {UnitChoicesEnum.DegreePerMillimetre, new Guid("5cc72a73-70c0-4ccf-83ae-38e8a45391b4")},  // degree per millimetre
-         {UnitChoicesEnum.RadianPerMillimetre, new Guid("dbd20525-128b-43c5-9de4-a8e604cbf6bf")},  // radian per millimetre
-         {UnitChoicesEnum.RadianPerCentimetre, new Guid("5552abca-e21b-48ca-aedc-4518a32b8de3")},  // radian per centimetre
-         {UnitChoicesEnum.RadianPerDecimetre, new Guid("47e72ab7-444d-4d4b-8cd2-01d2fb8efa2d")},  // radian per decimetre
-         {UnitChoicesEnum.RadianPerFoot, new Guid("e1ab7dd2-48c7-4ac8-ac5e-bc50fdcae5df")},  // radian per foot
-         {UnitChoicesEnum.RadianPerInch, new Guid("c36cf9c1-d4f2-4654-99eb-5d84eac21c66")} // radian per inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -586,6 +586,40 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class ConsistencyIndexRheologyQuantity : DynamicViscosityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         PascalSecond,  // pascal second
+         MicropascalSecond,  // micropascal second
+         Centipoise,  // centipoise
+         Micropoise,  // micropoise
+         PoundSecondPer100SquareFoot,  // pound second per 100 square foot
+         DyneSecondPerSquareCentimetre // dyne second per square centimetre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // pascal second
+         {UnitChoicesEnum.MicropascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")},  // micropascal second
+         {UnitChoicesEnum.Centipoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // centipoise
+         {UnitChoicesEnum.Micropoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // micropoise
+         {UnitChoicesEnum.PoundSecondPer100SquareFoot, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // pound second per 100 square foot
+         {UnitChoicesEnum.DyneSecondPerSquareCentimetre, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // dyne second per square centimetre
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class CurvatureQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -664,7 +698,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityGradientDepthQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -740,7 +774,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityGradientTemperatureQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -788,7 +822,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -828,7 +862,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class DensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  public partial class MassDensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -944,7 +978,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ElectricalCapacitanceQuantity : DerivedBasePhysicalQuantity
+  public partial class ElectricCapacitanceQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1078,7 +1112,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ElongationGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ElongationGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1256,7 +1290,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ForceGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ForceGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1780,7 +1814,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MassGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class MassGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1880,7 +1914,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class PermeabilityQuantity : AreaQuantity
+  public partial class PorousMediumPermeabilityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2014,7 +2048,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class PressureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class PressureGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2338,7 +2372,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SpecificHeatCapacityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class SpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2426,7 +2460,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class TemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class TemperatureGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2534,7 +2568,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ThermalConductivityTemperatureGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class ThermalConductivityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2636,7 +2670,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class TorqueGradientQuantity : DerivedBasePhysicalQuantity
+  public partial class TorqueGradientPerLengthQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2855,7 +2889,8 @@ namespace OSDC.UnitConversion.Conversion
          DecimetrePerSecond,  // decimetre per second
          DecimetrePerMinute,  // decimetre per minute
          DecimetrePerHour,  // decimetre per hour
-         DecimetrePerDay // decimetre per day
+         DecimetrePerDay,  // decimetre per day
+         FurlongPerFortnight // furlong per fortnight
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -2890,7 +2925,8 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.DecimetrePerSecond, new Guid("0f9aa2e1-b66f-4728-bf57-79526ffce563")},  // decimetre per second
          {UnitChoicesEnum.DecimetrePerMinute, new Guid("980c51cc-a185-44a6-a69c-34f52e2b1fe2")},  // decimetre per minute
          {UnitChoicesEnum.DecimetrePerHour, new Guid("1d3b5a3c-81ff-4698-b92f-9b721f946220")},  // decimetre per hour
-         {UnitChoicesEnum.DecimetrePerDay, new Guid("dcb77826-7550-4681-b3ce-a59cfdb7620d")} // decimetre per day
+         {UnitChoicesEnum.DecimetrePerDay, new Guid("dcb77826-7550-4681-b3ce-a59cfdb7620d")},  // decimetre per day
+         {UnitChoicesEnum.FurlongPerFortnight, new Guid("028ad001-b80d-49d8-8d18-8e10c1f0239f")} // furlong per fortnight
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -3242,38 +3278,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Tesla,  // tesla
-         Gauss,  // gauss
-         Milligauss,  // milligauss
-         Microtesla,  // microtesla
-         Nanotesla // nanotesla
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Tesla, new Guid("33c3b59d-9876-4918-9f31-f22de88d7bde")},  // tesla
-         {UnitChoicesEnum.Gauss, new Guid("c09cd87d-8a84-45d0-88d3-20bb5cc48559")},  // gauss
-         {UnitChoicesEnum.Milligauss, new Guid("41ace729-a2ff-4047-adc3-375829de64c6")},  // milligauss
-         {UnitChoicesEnum.Microtesla, new Guid("c6b30197-be6b-41b7-803d-a8de61338612")},  // microtesla
-         {UnitChoicesEnum.Nanotesla, new Guid("9bef9def-8cd3-4f7b-b991-290d3441b3d4")} // nanotesla
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class EnergyQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -3314,7 +3318,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SmallLengthQuantity : LengthQuantity
+  public partial class DiameterSmallQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3358,7 +3362,139 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class RotationFrequencyQuantity : FrequencyQuantity
+  public partial class DimensionLessStandardQuantity : DimensionlessQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Dimensionless // dimensionless
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // dimensionless
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class EarthMagneticFluxDensityQuantity : MagneticFluxDensityQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Tesla,  // tesla
+         Gauss,  // gauss
+         Milligauss,  // milligauss
+         Microtesla,  // microtesla
+         Nanotesla // nanotesla
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Tesla, new Guid("33c3b59d-9876-4918-9f31-f22de88d7bde")},  // tesla
+         {UnitChoicesEnum.Gauss, new Guid("c09cd87d-8a84-45d0-88d3-20bb5cc48559")},  // gauss
+         {UnitChoicesEnum.Milligauss, new Guid("41ace729-a2ff-4047-adc3-375829de64c6")},  // milligauss
+         {UnitChoicesEnum.Microtesla, new Guid("c6b30197-be6b-41b7-803d-a8de61338612")},  // microtesla
+         {UnitChoicesEnum.Nanotesla, new Guid("9bef9def-8cd3-4f7b-b991-290d3441b3d4")} // nanotesla
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ElasticModulusQuantity : PressureQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Pascal,  // pascal
+         Megapascal,  // megapascal
+         Gigapascal,  // gigapascal
+         PoundPerSquareInch,  // pound per square inch
+         MegapoundPerSquareInch // megapound per square inch
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // pascal
+         {UnitChoicesEnum.Megapascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // megapascal
+         {UnitChoicesEnum.Gigapascal, new Guid("5c81fb9b-36ad-47b7-9a8e-c999f7fdbfe3")},  // gigapascal
+         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // pound per square inch
+         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("bb49de0a-fbf3-4914-b6b9-fc60ab502522")} // megapound per square inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class LengthSmallQuantity : LengthQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Centimetre,  // centimetre
+         Decimetre,  // decimetre
+         Foot,  // foot
+         Inch,  // inch
+         Metre,  // metre
+         Micrometre,  // micrometre
+         Millimetre,  // millimetre
+         Nanometre,  // nanometre
+         Picometre,  // picometre
+         Ångstrøm,  // ångstrøm
+         InchPer32 // inch per 32
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
+         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
+         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
+         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
+         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
+         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
+         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
+         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
+         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
+         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
+         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class RotationalFrequencyQuantity : FrequencyQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3458,7 +3594,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class LargeVolumeQuantity : VolumeQuantity
+  public partial class VolumeLargeQuantity : VolumeQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3502,7 +3638,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class RotationFrequencyRateOfChangeQuantity : FrequencyRateOfChangeQuantity
+  public partial class RotationalFrequencyRateOfChangeQuantity : FrequencyRateOfChangeQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3564,39 +3700,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class YoungModulusQuantity : PressureQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Pascal,  // pascal
-         Megapascal,  // megapascal
-         Gigapascal,  // gigapascal
-         PoundPerSquareInch,  // pound per square inch
-         MegapoundPerSquareInch // megapound per square inch
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Pascal, new Guid("4f8ebaf4-cd1b-4714-a609-0a9fbe44cafb")},  // pascal
-         {UnitChoicesEnum.Megapascal, new Guid("4ef28797-f416-4d97-b36a-711ea848bcc0")},  // megapascal
-         {UnitChoicesEnum.Gigapascal, new Guid("5c81fb9b-36ad-47b7-9a8e-c999f7fdbfe3")},  // gigapascal
-         {UnitChoicesEnum.PoundPerSquareInch, new Guid("afce482e-a8cf-47f8-85c1-22595d5b5485")},  // pound per square inch
-         {UnitChoicesEnum.MegapoundPerSquareInch, new Guid("bb49de0a-fbf3-4914-b6b9-fc60ab502522")} // megapound per square inch
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class StandardProportionQuantity : ProportionQuantity
+  public partial class ProportionStandardQuantity : ProportionQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3626,31 +3730,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class StandardDimensionlessQuantity : DimensionlessQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Dimensionless // dimensionless
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // dimensionless
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class StandardLengthQuantity : LengthQuantity
+  public partial class LengthStandardQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3748,85 +3828,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class RheologyConsistencyIndexQuantity : DynamicViscosityQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         PascalSecond,  // pascal second
-         MicropascalSecond,  // micropascal second
-         Centipoise,  // centipoise
-         Micropoise,  // micropoise
-         PoundSecondPer100SquareFoot,  // pound second per 100 square foot
-         DyneSecondPerSquareCentimetre // dyne second per square centimetre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.PascalSecond, new Guid("5707caa4-e293-430d-9575-425305060fcc")},  // pascal second
-         {UnitChoicesEnum.MicropascalSecond, new Guid("ba54cce5-29ad-464a-9263-ae4cfa96328d")},  // micropascal second
-         {UnitChoicesEnum.Centipoise, new Guid("a71ef873-6ea2-4922-a100-231177de0e85")},  // centipoise
-         {UnitChoicesEnum.Micropoise, new Guid("5cae22bd-1294-4aa7-9666-a9a2080d53e8")},  // micropoise
-         {UnitChoicesEnum.PoundSecondPer100SquareFoot, new Guid("b48720b9-8eb5-4b5c-8da1-ca2312fdff01")},  // pound second per 100 square foot
-         {UnitChoicesEnum.DyneSecondPerSquareCentimetre, new Guid("90ce61e5-46db-47f9-9c22-1c0f19068132")} // dyne second per square centimetre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class SmallDiameterQuantity : LengthQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Centimetre,  // centimetre
-         Decimetre,  // decimetre
-         Foot,  // foot
-         Inch,  // inch
-         Metre,  // metre
-         Micrometre,  // micrometre
-         Millimetre,  // millimetre
-         Nanometre,  // nanometre
-         Picometre,  // picometre
-         Ångstrøm,  // ångstrøm
-         InchPer32 // inch per 32
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Centimetre, new Guid("96a3d4b4-c321-4528-92c0-7a52646b6461")},  // centimetre
-         {UnitChoicesEnum.Decimetre, new Guid("e84c1968-cc63-412e-82c1-93ed39a43c01")},  // decimetre
-         {UnitChoicesEnum.Foot, new Guid("b4adebce-d0cd-417a-b38c-ab4a2e38233a")},  // foot
-         {UnitChoicesEnum.Inch, new Guid("0a6e2349-6f90-4ac5-baed-ccdaf5e5b919")},  // inch
-         {UnitChoicesEnum.Metre, new Guid("cc442e11-bb28-4e51-9074-87df66050d8a")},  // metre
-         {UnitChoicesEnum.Micrometre, new Guid("60820c6d-d721-49b8-ba40-a75343aa0f2f")},  // micrometre
-         {UnitChoicesEnum.Millimetre, new Guid("0b2094f1-ba22-4b7b-888a-7a6b5da2ba25")},  // millimetre
-         {UnitChoicesEnum.Nanometre, new Guid("0d181caf-8121-46a8-bfa7-2cb7457d9db9")},  // nanometre
-         {UnitChoicesEnum.Picometre, new Guid("f305ce05-7bd1-4d67-a834-e9b932ca586e")},  // picometre
-         {UnitChoicesEnum.Ångstrøm, new Guid("0db6a73f-c58f-415c-ac0d-e56137b28d5a")},  // ångstrøm
-         {UnitChoicesEnum.InchPer32, new Guid("758ae28a-7484-4e0c-91af-aa105bcd744f")} // inch per 32
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class SmallTorqueQuantity : TorqueQuantity
+  public partial class TorqueSmallQuantity : TorqueQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3860,7 +3862,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SmallRotationFrequencyQuantity : RotationFrequencyQuantity
+  public partial class RotationalFrequencySmallQuantity : RotationalFrequencyQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -3886,7 +3888,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SmallProportionQuantity : ProportionQuantity
+  public partial class ProportionSmallQuantity : ProportionQuantity
   {
     public new enum UnitChoicesEnum 
       {

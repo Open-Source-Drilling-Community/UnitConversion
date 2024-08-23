@@ -112,8 +112,12 @@ namespace OSDC.UnitConversion.Conversion
         public LuminousIntensityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Luminous Intensity" };
+            UsualNames = new HashSet<string>() { "luminous intensity" };
             ID = new Guid("fd02d171-cd96-4a41-84cc-431b50ba879b");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Luminous intensity is the measure of the amount of visible light emitted by a source in a particular direction." + Environment.NewLine;
+            DescriptionMD += @"The dimension of luminous intensity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

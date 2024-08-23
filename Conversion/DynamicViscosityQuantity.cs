@@ -110,8 +110,12 @@ namespace OSDC.UnitConversion.Conversion
         public DynamicViscosityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Dynamic Viscosity" };
+            UsualNames = new HashSet<string>() { "dynamic viscosity" };
             ID = new Guid("c830517f-5915-4a8f-ba83-bd102c0a935f");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Dynamic viscosity is a measure of a fluid's resistance to shear or flow when a force is applied. It quantifies how thick or thin the fluid is." + Environment.NewLine;
+            DescriptionMD += @"The dimension of dynamic viscosity is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

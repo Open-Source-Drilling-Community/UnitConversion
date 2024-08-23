@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public InterfacialTensionDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Interfacial Tension (drilling)" };
+            UsualNames = new HashSet<string>() { "interfacial tension (drilling)" };
             ID = new Guid("1bf5cf90-84c4-4dcc-ac74-92223d3c3c46");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of interfacial tension in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.NewtonPerMetre).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.NewtonPerMetre));
             this.UnitChoices.Add(InterfacialTensionQuantity.Instance.GetUnitChoice(InterfacialTensionQuantity.UnitChoicesEnum.MillinewtonPerMetre));

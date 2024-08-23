@@ -75,8 +75,12 @@ namespace OSDC.UnitConversion.Conversion
         public MaterialStrengthQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Material Strength" };
+            UsualNames = new HashSet<string>() { "material strength" };
             ID = new Guid("d9ca8230-a07a-45c0-ba67-051b70607c40");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Material strength refers to the ability of a material to withstand an applied force or load without failing or deforming. It measures how much stress a material can endure before it breaks, bends, or permanently deforms, often categorized into types like tensile, compressive, and shear strength." + Environment.NewLine;
+            DescriptionMD += @"The dimension of material strength is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

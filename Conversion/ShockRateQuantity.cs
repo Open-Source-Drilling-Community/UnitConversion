@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion
         public ShockRateQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Shock Rate (drilling)" };
+            UsualNames = new HashSet<string>() { "shock rate" };
             ID = new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A shock rate is the number of shocks per unit time." + Environment.NewLine;
+            DescriptionMD += @"The meaningful precision of shock rate is typically: " + MeaningfulPrecisionInSI.ToString() + " " + FrequencyRateOfChangeQuantity.Instance.GetUnitChoice(FrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz));
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.ShockPerMinute));

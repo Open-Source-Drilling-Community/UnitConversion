@@ -89,8 +89,12 @@ namespace OSDC.UnitConversion.Conversion
         public RandomWalkQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Random Walk" };
+            UsualNames = new HashSet<string>() { "random walk" };
             ID = new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A random walk is a mathematical concept describing a path consisting of a series of random steps or movements, where each step's direction or magnitude is determined probabilistically. It is used to model various phenomena in fields like physics, finance, and computer science." + Environment.NewLine;
+            DescriptionMD += @"The dimension of random walk is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

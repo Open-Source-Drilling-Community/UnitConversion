@@ -98,8 +98,12 @@ namespace OSDC.UnitConversion.Conversion
         public ElectricTensionQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Electric Tension" };
+            UsualNames = new HashSet<string>() { "electric tension", "electric potential", "potential difference" };
             ID = new Guid("da5094a4-7481-4246-9def-1bd3b6f893a1");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Electric tension is the difference in electric potential between two points.In a static electric field, it corresponds to the work needed per unit of charge to move a positive test charge from the first point to the second point." + Environment.NewLine;
+            DescriptionMD += @"The dimension of electric tension is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

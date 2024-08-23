@@ -120,8 +120,12 @@ namespace OSDC.UnitConversion.Conversion
         public PlaneAngleQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Plane Angle" };
+            UsualNames = new HashSet<string>() { "plane angle" };
             ID = new Guid("751a8f44-d938-4319-a422-a753962fd91f");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"A plane angle is the angle formed between two intersecting lines or planes in a two-dimensional or three-dimensional space." + Environment.NewLine;
+            DescriptionMD += @"The dimension of plane angle is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

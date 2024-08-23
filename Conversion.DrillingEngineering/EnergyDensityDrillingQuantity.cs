@@ -27,8 +27,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public EnergyDensityDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Energy Density (drilling)" };
+            UsualNames = new HashSet<string>() { "energy density (drilling)" };
             ID = new Guid("04bc9209-c5c0-4f42-98b1-f1f63a3bee52");
+            DescriptionMD = base.DescriptionMD;
+            DescriptionMD += Environment.NewLine;
+            DescriptionMD += "The meaningful precision of energy density in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicMetre).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicMetre));
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicFoot));

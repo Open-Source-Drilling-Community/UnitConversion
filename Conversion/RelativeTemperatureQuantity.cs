@@ -44,8 +44,12 @@ namespace OSDC.UnitConversion.Conversion
         public RelativeTemperatureQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "Relative Temperature" };
+            UsualNames = new HashSet<string>() { "relative temperature" };
             ID = new Guid("58dadec7-7858-414b-8d7b-66504d5c2793");
+            DescriptionMD = string.Empty;
+            DescriptionMD += @"Relative temperature is a measure of temperature expressed in relation to a reference point or baseline, often used to compare temperature differences rather than absolute values." + Environment.NewLine;
+            DescriptionMD += @"The dimension of relative temperature is:" + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             Reset();
             InitializeUnitChoices();
         }
