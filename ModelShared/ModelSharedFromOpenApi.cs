@@ -2087,6 +2087,9 @@ namespace OSDC.UnitConversion.ModelShared
         [System.Text.Json.Serialization.JsonPropertyName("DescriptionMD")]
         public string DescriptionMD { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("PhysicalDimensionLatex")]
+        public string PhysicalDimensionLatex { get; set; }
+
         [System.Text.Json.Serialization.JsonPropertyName("UsualNames")]
         public System.Collections.Generic.ICollection<string> UsualNames { get; set; }
 

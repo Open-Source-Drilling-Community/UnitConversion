@@ -42,6 +42,18 @@ namespace OSDC.UnitConversion.Conversion
         /// Description using the Markdown style
         /// </summary>
         public string DescriptionMD { get; protected set; } = string.Empty;
+        public string? PhysicalDimensionLatex
+        {
+            get
+            {
+                string latex = GetDimensionsLatex();
+                if (!string.IsNullOrEmpty(latex) && !string.IsNullOrEmpty(SIUnitLabel))  
+                {
+                    latex += "," + SIUnitLabel;
+                }
+                return latex;
+            }
+        }
         /// <summary>
         /// usual names of the physical quantity
         /// </summary>
@@ -217,103 +229,99 @@ namespace OSDC.UnitConversion.Conversion
                 }
             }
         }
-
-        public string GetDimensionsMD()
+        public string GetDimensionsLatex()
         {
             string dimensions = string.Empty;
             if (LengthDimension != 0)
             {
-                dimensions += "[L";
+                dimensions += "L";
                 if (LengthDimension != 1)
                 {
                     dimensions += "^{" + LengthDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (MassDimension != 0)
             {
-                dimensions += "[M";
+                dimensions += "M";
                 if (MassDimension != 1)
                 {
                     dimensions += "^{" + MassDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (TimeDimension != 0)
             {
-                dimensions += "[T";
+                dimensions += "T";
                 if (TimeDimension != 1)
                 {
-                    dimensions += "^{" + MassDimension + "}";
+                    dimensions += "^{" + TimeDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (TemperatureDimension != 0)
             {
-                dimensions += "[K";
+                dimensions += "K";
                 if (TemperatureDimension != 1)
                 {
                     dimensions += "^{" + TemperatureDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (AmountSubstanceDimension != 0)
             {
-                dimensions += "[N";
+                dimensions += "N";
                 if (AmountSubstanceDimension != 1)
                 {
                     dimensions += "^{" + AmountSubstanceDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (ElectricCurrentDimension != 0)
             {
-                dimensions += "[I";
+                dimensions += "I";
                 if (ElectricCurrentDimension != 1)
                 {
                     dimensions += "^{" + ElectricCurrentDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (LuminousIntensityDimension != 0)
             {
-                dimensions += "[J";
+                dimensions += "J";
                 if (LuminousIntensityDimension != 1)
                 {
                     dimensions += "^{" + LuminousIntensityDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
             if (PlaneAngleDimension != 0)
             {
-                dimensions += "[θ";
+                dimensions += "\\theta";
                 if (PlaneAngleDimension != 1)
                 {
                     dimensions += "^{" + PlaneAngleDimension + "}";
                 }
-                dimensions += "]";
-            }
-            if (PlaneAngleDimension != 0)
-            {
-                dimensions += "[\\theta";
-                if (PlaneAngleDimension != 1)
-                {
-                    dimensions += "^{" + PlaneAngleDimension + "}";
-                }
-                dimensions += "]";
+                dimensions += "";
             }
             if (SolidAngleDimension != 0)
             {
-                dimensions += "[\\Omega";
+                dimensions += "\\Omega";
                 if (SolidAngleDimension != 1)
                 {
                     dimensions += "^{" + SolidAngleDimension + "}";
                 }
-                dimensions += "]";
+                dimensions += "";
             }
+            return dimensions;
+        }
+
+        public string GetDimensionsMD()
+        {
+            string dimensions = GetDimensionsLatex();
             if (!string.IsNullOrEmpty(dimensions))
             {
-                dimensions = "$" + dimensions + "$";
+                dimensions = "$[" + dimensions + "]$";
             }
             return dimensions;
         }

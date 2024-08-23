@@ -780,6 +780,11 @@
             "nullable": true,
             "readOnly": true
           },
+          "PhysicalDimensionLatex": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "UsualNames": {
             "uniqueItems": true,
             "type": "array",
