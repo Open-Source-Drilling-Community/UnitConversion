@@ -1169,7 +1169,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 TestContext.WriteLine("Impossible to Get all PhysicalQuantity ids\n" + ex.Message);
             }
             Assert.That(idList, Is.Not.Null);
-            Assert.That(idList, Has.Count.EqualTo(152));
+            Assert.That(idList, Has.Count.EqualTo(153));
             Assert.That(idList, Does.Contain(new Guid("454a7b6b-a921-428e-8aa7-a4a636a58e34")));
             Assert.That(idList, Does.Contain(new Guid("200be1eb-c278-447c-9b15-32d20fc778b9")));
             Assert.That(idList, Does.Contain(new Guid("03bb57e6-ca8b-4741-a211-9cf57c8fd177")));
@@ -1393,7 +1393,7 @@ namespace OSDC.UnitConversion.ServiceTest
             Assert.Multiple(() =>
             {
                 Assert.That(physicalQuantity.ID, Is.EqualTo(guid));
-                Assert.That(physicalQuantity.Name, Is.EqualTo("AngleVariationGradient"));
+                Assert.That(physicalQuantity.Name, Is.EqualTo("AngleGradientPerLength"));
                 Assert.That(physicalQuantity.UnitChoices, Has.Count.EqualTo(12));
             });
             #endregion
@@ -1430,7 +1430,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 TestContext.WriteLine("Impossible to Get all PhysicalQuantity\n" + ex.Message);
             }
             Assert.That(physicalQuantityList, Is.Not.Null);
-            Assert.That(physicalQuantityList, Has.Count.EqualTo(152));
+            Assert.That(physicalQuantityList, Has.Count.EqualTo(153));
             Assert.Multiple(() =>
             {
                 foreach (var qty in physicalQuantityList)
