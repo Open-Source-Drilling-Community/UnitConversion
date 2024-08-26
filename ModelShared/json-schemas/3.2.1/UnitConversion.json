@@ -799,7 +799,12 @@
             "nullable": true,
             "readOnly": true
           },
-          "SIUnitLabel": {
+          "SIUnitLabelLatex": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "SIUnitLabelLatexEnclosed": {
             "type": "string",
             "nullable": true,
             "readOnly": true

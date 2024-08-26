@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "hertz per second";
-        public override string SIUnitLabel { get; } = "Hz/s";
+        public override string SIUnitLabelLatex { get; } = "\\frac{Hz}{s}";
         public override double TimeDimension { get; } = -2;
         private static FrequencyRateOfChangeQuantity instance_ = null;
 

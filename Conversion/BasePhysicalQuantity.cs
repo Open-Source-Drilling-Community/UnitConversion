@@ -42,16 +42,31 @@ namespace OSDC.UnitConversion.Conversion
         /// Description using the Markdown style
         /// </summary>
         public string DescriptionMD { get; protected set; } = string.Empty;
-        public string? PhysicalDimensionLatex
+        public string PhysicalDimensionLatex
         {
             get
             {
                 string latex = GetDimensionsLatex();
-                if (!string.IsNullOrEmpty(latex) && !string.IsNullOrEmpty(SIUnitLabel))  
+                if (latex == null)
                 {
-                    latex += "," + SIUnitLabel;
+                    latex = string.Empty;
                 }
-                return latex;
+                if (!string.IsNullOrEmpty(SIUnitLabelLatex))  
+                {
+                    if (!string.IsNullOrEmpty(latex))
+                    {
+                        latex += ",";
+                    }
+                    latex += SIUnitLabelLatex;
+                }
+                if (!string.IsNullOrEmpty(latex))
+                {
+                    return "$" + latex + "$";
+                }
+                else
+                {
+                    return string.Empty;
+                }
             }
         }
         /// <summary>
@@ -65,7 +80,24 @@ namespace OSDC.UnitConversion.Conversion
         /// <summary>
         /// the SI unit symbol for this base unit
         /// </summary>
-        public virtual string SIUnitLabel { get; }
+        public virtual string SIUnitLabelLatex { get; }
+        /// <summary>
+        /// same as SIUnitLabelLatex but enclosed in between "$"
+        /// </summary>
+        public virtual string SIUnitLabelLatexEnclosed
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty (SIUnitLabelLatex))
+                {
+                    return "$" + SIUnitLabelLatex + "$";
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
         /// <summary>
         /// the possible non SI unit choices for this base unit
         /// </summary>
@@ -231,85 +263,52 @@ namespace OSDC.UnitConversion.Conversion
         }
         public string GetDimensionsLatex()
         {
+            double precision = 1e-6;
+            List<Tuple<double, string>> dims = new List<Tuple<double, string>>();
+            if (Math.Abs(LengthDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(LengthDimension, "L"));
+            }
+            if (Math.Abs(MassDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(MassDimension, "M"));
+            }
+            if (Math.Abs(TimeDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(TimeDimension, "T"));
+            }
+            if (Math.Abs(TemperatureDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(TemperatureDimension, "K"));
+            }
+            if (Math.Abs(AmountSubstanceDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(AmountSubstanceDimension, "N"));
+            }
+            if (Math.Abs(ElectricCurrentDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(ElectricCurrentDimension, "I"));
+            }
+            if (Math.Abs(LuminousIntensityDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(LuminousIntensityDimension, "J"));
+            }
+            if (Math.Abs(PlaneAngleDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(PlaneAngleDimension, "\\theta"));
+            }
+            if (Math.Abs(SolidAngleDimension) > precision)
+            {
+                dims.Add(new Tuple<double, string>(SolidAngleDimension, "\\Omega"));
+            }
+            dims.Sort((x, y) => y.Item1.CompareTo(x.Item1));
             string dimensions = string.Empty;
-            if (LengthDimension != 0)
+            foreach (var dim in dims)
             {
-                dimensions += "L";
-                if (LengthDimension != 1)
+                dimensions += dim.Item2;
+                if (Math.Abs(dim.Item1-1) > precision)
                 {
-                    dimensions += "^{" + LengthDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (MassDimension != 0)
-            {
-                dimensions += "M";
-                if (MassDimension != 1)
-                {
-                    dimensions += "^{" + MassDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (TimeDimension != 0)
-            {
-                dimensions += "T";
-                if (TimeDimension != 1)
-                {
-                    dimensions += "^{" + TimeDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (TemperatureDimension != 0)
-            {
-                dimensions += "K";
-                if (TemperatureDimension != 1)
-                {
-                    dimensions += "^{" + TemperatureDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (AmountSubstanceDimension != 0)
-            {
-                dimensions += "N";
-                if (AmountSubstanceDimension != 1)
-                {
-                    dimensions += "^{" + AmountSubstanceDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (ElectricCurrentDimension != 0)
-            {
-                dimensions += "I";
-                if (ElectricCurrentDimension != 1)
-                {
-                    dimensions += "^{" + ElectricCurrentDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (LuminousIntensityDimension != 0)
-            {
-                dimensions += "J";
-                if (LuminousIntensityDimension != 1)
-                {
-                    dimensions += "^{" + LuminousIntensityDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (PlaneAngleDimension != 0)
-            {
-                dimensions += "\\theta";
-                if (PlaneAngleDimension != 1)
-                {
-                    dimensions += "^{" + PlaneAngleDimension + "}";
-                }
-                dimensions += "";
-            }
-            if (SolidAngleDimension != 0)
-            {
-                dimensions += "\\Omega";
-                if (SolidAngleDimension != 1)
-                {
-                    dimensions += "^{" + SolidAngleDimension + "}";
+                    dimensions += "^{" + dim.Item1 + "}";
                 }
                 dimensions += "";
             }

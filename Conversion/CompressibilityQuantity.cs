@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "β";
         public override string SIUnitName { get; } = "inverse pascal";
-        public override string SIUnitLabel { get; } = "1/Pa";
+        public override string SIUnitLabelLatex { get; } = "\\frac{1}{Pa}";
         public override double MassDimension { get; } = -1;
         public override double LengthDimension { get; } = 1;
         public override double TimeDimension { get; } = 2;

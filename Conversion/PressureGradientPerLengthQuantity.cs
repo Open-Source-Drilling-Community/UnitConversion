@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "pascal per metre";
-        public override string SIUnitLabel { get; } = "Pa/m";
+        public override string SIUnitLabelLatex { get; } = "\\frac{Pa}{m}";
         public override double LengthDimension { get; } = -2;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;

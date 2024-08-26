@@ -71,7 +71,7 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(ProportionQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RandomWalkQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RelativeTemperatureQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(ResistivityQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(ElectricResistivityQuantity.Instance));
             Assert.That(quantityList, Does.Contain(ConsistencyIndexRheologyQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RotationalFrequencyQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RotationalFrequencyRateOfChangeQuantity.Instance));
@@ -82,8 +82,8 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(RotationalFrequencySmallQuantity.Instance));
             Assert.That(quantityList, Does.Contain(TorqueSmallQuantity.Instance));
             Assert.That(quantityList, Does.Contain(SolidAngleQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(SpecificHeatCapacityQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(SpecificHeatCapacityGradientPerTemperatureQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(IsobaricSpecificHeatCapacityQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance));
             Assert.That(quantityList, Does.Contain(DimensionLessStandardQuantity.Instance));
             Assert.That(quantityList, Does.Contain(LengthStandardQuantity.Instance));
             Assert.That(quantityList, Does.Contain(ProportionStandardQuantity.Instance));
@@ -162,8 +162,8 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(RandomWalkDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RateOfPenetrationDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(RotationalFrequencyRateOfChangeDrillingQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(SpecificHeatCapacityDrillingQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(SpecificHeatCapacityGradientPerTemperatureDrillingQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(IsobaricSpecificHeatCapacityDrillingQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(IsobaricSpecificHeatCapacityGradientPerTemperatureDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(StickDurationDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleMagneticFluxDensitySurveyInstrumentDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngularVelocitySurveyInstrumentDrillingQuantity.Instance));

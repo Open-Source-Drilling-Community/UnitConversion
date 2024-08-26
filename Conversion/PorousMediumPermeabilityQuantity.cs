@@ -11,7 +11,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "k";
         public override string SIUnitName { get; } = "square metre";
-        public override string SIUnitLabel { get; } = "m²";
+        public override string SIUnitLabelLatex { get; } = "m^{2}";
         public override double LengthDimension { get; } = 2;
 
         private static PorousMediumPermeabilityQuantity instance_ = null;

@@ -4,23 +4,23 @@ using System.Linq;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class SpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
+    public partial class IsobaricSpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "joule per kilogram kelvin";
-        public override string SIUnitLabel { get; } = "J/kg•K";
+        public override string SIUnitLabelLatex { get; } = "\\frac{J}{kg \\cdot K}";
         public override double LengthDimension { get; } = 2;
         public override double TimeDimension { get; } = -2;
         public override double TemperatureDimension { get; } = -1;
-        private static SpecificHeatCapacityQuantity instance_ = null;
+        private static IsobaricSpecificHeatCapacityQuantity instance_ = null;
 
-        public static SpecificHeatCapacityQuantity Instance
+        public static IsobaricSpecificHeatCapacityQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new SpecificHeatCapacityQuantity();
+                    instance_ = new IsobaricSpecificHeatCapacityQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
@@ -72,13 +72,13 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSIFormula = "Factors.Milli/(Factors.Kilo*Factors.Calorie)"
         }
         };
-        public SpecificHeatCapacityQuantity() : base()
+        public IsobaricSpecificHeatCapacityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "specific heat capacity" };
+            UsualNames = new HashSet<string>() { "isobaric specific heat capacity" };
             ID = new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9");
             DescriptionMD = string.Empty;
-            DescriptionMD += @"Specific heat capacity is the amount of heat required to raise the temperature of one unit mass of a substance by one unit of temperature. It indicates how much heat energy a material can store." + Environment.NewLine;
+            DescriptionMD += @"Isobaric specific heat capacity is the amount of heat required to raise the temperature of one unit mass of a substance by one unit of temperature at constant pressure. It indicates how much heat energy a material can store." + Environment.NewLine;
             DescriptionMD += @"The dimension of specific heat capacity is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();

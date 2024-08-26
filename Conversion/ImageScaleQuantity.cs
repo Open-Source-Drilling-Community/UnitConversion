@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ImageScaleQuantity : DerivedBasePhysicalQuantity
     {
         public override string SIUnitName { get; } = "dot per metre";
-        public override string SIUnitLabel { get; } = "dpm";
+        public override string SIUnitLabelLatex { get; } = "dpm";
         public override double? MeaningfulPrecisionInSI { get; } = 0.001;
 
         public override double LengthDimension { get; } = -1;

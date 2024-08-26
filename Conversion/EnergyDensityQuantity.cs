@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class EnergyDensityQuantity : DerivedBasePhysicalQuantity
     {
         public override string SIUnitName { get; } = "joule per cubic metre";
-        public override string SIUnitLabel { get; } = "J/m³";
+        public override string SIUnitLabelLatex { get; } = "\\frac{J}[m^{3}}";
         public override double LengthDimension { get; } = -1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;

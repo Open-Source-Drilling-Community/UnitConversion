@@ -2096,8 +2096,11 @@ namespace OSDC.UnitConversion.ModelShared
         [System.Text.Json.Serialization.JsonPropertyName("SIUnitName")]
         public string SIUnitName { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabel")]
-        public string SIUnitLabel { get; set; }
+        [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabelLatex")]
+        public string SIUnitLabelLatex { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabelLatexEnclosed")]
+        public string SIUnitLabelLatexEnclosed { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("UnitChoices")]
         public System.Collections.Generic.ICollection<UnitChoice> UnitChoices { get; set; }

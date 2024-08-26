@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "pressure loss constant SI";
-        public override string SIUnitLabel { get; } = "(m³/s)²•(kg/m³)/Pa";
+        public override string SIUnitLabelLatex { get; } = "(\\frac{m^{3}}{s})^{2} \\cdot \\frac{(\\frac{kg}{m^{3}})}{Pa}";
         public override double LengthDimension { get; } = 4;
         private static PressureLossConstantQuantity instance_ = null;
 

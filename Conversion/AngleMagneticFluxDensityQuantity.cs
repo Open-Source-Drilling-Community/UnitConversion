@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "radian tesla";
-        public override string SIUnitLabel { get; } = "rad•T";
+        public override string SIUnitLabelLatex { get; } = "rad \\cdot T";
         public override double PlaneAngleDimension { get; } = 1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;

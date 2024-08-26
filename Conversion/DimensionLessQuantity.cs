@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "dimensionless";
-        public override string SIUnitLabel { get; } = "";
+        public override string SIUnitLabelLatex { get; } = "";
         private static DimensionlessQuantity instance_ = null;
 
         public static DimensionlessQuantity Instance

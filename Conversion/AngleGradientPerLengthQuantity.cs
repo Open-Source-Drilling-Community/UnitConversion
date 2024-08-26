@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "radian per metre";
-        public override string SIUnitLabel { get; } = "rad/m";
+        public override string SIUnitLabelLatex { get; } = "\\frac{rad}{m}";
         public override double LengthDimension { get; } = -1;
         public override double PlaneAngleDimension { get; } = 1;
         private static AngleGradientPerLengthQuantity instance_ = null;

@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "newton per metre";
-        public override string SIUnitLabel { get; } = "N/m";
+        public override string SIUnitLabelLatex { get; } = "\\frac{N}{m}";
         public override double LengthDimension { get; } = 0;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;

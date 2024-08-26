@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class ElongationGradientPerLengthQuantity : DerivedBasePhysicalQuantity
     {
         public override string SIUnitName { get; } = "metre per metre";
-        public override string SIUnitLabel { get; } = "m/m";
+        public override string SIUnitLabelLatex { get; } = "\\frac{m}{m}";
 
         private static ElongationGradientPerLengthQuantity instance_ = null;
 
@@ -167,8 +167,7 @@ namespace OSDC.UnitConversion.Conversion
             ID = new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120");
             DescriptionMD = string.Empty;
             DescriptionMD += @"An elongation gradient per length is the first derivative of an elongation compared to a distance: $\frac{d\epsilon}{ds}$, where $\epsilon$ is an elongation and $s$ is a distance." + Environment.NewLine;
-            DescriptionMD += @"The dimension of elongation gradient per length is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += @"It is dimensionless." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

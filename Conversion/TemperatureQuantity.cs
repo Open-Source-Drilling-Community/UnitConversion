@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "Θ";
         public override string SIUnitName { get; } = "kelvin";
 
-        public override string SIUnitLabel { get; } = "K";
+        public override string SIUnitLabelLatex { get; } = "K";
         private static TemperatureQuantity instance_ = null;
 
         public override double TemperatureDimension { get; } = 1;

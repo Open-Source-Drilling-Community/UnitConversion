@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "v";
         public override string SIUnitName { get; } = "metre per second";
-        public override string SIUnitLabel { get; } = "m/s";
+        public override string SIUnitLabelLatex { get; } = "\\frac{m}{s}";
         public override double LengthDimension { get; } = 1;
         public override double TimeDimension { get; } = -1;
         private static VelocityQuantity instance_ = null;

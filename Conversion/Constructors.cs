@@ -10931,7 +10931,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ResistivityQuantity : DerivedBasePhysicalQuantity
+  public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -11067,7 +11067,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
+  public partial class IsobaricSpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {
@@ -11189,7 +11189,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
+  public partial class IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
       {

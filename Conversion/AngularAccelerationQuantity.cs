@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "ω̇";
         public override string SIUnitName { get; } = "radian per second squared";
-        public override string SIUnitLabel { get; } = "rad/s²";
+        public override string SIUnitLabelLatex { get; } = "\\frac{rad}{s^{2}}";
         public override double PlaneAngleDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
         private static AngularAccelerationQuantity instance_ = null;

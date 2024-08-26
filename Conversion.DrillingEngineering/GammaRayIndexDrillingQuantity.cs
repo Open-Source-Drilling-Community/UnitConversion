@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "GammaAPI";
-        public override string SIUnitLabel { get; } = "API";
+        public override string SIUnitLabelLatex { get; } = "API";
         public override double? MeaningfulPrecisionInSI { get; } = 0.001;
         private static GammaRayIndexDrillingQuantity instance_ = null;
 

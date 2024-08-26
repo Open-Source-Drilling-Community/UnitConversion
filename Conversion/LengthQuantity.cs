@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "L";
         public override string SIUnitName { get; } = "metre";
 
-        public override string SIUnitLabel { get; } = "m";
+        public override string SIUnitLabelLatex { get; } = "m";
         private static LengthQuantity instance_ = null;
 
         public override double LengthDimension { get; } = 1;

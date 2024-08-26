@@ -4,24 +4,24 @@ using System.Linq;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class ResistivityQuantity : DerivedBasePhysicalQuantity
+    public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "ohm metre";
-        public override string SIUnitLabel { get; } = "Ω•m";
+        public override string SIUnitLabelLatex { get; } = "\\Omega \\cdot m";
         public override double LengthDimension { get; } = 3;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;
         public override double ElectricCurrentDimension { get; } = -2;
-        private static ResistivityQuantity instance_ = null;
+        private static ElectricResistivityQuantity instance_ = null;
 
-        public static ResistivityQuantity Instance
+        public static ElectricResistivityQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new ResistivityQuantity();
+                    instance_ = new ElectricResistivityQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
@@ -59,13 +59,13 @@ namespace OSDC.UnitConversion.Conversion
                   ConversionFactorFromSIFormula = "1.0/Factors.Giga"
                 }
         };
-        public ResistivityQuantity() : base()
+        public ElectricResistivityQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "resistivity" };
+            UsualNames = new HashSet<string>() { "electric resistivity" };
             ID = new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80");
             DescriptionMD = string.Empty;
-            DescriptionMD += @"Resistivity is a material's inherent property that measures how strongly it resists the flow of electric current." + Environment.NewLine;
+            DescriptionMD += @"Electric resistivity is a material's inherent property that measures how strongly it resists the flow of electric current." + Environment.NewLine;
             DescriptionMD += @"The dimension of resistivity is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();

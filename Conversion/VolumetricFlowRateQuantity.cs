@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "Q";
         public override string SIUnitName { get; } = "cubic metre per second";
-        public override string SIUnitLabel { get; } = "m³/s";
+        public override string SIUnitLabelLatex { get; } = "\\frac{m^{3}}{s}";
         public override double LengthDimension { get; } = 3;
         public override double TimeDimension { get; } = -1;
         private static VolumetricFlowRateQuantity instance_ = null;

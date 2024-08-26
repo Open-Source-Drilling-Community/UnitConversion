@@ -51,10 +51,10 @@ namespace OSDC.UnitConversion.Conversion
          Proportion,  // Proportion
          RandomWalk,  // RandomWalk
          RelativeTemperature,  // RelativeTemperature
-         Resistivity,  // Resistivity
+         ElectricResistivity,  // ElectricResistivity
          SolidAngle,  // SolidAngle
-         SpecificHeatCapacity,  // SpecificHeatCapacity
-         SpecificHeatCapacityGradientPerTemperature,  // SpecificHeatCapacityGradientPerTemperature
+         IsobaricSpecificHeatCapacity,  // IsobaricSpecificHeatCapacity
+         IsobaricSpecificHeatCapacityGradientPerTemperature,  // IsobaricSpecificHeatCapacityGradientPerTemperature
          Stress,  // Stress
          TemperatureGradientPerLength,  // TemperatureGradientPerLength
          Temperature,  // Temperature
@@ -138,10 +138,10 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Proportion, new Guid("10d2d588-19b8-4822-9240-e1d278d99e32")},  // Proportion
          {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
          {QuantityEnum.RelativeTemperature, new Guid("58dadec7-7858-414b-8d7b-66504d5c2793")},  // RelativeTemperature
-         {QuantityEnum.Resistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // Resistivity
+         {QuantityEnum.ElectricResistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // ElectricResistivity
          {QuantityEnum.SolidAngle, new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f")},  // SolidAngle
-         {QuantityEnum.SpecificHeatCapacity, new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9")},  // SpecificHeatCapacity
-         {QuantityEnum.SpecificHeatCapacityGradientPerTemperature, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // SpecificHeatCapacityGradientPerTemperature
+         {QuantityEnum.IsobaricSpecificHeatCapacity, new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9")},  // IsobaricSpecificHeatCapacity
+         {QuantityEnum.IsobaricSpecificHeatCapacityGradientPerTemperature, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // IsobaricSpecificHeatCapacityGradientPerTemperature
          {QuantityEnum.Stress, new Guid("e4aa819b-a385-418b-bbca-cfb1421093f5")},  // Stress
          {QuantityEnum.TemperatureGradientPerLength, new Guid("4c1819d5-008b-4613-b62a-3f5d91b08ee7")},  // TemperatureGradientPerLength
          {QuantityEnum.Temperature, new Guid("16130f2d-72a8-44a5-beaa-adbb5a1a7b21")},  // Temperature
@@ -2280,7 +2280,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ResistivityQuantity : DerivedBasePhysicalQuantity
+  public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2338,7 +2338,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
+  public partial class IsobaricSpecificHeatCapacityQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -2372,7 +2372,7 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class SpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
+  public partial class IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
       {

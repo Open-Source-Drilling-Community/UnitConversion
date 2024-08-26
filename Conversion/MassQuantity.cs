@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "M";
         public override string SIUnitName { get; } = "kilogram";
 
-        public override string SIUnitLabel { get; } = "kg";
+        public override string SIUnitLabelLatex { get; } = "kg";
         private static MassQuantity instance_ = null;
 
         public override double MassDimension { get; } = 1;

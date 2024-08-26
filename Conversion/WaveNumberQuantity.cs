@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string SIUnitName { get; } = "reciprocal metre";
 
-        public override string SIUnitLabel { get; } = "1/m";
+        public override string SIUnitLabelLatex { get; } = "\\frac{1}{m}";
         private static WaveNumberQuantity instance_ = null;
 
         public override double LengthDimension { get; } = -1;

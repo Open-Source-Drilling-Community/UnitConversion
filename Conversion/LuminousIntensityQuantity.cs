@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "J";
         public override string SIUnitName { get; } = "candela";
 
-        public override string SIUnitLabel { get; } = "cd";
+        public override string SIUnitLabelLatex { get; } = "cd";
 
         public override double LuminousIntensityDimension { get; } = 1;
 

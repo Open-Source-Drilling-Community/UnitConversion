@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "tesla";
-        public override string SIUnitLabel { get; } = "T";
+        public override string SIUnitLabelLatex { get; } = "T";
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
         public override double ElectricCurrentDimension { get; } = -1;

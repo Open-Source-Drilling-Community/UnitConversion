@@ -4,23 +4,23 @@ using System.Linq;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class SpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
+    public partial class IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "joule per kilogram squared kelvin";
-        public override string SIUnitLabel { get; } = "J/kg•K²";
+        public override string SIUnitLabelLatex { get; } = "\\frac{J}{kg \\cdot K^{2}}";
         public override double LengthDimension { get; } = 2;
         public override double TimeDimension { get; } = -2;
         public override double TemperatureDimension { get; } = -2;
-        private static SpecificHeatCapacityGradientPerTemperatureQuantity instance_ = null;
+        private static IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity instance_ = null;
 
-        public static SpecificHeatCapacityGradientPerTemperatureQuantity Instance
+        public static IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new SpecificHeatCapacityGradientPerTemperatureQuantity();
+                    instance_ = new IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
@@ -65,13 +65,13 @@ namespace OSDC.UnitConversion.Conversion
           ConversionFactorFromSIFormula = "Factors.Pound*Factors.FahrenheitSlope*Factors.FahrenheitSlope/Factors.BTU"
         }
         };
-        public SpecificHeatCapacityGradientPerTemperatureQuantity() : base()
+        public IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "specific heat capacity gradient per temperature" };
+            UsualNames = new HashSet<string>() { "isobaric specific heat capacity gradient per temperature" };
             ID = new Guid("3a317540-3db4-47a1-a566-33b6f39b7540");
             DescriptionMD = string.Empty;
-            DescriptionMD += @"A specific heat capacity gradient per temperature is the first derivative of a specific heat capacity compared to the temperature: $\frac{dC_p}{dT}$, where $C_p$ is a specific heat capacity and $T$ is a temperature." + Environment.NewLine;
+            DescriptionMD += @"An isobaric specific heat capacity gradient per temperature is the first derivative of an isobaric specific heat capacity compared to temperature: $\frac{dC_p}{dT}$, where $C_p$ is a isobaric specific heat capacity and $T$ is a temperature." + Environment.NewLine;
             DescriptionMD += @"The dimension of specific heat capacity gradient per temperature is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
             InitializeUnitChoices();

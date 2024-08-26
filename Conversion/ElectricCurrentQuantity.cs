@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string DimensionSymbol { get; } = "I";
         public override string SIUnitName { get; } = "ampere";
-        public override string SIUnitLabel { get; } = "A";
+        public override string SIUnitLabelLatex { get; } = "A";
         private static ElectricCurrentQuantity instance_ = null;
         public override double ElectricCurrentDimension { get; } = 1;
 

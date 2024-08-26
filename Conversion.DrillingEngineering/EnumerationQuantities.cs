@@ -49,8 +49,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          PressureDrilling,  // PressureDrilling
          RandomWalkDrilling,  // RandomWalkDrilling
          RotationalFrequencyRateOfChangeDrilling,  // RotationalFrequencyRateOfChangeDrilling
-         SpecificHeatCapacityDrilling,  // SpecificHeatCapacityDrilling
-         SpecificHeatCapacityGradientPerTemperatureDrilling,  // SpecificHeatCapacityGradientPerTemperatureDrilling
+         IsobaricSpecificHeatCapacityDrilling,  // IsobaricSpecificHeatCapacityDrilling
+         IsobaricSpecificHeatCapacityGradientPerTemperatureDrilling,  // IsobaricSpecificHeatCapacityGradientPerTemperatureDrilling
          StickDurationDrilling,  // StickDurationDrilling
          ReciprocalLengthSurveyInstrumentDrilling,  // ReciprocalLengthSurveyInstrumentDrilling
          TemperatureGradientPerLengthDrilling,  // TemperatureGradientPerLengthDrilling
@@ -121,8 +121,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.PressureDrilling, new Guid("d9db6bb4-77af-4fc3-a683-7bedd781fcba")},  // PressureDrilling
          {QuantityEnum.RandomWalkDrilling, new Guid("8817dc80-eb46-42d5-b85f-703fa8845f32")},  // RandomWalkDrilling
          {QuantityEnum.RotationalFrequencyRateOfChangeDrilling, new Guid("4950170a-7882-4673-9d27-3402dbbca2bb")},  // RotationalFrequencyRateOfChangeDrilling
-         {QuantityEnum.SpecificHeatCapacityDrilling, new Guid("05c59293-4e3b-4fc0-b579-12c241109610")},  // SpecificHeatCapacityDrilling
-         {QuantityEnum.SpecificHeatCapacityGradientPerTemperatureDrilling, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // SpecificHeatCapacityGradientPerTemperatureDrilling
+         {QuantityEnum.IsobaricSpecificHeatCapacityDrilling, new Guid("05c59293-4e3b-4fc0-b579-12c241109610")},  // IsobaricSpecificHeatCapacityDrilling
+         {QuantityEnum.IsobaricSpecificHeatCapacityGradientPerTemperatureDrilling, new Guid("5f180166-bc44-4855-916f-236a5a31893d")},  // IsobaricSpecificHeatCapacityGradientPerTemperatureDrilling
          {QuantityEnum.StickDurationDrilling, new Guid("1e9bafaa-bbf1-4a29-9811-39b5e2280499")},  // StickDurationDrilling
          {QuantityEnum.ReciprocalLengthSurveyInstrumentDrilling, new Guid("c198aa3b-3b24-402d-b60b-f54ff9430f33")},  // ReciprocalLengthSurveyInstrumentDrilling
          {QuantityEnum.TemperatureGradientPerLengthDrilling, new Guid("82b91f3f-d1ec-476b-98e0-eedbba6281ec")},  // TemperatureGradientPerLengthDrilling
@@ -1564,7 +1564,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class SpecificHeatCapacityDrillingQuantity : SpecificHeatCapacityQuantity
+  public partial class IsobaricSpecificHeatCapacityDrillingQuantity : IsobaricSpecificHeatCapacityQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1596,7 +1596,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class SpecificHeatCapacityGradientPerTemperatureDrillingQuantity : SpecificHeatCapacityGradientPerTemperatureQuantity
+  public partial class IsobaricSpecificHeatCapacityGradientPerTemperatureDrillingQuantity : IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity
   {
     public new enum UnitChoicesEnum 
       {
@@ -1954,7 +1954,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class FormationResistivityDrillingQuantity : ResistivityQuantity
+  public partial class FormationResistivityDrillingQuantity : ElectricResistivityQuantity
   {
     public new enum UnitChoicesEnum 
       {

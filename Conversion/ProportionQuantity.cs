@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "proportion";
-        public override string SIUnitLabel { get; } = "";
+        public override string SIUnitLabelLatex { get; } = "";
         private static ProportionQuantity instance_ = null;
 
         public static ProportionQuantity Instance

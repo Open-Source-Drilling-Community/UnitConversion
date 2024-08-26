@@ -14,28 +14,28 @@ namespace ConversionUnitTest
         {
             double val = 1.0;
             double unitVal;
-            unitVal = ResistivityQuantity.Instance.FromSI(val, ResistivityQuantity.Instance.GetUnitChoice(ResistivityQuantity.UnitChoicesEnum.OhmMetre).ID);
+            unitVal = ElectricResistivityQuantity.Instance.FromSI(val, ElectricResistivityQuantity.Instance.GetUnitChoice(ElectricResistivityQuantity.UnitChoicesEnum.OhmMetre).ID);
             Assert.AreEqual(1.0 / Factors.Unit, unitVal);
-            unitVal = ResistivityQuantity.Instance.FromSI(val, ResistivityQuantity.Instance.GetUnitChoice(ResistivityQuantity.UnitChoicesEnum.GigaOhmMetre).ID);
+            unitVal = ElectricResistivityQuantity.Instance.FromSI(val, ElectricResistivityQuantity.Instance.GetUnitChoice(ElectricResistivityQuantity.UnitChoicesEnum.GigaOhmMetre).ID);
             Assert.AreEqual(1.0 / Factors.Giga, unitVal);
-            unitVal = ResistivityQuantity.Instance.FromSI(val, ResistivityQuantity.Instance.GetUnitChoice(ResistivityQuantity.UnitChoicesEnum.KiloOhmMetre).ID);
+            unitVal = ElectricResistivityQuantity.Instance.FromSI(val, ElectricResistivityQuantity.Instance.GetUnitChoice(ElectricResistivityQuantity.UnitChoicesEnum.KiloOhmMetre).ID);
             Assert.AreEqual(1.0 / Factors.Kilo, unitVal);
-            unitVal = ResistivityQuantity.Instance.FromSI(val, ResistivityQuantity.Instance.GetUnitChoice(ResistivityQuantity.UnitChoicesEnum.MegaOhmMetre).ID);
+            unitVal = ElectricResistivityQuantity.Instance.FromSI(val, ElectricResistivityQuantity.Instance.GetUnitChoice(ElectricResistivityQuantity.UnitChoicesEnum.MegaOhmMetre).ID);
             Assert.AreEqual(1.0 / Factors.Mega, unitVal);
         }
 
         [Test]
         public void Test2()
         {
-            Assert.AreEqual(0, ResistivityQuantity.Instance.PlaneAngleDimension);
-            Assert.AreEqual(-3, ResistivityQuantity.Instance.TimeDimension);
-            Assert.AreEqual(1, ResistivityQuantity.Instance.MassDimension);
-            Assert.AreEqual(3, ResistivityQuantity.Instance.LengthDimension);
-            Assert.AreEqual(0, ResistivityQuantity.Instance.TemperatureDimension);
-            Assert.AreEqual(-2, ResistivityQuantity.Instance.ElectricCurrentDimension);
-            Assert.AreEqual(0, ResistivityQuantity.Instance.AmountSubstanceDimension);
-            Assert.AreEqual(0, ResistivityQuantity.Instance.LuminousIntensityDimension);
-            Assert.AreEqual(0, ResistivityQuantity.Instance.SolidAngleDimension);
+            Assert.AreEqual(0, ElectricResistivityQuantity.Instance.PlaneAngleDimension);
+            Assert.AreEqual(-3, ElectricResistivityQuantity.Instance.TimeDimension);
+            Assert.AreEqual(1, ElectricResistivityQuantity.Instance.MassDimension);
+            Assert.AreEqual(3, ElectricResistivityQuantity.Instance.LengthDimension);
+            Assert.AreEqual(0, ElectricResistivityQuantity.Instance.TemperatureDimension);
+            Assert.AreEqual(-2, ElectricResistivityQuantity.Instance.ElectricCurrentDimension);
+            Assert.AreEqual(0, ElectricResistivityQuantity.Instance.AmountSubstanceDimension);
+            Assert.AreEqual(0, ElectricResistivityQuantity.Instance.LuminousIntensityDimension);
+            Assert.AreEqual(0, ElectricResistivityQuantity.Instance.SolidAngleDimension);
         }
     }
 }

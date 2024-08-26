@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "k";
         public override string SIUnitName { get; } = "watt per metre kelvin";
-        public override string SIUnitLabel { get; } = "W/m•K";
+        public override string SIUnitLabelLatex { get; } = "\\frac{W}{m \\cdot K}";
         public override double LengthDimension { get; } = 1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;

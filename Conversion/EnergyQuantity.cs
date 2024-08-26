@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "E";
         public override string SIUnitName { get; } = "joule";
-        public override string SIUnitLabel { get; } = "J";
+        public override string SIUnitLabelLatex { get; } = "J";
         public override double LengthDimension { get; } = 2;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;

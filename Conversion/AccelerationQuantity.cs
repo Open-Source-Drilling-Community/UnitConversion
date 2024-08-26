@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "γ";
         public override string SIUnitName { get; } = "metre per second squared";
-        public override string SIUnitLabel { get; } = "m/s²";
+        public override string SIUnitLabelLatex { get; } = "\\frac{m}{s^{2}}";
         public override double LengthDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
         private static AccelerationQuantity instance_ = null;

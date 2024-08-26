@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "kelvin per metre";
-        public override string SIUnitLabel { get; } = "K/m";
+        public override string SIUnitLabelLatex { get; } = "\\frac{K}{m}";
         public override double LengthDimension { get; } = -1;
         public override double TemperatureDimension { get; } = 1;
         private static TemperatureGradientPerLengthQuantity instance_ = null;

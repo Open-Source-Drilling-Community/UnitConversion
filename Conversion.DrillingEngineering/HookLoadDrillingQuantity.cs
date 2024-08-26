@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
     public partial class HookLoadDrillingQuantity : GravitationalLoadQuantity
     {
         public override string SIUnitName { get; } = "kilogram";
-        public override string SIUnitLabel { get; } = "kg";
+        public override string SIUnitLabelLatex { get; } = "kg";
         public override double? MeaningfulPrecisionInSI { get; } = 100;
         private static HookLoadDrillingQuantity instance_ = null;
 

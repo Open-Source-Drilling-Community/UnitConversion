@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "V";
         public override string SIUnitName { get; } = "cubic metre";
-        public override string SIUnitLabel { get; } = "m³";
+        public override string SIUnitLabelLatex { get; } = "m^{3}";
         public override double LengthDimension { get; } = 3;
         private static VolumeQuantity instance_ = null;
 

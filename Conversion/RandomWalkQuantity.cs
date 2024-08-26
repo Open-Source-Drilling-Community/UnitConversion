@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "radian per square root second";
-        public override string SIUnitLabel { get; } = "rad/√s";
+        public override string SIUnitLabelLatex { get; } = "\\frac{rad}{\\sqrt{s}}";
         public override double PlaneAngleDimension { get; } = 1;
         public override double TimeDimension { get; } = -1.0/2.0;
         private static RandomWalkQuantity instance_ = null;

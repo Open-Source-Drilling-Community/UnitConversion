@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string DimensionSymbol { get; } = "t";
         public override string SIUnitName { get; } = "second";
-        public override string SIUnitLabel { get; } = "s";
+        public override string SIUnitLabelLatex { get; } = "s";
         private static TimeQuantity instance_ = null;
         public override double TimeDimension { get; } = 1;
 

@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "N";
         public override string SIUnitName { get; } = "mole";
 
-        public override string SIUnitLabel { get; } = "mol";
+        public override string SIUnitLabelLatex { get; } = "mol";
         public override double AmountSubstanceDimension { get; } = 1;
 
         private static AmountSubstanceQuantity instance_ = null;
@@ -98,7 +98,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "This is one of the nine fundamental dimensions in the International System of Units (SI).";
             DescriptionMD += "A fundamental quantity does not depend on any combinations of other fundamental dimensions.";
-            DescriptionMD += "It is denoted \" + GetDimensionsMD() + \".";
+            DescriptionMD += "It is denoted " + GetDimensionsMD() + ".";
             InitializeUnitChoices();
         }
     }

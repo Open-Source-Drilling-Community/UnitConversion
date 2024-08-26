@@ -9,7 +9,7 @@ namespace OSDC.UnitConversion.Conversion
         public override string DimensionSymbol { get; } = "";
         public override string SIUnitName { get; } = "steradian";
 
-        public override string SIUnitLabel { get; } = "sr";
+        public override string SIUnitLabelLatex { get; } = "sr";
 
         public override double SolidAngleDimension { get; } = 1;
 

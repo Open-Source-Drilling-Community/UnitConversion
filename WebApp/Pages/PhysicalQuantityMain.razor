@@ -26,13 +26,15 @@ else
         </ColGroup>
         <HeaderContent>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.Name)">Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabelLatexEnclosed)">SI Unit Symbol</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.PhysicalDimensionLatex)">Dimension in Latex</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Quantity!.Name</MudTd>
-            <MudTd>@context.Quantity!.SIUnitLabel</MudTd>
+            <MudTd>
+                <MudMarkdown Value="@context.Quantity!.SIUnitLabelLatexEnclosed" />
+            </MudTd>
             <MudTd>@context.Quantity!.SIUnitName</MudTd>
             <MudTd>@context.Quantity!.PhysicalDimensionLatex</MudTd>
         </RowTemplate>
