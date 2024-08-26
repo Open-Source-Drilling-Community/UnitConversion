@@ -26,15 +26,13 @@ else
         </ColGroup>
         <HeaderContent>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.Name)">Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabelLatexEnclosed)">SI Unit Symbol</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.PhysicalDimensionLatex)">Dimension in Latex</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Quantity!.Name</MudTd>
-            <MudTd>
-                <MudMarkdown Value="@context.Quantity!.SIUnitLabelLatexEnclosed" />
-            </MudTd>
+            <MudTd>@context.Quantity!.SIUnitLabel</MudTd>
             <MudTd>@context.Quantity!.SIUnitName</MudTd>
             <MudTd>@context.Quantity!.PhysicalDimensionLatex</MudTd>
         </RowTemplate>
@@ -147,14 +145,7 @@ else
 
     // UI related variables
     private string searchString = "";
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // Call the JavaScript function after rendering
-            //await JS.InvokeVoidAsync("renderMathInMarkdown");
-        }
-    }
+
     protected override async Task OnInitializedAsync()
     {
         try
@@ -247,8 +238,6 @@ else
         {
             int idx = physicalQuantityList.FindIndex(f => f.Quantity!.ID == args.Item.Quantity!.ID);
             physicalQuantityList[idx].ShowDetails = !physicalQuantityList[idx].ShowDetails;
-            //InvokeAsync(StateHasChanged).GetAwaiter().GetResult();  // Ensures the content is updated in the DOM
-            //JS.InvokeVoidAsync("renderMathInMarkdown").GetAwaiter().GetResult();
         }
         catch (Exception ex)
         {

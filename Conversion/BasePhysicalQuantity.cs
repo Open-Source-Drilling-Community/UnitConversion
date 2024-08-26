@@ -99,6 +99,35 @@ namespace OSDC.UnitConversion.Conversion
             }
         }
         /// <summary>
+        /// return the unit label for the SI Unit choice as defined in the unit choices.
+        /// </summary>
+        public virtual string SIUnitLabel
+        {
+            get
+            {
+                UnitChoice? SIChoice = null;
+                if (UnitChoices != null)
+                {
+                    foreach (var UnitChoice in UnitChoices)
+                    {
+                        if (UnitChoice != null && UnitChoice.IsSI)
+                        {
+                            SIChoice = UnitChoice;
+                            break;
+                        }
+                    }
+                }
+                if (SIChoice != null && !string.IsNullOrEmpty(SIChoice.UnitLabel))
+                {
+                    return SIChoice.UnitLabel;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
+        /// <summary>
         /// the possible non SI unit choices for this base unit
         /// </summary>
         public List<UnitChoice> UnitChoices { get; protected set; } = null;

@@ -809,6 +809,11 @@
             "nullable": true,
             "readOnly": true
           },
+          "SIUnitLabel": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "UnitChoices": {
             "type": "array",
             "items": {
