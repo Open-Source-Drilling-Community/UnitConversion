@@ -125,7 +125,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"- **$d\theta$** is the infinitesimal change in the angle. " + Environment.NewLine;
             DescriptionMD += @"- **$dL$** is the infinitesimal change in the length along the direction of interest. " + Environment.NewLine;
             DescriptionMD += @"1. **Dimension**: The angle $\theta$ has the dimension of **plane angle**, and the length $L$ is one of the fundamental dimensions. Therefore, the dimension of **angle variation gradient** is: " + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$ " + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$ " + Environment.NewLine;
             DescriptionMD += @"2. **Interpretation**: This gradient describes how quickly the angle changes as you move along the length. For example, in fields like physics or engineering, this could describe the bending of a beam(where the angle describes the deflection) or the rate of turning along a curved path. " + Environment.NewLine;
             DescriptionMD += @"3. **Applications**: This concept is common in areas like differential geometry, mechanics (bending beams or wires), and in the analysis of curvature in space (where curvature can be described as the rate of change of the angle with respect to the arc length). " + Environment.NewLine;
             InitializeUnitChoices();

@@ -241,7 +241,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Length is a measure of distance." + Environment.NewLine;
             DescriptionMD += @"The dimension of length is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

@@ -227,7 +227,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"A mass density gradient per length is the first derivative of a mass density compared to a distance: $\frac{d\rho}{ds}$, where $\rho$ is the mass density and $s$ is a distance." + Environment.NewLine;
             DescriptionMD += @"The dimension of mass density gradient per length is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

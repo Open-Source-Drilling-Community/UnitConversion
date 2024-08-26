@@ -65,7 +65,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Interfacial tension is the force per unit length acting along the boundary between two immiscible liquids, resisting their mixing." + Environment.NewLine;
             DescriptionMD += @"The dimension of interfacial tension is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

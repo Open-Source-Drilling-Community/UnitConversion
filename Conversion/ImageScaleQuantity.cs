@@ -67,7 +67,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Image scale refers to the resolution or level of detail in an image." + Environment.NewLine;
             DescriptionMD += @"The dimension of image scale is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();       
         }
 

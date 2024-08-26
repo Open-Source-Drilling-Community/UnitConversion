@@ -170,7 +170,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Electric current is the flow of electric charge through a conductor or circuit." + Environment.NewLine;
             DescriptionMD += @"The dimension of electric current is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

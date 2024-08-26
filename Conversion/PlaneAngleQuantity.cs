@@ -125,7 +125,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"A plane angle is the angle formed between two intersecting lines or planes in a two-dimensional or three-dimensional space." + Environment.NewLine;
             DescriptionMD += @"The dimension of plane angle is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

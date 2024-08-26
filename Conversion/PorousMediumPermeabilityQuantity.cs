@@ -76,7 +76,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"The permeability is a property of porous medium that quantifies its ability to allow fluids to pass through it." + Environment.NewLine;
             DescriptionMD += @"The dimension of porous medium permeability is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

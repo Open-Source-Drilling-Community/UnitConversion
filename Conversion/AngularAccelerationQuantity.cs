@@ -262,7 +262,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"An angular acceleration is the second derivative compared to time of a plan angle: $\frac{d^2\theta}{dt^2}$." + Environment.NewLine;
             DescriptionMD += @"The dimension of angular acceleration is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

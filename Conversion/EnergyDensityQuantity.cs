@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion
     public partial class EnergyDensityQuantity : DerivedBasePhysicalQuantity
     {
         public override string SIUnitName { get; } = "joule per cubic metre";
-        public override string SIUnitLabelLatex { get; } = "\\frac{J}[m^{3}}";
+        public override string SIUnitLabelLatex { get; } = "\\frac{J}{m^{3}}";
         public override double LengthDimension { get; } = -1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
@@ -373,7 +373,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Energy density is the amount of energy stored per unit volume or mass of a substance or system." + Environment.NewLine;
             DescriptionMD += @"The dimension of energy density is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

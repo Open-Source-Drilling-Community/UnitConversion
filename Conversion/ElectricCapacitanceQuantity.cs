@@ -82,7 +82,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"lectric capacitance is the ability of a capacitor or a component to store electrical charge per unit voltage applied across it." + Environment.NewLine;
             DescriptionMD += @"The dimension of electric capacitance is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

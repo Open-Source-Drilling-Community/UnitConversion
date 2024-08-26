@@ -79,7 +79,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Temperature is a measure of the average kinetic energy of particles in a substance, indicating how hot or cold the substance is." + Environment.NewLine;
             DescriptionMD += @"The dimension of temperature is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

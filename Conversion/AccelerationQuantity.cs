@@ -190,7 +190,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "3. **Acceleration** is the rate of change of velocity with respect to time:" + Environment.NewLine;
             DescriptionMD += "$$\\text{Acceleration} = \\frac{\\text{Velocity}}{\\text{Time}} = \\frac{L T^{ -1}}{T} = L T ^{-2}$$" + Environment.NewLine;
-            DescriptionMD += "Therefore, the dimension of acceleration is " + GetDimensionsMD() + "." + Environment.NewLine;
+            DescriptionMD += "Therefore, the dimension of acceleration is " + GetDimensionsEnclosed() + "." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

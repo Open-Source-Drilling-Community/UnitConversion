@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "watt per metre kelvin per kelvin";
-        public override string SIUnitLabelLatex { get; } = "\\frac{(\\frac{W}{(m \\cdot K})}{K}";
+        public override string SIUnitLabelLatex { get; } = "\\frac{(\\frac{W}{(m \\cdot K)}}{K}";
         public override double LengthDimension { get; } = 1;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -3;
@@ -74,7 +74,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"A thermal conductivity gradient per temperature is the first derivative of a thermal conductivity compared to temperature: $\frac{dk}{dT}$, where $k$ is a thermal conductivity and $T$ is temperature. " + Environment.NewLine;
             DescriptionMD += @"The dimension of thermal conductivity gradient per temperature is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

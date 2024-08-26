@@ -67,7 +67,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Electric resistivity is a material's inherent property that measures how strongly it resists the flow of electric current." + Environment.NewLine;
             DescriptionMD += @"The dimension of resistivity is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

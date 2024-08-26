@@ -165,7 +165,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"$$[\theta]$$" + Environment.NewLine;
             DescriptionMD += @"3. Angle Magnetic Flux Density" + Environment.NewLine;
             DescriptionMD += @"So the dimension of **angle magnetic flux density** is:" + Environment.NewLine;
-            DescriptionMD += @"$" + GetDimensionsMD() + "$" + Environment.NewLine;
+            DescriptionMD += @"$" + GetDimensionsEnclosed() + "$" + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

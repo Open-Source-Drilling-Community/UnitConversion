@@ -93,7 +93,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"An angular velocity is the first derivative compared to time of a plan angle: $\frac{d\theta}{dt}$." + Environment.NewLine;
             DescriptionMD += @"The dimension of angular velocity is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

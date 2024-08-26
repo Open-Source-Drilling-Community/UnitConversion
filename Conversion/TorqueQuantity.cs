@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "newton metre";
-        public override string SIUnitLabelLatex { get; } = "N \\ cdot m";
+        public override string SIUnitLabelLatex { get; } = "N \\cdot m";
         public override double LengthDimension { get; } = 2;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
@@ -108,7 +108,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"A torque is a measure of the rotational force applied to a body around an axis." + Environment.NewLine;
             DescriptionMD += @"The dimension of torque is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

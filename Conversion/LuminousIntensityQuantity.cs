@@ -117,7 +117,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"Luminous intensity is the measure of the amount of visible light emitted by a source in a particular direction." + Environment.NewLine;
             DescriptionMD += @"The dimension of luminous intensity is:" + Environment.NewLine;
-            DescriptionMD += "$" + GetDimensionsMD() + "$." + Environment.NewLine;
+            DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             InitializeUnitChoices();
         }
     }

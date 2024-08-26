@@ -57,7 +57,7 @@ namespace OSDC.UnitConversion.Conversion
                     {
                         latex += ",";
                     }
-                    latex += SIUnitLabelLatex;
+                    latex += "(" + SIUnitLabelLatex + ")";
                 }
                 if (!string.IsNullOrEmpty(latex))
                 {
@@ -295,11 +295,11 @@ namespace OSDC.UnitConversion.Conversion
             }
             if (Math.Abs(PlaneAngleDimension) > precision)
             {
-                dims.Add(new Tuple<double, string>(PlaneAngleDimension, "\\theta"));
+                dims.Add(new Tuple<double, string>(PlaneAngleDimension, "{\\theta}"));
             }
             if (Math.Abs(SolidAngleDimension) > precision)
             {
-                dims.Add(new Tuple<double, string>(SolidAngleDimension, "\\Omega"));
+                dims.Add(new Tuple<double, string>(SolidAngleDimension, "{\\Omega}"));
             }
             dims.Sort((x, y) => y.Item1.CompareTo(x.Item1));
             string dimensions = string.Empty;
@@ -312,15 +312,19 @@ namespace OSDC.UnitConversion.Conversion
                 }
                 dimensions += "";
             }
+            if (!string.IsNullOrEmpty(dimensions))
+            {
+                dimensions = "[" + dimensions + "]";
+            }
             return dimensions;
         }
 
-        public string GetDimensionsMD()
+        public string GetDimensionsEnclosed()
         {
             string dimensions = GetDimensionsLatex();
             if (!string.IsNullOrEmpty(dimensions))
             {
-                dimensions = "$[" + dimensions + "]$";
+                dimensions = "$" + dimensions + "$";
             }
             return dimensions;
         }

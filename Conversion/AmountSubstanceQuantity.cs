@@ -98,7 +98,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "This is one of the nine fundamental dimensions in the International System of Units (SI).";
             DescriptionMD += "A fundamental quantity does not depend on any combinations of other fundamental dimensions.";
-            DescriptionMD += "It is denoted " + GetDimensionsMD() + ".";
+            DescriptionMD += "It is denoted " + GetDimensionsEnclosed() + ".";
             InitializeUnitChoices();
         }
     }
