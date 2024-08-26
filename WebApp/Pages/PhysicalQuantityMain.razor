@@ -25,10 +25,10 @@ else
             <col />
         </ColGroup>
         <HeaderContent>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.Name)">Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.PhysicalDimensionLatex)">Dimension in Latex</MudTableSortLabel></MudTh>
+            <MudTh Style="width: 40%"><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.Name)">Name</MudTableSortLabel></MudTh>
+            <MudTh Style="width: 20%"><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitLabel)">SI Unit Symbol</MudTableSortLabel></MudTh>
+            <MudTh Style="width: 20%"><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.SIUnitName)">SI Unit Name</MudTableSortLabel></MudTh>
+            <MudTh Style="width: 20%"><MudTableSortLabel SortBy="new Func<VisualPhysicalQuantity, object>(x=>x.Quantity!.PhysicalDimensionLatex)">Dimension in Latex</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd>@context.Quantity!.Name</MudTd>
@@ -106,7 +106,7 @@ else
                         </MudCardContent>
                     </MudCard>
                 </MudTd>
-                <MudTd colspan="2">
+                <MudTd colspan="3">
                     <MudCard Outlined="true">
                         <MudCardContent>
                             <MudText><strong>Unit Choices</strong></MudText>
@@ -131,7 +131,7 @@ else
                         </MudCardContent>
                     </MudCard>
                 </MudTd>
-                <MudTd colspan="2" />
+                <MudTd colspan="3" />
             }
         </ChildRowContent>
     </MudTable>
