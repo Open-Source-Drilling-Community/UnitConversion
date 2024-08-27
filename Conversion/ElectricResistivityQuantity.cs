@@ -68,6 +68,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"Electric resistivity is a material's inherent property that measures how strongly it resists the flow of electric current." + Environment.NewLine;
             DescriptionMD += @"The dimension of resistivity is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

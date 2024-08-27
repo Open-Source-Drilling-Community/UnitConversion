@@ -30,6 +30,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of specific heat capacity in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + IsobaricSpecificHeatCapacityQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityQuantity.UnitChoicesEnum.JoulePerKilogramKelvin).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityQuantity.UnitChoicesEnum.JoulePerKilogramKelvin));
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityQuantity.UnitChoicesEnum.JoulePerGramKelvin));

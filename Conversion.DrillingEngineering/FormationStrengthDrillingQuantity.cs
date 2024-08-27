@@ -30,6 +30,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of formation strength in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.Pascal).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.Gigapascal));
             this.UnitChoices.Add(MaterialStrengthQuantity.Instance.GetUnitChoice(MaterialStrengthQuantity.UnitChoicesEnum.Megapascal));

@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += @"The meaningful precision of small proportion is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Proportion).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Proportion));
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent));

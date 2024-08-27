@@ -191,6 +191,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += "3. **Acceleration** is the rate of change of velocity with respect to time:" + Environment.NewLine;
             DescriptionMD += "$$\\text{Acceleration} = \\frac{\\text{Velocity}}{\\text{Time}} = \\frac{L T^{ -1}}{T} = L T ^{-2}$$" + Environment.NewLine;
             DescriptionMD += "Therefore, the dimension of acceleration is " + GetDimensionsEnclosed() + "." + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

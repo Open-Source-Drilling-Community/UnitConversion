@@ -30,6 +30,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += @"A rotation frequency rate of change is the time derivative of a rotation frequency." + Environment.NewLine;
             DescriptionMD += @"The meaningful precision of rotational frequency is typically: " + MeaningfulPrecisionInSI.ToString() + " " + FrequencyRateOfChangeQuantity.Instance.GetUnitChoice(FrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(FrequencyRateOfChangeQuantity.Instance.GetUnitChoice(FrequencyRateOfChangeQuantity.UnitChoicesEnum.HertzPerSecond));
             this.UnitChoices.Add(FrequencyRateOfChangeQuantity.Instance.GetUnitChoice(FrequencyRateOfChangeQuantity.UnitChoicesEnum.RpmPerSecond));

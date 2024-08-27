@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of power in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt));
             this.UnitChoices.Add(PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Kilowatt));

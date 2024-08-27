@@ -102,6 +102,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"Energy is the quantitative property that is transferred to a body or to a physical system, recognizable in the performance of work and in the form of heat and light. Energy is a conserved quantity—the law of conservation of energy states that energy can be converted in form, but not created or destroyed; matter and energy may also be converted to one another." + Environment.NewLine;
             DescriptionMD += @"The dimension of energy is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

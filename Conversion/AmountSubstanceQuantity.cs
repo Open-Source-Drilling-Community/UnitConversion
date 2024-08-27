@@ -99,6 +99,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += "This is one of the nine fundamental dimensions in the International System of Units (SI).";
             DescriptionMD += "A fundamental quantity does not depend on any combinations of other fundamental dimensions.";
             DescriptionMD += "It is denoted " + GetDimensionsEnclosed() + ".";
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

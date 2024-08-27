@@ -290,6 +290,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"A volumetric flowrate is the volume of fluid that passes per unit time: $\frac{dV}{dt}$, where $V$ is a volume and $t$ is time." + Environment.NewLine;
             DescriptionMD += @"The dimension of volumetric flowrate is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

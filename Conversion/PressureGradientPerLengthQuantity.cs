@@ -67,6 +67,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"A pressure gradient per length is the first derivative of a pressure compared to a distance: $\frac{dp}{ds}$, where $p$ is a pressure and $s$ is a distance." + Environment.NewLine;
             DescriptionMD += @"The dimension of pressure gradient per length is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

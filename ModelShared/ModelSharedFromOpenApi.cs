@@ -1947,6 +1947,84 @@ namespace OSDC.UnitConversion.ModelShared
             }
         }
 
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UsageStatistics> GetUsageStatisticsAsync()
+        {
+            return GetUsageStatisticsAsync(System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>OK</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UsageStatistics> GetUsageStatisticsAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "UsageStatistics"
+                    urlBuilder_.Append("UsageStatistics");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UsageStatistics>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
         protected struct ObjectResponseResult<T>
         {
             public ObjectResponseResult(T responseObject, string responseText)
@@ -2087,9 +2165,6 @@ namespace OSDC.UnitConversion.ModelShared
         [System.Text.Json.Serialization.JsonPropertyName("DescriptionMD")]
         public string DescriptionMD { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("PhysicalDimensionLatex")]
-        public string PhysicalDimensionLatex { get; set; }
-
         [System.Text.Json.Serialization.JsonPropertyName("UsualNames")]
         public System.Collections.Generic.ICollection<string> UsualNames { get; set; }
 
@@ -2098,12 +2173,6 @@ namespace OSDC.UnitConversion.ModelShared
 
         [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabelLatex")]
         public string SIUnitLabelLatex { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabelLatexEnclosed")]
-        public string SIUnitLabelLatexEnclosed { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabel")]
-        public string SIUnitLabel { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("UnitChoices")]
         public System.Collections.Generic.ICollection<UnitChoice> UnitChoices { get; set; }
@@ -2141,6 +2210,15 @@ namespace OSDC.UnitConversion.ModelShared
         [System.Text.Json.Serialization.JsonPropertyName("TypicalSymbol")]
         public string TypicalSymbol { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("SemanticExample")]
+        public System.Collections.Generic.ICollection<SemanticFact> SemanticExample { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("SIUnitLabel")]
+        public string SIUnitLabel { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("PhysicalDimensionLatex")]
+        public string PhysicalDimensionLatex { get; set; }
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
@@ -2161,6 +2239,21 @@ namespace OSDC.UnitConversion.ModelShared
 
         [System.Text.Json.Serialization.JsonPropertyName("IsSI")]
         public bool IsSI { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class SemanticFact
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("Subject")]
+        public string Subject { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("Verb")]
+        public string Verb { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("Object")]
+        public string Object { get; set; }
 
     }
 
@@ -2224,6 +2317,27 @@ namespace OSDC.UnitConversion.ModelShared
 
         [System.Text.Json.Serialization.JsonPropertyName("IsSI")]
         public bool IsSI { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class CountPerDay
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("Date")]
+        public System.DateTimeOffset Date { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("Count")]
+        public long Count { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class History
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("Data")]
+        public System.Collections.Generic.ICollection<CountPerDay> Data { get; set; }
 
     }
 
@@ -2308,6 +2422,90 @@ namespace OSDC.UnitConversion.ModelShared
 
         [System.Text.Json.Serialization.JsonPropertyName("QuantityConversionList")]
         public System.Collections.Generic.ICollection<QuantityConversion> QuantityConversionList { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.0.8.0 (NJsonSchema v11.0.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class UsageStatistics
+    {
+
+        [System.Text.Json.Serialization.JsonPropertyName("LastSaved")]
+        public System.DateTimeOffset LastSaved { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("BackInterval")]
+        public string BackInterval { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("PhysicalQuantityControllerGetAllIDPerDay")]
+        public History PhysicalQuantityControllerGetAllIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("PhysicalQuantityControllerGetAllPerDay")]
+        public History PhysicalQuantityControllerGetAllPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("PhysicalQuantityControllerGetByIDPerDay")]
+        public History PhysicalQuantityControllerGetByIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerGetAllIDPerDay")]
+        public History UnitConversionSetControllerGetAllIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerGetAllMetaInfoPerDay")]
+        public History UnitConversionSetControllerGetAllMetaInfoPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerGetAllPerDay")]
+        public History UnitConversionSetControllerGetAllPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerGetByIDPerDay")]
+        public History UnitConversionSetControllerGetByIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerPostPerDay")]
+        public History UnitConversionSetControllerPostPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerPutPerDay")]
+        public History UnitConversionSetControllerPutPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitConversionSetControllerDeletePerDay")]
+        public History UnitConversionSetControllerDeletePerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerGetAllIDPerDay")]
+        public History UnitSystemControllerGetAllIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerGetAllLightPerDay")]
+        public History UnitSystemControllerGetAllLightPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerGetAllPerDay")]
+        public History UnitSystemControllerGetAllPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerGetByIDPerDay")]
+        public History UnitSystemControllerGetByIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerPostPerDay")]
+        public History UnitSystemControllerPostPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerPutPerDay")]
+        public History UnitSystemControllerPutPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemControllerDeletePerDay")]
+        public History UnitSystemControllerDeletePerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerGetAllIDPerDay")]
+        public History UnitSystemConversionSetControllerGetAllIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerGetAllMetaInfoPerDay")]
+        public History UnitSystemConversionSetControllerGetAllMetaInfoPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerGetAllPerDay")]
+        public History UnitSystemConversionSetControllerGetAllPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerGetByIDPerDay")]
+        public History UnitSystemConversionSetControllerGetByIDPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerPostPerDay")]
+        public History UnitSystemConversionSetControllerPostPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerPutPerDay")]
+        public History UnitSystemConversionSetControllerPutPerDay { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("UnitSystemConversionSetControllerDeletePerDay")]
+        public History UnitSystemConversionSetControllerDeletePerDay { get; set; }
 
     }
 

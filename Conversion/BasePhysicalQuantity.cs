@@ -9,6 +9,31 @@ using System.Linq.Expressions;
 
 namespace OSDC.UnitConversion.Conversion
 {
+    public class SemanticFact
+    {
+        public string? Subject { get; set; } = null;
+        public string? Verb { get; set; } = null;
+        public string? Object { get; set; } = null;
+        /// <summary>
+        /// default constructor
+        /// </summary>
+        public SemanticFact()
+        {
+
+        }
+        /// <summary>
+        /// Initialization constructor
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <param name="verb"></param>
+        /// <param name="object"></param>
+        public SemanticFact(string subject, string verb, string @object)
+        {
+            Subject = subject;
+            Verb = verb;
+            Object = @object;
+        }
+    }
     public partial class BasePhysicalQuantity
     {
         private static List<BasePhysicalQuantity> availableBasePhysicalQuantities_ = null;
@@ -42,33 +67,6 @@ namespace OSDC.UnitConversion.Conversion
         /// Description using the Markdown style
         /// </summary>
         public string DescriptionMD { get; protected set; } = string.Empty;
-        public string PhysicalDimensionLatex
-        {
-            get
-            {
-                string latex = GetDimensionsLatex();
-                if (latex == null)
-                {
-                    latex = string.Empty;
-                }
-                if (!string.IsNullOrEmpty(SIUnitLabelLatex))  
-                {
-                    if (!string.IsNullOrEmpty(latex))
-                    {
-                        latex += ",";
-                    }
-                    latex += "(" + SIUnitLabelLatex + ")";
-                }
-                if (!string.IsNullOrEmpty(latex))
-                {
-                    return "$" + latex + "$";
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-        }
         /// <summary>
         /// usual names of the physical quantity
         /// </summary>
@@ -81,52 +79,6 @@ namespace OSDC.UnitConversion.Conversion
         /// the SI unit symbol for this base unit
         /// </summary>
         public virtual string SIUnitLabelLatex { get; }
-        /// <summary>
-        /// same as SIUnitLabelLatex but enclosed in between "$"
-        /// </summary>
-        public virtual string SIUnitLabelLatexEnclosed
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty (SIUnitLabelLatex))
-                {
-                    return "$" + SIUnitLabelLatex + "$";
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-        }
-        /// <summary>
-        /// return the unit label for the SI Unit choice as defined in the unit choices.
-        /// </summary>
-        public virtual string SIUnitLabel
-        {
-            get
-            {
-                UnitChoice? SIChoice = null;
-                if (UnitChoices != null)
-                {
-                    foreach (var UnitChoice in UnitChoices)
-                    {
-                        if (UnitChoice != null && UnitChoice.IsSI)
-                        {
-                            SIChoice = UnitChoice;
-                            break;
-                        }
-                    }
-                }
-                if (SIChoice != null && !string.IsNullOrEmpty(SIChoice.UnitLabel))
-                {
-                    return SIChoice.UnitLabel;
-                }
-                else
-                {
-                    return string.Empty;
-                }
-            }
-        }
         /// <summary>
         /// the possible non SI unit choices for this base unit
         /// </summary>
@@ -174,11 +126,73 @@ namespace OSDC.UnitConversion.Conversion
         /// the symbol used for this base unit in physical quantity descriptions: L, T, M, ...
         /// </summary>
         public virtual string TypicalSymbol { get; } = null;
-
+        /// <summary>
+        /// A list of semantic facts that describes an example where the quantity is used.
+        /// </summary>
+        public virtual List<SemanticFact> SemanticExample { get; protected set; } = null;
+        /// <summary>
+        /// return the unit label for the SI Unit choice as defined in the unit choices.
+        /// </summary>
+        public virtual string SIUnitLabel
+        {
+            get
+            {
+                UnitChoice? SIChoice = null;
+                if (UnitChoices != null)
+                {
+                    foreach (var UnitChoice in UnitChoices)
+                    {
+                        if (UnitChoice != null && UnitChoice.IsSI)
+                        {
+                            SIChoice = UnitChoice;
+                            break;
+                        }
+                    }
+                }
+                if (SIChoice != null && !string.IsNullOrEmpty(SIChoice.UnitLabel))
+                {
+                    return SIChoice.UnitLabel;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
+        /// <summary>
+        /// return the latex representation of the physical dimension in between square brackets and the SI Unit Label in between parentheses.
+        /// </summary>
+        public string PhysicalDimensionLatex
+        {
+            get
+            {
+                string latex = GetDimensionsLatex();
+                if (latex == null)
+                {
+                    latex = string.Empty;
+                }
+                if (!string.IsNullOrEmpty(SIUnitLabelLatex))
+                {
+                    if (!string.IsNullOrEmpty(latex))
+                    {
+                        latex += ",";
+                    }
+                    latex += "(" + SIUnitLabelLatex + ")";
+                }
+                if (!string.IsNullOrEmpty(latex))
+                {
+                    return "$" + latex + "$";
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
         //////////////////////
         /// Static methods ///
         //////////////////////
-        
+
         private static void Initialize()
         {
             Assembly assembly = Assembly.GetAssembly(typeof(BasePhysicalQuantity));
@@ -705,6 +719,26 @@ namespace OSDC.UnitConversion.Conversion
             else
             {
                 throw new Exception("unknown unit choice");
+            }
+        }
+        protected virtual List<SemanticFact> GetSemanticExample()
+        {
+            return GetSemanticExample(Name);
+        }
+        protected virtual List<SemanticFact> GetSemanticExample(string radical)
+        {
+            if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(radical)) 
+            {
+                List<SemanticFact> result = new List<SemanticFact>();
+                result.Add(new SemanticFact(radical + "-Value", "BelongsToClass", "DynamicDrillingSignal"));
+                result.Add(new SemanticFact(radical + "-Signal", "BelongsToClass", "Measurement"));
+                result.Add(new SemanticFact(radical + "-Signal", "HasDynamicValue", radical + "-Value"));
+                result.Add(new SemanticFact(radical + "-Signal", "IsOfMeasurableQuantity", Name));
+                return result;
+            }
+            else
+            {
+                return null;
             }
         }
      }

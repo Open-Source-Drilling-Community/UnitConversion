@@ -30,6 +30,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of thermal conductivity gradient per temperature in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ThermalConductivityGradientPerTemperatureQuantity.Instance.GetUnitChoice(ThermalConductivityGradientPerTemperatureQuantity.UnitChoicesEnum.WattPerMetreKelvinPerKelvin).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(ThermalConductivityGradientPerTemperatureQuantity.Instance.GetUnitChoice(ThermalConductivityGradientPerTemperatureQuantity.UnitChoicesEnum.WattPerMetreKelvinPerKelvin));
             this.UnitChoices.Add(ThermalConductivityGradientPerTemperatureQuantity.Instance.GetUnitChoice(ThermalConductivityGradientPerTemperatureQuantity.UnitChoicesEnum.BritishThermalUnitInchPerHourSquareFootDegreeFahrenheitSquared));

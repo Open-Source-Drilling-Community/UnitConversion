@@ -30,6 +30,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of pressure gradient per length in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PressureGradientPerLengthQuantity.Instance.GetUnitChoice(PressureGradientPerLengthQuantity.UnitChoicesEnum.PascalPerMetre).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(PressureGradientPerLengthQuantity.Instance.GetUnitChoice(PressureGradientPerLengthQuantity.UnitChoicesEnum.PascalPerMetre));
             this.UnitChoices.Add(PressureGradientPerLengthQuantity.Instance.GetUnitChoice(PressureGradientPerLengthQuantity.UnitChoicesEnum.BarPerMetre));

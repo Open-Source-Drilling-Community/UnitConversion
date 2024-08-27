@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of angular acceleration in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + AngularAccelerationQuantity.Instance.GetUnitChoice(AngularAccelerationQuantity.UnitChoicesEnum.RadianPerSecondSquared).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(AngularAccelerationQuantity.Instance.GetUnitChoice(AngularAccelerationQuantity.UnitChoicesEnum.RadianPerSecondSquared));
             this.UnitChoices.Add(AngularAccelerationQuantity.Instance.GetUnitChoice(AngularAccelerationQuantity.UnitChoicesEnum.DegreePerSecondSquared));

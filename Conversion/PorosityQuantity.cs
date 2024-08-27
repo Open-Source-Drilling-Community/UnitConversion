@@ -29,6 +29,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += @"Porosity is the measure of the void spaces or pores within a material, expressed as a fraction or percentage of the total volume." + Environment.NewLine;
             DescriptionMD += @"The meaningful precision of porosity is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Proportion).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Proportion));
             this.UnitChoices.Add(ProportionQuantity.Instance.GetUnitChoice(ProportionQuantity.UnitChoicesEnum.Percent));

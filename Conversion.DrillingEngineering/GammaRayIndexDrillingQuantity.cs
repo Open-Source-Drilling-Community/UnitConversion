@@ -38,6 +38,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD += "- The Gamma Ray API is a unit-less scale used to compare different gamma ray intensity levels, and therefore the Gamma Ray API is fundamentally dimensionless." + Environment.NewLine;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of gamma ray in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless));
         }

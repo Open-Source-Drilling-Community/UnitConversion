@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OSDC.DotnetLibraries.General.DataManagement;
+using OSDC.UnitConversion.Model;
 
 namespace OSDC.UnitConversion.Service.Controllers
 {
@@ -28,6 +29,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet(Name = "GetAllUnitConversionSetId")]
         public ActionResult<IEnumerable<Guid>> GetAllUnitConversionSetId()
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerGetAllIDPerDay();
             var ids = _unitConversionSetManager.GetAllUnitConversionSetId();
             if (ids != null)
             {
@@ -46,6 +48,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("MetaInfo", Name = "GetAllUnitConversionSetMetaInfo")]
         public ActionResult<IEnumerable<MetaInfo>> GetAllUnitConversionSetMetaInfo()
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerGetAllMetaInfoPerDay();
             var vals = _unitConversionSetManager.GetAllUnitConversionSetMetaInfo();
             if (vals != null)
             {
@@ -65,6 +68,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("{id}", Name = "GetUnitConversionSetById")]
         public ActionResult<Model.UnitConversionSet> GetUnitConversionSetById(Guid id)
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerGetByIDPerDay();
             if (!id.Equals(Guid.Empty))
             {
                 var val = _unitConversionSetManager.GetUnitConversionSetById(id);
@@ -90,6 +94,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("HeavyData", Name = "GetAllUnitConversionSet")]
         public ActionResult<IEnumerable<Model.UnitConversionSet>> GetAllUnitConversionSet()
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerGetAllPerDay();
             var vals = _unitConversionSetManager.GetAllUnitConversionSet();
             if (vals != null)
             {
@@ -109,6 +114,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpPost(Name = "PostUnitConversionSet")]
         public ActionResult PostUnitConversionSet([FromBody] Model.UnitConversionSet value)
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerPostPerDay();
             if (value != null && value.MetaInfo != null && value.MetaInfo.ID != Guid.Empty)
             {
                 Model.UnitConversionSet? unitConversionSet = _unitConversionSetManager.GetUnitConversionSetById(value.MetaInfo.ID);
@@ -144,6 +150,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpPut("{id}", Name = "PutUnitConversionSetById")]
         public ActionResult PutUnitConversionSetById(Guid id, [FromBody] Model.UnitConversionSet value)
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerPutPerDay();
             if (value != null && value.MetaInfo != null && value.MetaInfo.ID.Equals(id))
             {
                 Model.UnitConversionSet? unitConversionSet = _unitConversionSetManager.GetUnitConversionSetById(id);
@@ -179,6 +186,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpDelete("{id}", Name = "DeleteUnitConversionSetById")]
         public ActionResult DeleteUnitConversionSetById(Guid id)
         {
+            UsageStatistics.Instance.IncrementUnitConversionSetControllerDeletePerDay();
             if (_unitConversionSetManager.GetUnitConversionSetById(id) != null)
             {
                 if (_unitConversionSetManager.DeleteUnitConversionSetById(id))

@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of curvature in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.RadianPerMetre).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.RadianPerMetre));
             this.UnitChoices.Add(CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer10m));

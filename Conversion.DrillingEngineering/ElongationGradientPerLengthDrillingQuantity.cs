@@ -31,6 +31,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of elongation gradient per length in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ElongationGradientPerLengthQuantity.Instance.GetUnitChoice(ElongationGradientPerLengthQuantity.UnitChoicesEnum.MetrePerMetre).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(ElongationGradientPerLengthQuantity.Instance.GetUnitChoice(ElongationGradientPerLengthQuantity.UnitChoicesEnum.MetrePerMetre));
             this.UnitChoices.Add(ElongationGradientPerLengthQuantity.Instance.GetUnitChoice(ElongationGradientPerLengthQuantity.UnitChoicesEnum.MillimetrePerMetre));

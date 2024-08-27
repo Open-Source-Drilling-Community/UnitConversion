@@ -41,6 +41,12 @@ namespace OSDC.UnitConversion.Conversion
             ID = new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43");
             DescriptionMD = string.Empty;
             DescriptionMD += @"As its name indicates, a dimensionless quantity has no dimension:" + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

@@ -30,6 +30,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of temperature gradient per length in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + TemperatureGradientPerLengthQuantity.Instance.GetUnitChoice(TemperatureGradientPerLengthQuantity.UnitChoicesEnum.KelvinPerMetre).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(TemperatureGradientPerLengthQuantity.Instance.GetUnitChoice(TemperatureGradientPerLengthQuantity.UnitChoicesEnum.KelvinPerMetre));
             this.UnitChoices.Add(TemperatureGradientPerLengthQuantity.Instance.GetUnitChoice(TemperatureGradientPerLengthQuantity.UnitChoicesEnum.CelsiusPerMetre));

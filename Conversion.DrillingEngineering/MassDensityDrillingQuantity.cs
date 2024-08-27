@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of mass density in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassDensityQuantity.Instance.GetUnitChoice(MassDensityQuantity.UnitChoicesEnum.KilogramPerCubicMetre).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(MassDensityQuantity.Instance.GetUnitChoice(MassDensityQuantity.UnitChoicesEnum.KilogramPerCubicMetre));
             this.UnitChoices.Add(MassDensityQuantity.Instance.GetUnitChoice(MassDensityQuantity.UnitChoicesEnum.GramPerCubicCentimetre));

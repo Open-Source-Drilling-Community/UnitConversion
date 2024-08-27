@@ -25,6 +25,7 @@ namespace OSDC.UnitConversion.Conversion
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
             UsualNames = new HashSet<string>() { "gravitational load" };
             ID = new Guid("55682046-ff04-4a77-9311-a9f738f790b6");
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.Kilogram));
             this.UnitChoices.Add(MassQuantity.Instance.GetUnitChoice(MassQuantity.UnitChoicesEnum.TonneMetric));

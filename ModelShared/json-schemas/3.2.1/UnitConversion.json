@@ -736,6 +736,26 @@
           }
         }
       }
+    },
+    "/UsageStatistics": {
+      "get": {
+        "tags": [
+          "UsageStatistics"
+        ],
+        "operationId": "GetUsageStatistics",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UsageStatistics"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -780,11 +800,6 @@
             "nullable": true,
             "readOnly": true
           },
-          "PhysicalDimensionLatex": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
           "UsualNames": {
             "uniqueItems": true,
             "type": "array",
@@ -800,16 +815,6 @@
             "readOnly": true
           },
           "SIUnitLabelLatex": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "SIUnitLabelLatexEnclosed": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "SIUnitLabel": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -877,6 +882,24 @@
             "type": "string",
             "nullable": true,
             "readOnly": true
+          },
+          "SemanticExample": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.SemanticFact"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "SIUnitLabel": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "PhysicalDimensionLatex": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -901,6 +924,24 @@
           },
           "IsSI": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Conversion.SemanticFact": {
+        "type": "object",
+        "properties": {
+          "Subject": {
+            "type": "string",
+            "nullable": true
+          },
+          "Verb": {
+            "type": "string",
+            "nullable": true
+          },
+          "Object": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -980,6 +1021,33 @@
           },
           "IsSI": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.CountPerDay": {
+        "type": "object",
+        "properties": {
+          "Date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Count": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.History": {
+        "type": "object",
+        "properties": {
+          "Data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Model.CountPerDay"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1107,6 +1175,212 @@
             "items": {
               "$ref": "#/components/schemas/OSDC.UnitConversion.Model.QuantityConversion"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.UsageStatistics": {
+        "type": "object",
+        "properties": {
+          "LastSaved": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "BackInterval": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "PhysicalQuantityControllerGetAllIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "PhysicalQuantityControllerGetAllPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "PhysicalQuantityControllerGetByIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerGetAllIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerGetAllMetaInfoPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerGetAllPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerGetByIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerPostPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerPutPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitConversionSetControllerDeletePerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerGetAllIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerGetAllLightPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerGetAllPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerGetByIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerPostPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerPutPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemControllerDeletePerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerGetAllIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerGetAllMetaInfoPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerGetAllPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerGetByIDPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerPostPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerPutPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
+          "UnitSystemConversionSetControllerDeletePerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
             "nullable": true
           }
         },

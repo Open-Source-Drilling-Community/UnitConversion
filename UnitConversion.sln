@@ -35,9 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystem", "Con
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystem.DrillingEngineering", "ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj", "{7B1473CF-8837-436C-8B53-BCD4BB252E5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionUnitSystemTest", "ConversionUnitSystemTest\ConversionUnitSystemTest.csproj", "{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystemTest", "ConversionUnitSystemTest\ConversionUnitSystemTest.csproj", "{47A411E1-B753-4878-A7E0-9DBA2E3FBE7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionUnitSystemDrillingEngineeringTest", "ConversionUnitSystemDrillingEngineeringTest\ConversionUnitSystemDrillingEngineeringTest.csproj", "{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystemDrillingEngineeringTest", "ConversionUnitSystemDrillingEngineeringTest\ConversionUnitSystemDrillingEngineeringTest.csproj", "{1D2F1C66-32C7-4D0E-9B7B-F5CC728C18D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

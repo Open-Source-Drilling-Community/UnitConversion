@@ -1,0 +1,40 @@
+﻿@page "/Statistics"
+@inject ILogger<StatisticsMain> logger
+@inject ISnackbar Snackbar
+
+@if (statistics == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div hidden="@isHiddenMainPanel">
+        <MudText Class="mt-4 mb-4" Typo="Typo.h5"><strong>Usage Statistics</strong></MudText>
+        <div style="width: 90%; margin: auto">
+           
+        </div>
+    </div>
+}
+
+
+@code {
+    // UnitConversionSet related variables
+    private UsageStatistics statistics = null;
+    private bool isHiddenMainPanel = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Show main panel
+            isHiddenMainPanel = false;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem UsageStatistics initialization");
+        }
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+
+ 
+}

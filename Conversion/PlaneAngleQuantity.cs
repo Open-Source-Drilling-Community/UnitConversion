@@ -126,6 +126,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"A plane angle is the angle formed between two intersecting lines or planes in a two-dimensional or three-dimensional space." + Environment.NewLine;
             DescriptionMD += @"The dimension of plane angle is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

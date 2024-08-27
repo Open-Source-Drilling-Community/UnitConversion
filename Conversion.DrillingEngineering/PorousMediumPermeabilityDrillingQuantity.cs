@@ -33,6 +33,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of permeability in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PorousMediumPermeabilityQuantity.Instance.GetUnitChoice(PorousMediumPermeabilityQuantity.UnitChoicesEnum.SquareMetre).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
         }
 
     }

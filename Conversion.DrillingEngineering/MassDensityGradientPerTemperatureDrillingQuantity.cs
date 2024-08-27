@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of mass density gradient per temperature in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassDensityGradientPerTemperatureQuantity.Instance.GetUnitChoice(MassDensityGradientPerTemperatureQuantity.UnitChoicesEnum.KilogramPerCubicMetrePerKelvin).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(MassDensityGradientPerTemperatureQuantity.Instance.GetUnitChoice(MassDensityGradientPerTemperatureQuantity.UnitChoicesEnum.KilogramPerCubicMetrePerKelvin));
             this.UnitChoices.Add(MassDensityGradientPerTemperatureQuantity.Instance.GetUnitChoice(MassDensityGradientPerTemperatureQuantity.UnitChoicesEnum.GramPerCubicCentimetrePerCelsius));

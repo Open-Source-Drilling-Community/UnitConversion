@@ -32,6 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of mass density rate of change in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassDensityRateOfChangeQuantity.Instance.GetUnitChoice(MassDensityRateOfChangeQuantity.UnitChoicesEnum.KilogramPerCubicMetrePerSecond).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(MassDensityRateOfChangeQuantity.Instance.GetUnitChoice(MassDensityRateOfChangeQuantity.UnitChoicesEnum.KilogramPerCubicMetrePerSecond));
             this.UnitChoices.Add(MassDensityRateOfChangeQuantity.Instance.GetUnitChoice(MassDensityRateOfChangeQuantity.UnitChoicesEnum.GramPerCubicCentimetrePerHour));

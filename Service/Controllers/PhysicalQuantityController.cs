@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OSDC.UnitConversion.Conversion;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
+using OSDC.UnitConversion.Model;
 
 namespace OSDC.UnitConversion.Service.Controllers
 {
@@ -27,6 +28,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet(Name = "GetAllPhysicalQuantityId")]
         public ActionResult<IEnumerable<Guid>> GetAllPhysicalQuantityId()
         {
+            UsageStatistics.Instance.IncrementPhysicalQuantityControllerGetAllIDPerDay();
             List<Guid> ids = [];
             try
             {
@@ -54,6 +56,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("{id}", Name = "GetPhysicalQuantityById")]
         public ActionResult<PhysicalQuantity> GetPhysicalQuantityById(Guid id)
         {
+            UsageStatistics.Instance.IncrementPhysicalQuantityControllerGetByIDPerDay();
             if (!id.Equals(Guid.Empty))
             {
                 BasePhysicalQuantity qty = PhysicalQuantity.GetQuantity(id);
@@ -79,6 +82,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         [HttpGet("HeavyData", Name = "GetAllPhysicalQuantity")]
         public ActionResult<IEnumerable<PhysicalQuantity>> GetAllPhysicalQuantity()
         {
+            UsageStatistics.Instance.IncrementPhysicalQuantityControllerGetAllPerDay();
             try
             {
                 HashSet<BasePhysicalQuantity> quantityHashSet = [];

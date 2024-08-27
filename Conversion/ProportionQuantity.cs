@@ -63,6 +63,12 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"A proportion is the ratio of two quantities with the same dimension. It represents how one quantity compares to another in relative terms." + Environment.NewLine;
             DescriptionMD += @"A proportion is dimensionless:" + Environment.NewLine;
+            if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
+            {
+                DescriptionMD += Environment.NewLine;
+                DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
+            }
+            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
         }
     }

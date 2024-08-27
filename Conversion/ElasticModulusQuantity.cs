@@ -29,6 +29,7 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += @"Elastic modulus is a measure of a material's ability to resist deformation under stress. It quantifies the ratio of stress to strain in the material's elastic region" + Environment.NewLine;
             DescriptionMD += @"The meaningful precision of an elastic modulus is typically: " + MeaningfulPrecisionInSI.ToString() + " " + PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Pascal).UnitLabel + Environment.NewLine;
+            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Pascal));
             this.UnitChoices.Add(PressureQuantity.Instance.GetUnitChoice(PressureQuantity.UnitChoicesEnum.Megapascal));
