@@ -3,98 +3,98 @@
   <Class Name="OSDC.UnitConversion.Conversion.AccelerationQuantity" Collapsed="true">
     <Position X="33.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
       <FileName>AccelerationQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.AmountSubstanceQuantity" Collapsed="true">
     <Position X="164.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAIAAAAAgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAIAAAAAgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
       <FileName>AmountSubstanceQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.AngleMagneticFluxDensityQuantity" Collapsed="true">
     <Position X="51.25" Y="3.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAIgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAIgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
       <FileName>AngleMagneticFluxDensityQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.AngleVariationGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.AngleGradientPerLengthQuantity" Collapsed="true">
     <Position X="46.25" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAIgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
-      <FileName>AngleVariationGradientQuantity.cs</FileName>
+      <HashCode>AIAIAAAQAAAAAAAAAIgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
+      <FileName>AngleGradientPerLengthQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.AngularAccelerationQuantity" Collapsed="true">
     <Position X="26.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAIgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAIgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
       <FileName>AngularAccelerationQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.AngularVelocityQuantity" Collapsed="true">
     <Position X="35.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAIgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAIgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
       <FileName>AngularVelocityQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.AreaQuantity" Collapsed="true">
     <Position X="54.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
       <FileName>AreaQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.BasePhysicalQuantity" Collapsed="true">
     <Position X="91.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIUKCASAAAICpQA4AIIAggQgAAAAYABiAgIGASAEAAA=</HashCode>
+      <HashCode>AIUKCAaQAAICpQA4AMJAggxgAAAAYABiAgIGASAEAAA=</HashCode>
       <FileName>BasePhysicalQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.CompressibilityQuantity" Collapsed="true">
     <Position X="38" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>CompressibilityQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.CurvatureQuantity" Collapsed="true">
     <Position X="49" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAIgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAIgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DensityGradientDepthQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.MassGradientPerLengthQuantity" Collapsed="true">
     <Position X="43.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DensityGradientTemperatureQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.MassDensityGradientPerTemperatureQuantity" Collapsed="true">
     <Position X="30.75" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAEACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAEACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DensityQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.MassDensityGradientPerLengthQuantity" Collapsed="true">
     <Position X="28.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.DensityRateOfChangeQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.ForceGradientPerLengthQuantity" Collapsed="true">
     <Position X="24" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -108,14 +108,14 @@
   <Class Name="OSDC.UnitConversion.Conversion.DimensionlessQuantity" Collapsed="true">
     <Position X="15" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAgQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAgQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.DynamicViscosityQuantity" Collapsed="true">
     <Position X="21.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -126,80 +126,80 @@
       <FileName>EarthMagneticFluxDensityQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.ElectricalCapacitanceQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.ElectricCapacitanceQuantity" Collapsed="true">
     <Position X="40.75" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.ElectricCurrentQuantity" Collapsed="true">
     <Position X="162" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAAgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAAgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.ElectricTensionQuantity" Collapsed="true">
     <Position X="19.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAAgAAgAAAABAQAAiQAACASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAAgAAgAAAABAQAAiQAACASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.ElongationGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.ElongationGradientPerLengthQuantity" Collapsed="true">
     <Position X="9.75" Y="3.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.EnergyDensityQuantity" Collapsed="true">
     <Position X="12.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAAQAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAAQAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.EnergyQuantity" Collapsed="true">
     <Position X="17.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAIAAAAAAAAAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
-      <FileName>EnergyQuantity.cs</FileName>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.ImageScaleQuantity" Collapsed="true">
     <Position X="57" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAACAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAACAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.LengthQuantity" Collapsed="true">
     <Position X="155.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABIQAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABIQAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.LuminousIntensityQuantity" Collapsed="true">
     <Position X="166.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAQAAAAgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAQAAAAgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.MassQuantity" Collapsed="true">
     <Position X="150.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABIAAAiQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABIAAAiQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.PlaneAngleQuantity" Collapsed="true">
     <Position X="171" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAIgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAIgAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -210,92 +210,92 @@
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SmallLengthQuantity" Collapsed="true">
-    <Position X="155.25" Y="5.25" Width="1.5" />
+  <Class Name="OSDC.UnitConversion.Conversion.DimensionLessStandardQuantity" Collapsed="true">
+    <Position X="15" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
+      <FileName>DimensionLessStandardQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.SolidAngleQuantity" Collapsed="true">
     <Position X="168.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAoAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAoAAgAAAABIAAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.TemperatureQuantity" Collapsed="true">
     <Position X="159.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABIAAAgQAAEAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABIAAAgQAAEAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.TimeQuantity" Collapsed="true">
     <Position X="173.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABIAAAgQAAAAQAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABIAAAgQAAAAQAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.PressureQuantity" Collapsed="true">
     <Position X="60.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.VolumetricFlowRateQuantity" Collapsed="true">
     <Position X="72" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.VolumetricFlowRateOfChangeQuantity" Collapsed="true">
     <Position X="79.25" Y="3.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.VelocityQuantity" Collapsed="true">
     <Position X="87.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.ForceGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.TorqueGradientPerLengthQuantity" Collapsed="true">
     <Position X="92" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.ForceQuantity" Collapsed="true">
     <Position X="101.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.MaterialStrengthQuantity" Collapsed="true">
     <Position X="107" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.FrequencyQuantity" Collapsed="true">
     <Position X="120.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.RotationFrequencyQuantity" Collapsed="true">
-    <Position X="119.25" Y="5.25" Width="1.5" />
+  <Class Name="OSDC.UnitConversion.Conversion.ProportionStandardQuantity" Collapsed="true">
+    <Position X="139" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
@@ -304,14 +304,14 @@
   <Class Name="OSDC.UnitConversion.Conversion.ProportionQuantity" Collapsed="true">
     <Position X="139" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAgQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAgQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.HeatTransferCoefficientQuantity" Collapsed="true">
     <Position X="63.75" Y="3.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAiQAAEASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAiQAAEASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -332,19 +332,19 @@
   <Class Name="OSDC.UnitConversion.Conversion.InterfacialTensionQuantity" Collapsed="true">
     <Position X="89.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.VolumeQuantity" Collapsed="true">
     <Position X="94.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.LargeVolumeQuantity" Collapsed="true">
-    <Position X="94.25" Y="5.25" Width="1.5" />
+  <Class Name="OSDC.UnitConversion.Conversion.ProportionSmallQuantity" Collapsed="true">
+    <Position X="136.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
@@ -353,77 +353,70 @@
   <Class Name="OSDC.UnitConversion.Conversion.MagneticFluxDensityQuantity" Collapsed="true">
     <Position X="109.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAAgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAAgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.MassRateQuantity" Collapsed="true">
     <Position X="126" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.PermeabilityQuantity" Collapsed="true">
-    <Position X="54.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAIAAAAAAAAAAAAAAgAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>Constructors.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.PressureGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.PressureGradientPerLengthQuantity" Collapsed="true">
     <Position X="143.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.PressureLossConstantQuantity" Collapsed="true">
     <Position X="66.75" Y="3.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.ResistivityQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.ElectricResistivityQuantity" Collapsed="true">
     <Position X="74.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.FrequencyRateOfChangeQuantity" Collapsed="true">
     <Position X="82.5" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.RotationFrequencyRateOfChangeQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.RotationalFrequencyRateOfChangeQuantity" Collapsed="true">
     <Position X="82.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAAAACAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SpecificHeatCapacityQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.IsobaricSpecificHeatCapacityQuantity" Collapsed="true">
     <Position X="96.5" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAEASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAEASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SpecificHeatCapacityTemperatureGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity" Collapsed="true">
     <Position X="104" Y="3.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAEASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAEASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.TemperatureGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.TemperatureGradientPerLengthQuantity" Collapsed="true">
     <Position X="112.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAEACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAEACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -437,119 +430,119 @@
   <Class Name="OSDC.UnitConversion.Conversion.ThermalConductivityQuantity" Collapsed="true">
     <Position X="130.75" Y="3.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAEASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAEASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.MassGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.MassDensityQuantity" Collapsed="true">
     <Position X="146.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAACAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAACAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.TorqueQuantity" Collapsed="true">
     <Position X="69.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.YoungModulusQuantity" Collapsed="true">
-    <Position X="59.25" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.StandardProportionQuantity" Collapsed="true">
-    <Position X="136.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.StandardDimensionlessQuantity" Collapsed="true">
-    <Position X="15" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.StandardLengthQuantity" Collapsed="true">
-    <Position X="153" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.FluidShearRateQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.RotationalFrequencyQuantity" Collapsed="true">
     <Position X="117" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACACAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.FluidShearStressQuantity" Collapsed="true">
-    <Position X="61.5" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACACAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.RheologyConsistencyIndexQuantity" Collapsed="true">
-    <Position X="21.75" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACACAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SmallDiameterQuantity" Collapsed="true">
-    <Position X="157.5" Y="5.25" Width="1.5" />
+  <Class Name="OSDC.UnitConversion.Conversion.RotationalFrequencySmallQuantity" Collapsed="true">
+    <Position X="117" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SmallTorqueQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.VolumeLargeQuantity" Collapsed="true">
+    <Position X="94.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.TorqueSmallQuantity" Collapsed="true">
     <Position X="69.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SmallRotationFrequencyQuantity" Collapsed="true">
-    <Position X="119.25" Y="6.75" Width="1.5" />
+  <Class Name="OSDC.UnitConversion.Conversion.FluidShearRateQuantity" Collapsed="true">
+    <Position X="119.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACACAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.FluidShearStressQuantity" Collapsed="true">
+    <Position X="59.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACACAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.LengthStandardQuantity" Collapsed="true">
+    <Position X="153" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
       <FileName>EnumerationQuantities.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.DiameterSmallQuantity" Collapsed="true">
+    <Position X="157.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
+      <FileName>DiameterSmallQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.LengthSmallQuantity" Collapsed="true">
+    <Position X="155.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
+      <FileName>EnumerationQuantities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OSDC.UnitConversion.Conversion.ElasticModulusQuantity" Collapsed="true">
+    <Position X="61.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
+      <FileName>ElasticModulusQuantity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="OSDC.UnitConversion.Conversion.MagneticFluxQuantity" Collapsed="true">
     <Position X="77" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAQAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAQAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.RandomWalkQuantity" Collapsed="true">
     <Position X="85" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAIgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAIgAAgAAAABAAAAgQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.SmallProportionQuantity" Collapsed="true">
-    <Position X="139" Y="5.25" Width="1.5" />
+  <Class Name="OSDC.UnitConversion.Conversion.ConsistencyIndexRheologyQuantity" Collapsed="true">
+    <Position X="21.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACAAAAAAA=</HashCode>
-      <FileName>EnumerationQuantities.cs</FileName>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAABAAAAgQAACACAAAAA=</HashCode>
+      <FileName>ConsistencyIndexRheologyQuantity.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.WaveNumberQuantity" Collapsed="true">
     <Position X="99.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAgQAAAAAAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAgQAAAAAAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -563,28 +556,28 @@
   <Class Name="OSDC.UnitConversion.Conversion.PowerQuantity" Collapsed="true">
     <Position X="114.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.TorqueGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.MassDensityRateOfChangeQuantity" Collapsed="true">
     <Position X="128.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSDC.UnitConversion.Conversion.ThermalConductivityTemperatureGradientQuantity" Collapsed="true">
+  <Class Name="OSDC.UnitConversion.Conversion.ThermalConductivityGradientPerTemperatureQuantity" Collapsed="true">
     <Position X="133.5" Y="3.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAEASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAEASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSDC.UnitConversion.Conversion.StressQuantity" Collapsed="true">
     <Position X="148.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAIAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
+      <HashCode>AIAIAAAQAAAAAAAAAAgAAgAAAABAQAAiQAAAASAAAAA=</HashCode>
       <FileName>Constructors.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -598,7 +591,7 @@
   <Class Name="OSDC.UnitConversion.Conversion.UnitChoice" Collapsed="true">
     <Position X="175.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAQQCAEAggAAAICAAAgYCAQAAAIBAAAgJAAEAAAA=</HashCode>
+      <HashCode>AAQAAQQCAEAgkAAAICAAAgYCAQAAAIBAAAgJAAEAAAA=</HashCode>
       <FileName>UnitChoice.cs</FileName>
     </TypeIdentifier>
   </Class>

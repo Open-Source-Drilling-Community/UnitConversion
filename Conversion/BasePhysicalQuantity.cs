@@ -730,10 +730,87 @@ namespace OSDC.UnitConversion.Conversion
             if (!string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(radical)) 
             {
                 List<SemanticFact> result = new List<SemanticFact>();
-                result.Add(new SemanticFact(radical + "-Value", "BelongsToClass", "DynamicDrillingSignal"));
-                result.Add(new SemanticFact(radical + "-Signal", "BelongsToClass", "Measurement"));
-                result.Add(new SemanticFact(radical + "-Signal", "HasDynamicValue", radical + "-Value"));
-                result.Add(new SemanticFact(radical + "-Signal", "IsOfMeasurableQuantity", Name));
+                if (MeaningfulPrecisionInSI != null)
+                {
+                    result.Add(new SemanticFact(radical + "_Signal", "BelongsToClass", "DrillingSignal"));
+                    result.Add(new SemanticFact(radical + "_DataPoint", "BelongsToClass", "DrillingDataPoint"));
+                    result.Add(new SemanticFact(radical + "_DataPoint", "HasValue", radical + "_Signal"));
+                    result.Add(new SemanticFact(radical + "_DataPoint", "IsOfMeasurableQuantity", Name + "Quantity"));
+                    UnitChoice? SIUnitChoice = null;
+                    if (UnitChoices != null)
+                    {
+                        foreach (UnitChoice choice in UnitChoices)
+                        {
+                            if (choice.IsSI)
+                            {
+                                SIUnitChoice = choice;
+                                break;
+                            }
+                        }
+                    }
+                    if (SIUnitChoice != null && !string.IsNullOrEmpty(SIUnitChoice.UnitName))
+                    {
+                        result.Add(new SemanticFact(radical + "_Value", "HasUnitOfMeasure", SIUnitChoice.UnitName));
+                    }
+                }
+                else
+                {
+                    result.Add(new SemanticFact(Name + "Quantity", "BelongsToClass", "Quantity"));
+                    if (LengthDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "L", "=", LengthDimension.ToString()));
+                    }
+                    if (MassDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "M", "=", MassDimension.ToString()));
+                    }
+                    if (TimeDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "T", "=", TimeDimension.ToString()));
+                    }
+                    if (TemperatureDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "ThT", "=", TemperatureDimension.ToString()));
+                    }
+                    if (AmountSubstanceDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "N", "=", AmountSubstanceDimension.ToString()));
+                    }
+                    if (ElectricCurrentDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "I", "=", ElectricCurrentDimension.ToString()));
+                    }
+                    if (LuminousIntensityDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "J", "=", LuminousIntensityDimension.ToString()));
+                    }
+                    if (PlaneAngleDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "Theta", "=", PlaneAngleDimension.ToString()));
+                    }
+                    if (SolidAngleDimension != 0)
+                    {
+                        result.Add(new SemanticFact(Name + "Quantity." + "Omega", "=", SolidAngleDimension.ToString()));
+                    }
+                    if (UnitChoices != null)
+                    {
+                        foreach (UnitChoice choice in UnitChoices)
+                        {
+                            if (choice != null)
+                            {
+                                result.Add(new SemanticFact(choice.UnitName, "BelongsToClass", "Unit"));
+                                result.Add(new SemanticFact(choice.UnitName + ".ConversionFactorA", "=", choice.ConversionBiasFromSI.ToString()));
+                                result.Add(new SemanticFact(choice.UnitName + ".ConversionFactorB", "=", choice.ConversionFactorFromSI.ToString()));
+                                result.Add(new SemanticFact(choice.UnitName + ".Symbol", "=", choice.UnitLabel));
+                                result.Add(new SemanticFact(choice.UnitName, "IsUnitForQuantity", Name + "Quantity"));
+                                if (choice.IsSI)
+                                {
+                                    result.Add(new SemanticFact(Name + "Quantity", "HasSIUnit", choice.UnitName));
+                                }
+                            }
+                        }
+                    }
+                }
                 return result;
             }
             else

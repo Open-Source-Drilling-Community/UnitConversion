@@ -3,21 +3,20 @@
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities, unit systems, and units. The repository hosts:
 
 - a [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion) that handles unit conversions of base physical quantities
-
+- a [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion.UnitSystem) that handles unit conversion sets of base physical quantities
 - a [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion.DrillingEngineering) that handles unit conversions of physical quantities specific to the drilling engineering field
+- a [.NET library (nuget package)](https://www.nuget.org/packages/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering) that handles unit conversion sets of physical quantities specific to the drilling engineering field
 
 - a microservice to handle unit conversions programmatically
   - [microservice API](https://dev.digiwells.no/UnitConversion/api/swagger) (swagger)
-  - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/api/PhysicalQuantity) (broken link, under active refactoring)
+  - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/api/PhysicalQuantity) 
   - [UnitSystem endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystem)
   - [UnitSystemConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystemConversionSet)
   - [UnitConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitConversionSet)
 
-- a client user interface to handle unit conversions (broken links below, under active refactoring, use [old version of webapp](https://app.digiwells.no/DrillingUnitConversion/webapp/QuantityUnitConversion) in the meantime)
-  - [PhysicalQuantity endpoint](https://app.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
-  - [UnitSystem endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystem)
-  - [UnitSystemConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitSystemConversionSet)
-  - [UnitConversionSet endpoint](https://app.digiwells.no/UnitConversion/webapp/UnitConversionSet)
+- a client user interface to handle unit conversions 
+  - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
+  - [UnitConversionSet endpoint](https://dev.digiwells.no/UnitConversion/webapp/UnitConversion)
 
 # Data model
 
@@ -26,11 +25,11 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities:
 
-- either 78 base physical quantities, called `BasePhysicalQuantity`
+- either 86 base physical quantities, called `BasePhysicalQuantity`
 
-- or 66 physical quantities specific to the drilling engineering field, called `PhysicalQuantity`
+- or 70 physical quantities specific to the drilling engineering field, called `PhysicalQuantity`
 
-- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the class `PhysicalQuantity` opens access to a total of **144 physical quantities**.
+- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the class `PhysicalQuantity` opens access to a total of **156 physical quantities**.
 
 - see the complete list of physical quantities by technical fields [below](https://github.com/Open-Source-Drilling-Community/UnitConversion/blob/main/README.md#list-of-physical-quantities)
 
