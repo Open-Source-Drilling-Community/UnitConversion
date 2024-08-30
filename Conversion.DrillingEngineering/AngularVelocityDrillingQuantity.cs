@@ -32,11 +32,10 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of angular velocity in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.RadianPerSecond).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.RadianPerSecond));
             this.UnitChoices.Add(AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond));
+            SemanticExample = GetSemanticExample();
         }
-
     }
 }

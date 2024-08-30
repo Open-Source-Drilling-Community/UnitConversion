@@ -32,14 +32,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "In a drilling engineering perspective, the meaningful precision of an angle gradient per length is: " + MeaningfulPrecisionInSI.ToString() + " " + AngleGradientPerLengthQuantity.Instance.GetUnitChoice(AngleGradientPerLengthQuantity.UnitChoicesEnum.RadianPerMetre).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(AngleGradientPerLengthQuantity.Instance.GetUnitChoice(AngleGradientPerLengthQuantity.UnitChoicesEnum.RadianPerMetre));
             this.UnitChoices.Add(AngleGradientPerLengthQuantity.Instance.GetUnitChoice(AngleGradientPerLengthQuantity.UnitChoicesEnum.DegreePerMetre));
             this.UnitChoices.Add(AngleGradientPerLengthQuantity.Instance.GetUnitChoice(AngleGradientPerLengthQuantity.UnitChoicesEnum.DegreePerFoot));
             this.UnitChoices.Add(AngleGradientPerLengthQuantity.Instance.GetUnitChoice(AngleGradientPerLengthQuantity.UnitChoicesEnum.DegreePerCentimetre));
             this.UnitChoices.Add(AngleGradientPerLengthQuantity.Instance.GetUnitChoice(AngleGradientPerLengthQuantity.UnitChoicesEnum.DegreePerInch));
+            SemanticExample = GetSemanticExample();
         }
-
     }
 }

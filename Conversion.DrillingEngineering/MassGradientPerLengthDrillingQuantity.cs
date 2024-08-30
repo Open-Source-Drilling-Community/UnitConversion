@@ -30,11 +30,10 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of mass gradient per length in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassGradientPerLengthQuantity.Instance.GetUnitChoice(MassGradientPerLengthQuantity.UnitChoicesEnum.KilogramPerMetre).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(MassGradientPerLengthQuantity.Instance.GetUnitChoice(MassGradientPerLengthQuantity.UnitChoicesEnum.KilogramPerMetre));
             this.UnitChoices.Add(MassGradientPerLengthQuantity.Instance.GetUnitChoice(MassGradientPerLengthQuantity.UnitChoicesEnum.PoundPerFoot));
+            SemanticExample = GetSemanticExample();
         }
-
     }
 }

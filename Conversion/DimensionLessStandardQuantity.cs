@@ -31,9 +31,9 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += @"The meaningful precision of standard dimensionless values is typically: " + MeaningfulPrecisionInSI.ToString() + " " + DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(DimensionlessQuantity.Instance.GetUnitChoice(DimensionlessQuantity.UnitChoicesEnum.Dimensionless));
+            SemanticExample = GetSemanticExample();
         }
     }
 }

@@ -30,14 +30,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of isobaric specific heat capacity gradient per temperature in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.UnitChoicesEnum.JoulePerKilogramSquaredKelvin).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.UnitChoicesEnum.JoulePerKilogramSquaredKelvin));
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.UnitChoicesEnum.JoulePerGramSquaredKelvin));
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.UnitChoicesEnum.JoulePerGramDegreeSquaredCelsius));
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.UnitChoicesEnum.CaloriePerGramDegreeSquaredCelsius));
             this.UnitChoices.Add(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.Instance.GetUnitChoice(IsobaricSpecificHeatCapacityGradientPerTemperatureQuantity.UnitChoicesEnum.BritishThermalUnitPerPoundSquaredDegreeFahrenheit));
+            SemanticExample = GetSemanticExample();
         }
-
     }
 }

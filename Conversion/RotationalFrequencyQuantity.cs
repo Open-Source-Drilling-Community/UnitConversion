@@ -33,10 +33,10 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD += @"Rotation frequency is the number of complete rotations or cycles an object makes per unit of time." + Environment.NewLine;
             DescriptionMD += @"The dimension of rotational frequency is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz));
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Rpm));
+            SemanticExample = GetSemanticExample();
         }
 
     }

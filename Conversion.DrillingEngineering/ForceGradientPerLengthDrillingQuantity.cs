@@ -31,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of force gradient per length in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ForceGradientPerLengthQuantity.Instance.GetUnitChoice(ForceGradientPerLengthQuantity.UnitChoicesEnum.NewtonPerMetre).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(ForceGradientPerLengthQuantity.Instance.GetUnitChoice(ForceGradientPerLengthQuantity.UnitChoicesEnum.NewtonPerMetre));
             this.UnitChoices.Add(ForceGradientPerLengthQuantity.Instance.GetUnitChoice(ForceGradientPerLengthQuantity.UnitChoicesEnum.NewtonPer10Metre));
@@ -48,6 +47,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(ForceGradientPerLengthQuantity.Instance.GetUnitChoice(ForceGradientPerLengthQuantity.UnitChoicesEnum.KilopoundPerFoot));
             this.UnitChoices.Add(ForceGradientPerLengthQuantity.Instance.GetUnitChoice(ForceGradientPerLengthQuantity.UnitChoicesEnum.KilopoundPer30Foot));
             this.UnitChoices.Add(ForceGradientPerLengthQuantity.Instance.GetUnitChoice(ForceGradientPerLengthQuantity.UnitChoicesEnum.KilopoundPer100Foot));
+            SemanticExample = GetSemanticExample();
         }
     }
 }

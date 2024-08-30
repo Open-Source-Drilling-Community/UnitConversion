@@ -75,6 +75,25 @@ namespace OSDC.UnitConversion.Conversion
             }
         }
 
+        public string GetVariableName()
+        {
+            string varName = string.Empty;
+            if (!string.IsNullOrEmpty(UnitName))
+            {
+                string[] names = UnitName.Split(' ', '\t', '-', '_', '/', '\\', '&', '%');
+                if (names != null)
+                {
+                    foreach (string name in names)
+                    {
+                        if (name.Length > 0)
+                        {
+                            varName += char.ToUpper(name[0]) + name.Substring(1).ToLowerInvariant();
+                        }      
+                    }
+                }
+            }
+            return varName;
+        }
 
         /// <summary>
         /// convert a SI value into the unit choice

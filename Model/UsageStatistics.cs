@@ -64,7 +64,7 @@ namespace OSDC.UnitConversion.Model
         public static readonly string HOME_DIRECTORY = ".." + Path.DirectorySeparatorChar + "home" + Path.DirectorySeparatorChar;
 
         public DateTime LastSaved { get; set; } = DateTime.MinValue;
-        public TimeSpan BackInterval { get; set; } = TimeSpan.FromMinutes(15);
+        public TimeSpan BackUpInterval { get; set; } = TimeSpan.FromMinutes(5);
 
         public History PhysicalQuantityControllerGetAllIDPerDay { get; set; } = new History();
         public History PhysicalQuantityControllerGetAllPerDay { get; set; } = new History();
@@ -94,6 +94,8 @@ namespace OSDC.UnitConversion.Model
         public History UnitSystemConversionSetControllerPutPerDay { get; set; } = new History();
         public History UnitSystemConversionSetControllerDeletePerDay { get; set; } = new History();
 
+        private static object lock_ = new object();
+
         private static UsageStatistics? instance_ = null;
 
         public static UsageStatistics Instance
@@ -107,17 +109,16 @@ namespace OSDC.UnitConversion.Model
                         try
                         {
                             string? jsonStr = null;
-                            using (StreamReader reader = new StreamReader(HOME_DIRECTORY + "history.json"))
+                            lock (lock_)
                             {
-                                jsonStr = reader.ReadToEnd();
-                            }
-                            if (!string.IsNullOrEmpty(jsonStr))
-                            {
-                                instance_ = JsonSerializer.Deserialize<UsageStatistics>(jsonStr);
-                            }
-                            if (instance_ == null)
-                            {
-                                instance_ = new UsageStatistics();
+                                using (StreamReader reader = new StreamReader(HOME_DIRECTORY + "history.json"))
+                                {
+                                    jsonStr = reader.ReadToEnd();
+                                }
+                                if (!string.IsNullOrEmpty(jsonStr))
+                                {
+                                    instance_ = JsonSerializer.Deserialize<UsageStatistics>(jsonStr);
+                                }
                             }
                         }
                         catch (Exception ex)
@@ -125,7 +126,10 @@ namespace OSDC.UnitConversion.Model
 
                         }
                     }
-                    instance_ = new UsageStatistics();
+                    if (instance_ == null)
+                    {
+                        instance_ = new UsageStatistics();
+                    }
                 }
                 return instance_;
             }
@@ -133,228 +137,300 @@ namespace OSDC.UnitConversion.Model
 
         public void IncrementPhysicalQuantityControllerGetAllIDPerDay()
         {
-            if (PhysicalQuantityControllerGetAllIDPerDay == null)
+            lock (lock_)
             {
-                PhysicalQuantityControllerGetAllIDPerDay = new History();
+                if (PhysicalQuantityControllerGetAllIDPerDay == null)
+                {
+                    PhysicalQuantityControllerGetAllIDPerDay = new History();
+                }
+                PhysicalQuantityControllerGetAllIDPerDay.Increment();
+                ManageBackup();
             }
-            PhysicalQuantityControllerGetAllIDPerDay.Increment();
-            ManageBackup();
         }
 
         public void IncrementPhysicalQuantityControllerGetAllPerDay()
         {
-            if (PhysicalQuantityControllerGetAllPerDay == null)
+            lock (lock_)
             {
-                PhysicalQuantityControllerGetAllPerDay = new History();
+                if (PhysicalQuantityControllerGetAllPerDay == null)
+                {
+                    PhysicalQuantityControllerGetAllPerDay = new History();
+                }
+                PhysicalQuantityControllerGetAllPerDay.Increment();
+                ManageBackup();
             }
-            PhysicalQuantityControllerGetAllPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementPhysicalQuantityControllerGetByIDPerDay()
         {
-            if (PhysicalQuantityControllerGetByIDPerDay == null)
+            lock (lock_)
             {
-                PhysicalQuantityControllerGetByIDPerDay = new History();
+                if (PhysicalQuantityControllerGetByIDPerDay == null)
+                {
+                    PhysicalQuantityControllerGetByIDPerDay = new History();
+                }
+                PhysicalQuantityControllerGetByIDPerDay.Increment();
+                ManageBackup();
             }
-            PhysicalQuantityControllerGetByIDPerDay.Increment();
-            ManageBackup();
         }
 
         public void IncrementUnitConversionSetControllerGetAllIDPerDay()
         {
-            if (UnitConversionSetControllerGetAllIDPerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerGetAllIDPerDay = new History();
+                if (UnitConversionSetControllerGetAllIDPerDay == null)
+                {
+                    UnitConversionSetControllerGetAllIDPerDay = new History();
+                }
+                UnitConversionSetControllerGetAllIDPerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerGetAllIDPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitConversionSetControllerGetAllMetaInfoPerDay()
         {
-            if (UnitConversionSetControllerGetAllMetaInfoPerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerGetAllMetaInfoPerDay = new History();
+                if (UnitConversionSetControllerGetAllMetaInfoPerDay == null)
+                {
+                    UnitConversionSetControllerGetAllMetaInfoPerDay = new History();
+                }
+                UnitConversionSetControllerGetAllMetaInfoPerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerGetAllMetaInfoPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitConversionSetControllerGetAllPerDay()
         {
-            if (UnitConversionSetControllerGetAllPerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerGetAllPerDay = new History();
+                if (UnitConversionSetControllerGetAllPerDay == null)
+                {
+                    UnitConversionSetControllerGetAllPerDay = new History();
+                }
+                UnitConversionSetControllerGetAllPerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerGetAllPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitConversionSetControllerGetByIDPerDay()
         {
-            if (UnitConversionSetControllerGetByIDPerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerGetByIDPerDay = new History();
+                if (UnitConversionSetControllerGetByIDPerDay == null)
+                {
+                    UnitConversionSetControllerGetByIDPerDay = new History();
+                }
+                UnitConversionSetControllerGetByIDPerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerGetByIDPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitConversionSetControllerPostPerDay()
         {
-            if (UnitConversionSetControllerPostPerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerPostPerDay = new History();
+                if (UnitConversionSetControllerPostPerDay == null)
+                {
+                    UnitConversionSetControllerPostPerDay = new History();
+                }
+                UnitConversionSetControllerPostPerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerPostPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitConversionSetControllerPutPerDay()
         {
-            if (UnitConversionSetControllerPutPerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerPutPerDay = new History();
+                if (UnitConversionSetControllerPutPerDay == null)
+                {
+                    UnitConversionSetControllerPutPerDay = new History();
+                }
+                UnitConversionSetControllerPutPerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerPutPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitConversionSetControllerDeletePerDay()
         {
-            if (UnitConversionSetControllerDeletePerDay == null)
+            lock (lock_)
             {
-                UnitConversionSetControllerDeletePerDay = new History();
+                if (UnitConversionSetControllerDeletePerDay == null)
+                {
+                    UnitConversionSetControllerDeletePerDay = new History();
+                }
+                UnitConversionSetControllerDeletePerDay.Increment();
+                ManageBackup();
             }
-            UnitConversionSetControllerDeletePerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemControllerGetAllIDPerDay()
         {
-            if (UnitSystemControllerGetAllIDPerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerGetAllIDPerDay = new History();
+                if (UnitSystemControllerGetAllIDPerDay == null)
+                {
+                    UnitSystemControllerGetAllIDPerDay = new History();
+                }
+                UnitSystemControllerGetAllIDPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerGetAllIDPerDay.Increment();
-            ManageBackup();
         }
 
         public void IncrementUnitSystemControllerGetAllPerDay()
         {
-            if (UnitSystemControllerGetAllPerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerGetAllPerDay = new History();
+                if (UnitSystemControllerGetAllPerDay == null)
+                {
+                    UnitSystemControllerGetAllPerDay = new History();
+                }
+                UnitSystemControllerGetAllPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerGetAllPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemControllerGetAllLightPerDay()
         {
-            if (UnitSystemControllerGetAllLightPerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerGetAllLightPerDay = new History();
+                if (UnitSystemControllerGetAllLightPerDay == null)
+                {
+                    UnitSystemControllerGetAllLightPerDay = new History();
+                }
+                UnitSystemControllerGetAllLightPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerGetAllLightPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemControllerGetByIDPerDay()
         {
-            if (UnitSystemControllerGetByIDPerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerGetByIDPerDay = new History();
+                if (UnitSystemControllerGetByIDPerDay == null)
+                {
+                    UnitSystemControllerGetByIDPerDay = new History();
+                }
+                UnitSystemControllerGetByIDPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerGetByIDPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemControllerPostPerDay()
         {
-            if (UnitSystemControllerPostPerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerPostPerDay = new History();
+                if (UnitSystemControllerPostPerDay == null)
+                {
+                    UnitSystemControllerPostPerDay = new History();
+                }
+                UnitSystemControllerPostPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerPostPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemControllerPutPerDay()
         {
-            if (UnitSystemControllerPutPerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerPutPerDay = new History();
+                if (UnitSystemControllerPutPerDay == null)
+                {
+                    UnitSystemControllerPutPerDay = new History();
+                }
+                UnitSystemControllerPutPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerPutPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemControllerDeletePerDay()
         {
-            if (UnitSystemControllerDeletePerDay == null)
+            lock (lock_)
             {
-                UnitSystemControllerDeletePerDay = new History();
+                if (UnitSystemControllerDeletePerDay == null)
+                {
+                    UnitSystemControllerDeletePerDay = new History();
+                }
+                UnitSystemControllerDeletePerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemControllerDeletePerDay.Increment();
-            ManageBackup();
         }
 
         public void IncrementUnitSystemConversionSetControllerGetAllIDPerDay()
         {
-            if (UnitSystemConversionSetControllerGetAllIDPerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerGetAllIDPerDay = new History();
+                if (UnitSystemConversionSetControllerGetAllIDPerDay == null)
+                {
+                    UnitSystemConversionSetControllerGetAllIDPerDay = new History();
+                }
+                UnitSystemConversionSetControllerGetAllIDPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerGetAllIDPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemConversionSetControllerGetAllMetaInfoPerDay()
         {
-            if (UnitSystemConversionSetControllerGetAllMetaInfoPerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerGetAllMetaInfoPerDay = new History();
+                if (UnitSystemConversionSetControllerGetAllMetaInfoPerDay == null)
+                {
+                    UnitSystemConversionSetControllerGetAllMetaInfoPerDay = new History();
+                }
+                UnitSystemConversionSetControllerGetAllMetaInfoPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerGetAllMetaInfoPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemConversionSetControllerGetAllPerDay()
         {
-            if (UnitSystemConversionSetControllerGetAllPerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerGetAllPerDay = new History();
+                if (UnitSystemConversionSetControllerGetAllPerDay == null)
+                {
+                    UnitSystemConversionSetControllerGetAllPerDay = new History();
+                }
+                UnitSystemConversionSetControllerGetAllPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerGetAllPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemConversionSetControllerGetByIDPerDay()
         {
-            if (UnitSystemConversionSetControllerGetByIDPerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerGetByIDPerDay = new History();
+                if (UnitSystemConversionSetControllerGetByIDPerDay == null)
+                {
+                    UnitSystemConversionSetControllerGetByIDPerDay = new History();
+                }
+                UnitSystemConversionSetControllerGetByIDPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerGetByIDPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemConversionSetControllerPostPerDay()
         {
-            if (UnitSystemConversionSetControllerPostPerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerPostPerDay = new History();
+                if (UnitSystemConversionSetControllerPostPerDay == null)
+                {
+                    UnitSystemConversionSetControllerPostPerDay = new History();
+                }
+                UnitSystemConversionSetControllerPostPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerPostPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemConversionSetControllerPutPerDay()
         {
-            if (UnitSystemConversionSetControllerPutPerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerPutPerDay = new History();
+                if (UnitSystemConversionSetControllerPutPerDay == null)
+                {
+                    UnitSystemConversionSetControllerPutPerDay = new History();
+                }
+                UnitSystemConversionSetControllerPutPerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerPutPerDay.Increment();
-            ManageBackup();
         }
         public void IncrementUnitSystemConversionSetControllerDeletePerDay()
         {
-            if (UnitSystemConversionSetControllerDeletePerDay == null)
+            lock (lock_)
             {
-                UnitSystemConversionSetControllerDeletePerDay = new History();
+                if (UnitSystemConversionSetControllerDeletePerDay == null)
+                {
+                    UnitSystemConversionSetControllerDeletePerDay = new History();
+                }
+                UnitSystemConversionSetControllerDeletePerDay.Increment();
+                ManageBackup();
             }
-            UnitSystemConversionSetControllerDeletePerDay.Increment();
-            ManageBackup();
         }
 
         private void ManageBackup()
         {
-            if (DateTime.UtcNow > LastSaved + BackInterval)
+            if (DateTime.UtcNow > LastSaved + BackUpInterval)
             {
                 LastSaved = DateTime.UtcNow;
                 try

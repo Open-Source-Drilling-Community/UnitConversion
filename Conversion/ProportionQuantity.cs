@@ -68,8 +68,8 @@ namespace OSDC.UnitConversion.Conversion
                 DescriptionMD += Environment.NewLine;
                 DescriptionMD += @"The SI unit for **" + UsualNames.First() + "** is: " + SIUnitName + " with the associated unit label $" + SIUnitLabelLatex + "$" + Environment.NewLine;
             }
-            SemanticExample = GetSemanticExample();
             InitializeUnitChoices();
+            SemanticExample = GetSemanticExample();
         }
     }
 }

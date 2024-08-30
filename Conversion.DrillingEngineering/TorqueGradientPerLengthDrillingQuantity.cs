@@ -31,7 +31,6 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of torque gradient per length in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + TorqueGradientPerLengthQuantity.Instance.GetUnitChoice(TorqueGradientPerLengthQuantity.UnitChoicesEnum.NewtonMetrePerMetre).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(TorqueGradientPerLengthQuantity.Instance.GetUnitChoice(TorqueGradientPerLengthQuantity.UnitChoicesEnum.NewtonMetrePerMetre));
             this.UnitChoices.Add(TorqueGradientPerLengthQuantity.Instance.GetUnitChoice(TorqueGradientPerLengthQuantity.UnitChoicesEnum.KilonewtonMetrePerMetre));
@@ -40,6 +39,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             this.UnitChoices.Add(TorqueGradientPerLengthQuantity.Instance.GetUnitChoice(TorqueGradientPerLengthQuantity.UnitChoicesEnum.KilofootPoundPerFoot));
             this.UnitChoices.Add(TorqueGradientPerLengthQuantity.Instance.GetUnitChoice(TorqueGradientPerLengthQuantity.UnitChoicesEnum.FootPoundPerMetre));
             this.UnitChoices.Add(TorqueGradientPerLengthQuantity.Instance.GetUnitChoice(TorqueGradientPerLengthQuantity.UnitChoicesEnum.KilofootPoundPerMetre));
+            SemanticExample = GetSemanticExample();
         }
     }
 }

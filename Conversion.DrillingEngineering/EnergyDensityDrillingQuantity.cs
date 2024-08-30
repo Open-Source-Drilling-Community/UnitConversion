@@ -32,14 +32,13 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of energy density in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicMetre).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicMetre));
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicFoot));
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerCubicInch));
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerGallonUK));
             this.UnitChoices.Add(EnergyDensityQuantity.Instance.GetUnitChoice(EnergyDensityQuantity.UnitChoicesEnum.JoulePerGallonUS));
+            SemanticExample = GetSemanticExample();
         }
-
     }
 }

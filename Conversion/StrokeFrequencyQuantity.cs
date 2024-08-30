@@ -32,11 +32,10 @@ namespace OSDC.UnitConversion.Conversion
             DescriptionMD = string.Empty;
             DescriptionMD += @"A stroke frequency is the number of stokes per unit time" + Environment.NewLine;
             DescriptionMD += @"The meaningful precision of a stroke frequency is typically: " + MeaningfulPrecisionInSI.ToString() + " " + FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz).UnitLabel + Environment.NewLine;
-            SemanticExample = GetSemanticExample();
             Reset();
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Hertz));
             this.UnitChoices.Add(FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Spm));
+            SemanticExample = GetSemanticExample();
         }
-
     }
 }

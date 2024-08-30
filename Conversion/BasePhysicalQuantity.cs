@@ -748,9 +748,9 @@ namespace OSDC.UnitConversion.Conversion
                             }
                         }
                     }
-                    if (SIUnitChoice != null && !string.IsNullOrEmpty(SIUnitChoice.UnitName))
+                    if (SIUnitChoice != null && !string.IsNullOrEmpty(SIUnitChoice.GetVariableName()))
                     {
-                        result.Add(new SemanticFact(radical + "_Value", "HasUnitOfMeasure", SIUnitChoice.UnitName));
+                        result.Add(new SemanticFact(radical + "_Signal", "HasUnitOfMeasure", SIUnitChoice.GetVariableName()));
                     }
                 }
                 else
@@ -758,54 +758,54 @@ namespace OSDC.UnitConversion.Conversion
                     result.Add(new SemanticFact(Name + "Quantity", "BelongsToClass", "Quantity"));
                     if (LengthDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "L", "=", LengthDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "L", "=", LengthDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (MassDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "M", "=", MassDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "M", "=", MassDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (TimeDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "T", "=", TimeDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "T", "=", TimeDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (TemperatureDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "ThT", "=", TemperatureDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "ThT", "=", TemperatureDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (AmountSubstanceDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "N", "=", AmountSubstanceDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "N", "=", AmountSubstanceDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (ElectricCurrentDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "I", "=", ElectricCurrentDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "I", "=", ElectricCurrentDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (LuminousIntensityDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "J", "=", LuminousIntensityDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "J", "=", LuminousIntensityDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (PlaneAngleDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "Theta", "=", PlaneAngleDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "Theta", "=", PlaneAngleDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (SolidAngleDimension != 0)
                     {
-                        result.Add(new SemanticFact(Name + "Quantity." + "Omega", "=", SolidAngleDimension.ToString()));
+                        result.Add(new SemanticFact(Name + "Quantity." + "Omega", "=", SolidAngleDimension.ToString(CultureInfo.InvariantCulture)));
                     }
                     if (UnitChoices != null)
                     {
                         foreach (UnitChoice choice in UnitChoices)
                         {
-                            if (choice != null)
+                            if (choice != null && !string.IsNullOrEmpty(choice.GetVariableName()))
                             {
-                                result.Add(new SemanticFact(choice.UnitName, "BelongsToClass", "Unit"));
-                                result.Add(new SemanticFact(choice.UnitName + ".ConversionFactorA", "=", choice.ConversionBiasFromSI.ToString()));
-                                result.Add(new SemanticFact(choice.UnitName + ".ConversionFactorB", "=", choice.ConversionFactorFromSI.ToString()));
-                                result.Add(new SemanticFact(choice.UnitName + ".Symbol", "=", choice.UnitLabel));
-                                result.Add(new SemanticFact(choice.UnitName, "IsUnitForQuantity", Name + "Quantity"));
+                                result.Add(new SemanticFact(choice.GetVariableName(), "BelongsToClass", "Unit"));
+                                result.Add(new SemanticFact(choice.GetVariableName() + ".ConversionFactorA", "=", choice.ConversionBiasFromSI.ToString(CultureInfo.InvariantCulture)));
+                                result.Add(new SemanticFact(choice.GetVariableName() + ".ConversionFactorB", "=", choice.ConversionFactorFromSI.ToString(CultureInfo.InvariantCulture)));
+                                result.Add(new SemanticFact(choice.GetVariableName() + ".Symbol", "=", "\"" + choice.UnitLabel + "\""));
+                                result.Add(new SemanticFact(choice.GetVariableName(), "IsUnitForQuantity", Name + "Quantity"));
                                 if (choice.IsSI)
                                 {
-                                    result.Add(new SemanticFact(Name + "Quantity", "HasSIUnit", choice.UnitName));
+                                    result.Add(new SemanticFact(Name + "Quantity", "HasSIUnit", choice.GetVariableName()));
                                 }
                             }
                         }

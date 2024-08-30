@@ -1187,7 +1187,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "BackInterval": {
+          "BackUpInterval": {
             "type": "string",
             "format": "date-span"
           },
