@@ -801,7 +801,10 @@ namespace OSDC.UnitConversion.Conversion
                                 result.Add(new SemanticFact(choice.GetVariableName(), "BelongsToClass", "Unit"));
                                 result.Add(new SemanticFact(choice.GetVariableName() + ".ConversionFactorA", "=", choice.ConversionBiasFromSI.ToString(CultureInfo.InvariantCulture)));
                                 result.Add(new SemanticFact(choice.GetVariableName() + ".ConversionFactorB", "=", choice.ConversionFactorFromSI.ToString(CultureInfo.InvariantCulture)));
-                                result.Add(new SemanticFact(choice.GetVariableName() + ".Symbol", "=", "\"" + choice.UnitLabel + "\""));
+                                if (!string.IsNullOrEmpty(choice.UnitLabel))
+                                {
+                                    result.Add(new SemanticFact(choice.GetVariableName() + ".Symbol", "=", "\"" + choice.UnitLabel + "\""));
+                                }
                                 result.Add(new SemanticFact(choice.GetVariableName(), "IsUnitForQuantity", Name + "Quantity"));
                                 if (choice.IsSI)
                                 {

@@ -80,7 +80,7 @@ namespace OSDC.UnitConversion.Conversion
             string varName = string.Empty;
             if (!string.IsNullOrEmpty(UnitName))
             {
-                string[] names = UnitName.Split(' ', '\t', '-', '_', '/', '\\', '&', '%');
+                string[] names = UnitName.Replace("Å","Aa").Replace("å","aa").Replace("Ø","Oe").Replace("ø","oe").Replace("Æ","ae").Replace("æ","ae").Split(' ', '\t', '-', '_', '/', '\\', '&', '%', '(',')', '\'');
                 if (names != null)
                 {
                     foreach (string name in names)
