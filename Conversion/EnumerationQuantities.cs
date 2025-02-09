@@ -70,6 +70,9 @@ namespace OSDC.UnitConversion.Conversion
          WaveNumber,  // WaveNumber
          Mass,  // Mass
          Energy,  // Energy
+         ForceRateOfChange,  // ForceRateOfChange
+         PressureRateOfChange,  // PressureRateOfChange
+         TorqueRateOfChange,  // TorqueRateOfChange
          DiameterSmall,  // DiameterSmall
          DimensionLessStandard,  // DimensionLessStandard
          EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
@@ -157,6 +160,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
          {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
          {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
+         {QuantityEnum.ForceRateOfChange, new Guid("2f28f6d5-5b01-4fd0-9924-bf84250f6092")},  // ForceRateOfChange
+         {QuantityEnum.PressureRateOfChange, new Guid("611830b0-739e-42ef-8215-98e0a4e1df3b")},  // PressureRateOfChange
+         {QuantityEnum.TorqueRateOfChange, new Guid("e94ee582-62bd-472b-9188-1f423729e99e")},  // TorqueRateOfChange
          {QuantityEnum.DiameterSmall, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // DiameterSmall
          {QuantityEnum.DimensionLessStandard, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // DimensionLessStandard
          {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
@@ -3303,6 +3309,336 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
          {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
          {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ForceRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonPerSecond,  // newton per second
+         DecanewtonPerSecond,  // decanewton per second
+         KilonewtonPerSecond,  // kilonewton per second
+         KilodecanewtonPerSecond,  // kilodecanewton per second
+         KilogramForcePerSecond,  // kilogram force per second
+         PoundForcePerSecond,  // pound force per second
+         KilopoundForcePerSecond,  // kilopound force per second
+         NewtonPerMinute,  // newton per minute
+         DecanewtonPerMinute,  // decanewton per minute
+         KilonewtonPerMinute,  // kilonewton per minute
+         KilodecanewtonPerMinute,  // kilodecanewton per minute
+         KilogramForcePerMinute,  // kilogram force per minute
+         PoundForcePerMinute,  // pound force per minute
+         KilopoundForcePerMinute,  // kilopound force per minute
+         NewtonPerHour,  // newton per hour
+         DecanewtonPerHour,  // decanewton per hour
+         KilonewtonPerHour,  // kilonewton per hour
+         KilodecanewtonPerHour,  // kilodecanewton per hour
+         KilogramForcePerHour,  // kilogram force per hour
+         PoundForcePerHour,  // pound force per hour
+         KilopoundForcePerHour // kilopound force per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonPerSecond, new Guid("c766ff54-d778-4ee6-9c65-8467932efa60")},  // newton per second
+         {UnitChoicesEnum.DecanewtonPerSecond, new Guid("1b7c3f4d-30ec-4d50-8063-0d1452c88615")},  // decanewton per second
+         {UnitChoicesEnum.KilonewtonPerSecond, new Guid("5c99b2ac-51b7-4f9c-b82b-036f0b02492d")},  // kilonewton per second
+         {UnitChoicesEnum.KilodecanewtonPerSecond, new Guid("f0ad684b-827c-43f9-8f6e-c9097bc82dd3")},  // kilodecanewton per second
+         {UnitChoicesEnum.KilogramForcePerSecond, new Guid("e5dc01f1-09d4-4304-b065-8096026647e8")},  // kilogram force per second
+         {UnitChoicesEnum.PoundForcePerSecond, new Guid("92ed16d5-3ea8-4102-a1cb-89f527d2b4a0")},  // pound force per second
+         {UnitChoicesEnum.KilopoundForcePerSecond, new Guid("1f45684c-4582-4d5f-a5c5-950e4c9dbff7")},  // kilopound force per second
+         {UnitChoicesEnum.NewtonPerMinute, new Guid("58df085b-9f10-4148-ad09-cb05bbcfa920")},  // newton per minute
+         {UnitChoicesEnum.DecanewtonPerMinute, new Guid("130a7d93-a5d2-4d9b-bdb5-4c5784f61c79")},  // decanewton per minute
+         {UnitChoicesEnum.KilonewtonPerMinute, new Guid("5841d94c-2349-4f51-a965-eb8cc3cc19d9")},  // kilonewton per minute
+         {UnitChoicesEnum.KilodecanewtonPerMinute, new Guid("1a80c782-8438-43ac-ba6c-46b6b7abe761")},  // kilodecanewton per minute
+         {UnitChoicesEnum.KilogramForcePerMinute, new Guid("323c8871-2f8f-41bd-9df8-50e3b50bf093")},  // kilogram force per minute
+         {UnitChoicesEnum.PoundForcePerMinute, new Guid("924a79ab-743d-4c69-b5fb-b9a60bc70726")},  // pound force per minute
+         {UnitChoicesEnum.KilopoundForcePerMinute, new Guid("1b5bc3fc-3784-4508-83d5-4a21b5e9fe84")},  // kilopound force per minute
+         {UnitChoicesEnum.NewtonPerHour, new Guid("efa69e3c-b03b-4520-8ae8-e92ab6953141")},  // newton per hour
+         {UnitChoicesEnum.DecanewtonPerHour, new Guid("1b0aaee4-9d74-4289-9f08-96c2d31a19f3")},  // decanewton per hour
+         {UnitChoicesEnum.KilonewtonPerHour, new Guid("edd7e626-f9a4-42c5-bce3-5b72c1f3ca55")},  // kilonewton per hour
+         {UnitChoicesEnum.KilodecanewtonPerHour, new Guid("ce5ff57d-e427-4e4f-aa11-c1f02118b3e1")},  // kilodecanewton per hour
+         {UnitChoicesEnum.KilogramForcePerHour, new Guid("5c638813-fe28-47de-b7b5-a65760562b12")},  // kilogram force per hour
+         {UnitChoicesEnum.PoundForcePerHour, new Guid("a1e5538f-a653-4a4b-8240-01b6a709a0d4")},  // pound force per hour
+         {UnitChoicesEnum.KilopoundForcePerHour, new Guid("6041cb2d-b49a-46b4-87ef-1f89ddd89758")} // kilopound force per hour
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PressureRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         PascalPerSecond,  // pascal per second
+         KilopascalPerSecond,  // kilopascal per second
+         BarPerSecond,  // bar per second
+         MillibarPerSecond,  // millibar per second
+         MicrobarPerSecond,  // microbar per second
+         PoundPerSquareInchPerSecond,  // pound per square inch per second
+         PoundPer100SquareFootPerSecond,  // pound per 100 square foot per second
+         KilopoundPerSquareInchPerSecond,  // kilopound per square inch per second
+         StandardAtmospherePerSecond,  // standard atmosphere per second
+         PoundPerSquareFootPerSecond,  // pound per square foot per second
+         MegapascalPerSecond,  // megapascal per second
+         GigapascalPerSecond,  // gigapascal per second
+         NewtonPerSquareMetrePerSecond,  // newton per square metre per second
+         NewtonPerSquareCentimetrePerSecond,  // newton per square centimetre per second
+         NewtonPerSquareMillimetrePerSecond,  // newton per square millimetre per second
+         KilonewtonPerSquareMetrePerSecond,  // kilonewton per square metre per second
+         MegapoundPerSquareInchPerSecond,  // megapound per square inch per second
+         TorrPerSecond,  // torr per second
+         CentimetreMercuryAtZeroDegreeCelsiusPerSecond,  // centimetre mercury at zero degree celsius per second
+         MillimetreMercuryAtZeroDegreeCelsiusPerSecond,  // millimetre mercury at zero degree celsius per second
+         InchMercuryAt32DegreeFahrenheitPerSecond,  // inch mercury at 32 degree fahrenheit per second
+         InchMercuryAt60DegreeFahrenheitPerSecond,  // inch mercury at 60 degree fahrenheit per second
+         CentimetreWaterAt4DegreeCelsiusPerSecond,  // centimetre water at 4 degree celsius per second
+         MillimetreWaterAt4DegreeCelsiusPerSecond,  // millimetre water at 4 degree celsius per second
+         InchWaterAt4DegreeCelsiusPerSecond,  // inch water at 4 degree celsius per second
+         FootWaterAt4DegreeCelsiusPerSecond,  // foot water at 4 degree celsius per second
+         DynePerSquareCentimetrePerSecond,  // dyne per square centimetre per second
+         PascalPerMinute,  // pascal per minute
+         KilopascalPerMinute,  // kilopascal per minute
+         BarPerMinute,  // bar per minute
+         MillibarPerMinute,  // millibar per minute
+         MicrobarPerMinute,  // microbar per minute
+         PoundPerSquareInchPerMinute,  // pound per square inch per minute
+         PoundPer100SquareFootPerMinute,  // pound per 100 square foot per minute
+         KilopoundPerSquareInchPerMinute,  // kilopound per square inch per minute
+         StandardAtmospherePerMinute,  // standard atmosphere per minute
+         PoundPerSquareFootPerMinute,  // pound per square foot per minute
+         MegapascalPerMinute,  // megapascal per minute
+         GigapascalPerMinute,  // gigapascal per minute
+         NewtonPerSquareMetrePerMinute,  // newton per square metre per minute
+         NewtonPerSquareCentimetrePerMinute,  // newton per square centimetre per minute
+         NewtonPerSquareMillimetrePerMinute,  // newton per square millimetre per minute
+         KilonewtonPerSquareMetrePerMinute,  // kilonewton per square metre per minute
+         MegapoundPerSquareInchPerMinute,  // megapound per square inch per minute
+         TorrPerMinute,  // torr per minute
+         CentimetreMercuryAtZeroDegreeCelsiusPerMinute,  // centimetre mercury at zero degree celsius per minute
+         MillimetreMercuryAtZeroDegreeCelsiusPerMinute,  // millimetre mercury at zero degree celsius per minute
+         InchMercuryAt32DegreeFahrenheitPerMinute,  // inch mercury at 32 degree fahrenheit per minute
+         InchMercuryAt60DegreeFahrenheitPerMinute,  // inch mercury at 60 degree fahrenheit per minute
+         CentimetreWaterAt4DegreeCelsiusPerMinute,  // centimetre water at 4 degree celsius per minute
+         MillimetreWaterAt4DegreeCelsiusPerMinute,  // millimetre water at 4 degree celsius per minute
+         InchWaterAt4DegreeCelsiusPerMinute,  // inch water at 4 degree celsius per minute
+         FootWaterAt4DegreeCelsiusPerMinute,  // foot water at 4 degree celsius per minute
+         DynePerSquareCentimetrePerMinute,  // dyne per square centimetre per minute
+         PascalPerHour,  // pascal per hour
+         KilopascalPerHour,  // kilopascal per hour
+         BarPerHour,  // bar per hour
+         MillibarPerHour,  // millibar per hour
+         MicrobarPerHour,  // microbar per hour
+         PoundPerSquareInchPerHour,  // pound per square inch per hour
+         PoundPer100SquareFootPerHour,  // pound per 100 square foot per hour
+         KilopoundPerSquareInchPerHour,  // kilopound per square inch per hour
+         StandardAtmospherePerHour,  // standard atmosphere per hour
+         PoundPerSquareFootPerHour,  // pound per square foot per hour
+         MegapascalPerHour,  // megapascal per hour
+         GigapascalPerHour,  // gigapascal per hour
+         NewtonPerSquareMetrePerHour,  // newton per square metre per hour
+         NewtonPerSquareCentimetrePerHour,  // newton per square centimetre per hour
+         NewtonPerSquareMillimetrePerHour,  // newton per square millimetre per hour
+         KilonewtonPerSquareMetrePerHour,  // kilonewton per square metre per hour
+         MegapoundPerSquareInchPerHour,  // megapound per square inch per hour
+         TorrPerHour,  // torr per hour
+         CentimetreMercuryAtZeroDegreeCelsiusPerHour,  // centimetre mercury at zero degree celsius per hour
+         MillimetreMercuryAtZeroDegreeCelsiusPerHour,  // millimetre mercury at zero degree celsius per hour
+         InchMercuryAt32DegreeFahrenheitPerHour,  // inch mercury at 32 degree fahrenheit per hour
+         InchMercuryAt60DegreeFahrenheitPerHour,  // inch mercury at 60 degree fahrenheit per hour
+         CentimetreWaterAt4DegreeCelsiusPerHour,  // centimetre water at 4 degree celsius per hour
+         MillimetreWaterAt4DegreeCelsiusPerHour,  // millimetre water at 4 degree celsius per hour
+         InchWaterAt4DegreeCelsiusPerHour,  // inch water at 4 degree celsius per hour
+         FootWaterAt4DegreeCelsiusPerHour,  // foot water at 4 degree celsius per hour
+         DynePerSquareCentimetrePerHour // dyne per square centimetre per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.PascalPerSecond, new Guid("146c6da5-9de1-4c41-b6dd-9a7757b14ebf")},  // pascal per second
+         {UnitChoicesEnum.KilopascalPerSecond, new Guid("92faa8ae-3f6f-4bd3-97ef-19709f9b7a43")},  // kilopascal per second
+         {UnitChoicesEnum.BarPerSecond, new Guid("3bd0765c-d3ca-45e9-9818-d70dbd225fdc")},  // bar per second
+         {UnitChoicesEnum.MillibarPerSecond, new Guid("ba3427d8-c516-40c8-8d4f-fdfe162414e3")},  // millibar per second
+         {UnitChoicesEnum.MicrobarPerSecond, new Guid("65fb7735-63d5-42da-a730-1bdb4bd7f96a")},  // microbar per second
+         {UnitChoicesEnum.PoundPerSquareInchPerSecond, new Guid("6c065cb9-edcc-4093-a81e-dcba0711ab0c")},  // pound per square inch per second
+         {UnitChoicesEnum.PoundPer100SquareFootPerSecond, new Guid("c2f71235-2332-42ae-83a3-be1aeea10488")},  // pound per 100 square foot per second
+         {UnitChoicesEnum.KilopoundPerSquareInchPerSecond, new Guid("90dd9c87-07f1-4f62-9098-029f78343309")},  // kilopound per square inch per second
+         {UnitChoicesEnum.StandardAtmospherePerSecond, new Guid("3d6bbda4-a133-4bd4-bf37-afd2c56f5b02")},  // standard atmosphere per second
+         {UnitChoicesEnum.PoundPerSquareFootPerSecond, new Guid("c25ea4df-6b1b-4cef-8ece-7565c8ae6739")},  // pound per square foot per second
+         {UnitChoicesEnum.MegapascalPerSecond, new Guid("364ded63-6e4f-4d9b-ac57-d3bff57cc36a")},  // megapascal per second
+         {UnitChoicesEnum.GigapascalPerSecond, new Guid("04567188-9a65-4289-ac76-2b346401ef39")},  // gigapascal per second
+         {UnitChoicesEnum.NewtonPerSquareMetrePerSecond, new Guid("3efead2c-a99a-4efd-a534-d8221d3dbad4")},  // newton per square metre per second
+         {UnitChoicesEnum.NewtonPerSquareCentimetrePerSecond, new Guid("db0bcb17-a1bd-4c68-b4ff-528194f9b766")},  // newton per square centimetre per second
+         {UnitChoicesEnum.NewtonPerSquareMillimetrePerSecond, new Guid("78c99986-523b-4052-b995-64ada11779a0")},  // newton per square millimetre per second
+         {UnitChoicesEnum.KilonewtonPerSquareMetrePerSecond, new Guid("012d7c45-41a8-45b3-9c40-3ab8333ed624")},  // kilonewton per square metre per second
+         {UnitChoicesEnum.MegapoundPerSquareInchPerSecond, new Guid("cfd1514e-2707-4df5-b963-50390d1e2298")},  // megapound per square inch per second
+         {UnitChoicesEnum.TorrPerSecond, new Guid("334a2e72-7dae-4904-ac5f-5e98dba8f191")},  // torr per second
+         {UnitChoicesEnum.CentimetreMercuryAtZeroDegreeCelsiusPerSecond, new Guid("29f8c1be-1148-41ed-ad7c-eb7d6fe12800")},  // centimetre mercury at zero degree celsius per second
+         {UnitChoicesEnum.MillimetreMercuryAtZeroDegreeCelsiusPerSecond, new Guid("8b0a6a79-0751-4aea-baa8-f685b36b5226")},  // millimetre mercury at zero degree celsius per second
+         {UnitChoicesEnum.InchMercuryAt32DegreeFahrenheitPerSecond, new Guid("ef059b25-5fdd-481d-bdf2-3785c012b082")},  // inch mercury at 32 degree fahrenheit per second
+         {UnitChoicesEnum.InchMercuryAt60DegreeFahrenheitPerSecond, new Guid("23dd84dd-b90a-442e-ad91-a1458fac47f7")},  // inch mercury at 60 degree fahrenheit per second
+         {UnitChoicesEnum.CentimetreWaterAt4DegreeCelsiusPerSecond, new Guid("fafbcb83-8425-4e04-8bf6-cb58c64bdcd7")},  // centimetre water at 4 degree celsius per second
+         {UnitChoicesEnum.MillimetreWaterAt4DegreeCelsiusPerSecond, new Guid("402ce428-d47a-493b-9b90-e3230a79da96")},  // millimetre water at 4 degree celsius per second
+         {UnitChoicesEnum.InchWaterAt4DegreeCelsiusPerSecond, new Guid("11d5031a-06d5-4950-b877-cae03aff2669")},  // inch water at 4 degree celsius per second
+         {UnitChoicesEnum.FootWaterAt4DegreeCelsiusPerSecond, new Guid("52de6721-dfec-4a54-861c-e74da72c8470")},  // foot water at 4 degree celsius per second
+         {UnitChoicesEnum.DynePerSquareCentimetrePerSecond, new Guid("e003cc76-81e3-4e8e-8e80-aa03ccaec0b5")},  // dyne per square centimetre per second
+         {UnitChoicesEnum.PascalPerMinute, new Guid("e598bc6c-1858-448e-b6c2-dbefdfe517a7")},  // pascal per minute
+         {UnitChoicesEnum.KilopascalPerMinute, new Guid("1bd828ef-e6a8-4c6b-954e-83d076d81b5b")},  // kilopascal per minute
+         {UnitChoicesEnum.BarPerMinute, new Guid("d5064ac5-0f02-437a-8d93-004ca9301b88")},  // bar per minute
+         {UnitChoicesEnum.MillibarPerMinute, new Guid("76136213-1d78-4ac2-8f78-54dc62b815bc")},  // millibar per minute
+         {UnitChoicesEnum.MicrobarPerMinute, new Guid("ee409d37-a87d-4e7c-a595-d01832e66918")},  // microbar per minute
+         {UnitChoicesEnum.PoundPerSquareInchPerMinute, new Guid("34e3dd46-c61b-4109-91f9-704a94e4a827")},  // pound per square inch per minute
+         {UnitChoicesEnum.PoundPer100SquareFootPerMinute, new Guid("9220c284-c1d6-41ed-a0c3-ee8e439cc5e2")},  // pound per 100 square foot per minute
+         {UnitChoicesEnum.KilopoundPerSquareInchPerMinute, new Guid("fd5479cd-6a86-43ba-bbbf-142068a903ee")},  // kilopound per square inch per minute
+         {UnitChoicesEnum.StandardAtmospherePerMinute, new Guid("cfdf265f-5e6f-4b1a-9169-a4a93a232821")},  // standard atmosphere per minute
+         {UnitChoicesEnum.PoundPerSquareFootPerMinute, new Guid("d4aa7c92-885b-4c7e-977b-4ef9908b25a8")},  // pound per square foot per minute
+         {UnitChoicesEnum.MegapascalPerMinute, new Guid("a1442a08-69f3-461e-82c5-e53e0322b266")},  // megapascal per minute
+         {UnitChoicesEnum.GigapascalPerMinute, new Guid("882534c4-b00b-45e2-a26b-04f9f683a7e6")},  // gigapascal per minute
+         {UnitChoicesEnum.NewtonPerSquareMetrePerMinute, new Guid("5dce7d3a-f8b8-4d08-a9d3-1f91b84829b9")},  // newton per square metre per minute
+         {UnitChoicesEnum.NewtonPerSquareCentimetrePerMinute, new Guid("70d9df4b-a360-4b89-b433-cd2d9d0e9fe0")},  // newton per square centimetre per minute
+         {UnitChoicesEnum.NewtonPerSquareMillimetrePerMinute, new Guid("3d587520-1609-4292-8f10-45758b59230d")},  // newton per square millimetre per minute
+         {UnitChoicesEnum.KilonewtonPerSquareMetrePerMinute, new Guid("30466bc7-6978-4c96-a2cf-2158955dbfe7")},  // kilonewton per square metre per minute
+         {UnitChoicesEnum.MegapoundPerSquareInchPerMinute, new Guid("8ad28da4-f7e5-4dbb-9f70-b06157686aae")},  // megapound per square inch per minute
+         {UnitChoicesEnum.TorrPerMinute, new Guid("73b7ed13-4545-4d90-b4a5-83e2f9c8ebb7")},  // torr per minute
+         {UnitChoicesEnum.CentimetreMercuryAtZeroDegreeCelsiusPerMinute, new Guid("08b7f12a-ef89-4a13-8b60-dd7cba0f586f")},  // centimetre mercury at zero degree celsius per minute
+         {UnitChoicesEnum.MillimetreMercuryAtZeroDegreeCelsiusPerMinute, new Guid("fe387842-ca9e-4c35-860a-d377745f6aea")},  // millimetre mercury at zero degree celsius per minute
+         {UnitChoicesEnum.InchMercuryAt32DegreeFahrenheitPerMinute, new Guid("6638070e-912d-42d7-b8b3-e4caafc2bb33")},  // inch mercury at 32 degree fahrenheit per minute
+         {UnitChoicesEnum.InchMercuryAt60DegreeFahrenheitPerMinute, new Guid("a84bc253-3a56-494c-80da-d62fe5a3e617")},  // inch mercury at 60 degree fahrenheit per minute
+         {UnitChoicesEnum.CentimetreWaterAt4DegreeCelsiusPerMinute, new Guid("2a18d804-e172-4b17-9f3f-becb8ebbac5f")},  // centimetre water at 4 degree celsius per minute
+         {UnitChoicesEnum.MillimetreWaterAt4DegreeCelsiusPerMinute, new Guid("125bcf03-f190-41bd-a95d-e7bded0bc97e")},  // millimetre water at 4 degree celsius per minute
+         {UnitChoicesEnum.InchWaterAt4DegreeCelsiusPerMinute, new Guid("57071e63-13ea-48d2-bfc2-fc82e6cca335")},  // inch water at 4 degree celsius per minute
+         {UnitChoicesEnum.FootWaterAt4DegreeCelsiusPerMinute, new Guid("8a06ee9b-f646-4c3a-b087-309a0bd3f844")},  // foot water at 4 degree celsius per minute
+         {UnitChoicesEnum.DynePerSquareCentimetrePerMinute, new Guid("ae854308-d419-452a-ba65-9f094ab0c2b5")},  // dyne per square centimetre per minute
+         {UnitChoicesEnum.PascalPerHour, new Guid("bc8c071a-2c0a-4617-90c1-af5e00ec7e94")},  // pascal per hour
+         {UnitChoicesEnum.KilopascalPerHour, new Guid("618f23ff-90af-416c-8d1a-a90bc421a6de")},  // kilopascal per hour
+         {UnitChoicesEnum.BarPerHour, new Guid("387befbe-ad5a-46b5-a1a1-b55bebf96a12")},  // bar per hour
+         {UnitChoicesEnum.MillibarPerHour, new Guid("c8b4a1d2-d4aa-4fb7-8b64-fd73b462d924")},  // millibar per hour
+         {UnitChoicesEnum.MicrobarPerHour, new Guid("1c6a1561-2293-4e37-b6f7-cc01bf3f8e71")},  // microbar per hour
+         {UnitChoicesEnum.PoundPerSquareInchPerHour, new Guid("94ce97e6-e2aa-4240-bb5f-e713abe880ad")},  // pound per square inch per hour
+         {UnitChoicesEnum.PoundPer100SquareFootPerHour, new Guid("5900f7db-2994-4492-8779-89f54294aaa7")},  // pound per 100 square foot per hour
+         {UnitChoicesEnum.KilopoundPerSquareInchPerHour, new Guid("837e7f8f-9e02-4438-9425-9d4aca0c227a")},  // kilopound per square inch per hour
+         {UnitChoicesEnum.StandardAtmospherePerHour, new Guid("673a6598-498d-4e22-8cd5-972d0d7a52ac")},  // standard atmosphere per hour
+         {UnitChoicesEnum.PoundPerSquareFootPerHour, new Guid("b7938985-f701-4245-9050-303a9e6d5c9f")},  // pound per square foot per hour
+         {UnitChoicesEnum.MegapascalPerHour, new Guid("a7ed3518-a18f-4edf-b739-0b65961a3b60")},  // megapascal per hour
+         {UnitChoicesEnum.GigapascalPerHour, new Guid("9f24b377-6f28-4c2c-8b64-c7ef2f6b7499")},  // gigapascal per hour
+         {UnitChoicesEnum.NewtonPerSquareMetrePerHour, new Guid("bd39b1da-4c58-4e56-8a3c-e364bce4b38f")},  // newton per square metre per hour
+         {UnitChoicesEnum.NewtonPerSquareCentimetrePerHour, new Guid("aa3f0b26-d6f3-4feb-bffa-fa48a4a3a1a7")},  // newton per square centimetre per hour
+         {UnitChoicesEnum.NewtonPerSquareMillimetrePerHour, new Guid("378b7b8b-2d47-4a00-a817-ef9805b09169")},  // newton per square millimetre per hour
+         {UnitChoicesEnum.KilonewtonPerSquareMetrePerHour, new Guid("42e9c18f-37d4-44b1-8c1d-86f3c524bf8b")},  // kilonewton per square metre per hour
+         {UnitChoicesEnum.MegapoundPerSquareInchPerHour, new Guid("f4455f10-dc18-45b6-984f-7fd86a21d26f")},  // megapound per square inch per hour
+         {UnitChoicesEnum.TorrPerHour, new Guid("4e1b41a0-f7cb-4ff2-b691-3a19dbc1d668")},  // torr per hour
+         {UnitChoicesEnum.CentimetreMercuryAtZeroDegreeCelsiusPerHour, new Guid("ce403ddc-7b41-4abf-aea5-78ea2323595b")},  // centimetre mercury at zero degree celsius per hour
+         {UnitChoicesEnum.MillimetreMercuryAtZeroDegreeCelsiusPerHour, new Guid("dc27fed5-7e21-4b87-9498-51598af273da")},  // millimetre mercury at zero degree celsius per hour
+         {UnitChoicesEnum.InchMercuryAt32DegreeFahrenheitPerHour, new Guid("eb10ca92-df7f-4ef2-8c95-ac30a3d1a068")},  // inch mercury at 32 degree fahrenheit per hour
+         {UnitChoicesEnum.InchMercuryAt60DegreeFahrenheitPerHour, new Guid("9f30715a-000c-4de8-8b75-206e9bf87713")},  // inch mercury at 60 degree fahrenheit per hour
+         {UnitChoicesEnum.CentimetreWaterAt4DegreeCelsiusPerHour, new Guid("ed435708-418d-4a26-9b4c-e0f94ee63509")},  // centimetre water at 4 degree celsius per hour
+         {UnitChoicesEnum.MillimetreWaterAt4DegreeCelsiusPerHour, new Guid("3dafbaa0-5907-4bf0-8808-b5bc0ec2bf6c")},  // millimetre water at 4 degree celsius per hour
+         {UnitChoicesEnum.InchWaterAt4DegreeCelsiusPerHour, new Guid("084c8268-17a3-4d56-890e-aba0809772bc")},  // inch water at 4 degree celsius per hour
+         {UnitChoicesEnum.FootWaterAt4DegreeCelsiusPerHour, new Guid("2a3ed612-1097-46ad-9b91-63d81c14b943")},  // foot water at 4 degree celsius per hour
+         {UnitChoicesEnum.DynePerSquareCentimetrePerHour, new Guid("0493cff3-1e05-4ea5-8f3d-477f506b13f9")} // dyne per square centimetre per hour
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class TorqueRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonMetrePerSecond,  // newton metre per second
+         DecanewtonMetrePerSecond,  // decanewton metre per second
+         KilogramForceMetrePerSecond,  // kilogram force metre per second
+         KilonewtonMetrePerSecond,  // kilonewton metre per second
+         FootPoundPerSecond,  // foot pound per second
+         KilofootPoundPerSecond,  // kilofoot pound per second
+         NewtonDecimetrePerSecond,  // newton decimetre per second
+         NewtonCentimetrePerSecond,  // newton centimetre per second
+         NewtonMillimetrePerSecond,  // newton millimetre per second
+         InchPoundPerSecond,  // inch pound per second
+         NewtonMetrePerMinute,  // newton metre per minute
+         DecanewtonMetrePerMinute,  // decanewton metre per minute
+         KilogramForceMetrePerMinute,  // kilogram force metre per minute
+         KilonewtonMetrePerMinute,  // kilonewton metre per minute
+         FootPoundPerMinute,  // foot pound per minute
+         KilofootPoundPerMinute,  // kilofoot pound per minute
+         NewtonDecimetrePerMinute,  // newton decimetre per minute
+         NewtonCentimetrePerMinute,  // newton centimetre per minute
+         NewtonMillimetrePerMinute,  // newton millimetre per minute
+         InchPoundPerMinute,  // inch pound per minute
+         NewtonMetrePerHour,  // newton metre per hour
+         DecanewtonMetrePerHour,  // decanewton metre per hour
+         KilogramForceMetrePerHour,  // kilogram force metre per hour
+         KilonewtonMetrePerHour,  // kilonewton metre per hour
+         FootPoundPerHour,  // foot pound per hour
+         KilofootPoundPerHour,  // kilofoot pound per hour
+         NewtonDecimetrePerHour,  // newton decimetre per hour
+         NewtonCentimetrePerHour,  // newton centimetre per hour
+         NewtonMillimetrePerHour,  // newton millimetre per hour
+         InchPoundPerHour // inch pound per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonMetrePerSecond, new Guid("0af9bebb-adde-49b9-bf0b-0d5002e454a2")},  // newton metre per second
+         {UnitChoicesEnum.DecanewtonMetrePerSecond, new Guid("a6672d76-f845-47ce-9d67-7f1242ba9f60")},  // decanewton metre per second
+         {UnitChoicesEnum.KilogramForceMetrePerSecond, new Guid("6150a99d-34f0-438b-a8d3-038b8864c19f")},  // kilogram force metre per second
+         {UnitChoicesEnum.KilonewtonMetrePerSecond, new Guid("0875163d-a610-4e0d-8e05-5fe56896e44f")},  // kilonewton metre per second
+         {UnitChoicesEnum.FootPoundPerSecond, new Guid("e53f2ab8-0883-4a6f-ae67-9f660eb20368")},  // foot pound per second
+         {UnitChoicesEnum.KilofootPoundPerSecond, new Guid("6166acf4-c3bd-439c-b4a9-6f0282c18731")},  // kilofoot pound per second
+         {UnitChoicesEnum.NewtonDecimetrePerSecond, new Guid("7898b31c-821a-414d-9dcc-19822f3aef28")},  // newton decimetre per second
+         {UnitChoicesEnum.NewtonCentimetrePerSecond, new Guid("13d51bb3-8f11-4fb5-a89a-0eac4fd26fe7")},  // newton centimetre per second
+         {UnitChoicesEnum.NewtonMillimetrePerSecond, new Guid("173f9d03-f9c3-4d44-a889-52055887f8da")},  // newton millimetre per second
+         {UnitChoicesEnum.InchPoundPerSecond, new Guid("914875df-9234-40be-a5eb-f02e29e0457b")},  // inch pound per second
+         {UnitChoicesEnum.NewtonMetrePerMinute, new Guid("8c3ab891-e5bc-4fa1-9f14-a3250e062ef4")},  // newton metre per minute
+         {UnitChoicesEnum.DecanewtonMetrePerMinute, new Guid("a1b76c0a-7ef2-46df-8d5b-0253a5dd42e8")},  // decanewton metre per minute
+         {UnitChoicesEnum.KilogramForceMetrePerMinute, new Guid("91fa2fa9-d0dc-4d26-b694-2eac6ee7ad92")},  // kilogram force metre per minute
+         {UnitChoicesEnum.KilonewtonMetrePerMinute, new Guid("746fdf99-afde-483d-88d4-e512b46efe3e")},  // kilonewton metre per minute
+         {UnitChoicesEnum.FootPoundPerMinute, new Guid("66567700-9838-48f0-aa21-672c21380f57")},  // foot pound per minute
+         {UnitChoicesEnum.KilofootPoundPerMinute, new Guid("dfa752eb-792f-4eb1-9eaa-e32f497a1ea2")},  // kilofoot pound per minute
+         {UnitChoicesEnum.NewtonDecimetrePerMinute, new Guid("d4109f79-1724-4bba-8251-5847b5689037")},  // newton decimetre per minute
+         {UnitChoicesEnum.NewtonCentimetrePerMinute, new Guid("5d526e83-6a91-4230-97cd-054167a7a3d7")},  // newton centimetre per minute
+         {UnitChoicesEnum.NewtonMillimetrePerMinute, new Guid("5f1dbc46-8b88-4879-826f-f07836f018b8")},  // newton millimetre per minute
+         {UnitChoicesEnum.InchPoundPerMinute, new Guid("72d76192-c058-44f6-b074-48291be96f5b")},  // inch pound per minute
+         {UnitChoicesEnum.NewtonMetrePerHour, new Guid("c17eae23-0496-4fa1-a389-aa24828fa243")},  // newton metre per hour
+         {UnitChoicesEnum.DecanewtonMetrePerHour, new Guid("3907090e-c10e-41dc-95cf-634e1a28bb11")},  // decanewton metre per hour
+         {UnitChoicesEnum.KilogramForceMetrePerHour, new Guid("6295ae90-c198-499e-a90d-8dba22c77584")},  // kilogram force metre per hour
+         {UnitChoicesEnum.KilonewtonMetrePerHour, new Guid("e35e63cc-09dc-4d8a-bb5d-b0a0c24998f8")},  // kilonewton metre per hour
+         {UnitChoicesEnum.FootPoundPerHour, new Guid("b55029ec-fadc-46da-a3b8-a48a08f4d92f")},  // foot pound per hour
+         {UnitChoicesEnum.KilofootPoundPerHour, new Guid("18156d8f-dd9f-4b63-a138-18827cafc14d")},  // kilofoot pound per hour
+         {UnitChoicesEnum.NewtonDecimetrePerHour, new Guid("f19ae752-df39-48ae-bda3-c955116e5a01")},  // newton decimetre per hour
+         {UnitChoicesEnum.NewtonCentimetrePerHour, new Guid("c7d197cf-831e-454d-aaf2-73399ff9afa2")},  // newton centimetre per hour
+         {UnitChoicesEnum.NewtonMillimetrePerHour, new Guid("66c884c5-7596-4af7-919e-724b243336ae")},  // newton millimetre per hour
+         {UnitChoicesEnum.InchPoundPerHour, new Guid("64f6b76d-4a99-4379-bdf3-59b96e468e84")} // inch pound per hour
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

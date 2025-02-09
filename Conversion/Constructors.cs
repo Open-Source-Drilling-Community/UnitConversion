@@ -17184,3 +17184,2634 @@ namespace OSDC.UnitConversion.Conversion
       }
   }
 }
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ForceRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "newton per second",
+                  UnitLabel = "N/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("c766ff54-d778-4ee6-9c65-8467932efa60"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton per second",
+                  UnitLabel = "daN/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("1b7c3f4d-30ec-4d50-8063-0d1452c88615"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Deca)",
+                  ConversionFactorFromSI = 1.0/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Deca), i.e., 0.1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton per second",
+                  UnitLabel = "kN/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("5c99b2ac-51b7-4f9c-b82b-036f0b02492d"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilodecanewton per second",
+                  UnitLabel = "kdaN/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("f0ad684b-827c-43f9-8f6e-c9097bc82dd3"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.Deca)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo*Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilodecanewton per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo*Deca), i.e., 0.0001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force per second",
+                  UnitLabel = "kgf/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("e5dc01f1-09d4-4304-b065-8096026647e8"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.KilogramForce",
+                  ConversionFactorFromSI = 1.0/Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/KilogramForce, i.e., 0.10197162129779283"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound force per second",
+                  UnitLabel = "lbf/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("92ed16d5-3ea8-4102-a1cb-89f527d2b4a0"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.PoundForce",
+                  ConversionFactorFromSI = 1.0/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound force per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/PoundForce, i.e., 0.2248089430997105"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopound force per second",
+                  UnitLabel = "klbf/s",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("1f45684c-4582-4d5f-a5c5-950e4c9dbff7"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.PoundForce)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopound force per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo*PoundForce), i.e., 0.0002248089430997105"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per minute",
+                  UnitLabel = "N/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("58df085b-9f10-4148-ad09-cb05bbcfa920"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton per minute",
+                  UnitLabel = "daN/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("130a7d93-a5d2-4d9b-bdb5-4c5784f61c79"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Deca)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Deca), i.e., 6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton per minute",
+                  UnitLabel = "kN/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("5841d94c-2349-4f51-a965-eb8cc3cc19d9"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Kilo, i.e., 0.06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilodecanewton per minute",
+                  UnitLabel = "kdaN/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("1a80c782-8438-43ac-ba6c-46b6b7abe761"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Kilo*Factors.Deca)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Kilo*Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilodecanewton per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Kilo*Deca), i.e., 0.006"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force per minute",
+                  UnitLabel = "kgf/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("323c8871-2f8f-41bd-9df8-50e3b50bf093"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.KilogramForce",
+                  ConversionFactorFromSI = Factors.Minute/Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/KilogramForce, i.e., 6.11829727786757"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound force per minute",
+                  UnitLabel = "lbf/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("924a79ab-743d-4c69-b5fb-b9a60bc70726"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Minute/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound force per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/PoundForce, i.e., 13.48853658598263"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopound force per minute",
+                  UnitLabel = "klbf/min",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("1b5bc3fc-3784-4508-83d5-4a21b5e9fe84"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Kilo*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Kilo*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopound force per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Kilo*PoundForce), i.e., 0.01348853658598263"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per hour",
+                  UnitLabel = "N/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("efa69e3c-b03b-4520-8ae8-e92ab6953141"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton per hour",
+                  UnitLabel = "daN/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("1b0aaee4-9d74-4289-9f08-96c2d31a19f3"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Deca)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Deca), i.e., 360"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton per hour",
+                  UnitLabel = "kN/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("edd7e626-f9a4-42c5-bce3-5b72c1f3ca55"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Kilo, i.e., 3.6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilodecanewton per hour",
+                  UnitLabel = "kdaN/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("ce5ff57d-e427-4e4f-aa11-c1f02118b3e1"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Kilo*Factors.Deca)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Kilo*Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilodecanewton per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Kilo*Deca), i.e., 0.36"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force per hour",
+                  UnitLabel = "kgf/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("5c638813-fe28-47de-b7b5-a65760562b12"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.KilogramForce",
+                  ConversionFactorFromSI = Factors.Hour/Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/KilogramForce, i.e., 367.0978366720542"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound force per hour",
+                  UnitLabel = "lbf/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("a1e5538f-a653-4a4b-8240-01b6a709a0d4"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Hour/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound force per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/PoundForce, i.e., 809.3121951589578"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopound force per hour",
+                  UnitLabel = "klbf/h",
+                  SIUnitName = "newton per second",
+                  ID = new Guid("6041cb2d-b49a-46b4-87ef-1f89ddd89758"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Kilo*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Kilo*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopound force per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Kilo*PoundForce), i.e., 0.8093121951589578"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PressureRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "pascal per second",
+                  UnitLabel = "Pa/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("146c6da5-9de1-4c41-b6dd-9a7757b14ebf"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopascal per second",
+                  UnitLabel = "KPa/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("92faa8ae-3f6f-4bd3-97ef-19709f9b7a43"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopascal per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "bar per second",
+                  UnitLabel = "bar/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("3bd0765c-d3ca-45e9-9818-d70dbd225fdc"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Bar",
+                  ConversionFactorFromSI = 1.0/Factors.Bar,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in bar per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Bar, i.e., 1E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millibar per second",
+                  UnitLabel = "mbar/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("ba3427d8-c516-40c8-8d4f-fdfe162414e3"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Milli*Factors.Bar)",
+                  ConversionFactorFromSI = 1.0/(Factors.Milli*Factors.Bar),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millibar per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Milli*Bar), i.e., 0.01"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "microbar per second",
+                  UnitLabel = "µbar/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("65fb7735-63d5-42da-a730-1bdb4bd7f96a"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Micro*Factors.Bar)",
+                  ConversionFactorFromSI = 1.0/(Factors.Micro*Factors.Bar),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in microbar per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Micro*Bar), i.e., 10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Micro = 1e-6"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per square inch per second",
+                  UnitLabel = "psi/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("6c065cb9-edcc-4093-a81e-dcba0711ab0c"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.PSI",
+                  ConversionFactorFromSI = 1.0/Factors.PSI,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per square inch per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/PSI, i.e., 0.00014503773773020924"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PSI = PoundForce / (Inch * Inch) reference: https://en.wikipedia.org/wiki/Pound_per_square_inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per 100 square foot per second",
+                  UnitLabel = "lbf/100ft²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("c2f71235-2332-42ae-83a3-be1aeea10488"),
+                  ConversionFactorFromSIFormula = "100.0*Factors.Foot*Factors.Foot/Factors.PoundForce",
+                  ConversionFactorFromSI = 100.0*Factors.Foot*Factors.Foot/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per 100 square foot per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 100.0*Foot*Foot/PoundForce, i.e., 2.0885434233150124"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopound per square inch per second",
+                  UnitLabel = "ksi/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("90dd9c87-07f1-4f62-9098-029f78343309"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.PSI)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo*Factors.PSI),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopound per square inch per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo*PSI), i.e., 1.4503773773020924E-07"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "PSI = PoundForce / (Inch * Inch) reference: https://en.wikipedia.org/wiki/Pound_per_square_inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "standard atmosphere per second",
+                  UnitLabel = "atm/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("3d6bbda4-a133-4bd4-bf37-afd2c56f5b02"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Atmosphere",
+                  ConversionFactorFromSI = 1.0/Factors.Atmosphere,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in standard atmosphere per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Atmosphere, i.e., 9.869232667160129E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Atmosphere = 101325.0 reference: https://en.wikipedia.org/wiki/Atmospheric_pressure"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per square foot per second",
+                  UnitLabel = "lb/ft²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("c25ea4df-6b1b-4cef-8ece-7565c8ae6739"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per square foot per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot/PoundForce, i.e., 0.020885434233150126"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megapascal per second",
+                  UnitLabel = "MPa/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("364ded63-6e4f-4d9b-ac57-d3bff57cc36a"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Mega",
+                  ConversionFactorFromSI = 1.0/Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megapascal per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Mega, i.e., 1E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gigapascal per second",
+                  UnitLabel = "GPa/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("04567188-9a65-4289-ac76-2b346401ef39"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Giga",
+                  ConversionFactorFromSI = 1.0/Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gigapascal per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Giga, i.e., 1E-09"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square metre per second",
+                  UnitLabel = "N/m²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("3efead2c-a99a-4efd-a534-d8221d3dbad4"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square metre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Unit, i.e., 1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square centimetre per second",
+                  UnitLabel = "N/cm²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("db0bcb17-a1bd-4c68-b4ff-528194f9b766"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square centimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi, i.e., 0.0001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square millimetre per second",
+                  UnitLabel = "N/mm²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("78c99986-523b-4052-b995-64ada11779a0"),
+                  ConversionFactorFromSIFormula = "Factors.Milli*Factors.Milli",
+                  ConversionFactorFromSI = Factors.Milli*Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square millimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Milli*Milli, i.e., 1E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton per square metre per second",
+                  UnitLabel = "kN/m²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("012d7c45-41a8-45b3-9c40-3ab8333ed624"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton per square metre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megapound per square inch per second",
+                  UnitLabel = "Mpsi/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("cfd1514e-2707-4df5-b963-50390d1e2298"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch/(Factors.Mega*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch/(Factors.Mega*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megapound per square inch per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch/(Mega*PoundForce), i.e., 1.4503773773020922E-10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "torr per second",
+                  UnitLabel = "Torr/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("334a2e72-7dae-4904-ac5f-5e98dba8f191"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Torr",
+                  ConversionFactorFromSI = 1.0/Factors.Torr,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in torr per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Torr, i.e., 0.007500616827041697"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Torr = (1.0 / 760.0) * Atmosphere reference: https://en.wikipedia.org/wiki/Torr"
+ + Environment.NewLine + "Atmosphere = 101325.0 reference: https://en.wikipedia.org/wiki/Atmospheric_pressure"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetre mercury at zero degree celsius per second",
+                  UnitLabel = "cm Hg 0°C/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("29f8c1be-1148-41ed-ad7c-eb7d6fe12800"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Deca*Factors.MillimetreMercury)",
+                  ConversionFactorFromSI = 1.0/(Factors.Deca*Factors.MillimetreMercury),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetre mercury at zero degree celsius per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Deca*MillimetreMercury), i.e., 0.0007500615758456563"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "MillimetreMercury = 133.322387415 reference: https://en.wikipedia.org/wiki/Millimetre_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millimetre mercury at zero degree celsius per second",
+                  UnitLabel = "mm Hg 0°C/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("8b0a6a79-0751-4aea-baa8-f685b36b5226"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.MillimetreMercury",
+                  ConversionFactorFromSI = 1.0/Factors.MillimetreMercury,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millimetre mercury at zero degree celsius per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/MillimetreMercury, i.e., 0.007500615758456563"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "MillimetreMercury = 133.322387415 reference: https://en.wikipedia.org/wiki/Millimetre_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch mercury at 32 degree fahrenheit per second",
+                  UnitLabel = "in Hg 32°F/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("ef059b25-5fdd-481d-bdf2-3785c012b082"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.InchMercury32degF",
+                  ConversionFactorFromSI = 1.0/Factors.InchMercury32degF,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch mercury at 32 degree fahrenheit per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/InchMercury32degF, i.e., 3386.3890000000006"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "InchMercury32degF = 1.0/3386.389 reference: https://en.wikipedia.org/wiki/Inch_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch mercury at 60 degree fahrenheit per second",
+                  UnitLabel = "in Hg 60°F/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("23dd84dd-b90a-442e-ad91-a1458fac47f7"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.InchMercury60degF",
+                  ConversionFactorFromSI = 1.0/Factors.InchMercury60degF,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch mercury at 60 degree fahrenheit per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/InchMercury60degF, i.e., 3376.85"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "InchMercury60degF = 1.0 / 3376.85 reference: https://en.wikipedia.org/wiki/Inch_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetre water at 4 degree celsius per second",
+                  UnitLabel = "cm Aq 4°C/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("fafbcb83-8425-4e04-8bf6-cb58c64bdcd7"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Deca*Factors.MillimetreWater4degC)",
+                  ConversionFactorFromSI = 1.0/(Factors.Deca*Factors.MillimetreWater4degC),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetre water at 4 degree celsius per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Deca*MillimetreWater4degC), i.e., 0.010104429276573386"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "MillimetreWater4degC = 9.89665 reference: https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millimetre water at 4 degree celsius per second",
+                  UnitLabel = "mm Aq 4°C/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("402ce428-d47a-493b-9b90-e3230a79da96"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.MillimetreWater4degC",
+                  ConversionFactorFromSI = 1.0/Factors.MillimetreWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millimetre water at 4 degree celsius per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/MillimetreWater4degC, i.e., 0.10104429276573387"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "MillimetreWater4degC = 9.89665 reference: https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch water at 4 degree celsius per second",
+                  UnitLabel = "in Aq 4°C/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("11d5031a-06d5-4950-b877-cae03aff2669"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.InchWater4degC",
+                  ConversionFactorFromSI = 1.0/Factors.InchWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch water at 4 degree celsius per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/InchWater4degC, i.e., 0.00401474213311279"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "InchWater4degC = 249.082 reference: https://en.wikipedia.org/wiki/Inch_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot water at 4 degree celsius per second",
+                  UnitLabel = "ft Aq 4°C/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("52de6721-dfec-4a54-861c-e74da72c8470"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.FootWater4degC",
+                  ConversionFactorFromSI = 1.0/Factors.FootWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot water at 4 degree celsius per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/FootWater4degC, i.e., 0.0003345525543589354"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "FootWater4degC = 2989.067 reference: https://en.wikipedia.org/wiki/Inch_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "dyne per square centimetre per second",
+                  UnitLabel = "dyne/cm²/s",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("e003cc76-81e3-4e8e-8e80-aa03ccaec0b5"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi/Factors.Dyne",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi/Factors.Dyne,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in dyne per square centimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi/Dyne, i.e., 10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Dyne = 1e-5 reference: https://en.wikipedia.org/wiki/Dyne"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pascal per minute",
+                  UnitLabel = "Pa/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("e598bc6c-1858-448e-b6c2-dbefdfe517a7"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopascal per minute",
+                  UnitLabel = "KPa/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("1bd828ef-e6a8-4c6b-954e-83d076d81b5b"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopascal per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Kilo, i.e., 0.06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "bar per minute",
+                  UnitLabel = "bar/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("d5064ac5-0f02-437a-8d93-004ca9301b88"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Bar",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Bar,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in bar per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Bar, i.e., 0.0006"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millibar per minute",
+                  UnitLabel = "mbar/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("76136213-1d78-4ac2-8f78-54dc62b815bc"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Milli*Factors.Bar)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Milli*Factors.Bar),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millibar per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Milli*Bar), i.e., 0.6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "microbar per minute",
+                  UnitLabel = "µbar/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("ee409d37-a87d-4e7c-a595-d01832e66918"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Micro*Factors.Bar)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Micro*Factors.Bar),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in microbar per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Micro*Bar), i.e., 600"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Micro = 1e-6"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per square inch per minute",
+                  UnitLabel = "psi/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("34e3dd46-c61b-4109-91f9-704a94e4a827"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.PSI",
+                  ConversionFactorFromSI = Factors.Minute/Factors.PSI,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per square inch per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/PSI, i.e., 0.008702264263812553"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PSI = PoundForce / (Inch * Inch) reference: https://en.wikipedia.org/wiki/Pound_per_square_inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per 100 square foot per minute",
+                  UnitLabel = "lbf/100ft²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("9220c284-c1d6-41ed-a0c3-ee8e439cc5e2"),
+                  ConversionFactorFromSIFormula = "Factors.Minute*100.0*Factors.Foot*Factors.Foot/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Minute*100.0*Factors.Foot*Factors.Foot/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per 100 square foot per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute*100.0*Foot*Foot/PoundForce, i.e., 125.31260539890074"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopound per square inch per minute",
+                  UnitLabel = "ksi/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("fd5479cd-6a86-43ba-bbbf-142068a903ee"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Kilo*Factors.PSI)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Kilo*Factors.PSI),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopound per square inch per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Kilo*PSI), i.e., 8.702264263812555E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "PSI = PoundForce / (Inch * Inch) reference: https://en.wikipedia.org/wiki/Pound_per_square_inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "standard atmosphere per minute",
+                  UnitLabel = "atm/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("cfdf265f-5e6f-4b1a-9169-a4a93a232821"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Atmosphere",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Atmosphere,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in standard atmosphere per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Atmosphere, i.e., 0.0005921539600296077"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Atmosphere = 101325.0 reference: https://en.wikipedia.org/wiki/Atmospheric_pressure"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per square foot per minute",
+                  UnitLabel = "lb/ft²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("d4aa7c92-885b-4c7e-977b-4ef9908b25a8"),
+                  ConversionFactorFromSIFormula = "Factors.Minute*Factors.Foot*Factors.Foot/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Minute*Factors.Foot*Factors.Foot/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per square foot per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute*Foot*Foot/PoundForce, i.e., 1.2531260539890072"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megapascal per minute",
+                  UnitLabel = "MPa/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("a1442a08-69f3-461e-82c5-e53e0322b266"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Mega",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megapascal per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Mega, i.e., 6E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gigapascal per minute",
+                  UnitLabel = "GPa/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("882534c4-b00b-45e2-a26b-04f9f683a7e6"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Giga",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gigapascal per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Giga, i.e., 6E-08"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square metre per minute",
+                  UnitLabel = "N/m²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("5dce7d3a-f8b8-4d08-a9d3-1f91b84829b9"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square metre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Unit, i.e., 60"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square centimetre per minute",
+                  UnitLabel = "N/cm²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("70d9df4b-a360-4b89-b433-cd2d9d0e9fe0"),
+                  ConversionFactorFromSIFormula = "Factors.Minute*Factors.Centi*Factors.Centi",
+                  ConversionFactorFromSI = Factors.Minute*Factors.Centi*Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square centimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute*Centi*Centi, i.e., 0.006"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square millimetre per minute",
+                  UnitLabel = "N/mm²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("3d587520-1609-4292-8f10-45758b59230d"),
+                  ConversionFactorFromSIFormula = "Factors.Minute*Factors.Milli*Factors.Milli",
+                  ConversionFactorFromSI = Factors.Minute*Factors.Milli*Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square millimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute*Milli*Milli, i.e., 6E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton per square metre per minute",
+                  UnitLabel = "kN/m²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("30466bc7-6978-4c96-a2cf-2158955dbfe7"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton per square metre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Kilo, i.e., 0.06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megapound per square inch per minute",
+                  UnitLabel = "Mpsi/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("8ad28da4-f7e5-4dbb-9f70-b06157686aae"),
+                  ConversionFactorFromSIFormula = "Factors.Minute*Factors.Inch*Factors.Inch/(Factors.Mega*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Minute*Factors.Inch*Factors.Inch/(Factors.Mega*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megapound per square inch per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute*Inch*Inch/(Mega*PoundForce), i.e., 8.702264263812553E-09"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "torr per minute",
+                  UnitLabel = "Torr/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("73b7ed13-4545-4d90-b4a5-83e2f9c8ebb7"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Torr",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Torr,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in torr per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Torr, i.e., 0.45003700962250187"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Torr = (1.0 / 760.0) * Atmosphere reference: https://en.wikipedia.org/wiki/Torr"
+ + Environment.NewLine + "Atmosphere = 101325.0 reference: https://en.wikipedia.org/wiki/Atmospheric_pressure"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetre mercury at zero degree celsius per minute",
+                  UnitLabel = "cm Hg 0°C/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("08b7f12a-ef89-4a13-8b60-dd7cba0f586f"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Deca*Factors.MillimetreMercury)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Deca*Factors.MillimetreMercury),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetre mercury at zero degree celsius per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Deca*MillimetreMercury), i.e., 0.04500369455073938"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "MillimetreMercury = 133.322387415 reference: https://en.wikipedia.org/wiki/Millimetre_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millimetre mercury at zero degree celsius per minute",
+                  UnitLabel = "mm Hg 0°C/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("fe387842-ca9e-4c35-860a-d377745f6aea"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.MillimetreMercury",
+                  ConversionFactorFromSI = Factors.Minute/Factors.MillimetreMercury,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millimetre mercury at zero degree celsius per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/MillimetreMercury, i.e., 0.45003694550739376"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "MillimetreMercury = 133.322387415 reference: https://en.wikipedia.org/wiki/Millimetre_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch mercury at 32 degree fahrenheit per minute",
+                  UnitLabel = "in Hg 32°F/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("6638070e-912d-42d7-b8b3-e4caafc2bb33"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.InchMercury32degF",
+                  ConversionFactorFromSI = Factors.Minute/Factors.InchMercury32degF,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch mercury at 32 degree fahrenheit per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/InchMercury32degF, i.e., 203183.34000000003"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "InchMercury32degF = 1.0/3386.389 reference: https://en.wikipedia.org/wiki/Inch_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch mercury at 60 degree fahrenheit per minute",
+                  UnitLabel = "in Hg 60°F/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("a84bc253-3a56-494c-80da-d62fe5a3e617"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.InchMercury60degF",
+                  ConversionFactorFromSI = Factors.Minute/Factors.InchMercury60degF,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch mercury at 60 degree fahrenheit per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/InchMercury60degF, i.e., 202611"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "InchMercury60degF = 1.0 / 3376.85 reference: https://en.wikipedia.org/wiki/Inch_of_mercury"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetre water at 4 degree celsius per minute",
+                  UnitLabel = "cm Aq 4°C/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("2a18d804-e172-4b17-9f3f-becb8ebbac5f"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Deca*Factors.MillimetreWater4degC)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Deca*Factors.MillimetreWater4degC),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetre water at 4 degree celsius per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Deca*MillimetreWater4degC), i.e., 0.6062657565944032"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "MillimetreWater4degC = 9.89665 reference: https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millimetre water at 4 degree celsius per minute",
+                  UnitLabel = "mm Aq 4°C/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("125bcf03-f190-41bd-a95d-e7bded0bc97e"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.MillimetreWater4degC",
+                  ConversionFactorFromSI = Factors.Minute/Factors.MillimetreWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millimetre water at 4 degree celsius per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/MillimetreWater4degC, i.e., 6.062657565944032"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "MillimetreWater4degC = 9.89665 reference: https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch water at 4 degree celsius per minute",
+                  UnitLabel = "in Aq 4°C/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("57071e63-13ea-48d2-bfc2-fc82e6cca335"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.InchWater4degC",
+                  ConversionFactorFromSI = Factors.Minute/Factors.InchWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch water at 4 degree celsius per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/InchWater4degC, i.e., 0.2408845279867674"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "InchWater4degC = 249.082 reference: https://en.wikipedia.org/wiki/Inch_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot water at 4 degree celsius per minute",
+                  UnitLabel = "ft Aq 4°C/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("8a06ee9b-f646-4c3a-b087-309a0bd3f844"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.FootWater4degC",
+                  ConversionFactorFromSI = Factors.Minute/Factors.FootWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot water at 4 degree celsius per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/FootWater4degC, i.e., 0.020073153261536126"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "FootWater4degC = 2989.067 reference: https://en.wikipedia.org/wiki/Inch_of_water"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "dyne per square centimetre per minute",
+                  UnitLabel = "dyne/cm²/min",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("ae854308-d419-452a-ba65-9f094ab0c2b5"),
+                  ConversionFactorFromSIFormula = "Factors.Minute*Factors.Centi*Factors.Centi/Factors.Dyne",
+                  ConversionFactorFromSI = Factors.Minute*Factors.Centi*Factors.Centi/Factors.Dyne,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in dyne per square centimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute*Centi*Centi/Dyne, i.e., 600"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Dyne = 1e-5 reference: https://en.wikipedia.org/wiki/Dyne"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pascal per hour",
+                  UnitLabel = "Pa/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("bc8c071a-2c0a-4617-90c1-af5e00ec7e94"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopascal per hour",
+                  UnitLabel = "KPa/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("618f23ff-90af-416c-8d1a-a90bc421a6de"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopascal per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Kilo, i.e., 3.6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "bar per hour",
+                  UnitLabel = "bar/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("387befbe-ad5a-46b5-a1a1-b55bebf96a12"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Bar",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Bar,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in bar per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Bar, i.e., 0.036"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millibar per hour",
+                  UnitLabel = "mbar/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("c8b4a1d2-d4aa-4fb7-8b64-fd73b462d924"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Milli*Factors.Bar)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Milli*Factors.Bar),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millibar per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Milli*Bar), i.e., 36"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "microbar per hour",
+                  UnitLabel = "µbar/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("1c6a1561-2293-4e37-b6f7-cc01bf3f8e71"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Micro*Factors.Bar)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Micro*Factors.Bar),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in microbar per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Micro*Bar), i.e., 36000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Micro = 1e-6"
+ + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per square inch per hour",
+                  UnitLabel = "psi/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("94ce97e6-e2aa-4240-bb5f-e713abe880ad"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.PSI",
+                  ConversionFactorFromSI = Factors.Hour/Factors.PSI,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per square inch per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/PSI, i.e., 0.5221358558287532"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "PSI = PoundForce / (Inch * Inch) reference: https://en.wikipedia.org/wiki/Pound_per_square_inch"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per 100 square foot per hour",
+                  UnitLabel = "lbf/100ft²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("5900f7db-2994-4492-8779-89f54294aaa7"),
+                  ConversionFactorFromSIFormula = "Factors.Hour*100.0*Factors.Foot*Factors.Foot/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Hour*100.0*Factors.Foot*Factors.Foot/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per 100 square foot per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour*100.0*Foot*Foot/PoundForce, i.e., 7518.756323934045"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilopound per square inch per hour",
+                  UnitLabel = "ksi/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("837e7f8f-9e02-4438-9425-9d4aca0c227a"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Kilo*Factors.PSI)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Kilo*Factors.PSI),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilopound per square inch per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Kilo*PSI), i.e., 0.0005221358558287532"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "PSI = PoundForce / (Inch * Inch) reference: https://en.wikipedia.org/wiki/Pound_per_square_inch"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "standard atmosphere per hour",
+                  UnitLabel = "atm/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("673a6598-498d-4e22-8cd5-972d0d7a52ac"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Atmosphere",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Atmosphere,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in standard atmosphere per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Atmosphere, i.e., 0.03552923760177646"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Atmosphere = 101325.0 reference: https://en.wikipedia.org/wiki/Atmospheric_pressure"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per square foot per hour",
+                  UnitLabel = "lb/ft²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("b7938985-f701-4245-9050-303a9e6d5c9f"),
+                  ConversionFactorFromSIFormula = "Factors.Hour*Factors.Foot*Factors.Foot/Factors.PoundForce",
+                  ConversionFactorFromSI = Factors.Hour*Factors.Foot*Factors.Foot/Factors.PoundForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per square foot per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour*Foot*Foot/PoundForce, i.e., 75.18756323934043"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megapascal per hour",
+                  UnitLabel = "MPa/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("a7ed3518-a18f-4edf-b739-0b65961a3b60"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Mega",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megapascal per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Mega, i.e., 0.0036"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gigapascal per hour",
+                  UnitLabel = "GPa/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("9f24b377-6f28-4c2c-8b64-c7ef2f6b7499"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Giga",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gigapascal per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Giga, i.e., 3.6E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square metre per hour",
+                  UnitLabel = "N/m²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("bd39b1da-4c58-4e56-8a3c-e364bce4b38f"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square metre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Unit, i.e., 3600"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square centimetre per hour",
+                  UnitLabel = "N/cm²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("aa3f0b26-d6f3-4feb-bffa-fa48a4a3a1a7"),
+                  ConversionFactorFromSIFormula = "Factors.Hour*Factors.Centi*Factors.Centi",
+                  ConversionFactorFromSI = Factors.Hour*Factors.Centi*Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square centimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour*Centi*Centi, i.e., 0.36"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton per square millimetre per hour",
+                  UnitLabel = "N/mm²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("378b7b8b-2d47-4a00-a817-ef9805b09169"),
+                  ConversionFactorFromSIFormula = "Factors.Hour*Factors.Milli*Factors.Milli",
+                  ConversionFactorFromSI = Factors.Hour*Factors.Milli*Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton per square millimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour*Milli*Milli, i.e., 0.0036000000000000003"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton per square metre per hour",
+                  UnitLabel = "kN/m²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("42e9c18f-37d4-44b1-8c1d-86f3c524bf8b"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton per square metre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Kilo, i.e., 3.6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megapound per square inch per hour",
+                  UnitLabel = "Mpsi/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("f4455f10-dc18-45b6-984f-7fd86a21d26f"),
+                  ConversionFactorFromSIFormula = "Factors.Hour*Factors.Inch*Factors.Inch/(Factors.Mega*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Hour*Factors.Inch*Factors.Inch/(Factors.Mega*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megapound per square inch per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour*Inch*Inch/(Mega*PoundForce), i.e., 5.221358558287532E-07"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "torr per hour",
+                  UnitLabel = "Torr/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("4e1b41a0-f7cb-4ff2-b691-3a19dbc1d668"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Torr",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Torr,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in torr per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Torr, i.e., 27.002220577350112"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Torr = (1.0 / 760.0) * Atmosphere reference: https://en.wikipedia.org/wiki/Torr"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Atmosphere = 101325.0 reference: https://en.wikipedia.org/wiki/Atmospheric_pressure"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetre mercury at zero degree celsius per hour",
+                  UnitLabel = "cm Hg 0°C/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("ce403ddc-7b41-4abf-aea5-78ea2323595b"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Deca*Factors.MillimetreMercury)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Deca*Factors.MillimetreMercury),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetre mercury at zero degree celsius per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Deca*MillimetreMercury), i.e., 2.700221673044363"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "MillimetreMercury = 133.322387415 reference: https://en.wikipedia.org/wiki/Millimetre_of_mercury"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millimetre mercury at zero degree celsius per hour",
+                  UnitLabel = "mm Hg 0°C/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("dc27fed5-7e21-4b87-9498-51598af273da"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.MillimetreMercury",
+                  ConversionFactorFromSI = Factors.Hour/Factors.MillimetreMercury,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millimetre mercury at zero degree celsius per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/MillimetreMercury, i.e., 27.002216730443628"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "MillimetreMercury = 133.322387415 reference: https://en.wikipedia.org/wiki/Millimetre_of_mercury"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch mercury at 32 degree fahrenheit per hour",
+                  UnitLabel = "in Hg 32°F/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("eb10ca92-df7f-4ef2-8c95-ac30a3d1a068"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.InchMercury32degF",
+                  ConversionFactorFromSI = Factors.Hour/Factors.InchMercury32degF,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch mercury at 32 degree fahrenheit per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/InchMercury32degF, i.e., 12191000.400000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "InchMercury32degF = 1.0/3386.389 reference: https://en.wikipedia.org/wiki/Inch_of_mercury"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch mercury at 60 degree fahrenheit per hour",
+                  UnitLabel = "in Hg 60°F/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("9f30715a-000c-4de8-8b75-206e9bf87713"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.InchMercury60degF",
+                  ConversionFactorFromSI = Factors.Hour/Factors.InchMercury60degF,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch mercury at 60 degree fahrenheit per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/InchMercury60degF, i.e., 12156660"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "InchMercury60degF = 1.0 / 3376.85 reference: https://en.wikipedia.org/wiki/Inch_of_mercury"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetre water at 4 degree celsius per hour",
+                  UnitLabel = "cm Aq 4°C/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("ed435708-418d-4a26-9b4c-e0f94ee63509"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Deca*Factors.MillimetreWater4degC)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Deca*Factors.MillimetreWater4degC),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetre water at 4 degree celsius per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Deca*MillimetreWater4degC), i.e., 36.37594539566419"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "MillimetreWater4degC = 9.89665 reference: https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "millimetre water at 4 degree celsius per hour",
+                  UnitLabel = "mm Aq 4°C/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("3dafbaa0-5907-4bf0-8808-b5bc0ec2bf6c"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.MillimetreWater4degC",
+                  ConversionFactorFromSI = Factors.Hour/Factors.MillimetreWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in millimetre water at 4 degree celsius per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/MillimetreWater4degC, i.e., 363.75945395664195"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "MillimetreWater4degC = 9.89665 reference: https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch water at 4 degree celsius per hour",
+                  UnitLabel = "in Aq 4°C/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("084c8268-17a3-4d56-890e-aba0809772bc"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.InchWater4degC",
+                  ConversionFactorFromSI = Factors.Hour/Factors.InchWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch water at 4 degree celsius per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/InchWater4degC, i.e., 14.453071679206046"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "InchWater4degC = 249.082 reference: https://en.wikipedia.org/wiki/Inch_of_water"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot water at 4 degree celsius per hour",
+                  UnitLabel = "ft Aq 4°C/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("2a3ed612-1097-46ad-9b91-63d81c14b943"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.FootWater4degC",
+                  ConversionFactorFromSI = Factors.Hour/Factors.FootWater4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot water at 4 degree celsius per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/FootWater4degC, i.e., 1.2043891956921675"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "FootWater4degC = 2989.067 reference: https://en.wikipedia.org/wiki/Inch_of_water"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "dyne per square centimetre per hour",
+                  UnitLabel = "dyne/cm²/h",
+                  SIUnitName = "pascal per second",
+                  ID = new Guid("0493cff3-1e05-4ea5-8f3d-477f506b13f9"),
+                  ConversionFactorFromSIFormula = "Factors.Hour*Factors.Centi*Factors.Centi/Factors.Dyne",
+                  ConversionFactorFromSI = Factors.Hour*Factors.Centi*Factors.Centi/Factors.Dyne,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in dyne per square centimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour*Centi*Centi/Dyne, i.e., 35999.99999999999"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Dyne = 1e-5 reference: https://en.wikipedia.org/wiki/Dyne"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class TorqueRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "newton metre per second",
+                  UnitLabel = "N•m/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("0af9bebb-adde-49b9-bf0b-0d5002e454a2"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton metre per second",
+                  UnitLabel = "daN•m/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("a6672d76-f845-47ce-9d67-7f1242ba9f60"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Deca)",
+                  ConversionFactorFromSI = 1.0/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton metre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Deca), i.e., 0.1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force metre per second",
+                  UnitLabel = "kgf•m/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("6150a99d-34f0-438b-a8d3-038b8864c19f"),
+                  ConversionFactorFromSIFormula = "1.0/ Factors.KilogramForce",
+                  ConversionFactorFromSI = 1.0/ Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force metre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/ KilogramForce, i.e., 0.10197162129779283"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton metre per second",
+                  UnitLabel = "kN•m/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("0875163d-a610-4e0d-8e05-5fe56896e44f"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton metre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot pound per second",
+                  UnitLabel = "ft•lbf/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("e53f2ab8-0883-4a6f-ae67-9f660eb20368"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = 1.0/(Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot pound per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Foot*PoundForce), i.e., 0.7375621492772655"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilofoot pound per second",
+                  UnitLabel = "kft•lbf/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("6166acf4-c3bd-439c-b4a9-6f0282c18731"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo*Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilofoot pound per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo*Foot*PoundForce), i.e., 0.0007375621492772656"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton decimetre per second",
+                  UnitLabel = "N•dm/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("7898b31c-821a-414d-9dcc-19822f3aef28"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Deci",
+                  ConversionFactorFromSI = 1.0/Factors.Deci,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton decimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Deci, i.e., 10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deci = 0.1"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton centimetre per second",
+                  UnitLabel = "N•cm/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("13d51bb3-8f11-4fb5-a89a-0eac4fd26fe7"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Centi",
+                  ConversionFactorFromSI = 1.0/Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton centimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Centi, i.e., 100"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton millimetre per second",
+                  UnitLabel = "N•mm/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("173f9d03-f9c3-4d44-a889-52055887f8da"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Milli",
+                  ConversionFactorFromSI = 1.0/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton millimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Milli, i.e., 1000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch pound per second",
+                  UnitLabel = "in•lbf/s",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("914875df-9234-40be-a5eb-f02e29e0457b"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.PoundForce*Factors.Inch)",
+                  ConversionFactorFromSI = 1.0/(Factors.PoundForce*Factors.Inch),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch pound per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(PoundForce*Inch), i.e., 8.850745791327185"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton metre per minute",
+                  UnitLabel = "N•m/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("8c3ab891-e5bc-4fa1-9f14-a3250e062ef4"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton metre per minute",
+                  UnitLabel = "daN•m/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("a1b76c0a-7ef2-46df-8d5b-0253a5dd42e8"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Deca)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton metre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Deca), i.e., 6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force metre per minute",
+                  UnitLabel = "kgf•m/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("91fa2fa9-d0dc-4d26-b694-2eac6ee7ad92"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/ Factors.KilogramForce",
+                  ConversionFactorFromSI = Factors.Minute/ Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force metre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/ KilogramForce, i.e., 6.11829727786757"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton metre per minute",
+                  UnitLabel = "kN•m/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("746fdf99-afde-483d-88d4-e512b46efe3e"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton metre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Kilo, i.e., 0.06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot pound per minute",
+                  UnitLabel = "ft•lbf/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("66567700-9838-48f0-aa21-672c21380f57"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot pound per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Foot*PoundForce), i.e., 44.25372895663593"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilofoot pound per minute",
+                  UnitLabel = "kft•lbf/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("dfa752eb-792f-4eb1-9eaa-e32f497a1ea2"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.Kilo*Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.Kilo*Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilofoot pound per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(Kilo*Foot*PoundForce), i.e., 0.044253728956635936"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton decimetre per minute",
+                  UnitLabel = "N•dm/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("d4109f79-1724-4bba-8251-5847b5689037"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Deci",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Deci,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton decimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Deci, i.e., 600"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Deci = 0.1"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton centimetre per minute",
+                  UnitLabel = "N•cm/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("5d526e83-6a91-4230-97cd-054167a7a3d7"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Centi",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton centimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Centi, i.e., 6000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton millimetre per minute",
+                  UnitLabel = "N•mm/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("5f1dbc46-8b88-4879-826f-f07836f018b8"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Minute/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton millimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/Milli, i.e., 60000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch pound per minute",
+                  UnitLabel = "in•lbf/min",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("72d76192-c058-44f6-b074-48291be96f5b"),
+                  ConversionFactorFromSIFormula = "Factors.Minute/(Factors.PoundForce*Factors.Inch)",
+                  ConversionFactorFromSI = Factors.Minute/(Factors.PoundForce*Factors.Inch),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch pound per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute/(PoundForce*Inch), i.e., 531.0447474796312"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton metre per hour",
+                  UnitLabel = "N•m/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("c17eae23-0496-4fa1-a389-aa24828fa243"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton metre per hour",
+                  UnitLabel = "daN•m/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("3907090e-c10e-41dc-95cf-634e1a28bb11"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Deca)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton metre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Deca), i.e., 360"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force metre per hour",
+                  UnitLabel = "kgf•m/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("6295ae90-c198-499e-a90d-8dba22c77584"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/ Factors.KilogramForce",
+                  ConversionFactorFromSI = Factors.Hour/ Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force metre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/ KilogramForce, i.e., 367.0978366720542"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton metre per hour",
+                  UnitLabel = "kN•m/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("e35e63cc-09dc-4d8a-bb5d-b0a0c24998f8"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Kilo",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton metre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Kilo, i.e., 3.6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot pound per hour",
+                  UnitLabel = "ft•lbf/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("b55029ec-fadc-46da-a3b8-a48a08f4d92f"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot pound per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Foot*PoundForce), i.e., 2655.2237373981557"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilofoot pound per hour",
+                  UnitLabel = "kft•lbf/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("18156d8f-dd9f-4b63-a138-18827cafc14d"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.Kilo*Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.Kilo*Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilofoot pound per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(Kilo*Foot*PoundForce), i.e., 2.655223737398156"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton decimetre per hour",
+                  UnitLabel = "N•dm/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("f19ae752-df39-48ae-bda3-c955116e5a01"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Deci",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Deci,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton decimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Deci, i.e., 36000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Deci = 0.1"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton centimetre per hour",
+                  UnitLabel = "N•cm/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("c7d197cf-831e-454d-aaf2-73399ff9afa2"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Centi",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton centimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Centi, i.e., 360000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton millimetre per hour",
+                  UnitLabel = "N•mm/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("66c884c5-7596-4af7-919e-724b243336ae"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Hour/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton millimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/Milli, i.e., 3600000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch pound per hour",
+                  UnitLabel = "in•lbf/h",
+                  SIUnitName = "newton metre per second",
+                  ID = new Guid("64f6b76d-4a99-4379-bdf3-59b96e468e84"),
+                  ConversionFactorFromSIFormula = "Factors.Hour/(Factors.PoundForce*Factors.Inch)",
+                  ConversionFactorFromSI = Factors.Hour/(Factors.PoundForce*Factors.Inch),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch pound per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour/(PoundForce*Inch), i.e., 31862.68484877787"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
