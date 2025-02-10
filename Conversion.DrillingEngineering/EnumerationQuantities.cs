@@ -75,7 +75,10 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          WeightOnBitDrilling,  // WeightOnBitDrilling
          ThermalConductivityGradientPerTemperatureDrilling,  // ThermalConductivityGradientPerTemperatureDrilling
          TorqueGradientPerLengthDrilling,  // TorqueGradientPerLengthDrilling
-         PorousMediumPermeabilityDrilling // PorousMediumPermeabilityDrilling
+         PorousMediumPermeabilityDrilling,  // PorousMediumPermeabilityDrilling
+         ForceRateOfChangeDrilling,  // ForceRateOfChangeDrilling
+         PressureRateOfChangeDrilling,  // PressureRateOfChangeDrilling
+         TorqueRateOfChangeDrilling // TorqueRateOfChangeDrilling
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -147,7 +150,10 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.WeightOnBitDrilling, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")},  // WeightOnBitDrilling
          {QuantityEnum.ThermalConductivityGradientPerTemperatureDrilling, new Guid("559ae484-42ed-4379-86f5-67dae451a9c9")},  // ThermalConductivityGradientPerTemperatureDrilling
          {QuantityEnum.TorqueGradientPerLengthDrilling, new Guid("6ad57f76-fb74-4099-a257-1d47216bfe65")},  // TorqueGradientPerLengthDrilling
-         {QuantityEnum.PorousMediumPermeabilityDrilling, new Guid("040ff93a-d03a-4d01-9c52-8e456647ccb9")} // PorousMediumPermeabilityDrilling
+         {QuantityEnum.PorousMediumPermeabilityDrilling, new Guid("040ff93a-d03a-4d01-9c52-8e456647ccb9")},  // PorousMediumPermeabilityDrilling
+         {QuantityEnum.ForceRateOfChangeDrilling, new Guid("2f93df65-edf4-46fb-b4f0-658c854b2845")},  // ForceRateOfChangeDrilling
+         {QuantityEnum.PressureRateOfChangeDrilling, new Guid("15962c4f-9163-44ed-afec-bc9f17e60983")},  // PressureRateOfChangeDrilling
+         {QuantityEnum.TorqueRateOfChangeDrilling, new Guid("a8053578-6cf0-4c46-b046-a6dbc7cb360f")} // TorqueRateOfChangeDrilling
     };
   }
 }
@@ -2479,6 +2485,186 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.Millidarcy, new Guid("8d7a6767-6c6b-4daf-8617-d35e4055d457")},  // millidarcy
          {UnitChoicesEnum.Microdarcy, new Guid("b552f28d-c68a-4c59-853c-fe6e03dd5f4c")},  // microdarcy
          {UnitChoicesEnum.Nanodarcy, new Guid("f35b05c7-8b2f-4194-9336-d42cec5f3ba5")} // nanodarcy
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class ForceRateOfChangeDrillingQuantity : ForceRateOfChangeQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonPerSecond,  // newton per second
+         DecanewtonPerSecond,  // decanewton per second
+         KilonewtonPerSecond,  // kilonewton per second
+         KilodecanewtonPerSecond,  // kilodecanewton per second
+         KilogramForcePerSecond,  // kilogram force per second
+         KilopoundForcePerSecond,  // kilopound force per second
+         PoundForcePerSecond,  // pound force per second
+         NewtonPerMinute,  // newton per minute
+         DecanewtonPerMinute,  // decanewton per minute
+         KilonewtonPerMinute,  // kilonewton per minute
+         KilodecanewtonPerMinute,  // kilodecanewton per minute
+         KilogramForcePerMinute,  // kilogram force per minute
+         KilopoundForcePerMinute,  // kilopound force per minute
+         PoundForcePerMinute,  // pound force per minute
+         NewtonPerHour,  // newton per hour
+         DecanewtonPerHour,  // decanewton per hour
+         KilonewtonPerHour,  // kilonewton per hour
+         KilodecanewtonPerHour,  // kilodecanewton per hour
+         KilogramForcePerHour,  // kilogram force per hour
+         KilopoundForcePerHour,  // kilopound force per hour
+         PoundForcePerHour // pound force per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonPerSecond, new Guid("c766ff54-d778-4ee6-9c65-8467932efa60")},  // newton per second
+         {UnitChoicesEnum.DecanewtonPerSecond, new Guid("1b7c3f4d-30ec-4d50-8063-0d1452c88615")},  // decanewton per second
+         {UnitChoicesEnum.KilonewtonPerSecond, new Guid("5c99b2ac-51b7-4f9c-b82b-036f0b02492d")},  // kilonewton per second
+         {UnitChoicesEnum.KilodecanewtonPerSecond, new Guid("f0ad684b-827c-43f9-8f6e-c9097bc82dd3")},  // kilodecanewton per second
+         {UnitChoicesEnum.KilogramForcePerSecond, new Guid("e5dc01f1-09d4-4304-b065-8096026647e8")},  // kilogram force per second
+         {UnitChoicesEnum.KilopoundForcePerSecond, new Guid("1f45684c-4582-4d5f-a5c5-950e4c9dbff7")},  // kilopound force per second
+         {UnitChoicesEnum.PoundForcePerSecond, new Guid("92ed16d5-3ea8-4102-a1cb-89f527d2b4a0")},  // pound force per second
+         {UnitChoicesEnum.NewtonPerMinute, new Guid("58df085b-9f10-4148-ad09-cb05bbcfa920")},  // newton per minute
+         {UnitChoicesEnum.DecanewtonPerMinute, new Guid("130a7d93-a5d2-4d9b-bdb5-4c5784f61c79")},  // decanewton per minute
+         {UnitChoicesEnum.KilonewtonPerMinute, new Guid("5841d94c-2349-4f51-a965-eb8cc3cc19d9")},  // kilonewton per minute
+         {UnitChoicesEnum.KilodecanewtonPerMinute, new Guid("1a80c782-8438-43ac-ba6c-46b6b7abe761")},  // kilodecanewton per minute
+         {UnitChoicesEnum.KilogramForcePerMinute, new Guid("323c8871-2f8f-41bd-9df8-50e3b50bf093")},  // kilogram force per minute
+         {UnitChoicesEnum.KilopoundForcePerMinute, new Guid("1b5bc3fc-3784-4508-83d5-4a21b5e9fe84")},  // kilopound force per minute
+         {UnitChoicesEnum.PoundForcePerMinute, new Guid("924a79ab-743d-4c69-b5fb-b9a60bc70726")},  // pound force per minute
+         {UnitChoicesEnum.NewtonPerHour, new Guid("efa69e3c-b03b-4520-8ae8-e92ab6953141")},  // newton per hour
+         {UnitChoicesEnum.DecanewtonPerHour, new Guid("1b0aaee4-9d74-4289-9f08-96c2d31a19f3")},  // decanewton per hour
+         {UnitChoicesEnum.KilonewtonPerHour, new Guid("edd7e626-f9a4-42c5-bce3-5b72c1f3ca55")},  // kilonewton per hour
+         {UnitChoicesEnum.KilodecanewtonPerHour, new Guid("ce5ff57d-e427-4e4f-aa11-c1f02118b3e1")},  // kilodecanewton per hour
+         {UnitChoicesEnum.KilogramForcePerHour, new Guid("5c638813-fe28-47de-b7b5-a65760562b12")},  // kilogram force per hour
+         {UnitChoicesEnum.KilopoundForcePerHour, new Guid("6041cb2d-b49a-46b4-87ef-1f89ddd89758")},  // kilopound force per hour
+         {UnitChoicesEnum.PoundForcePerHour, new Guid("a1e5538f-a653-4a4b-8240-01b6a709a0d4")} // pound force per hour
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class PressureRateOfChangeDrillingQuantity : PressureRateOfChangeQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         PascalPerSecond,  // pascal per second
+         BarPerSecond,  // bar per second
+         PoundPerSquareInchPerSecond,  // pound per square inch per second
+         KilopascalPerSecond,  // kilopascal per second
+         MegapascalPerSecond,  // megapascal per second
+         KilopoundPerSquareInchPerSecond,  // kilopound per square inch per second
+         PascalPerMinute,  // pascal per minute
+         BarPerMinute,  // bar per minute
+         PoundPerSquareInchPerMinute,  // pound per square inch per minute
+         KilopascalPerMinute,  // kilopascal per minute
+         MegapascalPerMinute,  // megapascal per minute
+         KilopoundPerSquareInchPerMinute,  // kilopound per square inch per minute
+         PascalPerHour,  // pascal per hour
+         BarPerHour,  // bar per hour
+         PoundPerSquareInchPerHour,  // pound per square inch per hour
+         KilopascalPerHour,  // kilopascal per hour
+         MegapascalPerHour,  // megapascal per hour
+         KilopoundPerSquareInchPerHour // kilopound per square inch per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.PascalPerSecond, new Guid("146c6da5-9de1-4c41-b6dd-9a7757b14ebf")},  // pascal per second
+         {UnitChoicesEnum.BarPerSecond, new Guid("3bd0765c-d3ca-45e9-9818-d70dbd225fdc")},  // bar per second
+         {UnitChoicesEnum.PoundPerSquareInchPerSecond, new Guid("6c065cb9-edcc-4093-a81e-dcba0711ab0c")},  // pound per square inch per second
+         {UnitChoicesEnum.KilopascalPerSecond, new Guid("92faa8ae-3f6f-4bd3-97ef-19709f9b7a43")},  // kilopascal per second
+         {UnitChoicesEnum.MegapascalPerSecond, new Guid("364ded63-6e4f-4d9b-ac57-d3bff57cc36a")},  // megapascal per second
+         {UnitChoicesEnum.KilopoundPerSquareInchPerSecond, new Guid("90dd9c87-07f1-4f62-9098-029f78343309")},  // kilopound per square inch per second
+         {UnitChoicesEnum.PascalPerMinute, new Guid("e598bc6c-1858-448e-b6c2-dbefdfe517a7")},  // pascal per minute
+         {UnitChoicesEnum.BarPerMinute, new Guid("d5064ac5-0f02-437a-8d93-004ca9301b88")},  // bar per minute
+         {UnitChoicesEnum.PoundPerSquareInchPerMinute, new Guid("34e3dd46-c61b-4109-91f9-704a94e4a827")},  // pound per square inch per minute
+         {UnitChoicesEnum.KilopascalPerMinute, new Guid("1bd828ef-e6a8-4c6b-954e-83d076d81b5b")},  // kilopascal per minute
+         {UnitChoicesEnum.MegapascalPerMinute, new Guid("a1442a08-69f3-461e-82c5-e53e0322b266")},  // megapascal per minute
+         {UnitChoicesEnum.KilopoundPerSquareInchPerMinute, new Guid("fd5479cd-6a86-43ba-bbbf-142068a903ee")},  // kilopound per square inch per minute
+         {UnitChoicesEnum.PascalPerHour, new Guid("bc8c071a-2c0a-4617-90c1-af5e00ec7e94")},  // pascal per hour
+         {UnitChoicesEnum.BarPerHour, new Guid("387befbe-ad5a-46b5-a1a1-b55bebf96a12")},  // bar per hour
+         {UnitChoicesEnum.PoundPerSquareInchPerHour, new Guid("94ce97e6-e2aa-4240-bb5f-e713abe880ad")},  // pound per square inch per hour
+         {UnitChoicesEnum.KilopascalPerHour, new Guid("618f23ff-90af-416c-8d1a-a90bc421a6de")},  // kilopascal per hour
+         {UnitChoicesEnum.MegapascalPerHour, new Guid("a7ed3518-a18f-4edf-b739-0b65961a3b60")},  // megapascal per hour
+         {UnitChoicesEnum.KilopoundPerSquareInchPerHour, new Guid("837e7f8f-9e02-4438-9425-9d4aca0c227a")} // kilopound per square inch per hour
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class TorqueRateOfChangeDrillingQuantity : TorqueRateOfChangeQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonMetrePerSecond,  // newton metre per second
+         FootPoundPerSecond,  // foot pound per second
+         KilofootPoundPerSecond,  // kilofoot pound per second
+         DecanewtonMetrePerSecond,  // decanewton metre per second
+         KilogramForceMetrePerSecond,  // kilogram force metre per second
+         KilonewtonMetrePerSecond,  // kilonewton metre per second
+         NewtonMetrePerMinute,  // newton metre per minute
+         FootPoundPerMinute,  // foot pound per minute
+         KilofootPoundPerMinute,  // kilofoot pound per minute
+         DecanewtonMetrePerMinute,  // decanewton metre per minute
+         KilogramForceMetrePerMinute,  // kilogram force metre per minute
+         KilonewtonMetrePerMinute,  // kilonewton metre per minute
+         NewtonMetrePerHour,  // newton metre per hour
+         FootPoundPerHour,  // foot pound per hour
+         KilofootPoundPerHour,  // kilofoot pound per hour
+         DecanewtonMetrePerHour,  // decanewton metre per hour
+         KilogramForceMetrePerHour,  // kilogram force metre per hour
+         KilonewtonMetrePerHour // kilonewton metre per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonMetrePerSecond, new Guid("0af9bebb-adde-49b9-bf0b-0d5002e454a2")},  // newton metre per second
+         {UnitChoicesEnum.FootPoundPerSecond, new Guid("e53f2ab8-0883-4a6f-ae67-9f660eb20368")},  // foot pound per second
+         {UnitChoicesEnum.KilofootPoundPerSecond, new Guid("6166acf4-c3bd-439c-b4a9-6f0282c18731")},  // kilofoot pound per second
+         {UnitChoicesEnum.DecanewtonMetrePerSecond, new Guid("a6672d76-f845-47ce-9d67-7f1242ba9f60")},  // decanewton metre per second
+         {UnitChoicesEnum.KilogramForceMetrePerSecond, new Guid("6150a99d-34f0-438b-a8d3-038b8864c19f")},  // kilogram force metre per second
+         {UnitChoicesEnum.KilonewtonMetrePerSecond, new Guid("0875163d-a610-4e0d-8e05-5fe56896e44f")},  // kilonewton metre per second
+         {UnitChoicesEnum.NewtonMetrePerMinute, new Guid("8c3ab891-e5bc-4fa1-9f14-a3250e062ef4")},  // newton metre per minute
+         {UnitChoicesEnum.FootPoundPerMinute, new Guid("66567700-9838-48f0-aa21-672c21380f57")},  // foot pound per minute
+         {UnitChoicesEnum.KilofootPoundPerMinute, new Guid("dfa752eb-792f-4eb1-9eaa-e32f497a1ea2")},  // kilofoot pound per minute
+         {UnitChoicesEnum.DecanewtonMetrePerMinute, new Guid("a1b76c0a-7ef2-46df-8d5b-0253a5dd42e8")},  // decanewton metre per minute
+         {UnitChoicesEnum.KilogramForceMetrePerMinute, new Guid("91fa2fa9-d0dc-4d26-b694-2eac6ee7ad92")},  // kilogram force metre per minute
+         {UnitChoicesEnum.KilonewtonMetrePerMinute, new Guid("746fdf99-afde-483d-88d4-e512b46efe3e")},  // kilonewton metre per minute
+         {UnitChoicesEnum.NewtonMetrePerHour, new Guid("c17eae23-0496-4fa1-a389-aa24828fa243")},  // newton metre per hour
+         {UnitChoicesEnum.FootPoundPerHour, new Guid("b55029ec-fadc-46da-a3b8-a48a08f4d92f")},  // foot pound per hour
+         {UnitChoicesEnum.KilofootPoundPerHour, new Guid("18156d8f-dd9f-4b63-a138-18827cafc14d")},  // kilofoot pound per hour
+         {UnitChoicesEnum.DecanewtonMetrePerHour, new Guid("3907090e-c10e-41dc-95cf-634e1a28bb11")},  // decanewton metre per hour
+         {UnitChoicesEnum.KilogramForceMetrePerHour, new Guid("6295ae90-c198-499e-a90d-8dba22c77584")},  // kilogram force metre per hour
+         {UnitChoicesEnum.KilonewtonMetrePerHour, new Guid("e35e63cc-09dc-4d8a-bb5d-b0a0c24998f8")} // kilonewton metre per hour
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

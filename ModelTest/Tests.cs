@@ -20,7 +20,7 @@ namespace OSDC.UnitConversion.ModelTest
             #endregion
 
             #region uniqueness of BasePhysicalQuantities
-            Assert.That(quantityList.Count, Is.EqualTo(84));
+            Assert.That(quantityList.Count, Is.EqualTo(87));
             Assert.That(quantityList, Does.Contain(AccelerationQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AmountSubstanceQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleMagneticFluxDensityQuantity.Instance));
@@ -112,7 +112,7 @@ namespace OSDC.UnitConversion.ModelTest
             #endregion
 
             #region uniqueness of PhysicalQuantities
-            Assert.That(quantityList.Count, Is.EqualTo(69));
+            Assert.That(quantityList.Count, Is.EqualTo(72));
             Assert.That(quantityList, Does.Contain(AccelerationDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleGradientPerLengthDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngularVelocityDrillingQuantity.Instance));

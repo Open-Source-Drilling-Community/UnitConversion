@@ -475,7 +475,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
             }
         }
 
-        public static List<BasePhysicalQuantity> AvailableQuantities
+        public static List<BasePhysicalQuantity>? AvailableQuantities
         {
             get
             {
@@ -488,7 +488,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                         {
                             if (typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
                             {
-                                MethodInfo method = null;
+                                MethodInfo? method = null;
                                 foreach (MethodInfo meth in typ.GetMethods())
                                 {
                                     if (meth.IsStatic &&
@@ -502,7 +502,14 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                                 // call the method
                                 if (method != null)
                                 {
-                                    object? obj = method.Invoke(null, null);
+                                    object? obj = null;
+                                    try
+                                    {
+                                        obj = method.Invoke(null, null);
+                                    } catch (Exception e)
+                                    {
+
+                                    }
                                     if (obj != null)
                                     {
                                         var res = (BasePhysicalQuantity)obj;

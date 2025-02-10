@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("2f93df65-edf4-46fb-b4f0-658c854b2845");
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
-            DescriptionMD += "The meaningful precision of force rate of change in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ForceRateOfChangeDrillingQuantity.Instance.GetUnitChoice(ForceRateOfChangeDrillingQuantity.UnitChoicesEnum.NewtonPerSecond).UnitLabel + Environment.NewLine;
+            DescriptionMD += "The meaningful precision of force rate of change in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ForceRateOfChangeQuantity.Instance.GetUnitChoice(ForceRateOfChangeQuantity.UnitChoicesEnum.NewtonPerSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(ForceRateOfChangeQuantity.Instance.GetUnitChoice(ForceRateOfChangeQuantity.UnitChoicesEnum.NewtonPerSecond));
             this.UnitChoices.Add(ForceRateOfChangeQuantity.Instance.GetUnitChoice(ForceRateOfChangeQuantity.UnitChoicesEnum.DecanewtonPerSecond));

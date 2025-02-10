@@ -32,7 +32,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("a8053578-6cf0-4c46-b046-a6dbc7cb360f");
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
-            DescriptionMD += "The meaningful precision of torque rate of change in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassDensityRateOfChangeQuantity.Instance.GetUnitChoice(MassDensityRateOfChangeQuantity.UnitChoicesEnum.KilogramPerCubicMetrePerSecond).UnitLabel + Environment.NewLine;
+            DescriptionMD += "The meaningful precision of torque rate of change in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + TorqueRateOfChangeQuantity.Instance.GetUnitChoice(TorqueRateOfChangeQuantity.UnitChoicesEnum.NewtonMetrePerSecond).UnitLabel + Environment.NewLine;
             Reset();
             this.UnitChoices.Add(TorqueRateOfChangeQuantity.Instance.GetUnitChoice(TorqueRateOfChangeQuantity.UnitChoicesEnum.NewtonMetrePerSecond));
             this.UnitChoices.Add(TorqueRateOfChangeQuantity.Instance.GetUnitChoice(TorqueRateOfChangeQuantity.UnitChoicesEnum.FootPoundPerSecond));
