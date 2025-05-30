@@ -148,6 +148,8 @@ else
     [Parameter]
     public EventCallback<string> UnitSystemNameChanged { get; set; }
 
+    public bool InitializedOnce { get; set; } = false;
+
     private string? unitSystemName_;
     private string? depthReferenceName_;
     private string? positionReferenceName_;
@@ -310,6 +312,7 @@ else
         {
             logger.LogError(ex, "Problem while initializing third step MudUnitAndReferenceChoiceTag");
         }
+        InitializedOnce = true;
     }
 
     public void Add(IUnitAwareComponent elt)
