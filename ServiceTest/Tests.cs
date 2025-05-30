@@ -804,32 +804,33 @@ namespace OSDC.UnitConversion.ServiceTest
         [Test]
         public async Task Test_UnitSystem_Get()
         {
-            List<Guid> idList = [];
-            try
-            {
-                idList = (List<Guid>)await nSwagClient.GetAllUnitSystemIdAsync();
-            }
-            catch (ApiException ex)
-            {
-                TestContext.WriteLine("Impossible to Get all UnitSystem ids\n" + ex.Message);
-            }
-            List<UnitSystem> unitSystems = new List<UnitSystem>();
-            foreach (Guid id in idList)
-            {
-                try
-                {
-                    var unitSystem = OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem.Get(id);
-                    if (unitSystem != null)
-                    {
-                        await nSwagClient.DeleteUnitSystemByIdAsync(id);
-                    }
+            // test code to remove the default unit systems
+            //List<Guid> idList = [];
+            //try
+            //{
+            //    idList = (List<Guid>)await nSwagClient.GetAllUnitSystemIdAsync();
+            //}
+            //catch (ApiException ex)
+            //{
+            //    TestContext.WriteLine("Impossible to Get all UnitSystem ids\n" + ex.Message);
+            //}
+            //List<UnitSystem> unitSystems = new List<UnitSystem>();
+            //foreach (Guid id in idList)
+            //{
+            //    try
+            //    {
+            //        var unitSystem = OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem.Get(id);
+            //        if (unitSystem != null)
+            //        {
+            //            await nSwagClient.DeleteUnitSystemByIdAsync(id);
+            //        }
                     
-                }
-                catch (ApiException ex)
-                {
-                    TestContext.WriteLine("Impossible to Delete UnitSystem of given Id\n" + ex.Message);
-                }
-            }
+            //    }
+            //    catch (ApiException ex)
+            //    {
+            //        TestContext.WriteLine("Impossible to Delete UnitSystem of given Id\n" + ex.Message);
+            //    }
+            //}
             if (!bypassTests)
             {
                 #region post a UnitSystem
