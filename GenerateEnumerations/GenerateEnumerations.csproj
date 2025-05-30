@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj" />
+    <ProjectReference Include="..\Conversion.DrillingEngineering\Conversion.DrillingEngineering.csproj" />
     <ProjectReference Include="..\Conversion\Conversion.csproj" />
   </ItemGroup>
 

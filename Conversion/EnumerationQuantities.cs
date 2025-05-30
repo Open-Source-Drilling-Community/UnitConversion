@@ -17,17 +17,19 @@ namespace OSDC.UnitConversion.Conversion
          Compressibility,  // Compressibility
          ConsistencyIndexRheology,  // ConsistencyIndexRheology
          Curvature,  // Curvature
-         MassDensityGradientPerLength,  // MassDensityGradientPerLength
-         MassDensityGradientPerTemperature,  // MassDensityGradientPerTemperature
-         MassDensity,  // MassDensity
-         MassDensityRateOfChange,  // MassDensityRateOfChange
          Dimensionless,  // Dimensionless
          DynamicViscosity,  // DynamicViscosity
          ElectricCapacitance,  // ElectricCapacitance
          ElectricCurrent,  // ElectricCurrent
+         ElectricResistivity,  // ElectricResistivity
          ElectricTension,  // ElectricTension
          ElongationGradientPerLength,  // ElongationGradientPerLength
          EnergyDensity,  // EnergyDensity
+         Energy,  // Energy
+         MassDensityGradientPerLength,  // MassDensityGradientPerLength
+         MassDensityGradientPerTemperature,  // MassDensityGradientPerTemperature
+         MassDensity,  // MassDensity
+         MassDensityRateOfChange,  // MassDensityRateOfChange
          ForceGradientPerLength,  // ForceGradientPerLength
          Force,  // Force
          Frequency,  // Frequency
@@ -51,7 +53,6 @@ namespace OSDC.UnitConversion.Conversion
          Proportion,  // Proportion
          RandomWalk,  // RandomWalk
          RelativeTemperature,  // RelativeTemperature
-         ElectricResistivity,  // ElectricResistivity
          SolidAngle,  // SolidAngle
          IsobaricSpecificHeatCapacity,  // IsobaricSpecificHeatCapacity
          IsobaricSpecificHeatCapacityGradientPerTemperature,  // IsobaricSpecificHeatCapacityGradientPerTemperature
@@ -69,7 +70,6 @@ namespace OSDC.UnitConversion.Conversion
          VolumetricFlowRate,  // VolumetricFlowRate
          WaveNumber,  // WaveNumber
          Mass,  // Mass
-         Energy,  // Energy
          ForceRateOfChange,  // ForceRateOfChange
          PressureRateOfChange,  // PressureRateOfChange
          TorqueRateOfChange,  // TorqueRateOfChange
@@ -107,17 +107,19 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Compressibility, new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14")},  // Compressibility
          {QuantityEnum.ConsistencyIndexRheology, new Guid("05571702-00e6-47d7-8590-fd3983645406")},  // ConsistencyIndexRheology
          {QuantityEnum.Curvature, new Guid("bbfe7349-8cf5-4ca0-8a84-ffe66d7f33d0")},  // Curvature
-         {QuantityEnum.MassDensityGradientPerLength, new Guid("037e0326-5095-4c82-ba1b-4df594243cda")},  // MassDensityGradientPerLength
-         {QuantityEnum.MassDensityGradientPerTemperature, new Guid("2d788f1e-db66-49c3-8eb6-313152cd8e3c")},  // MassDensityGradientPerTemperature
-         {QuantityEnum.MassDensity, new Guid("5754358c-9359-4bb0-8eb4-08602d19c6af")},  // MassDensity
-         {QuantityEnum.MassDensityRateOfChange, new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11")},  // MassDensityRateOfChange
          {QuantityEnum.Dimensionless, new Guid("790ae2cd-170c-4908-b2b9-163ba95f5b43")},  // Dimensionless
          {QuantityEnum.DynamicViscosity, new Guid("c830517f-5915-4a8f-ba83-bd102c0a935f")},  // DynamicViscosity
          {QuantityEnum.ElectricCapacitance, new Guid("9b284ff7-57bb-4ee0-bdbc-5fb7b80f3ae3")},  // ElectricCapacitance
          {QuantityEnum.ElectricCurrent, new Guid("a322deae-e965-41bf-b4fe-a7530d33c9a0")},  // ElectricCurrent
+         {QuantityEnum.ElectricResistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // ElectricResistivity
          {QuantityEnum.ElectricTension, new Guid("da5094a4-7481-4246-9def-1bd3b6f893a1")},  // ElectricTension
          {QuantityEnum.ElongationGradientPerLength, new Guid("3c6176f8-8f74-4fbf-bb65-207ed8b0a120")},  // ElongationGradientPerLength
          {QuantityEnum.EnergyDensity, new Guid("9e82436a-392e-428a-8ee9-0998027c3c46")},  // EnergyDensity
+         {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
+         {QuantityEnum.MassDensityGradientPerLength, new Guid("037e0326-5095-4c82-ba1b-4df594243cda")},  // MassDensityGradientPerLength
+         {QuantityEnum.MassDensityGradientPerTemperature, new Guid("2d788f1e-db66-49c3-8eb6-313152cd8e3c")},  // MassDensityGradientPerTemperature
+         {QuantityEnum.MassDensity, new Guid("5754358c-9359-4bb0-8eb4-08602d19c6af")},  // MassDensity
+         {QuantityEnum.MassDensityRateOfChange, new Guid("be272506-8c7a-4eff-9a05-ad4d07f36e11")},  // MassDensityRateOfChange
          {QuantityEnum.ForceGradientPerLength, new Guid("e5212340-1147-4cad-9f71-5cd9d4208ffd")},  // ForceGradientPerLength
          {QuantityEnum.Force, new Guid("af9fd237-14d8-4b75-8d0b-34ea8961c20b")},  // Force
          {QuantityEnum.Frequency, new Guid("8a1ff3d9-95c9-43e1-abb4-4ae9b8df861e")},  // Frequency
@@ -141,7 +143,6 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.Proportion, new Guid("10d2d588-19b8-4822-9240-e1d278d99e32")},  // Proportion
          {QuantityEnum.RandomWalk, new Guid("e3d17133-1c98-4ef2-8b1b-f0d935a4c1e4")},  // RandomWalk
          {QuantityEnum.RelativeTemperature, new Guid("58dadec7-7858-414b-8d7b-66504d5c2793")},  // RelativeTemperature
-         {QuantityEnum.ElectricResistivity, new Guid("c6c87a27-c04d-4658-8a71-1e46eb3bfd80")},  // ElectricResistivity
          {QuantityEnum.SolidAngle, new Guid("26a7767a-ea4d-417e-a1ef-b7fe674dcd3f")},  // SolidAngle
          {QuantityEnum.IsobaricSpecificHeatCapacity, new Guid("e5c75fa9-0102-42dc-bb0c-830fe9fca2b9")},  // IsobaricSpecificHeatCapacity
          {QuantityEnum.IsobaricSpecificHeatCapacityGradientPerTemperature, new Guid("3a317540-3db4-47a1-a566-33b6f39b7540")},  // IsobaricSpecificHeatCapacityGradientPerTemperature
@@ -159,7 +160,6 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.VolumetricFlowRate, new Guid("9c4eb2bc-413f-456e-ae6b-b1055be8e839")},  // VolumetricFlowRate
          {QuantityEnum.WaveNumber, new Guid("3709c98d-d471-41dd-bfde-81c4458757e5")},  // WaveNumber
          {QuantityEnum.Mass, new Guid("99d13248-c303-4b3d-b062-af98de701d6f")},  // Mass
-         {QuantityEnum.Energy, new Guid("3be49c73-d2d1-40a2-b15f-07a1606d8179")},  // Energy
          {QuantityEnum.ForceRateOfChange, new Guid("2f28f6d5-5b01-4fd0-9924-bf84250f6092")},  // ForceRateOfChange
          {QuantityEnum.PressureRateOfChange, new Guid("611830b0-739e-42ef-8215-98e0a4e1df3b")},  // PressureRateOfChange
          {QuantityEnum.TorqueRateOfChange, new Guid("e94ee582-62bd-472b-9188-1f423729e99e")},  // TorqueRateOfChange
@@ -487,7 +487,19 @@ namespace OSDC.UnitConversion.Conversion
          RadianPerMinute,  // radian per minute
          DegreePerDay,  // degree per day
          DegreePerHour,  // degree per hour
-         DegreePerMinute // degree per minute
+         DegreePerMinute,  // degree per minute
+         RevolutionPerSecond,  // revolution per second
+         RevolutionPerMinute,  // revolution per minute
+         RevolutionPerHour,  // revolution per hour
+         ThousandRevolutionPerSecond,  // thousand revolution per second
+         ThousandRevolutionPerMinute,  // thousand revolution per minute
+         ThousandRevolutionPerHour,  // thousand revolution per hour
+         StrokePerSecond,  // stroke per second
+         StrokePerMinute,  // stroke per minute
+         StrokePerHour,  // stroke per hour
+         ThousandStrokePerSecond,  // thousand stroke per second
+         ThousandStrokePerMinute,  // thousand stroke per minute
+         ThousandStrokePerHour // thousand stroke per hour
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -498,7 +510,19 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.RadianPerMinute, new Guid("5267eb8c-36bc-4ab9-bd62-26f05f852c35")},  // radian per minute
          {UnitChoicesEnum.DegreePerDay, new Guid("ec049b3d-134b-44a3-9746-0419a368beef")},  // degree per day
          {UnitChoicesEnum.DegreePerHour, new Guid("44cc8b17-2f87-49c9-8ab7-7f4ed36d9eb6")},  // degree per hour
-         {UnitChoicesEnum.DegreePerMinute, new Guid("0a3ad50c-bbfa-456c-9613-84f37b4a80f1")} // degree per minute
+         {UnitChoicesEnum.DegreePerMinute, new Guid("0a3ad50c-bbfa-456c-9613-84f37b4a80f1")},  // degree per minute
+         {UnitChoicesEnum.RevolutionPerSecond, new Guid("00a96665-b967-4982-8b6b-1ca3671f8c9a")},  // revolution per second
+         {UnitChoicesEnum.RevolutionPerMinute, new Guid("fe846c15-ddba-480f-93f0-16af45f7b9ce")},  // revolution per minute
+         {UnitChoicesEnum.RevolutionPerHour, new Guid("950585c6-bc50-4f51-becb-2f840e217c4f")},  // revolution per hour
+         {UnitChoicesEnum.ThousandRevolutionPerSecond, new Guid("4c7c26e6-874c-4da0-b26d-095e59938bf0")},  // thousand revolution per second
+         {UnitChoicesEnum.ThousandRevolutionPerMinute, new Guid("4ac0f148-241b-42bd-b55e-88a27d12f860")},  // thousand revolution per minute
+         {UnitChoicesEnum.ThousandRevolutionPerHour, new Guid("ee395b6a-95bc-4fd1-b6fe-0eb26046d595")},  // thousand revolution per hour
+         {UnitChoicesEnum.StrokePerSecond, new Guid("23fd9599-d210-4050-8c61-fc18a5087db3")},  // stroke per second
+         {UnitChoicesEnum.StrokePerMinute, new Guid("979b3170-be8b-42ee-a7d5-ecf9d9f1869d")},  // stroke per minute
+         {UnitChoicesEnum.StrokePerHour, new Guid("114d2d67-d080-4c46-85c6-9047cd0e2d7a")},  // stroke per hour
+         {UnitChoicesEnum.ThousandStrokePerSecond, new Guid("edb3d772-8ed9-499a-a2db-e5835176fb1b")},  // thousand stroke per second
+         {UnitChoicesEnum.ThousandStrokePerMinute, new Guid("bf130c38-70bb-4bd1-8e21-ae3b3043bc96")},  // thousand stroke per minute
+         {UnitChoicesEnum.ThousandStrokePerHour, new Guid("756ac21d-94c9-4501-947f-0bf275528fb5")} // thousand stroke per hour
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -704,218 +728,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MassDensityGradientPerLengthQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMetrePerMetre,  // kilogram per cubic metre per metre
-         SpecificGravityPerMetre,  // specific gravity per metre
-         SpecificGravityPer10Metre,  // specific gravity per 10 metre
-         SpecificGravityPer30Metre,  // specific gravity per 30 metre
-         SpecificGravityPer100Metre,  // specific gravity per 100 metre
-         GramPerCubicCentimetrePer100Metre,  // gram per cubic centimetre per 100 metre
-         PoundPerGallonUKPerFoot,  // pound per gallon (UK) per foot
-         PoundPerGallonUKPer30Foot,  // pound per gallon (UK) per 30 foot
-         PoundPerGallonUKPer100Foot,  // pound per gallon (UK) per 100 foot
-         PoundPerGallonUSPerFoot,  // pound per gallon (US) per foot
-         PoundPerGallonUSPer30Foot,  // pound per gallon (US) per 30 foot
-         PoundPerGallonUSPer100Foot,  // pound per gallon (US) per 100 foot
-         KilogramPerCubicMetrePer10Metre,  // kilogram per cubic metre per 10 metre
-         KilogramPerCubicMetrePer30Metre,  // kilogram per cubic metre per 30 metre
-         KilogramPerCubicMetrePer100Metre,  // kilogram per cubic metre per 100 metre
-         GramPerCubicCentimetrePerMetre,  // gram per cubic centimetre per metre
-         GramPerCubicCentimetrePer10Metre,  // gram per cubic centimetre per 10 metre
-         GramPerCubicCentimetrePer30Metre,  // gram per cubic centimetre per 30 metre
-         PoundPerCubicFootPerFoot,  // pound per cubic foot per foot
-         PoundPerCubicFootPer30Foot,  // pound per cubic foot per 30 foot
-         PoundPerCubicFootPer100Foot,  // pound per cubic foot per 100 foot
-         PoundPerCubicInchPerFoot,  // pound per cubic inch per foot
-         PoundPerCubicInchPer30Foot,  // pound per cubic inch per 30 foot
-         PoundPerCubicInchPer100Foot,  // pound per cubic inch per 100 foot
-         PoundPerCubicYardPerFoot,  // pound per cubic yard per foot
-         PoundPerCubicYardPer30Foot,  // pound per cubic yard per 30 foot
-         PoundPerCubicYardPer100Foot // pound per cubic yard per 100 foot
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerCubicMetrePerMetre, new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1")},  // kilogram per cubic metre per metre
-         {UnitChoicesEnum.SpecificGravityPerMetre, new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2")},  // specific gravity per metre
-         {UnitChoicesEnum.SpecificGravityPer10Metre, new Guid("4af1c9f0-480c-4e80-a62b-c6b57b486c3f")},  // specific gravity per 10 metre
-         {UnitChoicesEnum.SpecificGravityPer30Metre, new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92")},  // specific gravity per 30 metre
-         {UnitChoicesEnum.SpecificGravityPer100Metre, new Guid("af987ef2-c8e5-470a-bc53-b2fff05d2c6a")},  // specific gravity per 100 metre
-         {UnitChoicesEnum.GramPerCubicCentimetrePer100Metre, new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06")},  // gram per cubic centimetre per 100 metre
-         {UnitChoicesEnum.PoundPerGallonUKPerFoot, new Guid("f2e67c73-3706-4c14-b23a-afe474b2ecbe")},  // pound per gallon (UK) per foot
-         {UnitChoicesEnum.PoundPerGallonUKPer30Foot, new Guid("684acd16-b420-4952-bc42-ffb47044074d")},  // pound per gallon (UK) per 30 foot
-         {UnitChoicesEnum.PoundPerGallonUKPer100Foot, new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567")},  // pound per gallon (UK) per 100 foot
-         {UnitChoicesEnum.PoundPerGallonUSPerFoot, new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1")},  // pound per gallon (US) per foot
-         {UnitChoicesEnum.PoundPerGallonUSPer30Foot, new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0")},  // pound per gallon (US) per 30 foot
-         {UnitChoicesEnum.PoundPerGallonUSPer100Foot, new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3")},  // pound per gallon (US) per 100 foot
-         {UnitChoicesEnum.KilogramPerCubicMetrePer10Metre, new Guid("2d0ed7e8-2b80-46ff-9566-bd1429aa3129")},  // kilogram per cubic metre per 10 metre
-         {UnitChoicesEnum.KilogramPerCubicMetrePer30Metre, new Guid("dccaa4b1-cf9f-4075-a9f2-50931e38af01")},  // kilogram per cubic metre per 30 metre
-         {UnitChoicesEnum.KilogramPerCubicMetrePer100Metre, new Guid("ccca234e-8626-4f75-beed-4da4abad1317")},  // kilogram per cubic metre per 100 metre
-         {UnitChoicesEnum.GramPerCubicCentimetrePerMetre, new Guid("91fe264e-6f5f-4a4d-b7f7-1532810ad5bd")},  // gram per cubic centimetre per metre
-         {UnitChoicesEnum.GramPerCubicCentimetrePer10Metre, new Guid("836701f1-1fbd-4ae3-aba8-17a97379272c")},  // gram per cubic centimetre per 10 metre
-         {UnitChoicesEnum.GramPerCubicCentimetrePer30Metre, new Guid("faaa4f2f-4dd4-419a-a985-ea16c5fc6d49")},  // gram per cubic centimetre per 30 metre
-         {UnitChoicesEnum.PoundPerCubicFootPerFoot, new Guid("2c75c006-8ab5-475e-87aa-f5b0501b5ad7")},  // pound per cubic foot per foot
-         {UnitChoicesEnum.PoundPerCubicFootPer30Foot, new Guid("cd7e9b61-06e9-41ca-b1dd-c2dd0b2cce55")},  // pound per cubic foot per 30 foot
-         {UnitChoicesEnum.PoundPerCubicFootPer100Foot, new Guid("bd3c10c7-aa1b-438a-a61d-791f05de5a64")},  // pound per cubic foot per 100 foot
-         {UnitChoicesEnum.PoundPerCubicInchPerFoot, new Guid("8997f813-9692-4f1a-b281-42260799f2ab")},  // pound per cubic inch per foot
-         {UnitChoicesEnum.PoundPerCubicInchPer30Foot, new Guid("394876ee-1779-4ac0-a306-ad64fd9b640f")},  // pound per cubic inch per 30 foot
-         {UnitChoicesEnum.PoundPerCubicInchPer100Foot, new Guid("11826f55-a121-498c-b03d-e51431f00476")},  // pound per cubic inch per 100 foot
-         {UnitChoicesEnum.PoundPerCubicYardPerFoot, new Guid("09c728a5-da92-4a0c-a5bb-3aa166c2564d")},  // pound per cubic yard per foot
-         {UnitChoicesEnum.PoundPerCubicYardPer30Foot, new Guid("82a23b2f-56a9-4345-97ec-61e6ec250915")},  // pound per cubic yard per 30 foot
-         {UnitChoicesEnum.PoundPerCubicYardPer100Foot, new Guid("6f82e6f2-2cb8-467f-8baa-6d766056acf7")} // pound per cubic yard per 100 foot
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassDensityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMetrePerKelvin,  // kilogram per cubic metre per kelvin
-         SpecificGravityPerCelsius,  // specific gravity per celsius
-         GramPerCubicCentimetrePerCelsius,  // gram per cubic centimetre per celsius
-         PoundPerGallonUKPerCelsius,  // pound per gallon (UK) per celsius
-         PoundPerGallonUSPerFahrenheit,  // pound per gallon (US) per fahrenheit
-         PoundPerGallonUKPerFahrenheit,  // pound per gallon (UK) per fahrenheit
-         PoundPerGallonUSPerCelsius,  // pound per gallon (US) per celsius
-         PoundPerCubicFootPerCelsius,  // pound per cubic foot per celsius
-         PoundPerCubicFootPerFahrenheit,  // pound per cubic foot per fahrenheit
-         PoundPerCubicInchPerCelsius,  // pound per cubic inch per celsius
-         PoundPerCubicInchPerFahrenheit,  // pound per cubic inch per fahrenheit
-         PoundPerCubicYardPerCelsius,  // pound per cubic yard per celsius
-         PoundPerCubicYeardPerFahrenheit // pound per cubic yeard per fahrenheit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerCubicMetrePerKelvin, new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf")},  // kilogram per cubic metre per kelvin
-         {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")},  // specific gravity per celsius
-         {UnitChoicesEnum.GramPerCubicCentimetrePerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // gram per cubic centimetre per celsius
-         {UnitChoicesEnum.PoundPerGallonUKPerCelsius, new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b")},  // pound per gallon (UK) per celsius
-         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // pound per gallon (US) per fahrenheit
-         {UnitChoicesEnum.PoundPerGallonUKPerFahrenheit, new Guid("24485846-7944-4903-a5c5-975298daf450")},  // pound per gallon (UK) per fahrenheit
-         {UnitChoicesEnum.PoundPerGallonUSPerCelsius, new Guid("8b642465-acee-4a4a-9cb5-6fc16ace5bc3")},  // pound per gallon (US) per celsius
-         {UnitChoicesEnum.PoundPerCubicFootPerCelsius, new Guid("592a60a7-71e1-40dc-bfe0-573e407b893c")},  // pound per cubic foot per celsius
-         {UnitChoicesEnum.PoundPerCubicFootPerFahrenheit, new Guid("64b97848-5c42-49ec-a09e-05c7bd0cea6b")},  // pound per cubic foot per fahrenheit
-         {UnitChoicesEnum.PoundPerCubicInchPerCelsius, new Guid("10e845fe-c8c1-4847-bf6a-874c1f746325")},  // pound per cubic inch per celsius
-         {UnitChoicesEnum.PoundPerCubicInchPerFahrenheit, new Guid("586d023b-3c87-4354-bce9-5704c8d1ae0a")},  // pound per cubic inch per fahrenheit
-         {UnitChoicesEnum.PoundPerCubicYardPerCelsius, new Guid("ea5147c2-d35b-4e0c-8c47-e9f04a6e0fa1")},  // pound per cubic yard per celsius
-         {UnitChoicesEnum.PoundPerCubicYeardPerFahrenheit, new Guid("e15f8f82-0d58-487a-9d70-8f14f3606177")} // pound per cubic yeard per fahrenheit
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassDensityQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMetre,  // kilogram per cubic metre
-         GramPerCubicMetre,  // gram per cubic metre
-         SpecificGravity,  // specific gravity
-         GramPerCubicCentimetre,  // gram per cubic centimetre
-         PoundPerGallonUK,  // pound per gallon (UK)
-         PoundPerGallonUS,  // pound per gallon (US)
-         PoundPerCubicFoot,  // pound per cubic foot
-         PoundPerCubicInch,  // pound per cubic inch
-         PoundPerCubicYard // pound per cubic yard
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerCubicMetre, new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf")},  // kilogram per cubic metre
-         {UnitChoicesEnum.GramPerCubicMetre, new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a")},  // gram per cubic metre
-         {UnitChoicesEnum.SpecificGravity, new Guid("da94ba95-4494-45af-bf99-31f00031c680")},  // specific gravity
-         {UnitChoicesEnum.GramPerCubicCentimetre, new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450")},  // gram per cubic centimetre
-         {UnitChoicesEnum.PoundPerGallonUK, new Guid("75ecf787-8778-4d74-afc7-498e117d27bf")},  // pound per gallon (UK)
-         {UnitChoicesEnum.PoundPerGallonUS, new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da")},  // pound per gallon (US)
-         {UnitChoicesEnum.PoundPerCubicFoot, new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935")},  // pound per cubic foot
-         {UnitChoicesEnum.PoundPerCubicInch, new Guid("d549658a-76ab-4507-8a9e-e62a5cf47e23")},  // pound per cubic inch
-         {UnitChoicesEnum.PoundPerCubicYard, new Guid("8199e187-5283-42cc-891e-b3887c3aa450")} // pound per cubic yard
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassDensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         KilogramPerCubicMetrePerSecond,  // kilogram per cubic metre per second
-         SpecificGravityPerSecond,  // specific gravity per second
-         SpecificGravityPerMinute,  // specific gravity per minute
-         SpecificGravityPerHour,  // specific gravity per hour
-         GramPerCubicCentimetrePerSecond,  // gram per cubic centimetre per second
-         GramPerCubicCentimetrePerMinute,  // gram per cubic centimetre per minute
-         GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
-         PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
-         PoundPerGallonUKPerMinute,  // pound per gallon (UK) per minute
-         PoundPerGallonUKPerHour,  // pound per gallon (UK) per hour
-         PoundPerGallonUSPerSecond,  // pound per gallon (US) per second
-         PoundPerGallonUSPerMinute,  // pound per gallon (US) per minute
-         PoundPerGallonUSPerHour // pound per gallon (US) per hour
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.KilogramPerCubicMetrePerSecond, new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377")},  // kilogram per cubic metre per second
-         {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")},  // specific gravity per second
-         {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // specific gravity per minute
-         {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // specific gravity per hour
-         {UnitChoicesEnum.GramPerCubicCentimetrePerSecond, new Guid("e26f57a2-9659-40fd-a670-38a3b83fd36f")},  // gram per cubic centimetre per second
-         {UnitChoicesEnum.GramPerCubicCentimetrePerMinute, new Guid("93777f41-0e47-46aa-9ab6-413987553817")},  // gram per cubic centimetre per minute
-         {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
-         {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
-         {UnitChoicesEnum.PoundPerGallonUKPerMinute, new Guid("e79c74b9-774d-4695-81d5-75042f268b96")},  // pound per gallon (UK) per minute
-         {UnitChoicesEnum.PoundPerGallonUKPerHour, new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070")},  // pound per gallon (UK) per hour
-         {UnitChoicesEnum.PoundPerGallonUSPerSecond, new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11")},  // pound per gallon (US) per second
-         {UnitChoicesEnum.PoundPerGallonUSPerMinute, new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea")},  // pound per gallon (US) per minute
-         {UnitChoicesEnum.PoundPerGallonUSPerHour, new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643")} // pound per gallon (US) per hour
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class DimensionlessQuantity : DerivedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -1063,6 +875,36 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Gigaampere, new Guid("eb1b76cd-4863-4cf3-b421-1cd80d2fb0b4")},  // gigaampere
          {UnitChoicesEnum.Teraampere, new Guid("4bf45d0a-e177-45b9-8a40-f8f51d5b15c6")},  // teraampere
          {UnitChoicesEnum.Statampere, new Guid("7d9a22ac-62d8-476d-8429-bc41febbe707")} // statampere
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         OhmMetre,  // ohm metre
+         KiloOhmMetre,  // kilo ohm metre
+         MegaOhmMetre,  // mega ohm metre
+         GigaOhmMetre // giga ohm metre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.OhmMetre, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")},  // ohm metre
+         {UnitChoicesEnum.KiloOhmMetre, new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962")},  // kilo ohm metre
+         {UnitChoicesEnum.MegaOhmMetre, new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6")},  // mega ohm metre
+         {UnitChoicesEnum.GigaOhmMetre, new Guid("eecfdf24-7a8e-4783-a627-d4387831767d")} // giga ohm metre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -1281,6 +1123,258 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.KiloBritishThermalUnitPerCubicInch, new Guid("8d6b0b9d-8f02-4a6a-9df5-575ebebaaba3")},  // kilo british thermal unit per cubic inch
          {UnitChoicesEnum.KiloBritishThermalUnitPerGallonUK, new Guid("24f9799f-4918-4f1c-9155-6b87c99703b0")},  // kilo british thermal unit per gallon (UK)
          {UnitChoicesEnum.KiloBritishThermalUnitPerGallonUS, new Guid("d8751a32-b0bd-425a-a9df-0ef7f5f0cb1f")} // kilo british thermal unit per gallon (US)
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Joule,  // joule
+         Kilojoule,  // kilojoule
+         Megajoule,  // megajoule
+         Gigajoule,  // gigajoule
+         Calorie,  // calorie
+         Kilocalorie,  // kilocalorie
+         BritishThermalUnit,  // british thermal unit
+         KiloBritishThermalUnit,  // kilo british thermal unit
+         MegaBritishThermalUnit // mega british thermal unit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Joule, new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076")},  // joule
+         {UnitChoicesEnum.Kilojoule, new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0")},  // kilojoule
+         {UnitChoicesEnum.Megajoule, new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126")},  // megajoule
+         {UnitChoicesEnum.Gigajoule, new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2")},  // gigajoule
+         {UnitChoicesEnum.Calorie, new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12")},  // calorie
+         {UnitChoicesEnum.Kilocalorie, new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578")},  // kilocalorie
+         {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
+         {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
+         {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerLengthQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerMetre,  // kilogram per cubic metre per metre
+         SpecificGravityPerMetre,  // specific gravity per metre
+         SpecificGravityPer10Metre,  // specific gravity per 10 metre
+         SpecificGravityPer30Metre,  // specific gravity per 30 metre
+         SpecificGravityPer100Metre,  // specific gravity per 100 metre
+         GramPerCubicCentimetrePer100Metre,  // gram per cubic centimetre per 100 metre
+         PoundPerGallonUKPerFoot,  // pound per gallon (UK) per foot
+         PoundPerGallonUKPer30Foot,  // pound per gallon (UK) per 30 foot
+         PoundPerGallonUKPer100Foot,  // pound per gallon (UK) per 100 foot
+         PoundPerGallonUSPerFoot,  // pound per gallon (US) per foot
+         PoundPerGallonUSPer30Foot,  // pound per gallon (US) per 30 foot
+         PoundPerGallonUSPer100Foot,  // pound per gallon (US) per 100 foot
+         KilogramPerCubicMetrePer10Metre,  // kilogram per cubic metre per 10 metre
+         KilogramPerCubicMetrePer30Metre,  // kilogram per cubic metre per 30 metre
+         KilogramPerCubicMetrePer100Metre,  // kilogram per cubic metre per 100 metre
+         GramPerCubicCentimetrePerMetre,  // gram per cubic centimetre per metre
+         GramPerCubicCentimetrePer10Metre,  // gram per cubic centimetre per 10 metre
+         GramPerCubicCentimetrePer30Metre,  // gram per cubic centimetre per 30 metre
+         PoundPerCubicFootPerFoot,  // pound per cubic foot per foot
+         PoundPerCubicFootPer30Foot,  // pound per cubic foot per 30 foot
+         PoundPerCubicFootPer100Foot,  // pound per cubic foot per 100 foot
+         PoundPerCubicInchPerFoot,  // pound per cubic inch per foot
+         PoundPerCubicInchPer30Foot,  // pound per cubic inch per 30 foot
+         PoundPerCubicInchPer100Foot,  // pound per cubic inch per 100 foot
+         PoundPerCubicYardPerFoot,  // pound per cubic yard per foot
+         PoundPerCubicYardPer30Foot,  // pound per cubic yard per 30 foot
+         PoundPerCubicYardPer100Foot // pound per cubic yard per 100 foot
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerMetre, new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1")},  // kilogram per cubic metre per metre
+         {UnitChoicesEnum.SpecificGravityPerMetre, new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2")},  // specific gravity per metre
+         {UnitChoicesEnum.SpecificGravityPer10Metre, new Guid("4af1c9f0-480c-4e80-a62b-c6b57b486c3f")},  // specific gravity per 10 metre
+         {UnitChoicesEnum.SpecificGravityPer30Metre, new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92")},  // specific gravity per 30 metre
+         {UnitChoicesEnum.SpecificGravityPer100Metre, new Guid("af987ef2-c8e5-470a-bc53-b2fff05d2c6a")},  // specific gravity per 100 metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePer100Metre, new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06")},  // gram per cubic centimetre per 100 metre
+         {UnitChoicesEnum.PoundPerGallonUKPerFoot, new Guid("f2e67c73-3706-4c14-b23a-afe474b2ecbe")},  // pound per gallon (UK) per foot
+         {UnitChoicesEnum.PoundPerGallonUKPer30Foot, new Guid("684acd16-b420-4952-bc42-ffb47044074d")},  // pound per gallon (UK) per 30 foot
+         {UnitChoicesEnum.PoundPerGallonUKPer100Foot, new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567")},  // pound per gallon (UK) per 100 foot
+         {UnitChoicesEnum.PoundPerGallonUSPerFoot, new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1")},  // pound per gallon (US) per foot
+         {UnitChoicesEnum.PoundPerGallonUSPer30Foot, new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0")},  // pound per gallon (US) per 30 foot
+         {UnitChoicesEnum.PoundPerGallonUSPer100Foot, new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3")},  // pound per gallon (US) per 100 foot
+         {UnitChoicesEnum.KilogramPerCubicMetrePer10Metre, new Guid("2d0ed7e8-2b80-46ff-9566-bd1429aa3129")},  // kilogram per cubic metre per 10 metre
+         {UnitChoicesEnum.KilogramPerCubicMetrePer30Metre, new Guid("dccaa4b1-cf9f-4075-a9f2-50931e38af01")},  // kilogram per cubic metre per 30 metre
+         {UnitChoicesEnum.KilogramPerCubicMetrePer100Metre, new Guid("ccca234e-8626-4f75-beed-4da4abad1317")},  // kilogram per cubic metre per 100 metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePerMetre, new Guid("91fe264e-6f5f-4a4d-b7f7-1532810ad5bd")},  // gram per cubic centimetre per metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePer10Metre, new Guid("836701f1-1fbd-4ae3-aba8-17a97379272c")},  // gram per cubic centimetre per 10 metre
+         {UnitChoicesEnum.GramPerCubicCentimetrePer30Metre, new Guid("faaa4f2f-4dd4-419a-a985-ea16c5fc6d49")},  // gram per cubic centimetre per 30 metre
+         {UnitChoicesEnum.PoundPerCubicFootPerFoot, new Guid("2c75c006-8ab5-475e-87aa-f5b0501b5ad7")},  // pound per cubic foot per foot
+         {UnitChoicesEnum.PoundPerCubicFootPer30Foot, new Guid("cd7e9b61-06e9-41ca-b1dd-c2dd0b2cce55")},  // pound per cubic foot per 30 foot
+         {UnitChoicesEnum.PoundPerCubicFootPer100Foot, new Guid("bd3c10c7-aa1b-438a-a61d-791f05de5a64")},  // pound per cubic foot per 100 foot
+         {UnitChoicesEnum.PoundPerCubicInchPerFoot, new Guid("8997f813-9692-4f1a-b281-42260799f2ab")},  // pound per cubic inch per foot
+         {UnitChoicesEnum.PoundPerCubicInchPer30Foot, new Guid("394876ee-1779-4ac0-a306-ad64fd9b640f")},  // pound per cubic inch per 30 foot
+         {UnitChoicesEnum.PoundPerCubicInchPer100Foot, new Guid("11826f55-a121-498c-b03d-e51431f00476")},  // pound per cubic inch per 100 foot
+         {UnitChoicesEnum.PoundPerCubicYardPerFoot, new Guid("09c728a5-da92-4a0c-a5bb-3aa166c2564d")},  // pound per cubic yard per foot
+         {UnitChoicesEnum.PoundPerCubicYardPer30Foot, new Guid("82a23b2f-56a9-4345-97ec-61e6ec250915")},  // pound per cubic yard per 30 foot
+         {UnitChoicesEnum.PoundPerCubicYardPer100Foot, new Guid("6f82e6f2-2cb8-467f-8baa-6d766056acf7")} // pound per cubic yard per 100 foot
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerKelvin,  // kilogram per cubic metre per kelvin
+         SpecificGravityPerCelsius,  // specific gravity per celsius
+         GramPerCubicCentimetrePerCelsius,  // gram per cubic centimetre per celsius
+         PoundPerGallonUKPerCelsius,  // pound per gallon (UK) per celsius
+         PoundPerGallonUSPerFahrenheit,  // pound per gallon (US) per fahrenheit
+         PoundPerGallonUKPerFahrenheit,  // pound per gallon (UK) per fahrenheit
+         PoundPerGallonUSPerCelsius,  // pound per gallon (US) per celsius
+         PoundPerCubicFootPerCelsius,  // pound per cubic foot per celsius
+         PoundPerCubicFootPerFahrenheit,  // pound per cubic foot per fahrenheit
+         PoundPerCubicInchPerCelsius,  // pound per cubic inch per celsius
+         PoundPerCubicInchPerFahrenheit,  // pound per cubic inch per fahrenheit
+         PoundPerCubicYardPerCelsius,  // pound per cubic yard per celsius
+         PoundPerCubicYeardPerFahrenheit // pound per cubic yeard per fahrenheit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerKelvin, new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf")},  // kilogram per cubic metre per kelvin
+         {UnitChoicesEnum.SpecificGravityPerCelsius, new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e")},  // specific gravity per celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerCelsius, new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20")},  // gram per cubic centimetre per celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerCelsius, new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b")},  // pound per gallon (UK) per celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerFahrenheit, new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b")},  // pound per gallon (US) per fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerFahrenheit, new Guid("24485846-7944-4903-a5c5-975298daf450")},  // pound per gallon (UK) per fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerCelsius, new Guid("8b642465-acee-4a4a-9cb5-6fc16ace5bc3")},  // pound per gallon (US) per celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerCelsius, new Guid("592a60a7-71e1-40dc-bfe0-573e407b893c")},  // pound per cubic foot per celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerFahrenheit, new Guid("64b97848-5c42-49ec-a09e-05c7bd0cea6b")},  // pound per cubic foot per fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerCelsius, new Guid("10e845fe-c8c1-4847-bf6a-874c1f746325")},  // pound per cubic inch per celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerFahrenheit, new Guid("586d023b-3c87-4354-bce9-5704c8d1ae0a")},  // pound per cubic inch per fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerCelsius, new Guid("ea5147c2-d35b-4e0c-8c47-e9f04a6e0fa1")},  // pound per cubic yard per celsius
+         {UnitChoicesEnum.PoundPerCubicYeardPerFahrenheit, new Guid("e15f8f82-0d58-487a-9d70-8f14f3606177")} // pound per cubic yeard per fahrenheit
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetre,  // kilogram per cubic metre
+         GramPerCubicMetre,  // gram per cubic metre
+         SpecificGravity,  // specific gravity
+         GramPerCubicCentimetre,  // gram per cubic centimetre
+         PoundPerGallonUK,  // pound per gallon (UK)
+         PoundPerGallonUS,  // pound per gallon (US)
+         PoundPerCubicFoot,  // pound per cubic foot
+         PoundPerCubicInch,  // pound per cubic inch
+         PoundPerCubicYard // pound per cubic yard
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetre, new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf")},  // kilogram per cubic metre
+         {UnitChoicesEnum.GramPerCubicMetre, new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a")},  // gram per cubic metre
+         {UnitChoicesEnum.SpecificGravity, new Guid("da94ba95-4494-45af-bf99-31f00031c680")},  // specific gravity
+         {UnitChoicesEnum.GramPerCubicCentimetre, new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450")},  // gram per cubic centimetre
+         {UnitChoicesEnum.PoundPerGallonUK, new Guid("75ecf787-8778-4d74-afc7-498e117d27bf")},  // pound per gallon (UK)
+         {UnitChoicesEnum.PoundPerGallonUS, new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da")},  // pound per gallon (US)
+         {UnitChoicesEnum.PoundPerCubicFoot, new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935")},  // pound per cubic foot
+         {UnitChoicesEnum.PoundPerCubicInch, new Guid("d549658a-76ab-4507-8a9e-e62a5cf47e23")},  // pound per cubic inch
+         {UnitChoicesEnum.PoundPerCubicYard, new Guid("8199e187-5283-42cc-891e-b3887c3aa450")} // pound per cubic yard
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerSecond,  // kilogram per cubic metre per second
+         SpecificGravityPerSecond,  // specific gravity per second
+         SpecificGravityPerMinute,  // specific gravity per minute
+         SpecificGravityPerHour,  // specific gravity per hour
+         GramPerCubicCentimetrePerSecond,  // gram per cubic centimetre per second
+         GramPerCubicCentimetrePerMinute,  // gram per cubic centimetre per minute
+         GramPerCubicCentimetrePerHour,  // gram per cubic centimetre per hour
+         PoundPerGallonUKPerSecond,  // pound per gallon (UK) per second
+         PoundPerGallonUKPerMinute,  // pound per gallon (UK) per minute
+         PoundPerGallonUKPerHour,  // pound per gallon (UK) per hour
+         PoundPerGallonUSPerSecond,  // pound per gallon (US) per second
+         PoundPerGallonUSPerMinute,  // pound per gallon (US) per minute
+         PoundPerGallonUSPerHour // pound per gallon (US) per hour
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerSecond, new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377")},  // kilogram per cubic metre per second
+         {UnitChoicesEnum.SpecificGravityPerSecond, new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791")},  // specific gravity per second
+         {UnitChoicesEnum.SpecificGravityPerMinute, new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc")},  // specific gravity per minute
+         {UnitChoicesEnum.SpecificGravityPerHour, new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06")},  // specific gravity per hour
+         {UnitChoicesEnum.GramPerCubicCentimetrePerSecond, new Guid("e26f57a2-9659-40fd-a670-38a3b83fd36f")},  // gram per cubic centimetre per second
+         {UnitChoicesEnum.GramPerCubicCentimetrePerMinute, new Guid("93777f41-0e47-46aa-9ab6-413987553817")},  // gram per cubic centimetre per minute
+         {UnitChoicesEnum.GramPerCubicCentimetrePerHour, new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31")},  // gram per cubic centimetre per hour
+         {UnitChoicesEnum.PoundPerGallonUKPerSecond, new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67")},  // pound per gallon (UK) per second
+         {UnitChoicesEnum.PoundPerGallonUKPerMinute, new Guid("e79c74b9-774d-4695-81d5-75042f268b96")},  // pound per gallon (UK) per minute
+         {UnitChoicesEnum.PoundPerGallonUKPerHour, new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070")},  // pound per gallon (UK) per hour
+         {UnitChoicesEnum.PoundPerGallonUSPerSecond, new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11")},  // pound per gallon (US) per second
+         {UnitChoicesEnum.PoundPerGallonUSPerMinute, new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea")},  // pound per gallon (US) per minute
+         {UnitChoicesEnum.PoundPerGallonUSPerHour, new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643")} // pound per gallon (US) per hour
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2286,36 +2380,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         OhmMetre,  // ohm metre
-         KiloOhmMetre,  // kilo ohm metre
-         MegaOhmMetre,  // mega ohm metre
-         GigaOhmMetre // giga ohm metre
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.OhmMetre, new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb")},  // ohm metre
-         {UnitChoicesEnum.KiloOhmMetre, new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962")},  // kilo ohm metre
-         {UnitChoicesEnum.MegaOhmMetre, new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6")},  // mega ohm metre
-         {UnitChoicesEnum.GigaOhmMetre, new Guid("eecfdf24-7a8e-4783-a627-d4387831767d")} // giga ohm metre
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class SolidAngleQuantity : SymbolizedBasePhysicalQuantity
   {
     public new enum UnitChoicesEnum 
@@ -3269,46 +3333,6 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.EarthMass, new Guid("f9303406-dfce-45c4-9a1e-299d9bac1d4e")},  // earth mass
          {UnitChoicesEnum.Grain, new Guid("dad9b0a5-ce14-4132-b571-6365ab336bc2")},  // grain
          {UnitChoicesEnum.HundredWeights, new Guid("83810f2a-b260-41b3-bc13-5ef60290f214")} // hundred weights
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Joule,  // joule
-         Kilojoule,  // kilojoule
-         Megajoule,  // megajoule
-         Gigajoule,  // gigajoule
-         Calorie,  // calorie
-         Kilocalorie,  // kilocalorie
-         BritishThermalUnit,  // british thermal unit
-         KiloBritishThermalUnit,  // kilo british thermal unit
-         MegaBritishThermalUnit // mega british thermal unit
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Joule, new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076")},  // joule
-         {UnitChoicesEnum.Kilojoule, new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0")},  // kilojoule
-         {UnitChoicesEnum.Megajoule, new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126")},  // megajoule
-         {UnitChoicesEnum.Gigajoule, new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2")},  // gigajoule
-         {UnitChoicesEnum.Calorie, new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12")},  // calorie
-         {UnitChoicesEnum.Kilocalorie, new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578")},  // kilocalorie
-         {UnitChoicesEnum.BritishThermalUnit, new Guid("8548500e-e3a9-4e36-aecb-024836b8a012")},  // british thermal unit
-         {UnitChoicesEnum.KiloBritishThermalUnit, new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26")},  // kilo british thermal unit
-         {UnitChoicesEnum.MegaBritishThermalUnit, new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19")} // mega british thermal unit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

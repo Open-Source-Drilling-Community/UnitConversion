@@ -1883,6 +1883,244 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "Minute = 60.0"
  + Environment.NewLine + "",
                 }
+              , new UnitChoice
+                {
+                  UnitName = "revolution per second",
+                  UnitLabel = "rps",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("00a96665-b967-4982-8b6b-1ca3671f8c9a"),
+                  ConversionFactorFromSIFormula = "Factors.Unit / Factors.Revolution",
+                  ConversionFactorFromSI = Factors.Unit / Factors.Revolution,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in revolution per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Unit / Revolution, i.e., 0.15915494309189535"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "revolution per minute",
+                  UnitLabel = "rpm",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("fe846c15-ddba-480f-93f0-16af45f7b9ce"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.Revolution",
+                  ConversionFactorFromSI = Factors.Minute / Factors.Revolution,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in revolution per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / Revolution, i.e., 9.549296585513721"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "revolution per hour",
+                  UnitLabel = "rph",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("950585c6-bc50-4f51-becb-2f840e217c4f"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.Revolution",
+                  ConversionFactorFromSI = Factors.Hour / Factors.Revolution,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in revolution per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / Revolution, i.e., 572.9577951308232"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "thousand revolution per second",
+                  UnitLabel = "1000xrps",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("4c7c26e6-874c-4da0-b26d-095e59938bf0"),
+                  ConversionFactorFromSIFormula = "Factors.Unit / (Factors.Kilo*Factors.Revolution)",
+                  ConversionFactorFromSI = Factors.Unit / (Factors.Kilo*Factors.Revolution),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in thousand revolution per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Unit / (Kilo*Revolution), i.e., 0.00015915494309189535"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "thousand revolution per minute",
+                  UnitLabel = "1000xrpm",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("4ac0f148-241b-42bd-b55e-88a27d12f860"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / (Factors.Kilo*Factors.Revolution)",
+                  ConversionFactorFromSI = Factors.Minute / (Factors.Kilo*Factors.Revolution),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in thousand revolution per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / (Kilo*Revolution), i.e., 0.009549296585513721"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "thousand revolution per hour",
+                  UnitLabel = "1000xrph",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("ee395b6a-95bc-4fd1-b6fe-0eb26046d595"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / (Factors.Kilo*Factors.Revolution)",
+                  ConversionFactorFromSI = Factors.Hour / (Factors.Kilo*Factors.Revolution),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in thousand revolution per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / (Kilo*Revolution), i.e., 0.5729577951308232"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "stroke per second",
+                  UnitLabel = "sps",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("23fd9599-d210-4050-8c61-fc18a5087db3"),
+                  ConversionFactorFromSIFormula = "Factors.Unit / Factors.Revolution",
+                  ConversionFactorFromSI = Factors.Unit / Factors.Revolution,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in stroke per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Unit / Revolution, i.e., 0.15915494309189535"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "stroke per minute",
+                  UnitLabel = "spm",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("979b3170-be8b-42ee-a7d5-ecf9d9f1869d"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.Revolution",
+                  ConversionFactorFromSI = Factors.Minute / Factors.Revolution,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in stroke per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / Revolution, i.e., 9.549296585513721"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "stroke per hour",
+                  UnitLabel = "sph",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("114d2d67-d080-4c46-85c6-9047cd0e2d7a"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.Revolution",
+                  ConversionFactorFromSI = Factors.Hour / Factors.Revolution,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in stroke per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / Revolution, i.e., 572.9577951308232"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "thousand stroke per second",
+                  UnitLabel = "1000xsps",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("edb3d772-8ed9-499a-a2db-e5835176fb1b"),
+                  ConversionFactorFromSIFormula = "Factors.Unit / (Factors.Kilo*Factors.Revolution)",
+                  ConversionFactorFromSI = Factors.Unit / (Factors.Kilo*Factors.Revolution),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in thousand stroke per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Unit / (Kilo*Revolution), i.e., 0.00015915494309189535"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "thousand stroke per minute",
+                  UnitLabel = "1000xspm",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("bf130c38-70bb-4bd1-8e21-ae3b3043bc96"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / (Factors.Kilo*Factors.Revolution)",
+                  ConversionFactorFromSI = Factors.Minute / (Factors.Kilo*Factors.Revolution),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in thousand stroke per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / (Kilo*Revolution), i.e., 0.009549296585513721"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "thousand stroke per hour",
+                  UnitLabel = "1000xsph",
+                  SIUnitName = "radian per second",
+                  ID = new Guid("756ac21d-94c9-4501-947f-0bf275528fb5"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / (Factors.Kilo*Factors.Revolution)",
+                  ConversionFactorFromSI = Factors.Hour / (Factors.Kilo*Factors.Revolution),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in thousand stroke per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / (Kilo*Revolution), i.e., 0.5729577951308232"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
             };
       }
   }
@@ -2762,1271 +3000,6 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
-  public partial class MassDensityGradientPerLengthQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre per metre",
-                  UnitLabel = "kg/m³/m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per metre",
-                  UnitLabel = "sg/m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2"),
-                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = Factors.SpecificGavity4degC,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = SpecificGavity4degC, i.e., 0.001000028000784022"
- + Environment.NewLine + "and"
- + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per 10 metre",
-                  UnitLabel = "sg/10m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("4af1c9f0-480c-4e80-a62b-c6b57b486c3f"),
-                  ConversionFactorFromSIFormula = "Factors.Deca*Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = Factors.Deca*Factors.SpecificGavity4degC,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per 10 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Deca*SpecificGavity4degC, i.e., 0.01000028000784022"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Deca = 10.0"
- + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per 30 metre",
-                  UnitLabel = "sg/30m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92"),
-                  ConversionFactorFromSIFormula = "3.0*Factors.Deca*Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = 3.0*Factors.Deca*Factors.SpecificGavity4degC,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per 30 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 3.0*Deca*SpecificGavity4degC, i.e., 0.03000084002352066"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Deca = 10.0"
- + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per 100 metre",
-                  UnitLabel = "sg/100m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("af987ef2-c8e5-470a-bc53-b2fff05d2c6a"),
-                  ConversionFactorFromSIFormula = "Factors.Hecto*Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = Factors.Hecto*Factors.SpecificGavity4degC,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per 100 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Hecto*SpecificGavity4degC, i.e., 0.10000280007840219"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Hecto = 100.0"
- + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per 100 metre",
-                  UnitLabel = "g/cm³/100m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06"),
-                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Hecto/Factors.Milli",
-                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Hecto/Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per 100 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi*Centi*Centi*Hecto/Milli, i.e., 0.10000000000000002"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "Hecto = 100.0"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per foot",
-                  UnitLabel = "ppgUK/ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("f2e67c73-3706-4c14-b23a-afe474b2ecbe"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUK*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUK*Foot/Pound, i.e., 0.00305483143819196"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per 30 foot",
-                  UnitLabel = "ppgUK/30ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("684acd16-b420-4952-bc42-ffb47044074d"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUK*30.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUK*30.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per 30 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUK*30.0*Foot/Pound, i.e., 0.0916449431457588"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per 100 foot",
-                  UnitLabel = "ppgUK/100ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUK*100.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUK*100.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per 100 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUK*100.0*Foot/Pound, i.e., 0.305483143819196"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per foot",
-                  UnitLabel = "ppgUS/ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUS*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUS*Foot/Pound, i.e., 0.0025436792769754917"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per 30 foot",
-                  UnitLabel = "ppgUS/30ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUS*30.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUS*30.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per 30 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUS*30.0*Foot/Pound, i.e., 0.07631037830926475"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per 100 foot",
-                  UnitLabel = "ppgUS/100ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUS*100.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUS*100.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per 100 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUS*100.0*Foot/Pound, i.e., 0.2543679276975492"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre per 10 metre",
-                  UnitLabel = "kg/m³/10m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("2d0ed7e8-2b80-46ff-9566-bd1429aa3129"),
-                  ConversionFactorFromSIFormula = "Factors.Deca/Factors.Unit",
-                  ConversionFactorFromSI = Factors.Deca/Factors.Unit,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilogram per cubic metre per 10 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Deca/Unit, i.e., 10"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Deca = 10.0"
- + Environment.NewLine + "Unit = 1.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre per 30 metre",
-                  UnitLabel = "kg/m³/30m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("dccaa4b1-cf9f-4075-a9f2-50931e38af01"),
-                  ConversionFactorFromSIFormula = "3.0 *Factors.Deca/Factors.Unit",
-                  ConversionFactorFromSI = 3.0 *Factors.Deca/Factors.Unit,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilogram per cubic metre per 30 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 3.0 *Deca/Unit, i.e., 30"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Deca = 10.0"
- + Environment.NewLine + "Unit = 1.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre per 100 metre",
-                  UnitLabel = "kg/m³/30m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("ccca234e-8626-4f75-beed-4da4abad1317"),
-                  ConversionFactorFromSIFormula = "Factors.Hecto/Factors.Unit",
-                  ConversionFactorFromSI = Factors.Hecto/Factors.Unit,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilogram per cubic metre per 100 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Hecto/Unit, i.e., 100"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Hecto = 100.0"
- + Environment.NewLine + "Unit = 1.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per metre",
-                  UnitLabel = "g/cm³/m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("91fe264e-6f5f-4a4d-b7f7-1532810ad5bd"),
-                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli",
-                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi*Centi*Centi/Milli, i.e., 0.0010000000000000002"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per 10 metre",
-                  UnitLabel = "g/cm³/10m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("836701f1-1fbd-4ae3-aba8-17a97379272c"),
-                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Deca/Factors.Milli",
-                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Deca/Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per 10 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi*Centi*Centi*Deca/Milli, i.e., 0.010000000000000002"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "Deca = 10.0"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per 30 metre",
-                  UnitLabel = "g/cm³/30m",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("faaa4f2f-4dd4-419a-a985-ea16c5fc6d49"),
-                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*3.0*Factors.Deca/Factors.Milli",
-                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*3.0*Factors.Deca/Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per 30 metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi*Centi*Centi*3.0*Deca/Milli, i.e., 0.030000000000000002"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "Deca = 10.0"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic foot per foot",
-                  UnitLabel = "lb/ft³/ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("2c75c006-8ab5-475e-87aa-f5b0501b5ad7"),
-                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic foot per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot*Foot*Foot*Foot/Pound, i.e., 0.019028042383608865"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic foot per 30 foot",
-                  UnitLabel = "lb/ft³/30ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("cd7e9b61-06e9-41ca-b1dd-c2dd0b2cce55"),
-                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*30.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*30.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic foot per 30 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot*Foot*Foot*30.0*Foot/Pound, i.e., 0.570841271508266"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic foot per 100 foot",
-                  UnitLabel = "lb/ft³/100ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("bd3c10c7-aa1b-438a-a61d-791f05de5a64"),
-                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*100.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*100.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic foot per 100 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot*Foot*Foot*100.0*Foot/Pound, i.e., 1.902804238360887"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic inch per foot",
-                  UnitLabel = "lb/in³/ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("8997f813-9692-4f1a-b281-42260799f2ab"),
-                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic inch per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch*Inch*Inch*Foot/Pound, i.e., 1.1011598601625506E-05"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic inch per 30 foot",
-                  UnitLabel = "lb/in³/30ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("394876ee-1779-4ac0-a306-ad64fd9b640f"),
-                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*30.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*30.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic inch per 30 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch*Inch*Inch*30.0*Foot/Pound, i.e., 0.00033034795804876514"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic inch per 100 foot",
-                  UnitLabel = "lb/in³/100ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("11826f55-a121-498c-b03d-e51431f00476"),
-                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*100.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*100.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic inch per 100 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch*Inch*Inch*100.0*Foot/Pound, i.e., 0.0011011598601625506"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic yard per foot",
-                  UnitLabel = "lb/yd³/ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("09c728a5-da92-4a0c-a5bb-3aa166c2564d"),
-                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic yard per foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Yard*Yard*Yard*Foot/Pound, i.e., 0.5137571443574394"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Yard = 3.0 * Foot"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic yard per 30 foot",
-                  UnitLabel = "lb/yd³/30ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("82a23b2f-56a9-4345-97ec-61e6ec250915"),
-                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*30.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*30.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic yard per 30 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Yard*Yard*Yard*30.0*Foot/Pound, i.e., 15.412714330723183"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Yard = 3.0 * Foot"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic yard per 100 foot",
-                  UnitLabel = "lb/yd³/100ft",
-                  SIUnitName = "kilogram per cubic metre per metre",
-                  ID = new Guid("6f82e6f2-2cb8-467f-8baa-6d766056acf7"),
-                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*100.0*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*100.0*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic yard per 100 foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Yard*Yard*Yard*100.0*Foot/Pound, i.e., 51.37571443574393"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Yard = 3.0 * Foot"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassDensityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre per kelvin",
-                  UnitLabel = "kg/m³/K",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per celsius",
-                  UnitLabel = "sg/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e"),
-                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = Factors.SpecificGavity4degC,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = SpecificGavity4degC, i.e., 0.001000028000784022"
- + Environment.NewLine + "and"
- + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per celsius",
-                  UnitLabel = "g/cm³/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20"),
-                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli",
-                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi*Centi*Centi/Milli, i.e., 0.0010000000000000002"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per celsius",
-                  UnitLabel = "ppgUK/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUK/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUK/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUK/Pound, i.e., 0.010022412854960501"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per fahrenheit",
-                  UnitLabel = "ppgUS/°F",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.FahrenheitSlope/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUS*Factors.FahrenheitSlope/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per fahrenheit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUS*FahrenheitSlope/Pound, i.e., 0.004636335806677406"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per fahrenheit",
-                  UnitLabel = "ppgUK/°F",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("24485846-7944-4903-a5c5-975298daf450"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.FahrenheitSlope/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUK*Factors.FahrenheitSlope/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per fahrenheit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUK*FahrenheitSlope/Pound, i.e., 0.005568007141644723"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per celsius",
-                  UnitLabel = "ppgUS/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("8b642465-acee-4a4a-9cb5-6fc16ace5bc3"),
-                  ConversionFactorFromSIFormula = "Factors.GallonUS/Factors.Pound",
-                  ConversionFactorFromSI = Factors.GallonUS/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = GallonUS/Pound, i.e., 0.00834540445201933"
- + Environment.NewLine + "and"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic foot per celsius",
-                  UnitLabel = "lb/ft³/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("592a60a7-71e1-40dc-bfe0-573e407b893c"),
-                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic foot per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot*Foot*Foot/Pound, i.e., 0.06242796057614459"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic foot per fahrenheit",
-                  UnitLabel = "lb/ft³/°F",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("64b97848-5c42-49ec-a09e-05c7bd0cea6b"),
-                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.FahrenheitSlope/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.FahrenheitSlope/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic foot per fahrenheit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot*Foot*Foot*FahrenheitSlope/Pound, i.e., 0.03468220032008033"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic inch per celsius",
-                  UnitLabel = "lb/in³/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("10e845fe-c8c1-4847-bf6a-874c1f746325"),
-                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic inch per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch*Inch*Inch/Pound, i.e., 3.612729200008369E-05"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic inch per fahrenheit",
-                  UnitLabel = "lb/in³/°F",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("586d023b-3c87-4354-bce9-5704c8d1ae0a"),
-                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.FahrenheitSlope/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.FahrenheitSlope/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic inch per fahrenheit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch*Inch*Inch*FahrenheitSlope/Pound, i.e., 2.0070717777824268E-05"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic yard per celsius",
-                  UnitLabel = "lb/yd³/°C",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("ea5147c2-d35b-4e0c-8c47-e9f04a6e0fa1"),
-                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic yard per celsius"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Yard*Yard*Yard/Pound, i.e., 1.6855549355559039"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Yard = 3.0 * Foot"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic yeard per fahrenheit",
-                  UnitLabel = "lb/yd³/°F",
-                  SIUnitName = "kilogram per cubic metre per kelvin",
-                  ID = new Guid("e15f8f82-0d58-487a-9d70-8f14f3606177"),
-                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.FahrenheitSlope/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.FahrenheitSlope/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic yeard per fahrenheit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Yard*Yard*Yard*FahrenheitSlope/Pound, i.e., 0.9364194086421688"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Yard = 3.0 * Foot"
- + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassDensityQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre",
-                  UnitLabel = "kg/m³",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic metre",
-                  UnitLabel = "g/m³",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Milli",
-                  ConversionFactorFromSI = 1.0/Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Milli, i.e., 1000"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity",
-                  UnitLabel = "s.g.",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("da94ba95-4494-45af-bf99-31f00031c680"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = 1.0/Factors.SpecificGavity4degC,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/SpecificGavity4degC, i.e., 999.972"
- + Environment.NewLine + "and"
- + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre",
-                  UnitLabel = "g/cm³",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450"),
-                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi / Factors.Milli",
-                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi / Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Centi*Centi*Centi / Milli, i.e., 0.0010000000000000002"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Centi = 0.01"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK)",
-                  UnitLabel = "ppgUK",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("75ecf787-8778-4d74-afc7-498e117d27bf"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.PPGUK",
-                  ConversionFactorFromSI = 1.0/Factors.PPGUK,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK)"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/PPGUK, i.e., 0.010022412854960501"
- + Environment.NewLine + "and"
- + Environment.NewLine + "PPGUK = Pound / GallonUK"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US)",
-                  UnitLabel = "ppgUS",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.PPGUS",
-                  ConversionFactorFromSI = 1.0/Factors.PPGUS,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US)"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/PPGUS, i.e., 0.00834540445201933"
- + Environment.NewLine + "and"
- + Environment.NewLine + "PPGUS = Pound / GallonUS"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic foot",
-                  UnitLabel = "lb/ft³",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935"),
-                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic foot"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Foot*Foot*Foot/Pound, i.e., 0.06242796057614459"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic inch",
-                  UnitLabel = "lb/in³",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("d549658a-76ab-4507-8a9e-e62a5cf47e23"),
-                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic inch"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Inch*Inch*Inch/Pound, i.e., 3.612729200008369E-05"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per cubic yard",
-                  UnitLabel = "lb/yd³",
-                  SIUnitName = "kilogram per cubic metre",
-                  ID = new Guid("8199e187-5283-42cc-891e-b3887c3aa450"),
-                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound",
-                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per cubic yard"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Yard*Yard*Yard/Pound, i.e., 1.6855549355559039"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Yard = 3.0 * Foot"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "Foot = 12.0 * Inch"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class MassDensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "kilogram per cubic metre per second",
-                  UnitLabel = "kg/m³/s",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per second",
-                  UnitLabel = "sg/s",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.WaterDensity4degC1Atm",
-                  ConversionFactorFromSI = 1.0/Factors.WaterDensity4degC1Atm,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per second"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/WaterDensity4degC1Atm, i.e., 0.001000028000784022"
- + Environment.NewLine + "and"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per minute",
-                  UnitLabel = "sg/min",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc"),
-                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.WaterDensity4degC1Atm",
-                  ConversionFactorFromSI = Factors.Minute / Factors.WaterDensity4degC1Atm,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per minute"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Minute / WaterDensity4degC1Atm, i.e., 0.06000168004704132"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "specific gravity per hour",
-                  UnitLabel = "sg/h",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06"),
-                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.WaterDensity4degC1Atm",
-                  ConversionFactorFromSI = Factors.Hour / Factors.WaterDensity4degC1Atm,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in specific gravity per hour"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Hour / WaterDensity4degC1Atm, i.e., 3.600100802822479"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Hour = 60.0 * Minute"
- + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per second",
-                  UnitLabel = "g/cm³/s",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("e26f57a2-9659-40fd-a670-38a3b83fd36f"),
-                  ConversionFactorFromSIFormula = "Factors.Milli",
-                  ConversionFactorFromSI = Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per second"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Milli, i.e., 0.001"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per minute",
-                  UnitLabel = "g/cm³/min",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("93777f41-0e47-46aa-9ab6-413987553817"),
-                  ConversionFactorFromSIFormula = "Factors.Minute * Factors.Milli",
-                  ConversionFactorFromSI = Factors.Minute * Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per minute"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Minute * Milli, i.e., 0.06"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gram per cubic centimetre per hour",
-                  UnitLabel = "g/cm³/h",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31"),
-                  ConversionFactorFromSIFormula = "Factors.Hour *Factors.Milli",
-                  ConversionFactorFromSI = Factors.Hour *Factors.Milli,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gram per cubic centimetre per hour"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Hour *Milli, i.e., 3.6"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Hour = 60.0 * Minute"
- + Environment.NewLine + "Milli = 0.001"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per second",
-                  UnitLabel = "ppgUK/s",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67"),
-                  ConversionFactorFromSIFormula = "1.0 / Factors.PPGUK",
-                  ConversionFactorFromSI = 1.0 / Factors.PPGUK,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per second"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0 / PPGUK, i.e., 0.010022412854960501"
- + Environment.NewLine + "and"
- + Environment.NewLine + "PPGUK = Pound / GallonUK"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per minute",
-                  UnitLabel = "ppgUK/min",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("e79c74b9-774d-4695-81d5-75042f268b96"),
-                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.PPGUK",
-                  ConversionFactorFromSI = Factors.Minute / Factors.PPGUK,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per minute"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Minute / PPGUK, i.e., 0.6013447712976301"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "PPGUK = Pound / GallonUK"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (UK) per hour",
-                  UnitLabel = "ppgUK/h",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070"),
-                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.PPGUK",
-                  ConversionFactorFromSI = Factors.Hour / Factors.PPGUK,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (UK) per hour"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Hour / PPGUK, i.e., 36.08068627785781"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Hour = 60.0 * Minute"
- + Environment.NewLine + "PPGUK = Pound / GallonUK"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per second",
-                  UnitLabel = "ppgUS/s",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11"),
-                  ConversionFactorFromSIFormula = "1.0 /Factors.PPGUS",
-                  ConversionFactorFromSI = 1.0 /Factors.PPGUS,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per second"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0 /PPGUS, i.e., 0.00834540445201933"
- + Environment.NewLine + "and"
- + Environment.NewLine + "PPGUS = Pound / GallonUS"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per minute",
-                  UnitLabel = "ppgUS/min",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea"),
-                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.PPGUS",
-                  ConversionFactorFromSI = Factors.Minute / Factors.PPGUS,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per minute"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Minute / PPGUS, i.e., 0.5007242671211598"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "PPGUS = Pound / GallonUS"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "pound per gallon (US) per hour",
-                  UnitLabel = "ppgUS/h",
-                  SIUnitName = "kilogram per cubic metre per second",
-                  ID = new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643"),
-                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.PPGUS",
-                  ConversionFactorFromSI = Factors.Hour / Factors.PPGUS,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in pound per gallon (US) per hour"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = Hour / PPGUS, i.e., 30.043456027269592"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Hour = 60.0 * Minute"
- + Environment.NewLine + "PPGUS = Pound / GallonUS"
- + Environment.NewLine + "Minute = 60.0"
- + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
- + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
   public partial class DimensionlessQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()
@@ -4724,6 +3697,85 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "a = C_cgs/10.0, i.e., 2997924580"
  + Environment.NewLine + "and"
  + Environment.NewLine + "C_cgs = 2.99792458e10 reference: https://en.wikipedia.org/wiki/Statampere"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "ohm metre",
+                  UnitLabel = "Ω•m",
+                  SIUnitName = "ohm metre",
+                  ID = new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilo ohm metre",
+                  UnitLabel = "kΩ•m",
+                  SIUnitName = "ohm metre",
+                  ID = new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilo ohm metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "mega ohm metre",
+                  UnitLabel = "MΩ•m",
+                  SIUnitName = "ohm metre",
+                  ID = new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Mega",
+                  ConversionFactorFromSI = 1.0/Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in mega ohm metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Mega, i.e., 1E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "giga ohm metre",
+                  UnitLabel = "GΩ•m",
+                  SIUnitName = "ohm metre",
+                  ID = new Guid("eecfdf24-7a8e-4783-a627-d4387831767d"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Giga",
+                  ConversionFactorFromSI = 1.0/Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in giga ohm metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Giga, i.e., 1E-09"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
  + Environment.NewLine + "",
                 }
             };
@@ -6204,6 +5256,1443 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
  + Environment.NewLine + "Kilo = 1000.0"
  + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "joule",
+                  UnitLabel = "J",
+                  SIUnitName = "joule",
+                  ID = new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilojoule",
+                  UnitLabel = "kJ",
+                  SIUnitName = "joule",
+                  ID = new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilojoule"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "megajoule",
+                  UnitLabel = "MJ",
+                  SIUnitName = "joule",
+                  ID = new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Mega",
+                  ConversionFactorFromSI = 1.0/Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in megajoule"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Mega, i.e., 1E-06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gigajoule",
+                  UnitLabel = "GJ",
+                  SIUnitName = "joule",
+                  ID = new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Giga",
+                  ConversionFactorFromSI = 1.0/Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gigajoule"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Giga, i.e., 1E-09"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "calorie",
+                  UnitLabel = "cal",
+                  SIUnitName = "joule",
+                  ID = new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Calorie",
+                  ConversionFactorFromSI = 1.0/Factors.Calorie,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in calorie"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Calorie, i.e., 0.2390057361376673"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Calorie = 4.184 reference: https://en.wikipedia.org/wiki/Calorie"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilocalorie",
+                  UnitLabel = "Cal",
+                  SIUnitName = "joule",
+                  ID = new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo * Factors.Calorie)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo * Factors.Calorie),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilocalorie"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo * Calorie), i.e., 0.0002390057361376673"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Calorie = 4.184 reference: https://en.wikipedia.org/wiki/Calorie"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "british thermal unit",
+                  UnitLabel = "BTU",
+                  SIUnitName = "joule",
+                  ID = new Guid("8548500e-e3a9-4e36-aecb-024836b8a012"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.BTU",
+                  ConversionFactorFromSI = 1.0/Factors.BTU,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in british thermal unit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/BTU, i.e., 0.0009484516526770049"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilo british thermal unit",
+                  UnitLabel = "kBTU",
+                  SIUnitName = "joule",
+                  ID = new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo * Factors.BTU)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo * Factors.BTU),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilo british thermal unit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo * BTU), i.e., 9.484516526770048E-07"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "mega british thermal unit",
+                  UnitLabel = "MMBTU",
+                  SIUnitName = "joule",
+                  ID = new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Mega * Factors.BTU)",
+                  ConversionFactorFromSI = 1.0/(Factors.Mega * Factors.BTU),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in mega british thermal unit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Mega * BTU), i.e., 9.48451652677005E-10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerLengthQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per metre",
+                  UnitLabel = "kg/m³/m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("00707a6a-2e33-4214-9f8c-3e64eaa82ec1"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per metre",
+                  UnitLabel = "sg/m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("07964c1e-b0d5-4785-bee4-8b4b8882b8b2"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC, i.e., 0.001000028000784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per 10 metre",
+                  UnitLabel = "sg/10m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("4af1c9f0-480c-4e80-a62b-c6b57b486c3f"),
+                  ConversionFactorFromSIFormula = "Factors.Deca*Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = Factors.Deca*Factors.SpecificGavity4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per 10 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Deca*SpecificGavity4degC, i.e., 0.01000028000784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per 30 metre",
+                  UnitLabel = "sg/30m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("f8499728-220b-4b2d-94b2-3dc2cdfa6a92"),
+                  ConversionFactorFromSIFormula = "3.0*Factors.Deca*Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = 3.0*Factors.Deca*Factors.SpecificGavity4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per 30 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 3.0*Deca*SpecificGavity4degC, i.e., 0.03000084002352066"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per 100 metre",
+                  UnitLabel = "sg/100m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("af987ef2-c8e5-470a-bc53-b2fff05d2c6a"),
+                  ConversionFactorFromSIFormula = "Factors.Hecto*Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = Factors.Hecto*Factors.SpecificGavity4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per 100 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hecto*SpecificGavity4degC, i.e., 0.10000280007840219"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hecto = 100.0"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per 100 metre",
+                  UnitLabel = "g/cm³/100m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("361f976c-6271-41d2-8da3-6b4009cf5e06"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Hecto/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Hecto/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per 100 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Hecto/Milli, i.e., 0.10000000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Hecto = 100.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per foot",
+                  UnitLabel = "ppgUK/ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("f2e67c73-3706-4c14-b23a-afe474b2ecbe"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Foot/Pound, i.e., 0.00305483143819196"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per 30 foot",
+                  UnitLabel = "ppgUK/30ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("684acd16-b420-4952-bc42-ffb47044074d"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*30.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*30.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per 30 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*30.0*Foot/Pound, i.e., 0.0916449431457588"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per 100 foot",
+                  UnitLabel = "ppgUK/100ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("f4b6b8a9-c222-4ac9-a6bb-072a9ca7d567"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*100.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*100.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per 100 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*100.0*Foot/Pound, i.e., 0.305483143819196"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per foot",
+                  UnitLabel = "ppgUS/ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("56128f8e-f59e-4f30-927b-35acb6ab44b1"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Foot/Pound, i.e., 0.0025436792769754917"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per 30 foot",
+                  UnitLabel = "ppgUS/30ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("389150f0-4602-4468-bba3-a8eaf1d36ca0"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*30.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*30.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per 30 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*30.0*Foot/Pound, i.e., 0.07631037830926475"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per 100 foot",
+                  UnitLabel = "ppgUS/100ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("658a9698-d34b-4a56-9ee3-3cf6e46a52a3"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*100.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*100.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per 100 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*100.0*Foot/Pound, i.e., 0.2543679276975492"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per 10 metre",
+                  UnitLabel = "kg/m³/10m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("2d0ed7e8-2b80-46ff-9566-bd1429aa3129"),
+                  ConversionFactorFromSIFormula = "Factors.Deca/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Deca/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per 10 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Deca/Unit, i.e., 10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per 30 metre",
+                  UnitLabel = "kg/m³/30m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("dccaa4b1-cf9f-4075-a9f2-50931e38af01"),
+                  ConversionFactorFromSIFormula = "3.0 *Factors.Deca/Factors.Unit",
+                  ConversionFactorFromSI = 3.0 *Factors.Deca/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per 30 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 3.0 *Deca/Unit, i.e., 30"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per 100 metre",
+                  UnitLabel = "kg/m³/30m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("ccca234e-8626-4f75-beed-4da4abad1317"),
+                  ConversionFactorFromSIFormula = "Factors.Hecto/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Hecto/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per 100 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hecto/Unit, i.e., 100"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hecto = 100.0"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per metre",
+                  UnitLabel = "g/cm³/m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("91fe264e-6f5f-4a4d-b7f7-1532810ad5bd"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi/Milli, i.e., 0.0010000000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per 10 metre",
+                  UnitLabel = "g/cm³/10m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("836701f1-1fbd-4ae3-aba8-17a97379272c"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Deca/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Deca/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per 10 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Deca/Milli, i.e., 0.010000000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per 30 metre",
+                  UnitLabel = "g/cm³/30m",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("faaa4f2f-4dd4-419a-a985-ea16c5fc6d49"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*3.0*Factors.Deca/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*3.0*Factors.Deca/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per 30 metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*3.0*Deca/Milli, i.e., 0.030000000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per foot",
+                  UnitLabel = "lb/ft³/ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("2c75c006-8ab5-475e-87aa-f5b0501b5ad7"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Foot/Pound, i.e., 0.019028042383608865"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per 30 foot",
+                  UnitLabel = "lb/ft³/30ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("cd7e9b61-06e9-41ca-b1dd-c2dd0b2cce55"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*30.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*30.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per 30 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*30.0*Foot/Pound, i.e., 0.570841271508266"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per 100 foot",
+                  UnitLabel = "lb/ft³/100ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("bd3c10c7-aa1b-438a-a61d-791f05de5a64"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*100.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*100.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per 100 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*100.0*Foot/Pound, i.e., 1.902804238360887"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per foot",
+                  UnitLabel = "lb/in³/ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("8997f813-9692-4f1a-b281-42260799f2ab"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Foot/Pound, i.e., 1.1011598601625506E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per 30 foot",
+                  UnitLabel = "lb/in³/30ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("394876ee-1779-4ac0-a306-ad64fd9b640f"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*30.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*30.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per 30 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*30.0*Foot/Pound, i.e., 0.00033034795804876514"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per 100 foot",
+                  UnitLabel = "lb/in³/100ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("11826f55-a121-498c-b03d-e51431f00476"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*100.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*100.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per 100 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*100.0*Foot/Pound, i.e., 0.0011011598601625506"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per foot",
+                  UnitLabel = "lb/yd³/ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("09c728a5-da92-4a0c-a5bb-3aa166c2564d"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Foot/Pound, i.e., 0.5137571443574394"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per 30 foot",
+                  UnitLabel = "lb/yd³/30ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("82a23b2f-56a9-4345-97ec-61e6ec250915"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*30.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*30.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per 30 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*30.0*Foot/Pound, i.e., 15.412714330723183"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per 100 foot",
+                  UnitLabel = "lb/yd³/100ft",
+                  SIUnitName = "kilogram per cubic metre per metre",
+                  ID = new Guid("6f82e6f2-2cb8-467f-8baa-6d766056acf7"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*100.0*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*100.0*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per 100 foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*100.0*Foot/Pound, i.e., 51.37571443574393"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerTemperatureQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per kelvin",
+                  UnitLabel = "kg/m³/K",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("8b947453-ebe8-4fa9-b59a-87557150e1cf"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per celsius",
+                  UnitLabel = "sg/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("2b1d68c0-4e75-4e9d-92a1-37d501e7cb3e"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC, i.e., 0.001000028000784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per celsius",
+                  UnitLabel = "g/cm³/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("e78e2b25-e0a7-4c06-b6df-60f97f767a20"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi/Milli, i.e., 0.0010000000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per celsius",
+                  UnitLabel = "ppgUK/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("edac57eb-7535-447f-bcf9-0c6709b6ae3b"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK/Pound, i.e., 0.010022412854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per fahrenheit",
+                  UnitLabel = "ppgUS/°F",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("397a5f98-842e-4d86-8fb7-f4f2f82e720b"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.FahrenheitSlope/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.FahrenheitSlope/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per fahrenheit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*FahrenheitSlope/Pound, i.e., 0.004636335806677406"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per fahrenheit",
+                  UnitLabel = "ppgUK/°F",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("24485846-7944-4903-a5c5-975298daf450"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.FahrenheitSlope/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.FahrenheitSlope/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per fahrenheit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*FahrenheitSlope/Pound, i.e., 0.005568007141644723"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per celsius",
+                  UnitLabel = "ppgUS/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("8b642465-acee-4a4a-9cb5-6fc16ace5bc3"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS/Pound, i.e., 0.00834540445201933"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per celsius",
+                  UnitLabel = "lb/ft³/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("592a60a7-71e1-40dc-bfe0-573e407b893c"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot/Pound, i.e., 0.06242796057614459"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per fahrenheit",
+                  UnitLabel = "lb/ft³/°F",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("64b97848-5c42-49ec-a09e-05c7bd0cea6b"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.FahrenheitSlope/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.FahrenheitSlope/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per fahrenheit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*FahrenheitSlope/Pound, i.e., 0.03468220032008033"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per celsius",
+                  UnitLabel = "lb/in³/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("10e845fe-c8c1-4847-bf6a-874c1f746325"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch/Pound, i.e., 3.612729200008369E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per fahrenheit",
+                  UnitLabel = "lb/in³/°F",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("586d023b-3c87-4354-bce9-5704c8d1ae0a"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.FahrenheitSlope/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.FahrenheitSlope/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per fahrenheit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*FahrenheitSlope/Pound, i.e., 2.0070717777824268E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per celsius",
+                  UnitLabel = "lb/yd³/°C",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("ea5147c2-d35b-4e0c-8c47-e9f04a6e0fa1"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per celsius"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard/Pound, i.e., 1.6855549355559039"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yeard per fahrenheit",
+                  UnitLabel = "lb/yd³/°F",
+                  SIUnitName = "kilogram per cubic metre per kelvin",
+                  ID = new Guid("e15f8f82-0d58-487a-9d70-8f14f3606177"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.FahrenheitSlope/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.FahrenheitSlope/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yeard per fahrenheit"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*FahrenheitSlope/Pound, i.e., 0.9364194086421688"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre",
+                  UnitLabel = "kg/m³",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("8e175ca0-08f6-441d-afcf-a58bbe429abf"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic metre",
+                  UnitLabel = "g/m³",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("8c5b7fc3-0ade-4e85-9646-71ec5fcb869a"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Milli",
+                  ConversionFactorFromSI = 1.0/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Milli, i.e., 1000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity",
+                  UnitLabel = "s.g.",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("da94ba95-4494-45af-bf99-31f00031c680"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = 1.0/Factors.SpecificGavity4degC,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/SpecificGavity4degC, i.e., 999.972"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre",
+                  UnitLabel = "g/cm³",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("64f1b0d8-609f-4ed9-99da-52e18fe97450"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi / Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi / Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi / Milli, i.e., 0.0010000000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK)",
+                  UnitLabel = "ppgUK",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("75ecf787-8778-4d74-afc7-498e117d27bf"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.PPGUK",
+                  ConversionFactorFromSI = 1.0/Factors.PPGUK,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK)"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/PPGUK, i.e., 0.010022412854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PPGUK = Pound / GallonUK"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US)",
+                  UnitLabel = "ppgUS",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("dcc01dd0-4610-42c7-9a55-2ddeb45ef6da"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.PPGUS",
+                  ConversionFactorFromSI = 1.0/Factors.PPGUS,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US)"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/PPGUS, i.e., 0.00834540445201933"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PPGUS = Pound / GallonUS"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot",
+                  UnitLabel = "lb/ft³",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("f7479c8c-8d03-460b-bfa3-2b68808be935"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot/Pound, i.e., 0.06242796057614459"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch",
+                  UnitLabel = "lb/in³",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("d549658a-76ab-4507-8a9e-e62a5cf47e23"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch/Pound, i.e., 3.612729200008369E-05"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard",
+                  UnitLabel = "lb/yd³",
+                  SIUnitName = "kilogram per cubic metre",
+                  ID = new Guid("8199e187-5283-42cc-891e-b3887c3aa450"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard/Pound, i.e., 1.6855549355559039"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityRateOfChangeQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per second",
+                  UnitLabel = "kg/m³/s",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("d80197aa-f0b2-4a26-a5a4-b132a248c377"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per second",
+                  UnitLabel = "sg/s",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("dec0a290-ffd8-4fc0-ae11-3a6068469791"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.WaterDensity4degC1Atm",
+                  ConversionFactorFromSI = 1.0/Factors.WaterDensity4degC1Atm,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/WaterDensity4degC1Atm, i.e., 0.001000028000784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per minute",
+                  UnitLabel = "sg/min",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("9c314f49-3297-4f7b-9cf3-5da32ba2f1cc"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.WaterDensity4degC1Atm",
+                  ConversionFactorFromSI = Factors.Minute / Factors.WaterDensity4degC1Atm,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / WaterDensity4degC1Atm, i.e., 0.06000168004704132"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per hour",
+                  UnitLabel = "sg/h",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("ce5d34b0-d7ab-48a4-87c1-9a43fabf5c06"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.WaterDensity4degC1Atm",
+                  ConversionFactorFromSI = Factors.Hour / Factors.WaterDensity4degC1Atm,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / WaterDensity4degC1Atm, i.e., 3.600100802822479"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per second",
+                  UnitLabel = "g/cm³/s",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("e26f57a2-9659-40fd-a670-38a3b83fd36f"),
+                  ConversionFactorFromSIFormula = "Factors.Milli",
+                  ConversionFactorFromSI = Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Milli, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per minute",
+                  UnitLabel = "g/cm³/min",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("93777f41-0e47-46aa-9ab6-413987553817"),
+                  ConversionFactorFromSIFormula = "Factors.Minute * Factors.Milli",
+                  ConversionFactorFromSI = Factors.Minute * Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute * Milli, i.e., 0.06"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per hour",
+                  UnitLabel = "g/cm³/h",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("c8d6a682-00ca-4d0f-b603-bf2d755f4b31"),
+                  ConversionFactorFromSIFormula = "Factors.Hour *Factors.Milli",
+                  ConversionFactorFromSI = Factors.Hour *Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour *Milli, i.e., 3.6"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per second",
+                  UnitLabel = "ppgUK/s",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("e5a712d2-b874-4e7a-873e-a4f4f3ec7a67"),
+                  ConversionFactorFromSIFormula = "1.0 / Factors.PPGUK",
+                  ConversionFactorFromSI = 1.0 / Factors.PPGUK,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0 / PPGUK, i.e., 0.010022412854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PPGUK = Pound / GallonUK"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per minute",
+                  UnitLabel = "ppgUK/min",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("e79c74b9-774d-4695-81d5-75042f268b96"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.PPGUK",
+                  ConversionFactorFromSI = Factors.Minute / Factors.PPGUK,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / PPGUK, i.e., 0.6013447712976301"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PPGUK = Pound / GallonUK"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per hour",
+                  UnitLabel = "ppgUK/h",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("5b461e39-d632-4f5e-b7e7-ef30745e5070"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.PPGUK",
+                  ConversionFactorFromSI = Factors.Hour / Factors.PPGUK,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / PPGUK, i.e., 36.08068627785781"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "PPGUK = Pound / GallonUK"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per second",
+                  UnitLabel = "ppgUS/s",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("eee6814a-d701-4cd8-b392-ebfedde20e11"),
+                  ConversionFactorFromSIFormula = "1.0 /Factors.PPGUS",
+                  ConversionFactorFromSI = 1.0 /Factors.PPGUS,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0 /PPGUS, i.e., 0.00834540445201933"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PPGUS = Pound / GallonUS"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per minute",
+                  UnitLabel = "ppgUS/min",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("c047d53d-38f3-4dce-b590-1c9ab700a3ea"),
+                  ConversionFactorFromSIFormula = "Factors.Minute / Factors.PPGUS",
+                  ConversionFactorFromSI = Factors.Minute / Factors.PPGUS,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Minute / PPGUS, i.e., 0.5007242671211598"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "PPGUS = Pound / GallonUS"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per hour",
+                  UnitLabel = "ppgUS/h",
+                  SIUnitName = "kilogram per cubic metre per second",
+                  ID = new Guid("822327d4-9f7c-4e91-9528-4eff5dfc9643"),
+                  ConversionFactorFromSIFormula = "Factors.Hour / Factors.PPGUS",
+                  ConversionFactorFromSI = Factors.Hour / Factors.PPGUS,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Hour / PPGUS, i.e., 30.043456027269592"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "PPGUS = Pound / GallonUS"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
  + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
  + Environment.NewLine + "",
                 }
@@ -10923,85 +11412,6 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "a = 1.0/FahrenheitSlope, i.e., 1.7999999999999998"
  + Environment.NewLine + "and"
  + Environment.NewLine + "FahrenheitSlope = 5.0 / 9.0 reference: https://nn.wikipedia.org/wiki/Fahrenheit"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class ElectricResistivityQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "ohm metre",
-                  UnitLabel = "Ω•m",
-                  SIUnitName = "ohm metre",
-                  ID = new Guid("fb07d86d-d69f-46ca-892c-17ec45adffcb"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilo ohm metre",
-                  UnitLabel = "kΩ•m",
-                  SIUnitName = "ohm metre",
-                  ID = new Guid("c58ce3f0-7389-4c36-b291-55fa5ceb9962"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
-                  ConversionFactorFromSI = 1.0/Factors.Kilo,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilo ohm metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Kilo = 1000.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "mega ohm metre",
-                  UnitLabel = "MΩ•m",
-                  SIUnitName = "ohm metre",
-                  ID = new Guid("cf90cab7-e973-469a-9727-08bfa7f708e6"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Mega",
-                  ConversionFactorFromSI = 1.0/Factors.Mega,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in mega ohm metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Mega, i.e., 1E-06"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Mega = 1e6"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "giga ohm metre",
-                  UnitLabel = "GΩ•m",
-                  SIUnitName = "ohm metre",
-                  ID = new Guid("eecfdf24-7a8e-4783-a627-d4387831767d"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Giga",
-                  ConversionFactorFromSI = 1.0/Factors.Giga,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in giga ohm metre"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Giga, i.e., 1E-09"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Giga = 1e9"
  + Environment.NewLine + "",
                 }
             };
@@ -17006,178 +17416,6 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "a = 1.0/(100.0*Pound), i.e., 0.022046226218487758"
  + Environment.NewLine + "and"
  + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
- + Environment.NewLine + "",
-                }
-            };
-      }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class EnergyQuantity : DerivedBasePhysicalQuantity
-  {
-      protected override void InitializeUnitChoices()
-      {
-          UnitChoices = new List<UnitChoice>()
-            {
-                new UnitChoice
-                {
-                  UnitName = "joule",
-                  UnitLabel = "J",
-                  SIUnitName = "joule",
-                  ID = new Guid("c653b7de-0386-467c-8d25-60bb0f6a7076"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
-                  ConversionFactorFromSI = 1.0/Factors.Unit,
-                  ConversionDescription = 
-"No conversion necessary as the unit choice is SI"
- + Environment.NewLine + "",
-                  IsSI = true
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilojoule",
-                  UnitLabel = "kJ",
-                  SIUnitName = "joule",
-                  ID = new Guid("4b0cf63a-84af-4232-b7a1-7531ec1d47b0"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
-                  ConversionFactorFromSI = 1.0/Factors.Kilo,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilojoule"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Kilo = 1000.0"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "megajoule",
-                  UnitLabel = "MJ",
-                  SIUnitName = "joule",
-                  ID = new Guid("c4fdba05-7269-4098-8b33-bd8e50c67126"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Mega",
-                  ConversionFactorFromSI = 1.0/Factors.Mega,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in megajoule"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Mega, i.e., 1E-06"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Mega = 1e6"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "gigajoule",
-                  UnitLabel = "GJ",
-                  SIUnitName = "joule",
-                  ID = new Guid("c8781145-3c6c-4d87-9567-b0e6ec2821a2"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Giga",
-                  ConversionFactorFromSI = 1.0/Factors.Giga,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in gigajoule"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Giga, i.e., 1E-09"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Giga = 1e9"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "calorie",
-                  UnitLabel = "cal",
-                  SIUnitName = "joule",
-                  ID = new Guid("3f020e89-3146-4f3f-9b9b-eecda4400b12"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.Calorie",
-                  ConversionFactorFromSI = 1.0/Factors.Calorie,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in calorie"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/Calorie, i.e., 0.2390057361376673"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Calorie = 4.184 reference: https://en.wikipedia.org/wiki/Calorie"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilocalorie",
-                  UnitLabel = "Cal",
-                  SIUnitName = "joule",
-                  ID = new Guid("e4e916fe-9e79-47c9-97e5-3e8458358578"),
-                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo * Factors.Calorie)",
-                  ConversionFactorFromSI = 1.0/(Factors.Kilo * Factors.Calorie),
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilocalorie"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/(Kilo * Calorie), i.e., 0.0002390057361376673"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Kilo = 1000.0"
- + Environment.NewLine + "Calorie = 4.184 reference: https://en.wikipedia.org/wiki/Calorie"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "british thermal unit",
-                  UnitLabel = "BTU",
-                  SIUnitName = "joule",
-                  ID = new Guid("8548500e-e3a9-4e36-aecb-024836b8a012"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.BTU",
-                  ConversionFactorFromSI = 1.0/Factors.BTU,
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in british thermal unit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/BTU, i.e., 0.0009484516526770049"
- + Environment.NewLine + "and"
- + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "kilo british thermal unit",
-                  UnitLabel = "kBTU",
-                  SIUnitName = "joule",
-                  ID = new Guid("b8e1ba3f-d374-4220-85a6-7a066d91dd26"),
-                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo * Factors.BTU)",
-                  ConversionFactorFromSI = 1.0/(Factors.Kilo * Factors.BTU),
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in kilo british thermal unit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/(Kilo * BTU), i.e., 9.484516526770048E-07"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Kilo = 1000.0"
- + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
- + Environment.NewLine + "",
-                }
-              , new UnitChoice
-                {
-                  UnitName = "mega british thermal unit",
-                  UnitLabel = "MMBTU",
-                  SIUnitName = "joule",
-                  ID = new Guid("329c7fef-b5da-489f-a973-9ec2efb82a19"),
-                  ConversionFactorFromSIFormula = "1.0/(Factors.Mega * Factors.BTU)",
-                  ConversionFactorFromSI = 1.0/(Factors.Mega * Factors.BTU),
-                  ConversionDescription = 
-"[v] = a * [SI]"
- + Environment.NewLine + "where"
- + Environment.NewLine + "[v] is the value in mega british thermal unit"
- + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/(Mega * BTU), i.e., 9.48451652677005E-10"
- + Environment.NewLine + "and"
- + Environment.NewLine + "Mega = 1e6"
- + Environment.NewLine + "BTU = 1054.35 reference: https://en.wikipedia.org/wiki/British_thermal_unit"
  + Environment.NewLine + "",
                 }
             };

@@ -1,8 +1,5 @@
 ﻿using OSDC.UnitConversion.Conversion;
-using OSDC.UnitConversion.Conversion.UnitSystem;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
-using OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering;
-using System;
 using System.Reflection;
 
 namespace OSDC.UnitConversion.GenerateEnumerations
@@ -20,7 +17,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             } while (!"UnitConversion".Equals(currentFolder.Name));
             // generate the Factors class
             GenerateFactors(baseFolder + "Conversion\\Factors.cs");
-            List<BasePhysicalQuantity> quantities = BaseUnitSystem.AvailableBasePhysicalQuantities;
+            List<BasePhysicalQuantity>? quantities = AvailableBasePhysicalQuantities;
             if (quantities != null)
             {
                 GenerateConstructors(baseFolder + "Conversion\\Constructors.cs", quantities);
@@ -30,7 +27,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                 //BaseUnitSystem imperial = BaseUnitSystem.ImperialBaseUnitSystem;
                 //BaseUnitSystem us = BaseUnitSystem.USBaseUnitSystem;
             }
-            quantities = UnitSystem.AvailableQuantities;
+            quantities = AvailableQuantities;
             if (quantities != null)
             {
                 GenerateEnumerations(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(PhysicalQuantity), quantities);
@@ -40,7 +37,136 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                 //UnitSystem us = UnitSystem.USUnitSystem;
             }
         }
+        private static List<Type> GetAllSubclasses(Type baseType)
+        {
+            List<Type> result = new List<Type>();
+            Assembly? assy = Assembly.GetAssembly(baseType);
+            if (assy != null)
+            {
+                Queue<Type> typesToProcess = new Queue<Type>();
 
+                typesToProcess.Enqueue(baseType);
+
+                while (typesToProcess.Count > 0)
+                {
+                    Type currentType = typesToProcess.Dequeue();
+
+                    IEnumerable<Type> subclasses = assy.GetTypes().Where(t => t.IsClass && t.IsSubclassOf(currentType));
+
+                    foreach (var subclass in subclasses)
+                    {
+                        if (!result.Contains(subclass))
+                        {
+                            result.Add(subclass);
+                            typesToProcess.Enqueue(subclass);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        private static List<BasePhysicalQuantity>? availableBasePhysicalQuantities_ = null;
+
+        public static List<BasePhysicalQuantity>? AvailableBasePhysicalQuantities
+        {
+            get
+            {
+                if (availableBasePhysicalQuantities_ == null)
+                {
+                    List<Type> subclasses = GetAllSubclasses(typeof(BasePhysicalQuantity));
+                    if (subclasses != null)
+                    {
+                        foreach (Type typ in subclasses)
+                        {
+                            if (typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
+                            {
+                                MethodInfo? method = null;
+                                foreach (MethodInfo meth in typ.GetMethods())
+                                {
+                                    if (meth.IsStatic &&
+                                        meth.Name.EndsWith("Instance") &&
+                                        meth.ReturnType.IsSubclassOf(typeof(BasePhysicalQuantity)))
+                                    {
+                                        method = meth;
+                                        break;
+                                    }
+                                }
+                                // call the method
+                                if (method != null)
+                                {
+                                    object? obj = method.Invoke(null, null);
+                                    if (obj != null)
+                                    {
+                                        var res = (BasePhysicalQuantity)obj;
+                                        if (availableBasePhysicalQuantities_ == null)
+                                        {
+                                            availableBasePhysicalQuantities_ = new List<BasePhysicalQuantity>();
+                                        }
+                                        availableBasePhysicalQuantities_.Add(res);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return availableBasePhysicalQuantities_;
+            }
+        }
+        private static List<BasePhysicalQuantity> availablePhysicalQuantities_ = null;
+
+        public static List<BasePhysicalQuantity>? AvailableQuantities
+        {
+            get
+            {
+                if (availablePhysicalQuantities_ == null)
+                {
+                    Assembly? assembly = Assembly.GetAssembly(typeof(PhysicalQuantity));
+                    if (assembly != null)
+                    {
+                        foreach (Type typ in assembly.GetTypes())
+                        {
+                            if (typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
+                            {
+                                MethodInfo? method = null;
+                                foreach (MethodInfo meth in typ.GetMethods())
+                                {
+                                    if (meth.IsStatic &&
+                                        meth.Name.EndsWith("Instance") &&
+                                        meth.ReturnType.IsSubclassOf(typeof(BasePhysicalQuantity)))
+                                    {
+                                        method = meth;
+                                        break;
+                                    }
+                                }
+                                // call the method
+                                if (method != null)
+                                {
+                                    object? obj = null;
+                                    try
+                                    {
+                                        obj = method.Invoke(null, null);
+                                    }
+                                    catch (Exception e)
+                                    {
+
+                                    }
+                                    if (obj != null)
+                                    {
+                                        var res = (BasePhysicalQuantity)obj;
+                                        if (availablePhysicalQuantities_ == null)
+                                        {
+                                            availablePhysicalQuantities_ = new List<BasePhysicalQuantity>();
+                                        }
+                                        availablePhysicalQuantities_.Add(res);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return availablePhysicalQuantities_;
+            }
+        }
         static void GenerateFactors(string filename)
         {
             Dictionary<string, FactorDescription> descriptions = new Dictionary<string, FactorDescription>() {
@@ -86,6 +212,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
               { "Furlong", new FactorDescription("660.0 * Factors.Foot", FactorDescription.QualificationEnum.exact, "https://www.britannica.com/science/furlong")},
               { "Degree", new FactorDescription("180.0 / System.Math.PI", FactorDescription.QualificationEnum.exact, "")},
               { "Grad", new FactorDescription("200.0 / System.Math.PI", FactorDescription.QualificationEnum.exact, "")},
+              { "Revolution", new FactorDescription("2.0 * System.Math.PI", FactorDescription.QualificationEnum.exact, "")},
               { "Minute", new FactorDescription("60.0", FactorDescription.QualificationEnum.exact, "")},
               { "Hour", new FactorDescription("60.0 * Factors.Minute", FactorDescription.QualificationEnum.exact, "")},
               { "Day", new FactorDescription("24.0 * Factors.Hour", FactorDescription.QualificationEnum.exact, "")},

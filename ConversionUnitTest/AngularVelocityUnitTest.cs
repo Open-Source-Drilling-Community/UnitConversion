@@ -29,6 +29,31 @@ namespace ConversionUnitTest
             Assert.AreEqual(180.0 * 60.0 * 60.0 / Math.PI, unitVal, 1e-6);
             unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.DegreePerDay).ID);
             Assert.AreEqual(180.0 * 60.0 * 60.0 * 24.0 / Math.PI, unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.RevolutionPerSecond).ID);
+            Assert.AreEqual(1.0 / (2.0*Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.RevolutionPerMinute).ID);
+            Assert.AreEqual(60.0 / (2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.RevolutionPerHour).ID);
+            Assert.AreEqual(3600.0 / (2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.StrokePerSecond).ID);
+            Assert.AreEqual(1.0 / (2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.StrokePerMinute).ID);
+            Assert.AreEqual(60.0 / (2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.StrokePerHour).ID);
+            Assert.AreEqual(3600.0 / (2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.ThousandRevolutionPerSecond).ID);
+            Assert.AreEqual(1.0 / (1000.0* 2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.ThousandRevolutionPerMinute).ID);
+            Assert.AreEqual(60.0 / (1000.0 * 2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.ThousandRevolutionPerHour).ID);
+            Assert.AreEqual(3600.0 / (1000.0 * 2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.ThousandStrokePerSecond).ID);
+            Assert.AreEqual(1.0 / (1000.0 * 2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.ThousandStrokePerMinute).ID);
+            Assert.AreEqual(60.0 / (1000.0 * 2.0 * Math.PI), unitVal, 1e-6);
+            unitVal = AngularVelocityQuantity.Instance.FromSI(val, AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.ThousandStrokePerHour).ID);
+            Assert.AreEqual(3600.0 / (1000.0 * 2.0 * Math.PI), unitVal, 1e-6);
+
         }
 
         [Test]

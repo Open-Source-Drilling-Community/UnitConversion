@@ -17,7 +17,7 @@ namespace ConversionDrillingRazorMudComponentsUnitTests
         public void Test1()
         {
             var obj = RenderComponent<MudUnitAndReferenceChoiceTag>(parameters => parameters
-            .Add(p => p.HttpHost, "https://app.digiwells.no/")
+            .Add(p => p.HttpHost, "https://dev.digiwells.no/")
             .Add(p => p.HttpBasePath, "UnitConversion/api/")
             .Add(p => p.HttpController, "UnitSystem/")
             .Add(p => p.UnitSystemName, "SI"));
@@ -25,8 +25,11 @@ namespace ConversionDrillingRazorMudComponentsUnitTests
             obj.WaitForState(() => obj.Instance.InitializedOnce, timeout: TimeSpan.FromSeconds(5));
             var instance = obj.Instance;
             Assert.NotNull(instance);
-            double val = instance.FromSI(0, OSDC.UnitConversion.Conversion.BasePhysicalQuantity.QuantityEnum.RotationalFrequency);
-            Assert.Equal(0, val);
+            double val = instance.FromSI(2.0*Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
+            Assert.Equal(2.0*Math.PI, val);
+            instance.UnitSystemName = "Metric";
+            val = instance.FromSI(2.0 * Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
+            //Assert.Equal(60.0, val);
         }
     }
 }

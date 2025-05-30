@@ -61,6 +61,7 @@ namespace OSDC.UnitConversion.Conversion
 ,{ "Furlong", new FactorDescription("660.0 * Factors.Foot", FactorDescription.QualificationEnum.exact , "https://www.britannica.com/science/furlong")}
 ,{ "Degree", new FactorDescription("180.0 / System.Math.PI", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Grad", new FactorDescription("200.0 / System.Math.PI", FactorDescription.QualificationEnum.exact , "")}
+,{ "Revolution", new FactorDescription("2.0 * System.Math.PI", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Minute", new FactorDescription("60.0", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Hour", new FactorDescription("60.0 * Factors.Minute", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Day", new FactorDescription("24.0 * Factors.Hour", FactorDescription.QualificationEnum.exact , "")}
@@ -177,6 +178,7 @@ namespace OSDC.UnitConversion.Conversion
     public static readonly double Furlong = 660.0 * Factors.Foot;
     public static readonly double Degree = 180.0 / System.Math.PI;
     public static readonly double Grad = 200.0 / System.Math.PI;
+    public static readonly double Revolution = 2.0 * System.Math.PI;
     public static readonly double Minute = 60.0;
     public static readonly double Hour = 60.0 * Factors.Minute;
     public static readonly double Day = 24.0 * Factors.Hour;
