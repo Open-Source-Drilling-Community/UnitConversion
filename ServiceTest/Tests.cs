@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http.Headers;
 using OSDC.UnitConversion.ModelShared;
 using Parlot.Fluent;
@@ -7,7 +8,7 @@ namespace OSDC.UnitConversion.ServiceTest
     public class Tests
     {
         // testing outside Visual Studio requires using http port (https faces authentication issues both in console and on github)
-        private static string host = "http://localhost:8080/";
+        private static string host = "https://dev.digiwells.no/";
         //private static string host = "https://localhost:44368/";
         //private static string host = "http://localhost:54949/";
         private static HttpClient httpClient;
@@ -26,6 +27,7 @@ namespace OSDC.UnitConversion.ServiceTest
         [Test]
         public async Task Test_UnitConversionSet_Get()
         {
+
             if (!bypassTests)
             {
                 #region post a UnitConversionSet
@@ -802,6 +804,32 @@ namespace OSDC.UnitConversion.ServiceTest
         [Test]
         public async Task Test_UnitSystem_Get()
         {
+            List<Guid> idList = [];
+            try
+            {
+                idList = (List<Guid>)await nSwagClient.GetAllUnitSystemIdAsync();
+            }
+            catch (ApiException ex)
+            {
+                TestContext.WriteLine("Impossible to Get all UnitSystem ids\n" + ex.Message);
+            }
+            List<UnitSystem> unitSystems = new List<UnitSystem>();
+            foreach (Guid id in idList)
+            {
+                try
+                {
+                    var unitSystem = OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem.Get(id);
+                    if (unitSystem != null)
+                    {
+                        await nSwagClient.DeleteUnitSystemByIdAsync(id);
+                    }
+                    
+                }
+                catch (ApiException ex)
+                {
+                    TestContext.WriteLine("Impossible to Delete UnitSystem of given Id\n" + ex.Message);
+                }
+            }
             if (!bypassTests)
             {
                 #region post a UnitSystem
@@ -826,17 +854,17 @@ namespace OSDC.UnitConversion.ServiceTest
                 #endregion
 
                 #region GetAllUnitSystemId
-                List<Guid> idList = [];
+                List<Guid> idList1 = [];
                 try
                 {
-                    idList = (List<Guid>)await nSwagClient.GetAllUnitSystemIdAsync();
+                    idList1 = (List<Guid>)await nSwagClient.GetAllUnitSystemIdAsync();
                 }
                 catch (ApiException ex)
                 {
                     TestContext.WriteLine("Impossible to Get all UnitSystem ids\n" + ex.Message);
                 }
-                Assert.That(idList, Is.Not.Null);
-                Assert.That(idList, Does.Contain(guid));
+                Assert.That(idList1, Is.Not.Null);
+                Assert.That(idList1, Does.Contain(guid));
                 #endregion
 
                 #region GetAllUnitSystemById

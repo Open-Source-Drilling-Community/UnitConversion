@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj" />
     <ProjectReference Include="..\ModelShared\ModelShared.csproj" />
   </ItemGroup>
 

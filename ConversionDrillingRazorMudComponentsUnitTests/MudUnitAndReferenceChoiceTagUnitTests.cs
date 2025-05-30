@@ -23,13 +23,13 @@ namespace ConversionDrillingRazorMudComponentsUnitTests
             .Add(p => p.UnitSystemName, "SI"));
 
             obj.WaitForState(() => obj.Instance.InitializedOnce, timeout: TimeSpan.FromSeconds(5));
-            var instance = obj.Instance;
-            Assert.NotNull(instance);
-            double val = instance.FromSI(2.0*Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
+            Assert.NotNull(obj.Instance);
+            double val = obj.Instance.FromSI(2.0*Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
             Assert.Equal(2.0*Math.PI, val);
-            instance.UnitSystemName = "Metric";
-            val = instance.FromSI(2.0 * Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
-            //Assert.Equal(60.0, val);
+            obj.Instance.UnitSystemName = "Metric";
+            var label = obj.Instance.GetUnitLabel(OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
+            val = obj.Instance.FromSI(2.0 * Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
+            Assert.Equal(60.0, val);
         }
     }
 }
