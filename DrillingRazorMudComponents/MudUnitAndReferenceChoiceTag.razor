@@ -338,6 +338,46 @@ else
         }
         return result;
     }
+    public string FromSI(double? val, PhysicalQuantity.QuantityEnum quantityChoice, bool useUnitLabel)
+    {
+        string result = string.Empty;
+        if (val != null)
+        {
+            if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+            {
+                result = drillingUnitSystem.FromSIString(quantityChoice, (double)val);
+                if (useUnitLabel)
+                {
+                    result += " " + drillingUnitSystem.GetUnitLabel(quantityChoice);
+                }
+            }
+            else
+            {
+                result = val.ToString()!;
+            }
+        }
+        return result;
+    }
+    public string FromSI(double? val, BasePhysicalQuantity.QuantityEnum quantityChoice, bool useUnitLabel)
+    {
+        string result = string.Empty;
+        if (val != null)
+        {
+            if (baseUnitSystem_ == null)
+            {
+                result = val.ToString()!;
+            }
+            else
+            {
+                result = baseUnitSystem_.FromSIString(quantityChoice, (double)val);
+                if (useUnitLabel)
+                {
+                    result += " " + baseUnitSystem_.GetUnitLabel(quantityChoice);
+                }
+            }
+        }
+        return result;
+    }
 
     public double? FromSI(double? val, string quantityName)
     {
@@ -367,12 +407,60 @@ else
             return (double)res;
         }
     }
+    public double FromSI(double val, BasePhysicalQuantity.QuantityEnum quantityChoice)
+    {
+        double result = double.NaN;
+        if (baseUnitSystem_ != null)
+        {
+            double? res = baseUnitSystem_.FromSI(quantityChoice, val);
+            if (res != null)
+            {
+                result = res.Value;
+            }
+        }
+        return result;
+    }
+    public double FromSI(double val, PhysicalQuantity.QuantityEnum quantityChoice)
+    {
+        double result = double.NaN;
+        if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+        {
+            double? res = drillingUnitSystem.FromSI(quantityChoice, val);
+            if (res != null)
+            {
+                result = res.Value;
+            }
+        }
+        return result;
+    }
 
     public string GetUnitLabel(string quantityName)
     {
         if (baseUnitSystem_ != null)
         {
             return baseUnitSystem_.GetUnitLabel(quantityName);
+        }
+        else
+        {
+            return "";
+        }
+    }
+    public string GetUnitLabel(BasePhysicalQuantity.QuantityEnum quantityChoice)
+    {
+        if (baseUnitSystem_ != null)
+        {
+            return baseUnitSystem_.GetUnitLabel(quantityChoice);
+        }
+        else
+        {
+            return "";
+        }
+    }
+    public string GetUnitLabel(PhysicalQuantity.QuantityEnum quantityChoice)
+    {
+        if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+        {
+            return drillingUnitSystem.GetUnitLabel(quantityChoice);
         }
         else
         {
@@ -395,6 +483,32 @@ else
         {
             return val;
         }
+    }
+    public double ToSI(double val, BasePhysicalQuantity.QuantityEnum quantityChoice)
+    {
+        double result = val;
+        if (baseUnitSystem_ != null)
+        {
+            OSDC.UnitConversion.Conversion.UnitChoice choice = baseUnitSystem_.GetChoice(quantityChoice);
+            if (choice != null)
+            {
+                result = choice.ToSI(val);
+            }
+        }
+        return result;
+    }
+    public double ToSI(double val, PhysicalQuantity.QuantityEnum quantityChoice)
+    {
+        double result = val;
+        if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+        {
+            OSDC.UnitConversion.Conversion.UnitChoice choice = drillingUnitSystem.GetChoice(quantityChoice);
+            if (choice != null)
+            {
+                result = choice.ToSI(val);
+            }
+        }
+        return result;
     }
     #endregion
 
