@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class PhysicalQuantity : BasePhysicalQuantity
+  public partial class DrillingPhysicalQuantity : BasePhysicalQuantity
   {
      public new enum QuantityEnum 
        {
@@ -78,7 +78,9 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          VolumeDrilling,  // VolumeDrilling
          VolumetricFlowrateDrilling,  // VolumetricFlowrateDrilling
          VolumetricFlowRateOfChangeDrilling,  // VolumetricFlowRateOfChangeDrilling
-         WeightOnBitDrilling // WeightOnBitDrilling
+         MomentOfInertiaDrilling,  // MomentOfInertiaDrilling
+         WeightOnBitDrilling,  // WeightOnBitDrilling
+         MomentOfAreaDrilling // MomentOfAreaDrilling
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -153,7 +155,9 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.VolumeDrilling, new Guid("b8c9f810-d576-4523-a26f-921305c7f7b4")},  // VolumeDrilling
          {QuantityEnum.VolumetricFlowrateDrilling, new Guid("7b12c115-3c20-4d45-b4cf-86af29255b14")},  // VolumetricFlowrateDrilling
          {QuantityEnum.VolumetricFlowRateOfChangeDrilling, new Guid("244ade8c-591d-44d4-bca6-3798046d90a1")},  // VolumetricFlowRateOfChangeDrilling
-         {QuantityEnum.WeightOnBitDrilling, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")} // WeightOnBitDrilling
+         {QuantityEnum.MomentOfInertiaDrilling, new Guid("5b4e4820-9b88-43f9-9856-155846afee0e")},  // MomentOfInertiaDrilling
+         {QuantityEnum.WeightOnBitDrilling, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")},  // WeightOnBitDrilling
+         {QuantityEnum.MomentOfAreaDrilling, new Guid("1805e50f-3bf0-4347-9e5a-cc169a124b7e")} // MomentOfAreaDrilling
     };
   }
 }
@@ -1348,23 +1352,25 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class HookLoadDrillingQuantity : GravitationalLoadQuantity
+  public partial class HookLoadDrillingQuantity : ForceQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Kilogram,  // kilogram
-         TonneMetric,  // tonne metric
-         Pound,  // pound
-         Kilopound,  // kilopound
-         TonUK // ton UK
+         KilogramForce,  // kilogram force
+         Decanewton,  // decanewton
+         PoundForce,  // pound force
+         KilopoundForce,  // kilopound force
+         Newton,  // newton
+         TonneForce // tonne force
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
-         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
-         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
-         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
-         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
+         {UnitChoicesEnum.KilogramForce, new Guid("ea771c51-4078-4aa6-b2df-db6f77a140ad")},  // kilogram force
+         {UnitChoicesEnum.Decanewton, new Guid("fc48e3a8-deb9-4cf6-aaad-5b18f7e37972")},  // decanewton
+         {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")},  // pound force
+         {UnitChoicesEnum.KilopoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")},  // kilopound force
+         {UnitChoicesEnum.Newton, new Guid("2e6b218c-0f85-4e8d-b9c5-73b78d207ef8")},  // newton
+         {UnitChoicesEnum.TonneForce, new Guid("6d7771d3-01cf-40f0-b5bc-3165cd0e6bea")} // tonne force
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -2652,23 +2658,85 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 }
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-  public partial class WeightOnBitDrillingQuantity : GravitationalLoadQuantity
+  public partial class MomentOfInertiaDrillingQuantity : MomentOfInertiaQuantity
   {
     public new enum UnitChoicesEnum 
       {
-         Kilogram,  // kilogram
-         TonneMetric,  // tonne metric
-         Pound,  // pound
-         Kilopound,  // kilopound
-         TonUK // ton UK
+         GramCentimetreSquared,  // gram centimetre squared
+         KilogramMetreSquared,  // kilogram metre squared
+         PoundFootSquared,  // pound foot squared
+         PoundInchSquared // pound inch squared
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
-         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
-         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
-         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
-         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
-         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
+         {UnitChoicesEnum.GramCentimetreSquared, new Guid("71e4e230-c611-4de9-b056-a1ef732b7fce")},  // gram centimetre squared
+         {UnitChoicesEnum.KilogramMetreSquared, new Guid("01c11147-677d-47d2-9167-59601d7961b2")},  // kilogram metre squared
+         {UnitChoicesEnum.PoundFootSquared, new Guid("103bd4aa-494a-4ec3-bf60-c3ce5bab364e")},  // pound foot squared
+         {UnitChoicesEnum.PoundInchSquared, new Guid("ce8e3a4e-2cea-471a-a0dc-846523001be2")} // pound inch squared
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class WeightOnBitDrillingQuantity : ForceQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramForce,  // kilogram force
+         Decanewton,  // decanewton
+         PoundForce,  // pound force
+         KilopoundForce,  // kilopound force
+         Newton,  // newton
+         TonneForce // tonne force
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramForce, new Guid("ea771c51-4078-4aa6-b2df-db6f77a140ad")},  // kilogram force
+         {UnitChoicesEnum.Decanewton, new Guid("fc48e3a8-deb9-4cf6-aaad-5b18f7e37972")},  // decanewton
+         {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")},  // pound force
+         {UnitChoicesEnum.KilopoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")},  // kilopound force
+         {UnitChoicesEnum.Newton, new Guid("2e6b218c-0f85-4e8d-b9c5-73b78d207ef8")},  // newton
+         {UnitChoicesEnum.TonneForce, new Guid("6d7771d3-01cf-40f0-b5bc-3165cd0e6bea")} // tonne force
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class MomentOfAreaDrillingQuantity : MomentOfAreaQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         CentimetresToTheFourthPower,  // centimetres to the fourth power
+         FeetToTheFourthPower,  // feet to the fourth power
+         InchesToTheFourthPower,  // inches to the fourth power
+         MetresToTheFourthPower // metres to the fourth power
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.CentimetresToTheFourthPower, new Guid("1e94dc47-7563-4fb0-9749-e4c88523e1f4")},  // centimetres to the fourth power
+         {UnitChoicesEnum.FeetToTheFourthPower, new Guid("d35362a3-1352-4dcd-b425-c376afcf4d36")},  // feet to the fourth power
+         {UnitChoicesEnum.InchesToTheFourthPower, new Guid("86914b8d-6a5d-43ee-ad7c-e69fbf6d5087")},  // inches to the fourth power
+         {UnitChoicesEnum.MetresToTheFourthPower, new Guid("f479bbab-bdd0-4c33-b13c-6dac1d57539b")} // metres to the fourth power
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

@@ -66,6 +66,13 @@ namespace OSDC.UnitConversion.Conversion
                 },
                 new UnitChoice
                 {
+                  UnitName = "tonne force",
+                  UnitLabel = "tf",
+                  ID = new Guid("6d7771d3-01cf-40f0-b5bc-3165cd0e6bea"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.KilogramForce)"
+                },
+                new UnitChoice
+                {
                   UnitName = "pound force",
                   UnitLabel = "lbf",
                   ID = new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa"),

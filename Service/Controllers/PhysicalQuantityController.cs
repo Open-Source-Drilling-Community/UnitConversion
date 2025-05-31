@@ -34,7 +34,7 @@ namespace OSDC.UnitConversion.Service.Controllers
             {
                 HashSet<BasePhysicalQuantity> quantityHashSet = [];
                 quantityHashSet.UnionWith(BasePhysicalQuantity.AvailableBasePhysicalQuantities);
-                quantityHashSet.UnionWith(PhysicalQuantity.AvailablePhysicalQuantities);
+                quantityHashSet.UnionWith(DrillingPhysicalQuantity.AvailablePhysicalQuantities);
                 foreach (BasePhysicalQuantity qty in quantityHashSet)
                 {
                     ids.Add(qty.ID);
@@ -54,12 +54,12 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// <param name="guid"></param>
         /// <returns>the PhysicalQuantity identified by its Guid, at endpoint UnitConversion/api/PhysicalQuantity/id</returns>
         [HttpGet("{id}", Name = "GetPhysicalQuantityById")]
-        public ActionResult<PhysicalQuantity> GetPhysicalQuantityById(Guid id)
+        public ActionResult<DrillingPhysicalQuantity> GetPhysicalQuantityById(Guid id)
         {
             UsageStatistics.Instance.IncrementPhysicalQuantityControllerGetByIDPerDay();
             if (!id.Equals(Guid.Empty))
             {
-                BasePhysicalQuantity qty = PhysicalQuantity.GetQuantity(id);
+                BasePhysicalQuantity qty = DrillingPhysicalQuantity.GetQuantity(id);
                 if (qty != null)
                 {
                     return Ok(qty);
@@ -80,14 +80,14 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// </summary>
         /// <returns>the list of all PhysicalQuantity present in the microservice database, at endpoint UnitConversion/api/PhysicalQuantity/HeavyData</returns>
         [HttpGet("HeavyData", Name = "GetAllPhysicalQuantity")]
-        public ActionResult<IEnumerable<PhysicalQuantity>> GetAllPhysicalQuantity()
+        public ActionResult<IEnumerable<DrillingPhysicalQuantity>> GetAllPhysicalQuantity()
         {
             UsageStatistics.Instance.IncrementPhysicalQuantityControllerGetAllPerDay();
             try
             {
                 HashSet<BasePhysicalQuantity> quantityHashSet = [];
                 quantityHashSet.UnionWith(BasePhysicalQuantity.AvailableBasePhysicalQuantities);
-                quantityHashSet.UnionWith(PhysicalQuantity.AvailablePhysicalQuantities);
+                quantityHashSet.UnionWith(DrillingPhysicalQuantity.AvailablePhysicalQuantities);
                 return Ok(quantityHashSet);
             }
             catch (Exception ex)

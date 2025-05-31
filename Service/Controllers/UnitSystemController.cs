@@ -48,7 +48,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// <param name="guid"></param>
         /// <returns>the UnitSystem identified by its Guid from the microservice database, at endpoint UnitConversion/api/UnitSystem/MetaInfo/id</returns>
         [HttpGet("{id}", Name = "GetUnitSystemById")]
-        public ActionResult<UnitSystem> GetUnitSystemById(Guid id)
+        public ActionResult<DrillingUnitSystem> GetUnitSystemById(Guid id)
         {
             UsageStatistics.Instance.IncrementUnitSystemControllerGetByIDPerDay();
             if (!id.Equals(Guid.Empty))
@@ -93,7 +93,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// </summary>
         /// <returns>the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/HeavyData</returns>
         [HttpGet("HeavyData", Name = "GetAllUnitSystem")]
-        public ActionResult<IEnumerable<UnitSystem>> GetAllUnitSystem()
+        public ActionResult<IEnumerable<DrillingUnitSystem>> GetAllUnitSystem()
         {
             UsageStatistics.Instance.IncrementUnitSystemControllerGetAllPerDay();
             var vals = _unitSystemManager.GetAllUnitSystem();
@@ -113,12 +113,12 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// <param name="unitSystem"></param>
         /// <returns>true if the given UnitSystem has been added successfully to the microservice database, at the endpoint UnitConversion/api/UnitSystem</returns>
         [HttpPost(Name = "PostUnitSystem")]
-        public ActionResult PostUnitSystem([FromBody] UnitSystem value)
+        public ActionResult PostUnitSystem([FromBody] DrillingUnitSystem value)
         {
             UsageStatistics.Instance.IncrementUnitSystemControllerPostPerDay();
             if (value != null && value.ID != Guid.Empty)
             {
-                UnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(value.ID);
+                DrillingUnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(value.ID);
                 if (unitSystem == null)
                 {
                     if (_unitSystemManager.AddUnitSystem(value))
@@ -149,12 +149,12 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// <param name="unitSystem"></param>
         /// <returns>true if the given UnitSystem has been updated successfully to the microservice database, at the endpoint UnitConversion/api/UnitSystem/id</returns>
         [HttpPut("{id}", Name = "PutUnitSystemById")]
-        public ActionResult PutUnitSystemById(Guid id, [FromBody] UnitSystem value)
+        public ActionResult PutUnitSystemById(Guid id, [FromBody] DrillingUnitSystem value)
         {
             UsageStatistics.Instance.IncrementUnitSystemControllerPutPerDay();
             if (value != null && value.ID.Equals(id))
             {
-                UnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(id);
+                DrillingUnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(id);
                 if (unitSystem != null)
                 {
                     if (_unitSystemManager.UpdateUnitSystemById(id, value))

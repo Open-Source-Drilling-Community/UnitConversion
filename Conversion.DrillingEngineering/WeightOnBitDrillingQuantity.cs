@@ -4,10 +4,9 @@ using System.Linq;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class WeightOnBitDrillingQuantity : GravitationalLoadQuantity
+    public partial class WeightOnBitDrillingQuantity : ForceQuantity
     {
-
-        public override double? MeaningfulPrecisionInSI { get; } = 10;
+        public override double? MeaningfulPrecisionInSI { get; } = 100;
         private static WeightOnBitDrillingQuantity instance_ = null;
 
         public static new WeightOnBitDrillingQuantity Instance
@@ -29,13 +28,14 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             ID = new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce");
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
-            DescriptionMD += "The meaningful precision of weight on bit in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Kilogram).UnitLabel + Environment.NewLine;
+            DescriptionMD += "The meaningful precision of weight on bit in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.Newton).UnitLabel + Environment.NewLine;
             Reset();
-            this.UnitChoices.Add(GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Kilogram));
-            this.UnitChoices.Add(GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.TonneMetric));
-            this.UnitChoices.Add(GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Pound));
-            this.UnitChoices.Add(GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.Kilopound));
-            this.UnitChoices.Add(GravitationalLoadQuantity.Instance.GetUnitChoice(GravitationalLoadQuantity.UnitChoicesEnum.TonUK));
+            this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.KilogramForce));
+            this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.Decanewton));
+            this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.PoundForce));
+            this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.KilopoundForce));
+            this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.Newton));
+            this.UnitChoices.Add(ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.TonneForce));
             SemanticExample = GetSemanticExample();
         }
     }

@@ -28,6 +28,8 @@ namespace ConversionUnitTest
             Assert.AreEqual(1, unitVal);
             unitVal = ForceQuantity.Instance.FromSI(val, ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.PoundForce).ID);
             Assert.AreEqual(0.2248089438709618, unitVal, 1e-6);
+            unitVal = ForceQuantity.Instance.FromSI(val, ForceQuantity.Instance.GetUnitChoice(ForceQuantity.UnitChoicesEnum.TonneForce).ID);
+            Assert.AreEqual(0.00010197162129779283, unitVal, 1e-6);
         }
 
         [Test]

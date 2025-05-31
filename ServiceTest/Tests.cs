@@ -819,12 +819,12 @@ namespace OSDC.UnitConversion.ServiceTest
             //{
             //    try
             //    {
-            //        var unitSystem = OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem.Get(id);
+            //        var unitSystem = OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem.Get(id);
             //        if (unitSystem != null)
             //        {
             //            await nSwagClient.DeleteUnitSystemByIdAsync(id);
             //        }
-                    
+
             //    }
             //    catch (ApiException ex)
             //    {

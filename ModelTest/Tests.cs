@@ -47,7 +47,6 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(ForceQuantity.Instance));
             Assert.That(quantityList, Does.Contain(FrequencyQuantity.Instance));
             Assert.That(quantityList, Does.Contain(FrequencyRateOfChangeQuantity.Instance));
-            Assert.That(quantityList, Does.Contain(GravitationalLoadQuantity.Instance));
             Assert.That(quantityList, Does.Contain(HeatTransferCoefficientQuantity.Instance));
             Assert.That(quantityList, Does.Contain(HydraulicConductivityQuantity.Instance));
             Assert.That(quantityList, Does.Contain(ImageScaleQuantity.Instance));
@@ -107,7 +106,7 @@ namespace OSDC.UnitConversion.ModelTest
         public void Test_General_PhysicalQuantity()
         {
             #region availability of PhysicalQuantities
-            List<BasePhysicalQuantity> quantityList = PhysicalQuantity.AvailablePhysicalQuantities;
+            List<BasePhysicalQuantity> quantityList = DrillingPhysicalQuantity.AvailablePhysicalQuantities;
             Assert.That(quantityList, Is.Not.Null);
             #endregion
 

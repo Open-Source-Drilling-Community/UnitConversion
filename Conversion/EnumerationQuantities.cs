@@ -73,13 +73,14 @@ namespace OSDC.UnitConversion.Conversion
          ForceRateOfChange,  // ForceRateOfChange
          PressureRateOfChange,  // PressureRateOfChange
          TorqueRateOfChange,  // TorqueRateOfChange
+         MomentOfArea,  // MomentOfArea
+         MomentOfInertia,  // MomentOfInertia
          DiameterSmall,  // DiameterSmall
          DimensionLessStandard,  // DimensionLessStandard
          EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
          ElasticModulus,  // ElasticModulus
          LengthSmall,  // LengthSmall
          RotationalFrequency,  // RotationalFrequency
-         GravitationalLoad,  // GravitationalLoad
          HydraulicConductivity,  // HydraulicConductivity
          VolumeLarge,  // VolumeLarge
          RotationalFrequencyRateOfChange,  // RotationalFrequencyRateOfChange
@@ -163,13 +164,14 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.ForceRateOfChange, new Guid("2f28f6d5-5b01-4fd0-9924-bf84250f6092")},  // ForceRateOfChange
          {QuantityEnum.PressureRateOfChange, new Guid("611830b0-739e-42ef-8215-98e0a4e1df3b")},  // PressureRateOfChange
          {QuantityEnum.TorqueRateOfChange, new Guid("e94ee582-62bd-472b-9188-1f423729e99e")},  // TorqueRateOfChange
+         {QuantityEnum.MomentOfArea, new Guid("669f44f8-ed5f-43e0-9b63-adf1b6b9e865")},  // MomentOfArea
+         {QuantityEnum.MomentOfInertia, new Guid("cf7c69b0-b4d7-45d2-9d7d-4714996424c0")},  // MomentOfInertia
          {QuantityEnum.DiameterSmall, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // DiameterSmall
          {QuantityEnum.DimensionLessStandard, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // DimensionLessStandard
          {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
          {QuantityEnum.ElasticModulus, new Guid("7ffbcc35-b46f-4656-baf5-c92be501f0ec")},  // ElasticModulus
          {QuantityEnum.LengthSmall, new Guid("3bb73c6f-c40e-4e54-b59a-962bec9aafed")},  // LengthSmall
          {QuantityEnum.RotationalFrequency, new Guid("f6f7ab6f-3003-49d2-a17d-92a0f81938f2")},  // RotationalFrequency
-         {QuantityEnum.GravitationalLoad, new Guid("55682046-ff04-4a77-9311-a9f738f790b6")},  // GravitationalLoad
          {QuantityEnum.HydraulicConductivity, new Guid("04df2b82-aff0-485a-855e-3d2aa53e12eb")},  // HydraulicConductivity
          {QuantityEnum.VolumeLarge, new Guid("f8ab1afa-7b99-403b-9410-93598bbb4089")},  // VolumeLarge
          {QuantityEnum.RotationalFrequencyRateOfChange, new Guid("ed24a9f7-b70d-4f39-a992-241f25e1a77e")},  // RotationalFrequencyRateOfChange
@@ -1473,6 +1475,7 @@ namespace OSDC.UnitConversion.Conversion
          Kilonewton,  // kilonewton
          Kilodecanewton,  // kilodecanewton
          KilogramForce,  // kilogram force
+         TonneForce,  // tonne force
          PoundForce,  // pound force
          KilopoundForce // kilopound force
       }
@@ -1483,6 +1486,7 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Kilonewton, new Guid("e30d6f94-7887-4746-8d4f-eb720239b702")},  // kilonewton
          {UnitChoicesEnum.Kilodecanewton, new Guid("8ad7ae81-602b-4694-bc6d-c18f520f1266")},  // kilodecanewton
          {UnitChoicesEnum.KilogramForce, new Guid("ea771c51-4078-4aa6-b2df-db6f77a140ad")},  // kilogram force
+         {UnitChoicesEnum.TonneForce, new Guid("6d7771d3-01cf-40f0-b5bc-3165cd0e6bea")},  // tonne force
          {UnitChoicesEnum.PoundForce, new Guid("c738ced5-1c99-42ec-9c47-59e7d6455ffa")},  // pound force
          {UnitChoicesEnum.KilopoundForce, new Guid("fa385f22-3ed9-4f34-ab0c-193e3ac79375")} // kilopound force
     };
@@ -1518,7 +1522,15 @@ namespace OSDC.UnitConversion.Conversion
          RotationPerHour,  // rotation per hour
          ShockPerSecond,  // shock per second
          ShockPerMinute,  // shock per minute
-         ShockPerHour // shock per hour
+         ShockPerHour,  // shock per hour
+         RadianPerSecond,  // radian per second
+         DegreePerSecond,  // degree per second
+         RadianPerDay,  // radian per day
+         RadianPerHour,  // radian per hour
+         RadianPerMinute,  // radian per minute
+         DegreePerDay,  // degree per day
+         DegreePerHour,  // degree per hour
+         DegreePerMinute // degree per minute
       }
     protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
     {
@@ -1536,7 +1548,15 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.RotationPerHour, new Guid("cdc5dd34-dc2d-4bd8-85ac-13f6d71ea188")},  // rotation per hour
          {UnitChoicesEnum.ShockPerSecond, new Guid("b5318133-64e9-43c7-b7bf-3c86140fe7aa")},  // shock per second
          {UnitChoicesEnum.ShockPerMinute, new Guid("6ccbee46-cb8a-4777-b1d2-e88eedd24f73")},  // shock per minute
-         {UnitChoicesEnum.ShockPerHour, new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e")} // shock per hour
+         {UnitChoicesEnum.ShockPerHour, new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e")},  // shock per hour
+         {UnitChoicesEnum.RadianPerSecond, new Guid("1da89c19-8dba-44c4-bff5-d1a7bcf97269")},  // radian per second
+         {UnitChoicesEnum.DegreePerSecond, new Guid("dd8dc22c-5dd3-494e-8ff8-fed249a354bb")},  // degree per second
+         {UnitChoicesEnum.RadianPerDay, new Guid("9d9be8e7-a4ff-4540-9e83-ecde31c24d6b")},  // radian per day
+         {UnitChoicesEnum.RadianPerHour, new Guid("aaab4534-864c-4864-91de-e094f7c332b9")},  // radian per hour
+         {UnitChoicesEnum.RadianPerMinute, new Guid("e2d71725-cebb-4c24-8cb8-4685390bdead")},  // radian per minute
+         {UnitChoicesEnum.DegreePerDay, new Guid("a53ece85-ca3b-421a-aa71-6661edd30fa2")},  // degree per day
+         {UnitChoicesEnum.DegreePerHour, new Guid("9f885257-5f15-4a4d-b5be-7d2f0bc0538e")},  // degree per hour
+         {UnitChoicesEnum.DegreePerMinute, new Guid("61bc0b74-78f4-486f-b725-03ae520a6e8c")} // degree per minute
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
@@ -3678,6 +3698,66 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class MomentOfAreaQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         MetresToTheFourthPower,  // metres to the fourth power
+         CentimetresToTheFourthPower,  // centimetres to the fourth power
+         InchesToTheFourthPower,  // inches to the fourth power
+         FeetToTheFourthPower // feet to the fourth power
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.MetresToTheFourthPower, new Guid("f479bbab-bdd0-4c33-b13c-6dac1d57539b")},  // metres to the fourth power
+         {UnitChoicesEnum.CentimetresToTheFourthPower, new Guid("1e94dc47-7563-4fb0-9749-e4c88523e1f4")},  // centimetres to the fourth power
+         {UnitChoicesEnum.InchesToTheFourthPower, new Guid("86914b8d-6a5d-43ee-ad7c-e69fbf6d5087")},  // inches to the fourth power
+         {UnitChoicesEnum.FeetToTheFourthPower, new Guid("d35362a3-1352-4dcd-b425-c376afcf4d36")} // feet to the fourth power
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MomentOfInertiaQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramMetreSquared,  // kilogram metre squared
+         GramCentimetreSquared,  // gram centimetre squared
+         PoundFootSquared,  // pound foot squared
+         PoundInchSquared // pound inch squared
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramMetreSquared, new Guid("01c11147-677d-47d2-9167-59601d7961b2")},  // kilogram metre squared
+         {UnitChoicesEnum.GramCentimetreSquared, new Guid("71e4e230-c611-4de9-b056-a1ef732b7fce")},  // gram centimetre squared
+         {UnitChoicesEnum.PoundFootSquared, new Guid("103bd4aa-494a-4ec3-bf60-c3ce5bab364e")},  // pound foot squared
+         {UnitChoicesEnum.PoundInchSquared, new Guid("ce8e3a4e-2cea-471a-a0dc-846523001be2")} // pound inch squared
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class DiameterSmallQuantity : LengthQuantity
   {
     public new enum UnitChoicesEnum 
@@ -3865,38 +3945,6 @@ namespace OSDC.UnitConversion.Conversion
     {
          {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
          {UnitChoicesEnum.Rpm, new Guid("30880b5f-803d-412e-9736-62dca3ba5bbd")} // rpm
-    };
-    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
-    {
-       UnitChoice c = null;
-       Guid guid;
-       if (enumLookUp_.TryGetValue(choice, out guid))
-       {
-         c = GetUnitChoice(guid);
-       }
-       return c;
-    }
-  }
-}
-namespace OSDC.UnitConversion.Conversion
-{
-  public partial class GravitationalLoadQuantity : MassQuantity
-  {
-    public new enum UnitChoicesEnum 
-      {
-         Kilogram,  // kilogram
-         TonneMetric,  // tonne metric
-         Pound,  // pound
-         Kilopound,  // kilopound
-         TonUK // ton UK
-      }
-    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
-    {
-         {UnitChoicesEnum.Kilogram, new Guid("ef4c5fc1-8774-4aea-b772-35aeae56413d")},  // kilogram
-         {UnitChoicesEnum.TonneMetric, new Guid("320b99ba-3115-42f5-939c-15a04d9e7e3c")},  // tonne metric
-         {UnitChoicesEnum.Pound, new Guid("e9e313ad-cb28-43fe-93fd-7f94dfee1878")},  // pound
-         {UnitChoicesEnum.Kilopound, new Guid("777ff8ee-edc2-46d1-ac40-f097c1e1cd69")},  // kilopound
-         {UnitChoicesEnum.TonUK, new Guid("059c7b81-ed11-410e-9466-4661011372d2")} // ton UK
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

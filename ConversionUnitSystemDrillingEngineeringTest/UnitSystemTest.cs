@@ -13,7 +13,7 @@ namespace ConversionUnitSystemDrillingEngineeringTest
         public void Test1()
         {
 
-            UnitSystem unitSystem = UnitSystem.SIUnitSystem;
+            DrillingUnitSystem unitSystem = DrillingUnitSystem.SIUnitSystem;
             Assert.Pass();
         }
 
@@ -21,7 +21,7 @@ namespace ConversionUnitSystemDrillingEngineeringTest
         public void Test2()
         {
 
-            UnitSystem unitSystem = UnitSystem.MetricUnitSystem;
+            DrillingUnitSystem unitSystem = DrillingUnitSystem.MetricUnitSystem;
             Assert.Pass();
         }
 
@@ -29,7 +29,7 @@ namespace ConversionUnitSystemDrillingEngineeringTest
         public void Test3()
         {
 
-            UnitSystem unitSystem = UnitSystem.USUnitSystem;
+            DrillingUnitSystem unitSystem = DrillingUnitSystem.USUnitSystem;
             Assert.Pass();
         }
 
@@ -37,7 +37,7 @@ namespace ConversionUnitSystemDrillingEngineeringTest
         public void Test4()
         {
 
-            UnitSystem unitSystem = UnitSystem.ImperialUnitSystem;
+            DrillingUnitSystem unitSystem = DrillingUnitSystem.ImperialUnitSystem;
             Assert.Pass();
         }
     }

@@ -18,23 +18,15 @@ namespace OSDC.UnitConversion.GenerateEnumerations
             // generate the Factors class
             GenerateFactors(baseFolder + "Conversion\\Factors.cs");
             List<BasePhysicalQuantity>? quantities = AvailableBasePhysicalQuantities;
+            List<BasePhysicalQuantity>? drillingQuantities = AvailableDrillingQuantities;
             if (quantities != null)
             {
                 GenerateConstructors(baseFolder + "Conversion\\Constructors.cs", quantities);
                 GenerateEnumerations(baseFolder + "Conversion\\EnumerationQuantities.cs", typeof(BasePhysicalQuantity), quantities);
-                //BaseUnitSystem SI = BaseUnitSystem.SIBaseUnitSystem;
-                //BaseUnitSystem metric = BaseUnitSystem.MetricBaseUnitSystem;
-                //BaseUnitSystem imperial = BaseUnitSystem.ImperialBaseUnitSystem;
-                //BaseUnitSystem us = BaseUnitSystem.USBaseUnitSystem;
             }
-            quantities = AvailableQuantities;
-            if (quantities != null)
+            if (drillingQuantities != null)
             {
-                GenerateEnumerations(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(PhysicalQuantity), quantities);
-                //UnitSystem SI = UnitSystem.SIUnitSystem;
-                //UnitSystem metric = UnitSystem.MetricUnitSystem;
-                //UnitSystem imperial = UnitSystem.ImperialUnitSystem;
-                //UnitSystem us = UnitSystem.USUnitSystem;
+                GenerateEnumerations(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(DrillingPhysicalQuantity), drillingQuantities);
             }
         }
         private static List<Type> GetAllSubclasses(Type baseType)
@@ -114,13 +106,13 @@ namespace OSDC.UnitConversion.GenerateEnumerations
         }
         private static List<BasePhysicalQuantity> availablePhysicalQuantities_ = null;
 
-        public static List<BasePhysicalQuantity>? AvailableQuantities
+        public static List<BasePhysicalQuantity>? AvailableDrillingQuantities
         {
             get
             {
                 if (availablePhysicalQuantities_ == null)
                 {
-                    Assembly? assembly = Assembly.GetAssembly(typeof(PhysicalQuantity));
+                    Assembly? assembly = Assembly.GetAssembly(typeof(DrillingPhysicalQuantity));
                     if (assembly != null)
                     {
                         foreach (Type typ in assembly.GetTypes())

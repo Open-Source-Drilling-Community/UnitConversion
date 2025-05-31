@@ -130,8 +130,64 @@ namespace OSDC.UnitConversion.Conversion
                 UnitLabel = "spm",
                 ID = new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e"),
                 ConversionFactorFromSIFormula = "Factors.Hour"
-            }
-
+            },
+            new UnitChoice
+                {
+                  UnitName = "radian per second",
+                  UnitLabel = "rad/s",
+                  ID = new Guid("1da89c19-8dba-44c4-bff5-d1a7bcf97269"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution/Factors.Unit",
+                  IsSI = true
+                },
+                new UnitChoice
+                {
+                  UnitName = "degree per second",
+                  UnitLabel = "°/s",
+                  ID = new Guid("dd8dc22c-5dd3-494e-8ff8-fed249a354bb"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree"
+                },
+                new UnitChoice
+                {
+                  UnitName = "radian per day",
+                  UnitLabel = "rad/d",
+                  ID = new Guid("9d9be8e7-a4ff-4540-9e83-ecde31c24d6b"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Day"
+                },
+                new UnitChoice
+                {
+                  UnitName = "radian per hour",
+                  UnitLabel = "rad/h",
+                  ID = new Guid("aaab4534-864c-4864-91de-e094f7c332b9"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Hour"
+                },
+                new UnitChoice
+                {
+                  UnitName = "radian per minute",
+                  UnitLabel = "rad/min",
+                  ID = new Guid("e2d71725-cebb-4c24-8cb8-4685390bdead"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Minute"
+                },
+                new UnitChoice
+                {
+                  UnitName = "degree per day",
+                  UnitLabel = "°/d",
+                  ID = new Guid("a53ece85-ca3b-421a-aa71-6661edd30fa2"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Day"
+                },
+                new UnitChoice
+                {
+                  UnitName = "degree per hour",
+                  UnitLabel = "°/h",
+                  ID = new Guid("9f885257-5f15-4a4d-b5be-7d2f0bc0538e"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Hour"
+                },
+                new UnitChoice
+                {
+                  UnitName = "degree per minute",
+                  UnitLabel = "°/min",
+                  ID = new Guid("61bc0b74-78f4-486f-b725-03ae520a6e8c"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Minute"
+                }
         };
         public FrequencyQuantity() : base()
         {

@@ -41,7 +41,7 @@ namespace OSDC.UnitConversion.Model
         public bool Calculate()
         {
             bool success = false;
-            BasePhysicalQuantity quantity = PhysicalQuantity.GetQuantity(QuantityID);
+            BasePhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(QuantityID);
             if (quantity != null)
             {
                 UnitChoice unitChoiceOut = quantity.GetUnitChoice(UnitChoiceIDOut);

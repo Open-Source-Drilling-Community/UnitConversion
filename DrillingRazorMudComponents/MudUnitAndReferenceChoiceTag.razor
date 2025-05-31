@@ -278,8 +278,8 @@ else
             else
             {
                 //Case when no controller is available: default UnitChoiceSets are used
-                List<BaseUnitSystem> uList = [UnitSystem.SIUnitSystem, UnitSystem.MetricUnitSystem, UnitSystem.ImperialUnitSystem, UnitSystem.USUnitSystem];
-                foreach (UnitSystem uSys in uList)
+                List<BaseUnitSystem> uList = [DrillingUnitSystem.SIUnitSystem, DrillingUnitSystem.MetricUnitSystem, DrillingUnitSystem.ImperialUnitSystem, DrillingUnitSystem.USUnitSystem];
+                foreach (DrillingUnitSystem uSys in uList)
                 {
                     if (uSys != null)
                         unitSystemLightList.Add(new UnitSystemLight()
@@ -302,7 +302,7 @@ else
                     if (string.IsNullOrEmpty(UnitSystemName) || UnitSystemName.Equals(uSysLight.Name))
                         break; //the given UnitSystemName is checked against each name in the available unitChoiceSets
                 }
-                baseUnitSystem_ = UnitSystem.Get(defaultUnitSystemLight!.ID);
+                baseUnitSystem_ = DrillingUnitSystem.Get(defaultUnitSystemLight!.ID);
                 if (defaultUnitSystemLight != null)
                     UnitSystemName = defaultUnitSystemLight.Name;
             }
@@ -341,12 +341,12 @@ else
         }
         return result;
     }
-    public string FromSI(double? val, PhysicalQuantity.QuantityEnum quantityChoice, bool useUnitLabel)
+    public string FromSI(double? val, DrillingPhysicalQuantity.QuantityEnum quantityChoice, bool useUnitLabel)
     {
         string result = string.Empty;
         if (val != null)
         {
-            if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+            if (baseUnitSystem_ is not null && baseUnitSystem_ is DrillingUnitSystem drillingUnitSystem)
             {
                 result = drillingUnitSystem.FromSIString(quantityChoice, (double)val);
                 if (useUnitLabel)
@@ -423,10 +423,10 @@ else
         }
         return result;
     }
-    public double FromSI(double val, PhysicalQuantity.QuantityEnum quantityChoice)
+    public double FromSI(double val, DrillingPhysicalQuantity.QuantityEnum quantityChoice)
     {
         double result = double.NaN;
-        if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+        if (baseUnitSystem_ is not null && baseUnitSystem_ is DrillingUnitSystem drillingUnitSystem)
         {
             double? res = drillingUnitSystem.FromSI(quantityChoice, val);
             if (res != null)
@@ -459,9 +459,9 @@ else
             return "";
         }
     }
-    public string GetUnitLabel(PhysicalQuantity.QuantityEnum quantityChoice)
+    public string GetUnitLabel(DrillingPhysicalQuantity.QuantityEnum quantityChoice)
     {
-        if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+        if (baseUnitSystem_ is not null && baseUnitSystem_ is DrillingUnitSystem drillingUnitSystem)
         {
             return drillingUnitSystem.GetUnitLabel(quantityChoice);
         }
@@ -500,10 +500,10 @@ else
         }
         return result;
     }
-    public double ToSI(double val, PhysicalQuantity.QuantityEnum quantityChoice)
+    public double ToSI(double val, DrillingPhysicalQuantity.QuantityEnum quantityChoice)
     {
         double result = val;
-        if (baseUnitSystem_ is not null && baseUnitSystem_ is UnitSystem drillingUnitSystem)
+        if (baseUnitSystem_ is not null && baseUnitSystem_ is DrillingUnitSystem drillingUnitSystem)
         {
             OSDC.UnitConversion.Conversion.UnitChoice choice = drillingUnitSystem.GetChoice(quantityChoice);
             if (choice != null)
@@ -768,7 +768,7 @@ else
 
     private bool IsPressure(string quantityName)
     {
-        OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity = PhysicalQuantity.GetQuantity(quantityName);
+        OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityName);
         return quantity != null &&
                quantity.TimeDimension == -2 &&
                quantity.MassDimension == 1 &&
@@ -954,7 +954,7 @@ else
 
     private bool IsPlaneAngle(string quantityName)
     {
-        OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity = PhysicalQuantity.GetQuantity(quantityName);
+        OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityName);
         return quantity != null &&
                quantity.TimeDimension == 0 &&
                quantity.MassDimension == 0 &&
@@ -1194,7 +1194,7 @@ else
 
     private bool IsLength(string quantityName)
     {
-        OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity = PhysicalQuantity.GetQuantity(quantityName);
+        OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(quantityName);
         return quantity != null &&
                quantity.TimeDimension == 0 &&
                quantity.MassDimension == 0 &&
@@ -1517,7 +1517,7 @@ else
                     string str = await a.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(str))
                     {
-                        baseUnitSystem = System.Text.Json.JsonSerializer.Deserialize<UnitSystem>(str);
+                        baseUnitSystem = System.Text.Json.JsonSerializer.Deserialize<DrillingUnitSystem>(str);
                     }
                 }
             }
@@ -1529,7 +1529,7 @@ else
         }
         else
         {
-            baseUnitSystem = UnitSystem.Get(baseUnitSystemID);
+            baseUnitSystem = DrillingUnitSystem.Get(baseUnitSystemID);
         }
         baseUnitSystem_ = baseUnitSystem;
         if (unitAwareComponents_ != null)

@@ -7319,6 +7319,26 @@ namespace OSDC.UnitConversion.Conversion
                 }
               , new UnitChoice
                 {
+                  UnitName = "tonne force",
+                  UnitLabel = "tf",
+                  SIUnitName = "newton",
+                  ID = new Guid("6d7771d3-01cf-40f0-b5bc-3165cd0e6bea"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.KilogramForce)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo*Factors.KilogramForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in tonne force"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo*KilogramForce), i.e., 0.00010197162129779283"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
                   UnitName = "pound force",
                   UnitLabel = "lbf",
                   SIUnitName = "newton",
@@ -7635,6 +7655,161 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "a = Hour, i.e., 3600"
  + Environment.NewLine + "and"
  + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per second",
+                  UnitLabel = "rad/s",
+                  SIUnitName = "hertz",
+                  ID = new Guid("1da89c19-8dba-44c4-bff5-d1a7bcf97269"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Revolution/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per second",
+                  UnitLabel = "°/s",
+                  SIUnitName = "hertz",
+                  ID = new Guid("dd8dc22c-5dd3-494e-8ff8-fed249a354bb"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Degree,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Degree, i.e., 360"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per day",
+                  UnitLabel = "rad/d",
+                  SIUnitName = "hertz",
+                  ID = new Guid("9d9be8e7-a4ff-4540-9e83-ecde31c24d6b"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Day",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Day,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per day"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Day, i.e., 542867.2105403163"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Day = 24.0 * Hour"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per hour",
+                  UnitLabel = "rad/h",
+                  SIUnitName = "hertz",
+                  ID = new Guid("aaab4534-864c-4864-91de-e094f7c332b9"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Hour",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Hour,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Hour, i.e., 22619.46710584651"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "radian per minute",
+                  UnitLabel = "rad/min",
+                  SIUnitName = "hertz",
+                  ID = new Guid("e2d71725-cebb-4c24-8cb8-4685390bdead"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Minute",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Minute,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in radian per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Minute, i.e., 376.99111843077515"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per day",
+                  UnitLabel = "°/d",
+                  SIUnitName = "hertz",
+                  ID = new Guid("a53ece85-ca3b-421a-aa71-6661edd30fa2"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Day",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Degree*Factors.Day,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per day"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Degree*Day, i.e., 31104000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Day = 24.0 * Hour"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per hour",
+                  UnitLabel = "°/h",
+                  SIUnitName = "hertz",
+                  ID = new Guid("9f885257-5f15-4a4d-b5be-7d2f0bc0538e"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Hour",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Degree*Factors.Hour,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per hour"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Degree*Hour, i.e., 1296000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
+ + Environment.NewLine + "Hour = 60.0 * Minute"
+ + Environment.NewLine + "Minute = 60.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "degree per minute",
+                  UnitLabel = "°/min",
+                  SIUnitName = "hertz",
+                  ID = new Guid("61bc0b74-78f4-486f-b725-03ae520a6e8c"),
+                  ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Minute",
+                  ConversionFactorFromSI = Factors.Revolution*Factors.Degree*Factors.Minute,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in degree per minute"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Revolution*Degree*Minute, i.e., 21600"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Revolution = 2.0 * System.Math.PI"
+ + Environment.NewLine + "Degree = 180.0 / System.Math.PI"
  + Environment.NewLine + "Minute = 60.0"
  + Environment.NewLine + "",
                 }
@@ -20048,6 +20223,150 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
  + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
  + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MomentOfAreaQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "metres to the fourth power",
+                  UnitLabel = "m⁴",
+                  SIUnitName = "metres to the fourth power",
+                  ID = new Guid("f479bbab-bdd0-4c33-b13c-6dac1d57539b"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "centimetres to the fourth power",
+                  UnitLabel = "cm⁴",
+                  SIUnitName = "metres to the fourth power",
+                  ID = new Guid("1e94dc47-7563-4fb0-9749-e4c88523e1f4"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Centi*Factors.Centi*Factors.Centi*Factors.Centi)",
+                  ConversionFactorFromSI = 1.0/(Factors.Centi*Factors.Centi*Factors.Centi*Factors.Centi),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in centimetres to the fourth power"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Centi*Centi*Centi*Centi), i.e., 99999999.99999999"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inches to the fourth power",
+                  UnitLabel = "in⁴",
+                  SIUnitName = "metres to the fourth power",
+                  ID = new Guid("86914b8d-6a5d-43ee-ad7c-e69fbf6d5087"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Inch*Factors.Inch*Factors.Inch*Factors.Inch)",
+                  ConversionFactorFromSI = 1.0/(Factors.Inch*Factors.Inch*Factors.Inch*Factors.Inch),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inches to the fourth power"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Inch*Inch*Inch*Inch), i.e., 2402509.6100288304"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "feet to the fourth power",
+                  UnitLabel = "ft⁴",
+                  SIUnitName = "metres to the fourth power",
+                  ID = new Guid("d35362a3-1352-4dcd-b425-c376afcf4d36"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.Foot*Factors.Foot*Factors.Foot)",
+                  ConversionFactorFromSI = 1.0/(Factors.Foot*Factors.Foot*Factors.Foot*Factors.Foot),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in feet to the fourth power"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Foot*Foot*Foot*Foot), i.e., 115.86176745895213"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MomentOfInertiaQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "kilogram metre squared",
+                  UnitLabel = "kg.m²",
+                  SIUnitName = "kilogram metre squared",
+                  ID = new Guid("01c11147-677d-47d2-9167-59601d7961b2"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram centimetre squared",
+                  UnitLabel = "g.cm²",
+                  SIUnitName = "kilogram metre squared",
+                  ID = new Guid("71e4e230-c611-4de9-b056-a1ef732b7fce"),
+                  ConversionFactorFromSIFormula = "Factors.Kilo/(Factors.Centi*Factors.Centi)",
+                  ConversionFactorFromSI = Factors.Kilo/(Factors.Centi*Factors.Centi),
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound foot squared",
+                  UnitLabel = "lb.ft²",
+                  SIUnitName = "kilogram metre squared",
+                  ID = new Guid("103bd4aa-494a-4ec3-bf60-c3ce5bab364e"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.Foot*Factors.Pound)",
+                  ConversionFactorFromSI = 1.0/(Factors.Foot*Factors.Foot*Factors.Pound),
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound inch squared",
+                  UnitLabel = "lb.in²",
+                  SIUnitName = "kilogram metre squared",
+                  ID = new Guid("ce8e3a4e-2cea-471a-a0dc-846523001be2"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Inch*Factors.Inch*Factors.Pound)",
+                  ConversionFactorFromSI = 1.0/(Factors.Inch*Factors.Inch*Factors.Pound),
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
                 }
             };
       }

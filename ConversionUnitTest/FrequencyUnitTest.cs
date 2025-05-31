@@ -28,6 +28,38 @@ namespace ConversionUnitTest
             Assert.AreEqual(1.0 / Factors.Tera, unitVal);
             unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Rpm).ID);
             Assert.AreEqual(60.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.DegreePerDay).ID);
+            Assert.AreEqual(360.0*3600.0*24.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.DegreePerHour).ID);
+            Assert.AreEqual(360.0*3600.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.DegreePerMinute).ID);
+            Assert.AreEqual(360.0*60.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.DegreePerSecond).ID);
+            Assert.AreEqual(360.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.RadianPerDay).ID);
+            Assert.AreEqual(3600.0*24.0*2.0*Math.PI, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.RadianPerHour).ID);
+            Assert.AreEqual(3600.0*2.0*Math.PI, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.RadianPerMinute).ID);
+            Assert.AreEqual(60.0*2.0*Math.PI, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.RadianPerSecond).ID);
+            Assert.AreEqual(2.0*Math.PI, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.RotationPerHour).ID);
+            Assert.AreEqual(3600.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.RotationPerSecond).ID);
+            Assert.AreEqual(1.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.ShockPerHour).ID);
+            Assert.AreEqual(3600.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.ShockPerMinute).ID);
+            Assert.AreEqual(60.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.ShockPerSecond).ID);
+            Assert.AreEqual(1.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.Spm).ID);
+            Assert.AreEqual(60.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.StrokePerHour).ID);
+            Assert.AreEqual(3600.0, unitVal);
+            unitVal = FrequencyQuantity.Instance.FromSI(val, FrequencyQuantity.Instance.GetUnitChoice(FrequencyQuantity.UnitChoicesEnum.StrokePerSecond).ID);
+            Assert.AreEqual(1.0, unitVal);
         }
 
         [Test]

@@ -172,14 +172,14 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="guid"></param>
         /// <returns>the UnitSystem retrieved from the database</returns>
-        public UnitSystem? GetUnitSystemById(Guid guid)
+        public DrillingUnitSystem? GetUnitSystemById(Guid guid)
         {
             if (!guid.Equals(Guid.Empty))
             {
                 var connection = _connectionManager.GetConnection();
                 if (connection != null)
                 {
-                    UnitSystem? unitSystem;
+                    DrillingUnitSystem? unitSystem;
                     var command = connection.CreateCommand();
                     command.CommandText = $"SELECT UnitSystem FROM UnitSystemTable WHERE ID = '{guid}'";
                     try
@@ -188,7 +188,7 @@ namespace OSDC.UnitConversion.Service
                         if (reader.Read() && !reader.IsDBNull(0))
                         {
                             string data = reader.GetString(0);
-                            unitSystem = JsonSerializer.Deserialize<UnitSystem>(data);
+                            unitSystem = JsonSerializer.Deserialize<DrillingUnitSystem>(data);
                             if (unitSystem != null && !unitSystem.ID.Equals(guid))
                                 throw (new SqliteException("SQLite database corrupted: retrieved UnitSystem is null or has been jsonified with the wrong ID.", 1));
                         }
@@ -224,9 +224,9 @@ namespace OSDC.UnitConversion.Service
         /// Returns the list of all UnitSystem present in the microservice database 
         /// </summary>
         /// <returns>the list of all UnitSystem present in the microservice database</returns>
-        public List<UnitSystem?>? GetAllUnitSystem()
+        public List<DrillingUnitSystem?>? GetAllUnitSystem()
         {
-            List<UnitSystem?> vals = [];
+            List<DrillingUnitSystem?> vals = [];
             var connection = _connectionManager.GetConnection();
             if (connection != null)
             {
@@ -238,7 +238,7 @@ namespace OSDC.UnitConversion.Service
                     while (reader.Read() && !reader.IsDBNull(0))
                     {
                         string data = reader.GetString(0);
-                        UnitSystem? unitSystem = JsonSerializer.Deserialize<UnitSystem>(data);
+                        DrillingUnitSystem? unitSystem = JsonSerializer.Deserialize<DrillingUnitSystem>(data);
                         vals.Add(unitSystem);
                     }
                     _logger.LogInformation("Returning the list of existing UnitSystem from UnitSystemTable");
@@ -308,7 +308,7 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="unitSystem"></param>
         /// <returns>true if the given UnitSystem has been added successfully</returns>
-        public bool AddUnitSystem(UnitSystem unitSystem)
+        public bool AddUnitSystem(DrillingUnitSystem unitSystem)
         {
             if (unitSystem != null && !unitSystem.ID.Equals(Guid.Empty))
             {
@@ -379,7 +379,7 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         /// <param name="unitSystem"></param>
         /// <returns>true if the given UnitSystem has been updated successfully</returns>
-        public bool UpdateUnitSystemById(Guid guid, UnitSystem unitSystem)
+        public bool UpdateUnitSystemById(Guid guid, DrillingUnitSystem unitSystem)
         {
             bool success = true;
             if (!guid.Equals(Guid.Empty) && unitSystem != null && unitSystem.ID.Equals(guid))
@@ -497,16 +497,16 @@ namespace OSDC.UnitConversion.Service
         /// </summary>
         private void FillDefault()
         {
-            List<UnitSystem> unitSystems =
+            List<DrillingUnitSystem> unitSystems =
             [
-                UnitSystem.SIUnitSystem,
-                UnitSystem.MetricUnitSystem,
-                UnitSystem.USUnitSystem,
-                UnitSystem.ImperialUnitSystem
+                DrillingUnitSystem.SIUnitSystem,
+                DrillingUnitSystem.MetricUnitSystem,
+                DrillingUnitSystem.USUnitSystem,
+                DrillingUnitSystem.ImperialUnitSystem
             ];
 
 
-            foreach (UnitSystem uSys in unitSystems)
+            foreach (DrillingUnitSystem uSys in unitSystems)
             {
                 if (GetUnitSystemById(uSys.ID) == null)
                 {

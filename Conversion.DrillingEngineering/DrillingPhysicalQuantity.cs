@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
-    public partial class PhysicalQuantity : BasePhysicalQuantity
+    public partial class DrillingPhysicalQuantity : BasePhysicalQuantity
     {
         private static List<BasePhysicalQuantity> availablePhysicalQuantities_ = null;
         internal static Dictionary<string, BasePhysicalQuantity> physicalQuantitiesByName_ = null;
@@ -24,7 +24,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 
         private static void Initialize()
         {
-            Assembly assembly = Assembly.GetAssembly(typeof(PhysicalQuantity));
+            Assembly assembly = Assembly.GetAssembly(typeof(DrillingPhysicalQuantity));
             if (assembly != null)
             {
                 foreach (Type typ in assembly.GetTypes())
@@ -85,7 +85,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             }
         }
 
-        public static BasePhysicalQuantity GetQuantity(PhysicalQuantity.QuantityEnum choice)
+        public static BasePhysicalQuantity GetQuantity(DrillingPhysicalQuantity.QuantityEnum choice)
         {
             BasePhysicalQuantity quantity = null;
             Guid guid;

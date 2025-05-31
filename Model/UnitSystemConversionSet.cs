@@ -65,14 +65,14 @@ namespace OSDC.UnitConversion.Model
             bool success = false;
             if (QuantityConversionList != null && UnitSystemInID != Guid.Empty && UnitSystemOutID != Guid.Empty)
             {
-                BaseUnitSystem unitSystemIn = UnitSystem.Get(UnitSystemInID);
-                BaseUnitSystem unitSystemOut = UnitSystem.Get(UnitSystemOutID);
+                BaseUnitSystem unitSystemIn = DrillingUnitSystem.Get(UnitSystemInID);
+                BaseUnitSystem unitSystemOut = DrillingUnitSystem.Get(UnitSystemOutID);
                 if (unitSystemIn != null && unitSystemOut != null)
                 {
                     foreach (QuantityConversion quantityConversion in QuantityConversionList)
                     {
                         Guid qtyID = quantityConversion.QuantityID;
-                        if (quantityConversion == null || quantityConversion.ValueConversionList == null || !ValueConversion.Calculate(PhysicalQuantity.GetQuantity(qtyID), unitSystemIn.GetChoice(qtyID), unitSystemOut.GetChoice(qtyID), quantityConversion.ValueConversionList))
+                        if (quantityConversion == null || quantityConversion.ValueConversionList == null || !ValueConversion.Calculate(DrillingPhysicalQuantity.GetQuantity(qtyID), unitSystemIn.GetChoice(qtyID), unitSystemOut.GetChoice(qtyID), quantityConversion.ValueConversionList))
                             return false;
                     }
                     success = true;
