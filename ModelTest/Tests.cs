@@ -20,7 +20,7 @@ namespace OSDC.UnitConversion.ModelTest
             #endregion
 
             #region uniqueness of BasePhysicalQuantities
-            Assert.That(quantityList.Count, Is.EqualTo(87));
+            Assert.That(quantityList.Count, Is.EqualTo(88));
             Assert.That(quantityList, Does.Contain(AccelerationQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AmountSubstanceQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleMagneticFluxDensityQuantity.Instance));
@@ -60,6 +60,8 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(MassQuantity.Instance));
             Assert.That(quantityList, Does.Contain(MassRateQuantity.Instance));
             Assert.That(quantityList, Does.Contain(MaterialStrengthQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(MomentOfAreaQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(MomentOfInertiaQuantity.Instance));
             Assert.That(quantityList, Does.Contain(PorousMediumPermeabilityQuantity.Instance));
             Assert.That(quantityList, Does.Contain(PlaneAngleQuantity.Instance));
             Assert.That(quantityList, Does.Contain(PorosityQuantity.Instance));
@@ -111,7 +113,7 @@ namespace OSDC.UnitConversion.ModelTest
             #endregion
 
             #region uniqueness of PhysicalQuantities
-            Assert.That(quantityList.Count, Is.EqualTo(72));
+            Assert.That(quantityList.Count, Is.EqualTo(74));
             Assert.That(quantityList, Does.Contain(AccelerationDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngleGradientPerLengthDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(AngularVelocityDrillingQuantity.Instance));
@@ -126,6 +128,8 @@ namespace OSDC.UnitConversion.ModelTest
             Assert.That(quantityList, Does.Contain(MassDensityGradientPerLengthDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(MassDensityGradientPerTemperatureDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(MassDensityRateOfChangeDrillingQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(MomentOfAreaDrillingQuantity.Instance));
+            Assert.That(quantityList, Does.Contain(MomentOfInertiaDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(DepthDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(DrillStemMaterialStrengthDrillingQuantity.Instance));
             Assert.That(quantityList, Does.Contain(DrillStringMagneticFluxDrillingQuantity.Instance));
