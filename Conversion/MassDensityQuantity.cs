@@ -47,7 +47,7 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "specific gravity",
                     UnitLabel = "s.g.",
                     ID = new Guid("da94ba95-4494-45af-bf99-31f00031c680"),
-                    ConversionFactorFromSIFormula = "1.0/Factors.SpecificGavity4degC"
+                    ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC"
                 },
                 new UnitChoice
                 {

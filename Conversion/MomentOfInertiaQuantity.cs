@@ -10,7 +10,7 @@ namespace OSDC.UnitConversion.Conversion
     {
         public override string TypicalSymbol { get; } = "I";
         public override string SIUnitName { get; } = "kilogram metre squared";
-        public override string SIUnitLabelLatex { get; } = "kg \\cdot m^{2}}";
+        public override string SIUnitLabelLatex { get; } = "kg \\cdot m^{2}";
         public override double MassDimension { get; } = 1;
         public override double LengthDimension { get; } = 2;
         private static MomentOfInertiaQuantity instance_ = null;

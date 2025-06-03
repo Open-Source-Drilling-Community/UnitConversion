@@ -6295,14 +6295,14 @@ namespace OSDC.UnitConversion.Conversion
                   UnitLabel = "s.g.",
                   SIUnitName = "kilogram per cubic metre",
                   ID = new Guid("da94ba95-4494-45af-bf99-31f00031c680"),
-                  ConversionFactorFromSIFormula = "1.0/Factors.SpecificGavity4degC",
-                  ConversionFactorFromSI = 1.0/Factors.SpecificGavity4degC,
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC,
                   ConversionDescription = 
 "[v] = a * [SI]"
  + Environment.NewLine + "where"
  + Environment.NewLine + "[v] is the value in specific gravity"
  + Environment.NewLine + "[SI] is the value in SI"
- + Environment.NewLine + "a = 1.0/SpecificGavity4degC, i.e., 999.972"
+ + Environment.NewLine + "a = SpecificGavity4degC, i.e., 0.001000028000784022"
  + Environment.NewLine + "and"
  + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
  + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"

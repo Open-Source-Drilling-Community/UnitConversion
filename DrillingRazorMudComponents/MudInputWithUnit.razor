@@ -1,8 +1,9 @@
-﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
+﻿@using System.Text.RegularExpressions
+@namespace OSDC.UnitConversion.DrillingRazorMudComponents
 @implements IUnitAwareComponent
 @inject ILogger<MudInputWithUnit> logger
 
-<MudNumericField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" HideSpinButtons="true"></MudNumericField>
+<MudTextField @bind-Value="@ValueInUserUnit" Label="@Title" Variant="@VariantType" HideSpinButtons="true" Validation="@ValidateNumber"></MudTextField>
 
 @code {
     [CascadingParameter]
@@ -78,7 +79,15 @@
     [Parameter]
     public int Size { get; set; }
 
+    [Parameter]
+    public double? MinValue { get; set; } = null;
+
+    [Parameter]
+    public double? MaxValue { get; set; } = null;
+
     private bool inhibited_ = false;
+
+    private string Title { get; set; } = string.Empty;
 
     private string? ValueInUserUnit
     {
@@ -109,29 +118,11 @@
 
         if (!inhibited_)
         {
-            double valueInUserUnit;
-            if (Parent != null && TryParse(valueInUserUnit_!, out valueInUserUnit))
+            double? siValue = ValueInSI(valueInUserUnit_!);
+            if (siValue != null)
             {
-                switch (DrillingSignalReference)
-                {
-                    case DrillingSignalReferenceType.Pressure:
-                        SIValue = Parent.ToAbsolutePressureSI(valueInUserUnit, QuantityName!);
-                        break;
-                    case DrillingSignalReferenceType.Azimuth:
-                        SIValue = Parent.ToTrueNorthAzimuthSI(valueInUserUnit, QuantityName!);
-                        break;
-                    case DrillingSignalReferenceType.Depth:
-                        SIValue = Parent.ToWGS84DepthSI(valueInUserUnit, QuantityName!);
-                        break;
-                    case DrillingSignalReferenceType.Position:
-                        SIValue = Parent.ToWGS84PositionSI(valueInUserUnit, QuantityName!, PositionDirection);
-                        break;
-                    default:
-                        SIValue = Parent.ToSI(valueInUserUnit, QuantityName!);
-                        break;
-                }
+                SIValue = siValue.Value;
             }
-
             inhibited_ = false;
             try
             {
@@ -155,28 +146,23 @@
             {
                 if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName))
                 {
-                    switch (DrillingSignalReference)
+                    ValueInUserUnit = ValueFromSI(SIValueNullable);
+                    string unitLabel = Parent.GetUnitLabel(QuantityName!);
+                    if (!string.IsNullOrEmpty(QuantityLabel))
                     {
-                        case DrillingSignalReferenceType.Pressure:
-                            ValueInUserUnit = Parent.FromAbsolutePressureSI(SIValueNullable, QuantityName!, false);
-                            break;
-                        case DrillingSignalReferenceType.Azimuth:
-                            ValueInUserUnit = Parent.FromTrueNorthAzimuthSI(SIValueNullable, QuantityName!, false);
-                            break;
-                        case DrillingSignalReferenceType.Depth:
-                            ValueInUserUnit = Parent.FromWGS84DepthSI(SIValueNullable, QuantityName!, false);
-                            break;
-                        case DrillingSignalReferenceType.Position:
-                            ValueInUserUnit = Parent.FromWGS84PositionSI(SIValueNullable, QuantityName!, false, PositionDirection);
-                            break;
-                        default:
-                            ValueInUserUnit = Parent.FromSI(SIValueNullable, QuantityName!, false);
-                            break;
+                        if (!string.IsNullOrEmpty(unitLabel))
+                        {
+                            Title = QuantityLabel + " [" + unitLabel + "]";
+                        }
+                        else
+                        {
+                            Title = QuantityLabel;
+                        }
                     }
                 }
                 else
                 {
-                    ValueInUserUnit = "";
+                    ValueInUserUnit = string.Empty;
                 }
             }
             catch (Exception ex)
@@ -184,6 +170,103 @@
                 logger.LogError(ex, "Problem while managing units in MudInputWithUnit");
             }
             inhibited_ = false;
+        }
+    }
+    private string? ValueFromSI(double? val)
+    {
+        if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName))
+        {
+            string? valueFromSI = null;
+            switch (DrillingSignalReference)
+            {
+                case DrillingSignalReferenceType.Pressure:
+                    valueFromSI = Parent.FromAbsolutePressureSI(val, QuantityName!, false);
+                    break;
+                case DrillingSignalReferenceType.Azimuth:
+                    valueFromSI = Parent.FromTrueNorthAzimuthSI(val, QuantityName!, false);
+                    break;
+                case DrillingSignalReferenceType.Depth:
+                    valueFromSI = Parent.FromWGS84DepthSI(val, QuantityName!, false);
+                    break;
+                case DrillingSignalReferenceType.Position:
+                    valueFromSI = Parent.FromWGS84PositionSI(val, QuantityName!, false, PositionDirection);
+                    break;
+                default:
+                    valueFromSI = Parent.FromSI(val, QuantityName!, false);
+                    break;
+            }
+            return valueFromSI;
+        }
+        return null;
+    }
+
+    private double? ValueInSI(string input)
+    {
+        double valueInUserUnit;
+        if (Parent != null && TryParse(input!, out valueInUserUnit))
+        {
+            double? siValue = null;
+            switch (DrillingSignalReference)
+            {
+                case DrillingSignalReferenceType.Pressure:
+                    siValue = Parent.ToAbsolutePressureSI(valueInUserUnit, QuantityName!);
+                    break;
+                case DrillingSignalReferenceType.Azimuth:
+                    siValue = Parent.ToTrueNorthAzimuthSI(valueInUserUnit, QuantityName!);
+                    break;
+                case DrillingSignalReferenceType.Depth:
+                    siValue = Parent.ToWGS84DepthSI(valueInUserUnit, QuantityName!);
+                    break;
+                case DrillingSignalReferenceType.Position:
+                    siValue = Parent.ToWGS84PositionSI(valueInUserUnit, QuantityName!, PositionDirection);
+                    break;
+                default:
+                    siValue = Parent.ToSI(valueInUserUnit, QuantityName!);
+                    break;
+            }
+            return siValue;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    private string? ValidateNumber(string input)
+    {
+        if (string.IsNullOrWhiteSpace(input))
+            return null;
+
+        var regex = new Regex(@"^[+-]?(?:\d{1,3}(?:[ ,]\d{3})*|\d+)?([.,]\d+)?$");
+
+        if (!regex.IsMatch(input))
+        {
+            return "Invalid number format.";
+        }
+        else
+        {
+            if (MinValue != null || MaxValue != null)
+            {
+                double? inputValue = ValueInSI(input);
+                if (inputValue != null)
+                {
+                    if (MinValue != null && inputValue < MinValue.Value)
+                    {
+                        string? minValueFromSI = ValueFromSI(MinValue); 
+                        return "The value shall be larger than: " + minValueFromSI;
+                    }
+                    if (MaxValue != null && inputValue > MaxValue.Value)
+                    {
+                        string? maxValueFromSI = ValueFromSI(MaxValue);
+                        return "The value shall be smaller than: " + maxValueFromSI;
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 
