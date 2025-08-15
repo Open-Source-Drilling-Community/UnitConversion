@@ -2,7 +2,7 @@
 @implements IUnitAwareComponent
 @inject ILogger<MudInputWithUnitAdornment> logger
 
-<MudTextField @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" Adornment="Adornment.End" AdornmentText="@UnitLabel"></MudTextField>
+<MudTextField ShrinkLabel @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" Adornment="Adornment.End" AdornmentText="@UnitLabel"></MudTextField>
 
 @code {
     [CascadingParameter]
