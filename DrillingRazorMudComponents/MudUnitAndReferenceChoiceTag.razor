@@ -21,7 +21,7 @@ else
                 @if (!IsHiddenDepthReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="depthReferenceName_" Label="Depth Reference" Variant="Variant.Filled">
+                        <MudSelect @bind-Value="DepthReferenceName" Label="Depth Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in depthReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -32,7 +32,7 @@ else
                 @if (!IsHiddenPositionReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="positionReferenceName_" Label="Position Reference" Variant="Variant.Filled">
+                        <MudSelect @bind-Value="PositionReferenceName" Label="Position Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in positionReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -43,7 +43,7 @@ else
                 @if (!IsHiddenAzimuthReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="azimuthReferenceName_" Label="Azimuth Reference" Variant="Variant.Filled">
+                        <MudSelect @bind-Value="AzimuthReferenceName" Label="Azimuth Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in azimuthReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -54,7 +54,7 @@ else
                 @if (!IsHiddenPressureReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="pressureReferenceName_" Label="Pressure Reference" Variant="Variant.Filled">
+                        <MudSelect @bind-Value="PressureReferenceName" Label="Pressure Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in pressureReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -148,6 +148,85 @@ else
     [Parameter]
     public EventCallback<string> UnitSystemNameChanged { get; set; }
 
+    [Parameter] 
+    public string? DepthReferenceName
+    {
+        get
+        {
+            return depthReferenceName_;
+        }
+        set
+        {
+            if (depthReferenceName_ == null || !depthReferenceName_.Equals(value))
+            {
+                depthReferenceName_ = value;
+                PostProcessDepthReference();
+            }
+        }
+    }
+    [Parameter]
+    public EventCallback<string> DepthReferenceNameChanged { get; set; }
+
+    [Parameter]
+    public string? PositionReferenceName
+    {
+        get
+        {
+            return positionReferenceName_;
+        }
+        set
+        {
+            if (positionReferenceName_ == null || !positionReferenceName_.Equals(value))
+            {
+                positionReferenceName_ = value;
+                PostProcessPositionReference();
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> PositionReferenceNameChanged { get; set; }
+
+    [Parameter]
+    public string? AzimuthReferenceName
+    {
+        get
+        {
+            return azimuthReferenceName_;
+        }
+        set
+        {
+            if (azimuthReferenceName_ == null || !azimuthReferenceName_.Equals(value))
+            {
+                azimuthReferenceName_ = value;
+                PostProcessAzimuthReference();
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> AzimuthReferenceNameChanged { get; set; }
+
+    [Parameter]
+    public string? PressureReferenceName
+    {
+        get
+        {
+            return pressureReferenceName_;
+        }
+        set
+        {
+            if (pressureReferenceName_ == null || !pressureReferenceName_.Equals(value))
+            {
+                pressureReferenceName_ = value;
+                PostProcessPressureReference();
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> PressureReferenceNameChanged { get; set; }
+
     public bool InitializedOnce { get; set; } = false;
 
     private string? unitSystemName_;
@@ -198,9 +277,9 @@ else
             {
                 depthReferences.Add(new Tuple<Guid, string>(new Guid("51891465-3b02-4874-bf8d-cab7d33eb908"), "Well-head Level"));
             }
+            IsHiddenDepthReference = depthReferences.Count <= 1;
 
-            // IsHiddenDepthReference = depthReferences.Count <= 1;
-
+            positionReferences.Add(new Tuple<Guid, string>(new Guid("94631afe-61f1-494e-96a0-91f0593285c4"), "WGS84"));
             if (WellHeadPositionReferenceSource != null)
             {
                 positionReferences.Add(new Tuple<Guid, string>(new Guid("443ffbd3-d0ab-43a1-b41e-ac2c54976e49"), "Well-head"));
@@ -217,9 +296,7 @@ else
             {
                 positionReferences.Add(new Tuple<Guid, string>(new Guid("073a7b94-09ac-4c9e-a7bb-03de2684123b"), "Cartographic"));
             }
-            positionReferences.Add(new Tuple<Guid, string>(new Guid("94631afe-61f1-494e-96a0-91f0593285c4"), "WGS84"));
-
-            // IsHiddenPositionReference = positionReferences.Count <= 1;
+            IsHiddenPositionReference = positionReferences.Count <= 1;
 
             azimuthReferences.Add(new Tuple<Guid, string>(new Guid("73cb739b-aae1-4dcb-a1ed-0aad5a62a6bd"), "True North"));
             if (GridConvergenceSource != null)
@@ -230,14 +307,14 @@ else
             {
                 azimuthReferences.Add(new Tuple<Guid, string>(new Guid("fd21b812-338b-4401-a2be-1a4d7d3756b1"), "Magnetic North"));
             }
-            // IsHiddenAzimuthReference = azimuthReferences.Count <= 1;
+            IsHiddenAzimuthReference = azimuthReferences.Count <= 1;
 
             pressureReferences.Add(new Tuple<Guid, string>(new Guid("ffb90df3-d692-4502-9332-d74ddd61b67f"), "Absolute Pressure"));
             if (GaugeReferencePressureSource != null)
             {
                 pressureReferences.Add(new Tuple<Guid, string>(new Guid("28ade755-e07a-4580-b51f-10507832db92"), "Gauge Pressure"));
             }
-            // IsHiddenPressureReference = pressureReferences.Count <= 1;
+            IsHiddenPressureReference = pressureReferences.Count <= 1;
 
             dateReferences.Add(new Tuple<Guid, string>(new Guid("6fb296eb-eb77-4a6f-82d0-122c74e8d3cf"), "UTC"));
             dateReferences.Add(new Tuple<Guid, string>(new Guid("f0ee13c7-2b9b-46e1-8d57-3fd6070f8a9b"), "Local Time"));
@@ -1554,6 +1631,56 @@ else
         catch (Exception ex)
         {
             logger.LogError(ex, "Problem while managing units in PostProcessUnitSystem (second step)");
+        }
+    }
+
+    private async Task PostProcessDepthReference()
+    {
+        try
+        {
+            await DepthReferenceNameChanged.InvokeAsync(depthReferenceName_);
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem while managing depth in PostProcessDepthReference (second step)");
+        }
+    }
+
+    private async Task PostProcessPositionReference()
+    {
+        try
+        {
+            await PositionReferenceNameChanged.InvokeAsync(positionReferenceName_);
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem while managing position in PostProcessPositionReference (second step)");
+        }
+    }
+    private async Task PostProcessAzimuthReference()
+    {
+        try
+        {
+            await AzimuthReferenceNameChanged.InvokeAsync(azimuthReferenceName_);
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem while managing azimuth in PostProcessAzimuthReference (second step)");
+        }
+    }
+    private async Task PostProcessPressureReference()
+    {
+        try
+        {
+            await PressureReferenceNameChanged.InvokeAsync(pressureReferenceName_);
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem while managing pressure in PostProcessPressureReference (second step)");
         }
     }
 }
