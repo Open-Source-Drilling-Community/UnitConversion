@@ -94,7 +94,9 @@ namespace OSDC.UnitConversion.Conversion
          ProportionSmall,  // ProportionSmall
          Porosity,  // Porosity
          StrokeFrequency,  // StrokeFrequency
-         ShockRate // ShockRate
+         ShockRate,  // ShockRate
+         PlaneAngleGeodesic,  // PlaneAngleGeodesic
+         PlaneAngleStandard // PlaneAngleStandard
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -185,7 +187,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.ProportionSmall, new Guid("875392e2-ef43-45f7-a19b-19c51eaba248")},  // ProportionSmall
          {QuantityEnum.Porosity, new Guid("2f6516a1-47cc-498f-8271-e84150183665")},  // Porosity
          {QuantityEnum.StrokeFrequency, new Guid("86fd37e4-3ebf-42ec-9eb2-1e65f7abf29e")},  // StrokeFrequency
-         {QuantityEnum.ShockRate, new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff")} // ShockRate
+         {QuantityEnum.ShockRate, new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff")},  // ShockRate
+         {QuantityEnum.PlaneAngleGeodesic, new Guid("fc88c9ff-fa0a-4406-b397-015f3ca062bc")},  // PlaneAngleGeodesic
+         {QuantityEnum.PlaneAngleStandard, new Guid("3773fc19-be1a-4604-91f8-6e4aefb44757")} // PlaneAngleStandard
     };
   }
 }
@@ -4393,6 +4397,58 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.Hertz, new Guid("7c572c06-0699-4187-9d0c-397f479fe93d")},  // hertz
          {UnitChoicesEnum.ShockPerMinute, new Guid("6ccbee46-cb8a-4777-b1d2-e88eedd24f73")},  // shock per minute
          {UnitChoicesEnum.ShockPerHour, new Guid("0c0d4ecb-ee11-4b57-9bc7-70860637232e")} // shock per hour
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PlaneAngleGeodesicQuantity : PlaneAngleQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Radian,  // radian
+         Degree // degree
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Radian, new Guid("a71fc712-342a-48c2-8e45-b56ee31c7ae0")},  // radian
+         {UnitChoicesEnum.Degree, new Guid("023a3393-a01e-499f-967a-a76b1a78d586")} // degree
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class PlaneAngleStandardQuantity : PlaneAngleQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         Radian,  // radian
+         Degree // degree
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Radian, new Guid("a71fc712-342a-48c2-8e45-b56ee31c7ae0")},  // radian
+         {UnitChoicesEnum.Degree, new Guid("023a3393-a01e-499f-967a-a76b1a78d586")} // degree
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

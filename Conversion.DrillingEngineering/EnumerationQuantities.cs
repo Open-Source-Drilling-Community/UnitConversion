@@ -80,7 +80,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          VolumetricFlowRateOfChangeDrilling,  // VolumetricFlowRateOfChangeDrilling
          MomentOfInertiaDrilling,  // MomentOfInertiaDrilling
          WeightOnBitDrilling,  // WeightOnBitDrilling
-         MomentOfAreaDrilling // MomentOfAreaDrilling
+         MomentOfAreaDrilling,  // MomentOfAreaDrilling
+         TotalFlowAreaDrilling // TotalFlowAreaDrilling
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -157,7 +158,8 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.VolumetricFlowRateOfChangeDrilling, new Guid("244ade8c-591d-44d4-bca6-3798046d90a1")},  // VolumetricFlowRateOfChangeDrilling
          {QuantityEnum.MomentOfInertiaDrilling, new Guid("5b4e4820-9b88-43f9-9856-155846afee0e")},  // MomentOfInertiaDrilling
          {QuantityEnum.WeightOnBitDrilling, new Guid("5e75da44-a675-4f0e-a0fb-52b2cb6797ce")},  // WeightOnBitDrilling
-         {QuantityEnum.MomentOfAreaDrilling, new Guid("1805e50f-3bf0-4347-9e5a-cc169a124b7e")} // MomentOfAreaDrilling
+         {QuantityEnum.MomentOfAreaDrilling, new Guid("1805e50f-3bf0-4347-9e5a-cc169a124b7e")},  // MomentOfAreaDrilling
+         {QuantityEnum.TotalFlowAreaDrilling, new Guid("fc067c6d-1f34-4af9-a6f8-eb2bbf7acca5")} // TotalFlowAreaDrilling
     };
   }
 }
@@ -2737,6 +2739,40 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.FeetToTheFourthPower, new Guid("d35362a3-1352-4dcd-b425-c376afcf4d36")},  // feet to the fourth power
          {UnitChoicesEnum.InchesToTheFourthPower, new Guid("86914b8d-6a5d-43ee-ad7c-e69fbf6d5087")},  // inches to the fourth power
          {UnitChoicesEnum.MetresToTheFourthPower, new Guid("f479bbab-bdd0-4c33-b13c-6dac1d57539b")} // metres to the fourth power
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class TotalFlowAreaDrillingQuantity : AreaQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         SquareMetre,  // square metre
+         SquareFoot,  // square foot
+         SquareDecimetre,  // square decimetre
+         SquareYard,  // square yard
+         SquareCentimetre,  // square centimetre
+         SquareInch // square inch
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.SquareMetre, new Guid("6225a0d7-d2f1-4bb1-9721-5b260bac26ee")},  // square metre
+         {UnitChoicesEnum.SquareFoot, new Guid("5a59332e-17b3-4fa2-9527-12d06a2b4248")},  // square foot
+         {UnitChoicesEnum.SquareDecimetre, new Guid("125fd8d6-d1eb-4826-a952-5219603409ab")},  // square decimetre
+         {UnitChoicesEnum.SquareYard, new Guid("ae3df24c-e5db-4b88-9e81-228f29855f1b")},  // square yard
+         {UnitChoicesEnum.SquareCentimetre, new Guid("d74bb2bc-9c86-4be4-bff1-88cac7b1049b")},  // square centimetre
+         {UnitChoicesEnum.SquareInch, new Guid("294bc6d0-5be7-4c70-95f3-ad9dc50f02cf")} // square inch
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

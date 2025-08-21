@@ -647,6 +647,8 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(MomentOfInertiaQuantity.Instance.ID.ToString(), MomentOfInertiaQuantity.Instance.GetUnitChoice(MomentOfInertiaQuantity.UnitChoicesEnum.KilogramMetreSquared).ID.ToString());
                     Choices.Add(PorousMediumPermeabilityQuantity.Instance.ID.ToString(), PorousMediumPermeabilityQuantity.Instance.GetUnitChoice(PorousMediumPermeabilityQuantity.UnitChoicesEnum.Millidarcy).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(PlaneAngleGeodesicQuantity.Instance.ID.ToString(), PlaneAngleGeodesicQuantity.Instance.GetUnitChoice(PlaneAngleGeodesicQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(PlaneAngleStandardQuantity.Instance.ID.ToString(), PlaneAngleStandardQuantity.Instance.GetUnitChoice(PlaneAngleStandardQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(PorosityQuantity.Instance.ID.ToString(), PorosityQuantity.Instance.GetUnitChoice(PorosityQuantity.UnitChoicesEnum.Proportion).ID.ToString());
                     Choices.Add(PowerQuantity.Instance.ID.ToString(), PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).ID.ToString());
                     Choices.Add(PressureGradientPerLengthQuantity.Instance.ID.ToString(), PressureGradientPerLengthQuantity.Instance.GetUnitChoice(PressureGradientPerLengthQuantity.UnitChoicesEnum.BarPerMetre).ID.ToString());
@@ -743,6 +745,8 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(MomentOfInertiaQuantity.Instance.ID.ToString(), MomentOfInertiaQuantity.Instance.GetUnitChoice(MomentOfInertiaQuantity.UnitChoicesEnum.PoundInchSquared).ID.ToString());
                     Choices.Add(PorousMediumPermeabilityQuantity.Instance.ID.ToString(), PorousMediumPermeabilityQuantity.Instance.GetUnitChoice(PorousMediumPermeabilityQuantity.UnitChoicesEnum.Millidarcy).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(PlaneAngleGeodesicQuantity.Instance.ID.ToString(), PlaneAngleGeodesicQuantity.Instance.GetUnitChoice(PlaneAngleGeodesicQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(PlaneAngleStandardQuantity.Instance.ID.ToString(), PlaneAngleStandardQuantity.Instance.GetUnitChoice(PlaneAngleStandardQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(PorosityQuantity.Instance.ID.ToString(), PorosityQuantity.Instance.GetUnitChoice(PorosityQuantity.UnitChoicesEnum.Proportion).ID.ToString());
                     Choices.Add(PowerQuantity.Instance.ID.ToString(), PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).ID.ToString());
                     Choices.Add(PressureGradientPerLengthQuantity.Instance.ID.ToString(), PressureGradientPerLengthQuantity.Instance.GetUnitChoice(PressureGradientPerLengthQuantity.UnitChoicesEnum.PsiPerFoot).ID.ToString());
@@ -839,6 +843,8 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(MomentOfInertiaQuantity.Instance.ID.ToString(), MomentOfInertiaQuantity.Instance.GetUnitChoice(MomentOfInertiaQuantity.UnitChoicesEnum.PoundInchSquared).ID.ToString());
                     Choices.Add(PorousMediumPermeabilityQuantity.Instance.ID.ToString(), PorousMediumPermeabilityQuantity.Instance.GetUnitChoice(PorousMediumPermeabilityQuantity.UnitChoicesEnum.Millidarcy).ID.ToString());
                     Choices.Add(PlaneAngleQuantity.Instance.ID.ToString(), PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(PlaneAngleGeodesicQuantity.Instance.ID.ToString(), PlaneAngleGeodesicQuantity.Instance.GetUnitChoice(PlaneAngleGeodesicQuantity.UnitChoicesEnum.Degree).ID.ToString());
+                    Choices.Add(PlaneAngleStandardQuantity.Instance.ID.ToString(), PlaneAngleStandardQuantity.Instance.GetUnitChoice(PlaneAngleStandardQuantity.UnitChoicesEnum.Degree).ID.ToString());
                     Choices.Add(PorosityQuantity.Instance.ID.ToString(), PorosityQuantity.Instance.GetUnitChoice(PorosityQuantity.UnitChoicesEnum.Proportion).ID.ToString());
                     Choices.Add(PowerQuantity.Instance.ID.ToString(), PowerQuantity.Instance.GetUnitChoice(PowerQuantity.UnitChoicesEnum.Watt).ID.ToString());
                     Choices.Add(PressureGradientPerLengthQuantity.Instance.ID.ToString(), PressureGradientPerLengthQuantity.Instance.GetUnitChoice(PressureGradientPerLengthQuantity.UnitChoicesEnum.PsiPerFoot).ID.ToString());

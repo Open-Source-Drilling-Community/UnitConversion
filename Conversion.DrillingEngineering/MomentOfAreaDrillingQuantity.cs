@@ -8,7 +8,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class MomentOfAreaDrillingQuantity : MomentOfAreaQuantity
     {
-        public override double? MeaningfulPrecisionInSI { get; } = 1e-16;
+        public override double? MeaningfulPrecisionInSI { get; } = 1e-10;
         private static MomentOfAreaDrillingQuantity instance_ = null;
 
         public static new MomentOfAreaDrillingQuantity Instance
