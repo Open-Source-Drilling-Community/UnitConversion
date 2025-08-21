@@ -1,14 +1,17 @@
 ﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
-<MudGrid>
-    <MudItem>
-        <MudTextField @bind-Value="@DegreeRoundedValue" Label="@QuantityLabel" Variant="@VariantType"
+<MudGrid Spacing="0">
+    <MudItem xs="12">
+        <MudText Typo="Typo.caption" Class="m-0">@QuantityLabel</MudText>
+    </MudItem>
+    <MudItem xs="12" sm="3" md="3" lg="3">
+        <MudTextField @bind-Value="@DegreeRoundedValue"  Variant="@VariantType"
                       Adornment="Adornment.End" AdornmentText="@degreeUnitChoice.UnitLabel"></MudTextField>
     </MudItem>
-    <MudItem>
+    <MudItem xs="12" sm="3" md="3" lg="3">
         <MudTextField @bind-Value="@MinuteRoundedValue" Variant="@VariantType"
                       Adornment="Adornment.End" AdornmentText="@minuteUnitChoice.UnitLabel"></MudTextField>
     </MudItem>
-    <MudItem>
+    <MudItem xs="12" sm="6" md="6" lg="6">
         <MudTextField @bind-Value="@SecondValue" Variant="@VariantType"
                       Adornment="Adornment.End" AdornmentText="@secondUnitChoice.UnitLabel"></MudTextField>
     </MudItem>
@@ -45,6 +48,7 @@
             {
                 SIValue_ = value;
             }
+            ManageUnits();
         }
     }
 
@@ -58,6 +62,7 @@
         set
         {
             SIValue_ = value;
+            ManageUnits();
         }
     }
 
@@ -81,7 +86,7 @@
         set
         {
             degreeRoundedValue_ = value;
-            ManageValues();
+            ManageValues().Wait();
         }
     }
 
@@ -94,7 +99,7 @@
         set
         {
             minuteRoundedValue_ = value;
-            ManageValues();
+            ManageValues().Wait();
         }
     }
 
@@ -107,7 +112,7 @@
         set
         {
             secondValue_ = value;
-            ManageValues();
+            ManageValues().Wait();
         }
     }
 
@@ -120,16 +125,31 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-
-        double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue);
-        double degValue = Math.Floor(valueInDegreeUnit);
-        double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
-        double secValue = (valueInDegreeUnit - degValue - minValue / 60) * 3600;
-        degreeRoundedValue_ = degValue.ToString();
-        minuteRoundedValue_ = minValue.ToString();
-        secondValue_ = secValue.ToString();
+        ManageUnits();
     }
 
+    public void ManageUnits()
+    {
+        if (!inhibited_)
+        {
+            if (SIValueNullable == null)
+            {
+                degreeRoundedValue_ = null;
+                minuteRoundedValue_ = null;
+                secondValue_ = null;
+            }
+            else
+            {
+                double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue);
+                double degValue = Math.Floor(valueInDegreeUnit);
+                double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
+                double secValue = (valueInDegreeUnit - degValue - minValue / 60) * 3600;
+                degreeRoundedValue_ = degValue.ToString();
+                minuteRoundedValue_ = minValue.ToString();
+                secondValue_ = secValue.ToString("F5");
+            }
+        }
+    }
 
     public async Task ManageValues()
     {
@@ -145,10 +165,15 @@
                 degreeRoundedValue_ = degValue.ToString();
                 minuteRoundedValue_ = minValue.ToString();
                 secondValue_ = secValue.ToString();
+                await SIValueChanged.InvokeAsync(SIValue);
+                await SIValueNullableChanged.InvokeAsync(SIValueNullable);
             }
-            await SIValueChanged.InvokeAsync(SIValue);
-            await SIValueNullableChanged.InvokeAsync(SIValueNullable);
-            inhibited_ = false;
+            else
+            {
+                inhibited_ = true;
+                SIValueNullable = null;
+                inhibited_ = false;
+            }
         }
     }
 
