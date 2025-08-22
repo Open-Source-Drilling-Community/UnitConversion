@@ -52,7 +52,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity"
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity"
                 }
               }
             }
@@ -74,7 +74,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity"
                   }
                 }
               }
@@ -335,7 +335,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -344,7 +344,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -353,7 +353,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -390,7 +390,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                 }
               }
             }
@@ -419,7 +419,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -428,7 +428,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -437,7 +437,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -510,7 +510,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 }
               }
@@ -782,7 +782,7 @@
         },
         "additionalProperties": false
       },
-      "OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity": {
+      "OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity": {
         "type": "object",
         "properties": {
           "Name": {
@@ -994,7 +994,7 @@
         },
         "additionalProperties": false
       },
-      "OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem": {
+      "OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem": {
         "type": "object",
         "properties": {
           "Choices": {

@@ -75,6 +75,12 @@ namespace OSDC.UnitConversion.Conversion
          TorqueRateOfChange,  // TorqueRateOfChange
          MomentOfArea,  // MomentOfArea
          MomentOfInertia,  // MomentOfInertia
+         SpecificVolume,  // SpecificVolume
+         SpecificVolumeSquared,  // SpecificVolumeSquared
+         MassDensityGradientPerPressure,  // MassDensityGradientPerPressure
+         MassDensityGradientPerPressureSquared,  // MassDensityGradientPerPressureSquared
+         MassDensityGradientPerPressureTemperature,  // MassDensityGradientPerPressureTemperature
+         MassDensityGradientPerPressureSquaredTemperature,  // MassDensityGradientPerPressureSquaredTemperature
          DiameterSmall,  // DiameterSmall
          DimensionLessStandard,  // DimensionLessStandard
          EarthMagneticFluxDensity,  // EarthMagneticFluxDensity
@@ -168,6 +174,12 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.TorqueRateOfChange, new Guid("e94ee582-62bd-472b-9188-1f423729e99e")},  // TorqueRateOfChange
          {QuantityEnum.MomentOfArea, new Guid("669f44f8-ed5f-43e0-9b63-adf1b6b9e865")},  // MomentOfArea
          {QuantityEnum.MomentOfInertia, new Guid("cf7c69b0-b4d7-45d2-9d7d-4714996424c0")},  // MomentOfInertia
+         {QuantityEnum.SpecificVolume, new Guid("ad0b041e-4bfe-4e4a-9c9f-1b800d2332ba")},  // SpecificVolume
+         {QuantityEnum.SpecificVolumeSquared, new Guid("a266621c-b583-443f-ae53-1ad46d90252b")},  // SpecificVolumeSquared
+         {QuantityEnum.MassDensityGradientPerPressure, new Guid("54da476c-5a35-4274-93bf-1a2d8eede435")},  // MassDensityGradientPerPressure
+         {QuantityEnum.MassDensityGradientPerPressureSquared, new Guid("885ebdc2-2800-462e-93fa-cbaaffd12b6e")},  // MassDensityGradientPerPressureSquared
+         {QuantityEnum.MassDensityGradientPerPressureTemperature, new Guid("1f5a6169-f514-4d86-a030-956efc8cb4f1")},  // MassDensityGradientPerPressureTemperature
+         {QuantityEnum.MassDensityGradientPerPressureSquaredTemperature, new Guid("2d4b23e0-01ea-472f-85c1-1ced4d6507a6")},  // MassDensityGradientPerPressureSquaredTemperature
          {QuantityEnum.DiameterSmall, new Guid("d07d00aa-35aa-41c6-a52d-ad51c3f4e97f")},  // DiameterSmall
          {QuantityEnum.DimensionLessStandard, new Guid("5d356437-ab4e-4de7-8219-1f4988315dee")},  // DimensionLessStandard
          {QuantityEnum.EarthMagneticFluxDensity, new Guid("ed95aca5-aaf9-4822-b045-342ffcd06ca7")},  // EarthMagneticFluxDensity
@@ -3747,6 +3759,622 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.GramCentimetreSquared, new Guid("71e4e230-c611-4de9-b056-a1ef732b7fce")},  // gram centimetre squared
          {UnitChoicesEnum.PoundFootSquared, new Guid("103bd4aa-494a-4ec3-bf60-c3ce5bab364e")},  // pound foot squared
          {UnitChoicesEnum.PoundInchSquared, new Guid("ce8e3a4e-2cea-471a-a0dc-846523001be2")} // pound inch squared
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class SpecificVolumeQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         CubicMetrePerKilogram,  // cubic metre per kilogram
+         CubicMetrePerGram,  // cubic metre per gram
+         CubicDecimetrePerGram,  // cubic decimetre per gram
+         LitrePerGram,  // litre per gram
+         DecilitrePerGram,  // decilitre per gram
+         CentilitrePerGram,  // centilitre per gram
+         MillilitrePerGram,  // millilitre per gram
+         CubicCentimetrePerGram,  // cubic centimetre per gram
+         CubicMillimetrePerGram,  // cubic millimetre per gram
+         LitrePerKilogram,  // litre per kilogram
+         DecilitrePerKilogram,  // decilitre per kilogram
+         CentilitrePerKilogram,  // centilitre per kilogram
+         MillilitrePerKilogram,  // millilitre per kilogram
+         CubicCentimetrePerKilogram,  // cubic centimetre per kilogram
+         CubicMillimetrePerKilogram,  // cubic millimetre per kilogram
+         CubicYardPerPound,  // cubic yard per pound
+         CubicFeetPerPound,  // cubic feet per pound
+         CubicInchesPerPound,  // cubic inches per pound
+         CubicYardPerOunce,  // cubic yard per ounce
+         CubicFeetPerOunce,  // cubic feet per ounce
+         CubicInchesPerOunce,  // cubic inches per ounce
+         GallonUKPerOunce,  // gallon UK per ounce
+         GallonUSPerOunce,  // gallon US per ounce
+         GallonUKPerPound,  // gallon UK per pound
+         GallonUSPerPound // gallon US per pound
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.CubicMetrePerKilogram, new Guid("0c321874-be1d-4ca7-8bfe-eac3c2b6e2f4")},  // cubic metre per kilogram
+         {UnitChoicesEnum.CubicMetrePerGram, new Guid("72a258a9-bb34-46b2-8eb7-3123fb054669")},  // cubic metre per gram
+         {UnitChoicesEnum.CubicDecimetrePerGram, new Guid("563b1574-04df-4285-a953-20d7da6b528f")},  // cubic decimetre per gram
+         {UnitChoicesEnum.LitrePerGram, new Guid("d9206161-2a7a-45e8-9306-f5f9714bea84")},  // litre per gram
+         {UnitChoicesEnum.DecilitrePerGram, new Guid("65c84088-e307-4ce2-adfa-bb380e639484")},  // decilitre per gram
+         {UnitChoicesEnum.CentilitrePerGram, new Guid("e608ef34-e8b9-4134-8692-b72273ddd0af")},  // centilitre per gram
+         {UnitChoicesEnum.MillilitrePerGram, new Guid("9cc34144-ca23-4d82-b725-c39e1607c356")},  // millilitre per gram
+         {UnitChoicesEnum.CubicCentimetrePerGram, new Guid("5ac98a68-f85b-40b9-84d7-f6409bc79944")},  // cubic centimetre per gram
+         {UnitChoicesEnum.CubicMillimetrePerGram, new Guid("a31a14cf-66d9-4789-8ea5-cca1f874a3f1")},  // cubic millimetre per gram
+         {UnitChoicesEnum.LitrePerKilogram, new Guid("f4551a81-3856-434b-9247-4215d5782052")},  // litre per kilogram
+         {UnitChoicesEnum.DecilitrePerKilogram, new Guid("07e7e24d-6538-4dd2-8c5d-d09e7cf2f006")},  // decilitre per kilogram
+         {UnitChoicesEnum.CentilitrePerKilogram, new Guid("f0702462-ab52-4675-ba1e-0d7f86c8c3ea")},  // centilitre per kilogram
+         {UnitChoicesEnum.MillilitrePerKilogram, new Guid("b87d48ef-91c1-48a8-8bac-41e774e3c3f0")},  // millilitre per kilogram
+         {UnitChoicesEnum.CubicCentimetrePerKilogram, new Guid("7e258609-fb1f-4ad9-b712-9277427adaa5")},  // cubic centimetre per kilogram
+         {UnitChoicesEnum.CubicMillimetrePerKilogram, new Guid("e72a515f-8edc-4049-973c-b9516aba6b61")},  // cubic millimetre per kilogram
+         {UnitChoicesEnum.CubicYardPerPound, new Guid("cb0950fd-ebbb-459a-b542-f041b9388b1b")},  // cubic yard per pound
+         {UnitChoicesEnum.CubicFeetPerPound, new Guid("7b5fe09f-170e-4a4f-bf30-77d4ffbbbd28")},  // cubic feet per pound
+         {UnitChoicesEnum.CubicInchesPerPound, new Guid("8bf7c8f0-64fe-4785-be5f-5928906aea6a")},  // cubic inches per pound
+         {UnitChoicesEnum.CubicYardPerOunce, new Guid("7027900f-a654-482a-8fc0-548f6d68c470")},  // cubic yard per ounce
+         {UnitChoicesEnum.CubicFeetPerOunce, new Guid("ce834ba1-6ca8-4651-8fbd-1d008113ea1e")},  // cubic feet per ounce
+         {UnitChoicesEnum.CubicInchesPerOunce, new Guid("a23d16bd-f9a2-475d-a76c-e6025940d631")},  // cubic inches per ounce
+         {UnitChoicesEnum.GallonUKPerOunce, new Guid("cfe6a1db-5f38-4eb1-8a43-83dd959ee91c")},  // gallon UK per ounce
+         {UnitChoicesEnum.GallonUSPerOunce, new Guid("216ba9e0-5c75-427a-8179-be65050bb773")},  // gallon US per ounce
+         {UnitChoicesEnum.GallonUKPerPound, new Guid("2a509c09-5584-4df3-9b03-ef6afa56a0d3")},  // gallon UK per pound
+         {UnitChoicesEnum.GallonUSPerPound, new Guid("8f6021d8-130a-4496-8a88-38b3b30aadfc")} // gallon US per pound
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class SpecificVolumeSquaredQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         CubicMetreSquaredPerKilogramSquared,  // cubic metre squared per kilogram squared
+         CubicMetreSquaredPerGramSquared,  // cubic metre squared per gram squared
+         CubicDecimetreSquaredPerGramSquared,  // cubic decimetre squared per gram squared
+         LitreSquaredPerGramSquared,  // litre squared per gram squared
+         DecilitreSquaredPerGramSquared,  // decilitre squared per gram squared
+         CentilitreSquaredPerGramSquared,  // centilitre squared per gram squared
+         MillilitreSquaredPerGramSquared,  // millilitre squared per gram squared
+         CubicCentimetreSquaredPerGramSquared,  // cubic centimetre squared per gram squared
+         CubicMillimetreSquaredPerGramSquared,  // cubic millimetre squared per gram squared
+         LitreSquaredPerKilogramSquared,  // litre squared per kilogram squared
+         DecilitreSquaredPerKilogramSquared,  // decilitre squared per kilogram squared
+         CentilitreSquaredPerKilogramSquared,  // centilitre squared per kilogram squared
+         MillilitreSquaredPerKilogramSquared,  // millilitre squared per kilogram squared
+         CubicCentimetreSquaredPerKilogramSquared,  // cubic centimetre squared per kilogram squared
+         CubicMillimetreSquaredPerKilogramSquared,  // cubic millimetre squared per kilogram squared
+         CubicYardSquaredPerPoundSquared,  // cubic yard squared per pound squared
+         CubicFeetSquaredPerPoundSquared,  // cubic feet squared per pound squared
+         CubicInchesSquaredPerPoundSquared,  // cubic inches squared per pound squared
+         CubicYardSquaredPerOunceSquared,  // cubic yard squared per ounce squared
+         CubicFeetSquaredPerOunceSquared,  // cubic feet squared per ounce squared
+         CubicInchesSquaredPerOunceSquared,  // cubic inches squared per ounce squared
+         GallonUKSquaredPerOunceSquared,  // gallon UK squared per ounce squared
+         GallonUSSquaredPerOunceSquared,  // gallon US squared per ounce squared
+         GallonUKSquaredPerPoundSquared,  // gallon UK squared per pound squared
+         GallonUSSquaredPerPoundSquared // gallon US squared per pound squared
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.CubicMetreSquaredPerKilogramSquared, new Guid("9c15bf12-237d-486f-bba4-a2fbfc4e8478")},  // cubic metre squared per kilogram squared
+         {UnitChoicesEnum.CubicMetreSquaredPerGramSquared, new Guid("b3e7d7b9-5671-4a15-bb70-7885bd6540c5")},  // cubic metre squared per gram squared
+         {UnitChoicesEnum.CubicDecimetreSquaredPerGramSquared, new Guid("f29c66ae-2cf0-459d-af24-34e62a350904")},  // cubic decimetre squared per gram squared
+         {UnitChoicesEnum.LitreSquaredPerGramSquared, new Guid("5e37afb2-6def-422c-963c-6d7377421a66")},  // litre squared per gram squared
+         {UnitChoicesEnum.DecilitreSquaredPerGramSquared, new Guid("7707bae3-e596-4d4f-9e52-c862236abe40")},  // decilitre squared per gram squared
+         {UnitChoicesEnum.CentilitreSquaredPerGramSquared, new Guid("7e344fe0-8487-4d24-99e8-8ef370e01c99")},  // centilitre squared per gram squared
+         {UnitChoicesEnum.MillilitreSquaredPerGramSquared, new Guid("119533f4-6a22-4d16-8927-6cf60b6919c1")},  // millilitre squared per gram squared
+         {UnitChoicesEnum.CubicCentimetreSquaredPerGramSquared, new Guid("d1331578-5ea9-4e15-a687-0eaef32d5197")},  // cubic centimetre squared per gram squared
+         {UnitChoicesEnum.CubicMillimetreSquaredPerGramSquared, new Guid("16048716-100d-4089-af27-3ba731defa11")},  // cubic millimetre squared per gram squared
+         {UnitChoicesEnum.LitreSquaredPerKilogramSquared, new Guid("0b1b47d5-fdb3-47af-9f80-ea9193a60fa4")},  // litre squared per kilogram squared
+         {UnitChoicesEnum.DecilitreSquaredPerKilogramSquared, new Guid("c4fe5cce-8106-4640-b70a-a915faf84317")},  // decilitre squared per kilogram squared
+         {UnitChoicesEnum.CentilitreSquaredPerKilogramSquared, new Guid("c9130aa9-0f78-4e56-91b4-e8c397e48f34")},  // centilitre squared per kilogram squared
+         {UnitChoicesEnum.MillilitreSquaredPerKilogramSquared, new Guid("7d9a4f75-0e77-4eb7-9690-dadad54690cb")},  // millilitre squared per kilogram squared
+         {UnitChoicesEnum.CubicCentimetreSquaredPerKilogramSquared, new Guid("037ab139-0665-489c-8b5c-8183e738059c")},  // cubic centimetre squared per kilogram squared
+         {UnitChoicesEnum.CubicMillimetreSquaredPerKilogramSquared, new Guid("6c6b8e30-4a7f-496d-9884-7c65124fb09e")},  // cubic millimetre squared per kilogram squared
+         {UnitChoicesEnum.CubicYardSquaredPerPoundSquared, new Guid("be485c8d-8b4f-451b-bf5a-bef3713bc4a8")},  // cubic yard squared per pound squared
+         {UnitChoicesEnum.CubicFeetSquaredPerPoundSquared, new Guid("b8599a96-d1bf-4832-aafb-4e79a2f7aa2f")},  // cubic feet squared per pound squared
+         {UnitChoicesEnum.CubicInchesSquaredPerPoundSquared, new Guid("55d2064c-dc72-4c25-bbab-5d94b34dfada")},  // cubic inches squared per pound squared
+         {UnitChoicesEnum.CubicYardSquaredPerOunceSquared, new Guid("41aa2db9-4162-4e89-ab3e-f516eee318fb")},  // cubic yard squared per ounce squared
+         {UnitChoicesEnum.CubicFeetSquaredPerOunceSquared, new Guid("985c778c-2247-48cd-bf75-8658b0cce2e4")},  // cubic feet squared per ounce squared
+         {UnitChoicesEnum.CubicInchesSquaredPerOunceSquared, new Guid("ed7d6e1d-2948-4e36-a165-8bb207f320c4")},  // cubic inches squared per ounce squared
+         {UnitChoicesEnum.GallonUKSquaredPerOunceSquared, new Guid("57b49ba7-1aaa-4746-a7dc-7e6578fa2ea3")},  // gallon UK squared per ounce squared
+         {UnitChoicesEnum.GallonUSSquaredPerOunceSquared, new Guid("1ddf2dc3-a5cd-457d-904d-cfead242bb05")},  // gallon US squared per ounce squared
+         {UnitChoicesEnum.GallonUKSquaredPerPoundSquared, new Guid("b689bb7e-7334-41c6-b8de-afe74cec4dd0")},  // gallon UK squared per pound squared
+         {UnitChoicesEnum.GallonUSSquaredPerPoundSquared, new Guid("109d07d6-b035-420a-9cee-fb44524ad0fb")} // gallon US squared per pound squared
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerPressureQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerPascal,  // kilogram per cubic metre per pascal
+         SpecificGravityPerPascal,  // specific gravity per pascal
+         GramPerCubicCentimetrePerPascal,  // gram per cubic centimetre per pascal
+         PoundPerGallonUKPerPascal,  // pound per gallon (UK) per pascal
+         PoundPerGallonUSPerPascal,  // pound per gallon (US) per pascal
+         PoundPerCubicFootPerPascal,  // pound per cubic foot per pascal
+         PoundPerCubicInchPerPascal,  // pound per cubic inch per pascal
+         PoundPerCubicYardPerPascal,  // pound per cubic yard per pascal
+         KilogramPerCubicMetrePerBar,  // kilogram per cubic metre per bar
+         SpecificGravityPerBar,  // specific gravity per bar
+         GramPerCubicCentimetrePerBar,  // gram per cubic centimetre per bar
+         PoundPerGallonUKPerBar,  // pound per gallon (UK) per bar
+         PoundPerGallonUSPerBar,  // pound per gallon (US) per bar
+         PoundPerCubicFootPerBar,  // pound per cubic foot per bar
+         PoundPerCubicInchPerBar,  // pound per cubic inch per bar
+         PoundPerCubicYardPerBar,  // pound per cubic yard per bar
+         KilogramPerCubicMetrePerPoundPerSquareInch,  // kilogram per cubic metre per pound per square inch
+         SpecificGravityPerPoundPerSquareInch,  // specific gravity per pound per square inch
+         GramPerCubicCentimetrePerPoundPerSquareInch,  // gram per cubic centimetre per pound per square inch
+         PoundPerGallonUKPerPoundPerSquareInch,  // pound per gallon (UK) per pound per square inch
+         PoundPerGallonUSPerPoundPerSquareInch,  // pound per gallon (US) per pound per square inch
+         PoundPerCubicFootPerPoundPerSquareInch,  // pound per cubic foot per pound per square inch
+         PoundPerCubicInchPerPoundPerSquareInch,  // pound per cubic inch per pound per square inch
+         PoundPerCubicYardPerPoundPerSquareInch // pound per cubic yard per pound per square inch
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascal, new Guid("48acbe7c-5fd3-4eaf-9667-adfbfda6c930")},  // kilogram per cubic metre per pascal
+         {UnitChoicesEnum.SpecificGravityPerPascal, new Guid("619534ee-a9f5-4420-85ab-dfa218972250")},  // specific gravity per pascal
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascal, new Guid("367f7fe4-b546-4963-accd-38043698916b")},  // gram per cubic centimetre per pascal
+         {UnitChoicesEnum.PoundPerGallonUKPerPascal, new Guid("1dafde6f-b7f4-450c-bf9f-4d9063c53df5")},  // pound per gallon (UK) per pascal
+         {UnitChoicesEnum.PoundPerGallonUSPerPascal, new Guid("0cb13b7b-d967-41ac-8d55-9dbd9c8a9004")},  // pound per gallon (US) per pascal
+         {UnitChoicesEnum.PoundPerCubicFootPerPascal, new Guid("828a496b-d5be-42e2-8551-e49cd53b91e7")},  // pound per cubic foot per pascal
+         {UnitChoicesEnum.PoundPerCubicInchPerPascal, new Guid("c8733719-56e5-4db2-a601-09e68bafdc18")},  // pound per cubic inch per pascal
+         {UnitChoicesEnum.PoundPerCubicYardPerPascal, new Guid("4fc7d357-c230-4302-922f-05dc98c20953")},  // pound per cubic yard per pascal
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBar, new Guid("af23c11a-14cc-42f0-9693-dd8590db64a3")},  // kilogram per cubic metre per bar
+         {UnitChoicesEnum.SpecificGravityPerBar, new Guid("c30e40c2-7fa4-47bd-8d62-4e8a33ef660c")},  // specific gravity per bar
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBar, new Guid("b49fd006-16ed-404f-afac-a78bd69c210d")},  // gram per cubic centimetre per bar
+         {UnitChoicesEnum.PoundPerGallonUKPerBar, new Guid("0c7f7c23-6eee-4201-be51-3598b09f0ade")},  // pound per gallon (UK) per bar
+         {UnitChoicesEnum.PoundPerGallonUSPerBar, new Guid("4810318e-813c-4671-92da-edfe64adc62a")},  // pound per gallon (US) per bar
+         {UnitChoicesEnum.PoundPerCubicFootPerBar, new Guid("0e0ba903-3d8c-4bdd-82bc-0b4d9a79169d")},  // pound per cubic foot per bar
+         {UnitChoicesEnum.PoundPerCubicInchPerBar, new Guid("4691ad34-b973-4f74-aae4-89c0af618805")},  // pound per cubic inch per bar
+         {UnitChoicesEnum.PoundPerCubicYardPerBar, new Guid("bfef9341-2dfe-4567-9826-8388839e8bc2")},  // pound per cubic yard per bar
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInch, new Guid("243a8789-24ba-407c-956a-7665b9ea5012")},  // kilogram per cubic metre per pound per square inch
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInch, new Guid("1e56b53b-92a2-4dbc-87cf-143650a30895")},  // specific gravity per pound per square inch
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInch, new Guid("11a4f910-3071-4e9a-ac07-e7d106c52fd9")},  // gram per cubic centimetre per pound per square inch
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInch, new Guid("67712637-814b-4a0e-a858-c6b8bd864fc1")},  // pound per gallon (UK) per pound per square inch
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInch, new Guid("6234aef5-1534-47fa-b96b-4d0905832217")},  // pound per gallon (US) per pound per square inch
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInch, new Guid("c1d08a1b-9832-4d68-b47b-b113b8d06bf0")},  // pound per cubic foot per pound per square inch
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInch, new Guid("28fc5b3b-c94d-4afc-995f-6680dc3125f7")},  // pound per cubic inch per pound per square inch
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInch, new Guid("3e04b954-9156-405e-a058-16541687ee43")} // pound per cubic yard per pound per square inch
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerPressureSquaredQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerPascalSquared,  // kilogram per cubic metre per pascal squared
+         SpecificGravityPerPascalSquared,  // specific gravity per pascal squared
+         GramPerCubicCentimetrePerPascalSquared,  // gram per cubic centimetre per pascal squared
+         PoundPerGallonUKPerPascalSquared,  // pound per gallon (UK) per pascal squared
+         PoundPerGallonUSPerPascalSquared,  // pound per gallon (US) per pascal squared
+         PoundPerCubicFootPerPascalSquared,  // pound per cubic foot per pascal squared
+         PoundPerCubicInchPerPascalSquared,  // pound per cubic inch per pascal squared
+         PoundPerCubicYardPerPascalSquared,  // pound per cubic yard per pascal squared
+         KilogramPerCubicMetrePerBarSquared,  // kilogram per cubic metre per bar squared
+         SpecificGravityPerBarSquared,  // specific gravity per bar squared
+         GramPerCubicCentimetrePerBarSquared,  // gram per cubic centimetre per bar squared
+         PoundPerGallonUKPerBarSquared,  // pound per gallon (UK) per bar squared
+         PoundPerGallonUSPerBarSquared,  // pound per gallon (US) per bar squared
+         PoundPerCubicFootPerBarSquared,  // pound per cubic foot per bar squared
+         PoundPerCubicInchPerBarSquared,  // pound per cubic inch per bar squared
+         PoundPerCubicYardPerBarSquared,  // pound per cubic yard per bar squared
+         KilogramPerCubicMetrePerPoundPerSquareInchSquared,  // kilogram per cubic metre per pound per square inch squared
+         SpecificGravityPerPoundPerSquareInchSquared,  // specific gravity per pound per square inch squared
+         GramPerCubicCentimetrePerPoundPerSquareInchSquared,  // gram per cubic centimetre per pound per square inch squared
+         PoundPerGallonUKPerPoundPerSquareInchSquared,  // pound per gallon (UK) per pound per square inch squared
+         PoundPerGallonUSPerPoundPerSquareInchSquared,  // pound per gallon (US) per pound per square inch squared
+         PoundPerCubicFootPerPoundPerSquareInchSquared,  // pound per cubic foot per pound per square inch squared
+         PoundPerCubicInchPerPoundPerSquareInchSquared,  // pound per cubic inch per pound per square inch squared
+         PoundPerCubicYardPerPoundPerSquareInchSquared // pound per cubic yard per pound per square inch squared
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalSquared, new Guid("f5e08eda-6f5f-480f-b4a1-c678e409c6e0")},  // kilogram per cubic metre per pascal squared
+         {UnitChoicesEnum.SpecificGravityPerPascalSquared, new Guid("bbf15986-4411-4187-8186-de8da731a6b4")},  // specific gravity per pascal squared
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalSquared, new Guid("157c5898-353a-41f1-9924-0d8421cd8154")},  // gram per cubic centimetre per pascal squared
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalSquared, new Guid("8930d03e-184e-4bfa-88fa-755f728a3be1")},  // pound per gallon (UK) per pascal squared
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalSquared, new Guid("f93f8382-3a4c-454c-9575-c41ed6875656")},  // pound per gallon (US) per pascal squared
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalSquared, new Guid("de70ab66-52d6-4e5a-a0e7-a31c442c213f")},  // pound per cubic foot per pascal squared
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalSquared, new Guid("4f2d5894-6dc8-4c52-b442-976b8032e04e")},  // pound per cubic inch per pascal squared
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalSquared, new Guid("a22f8465-a519-47f9-80c5-5f633b5a3579")},  // pound per cubic yard per pascal squared
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarSquared, new Guid("86d777df-9722-4fb6-861e-025c07589743")},  // kilogram per cubic metre per bar squared
+         {UnitChoicesEnum.SpecificGravityPerBarSquared, new Guid("28cb683a-d3a8-4757-8123-cf093cb1d560")},  // specific gravity per bar squared
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarSquared, new Guid("e8b6cc51-e9f8-4705-b486-20999de7d84a")},  // gram per cubic centimetre per bar squared
+         {UnitChoicesEnum.PoundPerGallonUKPerBarSquared, new Guid("5245397a-58a4-40d1-8ba4-aa4ea9e3d7cd")},  // pound per gallon (UK) per bar squared
+         {UnitChoicesEnum.PoundPerGallonUSPerBarSquared, new Guid("22450e27-b3c7-4a71-9f6e-f979217ca724")},  // pound per gallon (US) per bar squared
+         {UnitChoicesEnum.PoundPerCubicFootPerBarSquared, new Guid("d2a23cb1-3ec6-416a-9a77-2c6e4f5ccd09")},  // pound per cubic foot per bar squared
+         {UnitChoicesEnum.PoundPerCubicInchPerBarSquared, new Guid("ee8aff8d-f65e-4b09-8e25-5b94d7ad739b")},  // pound per cubic inch per bar squared
+         {UnitChoicesEnum.PoundPerCubicYardPerBarSquared, new Guid("e1b7ea9b-d4ba-442b-99f8-a1eeebd35c1d")},  // pound per cubic yard per bar squared
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchSquared, new Guid("ed837c52-b9d2-434e-8103-bb75c60b5dee")},  // kilogram per cubic metre per pound per square inch squared
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchSquared, new Guid("4a1459e4-ccfa-4563-ab43-af1ed407311e")},  // specific gravity per pound per square inch squared
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchSquared, new Guid("f29096ad-ad1d-4f6e-9354-b9159600b5e8")},  // gram per cubic centimetre per pound per square inch squared
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchSquared, new Guid("41979553-6c36-4f5a-9e62-a6e05bd3c9a2")},  // pound per gallon (UK) per pound per square inch squared
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchSquared, new Guid("6f5b0146-ec8e-4224-9cb3-9ab440b6a006")},  // pound per gallon (US) per pound per square inch squared
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchSquared, new Guid("af1a2b8a-b330-402d-9f9d-e30399b24926")},  // pound per cubic foot per pound per square inch squared
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchSquared, new Guid("17051250-e815-4170-aa12-c222e89742e1")},  // pound per cubic inch per pound per square inch squared
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchSquared, new Guid("f30510ee-c4bb-434b-a185-3805a543404f")} // pound per cubic yard per pound per square inch squared
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerPressureTemperatureQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerPascalKelvin,  // kilogram per cubic metre per pascal kelvin
+         SpecificGravityPerPascalKelvin,  // specific gravity per pascal kelvin
+         GramPerCubicCentimetrePerPascalKelvin,  // gram per cubic centimetre per pascal kelvin
+         PoundPerGallonUKPerPascalKelvin,  // pound per gallon (UK) per pascal kelvin
+         PoundPerGallonUSPerPascalKelvin,  // pound per gallon (US) per pascal kelvin
+         PoundPerCubicFootPerPascalKelvin,  // pound per cubic foot per pascal kelvin
+         PoundPerCubicInchPerPascalKelvin,  // pound per cubic inch per pascal kelvin
+         PoundPerCubicYardPerPascalKelvin,  // pound per cubic yard per pascal kelvin
+         KilogramPerCubicMetrePerBarKelvin,  // kilogram per cubic metre per bar kelvin
+         SpecificGravityPerBarKelvin,  // specific gravity per bar kelvin
+         GramPerCubicCentimetrePerBarKelvin,  // gram per cubic centimetre per bar kelvin
+         PoundPerGallonUKPerBarKelvin,  // pound per gallon (UK) per bar kelvin
+         PoundPerGallonUSPerBarKelvin,  // pound per gallon (US) per bar kelvin
+         PoundPerCubicFootPerBarKelvin,  // pound per cubic foot per bar kelvin
+         PoundPerCubicInchPerBarKelvin,  // pound per cubic inch per bar kelvin
+         PoundPerCubicYardPerBarKelvin,  // pound per cubic yard per bar kelvin
+         KilogramPerCubicMetrePerPoundPerSquareInchKelvin,  // kilogram per cubic metre per pound per square inch kelvin
+         SpecificGravityPerPoundPerSquareInchKelvin,  // specific gravity per pound per square inch kelvin
+         GramPerCubicCentimetrePerPoundPerSquareInchKelvin,  // gram per cubic centimetre per pound per square inch kelvin
+         PoundPerGallonUKPerPoundPerSquareInchKelvin,  // pound per gallon (UK) per pound per square inch kelvin
+         PoundPerGallonUSPerPoundPerSquareInchKelvin,  // pound per gallon (US) per pound per square inch kelvin
+         PoundPerCubicFootPerPoundPerSquareInchKelvin,  // pound per cubic foot per pound per square inch kelvin
+         PoundPerCubicInchPerPoundPerSquareInchKelvin,  // pound per cubic inch per pound per square inch kelvin
+         PoundPerCubicYardPerPoundPerSquareInchKelvin,  // pound per cubic yard per pound per square inch kelvin
+         KilogramPerCubicMetrePerPascalCelsius,  // kilogram per cubic metre per pascal celsius
+         SpecificGravityPerPascalCelsius,  // specific gravity per pascal celsius
+         GramPerCubicCentimetrePerPascalCelsius,  // gram per cubic centimetre per pascal celsius
+         PoundPerGallonUKPerPascalCelsius,  // pound per gallon (UK) per pascal celsius
+         PoundPerGallonUSPerPascalCelsius,  // pound per gallon (US) per pascal celsius
+         PoundPerCubicFootPerPascalCelsius,  // pound per cubic foot per pascal celsius
+         PoundPerCubicInchPerPascalCelsius,  // pound per cubic inch per pascal celsius
+         PoundPerCubicYardPerPascalCelsius,  // pound per cubic yard per pascal celsius
+         KilogramPerCubicMetrePerBarCelsius,  // kilogram per cubic metre per bar celsius
+         SpecificGravityPerBarCelsius,  // specific gravity per bar celsius
+         GramPerCubicCentimetrePerBarCelsius,  // gram per cubic centimetre per bar celsius
+         PoundPerGallonUKPerBarCelsius,  // pound per gallon (UK) per bar celsius
+         PoundPerGallonUSPerBarCelsius,  // pound per gallon (US) per bar celsius
+         PoundPerCubicFootPerBarCelsius,  // pound per cubic foot per bar celsius
+         PoundPerCubicInchPerBarCelsius,  // pound per cubic inch per bar celsius
+         PoundPerCubicYardPerBarCelsius,  // pound per cubic yard per bar celsius
+         KilogramPerCubicMetrePerPoundPerSquareInchCelsius,  // kilogram per cubic metre per pound per square inch celsius
+         SpecificGravityPerPoundPerSquareInchCelsius,  // specific gravity per pound per square inch celsius
+         GramPerCubicCentimetrePerPoundPerSquareInchCelsius,  // gram per cubic centimetre per pound per square inch celsius
+         PoundPerGallonUKPerPoundPerSquareInchCelsius,  // pound per gallon (UK) per pound per square inch celsius
+         PoundPerGallonUSPerPoundPerSquareInchCelsius,  // pound per gallon (US) per pound per square inch celsius
+         PoundPerCubicFootPerPoundPerSquareInchCelsius,  // pound per cubic foot per pound per square inch celsius
+         PoundPerCubicInchPerPoundPerSquareInchCelsius,  // pound per cubic inch per pound per square inch celsius
+         PoundPerCubicYardPerPoundPerSquareInchCelsius,  // pound per cubic yard per pound per square inch celsius
+         KilogramPerCubicMetrePerPascalFahrenheit,  // kilogram per cubic metre per pascal fahrenheit
+         SpecificGravityPerPascalFahrenheit,  // specific gravity per pascal fahrenheit
+         GramPerCubicCentimetrePerPascalFahrenheit,  // gram per cubic centimetre per pascal fahrenheit
+         PoundPerGallonUKPerPascalFahrenheit,  // pound per gallon (UK) per pascal fahrenheit
+         PoundPerGallonUSPerPascalFahrenheit,  // pound per gallon (US) per pascal fahrenheit
+         PoundPerCubicFootPerPascalFahrenheit,  // pound per cubic foot per pascal fahrenheit
+         PoundPerCubicInchPerPascalFahrenheit,  // pound per cubic inch per pascal fahrenheit
+         PoundPerCubicYardPerPascalFahrenheit,  // pound per cubic yard per pascal fahrenheit
+         KilogramPerCubicMetrePerBarFahrenheit,  // kilogram per cubic metre per bar fahrenheit
+         SpecificGravityPerBarFahrenheit,  // specific gravity per bar fahrenheit
+         GramPerCubicCentimetrePerBarFahrenheit,  // gram per cubic centimetre per bar fahrenheit
+         PoundPerGallonUKPerBarFahrenheit,  // pound per gallon (UK) per bar fahrenheit
+         PoundPerGallonUSPerBarFahrenheit,  // pound per gallon (US) per bar fahrenheit
+         PoundPerCubicFootPerBarFahrenheit,  // pound per cubic foot per bar fahrenheit
+         PoundPerCubicInchPerBarFahrenheit,  // pound per cubic inch per bar fahrenheit
+         PoundPerCubicYardPerBarFahrenheit,  // pound per cubic yard per bar fahrenheit
+         KilogramPerCubicMetrePerPoundPerSquareInchFahrenheit,  // kilogram per cubic metre per pound per square inch fahrenheit
+         SpecificGravityPerPoundPerSquareInchFahrenheit,  // specific gravity per pound per square inch fahrenheit
+         GramPerCubicCentimetrePerPoundPerSquareInchFahrenheit,  // gram per cubic centimetre per pound per square inch fahrenheit
+         PoundPerGallonUKPerPoundPerSquareInchFahrenheit,  // pound per gallon (UK) per pound per square inch fahrenheit
+         PoundPerGallonUSPerPoundPerSquareInchFahrenheit,  // pound per gallon (US) per pound per square inch fahrenheit
+         PoundPerCubicFootPerPoundPerSquareInchFahrenheit,  // pound per cubic foot per pound per square inch fahrenheit
+         PoundPerCubicInchPerPoundPerSquareInchFahrenheit,  // pound per cubic inch per pound per square inch fahrenheit
+         PoundPerCubicYardPerPoundPerSquareInchFahrenheit // pound per cubic yard per pound per square inch fahrenheit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalKelvin, new Guid("ab41e361-7ef5-488f-b121-e51afa56fcfa")},  // kilogram per cubic metre per pascal kelvin
+         {UnitChoicesEnum.SpecificGravityPerPascalKelvin, new Guid("bd96fb03-de24-4171-abf8-eccfd6fcd2e8")},  // specific gravity per pascal kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalKelvin, new Guid("c2cae333-be7c-4567-a42e-00d2fa95d1aa")},  // gram per cubic centimetre per pascal kelvin
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalKelvin, new Guid("3ae6d54a-e365-4dc5-b5c8-083b88297719")},  // pound per gallon (UK) per pascal kelvin
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalKelvin, new Guid("8b5d3eec-f8ec-4233-8d99-6a99fee53ae8")},  // pound per gallon (US) per pascal kelvin
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalKelvin, new Guid("d6be025a-14b5-4c0e-8971-4fe5468237d5")},  // pound per cubic foot per pascal kelvin
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalKelvin, new Guid("e1dc7833-9369-4901-ae8c-c4c528f1d11d")},  // pound per cubic inch per pascal kelvin
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalKelvin, new Guid("fbb4e022-e102-436f-93c1-c9ea2c30f9e0")},  // pound per cubic yard per pascal kelvin
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarKelvin, new Guid("8cbe6cb2-2a0f-400d-a659-0695eb16d508")},  // kilogram per cubic metre per bar kelvin
+         {UnitChoicesEnum.SpecificGravityPerBarKelvin, new Guid("9aa8835d-e374-4527-bdd6-636ec7148e66")},  // specific gravity per bar kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarKelvin, new Guid("bbb10e84-4dee-459d-b389-5127606db8cc")},  // gram per cubic centimetre per bar kelvin
+         {UnitChoicesEnum.PoundPerGallonUKPerBarKelvin, new Guid("07e8b9de-be10-4750-836a-929a4b16588d")},  // pound per gallon (UK) per bar kelvin
+         {UnitChoicesEnum.PoundPerGallonUSPerBarKelvin, new Guid("19804fa6-8dc6-4043-8b0a-d7cabaf98c13")},  // pound per gallon (US) per bar kelvin
+         {UnitChoicesEnum.PoundPerCubicFootPerBarKelvin, new Guid("fb6f3791-8de0-42d7-a870-2b87b6a391bf")},  // pound per cubic foot per bar kelvin
+         {UnitChoicesEnum.PoundPerCubicInchPerBarKelvin, new Guid("3390b64d-7959-4c92-9188-f842b1a7b4d6")},  // pound per cubic inch per bar kelvin
+         {UnitChoicesEnum.PoundPerCubicYardPerBarKelvin, new Guid("2caa723f-4107-4632-ad12-3b72c3eb1174")},  // pound per cubic yard per bar kelvin
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchKelvin, new Guid("f0a415eb-f811-49bb-8a08-640a976fe1cf")},  // kilogram per cubic metre per pound per square inch kelvin
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchKelvin, new Guid("3a2b82e9-6f53-4149-9530-b202abee4a22")},  // specific gravity per pound per square inch kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchKelvin, new Guid("4a4df929-c2df-4da5-aad4-601e82945f2c")},  // gram per cubic centimetre per pound per square inch kelvin
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchKelvin, new Guid("dd330e7b-b47c-43c9-a4fe-4259a6a74b40")},  // pound per gallon (UK) per pound per square inch kelvin
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchKelvin, new Guid("e351b849-3d09-44b7-ac67-4380d7a6908a")},  // pound per gallon (US) per pound per square inch kelvin
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchKelvin, new Guid("11c5c48f-a880-479f-9f8a-952433aa1105")},  // pound per cubic foot per pound per square inch kelvin
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchKelvin, new Guid("1b9b4c68-a0f7-43e3-bc6c-65a13672e340")},  // pound per cubic inch per pound per square inch kelvin
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchKelvin, new Guid("5d80643e-871a-41d2-b215-6bf62585a408")},  // pound per cubic yard per pound per square inch kelvin
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalCelsius, new Guid("c0602be3-4094-40af-a85f-fab2378a5d83")},  // kilogram per cubic metre per pascal celsius
+         {UnitChoicesEnum.SpecificGravityPerPascalCelsius, new Guid("03cc0ee6-3c31-417a-b8e6-c40cd5b377d3")},  // specific gravity per pascal celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalCelsius, new Guid("ddcc5558-7bcc-424f-8a16-42a8e3cb4a52")},  // gram per cubic centimetre per pascal celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalCelsius, new Guid("8022319e-61bc-42aa-b7d9-1b7e33771224")},  // pound per gallon (UK) per pascal celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalCelsius, new Guid("31baed8a-9474-414b-adf7-74df7d244e40")},  // pound per gallon (US) per pascal celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalCelsius, new Guid("684db3d1-6610-4774-8d80-ae212241991a")},  // pound per cubic foot per pascal celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalCelsius, new Guid("85efde7e-0ab7-44c3-adeb-1934753aea1a")},  // pound per cubic inch per pascal celsius
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalCelsius, new Guid("dc662923-2863-494a-a1b0-90ad30b812e9")},  // pound per cubic yard per pascal celsius
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarCelsius, new Guid("e70b203c-cae0-4494-bf5d-fac95d99cb8f")},  // kilogram per cubic metre per bar celsius
+         {UnitChoicesEnum.SpecificGravityPerBarCelsius, new Guid("891b9f2e-94cc-41f2-8c36-d4315d923da2")},  // specific gravity per bar celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarCelsius, new Guid("d59d2a23-67f3-4224-8960-3732ca7e3c19")},  // gram per cubic centimetre per bar celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerBarCelsius, new Guid("55531b71-6a17-41bc-ac69-def74092a04b")},  // pound per gallon (UK) per bar celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerBarCelsius, new Guid("c04f57ed-37d8-4f32-bedf-48616e977cf3")},  // pound per gallon (US) per bar celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerBarCelsius, new Guid("cd1b76ec-a7e4-4963-8a3c-cbf8d7c1a858")},  // pound per cubic foot per bar celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerBarCelsius, new Guid("45c0e47f-4844-49a8-bb92-a564c99eb6df")},  // pound per cubic inch per bar celsius
+         {UnitChoicesEnum.PoundPerCubicYardPerBarCelsius, new Guid("82092268-2d5f-4318-9812-556f63b68089")},  // pound per cubic yard per bar celsius
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchCelsius, new Guid("fd02625d-d171-4ea2-8349-488ddbf9f6c8")},  // kilogram per cubic metre per pound per square inch celsius
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchCelsius, new Guid("d0e994dc-68fb-41e9-84fb-a62544d16674")},  // specific gravity per pound per square inch celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchCelsius, new Guid("261a18c2-5f0b-4e6f-9988-e1715de29c6f")},  // gram per cubic centimetre per pound per square inch celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchCelsius, new Guid("edf9f94f-2cd9-4b76-b0f9-38576be98feb")},  // pound per gallon (UK) per pound per square inch celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchCelsius, new Guid("a3c8fa89-a1fd-46a7-bef8-7a4cde7ad585")},  // pound per gallon (US) per pound per square inch celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchCelsius, new Guid("a0e2f8d9-cf7e-454e-8722-b4777f3ecd1b")},  // pound per cubic foot per pound per square inch celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchCelsius, new Guid("33eb59dd-07fe-4826-a1a3-108246bf98e8")},  // pound per cubic inch per pound per square inch celsius
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchCelsius, new Guid("a10eaf12-acd4-42e6-8bff-f0fe223dfcc2")},  // pound per cubic yard per pound per square inch celsius
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalFahrenheit, new Guid("81baad5f-7be5-4db4-9e64-b7df06c3babd")},  // kilogram per cubic metre per pascal fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerPascalFahrenheit, new Guid("1c7199e1-89e6-479e-a048-179bfbce39d8")},  // specific gravity per pascal fahrenheit
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalFahrenheit, new Guid("1a1fc347-5829-4ed7-bb2c-cf2a0a08cd3b")},  // gram per cubic centimetre per pascal fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalFahrenheit, new Guid("6af15113-8196-4dc0-8688-543e4ab5c050")},  // pound per gallon (UK) per pascal fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalFahrenheit, new Guid("06c4a7f8-e43c-4a58-be79-c0fadc2416ec")},  // pound per gallon (US) per pascal fahrenheit
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalFahrenheit, new Guid("240f2cae-25fc-47cf-8757-fe51552189b7")},  // pound per cubic foot per pascal fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalFahrenheit, new Guid("3f059a64-a660-4c5f-a4e6-68844da8b1c4")},  // pound per cubic inch per pascal fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalFahrenheit, new Guid("19e48858-c3a7-44f7-b9e9-c326f0fafa33")},  // pound per cubic yard per pascal fahrenheit
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarFahrenheit, new Guid("83606dd6-7f81-45ea-994c-743581cd62d3")},  // kilogram per cubic metre per bar fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerBarFahrenheit, new Guid("070c9187-3d1c-4c1d-a26c-8370d9ac6d8f")},  // specific gravity per bar fahrenheit
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarFahrenheit, new Guid("7dd71c46-d10b-407f-abc9-6597b7dec4bf")},  // gram per cubic centimetre per bar fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerBarFahrenheit, new Guid("349ffb7c-caa0-4ee1-b8a7-8a00ec028b6f")},  // pound per gallon (UK) per bar fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerBarFahrenheit, new Guid("cbbc44bb-a924-4e10-8c7d-9388f248722d")},  // pound per gallon (US) per bar fahrenheit
+         {UnitChoicesEnum.PoundPerCubicFootPerBarFahrenheit, new Guid("2de087ee-34df-4e54-b6d2-cfe5393cda8d")},  // pound per cubic foot per bar fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerBarFahrenheit, new Guid("c2033261-a7fe-4fe4-a99e-641db13c276e")},  // pound per cubic inch per bar fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerBarFahrenheit, new Guid("32a9db15-caf4-40f8-9a78-e4444d1cc687")},  // pound per cubic yard per bar fahrenheit
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchFahrenheit, new Guid("8bac278b-fb5c-4ab2-b58e-bda28e6b9f65")},  // kilogram per cubic metre per pound per square inch fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchFahrenheit, new Guid("9d2e9844-cf55-43ca-806b-12147ca5d981")},  // specific gravity per pound per square inch fahrenheit
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchFahrenheit, new Guid("49a3a66b-c08f-48bc-b2cd-207a8a31150d")},  // gram per cubic centimetre per pound per square inch fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchFahrenheit, new Guid("65be0323-b39c-4406-9a1e-91eb36a7c963")},  // pound per gallon (UK) per pound per square inch fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchFahrenheit, new Guid("8b1a8cf9-ce8c-40b2-872d-ae3112b69da1")},  // pound per gallon (US) per pound per square inch fahrenheit
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchFahrenheit, new Guid("07ba1470-7fda-43a1-81bb-8e1e0075021a")},  // pound per cubic foot per pound per square inch fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchFahrenheit, new Guid("af345846-e411-416e-b97c-0119f2cb4c3b")},  // pound per cubic inch per pound per square inch fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchFahrenheit, new Guid("846a356a-3ce8-4f4d-b2c1-641d2236e151")} // pound per cubic yard per pound per square inch fahrenheit
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class MassDensityGradientPerPressureSquaredTemperatureQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         KilogramPerCubicMetrePerPascalSquaredKelvin,  // kilogram per cubic metre per pascal squared kelvin
+         SpecificGravityPerPascalSquaredKelvin,  // specific gravity per pascal squared kelvin
+         GramPerCubicCentimetrePerPascalSquaredKelvin,  // gram per cubic centimetre per pascal squared kelvin
+         PoundPerGallonUKPerPascalSquaredKelvin,  // pound per gallon (UK) per pascal squared kelvin
+         PoundPerGallonUSPerPascalSquaredKelvin,  // pound per gallon (US) per pascal squared kelvin
+         PoundPerCubicFootPerPascalSquaredKelvin,  // pound per cubic foot per pascal squared kelvin
+         PoundPerCubicInchPerPascalSquaredKelvin,  // pound per cubic inch per pascal squared kelvin
+         PoundPerCubicYardPerPascalSquaredKelvin,  // pound per cubic yard per pascal squared kelvin
+         KilogramPerCubicMetrePerBarSquaredKelvin,  // kilogram per cubic metre per bar squared kelvin
+         SpecificGravityPerBarSquaredKelvin,  // specific gravity per bar squared kelvin
+         GramPerCubicCentimetrePerBarSquaredKelvin,  // gram per cubic centimetre per bar squared kelvin
+         PoundPerGallonUKPerBarSquaredKelvin,  // pound per gallon (UK) per bar squared kelvin
+         PoundPerGallonUSPerBarSquaredKelvin,  // pound per gallon (US) per bar squared kelvin
+         PoundPerCubicFootPerBarSquaredKelvin,  // pound per cubic foot per bar squared kelvin
+         PoundPerCubicInchPerBarSquaredKelvin,  // pound per cubic inch per bar squared kelvin
+         PoundPerCubicYardPerBarSquaredKelvin,  // pound per cubic yard per bar squared kelvin
+         KilogramPerCubicMetrePerPoundPerSquareInchSquaredKelvin,  // kilogram per cubic metre per pound per square inch squared kelvin
+         SpecificGravityPerPoundPerSquareInchSquaredKelvin,  // specific gravity per pound per square inch squared kelvin
+         GramPerCubicCentimetrePerPoundPerSquareInchSquaredKelvin,  // gram per cubic centimetre per pound per square inch squared kelvin
+         PoundPerGallonUKPerPoundPerSquareInchSquaredKelvin,  // pound per gallon (UK) per pound per square inch squared kelvin
+         PoundPerGallonUSPerPoundPerSquareInchSquaredKelvin,  // pound per gallon (US) per pound per square inch squared kelvin
+         PoundPerCubicFootPerPoundPerSquareInchSquaredKelvin,  // pound per cubic foot per pound per square inch squared kelvin
+         PoundPerCubicInchPerPoundPerSquareInchSquaredKelvin,  // pound per cubic inch per pound per square inch squared kelvin
+         PoundPerCubicYardPerPoundPerSquareInchSquaredKelvin,  // pound per cubic yard per pound per square inch squared kelvin
+         KilogramPerCubicMetrePerPascalSquaredCelsius,  // kilogram per cubic metre per pascal squared celsius
+         SpecificGravityPerPascalSquaredCelsius,  // specific gravity per pascal squared celsius
+         GramPerCubicCentimetrePerPascalSquaredCelsius,  // gram per cubic centimetre per pascal squared celsius
+         PoundPerGallonUKPerPascalSquaredCelsius,  // pound per gallon (UK) per pascal squared celsius
+         PoundPerGallonUSPerPascalSquaredCelsius,  // pound per gallon (US) per pascal squared celsius
+         PoundPerCubicFootPerPascalSquaredCelsius,  // pound per cubic foot per pascal squared celsius
+         PoundPerCubicInchPerPascalSquaredCelsius,  // pound per cubic inch per pascal squared celsius
+         PoundPerCubicYardPerPascalSquaredCelsius,  // pound per cubic yard per pascal squared celsius
+         KilogramPerCubicMetrePerBarSquaredCelsius,  // kilogram per cubic metre per bar squared celsius
+         SpecificGravityPerBarSquaredCelsius,  // specific gravity per bar squared celsius
+         GramPerCubicCentimetrePerBarSquaredCelsius,  // gram per cubic centimetre per bar squared celsius
+         PoundPerGallonUKPerBarSquaredCelsius,  // pound per gallon (UK) per bar squared celsius
+         PoundPerGallonUSPerBarSquaredCelsius,  // pound per gallon (US) per bar squared celsius
+         PoundPerCubicFootPerBarSquaredCelsius,  // pound per cubic foot per bar squared celsius
+         PoundPerCubicInchPerBarSquaredCelsius,  // pound per cubic inch per bar squared celsius
+         PoundPerCubicYardPerBarSquaredCelsius,  // pound per cubic yard per bar squared celsius
+         KilogramPerCubicMetrePerPoundPerSquareInchSquaredCelsius,  // kilogram per cubic metre per pound per square inch squared celsius
+         SpecificGravityPerPoundPerSquareInchSquaredCelsius,  // specific gravity per pound per square inch squared celsius
+         GramPerCubicCentimetrePerPoundPerSquareInchSquaredCelsius,  // gram per cubic centimetre per pound per square inch squared celsius
+         PoundPerGallonUKPerPoundPerSquareInchSquaredCelsius,  // pound per gallon (UK) per pound per square inch squared celsius
+         PoundPerGallonUSPerPoundPerSquareInchSquaredCelsius,  // pound per gallon (US) per pound per square inch squared celsius
+         PoundPerCubicFootPerPoundPerSquareInchSquaredCelsius,  // pound per cubic foot per pound per square inch squared celsius
+         PoundPerCubicInchPerPoundPerSquareInchSquaredCelsius,  // pound per cubic inch per pound per square inch squared celsius
+         PoundPerCubicYardPerPoundPerSquareInchSquaredCelsius,  // pound per cubic yard per pound per square inch squared celsius
+         KilogramPerCubicMetrePerPascalSquaredFahrenheit,  // kilogram per cubic metre per pascal squared fahrenheit
+         SpecificGravityPerPascalSquaredFahrenheit,  // specific gravity per pascal squared fahrenheit
+         GramPerCubicCentimetrePerPascalSquaredFahrenheit,  // gram per cubic centimetre per pascal squared fahrenheit
+         PoundPerGallonUKPerPascalSquaredFahrenheit,  // pound per gallon (UK) per pascal squared fahrenheit
+         PoundPerGallonUSPerPascalSquaredFahrenheit,  // pound per gallon (US) per pascal squared fahrenheit
+         PoundPerCubicFootPerPascalSquaredFahrenheit,  // pound per cubic foot per pascal squared fahrenheit
+         PoundPerCubicInchPerPascalSquaredFahrenheit,  // pound per cubic inch per pascal squared fahrenheit
+         PoundPerCubicYardPerPascalSquaredFahrenheit,  // pound per cubic yard per pascal squared fahrenheit
+         KilogramPerCubicMetrePerBarSquaredFahrenheit,  // kilogram per cubic metre per bar squared fahrenheit
+         SpecificGravityPerBarSquaredFahrenheit,  // specific gravity per bar squared fahrenheit
+         GramPerCubicCentimetrePerBarSquaredFahrenheit,  // gram per cubic centimetre per bar squared fahrenheit
+         PoundPerGallonUKPerBarSquaredFahrenheit,  // pound per gallon (UK) per bar squared fahrenheit
+         PoundPerGallonUSPerBarSquaredFahrenheit,  // pound per gallon (US) per bar squared fahrenheit
+         PoundPerCubicFootPerBarSquaredFahrenheit,  // pound per cubic foot per bar squared fahrenheit
+         PoundPerCubicInchPerBarSquaredFahrenheit,  // pound per cubic inch per bar squared fahrenheit
+         PoundPerCubicYardPerBarSquaredFahrenheit,  // pound per cubic yard per bar squared fahrenheit
+         KilogramPerCubicMetrePerPoundPerSquareInchSquaredFahrenheit,  // kilogram per cubic metre per pound per square inch squared fahrenheit
+         SpecificGravityPerPoundPerSquareInchSquaredFahrenheit,  // specific gravity per pound per square inch squared fahrenheit
+         GramPerCubicCentimetrePerPoundPerSquareInchSquaredFahrenheit,  // gram per cubic centimetre per pound per square inch squared fahrenheit
+         PoundPerGallonUKPerPoundPerSquareInchSquaredFahrenheit,  // pound per gallon (UK) per pound per square inch squared fahrenheit
+         PoundPerGallonUSPerPoundPerSquareInchSquaredFahrenheit,  // pound per gallon (US) per pound per square inch squared fahrenheit
+         PoundPerCubicFootPerPoundPerSquareInchSquaredFahrenheit,  // pound per cubic foot per pound per square inch squared fahrenheit
+         PoundPerCubicInchPerPoundPerSquareInchSquaredFahrenheit,  // pound per cubic inch per pound per square inch squared fahrenheit
+         PoundPerCubicYardPerPoundPerSquareInchSquaredFahrenheit // pound per cubic yard per pound per square inch squared fahrenheit
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalSquaredKelvin, new Guid("e00b25c4-cf11-43f8-b87f-e7e482729d18")},  // kilogram per cubic metre per pascal squared kelvin
+         {UnitChoicesEnum.SpecificGravityPerPascalSquaredKelvin, new Guid("111b012c-3e70-4e3b-8102-5fb0ecd0b1cd")},  // specific gravity per pascal squared kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalSquaredKelvin, new Guid("4497271d-cfe7-402e-a20a-7d4aa644d569")},  // gram per cubic centimetre per pascal squared kelvin
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalSquaredKelvin, new Guid("2a2cc741-54d7-4b54-bee7-616e48d9bec6")},  // pound per gallon (UK) per pascal squared kelvin
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalSquaredKelvin, new Guid("f09f13b4-a260-4192-9ca6-3a3b1466f6bf")},  // pound per gallon (US) per pascal squared kelvin
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalSquaredKelvin, new Guid("2cbb0b80-789a-4b11-8fa4-62d8f5e7c92f")},  // pound per cubic foot per pascal squared kelvin
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalSquaredKelvin, new Guid("da10a140-ae39-4b34-83b1-223e456a3865")},  // pound per cubic inch per pascal squared kelvin
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalSquaredKelvin, new Guid("63e7f7d8-a38b-4a45-937c-8567e97d71a9")},  // pound per cubic yard per pascal squared kelvin
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarSquaredKelvin, new Guid("cbc5f940-560b-44cf-b652-3f0b953abe5e")},  // kilogram per cubic metre per bar squared kelvin
+         {UnitChoicesEnum.SpecificGravityPerBarSquaredKelvin, new Guid("3e25dd0e-2726-4c26-922b-81c7ec8b416d")},  // specific gravity per bar squared kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarSquaredKelvin, new Guid("26b11134-95aa-49f4-8959-7475ca97626b")},  // gram per cubic centimetre per bar squared kelvin
+         {UnitChoicesEnum.PoundPerGallonUKPerBarSquaredKelvin, new Guid("5c136f82-a39a-4973-bb95-ca19b256bfb8")},  // pound per gallon (UK) per bar squared kelvin
+         {UnitChoicesEnum.PoundPerGallonUSPerBarSquaredKelvin, new Guid("14a06bea-ee90-4a76-92b4-7186c5b1b43f")},  // pound per gallon (US) per bar squared kelvin
+         {UnitChoicesEnum.PoundPerCubicFootPerBarSquaredKelvin, new Guid("f96cf481-f2bc-4f18-9119-c2d88a705cf1")},  // pound per cubic foot per bar squared kelvin
+         {UnitChoicesEnum.PoundPerCubicInchPerBarSquaredKelvin, new Guid("dc4112ed-2c78-4f94-9be2-880fb9271578")},  // pound per cubic inch per bar squared kelvin
+         {UnitChoicesEnum.PoundPerCubicYardPerBarSquaredKelvin, new Guid("8623f335-7ff1-4bed-8ada-5635c6c32b18")},  // pound per cubic yard per bar squared kelvin
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchSquaredKelvin, new Guid("7179c84a-113f-44c1-97c2-ccda465876bd")},  // kilogram per cubic metre per pound per square inch squared kelvin
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchSquaredKelvin, new Guid("1700ead8-a6fa-455c-9389-6526cb099af1")},  // specific gravity per pound per square inch squared kelvin
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchSquaredKelvin, new Guid("9c5f6e94-c1ca-4107-8656-29a00c575f34")},  // gram per cubic centimetre per pound per square inch squared kelvin
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchSquaredKelvin, new Guid("5a8b846c-1fb3-4c53-b181-14d2b5806919")},  // pound per gallon (UK) per pound per square inch squared kelvin
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchSquaredKelvin, new Guid("6f009bc6-d776-4bb5-9f34-1870f6492c45")},  // pound per gallon (US) per pound per square inch squared kelvin
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchSquaredKelvin, new Guid("61df2832-d446-4875-b000-660e89ff1510")},  // pound per cubic foot per pound per square inch squared kelvin
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchSquaredKelvin, new Guid("c68060f8-20b1-46ad-aed8-6612ebdbc7d2")},  // pound per cubic inch per pound per square inch squared kelvin
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchSquaredKelvin, new Guid("2170eff8-21a6-4682-81ab-2d2834ba03d9")},  // pound per cubic yard per pound per square inch squared kelvin
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalSquaredCelsius, new Guid("0d5a8548-b83e-4a96-9550-57725a3f3e9c")},  // kilogram per cubic metre per pascal squared celsius
+         {UnitChoicesEnum.SpecificGravityPerPascalSquaredCelsius, new Guid("667e0395-0678-458f-9a27-3ee726df2ea6")},  // specific gravity per pascal squared celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalSquaredCelsius, new Guid("3454083c-dfe0-454d-a048-8ed9e6835fe9")},  // gram per cubic centimetre per pascal squared celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalSquaredCelsius, new Guid("b0761965-0273-497b-843f-54faf816ad0f")},  // pound per gallon (UK) per pascal squared celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalSquaredCelsius, new Guid("c28837e9-5bfb-4154-a33e-04f775cf71c3")},  // pound per gallon (US) per pascal squared celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalSquaredCelsius, new Guid("7367c345-b965-43ea-94d0-7068d8eab3a3")},  // pound per cubic foot per pascal squared celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalSquaredCelsius, new Guid("1c6f0c40-80ef-4fb3-a0b7-892ba89c35e7")},  // pound per cubic inch per pascal squared celsius
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalSquaredCelsius, new Guid("623d2ac0-cb0e-485e-8996-bed2b943c6fa")},  // pound per cubic yard per pascal squared celsius
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarSquaredCelsius, new Guid("a7346d6e-bd4a-4f93-8c4d-39d2e70d70a1")},  // kilogram per cubic metre per bar squared celsius
+         {UnitChoicesEnum.SpecificGravityPerBarSquaredCelsius, new Guid("04e257cd-c95b-46d3-ace6-3a7de12dba45")},  // specific gravity per bar squared celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarSquaredCelsius, new Guid("da92c1ef-6ce0-4ee8-bdf1-aa6111aac4c7")},  // gram per cubic centimetre per bar squared celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerBarSquaredCelsius, new Guid("bcd39cc2-603f-4663-a896-3a7d5556b51d")},  // pound per gallon (UK) per bar squared celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerBarSquaredCelsius, new Guid("80757949-116e-45ee-98ec-cee61c7e6175")},  // pound per gallon (US) per bar squared celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerBarSquaredCelsius, new Guid("731cb76b-17c1-4a7d-9a84-2bd3b90ec32a")},  // pound per cubic foot per bar squared celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerBarSquaredCelsius, new Guid("2d1eb56c-e8f5-46ce-bafd-0696f0b1956b")},  // pound per cubic inch per bar squared celsius
+         {UnitChoicesEnum.PoundPerCubicYardPerBarSquaredCelsius, new Guid("f9ffcd7c-4479-4122-9906-4f115712a799")},  // pound per cubic yard per bar squared celsius
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchSquaredCelsius, new Guid("1ce45b46-493e-4e43-9a01-da7f137822c7")},  // kilogram per cubic metre per pound per square inch squared celsius
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchSquaredCelsius, new Guid("b5642483-4968-41a8-addf-55f5844f24ec")},  // specific gravity per pound per square inch squared celsius
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchSquaredCelsius, new Guid("bd600761-8fe6-4fc2-b3d8-f0b27e8a414c")},  // gram per cubic centimetre per pound per square inch squared celsius
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchSquaredCelsius, new Guid("c7d1f1ba-6574-4271-927c-0983ece07f8b")},  // pound per gallon (UK) per pound per square inch squared celsius
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchSquaredCelsius, new Guid("f3b574d7-be5d-4c41-ad56-188a175e823d")},  // pound per gallon (US) per pound per square inch squared celsius
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchSquaredCelsius, new Guid("ca74b7e6-a4dc-419d-bdfd-75b927aaa380")},  // pound per cubic foot per pound per square inch squared celsius
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchSquaredCelsius, new Guid("48ae377a-0eea-4b9c-b1a9-0156a2d0ff35")},  // pound per cubic inch per pound per square inch squared celsius
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchSquaredCelsius, new Guid("eaaf6fee-8773-4ec3-a0ea-de1d8672066f")},  // pound per cubic yard per pound per square inch squared celsius
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPascalSquaredFahrenheit, new Guid("489deba9-0377-46ea-9577-68efb2aedbf6")},  // kilogram per cubic metre per pascal squared fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerPascalSquaredFahrenheit, new Guid("b57c2f62-a6b6-4a8d-a9f7-2edfb0b1651c")},  // specific gravity per pascal squared fahrenheit
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPascalSquaredFahrenheit, new Guid("546e2ac5-4937-433f-906f-077f010e7964")},  // gram per cubic centimetre per pascal squared fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerPascalSquaredFahrenheit, new Guid("ec7d57e4-b2fa-40b6-9d81-743a0610baf9")},  // pound per gallon (UK) per pascal squared fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerPascalSquaredFahrenheit, new Guid("4d8dc1f2-032f-4792-b59a-2bf25dd5990f")},  // pound per gallon (US) per pascal squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicFootPerPascalSquaredFahrenheit, new Guid("a1517641-82b9-4270-aa74-b0b2ece8c693")},  // pound per cubic foot per pascal squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerPascalSquaredFahrenheit, new Guid("8def68a4-6327-4457-9bd1-7703c405bd83")},  // pound per cubic inch per pascal squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerPascalSquaredFahrenheit, new Guid("6eec2c4d-5b2f-4aa7-ac68-18d57c81928d")},  // pound per cubic yard per pascal squared fahrenheit
+         {UnitChoicesEnum.KilogramPerCubicMetrePerBarSquaredFahrenheit, new Guid("9fcb07f9-bd0c-46da-bd97-8cfd7ddaa24f")},  // kilogram per cubic metre per bar squared fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerBarSquaredFahrenheit, new Guid("496be92b-9b7f-447e-8bd4-ccdbfb7e5d45")},  // specific gravity per bar squared fahrenheit
+         {UnitChoicesEnum.GramPerCubicCentimetrePerBarSquaredFahrenheit, new Guid("a295e2a1-736b-455f-9a1a-26b93fc3ce37")},  // gram per cubic centimetre per bar squared fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerBarSquaredFahrenheit, new Guid("a2eab10e-27ef-409e-85dc-41770fe3bcb3")},  // pound per gallon (UK) per bar squared fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerBarSquaredFahrenheit, new Guid("f8a5b28b-a219-4045-9c72-a65086b7c459")},  // pound per gallon (US) per bar squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicFootPerBarSquaredFahrenheit, new Guid("fac1aaa4-f129-4f0b-80d8-9706223f27af")},  // pound per cubic foot per bar squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerBarSquaredFahrenheit, new Guid("512f5c6c-717b-4532-8294-47883c881377")},  // pound per cubic inch per bar squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerBarSquaredFahrenheit, new Guid("af3daad4-a444-46a1-b046-4bb36141b5bd")},  // pound per cubic yard per bar squared fahrenheit
+         {UnitChoicesEnum.KilogramPerCubicMetrePerPoundPerSquareInchSquaredFahrenheit, new Guid("7733b2c6-da6b-42d8-84d0-abf1c8dd8259")},  // kilogram per cubic metre per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.SpecificGravityPerPoundPerSquareInchSquaredFahrenheit, new Guid("0cb8518e-1e1b-4e3c-9f34-5e0042c9e6d7")},  // specific gravity per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.GramPerCubicCentimetrePerPoundPerSquareInchSquaredFahrenheit, new Guid("cd1cab93-09b5-4793-afd4-d04d01cbae69")},  // gram per cubic centimetre per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUKPerPoundPerSquareInchSquaredFahrenheit, new Guid("c958922f-4a1c-4186-b08a-e642df71dde3")},  // pound per gallon (UK) per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.PoundPerGallonUSPerPoundPerSquareInchSquaredFahrenheit, new Guid("bcb65f47-4365-4143-a517-8db45650aa11")},  // pound per gallon (US) per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicFootPerPoundPerSquareInchSquaredFahrenheit, new Guid("f3548d52-8d7d-4f67-9029-118edb2c13b9")},  // pound per cubic foot per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicInchPerPoundPerSquareInchSquaredFahrenheit, new Guid("8d02dc32-3c91-4323-b840-ebea2a6cbf7b")},  // pound per cubic inch per pound per square inch squared fahrenheit
+         {UnitChoicesEnum.PoundPerCubicYardPerPoundPerSquareInchSquaredFahrenheit, new Guid("5e07f626-35e9-494b-a4e1-ba7f746c627d")} // pound per cubic yard per pound per square inch squared fahrenheit
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
