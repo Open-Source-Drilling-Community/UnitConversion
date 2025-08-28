@@ -5,15 +5,15 @@
     </MudItem>
     <MudItem xs="12" sm="3" md="3" lg="3">
         <MudTextField @bind-Value="@DegreeRoundedValue"  Variant="@VariantType"
-                      Adornment="Adornment.End" AdornmentText="@degreeUnitChoice.UnitLabel"></MudTextField>
+                      Adornment="Adornment.End" AdornmentText="@degreeUnitChoice.UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
     </MudItem>
     <MudItem xs="12" sm="3" md="3" lg="3">
         <MudTextField @bind-Value="@MinuteRoundedValue" Variant="@VariantType"
-                      Adornment="Adornment.End" AdornmentText="@minuteUnitChoice.UnitLabel"></MudTextField>
+                      Adornment="Adornment.End" AdornmentText="@minuteUnitChoice.UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
     </MudItem>
     <MudItem xs="12" sm="6" md="6" lg="6">
         <MudTextField @bind-Value="@SecondValue" Variant="@VariantType"
-                      Adornment="Adornment.End" AdornmentText="@secondUnitChoice.UnitLabel"></MudTextField>
+                      Adornment="Adornment.End" AdornmentText="@secondUnitChoice.UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
     </MudItem>
 </MudGrid>
 
@@ -23,6 +23,12 @@
 
     [Parameter]
     public Variant VariantType { get; set; } = Variant.Text;
+
+    [Parameter]
+    public bool Disabled { get; set; } = false;
+
+    [Parameter]
+    public bool ReadOnly { get; set; } = false;
 
     [Parameter]
     public double SIValue
