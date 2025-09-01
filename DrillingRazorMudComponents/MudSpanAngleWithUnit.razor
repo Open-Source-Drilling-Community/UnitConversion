@@ -1,65 +1,14 @@
 ﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
-<MudGrid Spacing="0">
-    <MudItem xs="12" sm="12" md="12" lg="12">
-        <MudText Typo="Typo.caption" Class="m-0">@QuantityLabel</MudText>
-    </MudItem>
-    <MudItem xs="12" sm="3" md="3" lg="3">
-        <MudTextField @bind-Value="@DegreeRoundedValue"  Variant="@VariantType"
-                      Adornment="Adornment.End" AdornmentText="@degreeUnitChoice.UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
-    </MudItem>
-    <MudItem xs="12" sm="3" md="3" lg="3">
-        <MudTextField @bind-Value="@MinuteRoundedValue" Variant="@VariantType"
-                      Adornment="Adornment.End" AdornmentText="@minuteUnitChoice.UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
-    </MudItem>
-    <MudItem xs="12" sm="6" md="6" lg="6">
-        <MudTextField @bind-Value="@SecondValue" Variant="@VariantType"
-                      Adornment="Adornment.End" AdornmentText="@secondUnitChoice.UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
-    </MudItem>
-</MudGrid>
+@implements IUnitAwareComponent
+
+<MudTextField @bind-Value="@DisplayedValue" ReadOnly="true" Variant="@VariantType" />
 
 @code {
-    [Parameter]
-    public String? QuantityLabel { get; set; }
+    [CascadingParameter]
+    private MudUnitAndReferenceChoiceTag? Parent { get; set; }
 
     [Parameter]
-    public Variant VariantType { get; set; } = Variant.Text;
-
-    [Parameter]
-    public bool Disabled { get; set; } = false;
-
-    [Parameter]
-    public bool ReadOnly { get; set; } = false;
-
-    [Parameter]
-    public double SIValue
-    {
-        get
-        {
-            if (SIValue_ == null)
-            {
-                return double.NaN;
-            }
-            else
-            {
-                return (double)SIValue_;
-            }
-        }
-        set
-        {
-            if (double.IsNaN(value))
-            {
-                SIValue_ = null;
-            }
-            else
-            {
-                SIValue_ = value;
-            }
-            ManageUnits();
-        }
-    }
-
-    [Parameter]
-    public double? SIValueNullable
+    public double? SIValue
     {
         get
         {
@@ -72,57 +21,30 @@
         }
     }
 
+    [Parameter]
+    public String? QuantityName { get; set; }
+
+    [Parameter]
+    public Variant VariantType { get; set; } = Variant.Text;
+
+    [Parameter]
+    public bool UseUnitLabel { get; set; } = false;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;
+
+    [Parameter]
+    public PositionDirectionType PositionDirection { get; set; } = PositionDirectionType.Independent;
+
+    [Parameter]
+    public bool Hidden { get; set; }
+
+    private string? DisplayedValue { get; set; }
+
     private double? SIValue_;
-    private string? degreeRoundedValue_;
-    private string? minuteRoundedValue_;
-    private string? secondValue_;
-
-    [Parameter]
-    public EventCallback<double> SIValueChanged { get; set; }
-
-    [Parameter]
-    public EventCallback<double?> SIValueNullableChanged { get; set; }
-
-    private string? DegreeRoundedValue
-    {
-        get
-        {
-            return degreeRoundedValue_;
-        }
-        set
-        {
-            degreeRoundedValue_ = value;
-            ManageValues().Wait();
-        }
-    }
-
-    private string? MinuteRoundedValue
-    {
-        get
-        {
-            return minuteRoundedValue_;
-        }
-        set
-        {
-            minuteRoundedValue_ = value;
-            ManageValues().Wait();
-        }
-    }
-
-    private string? SecondValue
-    {
-        get
-        {
-            return secondValue_;
-        }
-        set
-        {
-            secondValue_ = value;
-            ManageValues().Wait();
-        }
-    }
-
-    private bool inhibited_ = false;
 
     private readonly UnitChoice degreeUnitChoice = PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.Degree);
     private readonly UnitChoice minuteUnitChoice = PlaneAngleQuantity.Instance.GetUnitChoice(PlaneAngleQuantity.UnitChoicesEnum.ArcMinute);
@@ -131,21 +53,34 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        if (Parent == null)
+        {
+            throw new ArgumentNullException(nameof(Parent), "SpanWithUnit must exist within a UnitAndReferenceChoiceTag");
+        }
+        Parent.Add(this);
         ManageUnits();
     }
 
     public void ManageUnits()
     {
-        if (!inhibited_)
+        if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName) && !string.IsNullOrEmpty(QuantityName))
         {
-            if (SIValueNullable == null)
+            // do the conversion in order to get the correct rounding and possible azimuth corrections
+            string valueInUnitChoice = Parent.FromSI(SIValue, QuantityName, UseUnitLabel);
+            switch (DrillingSignalReference)
             {
-                degreeRoundedValue_ = null;
-                minuteRoundedValue_ = null;
-                secondValue_ = null;
+                case DrillingSignalReferenceType.Azimuth:
+                    valueInUnitChoice = Parent.FromTrueNorthAzimuthSI(SIValue, QuantityName, UseUnitLabel);
+                    break;
+                default:
+                    valueInUnitChoice = Parent.FromSI(SIValue, QuantityName, UseUnitLabel);
+                    break;
             }
-            else
+            if (TryParse(valueInUnitChoice, out double dval))
             {
+                // convert back to SI
+                double SIValue = Parent.ToSI(dval, QuantityName);
+                // force a conversion to degrees
                 double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue);
                 double degValue = Math.Floor(valueInDegreeUnit);
                 double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
@@ -155,39 +90,21 @@
                     minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
                 }
                 double secValue = (valueInDegreeUnit - degValue - minValue / 60) * 3600;
-                degreeRoundedValue_ = degValue.ToString();
-                minuteRoundedValue_ = minValue.ToString();
-                secondValue_ = secValue.ToString("F5");
-            }
-        }
-    }
-
-    public async Task ManageValues()
-    {
-        if (!inhibited_)
-        {
-            double degValue;
-            double minValue;
-            double secValue;
-            if (TryParse(DegreeRoundedValue!, out degValue) && TryParse(MinuteRoundedValue!, out minValue) && TryParse(SecondValue!, out secValue))
-            {
-                double valueInDegreeUnit = degValue + minValue / 60 + secValue / 3600;
-                SIValue = degreeUnitChoice.ToSI(valueInDegreeUnit);
-                degreeRoundedValue_ = degValue.ToString();
-                minuteRoundedValue_ = minValue.ToString();
-                secondValue_ = secValue.ToString();
-                await SIValueChanged.InvokeAsync(SIValue);
-                await SIValueNullableChanged.InvokeAsync(SIValueNullable);
+                string degreeRoundedValue = degValue.ToString();
+                string minuteRoundedValue = minValue.ToString();
+                string secondValue = secValue.ToString("F5");
+                DisplayedValue = degreeRoundedValue + "°" + minuteRoundedValue + "\'" + secondUnitChoice + "\"";
             }
             else
             {
-                inhibited_ = true;
-                SIValueNullable = null;
-                inhibited_ = false;
+                DisplayedValue = string.Empty;
             }
         }
+        else
+        {
+            DisplayedValue = string.Empty;
+        }
     }
-
 
     private static bool TryParse(string value, out double result)
     {
