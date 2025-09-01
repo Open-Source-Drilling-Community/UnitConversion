@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Version>3.3.36</Version>
+    <Version>3.3.37</Version>
     <Authors>Gilles Pelfrene, Eric Cayeux</Authors>
     <Company>NORCE Norwegian Research Centre</Company>
     <Description>A package with MudBlazor components to manage unit and reference conversions.</Description>
