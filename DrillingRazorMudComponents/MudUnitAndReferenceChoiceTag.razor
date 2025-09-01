@@ -1636,6 +1636,13 @@ else
 
     private async Task PostProcessDepthReference()
     {
+        if (unitAwareComponents_ != null)
+        {
+            foreach (IUnitAwareComponent comp in unitAwareComponents_)
+            {
+                comp.ManageUnits();
+            }
+        }
         try
         {
             await DepthReferenceNameChanged.InvokeAsync(depthReferenceName_);
@@ -1649,6 +1656,13 @@ else
 
     private async Task PostProcessPositionReference()
     {
+        if (unitAwareComponents_ != null)
+        {
+            foreach (IUnitAwareComponent comp in unitAwareComponents_)
+            {
+                comp.ManageUnits();
+            }
+        }
         try
         {
             await PositionReferenceNameChanged.InvokeAsync(positionReferenceName_);
@@ -1661,6 +1675,13 @@ else
     }
     private async Task PostProcessAzimuthReference()
     {
+        if (unitAwareComponents_ != null)
+        {
+            foreach (IUnitAwareComponent comp in unitAwareComponents_)
+            {
+                comp.ManageUnits();
+            }
+        }
         try
         {
             await AzimuthReferenceNameChanged.InvokeAsync(azimuthReferenceName_);
@@ -1673,6 +1694,13 @@ else
     }
     private async Task PostProcessPressureReference()
     {
+        if (unitAwareComponents_ != null)
+        {
+            foreach (IUnitAwareComponent comp in unitAwareComponents_)
+            {
+                comp.ManageUnits();
+            }
+        }
         try
         {
             await PressureReferenceNameChanged.InvokeAsync(pressureReferenceName_);

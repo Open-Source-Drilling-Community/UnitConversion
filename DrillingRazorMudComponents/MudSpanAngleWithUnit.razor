@@ -22,9 +22,6 @@
     }
 
     [Parameter]
-    public String? QuantityName { get; set; }
-
-    [Parameter]
     public Variant VariantType { get; set; } = Variant.Text;
 
     [Parameter]
@@ -63,25 +60,15 @@
 
     public void ManageUnits()
     {
-        if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName) && !string.IsNullOrEmpty(QuantityName))
+        if (Parent != null && !string.IsNullOrEmpty(Parent.UnitSystemName))
         {
-            // do the conversion in order to get the correct rounding and possible azimuth corrections
-            string valueInUnitChoice = Parent.FromSI(SIValue, QuantityName, UseUnitLabel);
-            switch (DrillingSignalReference)
+            if (SIValue == null)
             {
-                case DrillingSignalReferenceType.Azimuth:
-                    valueInUnitChoice = Parent.FromTrueNorthAzimuthSI(SIValue, QuantityName, UseUnitLabel);
-                    break;
-                default:
-                    valueInUnitChoice = Parent.FromSI(SIValue, QuantityName, UseUnitLabel);
-                    break;
+                DisplayedValue = string.Empty;
             }
-            if (TryParse(valueInUnitChoice, out double dval))
+            else
             {
-                // convert back to SI
-                double SIValue = Parent.ToSI(dval, QuantityName);
-                // force a conversion to degrees
-                double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue);
+                double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue.Value);
                 double degValue = Math.Floor(valueInDegreeUnit);
                 double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
                 if (Math.Abs(minValue - 60.0) < 1e-6)
@@ -104,10 +91,6 @@
                 string minuteRoundedValue = minValue.ToString();
                 string secondValue = secValue.ToString("F5");
                 DisplayedValue = degreeRoundedValue + "°" + minuteRoundedValue + "\'" + secondUnitChoice + "\"";
-            }
-            else
-            {
-                DisplayedValue = string.Empty;
             }
         }
         else
