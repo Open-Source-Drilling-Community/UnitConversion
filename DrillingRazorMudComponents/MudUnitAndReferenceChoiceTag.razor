@@ -148,7 +148,7 @@ else
     [Parameter]
     public EventCallback<string> UnitSystemNameChanged { get; set; }
 
-    [Parameter] 
+    [Parameter]
     public string? DepthReferenceName
     {
         get
@@ -254,9 +254,11 @@ else
     private bool IsHiddenAzimuthReference = true;
     private bool IsHiddenPressureReference = true;
     private bool IsHiddenDateReference = true;
+    private bool _inInitializedAsync = false;
 
     protected override async Task OnInitializedAsync()
     {
+        _inInitializedAsync = true;
         try
         {
             #region Initialize references
@@ -330,9 +332,9 @@ else
                 //    - this offers the possibility to define custom BaseUnitSystem
                 //    - the child razor component of the present one (this) must indicate how to send requests to this controller (route, endpoint)
                 httpClient = new HttpClient
-                    {
-                        BaseAddress = new Uri(HttpHost + HttpBasePath)
-                    };
+                {
+                    BaseAddress = new Uri(HttpHost + HttpBasePath)
+                };
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 try
@@ -360,13 +362,13 @@ else
                 {
                     if (uSys != null)
                         unitSystemLightList.Add(new UnitSystemLight()
-                            {
-                                ID = uSys.ID,
-                                Name = uSys.Name,
-                                Description = uSys.Description,
-                                IsDefault = uSys.IsDefault,
-                                IsSI = uSys.IsSI
-                            });
+                        {
+                            ID = uSys.ID,
+                            Name = uSys.Name,
+                            Description = uSys.Description,
+                            IsDefault = uSys.IsDefault,
+                            IsSI = uSys.IsSI
+                        });
                 }
             }
             //Initializing baseUnitSystem_ and associated UnitSystemName: default value or checking the validity of the given one
@@ -389,6 +391,7 @@ else
         {
             logger.LogError(ex, "Problem while initializing third step MudUnitAndReferenceChoiceTag");
         }
+        _inInitializedAsync = false;
         InitializedOnce = true;
     }
 
@@ -1608,29 +1611,35 @@ else
         {
             baseUnitSystem = DrillingUnitSystem.Get(baseUnitSystemID);
         }
-        baseUnitSystem_ = baseUnitSystem;
-        if (unitAwareComponents_ != null)
+        if (baseUnitSystem != null)
         {
-            foreach (IUnitAwareComponent comp in unitAwareComponents_)
+            baseUnitSystem_ = baseUnitSystem;
+            if (unitAwareComponents_ != null)
             {
-                comp.ManageUnits();
+                foreach (IUnitAwareComponent comp in unitAwareComponents_)
+                {
+                    comp.ManageUnits();
+                }
             }
-        }
-        if (dateTimeAwareComponents_ != null)
-        {
-            foreach (IDateTimeReferenceAwareComponent comp in dateTimeAwareComponents_)
+            if (dateTimeAwareComponents_ != null)
             {
-                comp.ManageDateTimeReference();
+                foreach (IDateTimeReferenceAwareComponent comp in dateTimeAwareComponents_)
+                {
+                    comp.ManageDateTimeReference();
+                }
             }
-        }
-        try
-        {
-            await UnitSystemNameChanged.InvokeAsync(unitSystemName_);
-            await InvokeAsync(() => { StateHasChanged(); });
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Problem while managing units in PostProcessUnitSystem (second step)");
+            try
+            {
+                await UnitSystemNameChanged.InvokeAsync(unitSystemName_);
+                if (!_inInitializedAsync)
+                {
+                    await InvokeAsync(() => { StateHasChanged(); });
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Problem while managing units in PostProcessUnitSystem (second step)");
+            }
         }
     }
 
