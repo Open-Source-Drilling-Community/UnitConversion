@@ -142,6 +142,121 @@ namespace OSDC.UnitConversion.Conversion
                     ID = new Guid("2caa723f-4107-4632-ad12-3b72c3eb1174"),
                     ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Bar/Factors.Pound"
                 },
+
+                new UnitChoice
+                {
+                    UnitName = "kilogram per cubic metre per megapascal kelvin",
+                    UnitLabel = "kg/m³/(MPa•K)",
+                    ID = new Guid("4fc27c0f-f9a6-47be-9f76-61f3a00a78f1"),
+                    ConversionFactorFromSIFormula = "Factors.Mega/Factors.Unit"
+                },
+                new UnitChoice
+                {
+                    UnitName = "specific gravity per megapascal kelvin",
+                    UnitLabel = "sg/(MPa•K)",
+                    ID = new Guid("6eca416d-d590-475d-877a-3e5d9b74ecbc"),
+                    ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Mega"
+                },
+                new UnitChoice
+                {
+                    UnitName = "gram per cubic centimetre per megapascal kelvin",
+                    UnitLabel = "g/cm³/(MPa•K)",
+                    ID = new Guid("6b3c00ae-499a-4a48-8400-b1b5704c9904"),
+                    ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega/Factors.Milli"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (UK) per megapascal kelvin",
+                    UnitLabel = "ppgUK/(MPa•K)",
+                    ID = new Guid("35523ce7-c1a8-4742-9e80-a253d62d16dc"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (US) per megapascal kelvin",
+                    UnitLabel = "ppgUS/(MPa•K)",
+                    ID = new Guid("3d5692e3-0baa-473a-abbd-b61fb3184c95"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic foot per megapascal kelvin",
+                    UnitLabel = "lb/ft³/(MPa•K)",
+                    ID = new Guid("403a4c46-5990-47be-97d9-ef59505f6338"),
+                    ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic inch per megapascal kelvin",
+                    UnitLabel = "lb/in³/(MPa•K)",
+                    ID = new Guid("b238105f-64e8-4d20-9cc4-09847041b60b"),
+                    ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic yard per megapascal kelvin",
+                    UnitLabel = "lb/yd³/(MPa•K)",
+                    ID = new Guid("b4959d44-0010-4853-9219-5696882ed448"),
+                    ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega/Factors.Pound"
+                },
+
+                new UnitChoice
+                {
+                    UnitName = "kilogram per cubic metre per gigapascal kelvin",
+                    UnitLabel = "kg/m³/(GPa•K)",
+                    ID = new Guid("c53d4c83-4dc4-4084-9cbb-bb91ea9b704b"),
+                    ConversionFactorFromSIFormula = "Factors.Giga/Factors.Unit"
+                },
+                new UnitChoice
+                {
+                    UnitName = "specific gravity per gigapascal kelvin",
+                    UnitLabel = "sg/(GPa•K)",
+                    ID = new Guid("23de1690-a6d7-438c-b96b-9dfc670b428d"),
+                    ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Giga"
+                },
+                new UnitChoice
+                {
+                    UnitName = "gram per cubic centimetre per gigapascal kelvin",
+                    UnitLabel = "g/cm³/(GPa•K)",
+                    ID = new Guid("b262ca47-7eea-44fa-8e04-8a8d80fb9b34"),
+                    ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga/Factors.Milli"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (UK) per gigapascal kelvin",
+                    UnitLabel = "ppgUK/(GPa•K)",
+                    ID = new Guid("67464a81-a4fb-4534-b44f-8f400528dd3e"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (US) per gigapascal kelvin",
+                    UnitLabel = "ppgUS/(GPa•K)",
+                    ID = new Guid("028368a8-be80-4ce3-ad13-e6e4d2a17486"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic foot per gigapascal kelvin",
+                    UnitLabel = "lb/ft³/(GPa•K)",
+                    ID = new Guid("612dc2f8-a5bb-44e9-a469-ba7bf15a2c79"),
+                    ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic inch per gigapascal kelvin",
+                    UnitLabel = "lb/in³/(GPa•K)",
+                    ID = new Guid("2f5739b2-c7d4-406f-9596-508b3c2a1041"),
+                    ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic yard per gigapascal kelvin",
+                    UnitLabel = "lb/yd³/(GPa•K)",
+                    ID = new Guid("15be077d-791a-4b91-90c1-15373fc27017"),
+                    ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga/Factors.Pound"
+                },
+
                 new UnitChoice
                 {
                     UnitName = "kilogram per cubic metre per pound per square inch kelvin",

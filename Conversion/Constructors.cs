@@ -21677,6 +21677,332 @@ namespace OSDC.UnitConversion.Conversion
                 }
               , new UnitChoice
                 {
+                  UnitName = "kilogram per cubic metre per megapascal",
+                  UnitLabel = "kg/m³/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("624fd78a-3d95-4f87-a539-ac07831690b4"),
+                  ConversionFactorFromSIFormula = "Factors.Mega/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Mega/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Mega/Unit, i.e., 1000000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per megapascal",
+                  UnitLabel = "sg/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("42b5dcad-9c77-49fd-94eb-32033943511a"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Mega",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Mega, i.e., 1000.028000784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per megapascal",
+                  UnitLabel = "g/cm³/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("0dfd8f1c-162d-4e40-87c9-82f6f750d332"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Mega/Milli, i.e., 1000.0000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per megapascal",
+                  UnitLabel = "ppgUK/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("3425cc44-360f-4bfa-80b2-4e5147ea0ae2"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Mega/Pound, i.e., 10022.412854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per megapascal",
+                  UnitLabel = "ppgUS/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("2a151e18-61c8-405f-8264-29b872881731"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Mega/Pound, i.e., 8345.404452019331"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per megapascal",
+                  UnitLabel = "lb/ft³/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("50737d7b-51a7-44c4-9f3d-48555a7e0ac1"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Mega/Pound, i.e., 62427.960576144586"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per megapascal",
+                  UnitLabel = "lb/in³/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("550121b9-cab9-45a1-922c-3b1ee8faf2e3"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Mega/Pound, i.e., 36.127292000083685"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per megapascal",
+                  UnitLabel = "lb/yd³/MPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("a960a378-bdac-42b4-9d31-023c655f4a18"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per megapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Mega/Pound, i.e., 1685554.9355559037"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per gigapascal",
+                  UnitLabel = "kg/m³/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("aacdc926-62ee-45db-aa38-fbe2cb22701c"),
+                  ConversionFactorFromSIFormula = "Factors.Giga/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Giga/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Giga/Unit, i.e., 1000000000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per gigapascal",
+                  UnitLabel = "sg/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("a18a8573-da1d-4e3a-b76b-4d73190a0754"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Giga",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Giga, i.e., 1000028.0007840219"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per gigapascal",
+                  UnitLabel = "g/cm³/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("44504d3d-111a-4dc2-9788-bc6adc0c4f81"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Giga/Milli, i.e., 1000000.0000000001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per gigapascal",
+                  UnitLabel = "ppgUK/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("52f72092-045b-4f93-b4f7-223b07e6c8b0"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Giga/Pound, i.e., 10022412.854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per gigapascal",
+                  UnitLabel = "ppgUS/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("037a8500-a3a7-44fc-a332-edb6e56be589"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Giga/Pound, i.e., 8345404.45201933"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per gigapascal",
+                  UnitLabel = "lb/ft³/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("adc6cd36-9dd2-4a09-be99-282cf23772ac"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Giga/Pound, i.e., 62427960.57614458"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per gigapascal",
+                  UnitLabel = "lb/in³/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("9e0ab271-6b7c-49c4-a0b4-db3562b658a8"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Giga/Pound, i.e., 36127.29200008368"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per gigapascal",
+                  UnitLabel = "lb/yd³/GPa",
+                  SIUnitName = "kilogram per cubic metre per pascal",
+                  ID = new Guid("15f23074-5d67-4955-8cb2-031e3de80096"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per gigapascal"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Giga/Pound, i.e., 1685554935.555904"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
                   UnitName = "kilogram per cubic metre per pound per square inch",
                   UnitLabel = "kg/m³/psi",
                   SIUnitName = "kilogram per cubic metre per pascal",
@@ -22188,6 +22514,332 @@ namespace OSDC.UnitConversion.Conversion
                 }
               , new UnitChoice
                 {
+                  UnitName = "kilogram per cubic metre per megapascal squared",
+                  UnitLabel = "kg/m³/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("7e1a3e9d-ce0d-490c-a6b6-b5d9f3228929"),
+                  ConversionFactorFromSIFormula = "Factors.Mega*Factors.Mega/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Mega*Factors.Mega/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Mega*Mega/Unit, i.e., 1000000000000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per megapascal squared",
+                  UnitLabel = "sg/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("9327327d-fca5-47cf-8734-d231ee7e4ab5"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Mega*Factors.Mega",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Mega*Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Mega*Mega, i.e., 1000028000.784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per megapascal squared",
+                  UnitLabel = "g/cm³/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("3081177b-3841-46c7-b736-7edeac6db903"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega*Factors.Mega/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega*Factors.Mega/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Mega*Mega/Milli, i.e., 1000000000.0000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per megapascal squared",
+                  UnitLabel = "ppgUK/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("8b641156-a14f-4aac-8b00-cfe61db83480"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Mega*Mega/Pound, i.e., 10022412854.9605"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per megapascal squared",
+                  UnitLabel = "ppgUS/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("c5d8924d-100c-4556-aeeb-caa30b97b07d"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Mega*Mega/Pound, i.e., 8345404452.019331"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per megapascal squared",
+                  UnitLabel = "lb/ft³/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("88e3ff83-e1fd-4757-bb41-f90d513d620b"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Mega*Mega/Pound, i.e., 62427960576.14459"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per megapascal squared",
+                  UnitLabel = "lb/in³/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("3f36c155-dda0-4982-ae10-b4078bf7d7f3"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Mega*Mega/Pound, i.e., 36127292.000083685"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per megapascal squared",
+                  UnitLabel = "lb/yd³/MPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("6385dbbf-6738-4902-9389-12f2f3472423"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per megapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Mega*Mega/Pound, i.e., 1685554935555.9036"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per gigapascal squared",
+                  UnitLabel = "kg/m³/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("d901c2a5-8e0d-4ce1-8507-fe4737e45753"),
+                  ConversionFactorFromSIFormula = "Factors.Giga*Factors.Giga/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Giga*Factors.Giga/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Giga*Giga/Unit, i.e., 1E+18"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per gigapascal squared",
+                  UnitLabel = "sg/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("b5fbf8a2-7064-43c7-bc22-d2c3607d36b3"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Giga*Factors.Giga",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Giga*Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Giga*Giga, i.e., 1000028000784021.9"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per gigapascal squared",
+                  UnitLabel = "g/cm³/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("44e94eae-9a75-48ff-a71b-b1057fc13667"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga*Factors.Giga/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga*Factors.Giga/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Giga*Giga/Milli, i.e., 1000000000000000.1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per gigapascal squared",
+                  UnitLabel = "ppgUK/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("3a27a975-8879-4585-853b-6725f6829e57"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Giga*Giga/Pound, i.e., 10022412854960500"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per gigapascal squared",
+                  UnitLabel = "ppgUS/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("226d5137-7696-4a84-adc3-67cd8d26cfd2"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Giga*Giga/Pound, i.e., 8345404452019330"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per gigapascal squared",
+                  UnitLabel = "lb/ft³/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("11a8cbca-c51a-458d-9f04-0bc5b7ec442b"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Giga*Giga/Pound, i.e., 62427960576144584"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per gigapascal squared",
+                  UnitLabel = "lb/in³/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("f6bbac04-e3dc-4751-8ca5-d61490b88bbe"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Giga*Giga/Pound, i.e., 36127292000083.68"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per gigapascal squared",
+                  UnitLabel = "lb/yd³/GPa²",
+                  SIUnitName = "kilogram per cubic metre per pascal squared",
+                  ID = new Guid("407d3333-e09d-4219-8653-ccdb3fc1efde"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per gigapascal squared"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Giga*Giga/Pound, i.e., 1.685554935555904E+18"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
                   UnitName = "kilogram per cubic metre per pound per square inch squared",
                   UnitLabel = "kg/m³/psi²",
                   SIUnitName = "kilogram per cubic metre per pascal squared",
@@ -22692,6 +23344,332 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "and"
  + Environment.NewLine + "Yard = 3.0 * Foot"
  + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per megapascal kelvin",
+                  UnitLabel = "kg/m³/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("4fc27c0f-f9a6-47be-9f76-61f3a00a78f1"),
+                  ConversionFactorFromSIFormula = "Factors.Mega/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Mega/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Mega/Unit, i.e., 1000000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per megapascal kelvin",
+                  UnitLabel = "sg/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("6eca416d-d590-475d-877a-3e5d9b74ecbc"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Mega",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Mega, i.e., 1000.028000784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per megapascal kelvin",
+                  UnitLabel = "g/cm³/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("6b3c00ae-499a-4a48-8400-b1b5704c9904"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Mega/Milli, i.e., 1000.0000000000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per megapascal kelvin",
+                  UnitLabel = "ppgUK/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("35523ce7-c1a8-4742-9e80-a253d62d16dc"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Mega/Pound, i.e., 10022.412854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per megapascal kelvin",
+                  UnitLabel = "ppgUS/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("3d5692e3-0baa-473a-abbd-b61fb3184c95"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Mega/Pound, i.e., 8345.404452019331"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per megapascal kelvin",
+                  UnitLabel = "lb/ft³/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("403a4c46-5990-47be-97d9-ef59505f6338"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Mega/Pound, i.e., 62427.960576144586"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per megapascal kelvin",
+                  UnitLabel = "lb/in³/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("b238105f-64e8-4d20-9cc4-09847041b60b"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Mega/Pound, i.e., 36.127292000083685"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per megapascal kelvin",
+                  UnitLabel = "lb/yd³/(MPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("b4959d44-0010-4853-9219-5696882ed448"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per megapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Mega/Pound, i.e., 1685554.9355559037"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per gigapascal kelvin",
+                  UnitLabel = "kg/m³/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("c53d4c83-4dc4-4084-9cbb-bb91ea9b704b"),
+                  ConversionFactorFromSIFormula = "Factors.Giga/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Giga/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Giga/Unit, i.e., 1000000000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per gigapascal kelvin",
+                  UnitLabel = "sg/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("23de1690-a6d7-438c-b96b-9dfc670b428d"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Giga",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Giga, i.e., 1000028.0007840219"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per gigapascal kelvin",
+                  UnitLabel = "g/cm³/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("b262ca47-7eea-44fa-8e04-8a8d80fb9b34"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Giga/Milli, i.e., 1000000.0000000001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per gigapascal kelvin",
+                  UnitLabel = "ppgUK/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("67464a81-a4fb-4534-b44f-8f400528dd3e"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Giga/Pound, i.e., 10022412.854960501"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per gigapascal kelvin",
+                  UnitLabel = "ppgUS/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("028368a8-be80-4ce3-ad13-e6e4d2a17486"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Giga/Pound, i.e., 8345404.45201933"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per gigapascal kelvin",
+                  UnitLabel = "lb/ft³/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("612dc2f8-a5bb-44e9-a469-ba7bf15a2c79"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Giga/Pound, i.e., 62427960.57614458"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per gigapascal kelvin",
+                  UnitLabel = "lb/in³/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("2f5739b2-c7d4-406f-9596-508b3c2a1041"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Giga/Pound, i.e., 36127.29200008368"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per gigapascal kelvin",
+                  UnitLabel = "lb/yd³/(GPa•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal kelvin",
+                  ID = new Guid("15be077d-791a-4b91-90c1-15373fc27017"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per gigapascal kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Giga/Pound, i.e., 1685554935.555904"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Giga = 1e9"
  + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
  + Environment.NewLine + "Foot = 12.0 * Inch"
  + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
@@ -24235,6 +25213,332 @@ namespace OSDC.UnitConversion.Conversion
  + Environment.NewLine + "and"
  + Environment.NewLine + "Yard = 3.0 * Foot"
  + Environment.NewLine + "Bar = 1e5 reference: https://en.wikipedia.org/wiki/Bar_(unit)"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per megapascal squared kelvin",
+                  UnitLabel = "kg/m³/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("d45bc21a-7b78-4d93-969a-95ac6aa7a3b1"),
+                  ConversionFactorFromSIFormula = "Factors.Mega*Factors.Mega/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Mega*Factors.Mega/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Mega*Mega/Unit, i.e., 1000000000000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per megapascal squared kelvin",
+                  UnitLabel = "sg/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("e2f290d5-1ead-46d5-9ae6-da068e022447"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Mega*Factors.Mega",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Mega*Factors.Mega,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Mega*Mega, i.e., 1000028000.784022"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per megapascal squared kelvin",
+                  UnitLabel = "g/cm³/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("6dab06b6-83da-4283-9504-9e05cd881aa4"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega*Factors.Mega/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega*Factors.Mega/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Mega*Mega/Milli, i.e., 1000000000.0000002"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per megapascal squared kelvin",
+                  UnitLabel = "ppgUK/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("56b48f9d-7725-465e-b8f7-fb60b56305a4"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Mega*Mega/Pound, i.e., 10022412854.9605"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per megapascal squared kelvin",
+                  UnitLabel = "ppgUS/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("28f33e02-ccf4-4b73-bfcb-f7bd567e1129"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Mega*Mega/Pound, i.e., 8345404452.019331"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per megapascal squared kelvin",
+                  UnitLabel = "lb/ft³/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("bb8afc52-e0d4-45e5-b300-7dc6140f72a1"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Mega*Mega/Pound, i.e., 62427960576.14459"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per megapascal squared kelvin",
+                  UnitLabel = "lb/in³/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("a89bf491-7a64-4637-8ae3-091e1d088bbd"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Mega*Mega/Pound, i.e., 36127292.000083685"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per megapascal squared kelvin",
+                  UnitLabel = "lb/yd³/(MPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("0f74bd5d-5f14-4b76-b2c1-827a85fb5670"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega*Factors.Mega/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega*Factors.Mega/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per megapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Mega*Mega/Pound, i.e., 1685554935555.9036"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Mega = 1e6"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram per cubic metre per gigapascal squared kelvin",
+                  UnitLabel = "kg/m³/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("e7410220-85c2-4a2e-95de-7701cfc9fc44"),
+                  ConversionFactorFromSIFormula = "Factors.Giga*Factors.Giga/Factors.Unit",
+                  ConversionFactorFromSI = Factors.Giga*Factors.Giga/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram per cubic metre per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Giga*Giga/Unit, i.e., 1E+18"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "specific gravity per gigapascal squared kelvin",
+                  UnitLabel = "sg/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("2a482430-a155-4c91-a981-633f12d115d0"),
+                  ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Giga*Factors.Giga",
+                  ConversionFactorFromSI = Factors.SpecificGavity4degC*Factors.Giga*Factors.Giga,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in specific gravity per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = SpecificGavity4degC*Giga*Giga, i.e., 1000028000784021.9"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "SpecificGavity4degC = 1.0 / WaterDensity4degC1Atm"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "WaterDensity4degC1Atm = 999.9720 reference: https://en.wikipedia.org/wiki/Relative_density"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "gram per cubic centimetre per gigapascal squared kelvin",
+                  UnitLabel = "g/cm³/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("0046231f-e430-444f-bd2e-7fa79fe20aab"),
+                  ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga*Factors.Giga/Factors.Milli",
+                  ConversionFactorFromSI = Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga*Factors.Giga/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in gram per cubic centimetre per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Centi*Centi*Centi*Giga*Giga/Milli, i.e., 1000000000000000.1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (UK) per gigapascal squared kelvin",
+                  UnitLabel = "ppgUK/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("6e2bf814-a090-415b-9043-c43d02c469d7"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUK*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (UK) per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUK*Giga*Giga/Pound, i.e., 10022412854960500"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUK = 4.54609e-3 reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per gallon (US) per gigapascal squared kelvin",
+                  UnitLabel = "ppgUS/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("efbd074e-1aeb-4941-8339-837f7c9e8abe"),
+                  ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.GallonUS*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per gallon (US) per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = GallonUS*Giga*Giga/Pound, i.e., 8345404452019330"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "GallonUS = 231.0 * Inch * Inch * Inch reference: https://en.wikipedia.org/wiki/Gallon"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic foot per gigapascal squared kelvin",
+                  UnitLabel = "lb/ft³/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("cd9f0127-ad45-4842-8b64-fc5d2eb4ec15"),
+                  ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic foot per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Foot*Foot*Foot*Giga*Giga/Pound, i.e., 62427960576144584"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic inch per gigapascal squared kelvin",
+                  UnitLabel = "lb/in³/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("f898dd9c-cbda-478d-bff7-b24c1887e9e1"),
+                  ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic inch per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Inch*Inch*Inch*Giga*Giga/Pound, i.e., 36127292000083.68"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Giga = 1e9"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "pound per cubic yard per gigapascal squared kelvin",
+                  UnitLabel = "lb/yd³/(GPa²•K)",
+                  SIUnitName = "kilogram per cubic metre per pascal squared kelvin",
+                  ID = new Guid("dc9cf37d-6036-4151-8ea4-2a8c40efb3c8"),
+                  ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga*Factors.Giga/Factors.Pound",
+                  ConversionFactorFromSI = Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga*Factors.Giga/Factors.Pound,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in pound per cubic yard per gigapascal squared kelvin"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Yard*Yard*Yard*Giga*Giga/Pound, i.e., 1.685554935555904E+18"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Yard = 3.0 * Foot"
+ + Environment.NewLine + "Giga = 1e9"
  + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
  + Environment.NewLine + "Foot = 12.0 * Inch"
  + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"

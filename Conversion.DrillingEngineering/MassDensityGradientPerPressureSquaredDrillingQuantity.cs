@@ -7,7 +7,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
 {
     public partial class MassDensityGradientPerPressureSquaredDrillingQuantity : MassDensityGradientPerPressureSquaredQuantity
     {
-        public override double? MeaningfulPrecisionInSI { get; } = 1e-17;
+        public override double? MeaningfulPrecisionInSI { get; } = 1e-18;
 
         private static MassDensityGradientPerPressureSquaredDrillingQuantity instance_ = null;
 

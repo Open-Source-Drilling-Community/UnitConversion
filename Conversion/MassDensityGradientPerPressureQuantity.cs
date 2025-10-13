@@ -140,6 +140,121 @@ namespace OSDC.UnitConversion.Conversion
                     ID = new Guid("bfef9341-2dfe-4567-9826-8388839e8bc2"),
                     ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Bar/Factors.Pound"
                 },
+
+                new UnitChoice
+                {
+                    UnitName = "kilogram per cubic metre per megapascal",
+                    UnitLabel = "kg/m³/MPa",
+                    ID = new Guid("624fd78a-3d95-4f87-a539-ac07831690b4"),
+                    ConversionFactorFromSIFormula = "Factors.Mega/Factors.Unit"
+                },
+                new UnitChoice
+                {
+                    UnitName = "specific gravity per megapascal",
+                    UnitLabel = "sg/MPa",
+                    ID = new Guid("42b5dcad-9c77-49fd-94eb-32033943511a"),
+                    ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Mega"
+                },
+                new UnitChoice
+                {
+                    UnitName = "gram per cubic centimetre per megapascal",
+                    UnitLabel = "g/cm³/MPa",
+                    ID = new Guid("0dfd8f1c-162d-4e40-87c9-82f6f750d332"),
+                    ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Mega/Factors.Milli"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (UK) per megapascal",
+                    UnitLabel = "ppgUK/MPa",
+                    ID = new Guid("3425cc44-360f-4bfa-80b2-4e5147ea0ae2"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (US) per megapascal",
+                    UnitLabel = "ppgUS/MPa",
+                    ID = new Guid("2a151e18-61c8-405f-8264-29b872881731"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic foot per megapascal",
+                    UnitLabel = "lb/ft³/MPa",
+                    ID = new Guid("50737d7b-51a7-44c4-9f3d-48555a7e0ac1"),
+                    ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic inch per megapascal",
+                    UnitLabel = "lb/in³/MPa",
+                    ID = new Guid("550121b9-cab9-45a1-922c-3b1ee8faf2e3"),
+                    ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Mega/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic yard per megapascal",
+                    UnitLabel = "lb/yd³/MPa",
+                    ID = new Guid("a960a378-bdac-42b4-9d31-023c655f4a18"),
+                    ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Mega/Factors.Pound"
+                },
+
+                new UnitChoice
+                {
+                    UnitName = "kilogram per cubic metre per gigapascal",
+                    UnitLabel = "kg/m³/GPa",
+                    ID = new Guid("aacdc926-62ee-45db-aa38-fbe2cb22701c"),
+                    ConversionFactorFromSIFormula = "Factors.Giga/Factors.Unit"
+                },
+                new UnitChoice
+                {
+                    UnitName = "specific gravity per gigapascal",
+                    UnitLabel = "sg/GPa",
+                    ID = new Guid("a18a8573-da1d-4e3a-b76b-4d73190a0754"),
+                    ConversionFactorFromSIFormula = "Factors.SpecificGavity4degC*Factors.Giga"
+                },
+                new UnitChoice
+                {
+                    UnitName = "gram per cubic centimetre per gigapascal",
+                    UnitLabel = "g/cm³/GPa",
+                    ID = new Guid("44504d3d-111a-4dc2-9788-bc6adc0c4f81"),
+                    ConversionFactorFromSIFormula = "Factors.Centi*Factors.Centi*Factors.Centi*Factors.Giga/Factors.Milli"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (UK) per gigapascal",
+                    UnitLabel = "ppgUK/GPa",
+                    ID = new Guid("52f72092-045b-4f93-b4f7-223b07e6c8b0"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUK*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per gallon (US) per gigapascal",
+                    UnitLabel = "ppgUS/GPa",
+                    ID = new Guid("037a8500-a3a7-44fc-a332-edb6e56be589"),
+                    ConversionFactorFromSIFormula = "Factors.GallonUS*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic foot per gigapascal",
+                    UnitLabel = "lb/ft³/GPa",
+                    ID = new Guid("adc6cd36-9dd2-4a09-be99-282cf23772ac"),
+                    ConversionFactorFromSIFormula = "Factors.Foot*Factors.Foot*Factors.Foot*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic inch per gigapascal",
+                    UnitLabel = "lb/in³/GPa",
+                    ID = new Guid("9e0ab271-6b7c-49c4-a0b4-db3562b658a8"),
+                    ConversionFactorFromSIFormula = "Factors.Inch*Factors.Inch*Factors.Inch*Factors.Giga/Factors.Pound"
+                },
+                new UnitChoice
+                {
+                    UnitName = "pound per cubic yard per gigapascal",
+                    UnitLabel = "lb/yd³/GPa",
+                    ID = new Guid("15f23074-5d67-4955-8cb2-031e3de80096"),
+                    ConversionFactorFromSIFormula = "Factors.Yard*Factors.Yard*Factors.Yard*Factors.Giga/Factors.Pound"
+                },
+
                 new UnitChoice
                 {
                     UnitName = "kilogram per cubic metre per pound per square inch",
