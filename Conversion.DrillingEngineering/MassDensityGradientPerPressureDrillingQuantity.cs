@@ -32,6 +32,11 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
             DescriptionMD += "The meaningful precision of mass density gradient per pressure in the drilling context is typically: " + MeaningfulPrecisionInSI.ToString() + " " + MassDensityGradientPerLengthQuantity.Instance.GetUnitChoice(MassDensityGradientPerLengthQuantity.UnitChoicesEnum.KilogramPerCubicMetrePerMetre).UnitLabel + Environment.NewLine;
+            Reset();
+            foreach (var uc in MassDensityGradientPerPressureQuantity.Instance.UnitChoices)
+            {
+                this.UnitChoices.Add(uc);
+            }
             SemanticExample = GetSemanticExample();
         }
     }

@@ -70,7 +70,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                                 }
                                 else
                                 {
-                                    throw new Exception("duplicate guid for physical quantity");
+                                    throw new Exception("duplicate unit choice guid (" + quantity.ID.ToString() + ", " + quantity.Name + ") for drilling quantity: " + quantity.Name);
                                 }
                             }
                             else

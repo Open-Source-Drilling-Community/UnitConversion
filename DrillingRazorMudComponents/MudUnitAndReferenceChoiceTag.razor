@@ -381,7 +381,10 @@ else
                     if (string.IsNullOrEmpty(UnitSystemName) || UnitSystemName.Equals(uSysLight.Name))
                         break; //the given UnitSystemName is checked against each name in the available unitChoiceSets
                 }
-                baseUnitSystem_ = DrillingUnitSystem.Get(defaultUnitSystemLight!.ID);
+                if (defaultUnitSystemLight != null)
+                {
+                    baseUnitSystem_ = DrillingUnitSystem.Get(defaultUnitSystemLight.ID);
+                }
                 if (defaultUnitSystemLight != null)
                     UnitSystemName = defaultUnitSystemLight.Name;
             }

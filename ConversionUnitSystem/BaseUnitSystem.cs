@@ -584,7 +584,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                                 }
                                 else
                                 {
-                                    throw new Exception("duplicate guid for physical quantity");
+                                    throw new Exception("duplicate unit choice guid (" + quantity.ID.ToString() + ", " + quantity.Name + ") for base quantity: " + quantity.Name);
                                 }
                             }
                             else
