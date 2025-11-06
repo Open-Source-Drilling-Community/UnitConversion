@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ModelContextProtocol.Protocol;
+using NORCE.Drilling.UnitConversion.Service.Mcp;
+using NORCE.Drilling.UnitConversion.Service.Mcp.Tools;
 using OSDC.UnitConversion.Service;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -51,6 +54,25 @@ builder.Services.AddSwaggerGen(c =>
     //c.SchemaFilter<PolymorphismSchemaFilter<BaseType>>(); // schema filter sets the schemas (timing is automatically managed)
 });
 
+// MCP server registrations
+var serverVersion = typeof(SqlConnectionManager).Assembly.GetName().Version?.ToString() ?? "1.0.0";
+
+builder.Services.AddMcpServer(options =>
+{
+    options.ServerInfo = new Implementation
+    {
+        Name = "UnitConversionService",
+        Version = serverVersion
+    };
+    options.Capabilities = new ServerCapabilities
+    {
+        Tools = new ToolsCapability()
+    };
+}).WithHttpTransport();
+
+builder.Services.AddLegacyMcpTool<PingMcpTool>();
+
+// end MCP server
 
 var app = builder.Build();
 
@@ -109,6 +131,8 @@ app.UseCors(cors => cors
                         .AllowCredentials()
            );
 
+app.MapMcp("/mcp");
+app.MapMcpWebSocket("/mcp/ws");
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 
