@@ -2,7 +2,7 @@ using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NORCE.Drilling.UnitConversion.Service.Mcp;
+namespace OSDC.UnitConversion.Service.Mcp;
 
 public interface IMcpTool
 {

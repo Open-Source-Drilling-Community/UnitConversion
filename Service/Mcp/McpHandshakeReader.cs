@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Http;
 
-namespace NORCE.Drilling.UnitConversion.Service.Mcp;
+namespace OSDC.UnitConversion.Service.Mcp;
 
 internal static class McpHandshakeReader
 {

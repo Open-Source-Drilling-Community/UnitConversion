@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using ModelContextProtocol;
 using ModelContextProtocol.Protocol;
 
-namespace NORCE.Drilling.UnitConversion.Service.Mcp;
+namespace OSDC.UnitConversion.Service.Mcp;
 
 /// <summary>
 /// Implements a Model Context Protocol <see cref="ITransport"/> over ASP.NET Core WebSockets.

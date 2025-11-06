@@ -5,8 +5,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ModelContextProtocol.Protocol;
-using NORCE.Drilling.UnitConversion.Service.Mcp;
-using NORCE.Drilling.UnitConversion.Service.Mcp.Tools;
+using OSDC.UnitConversion.Service.Mcp;
+using OSDC.UnitConversion.Service.Mcp.Tools;
 using OSDC.UnitConversion.Service;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -71,6 +71,34 @@ builder.Services.AddMcpServer(options =>
 }).WithHttpTransport();
 
 builder.Services.AddLegacyMcpTool<PingMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllPhysicalQuantityIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetPhysicalQuantityByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllPhysicalQuantityMcpTool>();
+builder.Services.AddLegacyMcpTool<FindPhysicalQuantityIdByNameMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitSystemIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetUnitSystemByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitSystemLightMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitSystemMcpTool>();
+builder.Services.AddLegacyMcpTool<FindUnitSystemIdByNameMcpTool>();
+builder.Services.AddLegacyMcpTool<PostUnitSystemMcpTool>();
+builder.Services.AddLegacyMcpTool<PutUnitSystemByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<DeleteUnitSystemByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitConversionSetIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitConversionSetMetaInfoMcpTool>();
+builder.Services.AddLegacyMcpTool<GetUnitConversionSetByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitConversionSetMcpTool>();
+builder.Services.AddLegacyMcpTool<PostUnitConversionSetMcpTool>();
+builder.Services.AddLegacyMcpTool<PutUnitConversionSetByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<DeleteUnitConversionSetByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitSystemConversionSetIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitSystemConversionSetMetaInfoMcpTool>();
+builder.Services.AddLegacyMcpTool<GetUnitSystemConversionSetByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<GetAllUnitSystemConversionSetMcpTool>();
+builder.Services.AddLegacyMcpTool<PostUnitSystemConversionSetMcpTool>();
+builder.Services.AddLegacyMcpTool<PutUnitSystemConversionSetByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<DeleteUnitSystemConversionSetByIdMcpTool>();
+builder.Services.AddLegacyMcpTool<ConvertUnitValueMcpTool>();
+builder.Services.AddLegacyMcpTool<ConvertUnitSystemValueMcpTool>();
 
 // end MCP server
 

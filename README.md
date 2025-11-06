@@ -13,10 +13,62 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
   - [UnitSystem endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystem)
   - [UnitSystemConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystemConversionSet)
   - [UnitConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitConversionSet)
+  - MCP server entry point: `https://app.digiwells.no/UnitConversion/api/mcp` (see details below)
 
 - a client user interface to handle unit conversions 
   - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
   - [UnitConversionSet endpoint](https://dev.digiwells.no/UnitConversion/webapp/UnitConversion)
+
+## Model Context Protocol server
+
+The UnitConversion service hosts a [Model Context Protocol](https://modelcontextprotocol.io/) server alongside the REST API. MCP-compatible clients can call tools over HTTP (streaming) or WebSocket transports using the endpoint:
+
+```
+https://app.digiwells.no/UnitConversion/api/mcp
+```
+
+When running locally with the default profile, the entry point is:
+
+```
+http://localhost:5002/UnitConversion/api/mcp
+```
+
+### Available tools
+
+The following tool names are exposed through MCP:
+
+- `ping` – connectivity probe returning a `pong` payload
+- Physical quantity utilities: `get_all_physical_quantity_id`, `get_physical_quantity_by_id`, `get_all_physical_quantity`, `find_physical_quantity_id_by_name`
+- Unit conversions for individual quantities: `convert_unit_value`
+- Unit system utilities: `get_all_unit_system_id`, `get_unit_system_by_id`, `get_all_unit_system_light`, `get_all_unit_system`, `find_unit_system_id_by_name`, `post_unit_system`, `put_unit_system_by_id`, `delete_unit_system_by_id`
+- Unit system conversions: `convert_unit_system_value`
+- Unit conversion set management: `get_all_unit_conversion_set_id`, `get_all_unit_conversion_set_meta_info`, `get_unit_conversion_set_by_id`, `get_all_unit_conversion_set`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id`
+- Unit system conversion set management: `get_all_unit_system_conversion_set_id`, `get_all_unit_system_conversion_set_meta_info`, `get_unit_system_conversion_set_by_id`, `get_all_unit_system_conversion_set`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id`
+
+### Example JSON-RPC request
+
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools.call",
+        "params": {
+          "name": "convert_unit_system_value",
+          "arguments": {
+            "physicalQuantity": "Mud Density",
+            "unitSystemIn": "SI",
+            "unitSystemOut": "Metric",
+            "value": 1200
+          }
+        }
+      }' \
+  http://localhost:5002/UnitConversion/api/mcp
+```
+
+Clients can also initiate WebSocket sessions (via `GET /UnitConversion/api/mcp/ws`) and use SSE/HTTP streaming; the transport is negotiated automatically by the ModelContextProtocol client libraries.
 
 # Data model
 

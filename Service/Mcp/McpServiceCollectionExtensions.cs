@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
 
-namespace NORCE.Drilling.UnitConversion.Service.Mcp;
+namespace OSDC.UnitConversion.Service.Mcp;
 
 internal static class McpServiceCollectionExtensions
 {

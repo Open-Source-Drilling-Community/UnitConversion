@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Nodes;
 
-namespace NORCE.Drilling.UnitConversion.Service.Mcp.Tools;
+namespace OSDC.UnitConversion.Service.Mcp.Tools;
 
 internal static class McpToolArgumentHelpers
 {
