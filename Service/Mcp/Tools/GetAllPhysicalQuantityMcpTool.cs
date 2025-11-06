@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OSDC.UnitConversion.Service.Controllers;
 using OSDC.UnitConversion.Conversion.DrillingEngineering;
+using OSDC.UnitConversion.Conversion;
 
 namespace OSDC.UnitConversion.Service.Mcp.Tools;
 
@@ -38,13 +39,28 @@ public sealed class GetAllPhysicalQuantityMcpTool : IMcpTool
 
             ActionResult<IEnumerable<DrillingPhysicalQuantity>> actionResult = controller.GetAllPhysicalQuantity();
 
-            if (ActionResultToolHelper.TryResolveResult(actionResult, "Unable to retrieve physical quantities.", out var quantities, out var errorNode))
+            IEnumerable<BasePhysicalQuantity>? quantities = actionResult.Value switch
             {
-                var payload = JsonSerializer.SerializeToNode(quantities, McpToolJsonOptions.Default);
-                return Task.FromResult(payload);
+                IEnumerable<BasePhysicalQuantity> baseValues => baseValues,
+                _ => null
+            };
+
+            if (quantities is null && actionResult.Result is ObjectResult objectResult)
+            {
+                quantities = objectResult.Value switch
+                {
+                    IEnumerable<BasePhysicalQuantity> baseValues => baseValues,
+                    _ => null
+                };
             }
 
-            return Task.FromResult(errorNode);
+            if (quantities is null)
+            {
+                return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(500, "Unable to retrieve physical quantities."));
+            }
+
+            var payload = JsonSerializer.SerializeToNode(quantities, McpToolJsonOptions.Default);
+            return Task.FromResult<JsonNode?>(payload);
         }
         catch (Exception ex)
         {

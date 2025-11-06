@@ -131,14 +131,15 @@ public class McpToolIntegrationTests
         var quantityNode = await CallToolForJsonAsync(
             "get_physical_quantity_by_id",
             CreateArgs(("id", _sampleQuantity.ID))).ConfigureAwait(false);
-        var quantity = Deserialize<DrillingPhysicalQuantity>(quantityNode);
-        Assert.That(quantity, Is.Not.Null);
-        Assert.That(quantity!.ID, Is.EqualTo(_sampleQuantity.ID));
+        var quantityId = GetGuid(quantityNode?["ID"]);
+        var quantityName = GetString(quantityNode?["Name"]);
+        Assert.That(quantityId, Is.EqualTo(_sampleQuantity.ID));
+        Assert.That(quantityName, Is.Not.Null.And.Not.Empty);
 
         var allQuantitiesNode = await CallToolForJsonAsync("get_all_physical_quantity").ConfigureAwait(false);
-        var allQuantities = Deserialize<List<DrillingPhysicalQuantity>>(allQuantitiesNode);
-        Assert.That(allQuantities, Is.Not.Null.And.Not.Empty);
-        Assert.That(allQuantities!.Any(q => q.ID == _sampleQuantity.ID), Is.True);
+        var allQuantitiesArray = allQuantitiesNode?.AsArray();
+        Assert.That(allQuantitiesArray, Is.Not.Null.And.Not.Empty);
+        Assert.That(allQuantitiesArray!.Any(node => GetGuid(node?["ID"]) == _sampleQuantity.ID), Is.True);
 
         var lookupNode = await CallToolForJsonAsync(
             "find_physical_quantity_id_by_name",

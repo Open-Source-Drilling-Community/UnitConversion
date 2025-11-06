@@ -264,23 +264,41 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
         return true;
     }
 
-    private static OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity? FindPhysicalQuantity(
+    private static BasePhysicalQuantity? FindPhysicalQuantity(
         PhysicalQuantityController controller,
         string rawName)
     {
         var actionResult = controller.GetAllPhysicalQuantity();
-        var quantities = actionResult.Value ?? (actionResult.Result as ObjectResult)?.Value as IEnumerable<OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity>;
+        IEnumerable<BasePhysicalQuantity>? quantities = actionResult.Value switch
+        {
+            IEnumerable<BasePhysicalQuantity> baseValues => baseValues,
+            _ => null
+        };
+
+        if (quantities is null && actionResult.Result is ObjectResult objectResult)
+        {
+            quantities = objectResult.Value switch
+            {
+                IEnumerable<BasePhysicalQuantity> baseValues => baseValues,
+                _ => null
+            };
+        }
+
         if (quantities is null)
         {
             return null;
         }
 
+        var candidates = quantities
+            .Select(q => BasePhysicalQuantity.GetQuantity(q.ID) ?? (q as BasePhysicalQuantity))
+            .OfType<BasePhysicalQuantity>();
+
         var searchToken = Normalize(rawName);
         var bestScore = 0;
-        OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity? best = null;
+        BasePhysicalQuantity? best = null;
         string? bestLabel = null;
 
-        foreach (var quantity in quantities)
+        foreach (var quantity in candidates)
         {
             if (quantity.ID == Guid.Empty)
             {
@@ -297,8 +315,6 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
                 }
             }
         }
-
-        _ = bestLabel;
 
         return best;
     }

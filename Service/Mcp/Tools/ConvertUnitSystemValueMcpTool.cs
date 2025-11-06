@@ -16,6 +16,7 @@ using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering;
 using OSDC.UnitConversion.Model;
 using OSDC.UnitConversion.Service.Controllers;
+using OSDC.UnitConversion.Conversion;
 
 namespace OSDC.UnitConversion.Service.Mcp.Tools;
 
@@ -340,21 +341,46 @@ public sealed class ConvertUnitSystemValueMcpTool : IMcpTool
         };
     }
 
-    private static DrillingPhysicalQuantity? ResolvePhysicalQuantity(
+    private static BasePhysicalQuantity? ResolvePhysicalQuantity(
         PhysicalQuantityController controller,
         Guid? quantityId,
         string? quantityName)
     {
         var actionResult = controller.GetAllPhysicalQuantity();
-        var quantities = actionResult.Value ?? (actionResult.Result as ObjectResult)?.Value as IEnumerable<DrillingPhysicalQuantity>;
+        IEnumerable<BasePhysicalQuantity>? quantities = null;
+
+        if (actionResult.Value is IEnumerable<BasePhysicalQuantity> baseValues)
+        {
+            quantities = baseValues;
+        }
+        else if (actionResult.Value is IEnumerable<DrillingPhysicalQuantity> drillingValues)
+        {
+            quantities = drillingValues;
+        }
+        else if (actionResult.Result is ObjectResult objectResult)
+        {
+            if (objectResult.Value is IEnumerable<BasePhysicalQuantity> baseValuesFromResult)
+            {
+                quantities = baseValuesFromResult;
+            }
+            else if (objectResult.Value is IEnumerable<DrillingPhysicalQuantity> drillingValuesFromResult)
+            {
+                quantities = drillingValuesFromResult;
+            }
+        }
+
         if (quantities is null)
         {
             return null;
         }
 
+        var candidates = quantities
+            .Select(q => BasePhysicalQuantity.GetQuantity(q.ID) ?? (q as BasePhysicalQuantity))
+            .OfType<BasePhysicalQuantity>();
+
         if (quantityId is Guid id && id != Guid.Empty)
         {
-            var byId = quantities.FirstOrDefault(q => q.ID == id);
+            var byId = candidates.FirstOrDefault(q => q.ID == id);
             if (byId != null)
             {
                 return byId;
@@ -368,10 +394,10 @@ public sealed class ConvertUnitSystemValueMcpTool : IMcpTool
 
         var searchToken = Normalize(quantityName);
         var bestScore = 0;
-        DrillingPhysicalQuantity? best = null;
+        BasePhysicalQuantity? best = null;
         string? bestLabel = null;
 
-        foreach (var quantity in quantities)
+        foreach (var quantity in candidates)
         {
             if (quantity.ID == Guid.Empty)
             {
@@ -398,7 +424,21 @@ public sealed class ConvertUnitSystemValueMcpTool : IMcpTool
         string? unitSystemName)
     {
         var actionResult = controller.GetAllUnitSystemLight();
-        var unitSystems = actionResult.Value ?? (actionResult.Result as ObjectResult)?.Value as IEnumerable<UnitSystemLight>;
+        IEnumerable<UnitSystemLight>? unitSystems = actionResult.Value switch
+        {
+            IEnumerable<UnitSystemLight> lights => lights,
+            _ => null
+        };
+
+        if (unitSystems is null && actionResult.Result is ObjectResult objectResult)
+        {
+            unitSystems = objectResult.Value switch
+            {
+                IEnumerable<UnitSystemLight> lights => lights,
+                _ => null
+            };
+        }
+
         if (unitSystems is null)
         {
             return null;
