@@ -25,6 +25,8 @@ public class McpToolIntegrationTests
 {
     //private const string McpEndpoint = "http://localhost:5002/UnitConversion/api/mcp";
     private const string McpEndpoint = "http://localhost:8080/UnitConversion/api/mcp";
+    //private const string McpEndpoint = "https://dev.DigiWells.no/UnitConversion/api/mcp";
+    //private const string McpEndpoint = "https://app.DigiWells.no/UnitConversion/api/mcp";
 
     private readonly IReadOnlyDictionary<string, object?> _emptyArgs =
         new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
