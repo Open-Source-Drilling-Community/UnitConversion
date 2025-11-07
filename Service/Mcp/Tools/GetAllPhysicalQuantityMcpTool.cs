@@ -26,7 +26,7 @@ public sealed class GetAllPhysicalQuantityMcpTool : IMcpTool
 
     public string Name => "get_all_physical_quantity";
 
-    public string Description => "Returns every physical quantity available in the service by using the PhysicalQuantityController heavy-data endpoint.";
+    public string Description => "Returns the whole content of every physical quantity available in the service by using the PhysicalQuantityController heavy-data endpoint.";
 
     public JsonNode? InputSchema => null;
 

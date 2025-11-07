@@ -25,7 +25,7 @@ public sealed class GetAllUnitSystemMcpTool : IMcpTool
 
     public string Name => "get_all_unit_system";
 
-    public string Description => "Returns all unit systems including heavy data by invoking the UnitSystemController heavy-data endpoint.";
+    public string Description => "Returns the whole content of every unit systems by invoking the UnitSystemController heavy-data endpoint.";
 
     public JsonNode? InputSchema => null;
 

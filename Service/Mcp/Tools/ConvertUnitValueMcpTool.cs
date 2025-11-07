@@ -61,7 +61,7 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
 
     public string Name => "convert_unit_value";
 
-    public string Description => "Converts a value between two unit choices by creating a temporary UnitConversionSet.";
+    public string Description => "Converts a physical quantity value between two unit choices by creating a temporary UnitConversionSet.";
 
     public JsonNode? InputSchema => Schema;
 

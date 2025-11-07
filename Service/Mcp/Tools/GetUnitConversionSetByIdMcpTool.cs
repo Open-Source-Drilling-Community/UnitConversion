@@ -25,7 +25,7 @@ public sealed class GetUnitConversionSetByIdMcpTool : IMcpTool
 
     public string Name => "get_unit_conversion_set_by_id";
 
-    public string Description => "Fetches a unit conversion set by its identifier by calling the UnitConversionSetController.";
+    public string Description => "Fetches the whole content of a unit conversion set by its identifier by calling the UnitConversionSetController.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
 

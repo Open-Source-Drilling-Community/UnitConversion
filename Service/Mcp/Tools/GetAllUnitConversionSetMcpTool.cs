@@ -25,7 +25,7 @@ public sealed class GetAllUnitConversionSetMcpTool : IMcpTool
 
     public string Name => "get_all_unit_conversion_set";
 
-    public string Description => "Returns all unit conversion sets by invoking the UnitConversionSetController heavy-data endpoint.";
+    public string Description => "Returns the whole content of every unit conversion sets by invoking the UnitConversionSetController heavy-data endpoint.";
 
     public JsonNode? InputSchema => null;
 

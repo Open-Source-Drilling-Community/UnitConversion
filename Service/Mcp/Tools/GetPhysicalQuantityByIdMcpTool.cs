@@ -25,7 +25,7 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
 
     public string Name => "get_physical_quantity_by_id";
 
-    public string Description => "Finds a physical quantity by its identifier by calling the PhysicalQuantityController CRUD endpoint.";
+    public string Description => "Returns the whole content of a physical quantity using its identifier by calling the PhysicalQuantityController CRUD endpoint.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
 

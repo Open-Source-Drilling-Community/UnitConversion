@@ -25,7 +25,7 @@ public sealed class GetUnitSystemByIdMcpTool : IMcpTool
 
     public string Name => "get_unit_system_by_id";
 
-    public string Description => "Fetches a unit system by its identifier through the UnitSystemController.";
+    public string Description => "Fetches the whole content of a unit system by its identifier through the UnitSystemController.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
 
