@@ -23,7 +23,8 @@ namespace OSDC.UnitConversion.ServiceTest;
 [Category("Integration")]
 public class McpToolIntegrationTests
 {
-    private const string McpEndpoint = "http://localhost:5002/UnitConversion/api/mcp";
+    //private const string McpEndpoint = "http://localhost:5002/UnitConversion/api/mcp";
+    private const string McpEndpoint = "http://localhost:8080/UnitConversion/api/mcp";
 
     private readonly IReadOnlyDictionary<string, object?> _emptyArgs =
         new Dictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
