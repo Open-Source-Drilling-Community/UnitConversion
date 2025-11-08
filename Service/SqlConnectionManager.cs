@@ -30,7 +30,7 @@ namespace OSDC.UnitConversion.Service
     {
         private readonly ILogger<SqlConnectionManager> _logger;
         private readonly string _connectionString;
-        public static readonly string HOME_DIRECTORY = ".." + Path.DirectorySeparatorChar + "home" + Path.DirectorySeparatorChar;
+        public static readonly string HOME_DIRECTORY = Path.Combine("..", "home");
         public static readonly string DATABASE_FILENAME = "UnitConversion.db";
         public static readonly string DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -117,7 +117,7 @@ namespace OSDC.UnitConversion.Service
             {
                 try
                 {
-                    string databaseFileName = HOME_DIRECTORY + Path.DirectorySeparatorChar + DATABASE_FILENAME;
+                    string databaseFileName = Path.Combine(HOME_DIRECTORY,  DATABASE_FILENAME);
                     if (File.Exists(databaseFileName))
                     {
                         _logger.LogInformation("Opening database {_databaseFileName}", DATABASE_FILENAME);

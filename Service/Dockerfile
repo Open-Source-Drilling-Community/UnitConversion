@@ -22,4 +22,8 @@ FROM base AS final
 WORKDIR /app
 VOLUME /home
 COPY --from=publish /app .
+
+# Copy the database file into /home inside the image
+COPY home/UnitConversionVectors.db /home/UnitConversionVectors.db
+
 ENTRYPOINT ["dotnet", "Service.dll"]

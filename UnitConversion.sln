@@ -47,6 +47,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConversionUnitSystemDrillin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionDrillingRazorMudComponentsUnitTests", "ConversionDrillingRazorMudComponentsUnitTests\ConversionDrillingRazorMudComponentsUnitTests.csproj", "{301D0594-5223-4AFE-BD82-D6319BA8A612}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateResources", "GenerateResources\GenerateResources.csproj", "{AAAA5690-2E91-F104-7B09-EEAA7C952103}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{301D0594-5223-4AFE-BD82-D6319BA8A612}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{301D0594-5223-4AFE-BD82-D6319BA8A612}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{301D0594-5223-4AFE-BD82-D6319BA8A612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

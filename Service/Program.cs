@@ -5,10 +5,14 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ModelContextProtocol.Protocol;
+using ModelContextProtocol.Server;
 using OSDC.UnitConversion.Service.Mcp;
+using OSDC.UnitConversion.Service.Mcp.Prompts;
+using OSDC.UnitConversion.Service.Mcp.Resources;
 using OSDC.UnitConversion.Service.Mcp.Tools;
 using OSDC.UnitConversion.Service;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,10 +58,21 @@ builder.Services.AddSwaggerGen(c =>
     //c.SchemaFilter<PolymorphismSchemaFilter<BaseType>>(); // schema filter sets the schemas (timing is automatically managed)
 });
 
+builder.Services.Configure<VectorDocumentDatabaseOptions>(builder.Configuration.GetSection("VectorDocumentDatabase"));
+builder.Services.AddSingleton<VectorDocumentConnectionFactory>();
+builder.Services.AddSingleton<IVectorDocumentRepository, VectorDocumentRepository>();
+builder.Services.AddSingleton<VectorDocumentResourceService>();
+builder.Services.AddOptions<McpServerHandlers>()
+    .Configure<VectorDocumentResourceService>((handlers, resourceService) =>
+    {
+        handlers.ListResourcesHandler = resourceService.ListResourcesAsync;
+        handlers.ReadResourceHandler = resourceService.ReadResourceAsync;
+    });
+
 // MCP server registrations
 var serverVersion = typeof(SqlConnectionManager).Assembly.GetName().Version?.ToString() ?? "1.0.0";
 
-builder.Services.AddMcpServer(options =>
+var mcpBuilder = builder.Services.AddMcpServer(options =>
 {
     options.ServerInfo = new Implementation
     {
@@ -66,9 +81,13 @@ builder.Services.AddMcpServer(options =>
     };
     options.Capabilities = new ServerCapabilities
     {
-        Tools = new ToolsCapability()
+        Tools = new ToolsCapability(),
+        Resources = new ResourcesCapability(),
+        Prompts = new PromptsCapability()
     };
-}).WithHttpTransport();
+});
+mcpBuilder.WithHttpTransport();
+mcpBuilder.WithPrompts<UnitConversionPromptCollection>(new JsonSerializerOptions(JsonSerializerDefaults.Web));
 
 builder.Services.AddLegacyMcpTool<PingMcpTool>();
 builder.Services.AddLegacyMcpTool<GetAllPhysicalQuantityIdMcpTool>();

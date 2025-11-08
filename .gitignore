@@ -9,4 +9,5 @@
 *.user
 .vs/
 UpgradeLog*.htm
-/home
+/home/UnitConversion.db
+/home/history.json
