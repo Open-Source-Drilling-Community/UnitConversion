@@ -59,8 +59,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.Configure<VectorDocumentDatabaseOptions>(builder.Configuration.GetSection("VectorDocumentDatabase"));
+builder.Services.Configure<VectorDocumentSearchOptions>(builder.Configuration.GetSection("VectorDocumentSearch"));
 builder.Services.AddSingleton<VectorDocumentConnectionFactory>();
 builder.Services.AddSingleton<IVectorDocumentRepository, VectorDocumentRepository>();
+builder.Services.AddHttpClient<ITextEmbeddingGenerator, NomicEmbeddingGenerator>();
 builder.Services.AddSingleton<VectorDocumentResourceService>();
 builder.Services.AddOptions<McpServerHandlers>()
     .Configure<VectorDocumentResourceService>((handlers, resourceService) =>
@@ -118,6 +120,7 @@ builder.Services.AddLegacyMcpTool<PutUnitSystemConversionSetByIdMcpTool>();
 builder.Services.AddLegacyMcpTool<DeleteUnitSystemConversionSetByIdMcpTool>();
 builder.Services.AddLegacyMcpTool<ConvertUnitValueMcpTool>();
 builder.Services.AddLegacyMcpTool<ConvertUnitSystemValueMcpTool>();
+builder.Services.AddLegacyMcpTool<SearchVectorDocumentsMcpTool>();
 
 // end MCP server
 

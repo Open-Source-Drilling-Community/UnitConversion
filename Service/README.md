@@ -45,8 +45,11 @@ http://localhost:5002/UnitConversion/api/mcp
 | `find_unit_system_id_by_name` | Tolerant lookup of unit system identifiers |
 | `post_unit_system`, `put_unit_system_by_id`, `delete_unit_system_by_id` | Manage user-defined unit systems |
 | `convert_unit_system_value` | Convert values between two unit systems |
+| `search_vector_resources` | Returns the top vector-matched resource URIs plus similarity scores for a textual query |
 | `get_all_unit_conversion_set_*`, `get_unit_conversion_set_by_id`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id` | Manage unit conversion sets |
 | `get_all_unit_system_conversion_set_*`, `get_unit_system_conversion_set_by_id`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id` | Manage unit system conversion sets |
+
+`search_vector_resources` expects a nomic-ai/nomic-embed-text compatible endpoint (default `http://localhost:8080/embeddings`). Configure `VectorDocumentSearch:Nomic:*` or the `NOMIC_API_KEY` environment variable if the inference server requires authentication, and ensure the vector database was generated with the same model/dimension pair.
 
 ### Example request
 

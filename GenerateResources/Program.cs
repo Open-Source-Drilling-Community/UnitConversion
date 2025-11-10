@@ -24,8 +24,9 @@ internal static class Program
     private const string DefaultApiUrl = "https://app.digiwells.no/UnitConversion/api/PhysicalQuantity/HeavyData";
     private const string DataBaseName = "UnitConversionVectors.db";
     private const string DefaultUriPrefix = "resource://unit-conversion/documents/";
-    private const string DefaultEmbeddingModel = "text-embedding-3-small";
-    private const int DefaultEmbeddingDimensions = 1536;
+    private const string DefaultEmbeddingEndpoint = "http://localhost:8080/embeddings";
+    private const string DefaultEmbeddingModel = "nomic-embed-text-v1";
+    private const int DefaultEmbeddingDimensions = 768;
 
     public static async Task Main(string[] args)
     {
@@ -62,7 +63,7 @@ internal static class Program
             return;
         }
 
-        var settings = GeneratorSettings.FromEnvironment(DefaultApiUrl, databaseFileName, DefaultUriPrefix, DefaultEmbeddingModel, DefaultEmbeddingDimensions);
+        var settings = GeneratorSettings.FromEnvironment(DefaultApiUrl, databaseFileName, DefaultUriPrefix, DefaultEmbeddingEndpoint, DefaultEmbeddingModel, DefaultEmbeddingDimensions);
 
         using var httpClient = new HttpClient
         {
@@ -79,7 +80,7 @@ internal static class Program
         var documents = documentBuilder.BuildDocuments(quantities);
         Console.WriteLine($"Constructed {documents.Count} documents (quantities + unit choices).");
 
-        using var embeddingClient = new OpenAiEmbeddingClient(settings.OpenAiApiKey, settings.OpenAiEmbeddingModel);
+        using var embeddingClient = new NomicEmbeddingClient(settings.EmbeddingEndpoint, settings.EmbeddingModel, settings.EmbeddingApiKey);
         var store = new SqliteDocumentStore(settings.DatabasePath, settings.EmbeddingDimensions);
 
         await store.ReplaceAsync(documents, embeddingClient, cts.Token);
@@ -90,23 +91,19 @@ internal static class Program
         string ApiEndpoint,
         string DatabasePath,
         string ResourceUriPrefix,
-        string OpenAiApiKey,
-        string OpenAiEmbeddingModel,
+        string EmbeddingEndpoint,
+        string? EmbeddingApiKey,
+        string EmbeddingModel,
         int EmbeddingDimensions)
     {
         public static GeneratorSettings FromEnvironment(
             string defaultApi,
             string defaultDb,
             string defaultPrefix,
+            string defaultEndpoint,
             string defaultModel,
             int defaultDims)
         {
-            var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
-            if (string.IsNullOrWhiteSpace(apiKey))
-            {
-                throw new InvalidOperationException("OPENAI_API_KEY environment variable must be set.");
-            }
-
             var api = Environment.GetEnvironmentVariable("UNITCONVERSION_API_URL");
             if (string.IsNullOrWhiteSpace(api))
             {
@@ -125,20 +122,33 @@ internal static class Program
                 prefix = defaultPrefix;
             }
 
-            var model = Environment.GetEnvironmentVariable("OPENAI_EMBEDDING_MODEL");
+            var endpoint = Environment.GetEnvironmentVariable("NOMIC_EMBEDDING_ENDPOINT");
+            if (string.IsNullOrWhiteSpace(endpoint))
+            {
+                endpoint = defaultEndpoint;
+            }
+
+            if (string.IsNullOrWhiteSpace(endpoint))
+            {
+                throw new InvalidOperationException("NOMIC_EMBEDDING_ENDPOINT must be configured or a default endpoint provided.");
+            }
+
+            var apiKey = Environment.GetEnvironmentVariable("NOMIC_API_KEY");
+
+            var model = Environment.GetEnvironmentVariable("NOMIC_EMBEDDING_MODEL");
             if (string.IsNullOrWhiteSpace(model))
             {
                 model = defaultModel;
             }
 
             var dims = defaultDims;
-            var dimsEnv = Environment.GetEnvironmentVariable("OPENAI_EMBEDDING_DIMENSIONS");
+            var dimsEnv = Environment.GetEnvironmentVariable("NOMIC_EMBEDDING_DIMENSIONS");
             if (!string.IsNullOrWhiteSpace(dimsEnv) && int.TryParse(dimsEnv, out var parsed) && parsed > 0)
             {
                 dims = parsed;
             }
 
-            return new GeneratorSettings(api, db, prefix, apiKey, model, dims);
+            return new GeneratorSettings(api, db, prefix, endpoint, apiKey, model, dims);
         }
     }
 
@@ -478,44 +488,52 @@ internal static class Program
         Task<IReadOnlyList<float>> GetEmbeddingAsync(string text, CancellationToken cancellationToken);
     }
 
-    private sealed class OpenAiEmbeddingClient : IEmbeddingClient, IDisposable
+    private sealed class NomicEmbeddingClient : IEmbeddingClient, IDisposable
     {
         private readonly HttpClient _httpClient;
+        private readonly Uri _endpoint;
         private readonly string _model;
         private readonly JsonSerializerOptions _options = new(JsonSerializerDefaults.Web);
 
-        public OpenAiEmbeddingClient(string apiKey, string model)
+        public NomicEmbeddingClient(string endpoint, string model, string? apiKey)
         {
-            if (string.IsNullOrWhiteSpace(apiKey))
+            if (string.IsNullOrWhiteSpace(endpoint))
             {
-                throw new ArgumentException("API key is required.", nameof(apiKey));
+                throw new ArgumentException("Embedding endpoint is required.", nameof(endpoint));
             }
+
+            _endpoint = Uri.TryCreate(endpoint, UriKind.Absolute, out var uri)
+                ? uri
+                : throw new ArgumentException("Embedding endpoint must be an absolute URI.", nameof(endpoint));
 
             _model = model ?? throw new ArgumentNullException(nameof(model));
 
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://api.openai.com/v1/"),
                 Timeout = TimeSpan.FromSeconds(100)
             };
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+
+            if (!string.IsNullOrWhiteSpace(apiKey))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+            }
         }
 
         public async Task<IReadOnlyList<float>> GetEmbeddingAsync(string text, CancellationToken cancellationToken)
         {
             var payload = new EmbeddingRequest(_model, text);
-            using var response = await _httpClient.PostAsJsonAsync("embeddings", payload, _options, cancellationToken).ConfigureAwait(false);
+            using var response = await _httpClient.PostAsJsonAsync(_endpoint, payload, _options, cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 var body = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                throw new InvalidOperationException($"OpenAI embedding request failed with {(int)response.StatusCode}: {body}");
+                throw new InvalidOperationException($"nomic-embed-text request failed with {(int)response.StatusCode}: {body}");
             }
 
             var result = await response.Content.ReadFromJsonAsync<EmbeddingResponse>(_options, cancellationToken).ConfigureAwait(false);
             var embedding = result?.Data.FirstOrDefault()?.Embedding;
             if (embedding is null)
             {
-                throw new InvalidOperationException("OpenAI response did not contain an embedding.");
+                throw new InvalidOperationException("nomic-embed-text response did not contain an embedding.");
             }
 
             return embedding;

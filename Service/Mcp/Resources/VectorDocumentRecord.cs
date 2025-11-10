@@ -2,7 +2,7 @@ using System.Text.Json.Nodes;
 
 namespace OSDC.UnitConversion.Service.Mcp.Resources;
 
-internal sealed class VectorDocumentRecord
+public sealed class VectorDocumentRecord
 {
     public required string Id { get; init; }
 

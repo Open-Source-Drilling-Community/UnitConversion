@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -12,14 +14,16 @@ using Microsoft.Extensions.Options;
 
 namespace OSDC.UnitConversion.Service.Mcp.Resources;
 
-internal interface IVectorDocumentRepository
+public interface IVectorDocumentRepository
 {
     Task<VectorDocumentPage> ListAsync(string? cursor, int pageSize, CancellationToken cancellationToken);
 
     Task<VectorDocumentRecord?> GetByUriAsync(string uri, CancellationToken cancellationToken);
+
+    Task<IReadOnlyList<VectorDocumentSearchHit>> SearchAsync(ReadOnlyMemory<float> queryVector, int limit, CancellationToken cancellationToken);
 }
 
-internal sealed record VectorDocumentPage(IReadOnlyList<VectorDocumentRecord> Documents, string? NextCursor)
+public sealed record VectorDocumentPage(IReadOnlyList<VectorDocumentRecord> Documents, string? NextCursor)
 {
     public static VectorDocumentPage Empty { get; } = new(Array.Empty<VectorDocumentRecord>(), null);
 }
@@ -36,6 +40,11 @@ internal sealed class VectorDocumentRepository : IVectorDocumentRepository
     private const string ColumnMetadata = "MetadataJson";
     private const string ColumnSize = "Size";
     private const string ColumnSortOrder = "SortOrder";
+    private const string ColumnInternalId = "InternalId";
+    private const string EmbeddingTableName = "mcp_document_embeddings";
+    private const string EmbeddingColumnDocumentId = "DocumentInternalId";
+    private const string EmbeddingColumnData = "Embedding";
+    private const string EmbeddingColumnDimensions = "Dimensions";
 
     private readonly VectorDocumentConnectionFactory _connectionFactory;
     private readonly VectorDocumentDatabaseOptions _options;
@@ -139,6 +148,72 @@ internal sealed class VectorDocumentRepository : IVectorDocumentRepository
         }
 
         return null;
+    }
+
+    public async Task<IReadOnlyList<VectorDocumentSearchHit>> SearchAsync(
+        ReadOnlyMemory<float> queryVector,
+        int limit,
+        CancellationToken cancellationToken)
+    {
+        if (limit <= 0 || queryVector.IsEmpty)
+        {
+            return Array.Empty<VectorDocumentSearchHit>();
+        }
+
+        await using var connection = await TryOpenConnectionAsync(cancellationToken).ConfigureAwait(false);
+        if (connection is null)
+        {
+            return Array.Empty<VectorDocumentSearchHit>();
+        }
+
+        await using var command = connection.CreateCommand();
+        command.CommandText = $@"
+            SELECT
+                d.{ColumnId},
+                d.{ColumnUri},
+                d.{ColumnName},
+                d.{ColumnTitle},
+                e.{EmbeddingColumnData}
+            FROM {_tableName} AS d
+            INNER JOIN {EmbeddingTableName} AS e
+                ON e.{EmbeddingColumnDocumentId} = d.{ColumnInternalId}
+            WHERE e.{EmbeddingColumnDimensions} = $dimensions;";
+        command.Parameters.AddWithValue("$dimensions", queryVector.Length);
+
+        var results = new List<VectorDocumentSearchHit>();
+        await using var reader = await command.ExecuteReaderAsync(cancellationToken).ConfigureAwait(false);
+        while (await reader.ReadAsync(cancellationToken).ConfigureAwait(false))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var embeddingBytes = await reader.GetFieldValueAsync<byte[]>(reader.GetOrdinal(EmbeddingColumnData), cancellationToken).ConfigureAwait(false);
+            if (embeddingBytes.Length / sizeof(float) != queryVector.Length)
+            {
+                continue;
+            }
+
+            var documentVector = new float[queryVector.Length];
+            Buffer.BlockCopy(embeddingBytes, 0, documentVector, 0, embeddingBytes.Length);
+            var score = CosineSimilarity(queryVector.Span, documentVector);
+            if (double.IsNaN(score))
+            {
+                continue;
+            }
+
+            var hit = new VectorDocumentSearchHit(
+                reader.GetString(reader.GetOrdinal(ColumnId)),
+                reader.GetString(reader.GetOrdinal(ColumnUri)),
+                reader.IsDBNull(reader.GetOrdinal(ColumnName)) ? null : reader.GetString(reader.GetOrdinal(ColumnName)),
+                reader.IsDBNull(reader.GetOrdinal(ColumnTitle)) ? null : reader.GetString(reader.GetOrdinal(ColumnTitle)),
+                score);
+
+            results.Add(hit);
+        }
+
+        return results
+            .OrderByDescending(hit => hit.Score)
+            .Take(limit)
+            .ToList();
     }
 
     private async Task<SqliteConnection?> TryOpenConnectionAsync(CancellationToken cancellationToken)
@@ -260,6 +335,34 @@ internal sealed class VectorDocumentRepository : IVectorDocumentRepository
         return value;
     }
 
+    private static double CosineSimilarity(ReadOnlySpan<float> left, ReadOnlySpan<float> right)
+    {
+        if (left.Length == 0 || right.Length == 0 || left.Length != right.Length)
+        {
+            return double.NaN;
+        }
+
+        double dot = 0;
+        double leftMagnitude = 0;
+        double rightMagnitude = 0;
+
+        for (var i = 0; i < left.Length; i++)
+        {
+            var l = left[i];
+            var r = right[i];
+            dot += l * r;
+            leftMagnitude += l * l;
+            rightMagnitude += r * r;
+        }
+
+        if (leftMagnitude == 0 || rightMagnitude == 0)
+        {
+            return double.NaN;
+        }
+
+        return dot / (Math.Sqrt(leftMagnitude) * Math.Sqrt(rightMagnitude));
+    }
+
     private static class CursorHelper
     {
         public static int Parse(string? cursor)
@@ -275,3 +378,10 @@ internal sealed class VectorDocumentRepository : IVectorDocumentRepository
         }
     }
 }
+
+public sealed record VectorDocumentSearchHit(
+    string Id,
+    string Uri,
+    string? Name,
+    string? Title,
+    double Score);

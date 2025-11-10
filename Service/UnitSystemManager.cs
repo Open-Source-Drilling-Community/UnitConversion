@@ -18,7 +18,7 @@ namespace OSDC.UnitConversion.Service
     {
         private static UnitSystemManager? _instance = null;
         private readonly ILogger _logger;
-        private readonly object _lock = new();
+        private static readonly object _lock = new();
         private readonly SqlConnectionManager _connectionManager;
 
         private UnitSystemManager(ILogger<UnitSystemManager> logger, SqlConnectionManager connectionManager)
@@ -36,7 +36,10 @@ namespace OSDC.UnitConversion.Service
 
         public static UnitSystemManager GetInstance(ILogger<UnitSystemManager> logger, SqlConnectionManager connectionManager)
         {
-            _instance ??= new UnitSystemManager(logger, connectionManager);
+            lock (_lock)
+            {
+                _instance ??= new UnitSystemManager(logger, connectionManager);
+            }
             return _instance;
         }
 
