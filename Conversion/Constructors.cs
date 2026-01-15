@@ -2379,6 +2379,206 @@ namespace OSDC.UnitConversion.Conversion
 }
 namespace OSDC.UnitConversion.Conversion
 {
+  public partial class BendingMomentQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "newton metre",
+                  UnitLabel = "N•m",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("bd43cd1d-23db-4137-8f87-f00c686b1609"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "decanewton metre",
+                  UnitLabel = "daN•m",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("e63f5c69-880e-4ed2-985d-a6c1316a8ff5"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Deca)",
+                  ConversionFactorFromSI = 1.0/(Factors.Deca),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in decanewton metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Deca), i.e., 0.1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deca = 10.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilogram force metre",
+                  UnitLabel = "kgf•m",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("ac7a836f-daf8-4373-b926-dde5b65ef005"),
+                  ConversionFactorFromSIFormula = "1.0/ Factors.KilogramForce",
+                  ConversionFactorFromSI = 1.0/ Factors.KilogramForce,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilogram force metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/ KilogramForce, i.e., 0.10197162129779283"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "KilogramForce = 1.0 * G reference: https://en.wikipedia.org/wiki/Kilogram-force"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilonewton metre",
+                  UnitLabel = "kN•m",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("62a7ba7e-e9e4-4ad4-8faa-3e80ffd79c76"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Kilo",
+                  ConversionFactorFromSI = 1.0/Factors.Kilo,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilonewton metre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Kilo, i.e., 0.001"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot pound",
+                  UnitLabel = "ft•lbf",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("ac12e954-14db-4a0d-8d40-7196b5a819b5"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = 1.0/(Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot pound"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Foot*PoundForce), i.e., 0.7375621492772655"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "kilofoot pound",
+                  UnitLabel = "kft•lbf",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("fd9c2e34-fcd9-4fb0-9b2f-995dc2d15467"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = 1.0/(Factors.Kilo*Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in kilofoot pound"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Kilo*Foot*PoundForce), i.e., 0.0007375621492772656"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Kilo = 1000.0"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton decimetre",
+                  UnitLabel = "N•dm",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("6da5c57f-34ae-4b7f-9511-cf08812e6092"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Deci",
+                  ConversionFactorFromSI = 1.0/Factors.Deci,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton decimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Deci, i.e., 10"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Deci = 0.1"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton centimetre",
+                  UnitLabel = "N•cm",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("bf09633d-103f-4ca2-8200-b27f6200df01"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Centi",
+                  ConversionFactorFromSI = 1.0/Factors.Centi,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton centimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Centi, i.e., 100"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Centi = 0.01"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "newton millimetre",
+                  UnitLabel = "N•mm",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("a31d03fe-2397-40d0-a647-8e81faa4298f"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Milli",
+                  ConversionFactorFromSI = 1.0/Factors.Milli,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in newton millimetre"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Milli, i.e., 1000"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Milli = 0.001"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "inch pound",
+                  UnitLabel = "in•lbf",
+                  SIUnitName = "newton metre",
+                  ID = new Guid("cfbb3f04-27e9-42b8-ae7d-074ced09831e"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.PoundForce*Factors.Inch)",
+                  ConversionFactorFromSI = 1.0/(Factors.PoundForce*Factors.Inch),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in inch pound"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(PoundForce*Inch), i.e., 8.850745791327185"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
   public partial class CompressibilityQuantity : DerivedBasePhysicalQuantity
   {
       protected override void InitializeUnitChoices()

@@ -14,6 +14,7 @@ namespace OSDC.UnitConversion.Conversion
          AngularAcceleration,  // AngularAcceleration
          AngularVelocity,  // AngularVelocity
          Area,  // Area
+         BendingMoment,  // BendingMoment
          Compressibility,  // Compressibility
          ConsistencyIndexRheology,  // ConsistencyIndexRheology
          Curvature,  // Curvature
@@ -113,6 +114,7 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.AngularAcceleration, new Guid("8b33d305-f77e-4631-9818-7ef574bd0c02")},  // AngularAcceleration
          {QuantityEnum.AngularVelocity, new Guid("688ccd2b-6a30-4ccc-8580-a80c3a5803fa")},  // AngularVelocity
          {QuantityEnum.Area, new Guid("2a892bab-1b39-4ae4-b2d2-989621b09557")},  // Area
+         {QuantityEnum.BendingMoment, new Guid("82b03224-e2af-47e9-bcf5-810d2506f4e2")},  // BendingMoment
          {QuantityEnum.Compressibility, new Guid("1e7af8b8-0267-4d5d-a162-59123a8fde14")},  // Compressibility
          {QuantityEnum.ConsistencyIndexRheology, new Guid("05571702-00e6-47d7-8590-fd3983645406")},  // ConsistencyIndexRheology
          {QuantityEnum.Curvature, new Guid("bbfe7349-8cf5-4ca0-8a84-ffe66d7f33d0")},  // Curvature
@@ -589,6 +591,48 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.SquareYard, new Guid("ae3df24c-e5db-4b88-9e81-228f29855f1b")},  // square yard
          {UnitChoicesEnum.Acre, new Guid("bc94456a-b8b9-49ac-b349-eaded6c984c6")},  // acre
          {UnitChoicesEnum.SquareMile, new Guid("5bbe8c59-cce9-47c8-b357-c5a15610af72")} // square mile
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class BendingMomentQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonMetre,  // newton metre
+         DecanewtonMetre,  // decanewton metre
+         KilogramForceMetre,  // kilogram force metre
+         KilonewtonMetre,  // kilonewton metre
+         FootPound,  // foot pound
+         KilofootPound,  // kilofoot pound
+         NewtonDecimetre,  // newton decimetre
+         NewtonCentimetre,  // newton centimetre
+         NewtonMillimetre,  // newton millimetre
+         InchPound // inch pound
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonMetre, new Guid("bd43cd1d-23db-4137-8f87-f00c686b1609")},  // newton metre
+         {UnitChoicesEnum.DecanewtonMetre, new Guid("e63f5c69-880e-4ed2-985d-a6c1316a8ff5")},  // decanewton metre
+         {UnitChoicesEnum.KilogramForceMetre, new Guid("ac7a836f-daf8-4373-b926-dde5b65ef005")},  // kilogram force metre
+         {UnitChoicesEnum.KilonewtonMetre, new Guid("62a7ba7e-e9e4-4ad4-8faa-3e80ffd79c76")},  // kilonewton metre
+         {UnitChoicesEnum.FootPound, new Guid("ac12e954-14db-4a0d-8d40-7196b5a819b5")},  // foot pound
+         {UnitChoicesEnum.KilofootPound, new Guid("fd9c2e34-fcd9-4fb0-9b2f-995dc2d15467")},  // kilofoot pound
+         {UnitChoicesEnum.NewtonDecimetre, new Guid("6da5c57f-34ae-4b7f-9511-cf08812e6092")},  // newton decimetre
+         {UnitChoicesEnum.NewtonCentimetre, new Guid("bf09633d-103f-4ca2-8200-b27f6200df01")},  // newton centimetre
+         {UnitChoicesEnum.NewtonMillimetre, new Guid("a31d03fe-2397-40d0-a647-8e81faa4298f")},  // newton millimetre
+         {UnitChoicesEnum.InchPound, new Guid("cfbb3f04-27e9-42b8-ae7d-074ced09831e")} // inch pound
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

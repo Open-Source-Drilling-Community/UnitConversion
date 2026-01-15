@@ -1,10 +1,12 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace OSDC.UnitConversion.Conversion
 {
-    public partial class TorqueQuantity : DerivedBasePhysicalQuantity
+    public partial class BendingMomentQuantity : DerivedBasePhysicalQuantity
     {
         public override string TypicalSymbol { get; } = null;
         public override string SIUnitName { get; } = "newton metre";
@@ -12,15 +14,15 @@ namespace OSDC.UnitConversion.Conversion
         public override double LengthDimension { get; } = 2;
         public override double MassDimension { get; } = 1;
         public override double TimeDimension { get; } = -2;
-        private static TorqueQuantity instance_ = null;
+        private static BendingMomentQuantity instance_ = null;
 
-        public static TorqueQuantity Instance
+        public static BendingMomentQuantity Instance
         {
             get
             {
                 if (instance_ == null)
                 {
-                    instance_ = new TorqueQuantity();
+                    instance_ = new BendingMomentQuantity();
                     instance_.PostProcess();
                 }
                 return instance_;
@@ -31,83 +33,84 @@ namespace OSDC.UnitConversion.Conversion
                new UnitChoice
                 {
                   UnitName = "newton metre",
-                  UnitLabel = "N•m",
-                  ID = new Guid("50b017fa-8d81-4076-a485-61de1d8301b5"),
+                  UnitLabel = "Nâ€¢m",
+                  ID = new Guid("bd43cd1d-23db-4137-8f87-f00c686b1609"),
                   ConversionFactorFromSIFormula = "1.0/Factors.Unit",
                   IsSI = true
                 },
                 new UnitChoice
                 {
                   UnitName = "decanewton metre",
-                  UnitLabel = "daN•m",
-                  ID = new Guid("501ce02c-8a5d-46e6-9ab6-ce443df70402"),
+                  UnitLabel = "daNâ€¢m",
+                  ID = new Guid("e63f5c69-880e-4ed2-985d-a6c1316a8ff5"),
                   ConversionFactorFromSIFormula = "1.0/(Factors.Deca)"
                 },
                 new UnitChoice
                 {
                   UnitName = "kilogram force metre",
-                  UnitLabel = "kgf•m",
-                  ID = new Guid("282f97a0-df2a-4016-9ab0-796db49ff384"),
+                  UnitLabel = "kgfâ€¢m",
+                  ID = new Guid("ac7a836f-daf8-4373-b926-dde5b65ef005"),
                   ConversionFactorFromSIFormula = "1.0/ Factors.KilogramForce"
                 },
                 new UnitChoice
                 {
                   UnitName = "kilonewton metre",
-                  UnitLabel = "kN•m",
-                  ID = new Guid("2e417a6e-1acc-4901-8704-7dfeb3f67546"),
+                  UnitLabel = "kNâ€¢m",
+                  ID = new Guid("62a7ba7e-e9e4-4ad4-8faa-3e80ffd79c76"),
                   ConversionFactorFromSIFormula = "1.0/Factors.Kilo"
                 },
                 new UnitChoice
                 {
                   UnitName = "foot pound",
-                  UnitLabel = "ft•lbf",
-                  ID = new Guid("700d9fc7-17e1-4ad6-84f1-39cacbe5fe51"),
+                  UnitLabel = "ftâ€¢lbf",
+                  ID = new Guid("ac12e954-14db-4a0d-8d40-7196b5a819b5"),
                   ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.PoundForce)"
                 },
                 new UnitChoice
                 {
                   UnitName = "kilofoot pound",
-                  UnitLabel = "kft•lbf",
-                  ID = new Guid("ee9be6ed-df75-4915-be6a-e3941dacd6bd"),
+                  UnitLabel = "kftâ€¢lbf",
+                  ID = new Guid("fd9c2e34-fcd9-4fb0-9b2f-995dc2d15467"),
                   ConversionFactorFromSIFormula = "1.0/(Factors.Kilo*Factors.Foot*Factors.PoundForce)"
                 },
                 new UnitChoice
                 {
                   UnitName = "newton decimetre",
-                  UnitLabel = "N•dm",
-                  ID = new Guid("e70db590-c5fb-4ab9-a2c4-3ad611cb7f63"),
+                  UnitLabel = "Nâ€¢dm",
+                  ID = new Guid("6da5c57f-34ae-4b7f-9511-cf08812e6092"),
                   ConversionFactorFromSIFormula = "1.0/Factors.Deci"
                 },
                 new UnitChoice
                 {
                   UnitName = "newton centimetre",
-                  UnitLabel = "N•cm",
-                  ID = new Guid("4acf4542-8df0-4f57-a852-7c0184dbeec9"),
+                  UnitLabel = "Nâ€¢cm",
+                  ID = new Guid("bf09633d-103f-4ca2-8200-b27f6200df01"),
                   ConversionFactorFromSIFormula = "1.0/Factors.Centi"
                 },
                 new UnitChoice
                 {
                   UnitName = "newton millimetre",
-                  UnitLabel = "N•mm",
-                  ID = new Guid("a933225d-7c8e-4ce4-b0ea-4c1c6e9f7e34"),
+                  UnitLabel = "Nâ€¢mm",
+                  ID = new Guid("a31d03fe-2397-40d0-a647-8e81faa4298f"),
                   ConversionFactorFromSIFormula = "1.0/Factors.Milli"
                 },
                 new UnitChoice
                 {
                   UnitName = "inch pound",
-                  UnitLabel = "in•lbf",
-                  ID = new Guid("0d40553e-d8c4-4b75-ad05-61199b15a0a1"),
+                  UnitLabel = "inâ€¢lbf",
+                  ID = new Guid("cfbb3f04-27e9-42b8-ae7d-074ced09831e"),
                   ConversionFactorFromSIFormula = "1.0/(Factors.PoundForce*Factors.Inch)"
                 }
         };
-        public TorqueQuantity() : base()
+        public BendingMomentQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "torque" };
-            ID = new Guid("3eb9e01e-48fa-430e-82c6-3aee4d359ac4");
+            UsualNames = new HashSet<string>() { "bending moment" };
+            ID = new Guid("82b03224-e2af-47e9-bcf5-810d2506f4e2");
             DescriptionMD = string.Empty;
-            DescriptionMD += @"A torque is a measure of the rotational force applied to a body around an axis." + Environment.NewLine;
-            DescriptionMD += @"The dimension of torque is:" + Environment.NewLine;
+            DescriptionMD += @"A bending moment is the internal mechanical moment at a given cross-section of a structure that causes it to bend, " + Environment.NewLine;
+            DescriptionMD += @"equal to the resultant of forces acting at a distance from that section and producing curvature rather than rotation." + Environment.NewLine;
+            DescriptionMD += @"The dimension of bending moment is:" + Environment.NewLine;
             DescriptionMD += "$" + GetDimensionsEnclosed() + "$." + Environment.NewLine;
             if (!string.IsNullOrEmpty(SIUnitLabelLatex) && !string.IsNullOrEmpty(SIUnitName) && UsualNames != null && UsualNames.Count > 0)
             {

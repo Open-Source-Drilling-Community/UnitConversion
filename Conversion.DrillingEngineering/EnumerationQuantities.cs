@@ -15,6 +15,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          AngularVelocitySurveyInstrumentDrilling,  // AngularVelocitySurveyInstrumentDrilling
          AreaDrilling,  // AreaDrilling
          AxialVelocityDrilling,  // AxialVelocityDrilling
+         BendingMomentDrilling,  // BendingMomentDrilling
          BlockVelocityDrilling,  // BlockVelocityDrilling
          CableDiameterDrilling,  // CableDiameterDrilling
          CapillaryPressureDrilling,  // CapillaryPressureDrilling
@@ -99,6 +100,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {QuantityEnum.AngularVelocitySurveyInstrumentDrilling, new Guid("76dd6ac8-8b67-416c-b41f-07bbf4065cdb")},  // AngularVelocitySurveyInstrumentDrilling
          {QuantityEnum.AreaDrilling, new Guid("21fc0373-6eda-460b-bacb-070abf2f3add")},  // AreaDrilling
          {QuantityEnum.AxialVelocityDrilling, new Guid("e278ace8-d577-4fb4-8d1d-dd8a3d072027")},  // AxialVelocityDrilling
+         {QuantityEnum.BendingMomentDrilling, new Guid("4f3baf27-eb18-480a-a0d8-851b5e4692fb")},  // BendingMomentDrilling
          {QuantityEnum.BlockVelocityDrilling, new Guid("82a2b5fc-9edd-45ea-80cb-1cd46d516fdb")},  // BlockVelocityDrilling
          {QuantityEnum.CableDiameterDrilling, new Guid("6b3db5b2-7e30-47f7-91c5-5951dd3f9246")},  // CableDiameterDrilling
          {QuantityEnum.CapillaryPressureDrilling, new Guid("72228ff1-9ba8-44f0-b9b1-85fa8dfb32ea")},  // CapillaryPressureDrilling
@@ -431,6 +433,40 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
          {UnitChoicesEnum.FootPerHour, new Guid("adb3b459-aa7e-4639-ad07-6d19c80f8170")},  // foot per hour
          {UnitChoicesEnum.FootPerMinute, new Guid("2d139d2c-1063-4f8d-99ae-bf71a98a1076")},  // foot per minute
          {UnitChoicesEnum.FootPerSecond, new Guid("6c9eef39-29f0-4d6d-ae7a-f9161d8fd4fa")} // foot per second
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion.DrillingEngineering
+{
+  public partial class BendingMomentDrillingQuantity : BendingMomentQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         NewtonMetre,  // newton metre
+         FootPound,  // foot pound
+         KilofootPound,  // kilofoot pound
+         DecanewtonMetre,  // decanewton metre
+         KilogramForceMetre,  // kilogram force metre
+         KilonewtonMetre // kilonewton metre
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.NewtonMetre, new Guid("bd43cd1d-23db-4137-8f87-f00c686b1609")},  // newton metre
+         {UnitChoicesEnum.FootPound, new Guid("ac12e954-14db-4a0d-8d40-7196b5a819b5")},  // foot pound
+         {UnitChoicesEnum.KilofootPound, new Guid("fd9c2e34-fcd9-4fb0-9b2f-995dc2d15467")},  // kilofoot pound
+         {UnitChoicesEnum.DecanewtonMetre, new Guid("e63f5c69-880e-4ed2-985d-a6c1316a8ff5")},  // decanewton metre
+         {UnitChoicesEnum.KilogramForceMetre, new Guid("ac7a836f-daf8-4373-b926-dde5b65ef005")},  // kilogram force metre
+         {UnitChoicesEnum.KilonewtonMetre, new Guid("62a7ba7e-e9e4-4ad4-8faa-3e80ffd79c76")} // kilonewton metre
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

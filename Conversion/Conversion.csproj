@@ -8,7 +8,7 @@
 		<Description>A package for unit conversions without engineering concepts</Description>
 		<PackageProjectUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/Open-Source-Drilling-Community/UnitConversion</RepositoryUrl>
-		<Version>3.3.24</Version>
+		<Version>3.3.25</Version>
 		<Title>A unit management conversion package</Title>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageReadmeFile>README.md</PackageReadmeFile>

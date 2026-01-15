@@ -608,6 +608,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(AngularAccelerationQuantity.Instance.ID.ToString(), AngularAccelerationQuantity.Instance.GetUnitChoice(AngularAccelerationQuantity.UnitChoicesEnum.DegreePerSecondSquared).ID.ToString());
                     Choices.Add(AngularVelocityQuantity.Instance.ID.ToString(), AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
                     Choices.Add(AreaQuantity.Instance.ID.ToString(), AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareMetre).ID.ToString());
+                    Choices.Add(BendingMomentQuantity.Instance.ID.ToString(), BendingMomentQuantity.Instance.GetUnitChoice(BendingMomentQuantity.UnitChoicesEnum.NewtonMetre).ID.ToString());
                     Choices.Add(CompressibilityQuantity.Instance.ID.ToString(), CompressibilityQuantity.Instance.GetUnitChoice(CompressibilityQuantity.UnitChoicesEnum.InverseBar).ID.ToString());
                     Choices.Add(CurvatureQuantity.Instance.ID.ToString(), CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer30m).ID.ToString());
                     Choices.Add(SpecificVolumeQuantity.Instance.ID.ToString(), SpecificVolumeQuantity.Instance.GetUnitChoice(SpecificVolumeQuantity.UnitChoicesEnum.CubicCentimetrePerGram).ID.ToString());
@@ -712,6 +713,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(AngularAccelerationQuantity.Instance.ID.ToString(), AngularAccelerationQuantity.Instance.GetUnitChoice(AngularAccelerationQuantity.UnitChoicesEnum.DegreePerSecondSquared).ID.ToString());
                     Choices.Add(AngularVelocityQuantity.Instance.ID.ToString(), AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
                     Choices.Add(AreaQuantity.Instance.ID.ToString(), AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareFoot).ID.ToString());
+                    Choices.Add(BendingMomentQuantity.Instance.ID.ToString(), BendingMomentQuantity.Instance.GetUnitChoice(BendingMomentQuantity.UnitChoicesEnum.FootPound).ID.ToString());
                     Choices.Add(CompressibilityQuantity.Instance.ID.ToString(), CompressibilityQuantity.Instance.GetUnitChoice(CompressibilityQuantity.UnitChoicesEnum.InversePoundPerSquareInch).ID.ToString());
                     Choices.Add(CurvatureQuantity.Instance.ID.ToString(), CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer100ft).ID.ToString());
                     Choices.Add(SpecificVolumeQuantity.Instance.ID.ToString(), SpecificVolumeQuantity.Instance.GetUnitChoice(SpecificVolumeQuantity.UnitChoicesEnum.GallonUSPerPound).ID.ToString());
@@ -816,6 +818,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(AngularAccelerationQuantity.Instance.ID.ToString(), AngularAccelerationQuantity.Instance.GetUnitChoice(AngularAccelerationQuantity.UnitChoicesEnum.DegreePerSecondSquared).ID.ToString());
                     Choices.Add(AngularVelocityQuantity.Instance.ID.ToString(), AngularVelocityQuantity.Instance.GetUnitChoice(AngularVelocityQuantity.UnitChoicesEnum.DegreePerSecond).ID.ToString());
                     Choices.Add(AreaQuantity.Instance.ID.ToString(), AreaQuantity.Instance.GetUnitChoice(AreaQuantity.UnitChoicesEnum.SquareFoot).ID.ToString());
+                    Choices.Add(BendingMomentQuantity.Instance.ID.ToString(), BendingMomentQuantity.Instance.GetUnitChoice(BendingMomentQuantity.UnitChoicesEnum.FootPound).ID.ToString());
                     Choices.Add(CompressibilityQuantity.Instance.ID.ToString(), CompressibilityQuantity.Instance.GetUnitChoice(CompressibilityQuantity.UnitChoicesEnum.InversePoundPerSquareInch).ID.ToString());
                     Choices.Add(CurvatureQuantity.Instance.ID.ToString(), CurvatureQuantity.Instance.GetUnitChoice(CurvatureQuantity.UnitChoicesEnum.DegreePer100ft).ID.ToString());
                     Choices.Add(SpecificVolumeQuantity.Instance.ID.ToString(), SpecificVolumeQuantity.Instance.GetUnitChoice(SpecificVolumeQuantity.UnitChoicesEnum.GallonUSPerPound).ID.ToString());

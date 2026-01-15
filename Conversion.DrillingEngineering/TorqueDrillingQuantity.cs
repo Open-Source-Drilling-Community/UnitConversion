@@ -26,7 +26,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public TorqueDrillingQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "torque (drilling)", "bending moment (drilling)", "TOB", "BOB" };
+            UsualNames = new HashSet<string>() { "torque (drilling)", "TOB" };
             ID = new Guid("eff33c0e-1e92-49e4-a7ab-716d9d66a157");
             DescriptionMD = base.DescriptionMD;
             DescriptionMD += Environment.NewLine;
