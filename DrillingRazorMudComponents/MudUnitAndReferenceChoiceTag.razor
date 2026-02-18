@@ -7,11 +7,11 @@
 }
 else
 {
-    <table class="table">
+    <table class="table unit-reference-choice-tag-table">
         <tbody>
             <tr>
                 <td width="18%">
-                    <MudSelect @bind-Value="UnitSystemName" Label="UnitSystem" Variant="Variant.Filled">
+                    <MudSelect Class="unit-reference-choice-select" @bind-Value="UnitSystemName" Label="UnitSystem" Variant="Variant.Filled">
                         @foreach (UnitSystemLight uSysLight in unitSystemLightList)
                         {
                             <MudSelectItem Value="@uSysLight.Name">@uSysLight.Name</MudSelectItem>
@@ -21,7 +21,7 @@ else
                 @if (!IsHiddenDepthReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="DepthReferenceName" Label="Depth Reference" Variant="Variant.Filled">
+                        <MudSelect Class="unit-reference-choice-select" @bind-Value="DepthReferenceName" Label="Depth Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in depthReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -32,7 +32,7 @@ else
                 @if (!IsHiddenPositionReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="PositionReferenceName" Label="Position Reference" Variant="Variant.Filled">
+                        <MudSelect Class="unit-reference-choice-select" @bind-Value="PositionReferenceName" Label="Position Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in positionReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -43,7 +43,7 @@ else
                 @if (!IsHiddenAzimuthReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="AzimuthReferenceName" Label="Azimuth Reference" Variant="Variant.Filled">
+                        <MudSelect Class="unit-reference-choice-select" @bind-Value="AzimuthReferenceName" Label="Azimuth Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in azimuthReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -54,7 +54,7 @@ else
                 @if (!IsHiddenPressureReference)
                 {
                     <td width="16%">
-                        <MudSelect @bind-Value="PressureReferenceName" Label="Pressure Reference" Variant="Variant.Filled">
+                        <MudSelect Class="unit-reference-choice-select" @bind-Value="PressureReferenceName" Label="Pressure Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in pressureReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
@@ -65,7 +65,7 @@ else
                 @if (!IsHiddenDateReference)
                 {
                     <td width="18%">
-                        <MudSelect @bind-Value="dateReferenceName" Label="Date Reference" Variant="Variant.Filled">
+                        <MudSelect Class="unit-reference-choice-select" @bind-Value="dateReferenceName" Label="Date Reference" Variant="Variant.Filled">
                             @foreach (Tuple<Guid, string> tuple in dateReferences)
                             {
                                 <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
