@@ -406,6 +406,10 @@ else
     {
         dateTimeAwareComponents_.Add(elt);
     }
+    public Task RefreshDepthReferenceAsync()
+    {
+        return PostProcessDepthReference();
+    }
     #region management of units without references
     public string FromSI(double? val, string quantityName, bool useUnitLabel)
     {

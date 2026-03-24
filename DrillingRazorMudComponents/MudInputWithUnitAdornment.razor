@@ -2,7 +2,7 @@
 @implements IUnitAwareComponent
 @inject ILogger<MudInputWithUnitAdornment> logger
 
-<MudTextField ShrinkLabel @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" Adornment="Adornment.End" AdornmentText="@UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly"></MudTextField>
+<MudTextField ShrinkLabel @bind-Value="@ValueInUserUnit" Label="@QuantityLabel" Variant="@VariantType" Adornment="Adornment.End" AdornmentText="@UnitLabel" Disabled="@Disabled" ReadOnly="@ReadOnly" Immediate="@Immediate"></MudTextField>
 
 @code {
     [CascadingParameter]
@@ -22,6 +22,9 @@
 
     [Parameter]
     public bool ReadOnly { get; set; } = false;
+
+    [Parameter]
+    public bool Immediate { get; set; } = false;
 
     [Parameter]
     public double SIValue
