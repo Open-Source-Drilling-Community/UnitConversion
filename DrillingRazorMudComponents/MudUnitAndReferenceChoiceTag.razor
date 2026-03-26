@@ -411,6 +411,49 @@ else
         return PostProcessDepthReference();
     }
     #region management of units without references
+    public UnitChoice? GetUnitChoice(string quantityName)
+    {
+        if (baseUnitSystem_ != null) {
+            return baseUnitSystem_.GetChoice(quantityName);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public UnitChoice? GetUnitChoice(Guid quantityID)
+    {
+        if (baseUnitSystem_ != null)
+        {
+            return baseUnitSystem_.GetChoice(quantityID);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public UnitChoice? GetUnitChoice(BasePhysicalQuantity.QuantityEnum quantity)
+    {
+        if (baseUnitSystem_ != null)
+        {
+            return baseUnitSystem_.GetChoice(quantity);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public UnitChoice? GetUnitChoice(DrillingPhysicalQuantity.QuantityEnum quantity)
+    {
+        if (baseUnitSystem_ != null && baseUnitSystem_ is DrillingUnitSystem drillingUnitSystem)
+        {
+            return drillingUnitSystem.GetChoice(quantity);
+        }
+        else
+        {
+            return null;
+        }
+    }
     public string FromSI(double? val, string quantityName, bool useUnitLabel)
     {
         if (val == null)
