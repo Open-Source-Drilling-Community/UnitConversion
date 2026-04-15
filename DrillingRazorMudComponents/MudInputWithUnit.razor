@@ -123,6 +123,10 @@
             {
                 SIValue = siValue.Value;
             }
+            else if (string.IsNullOrWhiteSpace(valueInUserUnit_))
+            {
+                SIValueNullable = null;
+            }
             inhibited_ = false;
             try
             {
