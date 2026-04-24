@@ -1,0 +1,9 @@
+﻿ingress:
+  enabled: true
+  className: public
+  annotations: {}
+  hosts:
+    - host: awe.web.intra.norceresearch.no
+      paths:
+        - path: /UnitConversion/webapp
+          pathType: Prefix
