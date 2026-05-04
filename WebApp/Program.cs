@@ -22,8 +22,9 @@ builder.Services.AddMudMarkdownServices();
 var app = builder.Build();
 
 app.UseForwardedHeaders();
-// This needs to match with what is defined in "charts/<helm-chart-name>/templates/values.yaml ingress.Path
-app.UsePathBase("/UnitConversion/webapp");
+
+var basePath = "/unitconversion/webapp";
+app.UsePathBase(basePath);
 
 if (!String.IsNullOrEmpty(builder.Configuration["UnitConversionHostURL"]))
     OSDC.UnitConversion.WebApp.Configuration.UnitConversionHostURL = builder.Configuration["UnitConversionHostURL"];
