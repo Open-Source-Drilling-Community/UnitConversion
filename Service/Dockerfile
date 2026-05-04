@@ -8,7 +8,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["Service/Service.csproj", "Service/"]
 COPY ["Model/Model.csproj", "Model/"]
-COPY ./nuget.config .
 RUN dotnet restore "Service/Service.csproj"
 
 COPY . .
