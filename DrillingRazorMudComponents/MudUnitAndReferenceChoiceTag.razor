@@ -124,6 +124,9 @@ else
     public ISeaWaterLevelDepthReferenceSource? SeaWaterLevelDepthReferenceSource { get; set; }
 
     [Parameter]
+    public IMeanSeaLevelDepthReferenceSource? MeanSeaLevelDepthReferenceSource { get; set; }
+
+    [Parameter]
     public IRotaryTableDepthReferenceSource? RotaryTableDepthReferenceSource { get; set; }
 
     [Parameter]
@@ -270,6 +273,10 @@ else
             if (SeaWaterLevelDepthReferenceSource != null)
             {
                 depthReferences.Add(new Tuple<Guid, string>(new Guid("98f55f50-e9e1-4045-8b2f-b03e6b96e1d1"), "Sea/Water Level"));
+            }
+            if (MeanSeaLevelDepthReferenceSource != null)
+            {
+                depthReferences.Add(new Tuple<Guid, string>(new Guid("f1c8b6d3-74a8-471c-9087-e7e12b9550d6"), "MSL"));
             }
             if (GroundMudLineDepthReferenceSource != null)
             {
@@ -1132,6 +1139,13 @@ else
             delta = (double)SeaWaterLevelDepthReferenceSource.SeaWaterLevelDepthReference;
             val += delta; // the SeaWaterLevelDepthReference is the depth (positive downward) to move from WGS84 to sea or water level
         }
+        else if (id == new Guid("f1c8b6d3-74a8-471c-9087-e7e12b9550d6") &&
+                 MeanSeaLevelDepthReferenceSource != null &&
+                 MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference != null) // mean sea level
+        {
+            delta = (double)MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference;
+            val += delta; // the MeanSeaLevelDepthReference is the depth (positive downward) to move from WGS84 to MSL
+        }
         else if (id == new Guid("a4667d26-3bb2-40ac-b26f-9346d1441e4a") &&
                  GroundMudLineDepthReferenceSource != null &&
                  GroundMudLineDepthReferenceSource.GroundMudLineDepthReference != null) // ground level or mud line
@@ -1198,6 +1212,13 @@ else
             delta = (double)SeaWaterLevelDepthReferenceSource.SeaWaterLevelDepthReference;
             val += delta; // the SeaWaterLevelDepthReference is the depth (positive downward) to move from WGS84 to sea or water level
         }
+        else if (id == new Guid("f1c8b6d3-74a8-471c-9087-e7e12b9550d6") &&
+                 MeanSeaLevelDepthReferenceSource != null &&
+                 MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference != null) // mean sea level
+        {
+            delta = (double)MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference;
+            val += delta; // the MeanSeaLevelDepthReference is the depth (positive downward) to move from WGS84 to MSL
+        }
         else if (id == new Guid("a4667d26-3bb2-40ac-b26f-9346d1441e4a") &&
                  GroundMudLineDepthReferenceSource != null &&
                  GroundMudLineDepthReferenceSource.GroundMudLineDepthReference != null) // ground level or mud line
@@ -1246,6 +1267,12 @@ else
                     SeaWaterLevelDepthReferenceSource.SeaWaterLevelDepthReference != null) // sea or water level (lake, river)
                 {
                     return label + "SL-WL";
+                }
+                else if (id == new Guid("f1c8b6d3-74a8-471c-9087-e7e12b9550d6") &&
+                         MeanSeaLevelDepthReferenceSource != null &&
+                         MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference != null) // mean sea level
+                {
+                    return label + "MSL";
                 }
                 else if (id == new Guid("a4667d26-3bb2-40ac-b26f-9346d1441e4a") &&
                      GroundMudLineDepthReferenceSource != null &&
@@ -1304,6 +1331,13 @@ else
         {
             delta = (double)SeaWaterLevelDepthReferenceSource.SeaWaterLevelDepthReference;
             val -= delta; // the SeaWaterLevelDepthReference is the depth (positive downward) to move from WGS84 to sea or water level
+        }
+        else if (id == new Guid("f1c8b6d3-74a8-471c-9087-e7e12b9550d6") &&
+                 MeanSeaLevelDepthReferenceSource != null &&
+                 MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference != null) // mean sea level
+        {
+            delta = (double)MeanSeaLevelDepthReferenceSource.MeanSeaLevelDepthReference;
+            val -= delta; // the MeanSeaLevelDepthReference is the depth (positive downward) to move from WGS84 to MSL
         }
         else if (id == new Guid("a4667d26-3bb2-40ac-b26f-9346d1441e4a") &&
                  GroundMudLineDepthReferenceSource != null &&
