@@ -27,7 +27,10 @@ var basePath = "/unitconversion/webapp";
 app.UsePathBase(basePath);
 
 if (!String.IsNullOrEmpty(builder.Configuration["UnitConversionHostURL"]))
+{
     OSDC.UnitConversion.WebApp.Configuration.UnitConversionHostURL = builder.Configuration["UnitConversionHostURL"];
+    OSDC.UnitConversion.WebPages.Configuration.UnitConversionHostURL = builder.Configuration["UnitConversionHostURL"];
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

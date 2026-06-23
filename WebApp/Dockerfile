@@ -11,6 +11,8 @@ RUN chmod 644 /usr/local/share/ca-certificates/foo.crt && update-ca-certificates
 
 WORKDIR /src
 COPY ["WebApp/WebApp.csproj", "WebApp/"]
+COPY ["WebPages/WebPages.csproj", "WebPages/"]
+COPY ["ModelShared/ModelSharedFromOpenApi.cs", "ModelShared/"]
 RUN dotnet restore "WebApp/WebApp.csproj"
 
 COPY . .

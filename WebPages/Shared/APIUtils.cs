@@ -1,7 +1,9 @@
-﻿public static class APIUtils
+﻿namespace OSDC.UnitConversion.WebPages;
+
+public static class APIUtils
 {
     // API parameters
-    public static readonly string HostNameUnitConversion = OSDC.UnitConversion.WebApp.Configuration.UnitConversionHostURL!;
+    public static readonly string HostNameUnitConversion = Configuration.UnitConversionHostURL!;
     public static readonly string HostBasePathUnitConversion = "UnitConversion/api/";
     public static readonly HttpClient HttpClientUnitConversion = APIUtils.SetHttpClient(HostNameUnitConversion, HostBasePathUnitConversion);
     public static readonly OSDC.UnitConversion.ModelShared.Client ClientUnitConversion = new(APIUtils.HttpClientUnitConversion.BaseAddress!.ToString(), APIUtils.HttpClientUnitConversion);

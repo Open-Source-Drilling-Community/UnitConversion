@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModelShared\ModelShared.csproj" />
+    <ProjectReference Include="..\WebPages\WebPages.csproj" />
   </ItemGroup>
 
   <ItemGroup>

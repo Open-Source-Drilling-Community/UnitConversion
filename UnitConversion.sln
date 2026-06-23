@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.github\workflows\docker-build-push.yml = .github\workflows\docker-build-push.yml
 		.github\workflows\docker-run-dotnet-unit-test.yml = .github\workflows\docker-run-dotnet-unit-test.yml
 		.github\workflows\dockerhub-description.yml = .github\workflows\dockerhub-description.yml
+		.github\workflows\publish-webpages-nuget.yml = .github\workflows\publish-webpages-nuget.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -48,6 +49,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionDrillingRazorMudComponentsUnitTests", "ConversionDrillingRazorMudComponentsUnitTests\ConversionDrillingRazorMudComponentsUnitTests.csproj", "{301D0594-5223-4AFE-BD82-D6319BA8A612}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateResources", "GenerateResources\GenerateResources.csproj", "{AAAA5690-2E91-F104-7B09-EEAA7C952103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPages", "WebPages\WebPages.csproj", "{3AC3EDF5-B21C-4D5E-897D-8F4FFAB2B6CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +126,10 @@ Global
 		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAAA5690-2E91-F104-7B09-EEAA7C952103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC3EDF5-B21C-4D5E-897D-8F4FFAB2B6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC3EDF5-B21C-4D5E-897D-8F4FFAB2B6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC3EDF5-B21C-4D5E-897D-8F4FFAB2B6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC3EDF5-B21C-4D5E-897D-8F4FFAB2B6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

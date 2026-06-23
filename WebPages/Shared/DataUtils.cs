@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Localization;
-using System.Globalization;
+﻿using System.Globalization;
+
+namespace OSDC.UnitConversion.WebPages;
 
 public static class DataUtils
 {
