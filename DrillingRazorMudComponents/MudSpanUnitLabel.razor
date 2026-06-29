@@ -50,6 +50,9 @@
                     case DrillingSignalReferenceType.Position:
                         UnitLabel = Parent.GetPositionUnitLabel(QuantityName!);
                         break;
+                    case DrillingSignalReferenceType.Geodetic:
+                        UnitLabel = Parent.GetGeodeticUnitLabel(QuantityName!);
+                        break;
                     default:
                         UnitLabel = Parent.GetUnitLabel(QuantityName!);
                         break;

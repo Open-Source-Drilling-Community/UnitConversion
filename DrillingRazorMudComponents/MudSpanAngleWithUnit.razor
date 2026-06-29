@@ -28,6 +28,9 @@
     public bool UseUnitLabel { get; set; } = false;
 
     [Parameter]
+    public String? QuantityName { get; set; }
+
+    [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
@@ -68,7 +71,7 @@
             }
             else
             {
-                double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue.Value);
+                double valueInDegreeUnit = degreeUnitChoice.FromSI(GetReferenceValueSI());
                 double degValue = Math.Floor(valueInDegreeUnit);
                 double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
                 if (Math.Abs(minValue - 60.0) < 1e-6)
@@ -97,6 +100,22 @@
         {
             DisplayedValue = string.Empty;
         }
+    }
+
+    private double GetReferenceValueSI()
+    {
+        if (Parent != null &&
+            DrillingSignalReference == DrillingSignalReferenceType.Geodetic &&
+            !string.IsNullOrEmpty(QuantityName) &&
+            SIValue != null)
+        {
+            double? valueInUserUnit = Parent.FromWGS84GeodeticSI(SIValue, QuantityName, PositionDirection);
+            if (valueInUserUnit != null)
+            {
+                return Parent.ToSI(valueInUserUnit.Value, QuantityName);
+            }
+        }
+        return SIValue!.Value;
     }
 
     private static bool TryParse(string value, out double result)

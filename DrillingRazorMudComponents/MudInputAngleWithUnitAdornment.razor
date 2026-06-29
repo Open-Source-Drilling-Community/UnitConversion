@@ -1,4 +1,5 @@
 ﻿@namespace OSDC.UnitConversion.DrillingRazorMudComponents
+@implements IUnitAwareComponent
 <MudGrid Spacing="0">
     <MudItem xs="12" sm="12" md="12" lg="12">
         <MudText Typo="Typo.caption" Class="m-0">@QuantityLabel</MudText>
@@ -18,8 +19,14 @@
 </MudGrid>
 
 @code {
+    [CascadingParameter]
+    private MudUnitAndReferenceChoiceTag? Parent { get; set; }
+
     [Parameter]
     public String? QuantityLabel { get; set; }
+
+    [Parameter]
+    public String? QuantityName { get; set; }
 
     [Parameter]
     public Variant VariantType { get; set; } = Variant.Text;
@@ -83,6 +90,12 @@
     [Parameter]
     public EventCallback<double?> SIValueNullableChanged { get; set; }
 
+    [Parameter]
+    public DrillingSignalReferenceType DrillingSignalReference { get; set; } = DrillingSignalReferenceType.Independent;
+
+    [Parameter]
+    public PositionDirectionType PositionDirection { get; set; } = PositionDirectionType.Independent;
+
     private string? DegreeRoundedValue
     {
         get
@@ -131,6 +144,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        Parent?.Add(this);
         ManageUnits();
     }
 
@@ -146,7 +160,7 @@
             }
             else
             {
-                double valueInDegreeUnit = degreeUnitChoice.FromSI(SIValue);
+                double valueInDegreeUnit = degreeUnitChoice.FromSI(GetReferenceValueSI());
                 double degValue = Math.Floor(valueInDegreeUnit);
                 double minValue = Math.Floor((valueInDegreeUnit - degValue) * 60);
                 if (Math.Abs(minValue - 60.0) < 1e-6)
@@ -182,7 +196,18 @@
             if (TryParse(DegreeRoundedValue!, out degValue) && TryParse(MinuteRoundedValue!, out minValue) && TryParse(SecondValue!, out secValue))
             {
                 double valueInDegreeUnit = degValue + minValue / 60 + secValue / 3600;
-                SIValue = degreeUnitChoice.ToSI(valueInDegreeUnit);
+                double valueInSI = degreeUnitChoice.ToSI(valueInDegreeUnit);
+                if (Parent != null &&
+                    DrillingSignalReference == DrillingSignalReferenceType.Geodetic &&
+                    !string.IsNullOrEmpty(QuantityName))
+                {
+                    double valueInUserUnit = Parent.FromSI(valueInSI, QuantityName);
+                    SIValue = Parent.ToWGS84GeodeticSI(valueInUserUnit, QuantityName, PositionDirection);
+                }
+                else
+                {
+                    SIValue = valueInSI;
+                }
                 degreeRoundedValue_ = degValue.ToString();
                 minuteRoundedValue_ = minValue.ToString();
                 secondValue_ = secValue.ToString();
@@ -196,6 +221,22 @@
                 inhibited_ = false;
             }
         }
+    }
+
+    private double GetReferenceValueSI()
+    {
+        if (Parent != null &&
+            DrillingSignalReference == DrillingSignalReferenceType.Geodetic &&
+            !string.IsNullOrEmpty(QuantityName) &&
+            SIValueNullable != null)
+        {
+            double? valueInUserUnit = Parent.FromWGS84GeodeticSI(SIValueNullable, QuantityName, PositionDirection);
+            if (valueInUserUnit != null)
+            {
+                return Parent.ToSI(valueInUserUnit.Value, QuantityName);
+            }
+        }
+        return SIValue;
     }
 
 

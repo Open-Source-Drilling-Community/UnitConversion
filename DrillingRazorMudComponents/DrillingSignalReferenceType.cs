@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OSDC.UnitConversion.DrillingRazorMudComponents
 {
-    public enum DrillingSignalReferenceType { Independent, Pressure, Azimuth, Depth, Position }
+    public enum DrillingSignalReferenceType { Independent, Pressure, Azimuth, Depth, Position, Geodetic }
 
     public enum PositionDirectionType { Independent, North, East }
 }

@@ -195,6 +195,9 @@
                 case DrillingSignalReferenceType.Position:
                     valueFromSI = Parent.FromWGS84PositionSI(val, QuantityName!, false, PositionDirection);
                     break;
+                case DrillingSignalReferenceType.Geodetic:
+                    valueFromSI = Parent.FromWGS84GeodeticSI(val, QuantityName!, false, PositionDirection);
+                    break;
                 default:
                     valueFromSI = Parent.FromSI(val, QuantityName!, false);
                     break;
@@ -223,6 +226,9 @@
                     break;
                 case DrillingSignalReferenceType.Position:
                     siValue = Parent.ToWGS84PositionSI(valueInUserUnit, QuantityName!, PositionDirection);
+                    break;
+                case DrillingSignalReferenceType.Geodetic:
+                    siValue = Parent.ToWGS84GeodeticSI(valueInUserUnit, QuantityName!, PositionDirection);
                     break;
                 default:
                     siValue = Parent.ToSI(valueInUserUnit, QuantityName!);

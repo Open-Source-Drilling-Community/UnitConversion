@@ -40,6 +40,17 @@ else
                         </MudSelect>
                     </td>
                 }
+                @if (!IsHiddenGeodeticReference)
+                {
+                    <td width="16%">
+                        <MudSelect Class="unit-reference-choice-select" @bind-Value="GeodeticReferenceName" Label="Geodetic Reference" Variant="Variant.Filled">
+                            @foreach (Tuple<Guid, string> tuple in geodeticReferences)
+                            {
+                                <MudSelectItem Value="@tuple.Item2">@tuple.Item2</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </td>
+                }
                 @if (!IsHiddenAzimuthReference)
                 {
                     <td width="16%">
@@ -106,7 +117,10 @@ else
     public ICartographicGridPositionReferenceSource? CartographicGridPositionReferenceSource { get; set; }
 
     [Parameter]
-    public ILeaseLinePositionReferenceSource? LeaseLinePositionReferenceSource { get; set; }
+    public IFieldPositionReferenceSource? FieldPositionReferenceSource { get; set; }
+
+    [Parameter]
+    public ICartographicProjectionDatumGeodeticReferenceSource? CartographicProjectionDatumGeodeticReferenceSource { get; set; }
 
     [Parameter]
     public IClusterPositionReferenceSource? ClusterPositionReferenceSource { get; set; }
@@ -191,6 +205,26 @@ else
     public EventCallback<string> PositionReferenceNameChanged { get; set; }
 
     [Parameter]
+    public string? GeodeticReferenceName
+    {
+        get
+        {
+            return geodeticReferenceName_;
+        }
+        set
+        {
+            if (geodeticReferenceName_ == null || !geodeticReferenceName_.Equals(value))
+            {
+                geodeticReferenceName_ = value;
+                PostProcessGeodeticReference();
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<string> GeodeticReferenceNameChanged { get; set; }
+
+    [Parameter]
     public string? AzimuthReferenceName
     {
         get
@@ -235,6 +269,7 @@ else
     private string? unitSystemName_;
     private string? depthReferenceName_;
     private string? positionReferenceName_;
+    private string? geodeticReferenceName_;
     private string? azimuthReferenceName_;
     private string? pressureReferenceName_;
     public string? dateReferenceName;
@@ -243,6 +278,7 @@ else
     private List<UnitSystemLight>? unitSystemLightList = new List<UnitSystemLight>();
     private List<Tuple<Guid, string>> depthReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> positionReferences = new List<Tuple<Guid, string>>();
+    private List<Tuple<Guid, string>> geodeticReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> azimuthReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> pressureReferences = new List<Tuple<Guid, string>>();
     private List<Tuple<Guid, string>> dateReferences = new List<Tuple<Guid, string>>();
@@ -253,6 +289,7 @@ else
     private BaseUnitSystem? baseUnitSystem_;
 
     private bool IsHiddenPositionReference = true;
+    private bool IsHiddenGeodeticReference = true;
     private bool IsHiddenDepthReference = true;
     private bool IsHiddenAzimuthReference = true;
     private bool IsHiddenPressureReference = true;
@@ -297,15 +334,22 @@ else
             {
                 positionReferences.Add(new Tuple<Guid, string>(new Guid("109fc958-bf9c-454d-9505-6a3c34d0a501"), "Cluster-reference"));
             }
-            if (LeaseLinePositionReferenceSource != null)
+            if (FieldPositionReferenceSource != null)
             {
-                positionReferences.Add(new Tuple<Guid, string>(new Guid("4bcd2794-e868-40db-aee6-4082cbba4fae"), "Lease-line"));
+                positionReferences.Add(new Tuple<Guid, string>(new Guid("4bcd2794-e868-40db-aee6-4082cbba4fae"), "Field"));
             }
             if (CartographicGridPositionReferenceSource != null)
             {
                 positionReferences.Add(new Tuple<Guid, string>(new Guid("073a7b94-09ac-4c9e-a7bb-03de2684123b"), "Cartographic"));
             }
             IsHiddenPositionReference = positionReferences.Count <= 1;
+
+            geodeticReferences.Add(new Tuple<Guid, string>(new Guid("94631afe-61f1-494e-96a0-91f0593285c4"), "WGS84"));
+            if (CartographicProjectionDatumGeodeticReferenceSource != null)
+            {
+                geodeticReferences.Add(new Tuple<Guid, string>(new Guid("7286d40e-e3bd-4c39-87fe-101c7ef27362"), "Cartographic Projection Datum"));
+            }
+            IsHiddenGeodeticReference = geodeticReferences.Count <= 1;
 
             azimuthReferences.Add(new Tuple<Guid, string>(new Guid("73cb739b-aae1-4dcb-a1ed-0aad5a62a6bd"), "True North"));
             if (GridConvergenceSource != null)
@@ -1427,6 +1471,21 @@ else
             val += delta;
         }
         else if (id == new Guid("4bcd2794-e868-40db-aee6-4082cbba4fae") &&
+                 FieldPositionReferenceSource != null &&
+                 FieldPositionReferenceSource.FieldNorthPositionReference != null &&
+                 FieldPositionReferenceSource.FieldEastPositionReference != null) // field position reference
+        {
+            if (direction == PositionDirectionType.North)
+            {
+                delta = (double)FieldPositionReferenceSource.FieldNorthPositionReference;
+            }
+            else
+            {
+                delta = (double)FieldPositionReferenceSource.FieldEastPositionReference;
+            }
+            val += delta;
+        }
+        else if (id == new Guid("073a7b94-09ac-4c9e-a7bb-03de2684123b") &&
                  CartographicGridPositionReferenceSource != null &&
                  CartographicGridPositionReferenceSource.CartographicGridNorthPositionReference != null &&
                  CartographicGridPositionReferenceSource.CartographicGridEastPositionReference != null) // cartographic position reference
@@ -1513,6 +1572,21 @@ else
             val += delta;
         }
         else if (id == new Guid("4bcd2794-e868-40db-aee6-4082cbba4fae") &&
+                 FieldPositionReferenceSource != null &&
+                 FieldPositionReferenceSource.FieldNorthPositionReference != null &&
+                 FieldPositionReferenceSource.FieldEastPositionReference != null) // field position reference
+        {
+            if (direction == PositionDirectionType.North)
+            {
+                delta = (double)FieldPositionReferenceSource.FieldNorthPositionReference;
+            }
+            else
+            {
+                delta = (double)FieldPositionReferenceSource.FieldEastPositionReference;
+            }
+            val += delta;
+        }
+        else if (id == new Guid("073a7b94-09ac-4c9e-a7bb-03de2684123b") &&
                  CartographicGridPositionReferenceSource != null &&
                  CartographicGridPositionReferenceSource.CartographicGridNorthPositionReference != null &&
                  CartographicGridPositionReferenceSource.CartographicGridEastPositionReference != null) // cartographic position reference
@@ -1565,6 +1639,13 @@ else
                     return label + "CR";
                 }
                 else if (id == new Guid("4bcd2794-e868-40db-aee6-4082cbba4fae") &&
+                         FieldPositionReferenceSource != null &&
+                         FieldPositionReferenceSource.FieldNorthPositionReference != null &&
+                         FieldPositionReferenceSource.FieldEastPositionReference != null) // field position reference
+                {
+                    return label + "Field";
+                }
+                else if (id == new Guid("073a7b94-09ac-4c9e-a7bb-03de2684123b") &&
                          CartographicGridPositionReferenceSource != null &&
                          CartographicGridPositionReferenceSource.CartographicGridNorthPositionReference != null &&
                          CartographicGridPositionReferenceSource.CartographicGridEastPositionReference != null) // cartographic position reference
@@ -1638,6 +1719,21 @@ else
             val -= delta;
         }
         else if (id == new Guid("4bcd2794-e868-40db-aee6-4082cbba4fae") &&
+                 FieldPositionReferenceSource != null &&
+                 FieldPositionReferenceSource.FieldNorthPositionReference != null &&
+                 FieldPositionReferenceSource.FieldEastPositionReference != null) // field position reference
+        {
+            if (direction == PositionDirectionType.North)
+            {
+                delta = (double)FieldPositionReferenceSource.FieldNorthPositionReference;
+            }
+            else
+            {
+                delta = (double)FieldPositionReferenceSource.FieldEastPositionReference;
+            }
+            val -= delta;
+        }
+        else if (id == new Guid("073a7b94-09ac-4c9e-a7bb-03de2684123b") &&
                  CartographicGridPositionReferenceSource != null &&
                  CartographicGridPositionReferenceSource.CartographicGridNorthPositionReference != null &&
                  CartographicGridPositionReferenceSource.CartographicGridEastPositionReference != null) // cartographic position reference
@@ -1649,6 +1745,187 @@ else
             else
             {
                 delta = (double)CartographicGridPositionReferenceSource.CartographicGridEastPositionReference;
+            }
+            val -= delta;
+        }
+        return val;
+    }
+    #endregion
+
+    #region management of references for geodetic datum
+    public string FromWGS84GeodeticSI(double? val, string quantityName, bool useUnitLabel, PositionDirectionType direction)
+    {
+        if (!IsPlaneAngle(quantityName))
+        {
+            return "";
+        }
+        if (val == null)
+        {
+            return "";
+        }
+        if (direction == PositionDirectionType.Independent)
+        {
+            return "";
+        }
+        double delta = 0;
+        Guid id = Guid.Empty;
+        foreach (Tuple<Guid, string> tuple in geodeticReferences)
+        {
+            if (tuple.Item2 == geodeticReferenceName_)
+            {
+                id = tuple.Item1;
+                break;
+            }
+        }
+        if (id == new Guid("7286d40e-e3bd-4c39-87fe-101c7ef27362") &&
+            CartographicProjectionDatumGeodeticReferenceSource != null &&
+            CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference != null &&
+            CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference != null) // cartographic projection datum
+        {
+            if (direction == PositionDirectionType.North)
+            {
+                delta = (double)CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference;
+            }
+            else
+            {
+                delta = (double)CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference;
+            }
+            val += delta;
+        }
+        string valueInUserUnit = FromSI(val, quantityName, false);
+        if (useUnitLabel)
+        {
+            return valueInUserUnit + " " + GetGeodeticUnitLabel(quantityName);
+        }
+        else
+        {
+            return valueInUserUnit;
+        }
+    }
+    public double? FromWGS84GeodeticSI(double? val, string quantityName, PositionDirectionType direction)
+    {
+        if (val == null)
+        {
+            return null;
+        }
+        else
+        {
+            return FromWGS84GeodeticSI((double)val, quantityName, direction);
+        }
+    }
+    public double FromWGS84GeodeticSI(double val, string quantityName, PositionDirectionType direction)
+    {
+        if (!IsPlaneAngle(quantityName))
+        {
+            return double.NaN;
+        }
+        if (direction == PositionDirectionType.Independent)
+        {
+            return double.NaN;
+        }
+        double delta = 0;
+        Guid id = Guid.Empty;
+        foreach (Tuple<Guid, string> tuple in geodeticReferences)
+        {
+            if (tuple.Item2 == geodeticReferenceName_)
+            {
+                id = tuple.Item1;
+                break;
+            }
+        }
+        if (id == new Guid("7286d40e-e3bd-4c39-87fe-101c7ef27362") &&
+            CartographicProjectionDatumGeodeticReferenceSource != null &&
+            CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference != null &&
+            CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference != null) // cartographic projection datum
+        {
+            if (direction == PositionDirectionType.North)
+            {
+                delta = (double)CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference;
+            }
+            else
+            {
+                delta = (double)CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference;
+            }
+            val += delta;
+        }
+        return FromSI(val, quantityName);
+    }
+
+    public string GetGeodeticUnitLabel(string quantityName)
+    {
+        if (!IsPlaneAngle(quantityName))
+        {
+            return "";
+        }
+        if (baseUnitSystem_ != null)
+        {
+            string label = baseUnitSystem_.GetUnitLabel(quantityName);
+            if (!string.IsNullOrEmpty(label))
+            {
+                Guid id = Guid.Empty;
+                foreach (Tuple<Guid, string> tuple in geodeticReferences)
+                {
+                    if (tuple.Item2 == geodeticReferenceName_)
+                    {
+                        id = tuple.Item1;
+                        break;
+                    }
+                }
+                if (id == new Guid("7286d40e-e3bd-4c39-87fe-101c7ef27362") &&
+                    CartographicProjectionDatumGeodeticReferenceSource != null &&
+                    CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference != null &&
+                    CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference != null) // cartographic projection datum
+                {
+                    return label + "CPD";
+                }
+                else
+                {
+                    return label + "WGS84";
+                }
+            }
+            else
+            {
+                return label;
+            }
+        }
+        else
+        {
+            return "";
+        }
+    }
+    public double ToWGS84GeodeticSI(double v, string quantityName, PositionDirectionType direction)
+    {
+        if (!IsPlaneAngle(quantityName))
+        {
+            return double.NaN;
+        }
+        if (direction == PositionDirectionType.Independent)
+        {
+            return double.NaN;
+        }
+        double val = ToSI(v, quantityName);
+        double delta = 0;
+        Guid id = Guid.Empty;
+        foreach (Tuple<Guid, string> tuple in geodeticReferences)
+        {
+            if (tuple.Item2 == geodeticReferenceName_)
+            {
+                id = tuple.Item1;
+                break;
+            }
+        }
+        if (id == new Guid("7286d40e-e3bd-4c39-87fe-101c7ef27362") &&
+            CartographicProjectionDatumGeodeticReferenceSource != null &&
+            CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference != null &&
+            CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference != null) // cartographic projection datum
+        {
+            if (direction == PositionDirectionType.North)
+            {
+                delta = (double)CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLatitudeReference;
+            }
+            else
+            {
+                delta = (double)CartographicProjectionDatumGeodeticReferenceSource.CartographicProjectionDatumLongitudeReference;
             }
             val -= delta;
         }
@@ -1764,6 +2041,25 @@ else
         catch (Exception ex)
         {
             logger.LogError(ex, "Problem while managing position in PostProcessPositionReference (second step)");
+        }
+    }
+    private async Task PostProcessGeodeticReference()
+    {
+        if (unitAwareComponents_ != null)
+        {
+            foreach (IUnitAwareComponent comp in unitAwareComponents_)
+            {
+                comp.ManageUnits();
+            }
+        }
+        try
+        {
+            await GeodeticReferenceNameChanged.InvokeAsync(geodeticReferenceName_);
+            await InvokeAsync(() => { StateHasChanged(); });
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Problem while managing geodetic datum in PostProcessGeodeticReference (second step)");
         }
     }
     private async Task PostProcessAzimuthReference()

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OSDC.UnitConversion.DrillingRazorMudComponents
 {
-    public interface ILeaseLinePositionReferenceSource
+    public interface IFieldPositionReferenceSource
     {
-        public double? LeaseLineNorthPositionReference { get; set; }
-        public double? LeaseLineEastPositionReference { get; set; }
+        public double? FieldNorthPositionReference { get; set; }
+        public double? FieldEastPositionReference { get; set; }
     }
 }

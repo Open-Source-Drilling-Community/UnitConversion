@@ -76,6 +76,9 @@
                 case DrillingSignalReferenceType.Position:
                     DisplayedValue = Parent.FromWGS84PositionSI(SIValue, QuantityName!, UseUnitLabel, PositionDirection);
                     break;
+                case DrillingSignalReferenceType.Geodetic:
+                    DisplayedValue = Parent.FromWGS84GeodeticSI(SIValue, QuantityName!, UseUnitLabel, PositionDirection);
+                    break;
                 default:
                     DisplayedValue = Parent.FromSI(SIValue, QuantityName!, UseUnitLabel);
                     break;
