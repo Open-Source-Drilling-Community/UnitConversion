@@ -14,6 +14,7 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
   - [UnitSystemConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitSystemConversionSet)
   - [UnitConversionSet endpoint](https://dev.digiwells.no/UnitConversion/api/UnitConversionSet)
   - MCP server entry point: `https://app.digiwells.no/UnitConversion/api/mcp` (see details below)
+  - optional MCP hub registration configured from the shared `home/` volume
 
 - a client user interface to handle unit conversions 
   - [PhysicalQuantity endpoint](https://dev.digiwells.no/UnitConversion/webapp/PhysicalQuantity)
@@ -69,6 +70,29 @@ curl -X POST \
 ```
 
 Clients can also initiate WebSocket sessions (via `GET /UnitConversion/api/mcp/ws`) and use SSE/HTTP streaming; the transport is negotiated automatically by the ModelContextProtocol client libraries.
+
+### MCP hub registration
+
+The service can publish its MCP endpoint to an MCP hub. The Docker image reads optional external configuration from `/home/UnitConversion.Service.json`, or from the path specified by `UNITCONVERSION_EXTERNAL_CONFIG`. The shared `/home` volume also stores the SQLite database, vector database, and generated MCP hub instance id.
+
+Minimal external configuration:
+
+```json
+{
+  "McpHub": {
+    "Enabled": true,
+    "HubBaseUrl": "https://mcp-hub.example.com/api",
+    "RegistrationEndpoint": "McpMicroservice",
+    "RetryIntervalSeconds": 60,
+    "PublicBaseUrl": "https://dev.digiwells.no",
+    "ServiceName": "UnitConversion",
+    "InstanceId": "",
+    "UnregisterOnShutdown": true
+  }
+}
+```
+
+The registered MCP URLs are derived from `PublicBaseUrl` as `/UnitConversion/api/mcp` and `/UnitConversion/api/mcp/ws`. If the hub is unavailable, the service retries every `RetryIntervalSeconds` seconds.
 
 # Data model
 

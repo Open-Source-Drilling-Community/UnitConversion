@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -12,10 +13,15 @@ using OSDC.UnitConversion.Service.Mcp.Resources;
 using OSDC.UnitConversion.Service.Mcp.Tools;
 using OSDC.UnitConversion.Service;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+string externalConfigPath = builder.Configuration["UNITCONVERSION_EXTERNAL_CONFIG"]
+    ?? Path.Combine(SqlConnectionManager.HOME_DIRECTORY, "UnitConversion.Service.json");
+builder.Configuration.AddJsonFile(externalConfigPath, optional: true, reloadOnChange: true);
 
 // registering the manager of SQLite connections through dependency injection
 builder.Services.AddSingleton(sp => new SqlConnectionManager(
@@ -57,6 +63,10 @@ builder.Services.AddSwaggerGen(c =>
     //c.DocumentFilter<PolymorphismDocumentFilter<BaseType>>(); // document filter registers the schemas
     //c.SchemaFilter<PolymorphismSchemaFilter<BaseType>>(); // schema filter sets the schemas (timing is automatically managed)
 });
+
+builder.Services.Configure<McpHubOptions>(builder.Configuration.GetSection(McpHubOptions.SectionName));
+builder.Services.AddHttpClient(nameof(McpHubRegistrationService));
+builder.Services.AddHostedService<McpHubRegistrationService>();
 
 builder.Services.Configure<VectorDocumentDatabaseOptions>(builder.Configuration.GetSection("VectorDocumentDatabase"));
 builder.Services.Configure<VectorDocumentSearchOptions>(builder.Configuration.GetSection("VectorDocumentSearch"));

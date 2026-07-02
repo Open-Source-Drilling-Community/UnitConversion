@@ -19,6 +19,24 @@ https://app.digiwells.no/UnitConversion/api/UnitSystem
 https://app.digiwells.no/UnitConversion/api/UnitConversionSet
 https://app.digiwells.no/UnitConversion/api/UnitSystemConversionSet
 
+## Configuration and Docker volume
+
+The service stores its SQLite database and local runtime files under the shared `home/` location. In Docker this folder is mounted as `/home`.
+
+The Docker image reads an optional external configuration file from:
+
+```
+/home/UnitConversion.Service.json
+```
+
+This path can be overridden with the `UNITCONVERSION_EXTERNAL_CONFIG` environment variable. Use a shared volume for `/home` when running the container so the database, vector database, optional external configuration, and generated MCP hub instance id survive container restarts.
+
+Example:
+
+```bash
+docker run -p 8080:8080 -e ASPNETCORE_URLS=http://+:8080 -v %CD%/home:/home osdcunitconversionservice
+```
+
 ## MCP server
 
 Alongside the REST API, the microservice exposes a [Model Context Protocol](https://modelcontextprotocol.io/) server that allows MCP compatible clients to call domain specific tools over HTTP (or WebSocket) transports. The public entry point is:
@@ -77,6 +95,32 @@ curl -X POST \
 ```
 
 Clients that prefer Server Sent Events (SSE) or WebSockets can switch the transport mode during the MCP handshake—the service accepts both HTTP streaming and WebSocket sessions.
+
+### MCP hub registration
+
+The service can optionally register its MCP endpoint on an MCP hub. Enable this through the external configuration file:
+
+```json
+{
+  "McpHub": {
+    "Enabled": true,
+    "HubBaseUrl": "https://mcp-hub.example.com/api",
+    "RegistrationEndpoint": "McpMicroservice",
+    "RetryIntervalSeconds": 60,
+    "PublicBaseUrl": "https://dev.digiwells.no",
+    "ServiceName": "UnitConversion",
+    "InstanceId": "",
+    "UnregisterOnShutdown": true
+  }
+}
+```
+
+When enabled, the service registers a fixed UnitConversion service type id, a configured or persisted instance id, and MCP URLs derived from `PublicBaseUrl`:
+
+- `PublicBaseUrl + "/UnitConversion/api/mcp"`
+- `PublicBaseUrl` converted to `ws`/`wss` plus `"/UnitConversion/api/mcp/ws"`
+
+If `HubBaseUrl` or `PublicBaseUrl` is missing, registration is skipped. If the hub is configured but unreachable, registration is retried every `RetryIntervalSeconds` seconds. On graceful shutdown, the service attempts to unregister its instance when `UnregisterOnShutdown` is true.
 
 # Funding
 

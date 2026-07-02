@@ -34,7 +34,7 @@
 	</ItemGroup>
 
 	<Target Name="CreateSwaggerJson" AfterTargets="Build" Condition="$(Configuration)=='Debug'">
-		<Exec Command="dotnet swagger tofile --output ../ModelShared/json-schemas/$(Version)/$(SolutionName).json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
+		<Exec Command="dotnet swagger tofile --output ../ModelShared/json-schemas/$(Version)/UnitConversion.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
 	</Target>
 
 </Project>
