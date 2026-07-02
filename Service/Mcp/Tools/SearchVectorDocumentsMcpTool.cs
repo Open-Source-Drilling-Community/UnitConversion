@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -68,6 +69,16 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
         }
 
         var maxResults = ReadMaxResults(arguments);
+        if (string.IsNullOrWhiteSpace(_options.EmbeddingModel))
+        {
+            return McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, "Vector search is not configured because VectorDocumentSearch:EmbeddingModel is empty.");
+        }
+
+        var databasePath = _repository.DatabasePath;
+        if (string.IsNullOrWhiteSpace(databasePath) || !File.Exists(databasePath))
+        {
+            return McpToolResponses.CreateError(StatusCodes.Status503ServiceUnavailable, $"Vector document database was not found at '{databasePath}'.");
+        }
 
         try
         {
@@ -75,6 +86,7 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
             if (embedding.Length != _options.EmbeddingDimensions)
             {
                 _logger.LogWarning("Generated embedding length {Length} does not match the configured dimensions {Dimensions}.", embedding.Length, _options.EmbeddingDimensions);
+                return McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, $"Generated embedding length {embedding.Length} does not match configured dimension {_options.EmbeddingDimensions}.");
             }
 
             var hits = await _repository.SearchAsync(embedding, maxResults, cancellationToken).ConfigureAwait(false);
@@ -106,10 +118,15 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
                 ["results"] = results
             };
         }
+        catch (EmbeddingProviderException ex)
+        {
+            _logger.LogError(ex, "Failed to generate embedding for {ToolName}.", Name);
+            return McpToolResponses.CreateError(StatusCodes.Status503ServiceUnavailable, ex.Message);
+        }
         catch (Exception ex)
         {
             _logger.LogError(ex, "Failed to execute {ToolName}.", Name);
-            return McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, "Vector search failed. Ensure embeddings are configured correctly.");
+            return McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, "Vector search failed while reading the vector document database.");
         }
     }
 

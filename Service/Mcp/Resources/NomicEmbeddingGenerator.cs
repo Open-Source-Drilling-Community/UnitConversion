@@ -45,7 +45,7 @@ internal sealed class NomicEmbeddingGenerator : ITextEmbeddingGenerator
         var endpoint = _options.Nomic.Endpoint;
         if (string.IsNullOrWhiteSpace(endpoint))
         {
-            throw new InvalidOperationException("VectorDocumentSearch:Nomic:Endpoint must be configured.");
+            throw new EmbeddingProviderException("VectorDocumentSearch:Nomic:Endpoint must be configured.");
         }
 
         using var request = new HttpRequestMessage(HttpMethod.Post, endpoint)
@@ -62,19 +62,29 @@ internal sealed class NomicEmbeddingGenerator : ITextEmbeddingGenerator
             request.Headers.Add(header, $"{prefix}{apiKey}");
         }
 
-        using var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        HttpResponseMessage response;
+        try
+        {
+            response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
+        {
+            throw new EmbeddingProviderException($"Embedding endpoint '{endpoint}' could not be reached.", ex);
+        }
+
+        using var responseScope = response;
         if (!response.IsSuccessStatusCode)
         {
             var detail = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             _logger.LogError("nomic-embed-text request failed with status {Status}: {Body}", (int)response.StatusCode, detail);
-            throw new InvalidOperationException("Embedding provider rejected the request.");
+            throw new EmbeddingProviderException($"Embedding provider rejected the request with HTTP {(int)response.StatusCode}.");
         }
 
         var payload = await response.Content.ReadFromJsonAsync<EmbeddingResponse>(cancellationToken: cancellationToken).ConfigureAwait(false);
         var embedding = payload?.Data.Count > 0 ? payload.Data[0].Embedding : null;
         if (embedding is null || embedding.Count == 0)
         {
-            throw new InvalidOperationException("Embedding provider returned an empty payload.");
+            throw new EmbeddingProviderException("Embedding provider returned an empty payload.");
         }
 
         return embedding.ToArray();

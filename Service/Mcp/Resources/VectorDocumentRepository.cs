@@ -16,6 +16,8 @@ namespace OSDC.UnitConversion.Service.Mcp.Resources;
 
 public interface IVectorDocumentRepository
 {
+    string DatabasePath { get; }
+
     Task<VectorDocumentPage> ListAsync(string? cursor, int pageSize, CancellationToken cancellationToken);
 
     Task<VectorDocumentRecord?> GetByUriAsync(string uri, CancellationToken cancellationToken);
@@ -50,6 +52,10 @@ internal sealed class VectorDocumentRepository : IVectorDocumentRepository
     private readonly VectorDocumentDatabaseOptions _options;
     private readonly ILogger<VectorDocumentRepository> _logger;
     private readonly string _tableName;
+
+    public string DatabasePath => string.IsNullOrWhiteSpace(_options.DatabasePath)
+        ? string.Empty
+        : Path.GetFullPath(_options.DatabasePath);
 
     public VectorDocumentRepository(
         VectorDocumentConnectionFactory connectionFactory,

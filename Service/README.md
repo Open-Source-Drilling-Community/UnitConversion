@@ -31,6 +31,8 @@ The Docker image reads an optional external configuration file from:
 
 This path can be overridden with the `UNITCONVERSION_EXTERNAL_CONFIG` environment variable. Use a shared volume for `/home` when running the container so the database, vector database, optional external configuration, and generated MCP hub instance id survive container restarts.
 
+The Docker image also carries a seed copy of the MCP vector document database at `/app/seed/UnitConversionVectors.db`. At startup, the service copies that seed into `/home/UnitConversionVectors.db` only when the runtime file is missing. This keeps `/home` persistent while avoiding the Kubernetes volume mount hiding the database bundled in the image.
+
 Example:
 
 ```bash
@@ -67,7 +69,7 @@ http://localhost:5002/UnitConversion/api/mcp
 | `get_all_unit_conversion_set_*`, `get_unit_conversion_set_by_id`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id` | Manage unit conversion sets |
 | `get_all_unit_system_conversion_set_*`, `get_unit_system_conversion_set_by_id`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id` | Manage unit system conversion sets |
 
-`search_vector_resources` expects a nomic-ai/nomic-embed-text compatible endpoint (default `http://localhost:8080/embeddings`). Configure `VectorDocumentSearch:Nomic:*` or the `NOMIC_API_KEY` environment variable if the inference server requires authentication, and ensure the vector database was generated with the same model/dimension pair.
+`search_vector_resources` expects a nomic-ai/nomic-embed-text compatible endpoint (default `http://localhost:8080/embeddings`). Configure `VectorDocumentSearch:Nomic:*` or the `NOMIC_API_KEY` environment variable if the inference server requires authentication, and ensure the vector database was generated with the same model/dimension pair. If search cannot run, the MCP response distinguishes between a missing vector database, an unreachable embedding endpoint, and an embedding dimension mismatch.
 
 ### Example request
 

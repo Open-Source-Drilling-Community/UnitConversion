@@ -9,6 +9,13 @@ namespace OSDC.UnitConversion.Service.Mcp.Resources;
 public sealed class VectorDocumentDatabaseOptions
 {
     /// <summary>
+    /// Gets or sets the optional seed database path copied into the container image.
+    /// When configured, the service copies this file to <see cref="DatabasePath"/> at startup
+    /// only if the target database does not already exist.
+    /// </summary>
+    public string? SeedDatabasePath { get; set; } = Path.Combine(AppContext.BaseDirectory, "seed", "UnitConversionVectors.db");
+
+    /// <summary>
     /// Gets or sets the absolute or relative path to the SQLite database that stores the vectorized resources.
     /// Defaults to a file that lives next to the primary UnitConversion database.
     /// </summary>

@@ -34,6 +34,8 @@ When running locally with the default profile, the entry point is:
 http://localhost:5002/UnitConversion/api/mcp
 ```
 
+The service image includes a seed MCP vector document database under `/app/seed/UnitConversionVectors.db`. On startup this seed is copied to `/home/UnitConversionVectors.db` only if the runtime database is missing, so the `/home` volume can remain persistent without hiding the bundled seed data.
+
 ### Available tools
 
 The following tool names are exposed through MCP:

@@ -136,6 +136,8 @@ builder.Services.AddLegacyMcpTool<SearchVectorDocumentsMcpTool>();
 
 var app = builder.Build();
 
+VectorDocumentSeedInitializer.EnsureSeeded(app.Services);
+
 var basePath = "/unitconversion/api";
 var scheme = "http";
 

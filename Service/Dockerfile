@@ -23,7 +23,7 @@ WORKDIR /app
 VOLUME /home
 COPY --from=publish /app .
 
-# Copy the database file into /home inside the image
-COPY home/UnitConversionVectors.db /home/UnitConversionVectors.db
+# Keep the seed database outside /home so it is not hidden by the runtime volume mount.
+COPY home/UnitConversionVectors.db /app/seed/UnitConversionVectors.db
 
 ENTRYPOINT ["dotnet", "Service.dll"]
