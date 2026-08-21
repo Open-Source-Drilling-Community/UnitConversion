@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -31,17 +29,17 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
             ["physicalQuantity"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Physical-quantity name or common synonym, matched without regard to case, spacing, punctuation, or accents."
+                ["description"] = "Requested physical-quantity name or common synonym. Matching ignores case, spacing, punctuation, and accents. A specialised quantity retains its meaningful precision even when a compatible unit is inherited from an ancestor quantity."
             },
             ["unitIn"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Source UnitName or UnitLabel belonging to the resolved physical quantity; tolerant matching is applied."
+                ["description"] = "Source UnitName or UnitLabel. Matching accepts case/punctuation differences, common symbols, plurals, and British/American spellings such as metre/meter. If absent on a specialised quantity, its physical-quantity ancestors are searched."
             },
             ["unitOut"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Target UnitName or UnitLabel belonging to the same physical quantity; tolerant matching is applied."
+                ["description"] = "Target UnitName or UnitLabel. Matching accepts case/punctuation differences, common symbols, plurals, and British/American spellings. If absent on the requested subtype, compatible ancestor quantities are searched."
             },
             ["value"] = new JsonObject
             {
@@ -61,7 +59,7 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
 
     public string Name => "convert_unit_value";
 
-    public string Description => "Synchronously convert one finite numeric value between two unit choices of the same physical quantity. Quantity names/synonyms and unit names/labels are matched tolerantly. The tool creates, retrieves, and deletes a temporary UnitConversionSet and returns numeric and meaningfully formatted output plus resolved IDs and labels.";
+    public string Description => "Synchronously convert one finite numeric value between dimensionally compatible unit choices for a requested physical quantity. Quantity names and synonyms are matched tolerantly; unit matching also handles common symbols, plurals, and British/American spellings such as metre/meter. A specialised drilling quantity is searched first, followed by its physical-quantity ancestors—for example, RateOfPenetrationDrilling can use furlong per fortnight inherited from Velocity. The exact numeric result is preserved, while formattedValue uses the requested specialised quantity's MeaningfulPrecisionInSI. The temporary UnitConversionSet is deleted automatically.";
 
     public JsonNode? InputSchema => Schema;
 
@@ -103,29 +101,29 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
                 return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status404NotFound, $"No physical quantity matched '{physicalQuantityName}'."));
             }
 
-            if (physicalQuantity.UnitChoices is null || physicalQuantity.UnitChoices.Count == 0)
+            if (!PhysicalQuantityHierarchy.Enumerate(physicalQuantity).Any(quantity => quantity.UnitChoices is { Count: > 0 }))
             {
                 return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, $"Physical quantity '{physicalQuantity.Name}' has no unit choices available."));
             }
 
-            var unitChoiceIn = FindUnitChoice(physicalQuantity.UnitChoices, unitNameIn);
+            var unitChoiceIn = FindUnitChoice(physicalQuantity, unitNameIn);
             if (unitChoiceIn is null)
             {
-                return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status404NotFound, $"No unit choice matched '{unitNameIn}' for physical quantity '{physicalQuantity.Name}'."));
+                return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status404NotFound, BuildUnitNotFoundMessage(physicalQuantity, unitNameIn)));
             }
 
-            var unitChoiceOut = FindUnitChoice(physicalQuantity.UnitChoices, unitNameOut);
+            var unitChoiceOut = FindUnitChoice(physicalQuantity, unitNameOut);
             if (unitChoiceOut is null)
             {
-                return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status404NotFound, $"No unit choice matched '{unitNameOut}' for physical quantity '{physicalQuantity.Name}'."));
+                return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status404NotFound, BuildUnitNotFoundMessage(physicalQuantity, unitNameOut)));
             }
 
             var conversionSetId = Guid.NewGuid();
             var quantityConversion = new QuantityUnitConversion
             {
                 QuantityID = physicalQuantity.ID,
-                UnitChoiceIDIn = unitChoiceIn.ID,
-                UnitChoiceIDOut = unitChoiceOut.ID,
+                UnitChoiceIDIn = unitChoiceIn.Value.Choice.ID,
+                UnitChoiceIDOut = unitChoiceOut.Value.Choice.ID,
                 ValueConversionList = new List<ValueConversion>
                 {
                     new ValueConversion { DataIn = value }
@@ -177,17 +175,22 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
                     ["input"] = new JsonObject
                     {
                         ["value"] = value,
-                        ["unitName"] = unitChoiceIn.UnitName,
-                        ["unitLabel"] = unitChoiceIn.UnitLabel,
-                        ["unitId"] = unitChoiceIn.ID.ToString()
+                        ["unitName"] = unitChoiceIn.Value.Choice.UnitName,
+                        ["unitLabel"] = unitChoiceIn.Value.Choice.UnitLabel,
+                        ["unitId"] = unitChoiceIn.Value.Choice.ID.ToString(),
+                        ["declaredByPhysicalQuantity"] = QuantityReference(unitChoiceIn.Value.DeclaringQuantity),
+                        ["inherited"] = unitChoiceIn.Value.DeclaringQuantity.ID != physicalQuantity.ID
                     },
                     ["output"] = new JsonObject
                     {
                         ["value"] = persistedValue.DataOut,
                         ["formattedValue"] = persistedValue.DataOutString,
-                        ["unitName"] = unitChoiceOut.UnitName,
-                        ["unitLabel"] = unitChoiceOut.UnitLabel,
-                        ["unitId"] = unitChoiceOut.ID.ToString()
+                        ["unitName"] = unitChoiceOut.Value.Choice.UnitName,
+                        ["unitLabel"] = unitChoiceOut.Value.Choice.UnitLabel,
+                        ["unitId"] = unitChoiceOut.Value.Choice.ID.ToString(),
+                        ["declaredByPhysicalQuantity"] = QuantityReference(unitChoiceOut.Value.DeclaringQuantity),
+                        ["inherited"] = unitChoiceOut.Value.DeclaringQuantity.ID != physicalQuantity.ID,
+                        ["meaningfulPrecisionInSI"] = physicalQuantity.MeaningfulPrecisionInSI
                     }
                 };
 
@@ -293,7 +296,7 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
             .Select(q => BasePhysicalQuantity.GetQuantity(q.ID) ?? (q as BasePhysicalQuantity))
             .OfType<BasePhysicalQuantity>();
 
-        var searchToken = Normalize(rawName);
+        var searchToken = McpNameNormalizer.NormalizeText(rawName);
         var bestScore = 0;
         BasePhysicalQuantity? best = null;
         string? bestLabel = null;
@@ -319,26 +322,29 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
         return best;
     }
 
-    private static UnitChoice? FindUnitChoice(IEnumerable<UnitChoice> unitChoices, string rawName)
+    private static (UnitChoice Choice, BasePhysicalQuantity DeclaringQuantity)? FindUnitChoice(BasePhysicalQuantity quantity, string rawName)
     {
-        var searchToken = Normalize(rawName);
+        var searchToken = McpNameNormalizer.NormalizeUnit(rawName);
         var bestScore = 0;
         UnitChoice? best = null;
+        BasePhysicalQuantity? declaringQuantity = null;
         string? bestLabel = null;
 
-        foreach (var unitChoice in unitChoices)
+        foreach (BasePhysicalQuantity candidateQuantity in PhysicalQuantityHierarchy.Enumerate(quantity))
         {
-            if (unitChoice.ID == Guid.Empty)
+            foreach (UnitChoice unitChoice in candidateQuantity.UnitChoices ?? [])
             {
-                continue;
-            }
+                if (unitChoice.ID == Guid.Empty) continue;
 
-            EvaluateCandidate(unitChoice.UnitName, unitChoice, searchToken, ref bestScore, ref best, ref bestLabel, 3);
-            EvaluateCandidate(unitChoice.UnitLabel, unitChoice, searchToken, ref bestScore, ref best, ref bestLabel, 2);
-            EvaluateCandidate(unitChoice.SIUnitName, unitChoice, searchToken, ref bestScore, ref best, ref bestLabel, 1);
+                UnitChoice? previousBest = best;
+                EvaluateCandidate(unitChoice.UnitName, unitChoice, searchToken, ref bestScore, ref best, ref bestLabel, 3, normalizeUnit: true);
+                EvaluateCandidate(unitChoice.UnitLabel, unitChoice, searchToken, ref bestScore, ref best, ref bestLabel, 2, normalizeUnit: true);
+                EvaluateCandidate(unitChoice.SIUnitName, unitChoice, searchToken, ref bestScore, ref best, ref bestLabel, 1, normalizeUnit: true);
+                if (!ReferenceEquals(previousBest, best)) declaringQuantity = candidateQuantity;
+            }
         }
 
-        return best;
+        return best is not null && declaringQuantity is not null ? (best, declaringQuantity) : null;
     }
 
     private static void EvaluateCandidate<T>(
@@ -348,7 +354,8 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
         ref int bestScore,
         ref T? best,
         ref string? bestLabel,
-        int exactMatchScore)
+        int exactMatchScore,
+        bool normalizeUnit = false)
         where T : class
     {
         if (string.IsNullOrWhiteSpace(label))
@@ -356,7 +363,7 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
             return;
         }
 
-        var normalizedLabel = Normalize(label);
+        var normalizedLabel = normalizeUnit ? McpNameNormalizer.NormalizeUnit(label) : McpNameNormalizer.NormalizeText(label);
         if (normalizedLabel.Length == 0)
         {
             return;
@@ -392,24 +399,15 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
         }
     }
 
-    private static string Normalize(string value)
+    private static JsonObject QuantityReference(BasePhysicalQuantity quantity) => new()
     {
-        var normalized = value.Normalize(NormalizationForm.FormD);
-        var builder = new StringBuilder(normalized.Length);
+        ["id"] = quantity.ID.ToString(),
+        ["name"] = quantity.Name
+    };
 
-        foreach (var ch in normalized)
-        {
-            if (CharUnicodeInfo.GetUnicodeCategory(ch) == UnicodeCategory.NonSpacingMark)
-            {
-                continue;
-            }
-
-            if (char.IsLetterOrDigit(ch))
-            {
-                builder.Append(char.ToLowerInvariant(ch));
-            }
-        }
-
-        return builder.ToString();
+    private static string BuildUnitNotFoundMessage(BasePhysicalQuantity quantity, string unitName)
+    {
+        string searched = string.Join(" -> ", PhysicalQuantityHierarchy.Enumerate(quantity).Select(candidate => candidate.Name));
+        return $"No unit choice matched '{unitName}'. Searched physical-quantity hierarchy: {searched}. Use get_physical_quantity_by_id to inspect the requested quantity and its parentPhysicalQuantities metadata.";
     }
 }

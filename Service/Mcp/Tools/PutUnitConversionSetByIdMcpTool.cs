@@ -27,7 +27,7 @@ public sealed class PutUnitConversionSetByIdMcpTool : IMcpTool
 
     public string Name => "put_unit_conversion_set_by_id";
 
-    public string Description => "Replace and recalculate an existing explicit unit-choice conversion set. The top-level id must equal unitConversionSet.MetaInfo.ID. Submit the complete desired quantity groups and DataIn values; the service recalculates DataOut and DataOutString.";
+    public string Description => "Replace and recalculate an existing explicit unit-choice conversion set. The top-level id must equal unitConversionSet.MetaInfo.ID. Submit complete quantity groups and DataIn values. Unit-choice UUIDs may come from the requested physical quantity or its ancestors; DataOutString is formatted with the requested quantity's MeaningfulPrecisionInSI. This is a full replacement, not a patch.";
 
     public JsonNode? InputSchema => Schema;
 

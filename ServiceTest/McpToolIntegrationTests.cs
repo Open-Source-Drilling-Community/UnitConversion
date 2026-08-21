@@ -163,6 +163,28 @@ public class McpToolIntegrationTests
     }
 
     [Test]
+    public async Task ConvertUnitValue_UsesVelocityUnitsForRateOfPenetration()
+    {
+        var convertNode = await CallToolForJsonAsync(
+            "convert_unit_value",
+            CreateArgs(
+                ("physicalQuantity", "ROP"),
+                ("unitIn", "meter per hour"),
+                ("unitOut", "furlongs per fortnight"),
+                ("value", 30d))).ConfigureAwait(false);
+
+        AssertThatStatusOk(convertNode, "convert_unit_value");
+        Assert.Multiple(() =>
+        {
+            Assert.That(GetNullableDouble(convertNode?["output"]?["value"]),
+                Is.EqualTo(30d * 336d / 201.168d).Within(1e-10));
+            Assert.That(convertNode?["output"]?["inherited"]?.GetValue<bool>(), Is.True);
+            Assert.That(GetString(convertNode?["output"]?["declaredByPhysicalQuantity"]?["name"]), Is.EqualTo("Velocity"));
+            Assert.That(GetString(convertNode?["output"]?["formattedValue"]), Is.Not.Null.And.Not.Empty);
+        });
+    }
+
+    [Test]
     public async Task UnitSystemTools_WorkAsExpected()
     {
         var unitSystemIdsNode = await CallToolForJsonAsync("get_all_unit_system_id").ConfigureAwait(false);

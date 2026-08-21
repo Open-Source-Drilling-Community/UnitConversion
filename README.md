@@ -111,6 +111,8 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 - note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the class `PhysicalQuantity` opens access to a total of **156 physical quantities**.
 
+- a drilling-specific quantity can itself derive from a more general physical quantity. For example, `RateOfPenetrationDrillingQuantity` derives from `VelocityQuantity`. The specialised quantity exposes a curated list of common drilling units and defines domain-specific `MeaningfulPrecisionInSI`; compatible units absent from that list can be resolved from its parent hierarchy. Conversion retains the specialised quantity for precision semantics rather than replacing it with the parent quantity.
+
 - see the complete list of physical quantities by technical fields [below](https://github.com/Open-Source-Drilling-Community/UnitConversion/blob/main/README.md#list-of-physical-quantities)
 
 </details>

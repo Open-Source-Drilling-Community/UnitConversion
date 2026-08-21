@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -26,7 +27,7 @@ public sealed class GetAllPhysicalQuantityMcpTool : IMcpTool
 
     public string Name => "get_all_physical_quantity";
 
-    public string Description => "Retrieve every supported physical quantity with complete dimensional metadata and all available unit choices. This is a large reference-data response; prefer the ID, name-lookup, or get-by-ID tools when only one quantity is needed.";
+    public string Description => "Retrieve every supported physical quantity with dimensional metadata, directly exposed unit choices, and McpHierarchy metadata. Specialised drilling quantities often expose a curated unit subset but can use compatible choices from their listed parentPhysicalQuantities; their own MeaningfulPrecisionInSI still formats results. This is a large response, so prefer name lookup or get-by-ID for one quantity.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
@@ -59,7 +60,18 @@ public sealed class GetAllPhysicalQuantityMcpTool : IMcpTool
                 return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(500, "Unable to retrieve physical quantities."));
             }
 
-            var payload = JsonSerializer.SerializeToNode(quantities, McpToolJsonOptions.Default);
+            List<BasePhysicalQuantity> quantityList = quantities.ToList();
+            var payload = JsonSerializer.SerializeToNode(quantityList, McpToolJsonOptions.Default);
+            if (payload is JsonArray array)
+            {
+                for (int index = 0; index < array.Count; index++)
+                {
+                    if (array[index] is JsonObject item)
+                    {
+                        item["McpHierarchy"] = PhysicalQuantityMcpMetadata.Create(quantityList[index]);
+                    }
+                }
+            }
             return Task.FromResult<JsonNode?>(payload);
         }
         catch (Exception ex)

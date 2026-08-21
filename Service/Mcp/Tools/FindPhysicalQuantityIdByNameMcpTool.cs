@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -30,7 +28,7 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
             ["name"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name (or common synonym) of the physical quantity."
+                ["description"] = "Name or common synonym of the physical quantity. Matching ignores case, spacing, punctuation, and accents. The result also identifies parent physical quantities whose compatible unit choices may be used."
             }
         },
         ["required"] = new JsonArray { "name" },
@@ -45,7 +43,7 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
 
     public string Name => "find_physical_quantity_id_by_name";
 
-    public string Description => "Resolve a physical-quantity UUID from a name or common synonym using case-, spacing-, punctuation-, and accent-tolerant matching. Use the returned ID to inspect unit choices or construct a conversion. Returns 404 when no supported quantity matches.";
+    public string Description => "Resolve a physical-quantity UUID from a name or common synonym using case-, spacing-, punctuation-, and accent-tolerant matching. The response explains whether the match is specialised and lists its parent physical quantities. A specialised quantity can use compatible unit choices inherited from those parents while retaining its own MeaningfulPrecisionInSI for formatted results. Returns 404 when no supported quantity matches.";
 
     public JsonNode? InputSchema => Schema;
 
@@ -76,7 +74,7 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
                 return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(statusCode, "Unable to retrieve physical quantities for lookup."));
             }
 
-            var searchToken = Normalize(rawName);
+            var searchToken = McpNameNormalizer.NormalizeText(rawName);
             var bestMatch = FindBestMatch(quantities, searchToken);
 
             if (bestMatch is null)
@@ -99,6 +97,7 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
             {
                 payload["synonyms"] = JsonSerializer.SerializeToNode(bestMatch.Value.Quantity.UsualNames, McpToolJsonOptions.Default);
             }
+            payload["hierarchy"] = PhysicalQuantityMcpMetadata.Create(bestMatch.Value.Quantity);
 
             return Task.FromResult<JsonNode?>(payload);
         }
@@ -176,7 +175,7 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
             return;
         }
 
-        var normalizedLabel = Normalize(label);
+        var normalizedLabel = McpNameNormalizer.NormalizeText(label);
         if (normalizedLabel.Length == 0)
         {
             return;
@@ -211,24 +210,4 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
         }
     }
 
-    private static string Normalize(string value)
-    {
-        var normalized = value.Normalize(NormalizationForm.FormD);
-        var builder = new StringBuilder(normalized.Length);
-
-        foreach (var ch in normalized)
-        {
-            if (CharUnicodeInfo.GetUnicodeCategory(ch) == UnicodeCategory.NonSpacingMark)
-            {
-                continue;
-            }
-
-            if (char.IsLetterOrDigit(ch))
-            {
-                builder.Append(char.ToLowerInvariant(ch));
-            }
-        }
-
-        return builder.ToString();
-    }
 }

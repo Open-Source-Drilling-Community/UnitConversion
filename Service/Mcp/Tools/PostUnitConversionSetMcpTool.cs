@@ -27,7 +27,7 @@ public sealed class PostUnitConversionSetMcpTool : IMcpTool
 
     public string Name => "post_unit_conversion_set";
 
-    public string Description => "Create, calculate, and persist a batch converting values between explicit unit choices. Assign a case UUID, group DataIn values by physical-quantity UUID, and provide source and target unit-choice UUIDs belonging to that quantity. Retrieve the calculated DataOut and DataOutString by the same case UUID.";
+    public string Description => "Create, calculate, and persist a batch converting values between explicit unit choices. Assign a case UUID and group DataIn values by physical-quantity UUID. Source and target unit-choice UUIDs may be declared directly by that quantity or inherited from one of its physical-quantity ancestors. DataOut remains numeric and unrounded; DataOutString uses the requested quantity's MeaningfulPrecisionInSI even for inherited units. Retrieve results by the same case UUID.";
 
     public JsonNode? InputSchema => Schema;
 
