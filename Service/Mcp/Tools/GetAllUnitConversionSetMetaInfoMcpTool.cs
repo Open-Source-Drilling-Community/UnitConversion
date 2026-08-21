@@ -25,9 +25,9 @@ public sealed class GetAllUnitConversionSetMetaInfoMcpTool : IMcpTool
 
     public string Name => "get_all_unit_conversion_set_meta_info";
 
-    public string Description => "Returns metadata for every unit conversion set by invoking the UnitConversionSetController.";
+    public string Description => "List identity and optional HTTP location metadata for every persisted explicit unit-choice conversion set without transferring quantity groups or values. Use get_unit_conversion_set_by_id for one selected result.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

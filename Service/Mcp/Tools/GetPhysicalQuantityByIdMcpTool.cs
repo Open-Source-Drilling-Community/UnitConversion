@@ -25,9 +25,9 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
 
     public string Name => "get_physical_quantity_by_id";
 
-    public string Description => "Returns the whole content of a physical quantity using its identifier by calling the PhysicalQuantityController CRUD endpoint.";
+    public string Description => "Retrieve one complete physical-quantity definition by UUID, including its name, synonyms, SI unit, physical dimensions, meaningful SI precision, and available UnitChoices. Use the returned quantity and unit-choice UUIDs to construct explicit unit conversions. Returns 404 when absent.";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the physical quantity to retrieve.");
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

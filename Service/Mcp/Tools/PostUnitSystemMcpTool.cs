@@ -17,20 +17,7 @@ public sealed class PostUnitSystemMcpTool : IMcpTool
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PostUnitSystemMcpTool> _logger;
 
-    private static readonly JsonObject Schema = new()
-    {
-        ["type"] = "object",
-        ["properties"] = new JsonObject
-        {
-            ["unitSystem"] = new JsonObject
-            {
-                ["type"] = "object",
-                ["description"] = "The unit system payload to create."
-            }
-        },
-        ["required"] = new JsonArray { "unitSystem" },
-        ["additionalProperties"] = false
-    };
+    private static readonly JsonObject Schema = McpToolArgumentHelpers.CreateUnitSystemSchema();
 
     public PostUnitSystemMcpTool(IServiceProvider serviceProvider, ILogger<PostUnitSystemMcpTool> logger)
     {
@@ -40,7 +27,7 @@ public sealed class PostUnitSystemMcpTool : IMcpTool
 
     public string Name => "post_unit_system";
 
-    public string Description => "Creates a new unit system by forwarding the payload to the UnitSystemController.";
+    public string Description => "Create and persist a custom unit system. Supply a caller-assigned non-empty ID and a Choices map from physical-quantity UUID strings to unit-choice UUID strings; every selected choice must belong to its quantity. IsSI should be true only when all choices are SI. Returns 409 for an existing ID.";
 
     public JsonNode? InputSchema => Schema;
 

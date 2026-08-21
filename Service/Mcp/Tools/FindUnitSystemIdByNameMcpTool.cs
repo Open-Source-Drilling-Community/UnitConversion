@@ -43,7 +43,7 @@ public sealed class FindUnitSystemIdByNameMcpTool : IMcpTool
 
     public string Name => "find_unit_system_id_by_name";
 
-    public string Description => "Looks up the ID of a unit system by name (case and spacing insensitive) using the UnitSystemController.";
+    public string Description => "Resolve a built-in or custom unit-system UUID from its human-readable name using case-, spacing-, punctuation-, and accent-tolerant matching. Use the result with get_unit_system_by_id or convert_unit_system_value. Returns 404 when no system matches.";
 
     public JsonNode? InputSchema => Schema;
 

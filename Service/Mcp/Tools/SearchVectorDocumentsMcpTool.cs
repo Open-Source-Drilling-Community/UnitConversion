@@ -57,7 +57,7 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
 
     public string Name => "search_vector_resources";
 
-    public string Description => "Returns the top vector-matched resource ids for a query so callers know which documents to fetch.";
+    public string Description => "Semantically search the UnitConversion vector-document catalog for documentation about physical quantities, unit choices, conversions, or unit systems. Returns ranked resource IDs and similarity information; fetch the corresponding MCP resources to read their content. Requires the configured embedding service and vector database.";
 
     public JsonNode? InputSchema => Schema;
 

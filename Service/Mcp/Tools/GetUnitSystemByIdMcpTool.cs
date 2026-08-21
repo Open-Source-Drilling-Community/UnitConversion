@@ -25,9 +25,9 @@ public sealed class GetUnitSystemByIdMcpTool : IMcpTool
 
     public string Name => "get_unit_system_by_id";
 
-    public string Description => "Fetches the whole content of a unit system by its identifier through the UnitSystemController.";
+    public string Description => "Retrieve one complete unit system by UUID. The Choices object maps physical-quantity UUID strings to the selected unit-choice UUID strings and defines how unit-system conversions interpret and produce values. Returns 404 when absent.";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the unit system to retrieve, including its Choices mapping.");
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

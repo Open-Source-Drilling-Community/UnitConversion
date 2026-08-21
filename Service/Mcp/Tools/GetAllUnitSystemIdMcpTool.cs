@@ -24,9 +24,9 @@ public sealed class GetAllUnitSystemIdMcpTool : IMcpTool
 
     public string Name => "get_all_unit_system_id";
 
-    public string Description => "Returns the identifiers of every unit system by calling the UnitSystemController CRUD interface.";
+    public string Description => "List the UUIDs of all built-in and custom unit systems without transferring their physical-quantity-to-unit-choice mappings. Use an ID with get_unit_system_by_id or a unit-system conversion set.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

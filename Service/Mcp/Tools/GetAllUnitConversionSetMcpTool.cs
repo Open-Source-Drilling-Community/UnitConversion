@@ -25,9 +25,9 @@ public sealed class GetAllUnitConversionSetMcpTool : IMcpTool
 
     public string Name => "get_all_unit_conversion_set";
 
-    public string Description => "Returns the whole content of every unit conversion sets by invoking the UnitConversionSetController heavy-data endpoint.";
+    public string Description => "Retrieve every persisted explicit unit-choice conversion set with all inputs and calculated outputs. This may be a large response; prefer IDs or metadata for discovery and get-by-ID for a selected result.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

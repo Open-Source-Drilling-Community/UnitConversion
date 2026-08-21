@@ -25,9 +25,9 @@ public sealed class GetAllUnitSystemConversionSetMetaInfoMcpTool : IMcpTool
 
     public string Name => "get_all_unit_system_conversion_set_meta_info";
 
-    public string Description => "Returns metadata for every unit system conversion set via the UnitSystemConversionSetController.";
+    public string Description => "List identity and optional HTTP location metadata for every persisted unit-system conversion set without loading source/target systems, quantity groups, or values. Use get-by-ID for complete results.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

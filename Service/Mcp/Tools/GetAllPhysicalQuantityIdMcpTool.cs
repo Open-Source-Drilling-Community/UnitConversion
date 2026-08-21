@@ -24,9 +24,9 @@ public sealed class GetAllPhysicalQuantityIdMcpTool : IMcpTool
 
     public string Name => "get_all_physical_quantity_id";
 
-    public string Description => "Returns the identifiers of every physical quantity by invoking the PhysicalQuantityController CRUD interface.";
+    public string Description => "List the UUIDs of every supported drilling physical quantity without transferring dimensions or unit choices. Use an ID with get_physical_quantity_by_id, a conversion-set payload, or unit-system Choices; use find_physical_quantity_id_by_name when starting from a human name.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

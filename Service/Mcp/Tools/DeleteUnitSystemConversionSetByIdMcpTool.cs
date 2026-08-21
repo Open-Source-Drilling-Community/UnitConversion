@@ -23,9 +23,9 @@ public sealed class DeleteUnitSystemConversionSetByIdMcpTool : IMcpTool
 
     public string Name => "delete_unit_system_conversion_set_by_id";
 
-    public string Description => "Deletes a unit system conversion set by its identifier through the UnitSystemConversionSetController.";
+    public string Description => "Permanently delete one persisted unit-system conversion set by UUID, including its inputs and calculated outputs. Use this cleanup operation after retrieving results when the set was only a temporary calculation case.";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the unit-system conversion case to delete.");
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

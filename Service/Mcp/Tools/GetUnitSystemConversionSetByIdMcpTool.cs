@@ -25,9 +25,9 @@ public sealed class GetUnitSystemConversionSetByIdMcpTool : IMcpTool
 
     public string Name => "get_unit_system_conversion_set_by_id";
 
-    public string Description => "Fetches the whole content of a unit system conversion set by its identifier via the UnitSystemConversionSetController.";
+    public string Description => "Retrieve one complete unit-system conversion set by UUID, including source/target unit-system IDs and each quantity's DataIn, calculated DataOut, and formatted DataOutString. Call this after creation to consume persisted batch results.";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the unit-system conversion case to retrieve.");
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

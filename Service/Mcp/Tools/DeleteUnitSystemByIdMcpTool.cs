@@ -23,9 +23,9 @@ public sealed class DeleteUnitSystemByIdMcpTool : IMcpTool
 
     public string Name => "delete_unit_system_by_id";
 
-    public string Description => "Deletes a unit system by its identifier via the UnitSystemController.";
+    public string Description => "Permanently delete one stored unit system by UUID. Check persistent UnitSystemConversionSet records that reference it before deletion; future calculations require both referenced systems to exist. Built-in/default systems should normally be retained.";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the stored unit system to delete.");
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

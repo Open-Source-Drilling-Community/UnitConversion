@@ -25,9 +25,9 @@ public sealed class GetAllUnitSystemMcpTool : IMcpTool
 
     public string Name => "get_all_unit_system";
 
-    public string Description => "Returns the whole content of every unit systems by invoking the UnitSystemController heavy-data endpoint.";
+    public string Description => "Retrieve all built-in and custom unit systems with their complete Choices mappings from physical-quantity UUIDs to unit-choice UUIDs. This can be a large response; prefer the light or get-by-ID tools for discovery.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

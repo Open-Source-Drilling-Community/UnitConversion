@@ -17,20 +17,7 @@ public sealed class PostUnitConversionSetMcpTool : IMcpTool
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PostUnitConversionSetMcpTool> _logger;
 
-    private static readonly JsonObject Schema = new()
-    {
-        ["type"] = "object",
-        ["properties"] = new JsonObject
-        {
-            ["unitConversionSet"] = new JsonObject
-            {
-                ["type"] = "object",
-                ["description"] = "The unit conversion set payload to create."
-            }
-        },
-        ["required"] = new JsonArray { "unitConversionSet" },
-        ["additionalProperties"] = false
-    };
+    private static readonly JsonObject Schema = McpToolArgumentHelpers.CreateUnitConversionSetSchema();
 
     public PostUnitConversionSetMcpTool(IServiceProvider serviceProvider, ILogger<PostUnitConversionSetMcpTool> logger)
     {
@@ -40,7 +27,7 @@ public sealed class PostUnitConversionSetMcpTool : IMcpTool
 
     public string Name => "post_unit_conversion_set";
 
-    public string Description => "Creates a new unit conversion set by forwarding the payload to the UnitConversionSetController.";
+    public string Description => "Create, calculate, and persist a batch converting values between explicit unit choices. Assign a case UUID, group DataIn values by physical-quantity UUID, and provide source and target unit-choice UUIDs belonging to that quantity. Retrieve the calculated DataOut and DataOutString by the same case UUID.";
 
     public JsonNode? InputSchema => Schema;
 

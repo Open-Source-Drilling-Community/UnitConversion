@@ -33,44 +33,59 @@ public sealed class ConvertUnitSystemValueMcpTool : IMcpTool
             ["physicalQuantity"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name (or synonym) of the physical quantity to convert."
+                ["description"] = "Physical-quantity name or common synonym. Required when physicalQuantityId is omitted; ignored when a UUID is supplied."
             },
             ["physicalQuantityId"] = new JsonObject
             {
                 ["type"] = "string",
                 ["format"] = "uuid",
-                ["description"] = "Identifier of the physical quantity to convert. Overrides the name if both are supplied."
+                ["description"] = "UUID of the physical quantity. Takes precedence over physicalQuantity when both are supplied."
             },
             ["unitSystemIn"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name of the source unit system."
+                ["description"] = "Name of the source unit system. Required when unitSystemInId is omitted; ignored when its UUID is supplied."
             },
             ["unitSystemInId"] = new JsonObject
             {
                 ["type"] = "string",
                 ["format"] = "uuid",
-                ["description"] = "Identifier of the source unit system. Overrides the name if both are supplied."
+                ["description"] = "UUID of the source unit system. Its choice for the physical quantity defines the unit of value; takes precedence over unitSystemIn."
             },
             ["unitSystemOut"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name of the destination unit system."
+                ["description"] = "Name of the target unit system. Required when unitSystemOutId is omitted; ignored when its UUID is supplied."
             },
             ["unitSystemOutId"] = new JsonObject
             {
                 ["type"] = "string",
                 ["format"] = "uuid",
-                ["description"] = "Identifier of the destination unit system. Overrides the name if both are supplied."
+                ["description"] = "UUID of the target unit system. Its choice for the physical quantity defines the output unit; takes precedence over unitSystemOut."
             },
             ["value"] = new JsonObject
             {
                 ["type"] = "number",
-                ["description"] = "Numeric value to convert."
+                ["description"] = "Finite numeric value expressed in the source system's selected unit for the physical quantity."
             }
         },
         ["required"] = new JsonArray { "value" },
+        ["allOf"] = new JsonArray
+        {
+            RequireEither("physicalQuantityId", "physicalQuantity"),
+            RequireEither("unitSystemInId", "unitSystemIn"),
+            RequireEither("unitSystemOutId", "unitSystemOut")
+        },
         ["additionalProperties"] = false
+    };
+
+    private static JsonObject RequireEither(string idName, string nameName) => new()
+    {
+        ["anyOf"] = new JsonArray
+        {
+            new JsonObject { ["required"] = new JsonArray(idName) },
+            new JsonObject { ["required"] = new JsonArray(nameName) }
+        }
     };
 
     public ConvertUnitSystemValueMcpTool(IServiceProvider serviceProvider, ILogger<ConvertUnitSystemValueMcpTool> logger)
@@ -81,7 +96,7 @@ public sealed class ConvertUnitSystemValueMcpTool : IMcpTool
 
     public string Name => "convert_unit_system_value";
 
-    public string Description => "Converts a physical quantity value between two unit systems by creating a temporary UnitSystemConversionSet.";
+    public string Description => "Synchronously convert one finite numeric value between the unit choices selected by two unit systems for a physical quantity. Resolve quantity and systems by UUID or tolerant name; UUID wins when both are supplied. The temporary calculation case is automatically deleted, and the response identifies the resolved systems, units, and output.";
 
     public JsonNode? InputSchema => Schema;
 

@@ -69,6 +69,14 @@ http://localhost:5002/UnitConversion/api/mcp
 | `get_all_unit_conversion_set_*`, `get_unit_conversion_set_by_id`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id` | Manage unit conversion sets |
 | `get_all_unit_system_conversion_set_*`, `get_unit_system_conversion_set_by_id`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id` | Manage unit system conversion sets |
 
+The tool descriptions and input schemas distinguish three workflows:
+
+- `convert_unit_value` converts one value between two named unit choices. It resolves the physical quantity and units, creates and retrieves a temporary `UnitConversionSet`, and deletes that case automatically.
+- `convert_unit_system_value` converts one value using the unit choices selected by two unit systems. A physical quantity and each system can be supplied by UUID or tolerant name; UUIDs take precedence. Its temporary `UnitSystemConversionSet` is also deleted automatically.
+- The `post_*_conversion_set` tools calculate and persist batch cases. Assign a UUID, retrieve the calculated `DataOut` and `DataOutString` values with the corresponding get-by-ID tool, and delete the case explicitly if it is no longer needed.
+
+An explicit `UnitConversionSet` specifies `QuantityID`, `UnitChoiceIDIn`, and `UnitChoiceIDOut` for each group. A `UnitSystemConversionSet` instead specifies `UnitSystemInID` and `UnitSystemOutID`; each system's `Choices` mapping selects the applicable source or target unit for every `QuantityID`. In both contracts, `DataIn` is expressed in the selected source unit, `DataOut` is expressed in the selected target unit, and `DataOutString` is formatted using the physical quantity's meaningful precision in SI.
+
 `search_vector_resources` expects a nomic-ai/nomic-embed-text compatible endpoint (default `http://localhost:8080/embeddings`). Configure `VectorDocumentSearch:Nomic:*` or the `NOMIC_API_KEY` environment variable if the inference server requires authentication, and ensure the vector database was generated with the same model/dimension pair. If search cannot run, the MCP response distinguishes between a missing vector database, an unreachable embedding endpoint, and an embedding dimension mismatch.
 
 ### Example request

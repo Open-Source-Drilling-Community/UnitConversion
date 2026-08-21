@@ -45,7 +45,7 @@ public sealed class FindPhysicalQuantityIdByNameMcpTool : IMcpTool
 
     public string Name => "find_physical_quantity_id_by_name";
 
-    public string Description => "Looks up the ID of a physical quantity by name (case, spacing, and accent tolerant) using the PhysicalQuantityController.";
+    public string Description => "Resolve a physical-quantity UUID from a name or common synonym using case-, spacing-, punctuation-, and accent-tolerant matching. Use the returned ID to inspect unit choices or construct a conversion. Returns 404 when no supported quantity matches.";
 
     public JsonNode? InputSchema => Schema;
 

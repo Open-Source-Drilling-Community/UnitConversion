@@ -31,22 +31,22 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
             ["physicalQuantity"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name or synonym of the physical quantity to convert."
+                ["description"] = "Physical-quantity name or common synonym, matched without regard to case, spacing, punctuation, or accents."
             },
             ["unitIn"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name or label of the unit to convert from."
+                ["description"] = "Source UnitName or UnitLabel belonging to the resolved physical quantity; tolerant matching is applied."
             },
             ["unitOut"] = new JsonObject
             {
                 ["type"] = "string",
-                ["description"] = "Name or label of the unit to convert to."
+                ["description"] = "Target UnitName or UnitLabel belonging to the same physical quantity; tolerant matching is applied."
             },
             ["value"] = new JsonObject
             {
                 ["type"] = "number",
-                ["description"] = "Numeric value to convert."
+                ["description"] = "Finite numeric value expressed in unitIn. The returned numeric output is expressed in unitOut."
             }
         },
         ["required"] = new JsonArray { "physicalQuantity", "unitIn", "unitOut", "value" },
@@ -61,7 +61,7 @@ public sealed class ConvertUnitValueMcpTool : IMcpTool
 
     public string Name => "convert_unit_value";
 
-    public string Description => "Converts a physical quantity value between two unit choices by creating a temporary UnitConversionSet.";
+    public string Description => "Synchronously convert one finite numeric value between two unit choices of the same physical quantity. Quantity names/synonyms and unit names/labels are matched tolerantly. The tool creates, retrieves, and deletes a temporary UnitConversionSet and returns numeric and meaningfully formatted output plus resolved IDs and labels.";
 
     public JsonNode? InputSchema => Schema;
 

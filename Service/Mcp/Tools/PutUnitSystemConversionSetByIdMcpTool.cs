@@ -17,25 +17,7 @@ public sealed class PutUnitSystemConversionSetByIdMcpTool : IMcpTool
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PutUnitSystemConversionSetByIdMcpTool> _logger;
 
-    private static readonly JsonObject Schema = new()
-    {
-        ["type"] = "object",
-        ["properties"] = new JsonObject
-        {
-            ["id"] = new JsonObject
-            {
-                ["type"] = "string",
-                ["format"] = "uuid"
-            },
-            ["unitSystemConversionSet"] = new JsonObject
-            {
-                ["type"] = "object",
-                ["description"] = "The updated unit system conversion set payload."
-            }
-        },
-        ["required"] = new JsonArray { "id", "unitSystemConversionSet" },
-        ["additionalProperties"] = false
-    };
+    private static readonly JsonObject Schema = McpToolArgumentHelpers.CreateUnitSystemConversionSetSchema(includeId: true);
 
     public PutUnitSystemConversionSetByIdMcpTool(IServiceProvider serviceProvider, ILogger<PutUnitSystemConversionSetByIdMcpTool> logger)
     {
@@ -45,7 +27,7 @@ public sealed class PutUnitSystemConversionSetByIdMcpTool : IMcpTool
 
     public string Name => "put_unit_system_conversion_set_by_id";
 
-    public string Description => "Updates an existing unit system conversion set through the UnitSystemConversionSetController.";
+    public string Description => "Replace and recalculate an existing unit-system conversion set. The top-level id must equal unitSystemConversionSet.MetaInfo.ID. Submit the complete source/target system IDs, quantity groups, and DataIn values; the service recalculates all outputs.";
 
     public JsonNode? InputSchema => Schema;
 

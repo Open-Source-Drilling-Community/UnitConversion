@@ -23,9 +23,9 @@ public sealed class DeleteUnitConversionSetByIdMcpTool : IMcpTool
 
     public string Name => "delete_unit_conversion_set_by_id";
 
-    public string Description => "Deletes a unit conversion set by its identifier through the UnitConversionSetController.";
+    public string Description => "Permanently delete one persisted explicit unit-choice conversion set by UUID, including its submitted values and calculated outputs. Use this after retrieving results when the set was created only as a temporary calculation case.";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the explicit unit-choice conversion case to delete.");
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

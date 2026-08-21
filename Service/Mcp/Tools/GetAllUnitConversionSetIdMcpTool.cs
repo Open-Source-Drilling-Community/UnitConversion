@@ -24,9 +24,9 @@ public sealed class GetAllUnitConversionSetIdMcpTool : IMcpTool
 
     public string Name => "get_all_unit_conversion_set_id";
 
-    public string Description => "Returns the identifiers of every unit conversion set by invoking the UnitConversionSetController.";
+    public string Description => "List UUIDs for all persisted explicit unit-choice conversion sets without transferring inputs or calculated values. Use an ID with get_unit_conversion_set_by_id to retrieve results or delete_unit_conversion_set_by_id for cleanup.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

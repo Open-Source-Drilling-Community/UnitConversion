@@ -25,9 +25,9 @@ public sealed class GetAllUnitSystemLightMcpTool : IMcpTool
 
     public string Name => "get_all_unit_system_light";
 
-    public string Description => "Returns the lightweight representation of all unit systems by invoking the UnitSystemController light-data endpoint.";
+    public string Description => "List lightweight identity, name, description, IsDefault, and IsSI information for every unit system without loading its Choices mapping. Use this for discovery, then retrieve a selected system by UUID.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

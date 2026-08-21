@@ -48,6 +48,8 @@ The following tool names are exposed through MCP:
 - Unit conversion set management: `get_all_unit_conversion_set_id`, `get_all_unit_conversion_set_meta_info`, `get_unit_conversion_set_by_id`, `get_all_unit_conversion_set`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id`
 - Unit system conversion set management: `get_all_unit_system_conversion_set_id`, `get_all_unit_system_conversion_set_meta_info`, `get_unit_system_conversion_set_by_id`, `get_all_unit_system_conversion_set`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id`
 
+The two convenience conversion tools create, retrieve, and automatically delete temporary calculation cases. The `post_*_conversion_set` tools are the persistent batch alternative: create a case with a caller-assigned UUID, retrieve its calculated `DataOut` and `DataOutString` fields by that UUID, then delete it explicitly when appropriate. MCP discovery provides complete nested schemas for conversion sets and unit-system `Choices` mappings.
+
 ### Example JSON-RPC request
 
 ```bash

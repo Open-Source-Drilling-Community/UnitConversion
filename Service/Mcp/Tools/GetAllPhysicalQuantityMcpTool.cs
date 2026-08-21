@@ -26,9 +26,9 @@ public sealed class GetAllPhysicalQuantityMcpTool : IMcpTool
 
     public string Name => "get_all_physical_quantity";
 
-    public string Description => "Returns the whole content of every physical quantity available in the service by using the PhysicalQuantityController heavy-data endpoint.";
+    public string Description => "Retrieve every supported physical quantity with complete dimensional metadata and all available unit choices. This is a large reference-data response; prefer the ID, name-lookup, or get-by-ID tools when only one quantity is needed.";
 
-    public JsonNode? InputSchema => null;
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateEmptySchema();
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

@@ -17,25 +17,7 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PutUnitSystemByIdMcpTool> _logger;
 
-    private static readonly JsonObject Schema = new()
-    {
-        ["type"] = "object",
-        ["properties"] = new JsonObject
-        {
-            ["id"] = new JsonObject
-            {
-                ["type"] = "string",
-                ["format"] = "uuid"
-            },
-            ["unitSystem"] = new JsonObject
-            {
-                ["type"] = "object",
-                ["description"] = "The updated unit system payload."
-            }
-        },
-        ["required"] = new JsonArray { "id", "unitSystem" },
-        ["additionalProperties"] = false
-    };
+    private static readonly JsonObject Schema = McpToolArgumentHelpers.CreateUnitSystemSchema(includeId: true);
 
     public PutUnitSystemByIdMcpTool(IServiceProvider serviceProvider, ILogger<PutUnitSystemByIdMcpTool> logger)
     {
@@ -45,7 +27,7 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
 
     public string Name => "put_unit_system_by_id";
 
-    public string Description => "Updates an existing unit system by forwarding the payload to the UnitSystemController.";
+    public string Description => "Replace an existing custom unit system and its complete Choices mapping. The top-level id must equal unitSystem.ID. Each map entry pairs a physical-quantity UUID with one of that quantity's unit-choice UUIDs; this is a full update, not a partial patch.";
 
     public JsonNode? InputSchema => Schema;
 
