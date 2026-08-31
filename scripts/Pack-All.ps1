@@ -1,9 +1,11 @@
 [CmdletBinding()]
 param(
     [ValidatePattern('^\d+\.\d+\.\d+([-.][0-9A-Za-z.-]+)?$')]
-    [string]$Version = '3.4.0',
+    [string]$Version = '3.4.1',
     [ValidateSet('Debug', 'Release')]
     [string]$Configuration = 'Release',
+    [ValidateSet('Debug', 'Release')]
+    [string]$GeneratorConfiguration = 'Debug',
     [string]$OutputDirectory = 'artifacts/packages',
     [switch]$SkipTests
 )
@@ -26,7 +28,9 @@ try {
     New-Item -ItemType Directory -Force -Path $packageOutput | Out-Null
 
     Invoke-DotNet restore '.\UnitConversion.sln' $localProjectProperty
-    Invoke-DotNet run --project '.\GenerateEnumerations\GenerateEnumerations.csproj' --configuration $Configuration --no-restore $localProjectProperty
+    # Enumeration files are configuration-independent source artifacts. Keep the
+    # generator in Debug; the solution and NuGet packages are still built in Release.
+    Invoke-DotNet run --project '.\GenerateEnumerations\GenerateEnumerations.csproj' --configuration $GeneratorConfiguration --no-restore $localProjectProperty
     Invoke-DotNet build '.\UnitConversion.sln' --configuration $Configuration --no-restore $localProjectProperty '-p:GeneratePackageOnBuild=false'
     if (-not $SkipTests) {
         Invoke-DotNet test '.\UnitConversion.sln' --configuration $Configuration --no-build $localProjectProperty

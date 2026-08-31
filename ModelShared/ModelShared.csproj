@@ -7,7 +7,7 @@
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<IsPackable>false</IsPackable>
-		<Version>3.4.0</Version>
+		<Version>3.4.1</Version>
 		<Authors>Energy Modelling and Automation group</Authors>
 		<Company>NORCE</Company>
 		<Title>Distributed shared model for client applications of the UnitConversion microservice</Title>

@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(UseLocalUnitConversionProjects)' != 'true'">
-		<PackageReference Include="OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering" Version="3.4.0" />
+		<PackageReference Include="OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering" Version="3.4.1" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(UseLocalUnitConversionProjects)' == 'true'">

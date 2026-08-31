@@ -1,14 +1,14 @@
-# Generating source and building the 3.4.0 packages
+# Generating source and building the 3.4.1 packages
 
 The physical-quantity enumerations are generated source files.  Build the solution with local project references while developing; otherwise restore can select older published packages and make new quantities appear to be missing.
 
 From the repository root in PowerShell:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\Pack-All.ps1 -Version 3.4.0
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\Pack-All.ps1 -Version 3.4.1
 ```
 
-The script performs the complete local release sequence: restore with local project references, generate the enumerations, build, run tests, and create the packages in `artifacts\packages`.  It uses this dependency order:
+The script performs the complete local release sequence: restore with local project references, generate the enumerations in **Debug** (the generated source is configuration-independent), build the release artifacts, run tests, and create the packages in `artifacts\packages`. Use `-GeneratorConfiguration Release` only when specifically needed. It uses this dependency order:
 
 1. `OSDC.UnitConversion.Conversion`
 2. `OSDC.UnitConversion.Conversion.DrillingEngineering`
@@ -32,7 +32,7 @@ The script performs the complete local release sequence: restore with local proj
 3. Generate the source files.  The property is required here too because the generator references both conversion projects:
 
    ```powershell
-   dotnet run --project .\GenerateEnumerations\GenerateEnumerations.csproj -c Release --no-restore -p:UseLocalUnitConversionProjects=true
+   dotnet run --project .\GenerateEnumerations\GenerateEnumerations.csproj -c Debug --no-restore -p:UseLocalUnitConversionProjects=true
    ```
 
 4. Build and test the local solution:
@@ -45,7 +45,7 @@ The script performs the complete local release sequence: restore with local proj
 5. Pack the projects in the listed dependency order, always passing both properties. For example:
 
    ```powershell
-   dotnet pack .\Conversion\Conversion.csproj -c Release --no-build -p:UseLocalUnitConversionProjects=true -p:PackageVersion=3.4.0 --output .\artifacts\packages
+dotnet pack .\Conversion\Conversion.csproj -c Release --no-build -p:UseLocalUnitConversionProjects=true -p:PackageVersion=3.4.1 --output .\artifacts\packages
    ```
 
 6. Inspect the resulting `.nupkg` files and publish them to the feed in that same dependency order.
