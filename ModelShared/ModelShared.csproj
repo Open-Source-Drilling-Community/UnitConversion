@@ -5,8 +5,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>3.0.4</Version>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<IsPackable>false</IsPackable>
+		<Version>3.4.0</Version>
 		<Authors>Energy Modelling and Automation group</Authors>
 		<Company>NORCE</Company>
 		<Title>Distributed shared model for client applications of the UnitConversion microservice</Title>

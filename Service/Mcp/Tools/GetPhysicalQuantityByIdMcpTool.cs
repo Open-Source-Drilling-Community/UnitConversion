@@ -23,11 +23,15 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "get_physical_quantity_by_id";
+    public string Name => "get_physical_quantity";
 
-    public string Description => "Retrieve one complete physical-quantity definition by UUID, including its name, synonyms, SI unit, physical dimensions, meaningful SI precision, directly exposed UnitChoices, and physical-quantity inheritance metadata. A specialised drilling quantity may expose a curated subset of its parent's compatible units. Follow parentPhysicalQuantities when a desired unit is absent; the specialised quantity's MeaningfulPrecisionInSI still governs formatted results. Returns 404 when absent.";
+    public string Title => "Get Physical Quantity";
+
+    public string Description => "Retrieve one physical quantity by UUID, including canonical name, synonyms, dimensions, SI unit, meaningful SI precision, directly declared unit choices, symbolic conversion definitions, and compatible parent quantities.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the physical quantity to retrieve.");
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("id", "string"), ("name", "string"), ("siUnit", "object"), ("dimensions", "object"), ("unitChoices", "array"), ("hierarchy", "object"));
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {
@@ -45,16 +49,15 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
 
             if (actionResult.Value is not null)
             {
-                var payload = Enrich(JsonSerializer.SerializeToNode(actionResult.Value, McpToolJsonOptions.Default), actionResult.Value);
-                return Task.FromResult(payload);
+                return Task.FromResult<JsonNode?>(PhysicalQuantityContractMapper.ToDetails(actionResult.Value));
             }
 
             if (actionResult.Result is OkObjectResult okObjectResult && okObjectResult.Value is not null)
             {
-                var payload = Enrich(
-                    JsonSerializer.SerializeToNode(okObjectResult.Value, okObjectResult.Value.GetType(), McpToolJsonOptions.Default),
-                    okObjectResult.Value as OSDC.UnitConversion.Conversion.BasePhysicalQuantity);
-                return Task.FromResult(payload);
+                if (okObjectResult.Value is OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity)
+                {
+                    return Task.FromResult<JsonNode?>(PhysicalQuantityContractMapper.ToDetails(quantity));
+                }
             }
 
             if (actionResult.Result is NotFoundResult)
@@ -88,12 +91,4 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
         }
     }
 
-    private static JsonNode? Enrich(JsonNode? serialized, OSDC.UnitConversion.Conversion.BasePhysicalQuantity? quantity)
-    {
-        if (serialized is JsonObject payload && quantity is not null)
-        {
-            payload["McpHierarchy"] = PhysicalQuantityMcpMetadata.Create(quantity);
-        }
-        return serialized;
-    }
 }

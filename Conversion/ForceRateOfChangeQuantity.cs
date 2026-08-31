@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -86,8 +86,7 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "newton per minute",
                   UnitLabel = "N/min",
                   ID = new Guid("58df085b-9f10-4148-ad09-cb05bbcfa920"),
-                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit"
                 },
                 new UnitChoice
                 {
@@ -137,8 +136,7 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "newton per hour",
                   UnitLabel = "N/h",
                   ID = new Guid("efa69e3c-b03b-4520-8ae8-e92ab6953141"),
-                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit"
                 },
                 new UnitChoice
                 {

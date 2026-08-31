@@ -13,7 +13,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
         public override double? MeaningfulPrecisionInSI { get; } = 0.001;
         private static GammaRayIndexDrillingQuantity instance_ = null;
 
-        public static GammaRayIndexDrillingQuantity Instance
+        public static new GammaRayIndexDrillingQuantity Instance
         {
             get
             {

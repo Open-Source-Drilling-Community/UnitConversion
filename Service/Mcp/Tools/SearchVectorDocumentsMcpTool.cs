@@ -55,11 +55,17 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
 
-    public string Name => "search_vector_resources";
+    public string Name => "search_documentation";
 
-    public string Description => "Semantically search the UnitConversion vector-document catalog for documentation about physical quantities, unit choices, conversions, or unit systems. Returns ranked resource IDs and similarity information; fetch the corresponding MCP resources to read their content. Requires the configured embedding service and vector database.";
+    public string Title => "Search Unit Conversion Documentation";
+
+    public string Description => "Semantically search the UnitConversion documentation catalog for physical quantities, units, formulas, or unit systems. Returns ranked MCP resource links that clients can read directly. This tool uses the configured embedding provider and may make an external network request.";
 
     public JsonNode? InputSchema => Schema;
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("resourceLinks", "array"));
+
+    public bool OpenWorld => true;
 
     public async Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {
@@ -97,7 +103,8 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
                 {
                     ["uri"] = hit.Uri,
                     ["id"] = hit.Id,
-                    ["score"] = Math.Round(hit.Score, 6)
+                    ["score"] = Math.Round(hit.Score, 6),
+                    ["mimeType"] = "text/markdown"
                 };
 
                 if (!string.IsNullOrWhiteSpace(hit.Name))
@@ -115,7 +122,7 @@ public sealed class SearchVectorDocumentsMcpTool : IMcpTool
 
             return new JsonObject
             {
-                ["results"] = results
+                ["resourceLinks"] = results
             };
         }
         catch (EmbeddingProviderException ex)

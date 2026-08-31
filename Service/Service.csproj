@@ -12,6 +12,7 @@
 		<PackageId>$(AssemblyName)</PackageId>
 		<Version>3.2.1</Version>
 		<Nullable>enable</Nullable>
+		<NoWarn>$(NoWarn);MCPEXP002</NoWarn>
 		<Authors>Gilles Pelfrene</Authors>
 		<Company>NORCE Norwegian Research Centre</Company>
 	</PropertyGroup>
@@ -19,7 +20,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.6" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
-		<PackageReference Include="ModelContextProtocol.AspNetCore" Version="0.4.0-preview.3" />
+		<PackageReference Include="ModelContextProtocol.AspNetCore" Version="2.2.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="NSwag.MSBuild" Version="14.0.8">
 		  <PrivateAssets>all</PrivateAssets>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,24 +42,21 @@ namespace OSDC.UnitConversion.Conversion
                     UnitName = "gram centimetre squared",
                     UnitLabel = "g.cm²",
                     ID = new Guid("71e4e230-c611-4de9-b056-a1ef732b7fce"),
-                    ConversionFactorFromSIFormula = "Factors.Kilo/(Factors.Centi*Factors.Centi)",
-                    IsSI = true
+                    ConversionFactorFromSIFormula = "Factors.Kilo/(Factors.Centi*Factors.Centi)"
                 },
             new UnitChoice
                 {
                     UnitName = "pound foot squared",
                     UnitLabel = "lb.ft²",
                     ID = new Guid("103bd4aa-494a-4ec3-bf60-c3ce5bab364e"),
-                    ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.Foot*Factors.Pound)",
-                    IsSI = true
+                    ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.Foot*Factors.Pound)"
                 },
             new UnitChoice
                 {
                     UnitName = "pound inch squared",
                     UnitLabel = "lb.in²",
                     ID = new Guid("ce8e3a4e-2cea-471a-a0dc-846523001be2"),
-                    ConversionFactorFromSIFormula = "1.0/(Factors.Inch*Factors.Inch*Factors.Pound)",
-                    IsSI = true
+                    ConversionFactorFromSIFormula = "1.0/(Factors.Inch*Factors.Inch*Factors.Pound)"
                 }
         };
         public MomentOfInertiaQuantity() : base()

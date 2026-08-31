@@ -25,11 +25,19 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "put_unit_system_by_id";
+    public string Name => "replace_unit_system";
+
+    public string Title => "Replace Unit System";
 
     public string Description => "Replace an existing custom unit system and its complete Choices mapping. The top-level id must equal unitSystem.ID. Each map entry pairs a physical-quantity UUID with one of that quantity's unit-choice UUIDs; this is a full update, not a partial patch.";
 
     public JsonNode? InputSchema => Schema;
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"));
+
+    public bool ReadOnly => false;
+
+    public bool Destructive => true;
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

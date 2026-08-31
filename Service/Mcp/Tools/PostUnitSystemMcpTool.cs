@@ -25,11 +25,19 @@ public sealed class PostUnitSystemMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "post_unit_system";
+    public string Name => "create_unit_system";
 
-    public string Description => "Create and persist a custom unit system. Supply a caller-assigned non-empty ID and a Choices map from physical-quantity UUID strings to unit-choice UUID strings; every selected choice must belong to its quantity. IsSI should be true only when all choices are SI. Returns 409 for an existing ID.";
+    public string Title => "Create Unit System";
+
+    public string Description => "Create and persist a custom unit system with a caller-assigned UUID and complete physical-quantity-to-unit-choice mapping. Every selected unit must be compatible with its quantity. Returns an error for invalid mappings or an existing UUID.";
 
     public JsonNode? InputSchema => Schema;
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"));
+
+    public bool ReadOnly => false;
+
+    public bool Idempotent => false;
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

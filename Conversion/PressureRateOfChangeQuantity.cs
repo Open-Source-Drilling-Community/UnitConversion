@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -211,7 +211,7 @@ namespace OSDC.UnitConversion.Conversion
                 {
                   UnitName = "foot water at 4 degree celsius per second",
                   UnitLabel = "ft Aq 4°C/s",
-                  ID = new Guid("52de6721-dfec-4a54-861c-e74da72c8470"),
+                  ID = new Guid("6c248d57-b406-4b85-b52d-1ccb5fca3c30"),
                   ConversionFactorFromSIFormula = "1.0/Factors.FootWater4degC"
                 },
                 new UnitChoice
@@ -227,8 +227,7 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "pascal per minute",
                   UnitLabel = "Pa/min",
                   ID = new Guid("e598bc6c-1858-448e-b6c2-dbefdfe517a7"),
-                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit"
                 },
                 new UnitChoice
                 {
@@ -418,8 +417,7 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "pascal per hour",
                   UnitLabel = "Pa/h",
                   ID = new Guid("bc8c071a-2c0a-4617-90c1-af5e00ec7e94"),
-                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit"
                 },
                 new UnitChoice
                 {

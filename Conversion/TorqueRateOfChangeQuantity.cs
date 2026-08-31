@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -107,8 +107,7 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "newton metre per minute",
                   UnitLabel = "N•m/min",
                   ID = new Guid("8c3ab891-e5bc-4fa1-9f14-a3250e062ef4"),
-                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Minute/Factors.Unit"
                 },
                 new UnitChoice
                 {
@@ -179,8 +178,7 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "newton metre per hour",
                   UnitLabel = "N•m/h",
                   ID = new Guid("c17eae23-0496-4fa1-a389-aa24828fa243"),
-                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Hour/Factors.Unit"
                 },
                 new UnitChoice
                 {
@@ -249,7 +247,7 @@ namespace OSDC.UnitConversion.Conversion
         public TorqueRateOfChangeQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "torque", "bending moment" };
+            UsualNames = new HashSet<string>() { "torque rate of change", "bending moment rate of change" };
             ID = new Guid("e94ee582-62bd-472b-9188-1f423729e99e");
             DescriptionMD = string.Empty;
             DescriptionMD += @"A torque rate of change is the time derivative of a torque." + Environment.NewLine;

@@ -8,25 +8,69 @@ namespace OSDC.UnitConversion.GenerateEnumerations
     {
         static void Main(string[] args)
         {
-            DirectoryInfo currentFolder = new DirectoryInfo(Directory.GetCurrentDirectory());
-            string baseFolder = "";
-            do
+            DirectoryInfo? currentFolder = new DirectoryInfo(Directory.GetCurrentDirectory());
+            while (currentFolder != null && !"UnitConversion".Equals(currentFolder.Name, StringComparison.OrdinalIgnoreCase))
             {
-                baseFolder += "..\\";
                 currentFolder = currentFolder.Parent;
-            } while (!"UnitConversion".Equals(currentFolder.Name));
+            }
+            if (currentFolder == null)
+            {
+                throw new DirectoryNotFoundException("The generator must be run from within the UnitConversion repository.");
+            }
+            string baseFolder = currentFolder.FullName + Path.DirectorySeparatorChar;
             // generate the Factors class
-            GenerateFactors(baseFolder + "Conversion\\Factors.cs");
+            GenerateAtomically(baseFolder + "Conversion\\Factors.cs", GenerateFactors);
             List<BasePhysicalQuantity>? quantities = AvailableBasePhysicalQuantities;
             List<BasePhysicalQuantity>? drillingQuantities = AvailableDrillingQuantities;
             if (quantities != null)
             {
-                GenerateConstructors(baseFolder + "Conversion\\Constructors.cs", quantities);
-                GenerateEnumerations(baseFolder + "Conversion\\EnumerationQuantities.cs", typeof(BasePhysicalQuantity), quantities);
+                ValidateQuantities(quantities, "base");
+                GenerateAtomically(baseFolder + "Conversion\\Constructors.cs", path => GenerateConstructors(path, quantities));
+                GenerateAtomically(baseFolder + "Conversion\\EnumerationQuantities.cs", path => GenerateEnumerations(path, typeof(BasePhysicalQuantity), quantities));
             }
             if (drillingQuantities != null)
             {
-                GenerateEnumerations(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", typeof(DrillingPhysicalQuantity), drillingQuantities);
+                ValidateQuantities(drillingQuantities, "drilling");
+                GenerateAtomically(baseFolder + "Conversion.DrillingEngineering\\EnumerationQuantities.cs", path => GenerateEnumerations(path, typeof(DrillingPhysicalQuantity), drillingQuantities));
+            }
+        }
+
+        private static void GenerateAtomically(string filename, Action<string> generate)
+        {
+            string temporaryFilename = filename + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            try
+            {
+                generate(temporaryFilename);
+                File.Move(temporaryFilename, filename, true);
+            }
+            finally
+            {
+                if (File.Exists(temporaryFilename))
+                {
+                    File.Delete(temporaryFilename);
+                }
+            }
+        }
+
+        private static void ValidateQuantities(IEnumerable<BasePhysicalQuantity> quantities, string catalogName)
+        {
+            foreach (IGrouping<string, BasePhysicalQuantity> duplicate in quantities.GroupBy(quantity => quantity.ID.ToString()).Where(group => group.Count() > 1))
+            {
+                throw new InvalidOperationException($"The {catalogName} catalog has duplicate quantity ID '{duplicate.Key}'.");
+            }
+            foreach (IGrouping<string, BasePhysicalQuantity> duplicate in quantities.GroupBy(quantity => Convert(quantity.Name), StringComparer.Ordinal).Where(group => group.Count() > 1))
+            {
+                throw new InvalidOperationException($"The {catalogName} catalog has duplicate enumeration name '{duplicate.Key}'.");
+            }
+            foreach (BasePhysicalQuantity quantity in quantities)
+            {
+                IEnumerable<IGrouping<string, UnitChoice>> duplicateUnits = quantity.UnitChoices
+                    .GroupBy(choice => choice.UnitName, StringComparer.OrdinalIgnoreCase)
+                    .Where(group => group.Count() > 1);
+                foreach (IGrouping<string, UnitChoice> duplicate in duplicateUnits)
+                {
+                    throw new InvalidOperationException($"Quantity '{quantity.Name}' has duplicate unit name '{duplicate.Key}'.");
+                }
             }
         }
         private static List<Type> GetAllSubclasses(Type baseType)
@@ -43,7 +87,9 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                 {
                     Type currentType = typesToProcess.Dequeue();
 
-                    IEnumerable<Type> subclasses = assy.GetTypes().Where(t => t.IsClass && t.IsSubclassOf(currentType));
+                    IEnumerable<Type> subclasses = assy.GetTypes()
+                        .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(currentType))
+                        .OrderBy(t => t.FullName, StringComparer.Ordinal);
 
                     foreach (var subclass in subclasses)
                     {
@@ -59,6 +105,26 @@ namespace OSDC.UnitConversion.GenerateEnumerations
         }
         private static List<BasePhysicalQuantity>? availableBasePhysicalQuantities_ = null;
 
+        /// <summary>
+        /// Prefer the hand-authored unit descriptions over a previously generated
+        /// InitializeUnitChoices override. This removes the bootstrap cycle where a
+        /// new choice could not be generated until the old generated constructor was
+        /// edited or removed first.
+        /// </summary>
+        private static void RefreshUnitChoicesFromSource(BasePhysicalQuantity quantity, Type quantityType)
+        {
+            FieldInfo? descriptionsField = quantityType.GetField(
+                "UnitChoiceDescriptions",
+                BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
+            if (descriptionsField?.GetValue(null) is not List<UnitChoice> descriptions)
+            {
+                return;
+            }
+
+            PropertyInfo? unitChoicesProperty = typeof(BasePhysicalQuantity).GetProperty(nameof(BasePhysicalQuantity.UnitChoices));
+            unitChoicesProperty?.SetValue(quantity, descriptions);
+        }
+
         public static List<BasePhysicalQuantity>? AvailableBasePhysicalQuantities
         {
             get
@@ -73,10 +139,10 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                             if (typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
                             {
                                 MethodInfo? method = null;
-                                foreach (MethodInfo meth in typ.GetMethods())
+                                foreach (MethodInfo meth in typ.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly))
                                 {
                                     if (meth.IsStatic &&
-                                        meth.Name.EndsWith("Instance") &&
+                                        meth.Name == "Instance" &&
                                         meth.ReturnType.IsSubclassOf(typeof(BasePhysicalQuantity)))
                                     {
                                         method = meth;
@@ -90,6 +156,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                     if (obj != null)
                                     {
                                         var res = (BasePhysicalQuantity)obj;
+                                        RefreshUnitChoicesFromSource(res, typ);
                                         if (availableBasePhysicalQuantities_ == null)
                                         {
                                             availableBasePhysicalQuantities_ = new List<BasePhysicalQuantity>();
@@ -104,7 +171,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                 return availableBasePhysicalQuantities_;
             }
         }
-        private static List<BasePhysicalQuantity> availablePhysicalQuantities_ = null;
+        private static List<BasePhysicalQuantity>? availablePhysicalQuantities_ = null;
 
         public static List<BasePhysicalQuantity>? AvailableDrillingQuantities
         {
@@ -115,15 +182,15 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                     Assembly? assembly = Assembly.GetAssembly(typeof(DrillingPhysicalQuantity));
                     if (assembly != null)
                     {
-                        foreach (Type typ in assembly.GetTypes())
+                        foreach (Type typ in assembly.GetTypes().OrderBy(t => t.FullName, StringComparer.Ordinal))
                         {
-                            if (typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
+                            if (!typ.IsAbstract && typ.IsSubclassOf(typeof(BasePhysicalQuantity)))
                             {
                                 MethodInfo? method = null;
-                                foreach (MethodInfo meth in typ.GetMethods())
+                                foreach (MethodInfo meth in typ.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly))
                                 {
                                     if (meth.IsStatic &&
-                                        meth.Name.EndsWith("Instance") &&
+                                        meth.Name == "Instance" &&
                                         meth.ReturnType.IsSubclassOf(typeof(BasePhysicalQuantity)))
                                     {
                                         method = meth;
@@ -138,13 +205,14 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                     {
                                         obj = method.Invoke(null, null);
                                     }
-                                    catch (Exception e)
+                                    catch (Exception exception)
                                     {
-
+                                        throw new InvalidOperationException($"Could not create drilling quantity '{typ.FullName}'.", exception);
                                     }
                                     if (obj != null)
                                     {
                                         var res = (BasePhysicalQuantity)obj;
+                                        RefreshUnitChoicesFromSource(res, typ);
                                         if (availablePhysicalQuantities_ == null)
                                         {
                                             availablePhysicalQuantities_ = new List<BasePhysicalQuantity>();
@@ -183,6 +251,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
               { "Atto", new FactorDescription("1e-18", FactorDescription.QualificationEnum.exact, string.Empty)},
               { "Zepto", new FactorDescription("1e-21", FactorDescription.QualificationEnum.exact, string.Empty)},
               { "Yocto", new FactorDescription("1e-24", FactorDescription.QualificationEnum.exact, string.Empty)},
+              { "BitsPerByte", new FactorDescription("8.0", FactorDescription.QualificationEnum.exact, string.Empty)},
               { "Angstrom", new FactorDescription("1e-10", FactorDescription.QualificationEnum.exact, string.Empty)},
               { "AstronomicalUnit", new FactorDescription("149597870700.0", FactorDescription.QualificationEnum.exact, "https://www.iau.org/static/resolutions/IAU2012_English.pdf")},
               { "LightYear", new FactorDescription("9460730472580800.0", FactorDescription.QualificationEnum.exact, "https://www.iau.org/public/themes/measuring/")},
@@ -216,7 +285,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
               { "MonthSynodic", new FactorDescription("29.53059 * Factors.Day", FactorDescription.QualificationEnum.approximate, "https://en.wikipedia.org/wiki/Month")},
               { "QuarterCommon", new FactorDescription("Factors.YearJulian / 4.0", FactorDescription.QualificationEnum.exact, "")},
               { "YearCommon", new FactorDescription("365 * Factors.Day", FactorDescription.QualificationEnum.exact, "")},
-              { "YearAverageGregorian", new FactorDescription("(365.0 + 97 / 400) * Factors.Day", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Gregorian_calendar")},
+              { "YearAverageGregorian", new FactorDescription("(365.0 + 97.0 / 400.0) * Factors.Day", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Gregorian_calendar")},
               { "YearLeap", new FactorDescription("366 * Factors.Day", FactorDescription.QualificationEnum.exact, "")},
               { "YearTropical", new FactorDescription("365.2422 * Factors.Day", FactorDescription.QualificationEnum.exact, "https://www.grc.nasa.gov/www/k-12/Numbers/Math/Mathematical_Thinking/calendar_calculations.htm")},
               { "Decade", new FactorDescription("10.0 * Factors.YearJulian", FactorDescription.QualificationEnum.exact, "")},
@@ -253,6 +322,8 @@ namespace OSDC.UnitConversion.GenerateEnumerations
               { "Poise", new FactorDescription("0.1", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Poise_(unit)")},
               { "G", new FactorDescription("9.80665", FactorDescription.QualificationEnum.standard, "https://en.wikipedia.org/wiki/Gravity_of_Earth")},
               { "WaterDensity4degC1Atm", new FactorDescription("999.9720", FactorDescription.QualificationEnum.approximate, "https://en.wikipedia.org/wiki/Relative_density")},
+              { "MercuryDensity32degF", new FactorDescription("13595.065312221248", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
+              { "MercuryDensity60degF", new FactorDescription("13556.805881080776", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
               { "SpecificGavity4degC", new FactorDescription("1.0 / Factors.WaterDensity4degC1Atm", FactorDescription.QualificationEnum.exact, "")},
               { "PPGUK", new FactorDescription("Factors.Pound / Factors.GallonUK", FactorDescription.QualificationEnum.exact, "")},
               { "PPGUS", new FactorDescription("Factors.Pound / Factors.GallonUS", FactorDescription.QualificationEnum.exact, "")},
@@ -265,15 +336,16 @@ namespace OSDC.UnitConversion.GenerateEnumerations
               { "Atmosphere", new FactorDescription("101325.0", FactorDescription.QualificationEnum.standard, "https://en.wikipedia.org/wiki/Atmospheric_pressure")},
               { "Torr", new FactorDescription("(1.0 / 760.0) * Factors.Atmosphere", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Torr")},
               { "MillimetreMercury", new FactorDescription("133.322387415", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Millimetre_of_mercury")},
-              { "InchMercury32degF", new FactorDescription("1.0/3386.389", FactorDescription.QualificationEnum.convention, "https://en.wikipedia.org/wiki/Inch_of_mercury")},
-              { "InchMercury60degF", new FactorDescription("1.0 / 3376.85", FactorDescription.QualificationEnum.convention, "https://en.wikipedia.org/wiki/Inch_of_mercury")},
-              { "MillimetreWater4degC", new FactorDescription("9.89665", FactorDescription.QualificationEnum.convention, "https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water")},
-              { "InchWater4degC", new FactorDescription("249.082", FactorDescription.QualificationEnum.convention, "https://en.wikipedia.org/wiki/Inch_of_water")},
-              { "FootWater4degC", new FactorDescription("2989.067", FactorDescription.QualificationEnum.convention, "https://en.wikipedia.org/wiki/Inch_of_water")},
+              { "InchMercury32degF", new FactorDescription("Factors.MercuryDensity32degF * Factors.G * Factors.Inch", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
+              { "InchMercury60degF", new FactorDescription("Factors.MercuryDensity60degF * Factors.G * Factors.Inch", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
+              { "MillimetreWater4degC", new FactorDescription("Factors.WaterDensity4degC1Atm * Factors.G * Factors.Milli", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
+              { "InchWater4degC", new FactorDescription("Factors.WaterDensity4degC1Atm * Factors.G * Factors.Inch", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
+              { "FootWater4degC", new FactorDescription("Factors.WaterDensity4degC1Atm * Factors.G * Factors.Foot", FactorDescription.QualificationEnum.approximate, "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")},
               { "Gauss", new FactorDescription("1e-4", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Gauss_(unit)")},
               { "Acre", new FactorDescription("Factors.SurveyorChain * Factors.Furlong", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Acre")},
               { "PlanckConstant", new FactorDescription("6.62607015e-34", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Planck_constant")},
               { "ElectronCharge", new FactorDescription("1.602176634e-19", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Elementary_charge")},
+              { "AvogadroConstant", new FactorDescription("6.02214076e23", FactorDescription.QualificationEnum.exact, "https://www.bipm.org/en/si-base-units/mole")},
               { "Maxwell", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Maxwell_(unit)")},
               { "Line", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Maxwell_(unit)")},
               { "MagneticFluxQuantum", new FactorDescription("Factors.PlanckConstant / (2.0*Factors.ElectronCharge)", FactorDescription.QualificationEnum.exact, "https://en.wikipedia.org/wiki/Magnetic_flux_quantum")},
@@ -384,6 +456,13 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                     writer.WriteLine("                {");
                                     writer.WriteLine("                  UnitName = \"" + choice.UnitName + "\",");
                                     writer.WriteLine("                  UnitLabel = \"" + Process(choice.UnitLabel) + "\",");
+                                    if (choice.Synonyms != null && choice.Synonyms.Count > 0)
+                                    {
+                                        string synonyms = string.Join(", ", choice.Synonyms
+                                            .OrderBy(value => value, StringComparer.OrdinalIgnoreCase)
+                                            .Select(value => "\"" + Process(value) + "\""));
+                                        writer.WriteLine("                  Synonyms = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { " + synonyms + " },");
+                                    }
                                     if (SIUnitChoice != null && !string.IsNullOrEmpty(SIUnitChoice.UnitName))
                                     {
                                         writer.WriteLine("                  SIUnitName = \"" + Process(SIUnitChoice.UnitName) + "\",");
@@ -407,7 +486,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                             string[] lines = desc.Split(Environment.NewLine);
                                             if (lines != null && lines.Length > 0)
                                             {
-                                                writer.WriteLine("                  ConversionDescription = ");
+                                                writer.WriteLine("                  ConversionDescription =");
                                                 bool firstLine = true;
                                                 foreach (var line in lines)
                                                 {
@@ -422,9 +501,10 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                                                 writer.WriteLine(",");
                                             }
                                         }
-                                    } catch (Exception e)
+                                    }
+                                    catch (Exception exception)
                                     {
-
+                                        throw new InvalidOperationException($"Could not describe conversion for '{typ.FullName}' / '{choice.UnitName}'.", exception);
                                     }
                                     if (choice.IsSI)
                                     {
@@ -494,7 +574,7 @@ namespace OSDC.UnitConversion.GenerateEnumerations
                         writer.WriteLine("{");
                         writer.WriteLine("  public partial class " + namecl + " : " + parentCl);
                         writer.WriteLine("  {");
-                        writer.WriteLine("    public new enum UnitChoicesEnum ");
+                        writer.WriteLine("    public new enum UnitChoicesEnum");
                         writer.WriteLine("      {");
                         if (quantity.UnitChoices != null)
                         {

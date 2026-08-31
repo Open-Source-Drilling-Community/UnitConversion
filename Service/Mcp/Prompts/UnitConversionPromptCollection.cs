@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 using ModelContextProtocol.Protocol;
@@ -16,7 +17,10 @@ namespace OSDC.UnitConversion.Service.Mcp.Prompts;
 /// </summary>
 internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerPrompt>
 {
-    private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
+    private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web)
+    {
+        TypeInfoResolver = new DefaultJsonTypeInfoResolver()
+    };
 
     private readonly IReadOnlyList<McpServerPrompt> _prompts;
 
@@ -25,25 +29,19 @@ internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerProm
         _prompts =
         [
             CreatePrompt(
-                "unit-conversion-primer",
-                "Unit Conversion Primer",
-                "Guidance for pairing the server's REST API, MCP tools, and resource documents.",
-                HandlePrimerAsync),
-            CreatePrompt(
-                "quantity-unit-alignment",
-                "Quantity & Unit Alignment",
-                "Workflow for mapping informal physical quantities and unit choices to canonical tool parameters.",
-                HandleQuantityUnitAlignmentAsync),
-            CreatePrompt(
-                "quantity-unit-rag",
-                "Quantity/Unit RAG Search",
-                "Forces a retrieval-augmented search whenever measurements are mentioned so the right documents back each conversion.",
-                HandleQuantityUnitRagSearchAsync),
+                "resolve-and-convert",
+                "Resolve and Convert Measurements",
+                "Resolve informal quantity and unit names, retrieve documentation when ambiguity or provenance requires it, and run the appropriate conversion tool.",
+                HandleQuantityUnitAlignmentAsync,
+                new PromptArgument { Name = "userPrompt", Title = "Conversion request", Description = "Free-form measurement or conversion request to resolve.", Required = true }),
             CreatePrompt(
                 "unit-system-report",
                 "Unit System Report",
-                "Generates a structured set of user messages that summarize a requested unit system id.",
-                HandleUnitSystemReportAsync)
+                "Inspect and summarize a unit system by UUID.",
+                HandleUnitSystemReportAsync,
+                new PromptArgument { Name = "unitSystemId", Title = "Unit system UUID", Description = "UUID returned by list_unit_systems.", Required = true },
+                new PromptArgument { Name = "focusUnit", Title = "Optional focus", Description = "Optional unit or dimension to emphasize.", Required = false },
+                new PromptArgument { Name = "resourceUri", Title = "Optional resource", Description = "Optional MCP documentation resource URI to read.", Required = false })
         ];
     }
 
@@ -55,7 +53,8 @@ internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerProm
         string name,
         string title,
         string description,
-        Func<RequestContext<GetPromptRequestParams>, CancellationToken, ValueTask<GetPromptResult>> handler)
+        Func<RequestContext<GetPromptRequestParams>, CancellationToken, ValueTask<GetPromptResult>> handler,
+        params PromptArgument[] arguments)
     {
         var options = new McpServerPromptCreateOptions
         {
@@ -65,35 +64,13 @@ internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerProm
             SerializerOptions = SerializerOptions
         };
 
-        return McpServerPrompt.Create(handler, options);
-    }
-
-    private static ValueTask<GetPromptResult> HandlePrimerAsync(
-        RequestContext<GetPromptRequestParams> request,
-        CancellationToken cancellationToken)
-    {
-        var message = new PromptMessage
+        McpServerPrompt prompt = McpServerPrompt.Create(handler, options);
+        prompt.ProtocolPrompt.Arguments ??= [];
+        foreach (PromptArgument argument in arguments)
         {
-            Role = Role.User,
-            Content = new TextContentBlock
-            {
-                Text = """
-                    You are connected to the Unit Conversion MCP server. Combine the following capabilities:
-                    • Legacy conversion tools exposed via MCP allow you to query, create, update, or delete unit systems and conversion sets. Prefer these tools when you need transactional changes.
-                    • REST endpoints rooted at /UnitConversion/api provide the same data surface area and are suitable for bulk operations or when the calling platform does not support MCP tools.
-                    • Resource documents under resource://unit-conversion/documents/ contain curated explanations, examples, and migration guides. Retrieve them via resources/list + resources/get before attempting speculative conversions.
-
-                    Always cite the exact tool or resource URI that backs your answer. Encourage the caller to provide concrete identifiers (unit system id, conversion set id, etc.) so that every operation is reproducible.
-                    """
-            }
-        };
-
-        var result = new GetPromptResult
-        {
-            Description = "Explains how to combine the available conversion APIs, MCP tools, and vectorized documents."
-        };
-        result.Messages.Add(message);
-        return ValueTask.FromResult(result);
+            prompt.ProtocolPrompt.Arguments.Add(argument);
+        }
+        return prompt;
     }
 
     private static ValueTask<GetPromptResult> HandleQuantityUnitAlignmentAsync(
@@ -105,11 +82,11 @@ internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerProm
             .AppendLine("You triage free-form conversion requests for the Unit Conversion MCP server.")
             .AppendLine("Apply this workflow whenever a caller lists multiple physical quantities or uses informal unit names:")
             .AppendLine("1. Parse the caller text and extract every physical quantity plus requested unit choices (including slang, abbreviations, and implied units).")
-            .AppendLine("2. For each unique quantity, call resources/list under resource://unit-conversion/documents/ until you find metadata where physicalQuantityName or usualNames intersect the extracted tokens. Immediately call resources/get on the promising URIs to keep the Markdown description and Available Units table in context.")
-            .AppendLine("3. Use the retrieved metadata to map slang to canonical identifiers. Confirm the id with find_physical_quantity_id_by_name and hydrate details with get_physical_quantity_by_id. Inspect McpHierarchy: specialised drilling quantities may expose fewer common units than a parent quantity with the same inherited dimensions.")
+            .AppendLine("2. Call search_physical_quantities for each quantity term. Use an exact canonical or synonym match directly; ask for clarification when multiple candidates remain plausible.")
+            .AppendLine("3. Call get_physical_quantity with the selected UUID to inspect units, symbolic conversion definitions, hierarchy, and MeaningfulPrecisionInSI. Use search_documentation and resources/read only when ambiguity, explanation, or provenance requires supporting documentation.")
             .AppendLine("4. Normalize unit names against UnitName/UnitLabel. The conversion tool accepts common symbols, plurals, and British/American variants such as metre/meter. If a unit is absent on the requested quantity, search parentPhysicalQuantities in order; do not switch the requested semantic quantity merely to gain a unit.")
-            .AppendLine("5. Invoke convert_unit_value for direct unit-choice conversions and convert_unit_system_value when switching between unit systems. convert_unit_value performs parent-unit fallback automatically. Its numeric value is unrounded, while formattedValue uses the requested specialised quantity's MeaningfulPrecisionInSI, so no second self-conversion is required.")
-            .AppendLine("6. Summarize the outcome per quantity, echoing both the caller wording and the canonical identifiers. Cite every MCP tool call and each resource://unit-conversion/documents/... URI you relied on.")
+            .AppendLine("5. Invoke convert_values for direct unit-choice conversions and convert_between_unit_systems when switching between unit systems. Numeric values remain unrounded; formattedValue uses the requested quantity's MeaningfulPrecisionInSI.")
+            .AppendLine("6. Summarize the outcome per quantity with canonical quantity and unit UUIDs. Cite documentation resource URIs only when documentation was actually used.")
             .AppendLine("If no document matches a term, ask the caller to clarify instead of guessing.");
 
         if (!string.IsNullOrWhiteSpace(callerPrompt))
@@ -131,51 +108,21 @@ internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerProm
         return ValueTask.FromResult(result);
     }
 
-    private static ValueTask<GetPromptResult> HandleQuantityUnitRagSearchAsync(
-        RequestContext<GetPromptRequestParams> request,
-        CancellationToken cancellationToken)
-    {
-        var callerPrompt = ReadArgument(request, "userPrompt");
-        var builder = new StringBuilder()
-            .AppendLine("Trigger a retrieval-augmented generation (RAG) sweep whenever a caller mentions physical quantities or unit choices.")
-            .AppendLine("1. Scan the caller message for measurement nouns (density, torque, mud weight, flow rate, etc.) or unit tokens (psi, kPa, ppg, bbl/d). The moment you find any, you must gather evidence before calling tools.")
-            .AppendLine("2. Turn those tokens into a search list. Iterate resources/list over resource://unit-conversion/documents/ and pick URIs whose name, title, or metadata fields align with the tokens. If your client caches embeddings, run the semantic search first and then confirm hits with resources/get.")
-            .AppendLine("3. Fetch at least one physical-quantity document and one unit-choice document for each detected measurement so the Markdown content, synonyms, and formulas stay in context.")
-            .AppendLine("4. Capture the canonical ids, unit labels, and conversion formulas from those documents. They become the parameters for find_physical_quantity_id_by_name, convert_unit_value, or convert_unit_system_value.")
-            .AppendLine("5. Summarize the retrieved snippets back to the caller and state which MCP tool you will call next. Do not perform conversions until you have cited the supporting resource://unit-conversion/documents/... URIs.")
-            .AppendLine("6. If retrieval fails, report which tokens and cursors you tried and ask for clearer wording instead of fabricating units or identifiers.")
-            .AppendLine("Always treat the RAG evidence as the source of truth for synonyms and abbreviations.");
-
-        if (!string.IsNullOrWhiteSpace(callerPrompt))
-        {
-            builder.AppendLine()
-                .AppendLine("Caller prompt excerpt:")
-                .AppendLine(callerPrompt.Trim());
-        }
-
-        var result = new GetPromptResult
-        {
-            Description = "Forces the model to run a RAG/document lookup when measurements are detected so subsequent tool calls stay grounded."
-        };
-        result.Messages.Add(new PromptMessage
-        {
-            Role = Role.User,
-            Content = new TextContentBlock { Text = builder.ToString() }
-        });
-        return ValueTask.FromResult(result);
-    }
-
     private static ValueTask<GetPromptResult> HandleUnitSystemReportAsync(
         RequestContext<GetPromptRequestParams> request,
         CancellationToken cancellationToken)
     {
-        var unitSystemId = ReadArgument(request, "unitSystemId") ?? "unknown";
+        var unitSystemId = ReadArgument(request, "unitSystemId");
+        if (string.IsNullOrWhiteSpace(unitSystemId))
+        {
+            throw new ArgumentException("Prompt argument 'unitSystemId' is required.");
+        }
         var fallbackUnit = ReadArgument(request, "focusUnit") ?? "none specified";
         var referenceResource = ReadArgument(request, "resourceUri");
 
         var builder = new StringBuilder()
             .AppendLine($"Create a concise report about the unit system '{unitSystemId}'.")
-            .AppendLine("Fetch the latest values via the MCP tools before composing the answer.")
+            .AppendLine("Call get_unit_system with this UUID before composing the answer.")
             .AppendLine("Cover:")
             .AppendLine("1. Canonical name, default status, and whether it is SI-compliant.")
             .AppendLine("2. Important conversion factors or derived units that differ from SI.")
@@ -207,7 +154,7 @@ internal sealed class UnitConversionPromptCollection : IEnumerable<McpServerProm
 
     private static string? ReadArgument(RequestContext<GetPromptRequestParams> request, string argumentName)
     {
-        if (request.Params?.Arguments is not IReadOnlyDictionary<string, JsonElement> arguments)
+        if (request.Params?.Arguments is not IDictionary<string, JsonElement> arguments)
         {
             return null;
         }

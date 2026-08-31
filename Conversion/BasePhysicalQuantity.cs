@@ -40,7 +40,7 @@ namespace OSDC.UnitConversion.Conversion
         private static Dictionary<Guid, BasePhysicalQuantity> basePhysicalQuantitiesByGuid_ = null;
         private static Dictionary<string, BasePhysicalQuantity> basePhysicalQuantitiesByName_ = null;
 
-        protected Dictionary<string, UnitChoice> unitChoicesByName_ = new Dictionary<string, UnitChoice>();
+        protected Dictionary<string, UnitChoice> unitChoicesByName_ = new Dictionary<string, UnitChoice>(StringComparer.OrdinalIgnoreCase);
         protected Dictionary<Guid, UnitChoice> unitChoicesByGuid_ = new Dictionary<Guid, UnitChoice>();
 
         public static List<BasePhysicalQuantity> AvailableBasePhysicalQuantities
@@ -71,6 +71,14 @@ namespace OSDC.UnitConversion.Conversion
         /// usual names of the physical quantity
         /// </summary>
         public HashSet<string> UsualNames { get; protected set; }
+
+        internal void AddUsualNames(IEnumerable<string> names)
+        {
+            UsualNames = UsualNames == null
+                ? new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+                : new HashSet<string>(UsualNames, StringComparer.OrdinalIgnoreCase);
+            UsualNames.UnionWith(names.Where(name => !string.IsNullOrWhiteSpace(name)));
+        }
         /// <summary>
         /// the SI unit name for this base unit
         /// </summary>
@@ -239,11 +247,12 @@ namespace OSDC.UnitConversion.Conversion
                                 }
                                 if (basePhysicalQuantitiesByName_ == null)
                                 {
-                                    basePhysicalQuantitiesByName_ = new Dictionary<string, BasePhysicalQuantity>();
+                                    basePhysicalQuantitiesByName_ = new Dictionary<string, BasePhysicalQuantity>(StringComparer.OrdinalIgnoreCase);
                                 }
-                                if (!string.IsNullOrEmpty(res.Name) && !basePhysicalQuantitiesByName_.ContainsKey(res.Name))
+                                string lookupName = NormalizeQuantityLookupName(res.Name);
+                                if (!string.IsNullOrEmpty(lookupName) && !basePhysicalQuantitiesByName_.ContainsKey(lookupName))
                                 {
-                                    basePhysicalQuantitiesByName_.Add(res.Name, res);
+                                    basePhysicalQuantitiesByName_.Add(lookupName, res);
                                 }
                                 else
                                 {
@@ -253,7 +262,48 @@ namespace OSDC.UnitConversion.Conversion
                         }
                     }
                 }
+                RegisterUniqueSynonyms(availableBasePhysicalQuantities_, basePhysicalQuantitiesByName_);
             }
+        }
+
+        protected static void RegisterUniqueSynonyms(
+            IEnumerable<BasePhysicalQuantity>? quantities,
+            Dictionary<string, BasePhysicalQuantity>? quantityLookup)
+        {
+            if (quantities == null || quantityLookup == null) return;
+
+            var synonyms = new Dictionary<string, List<BasePhysicalQuantity>>(StringComparer.OrdinalIgnoreCase);
+            foreach (BasePhysicalQuantity quantity in quantities)
+            {
+                foreach (string synonym in quantity.UsualNames ?? [])
+                {
+                    if (string.IsNullOrWhiteSpace(synonym)) continue;
+                    string lookupName = NormalizeQuantityLookupName(synonym);
+                    if (string.IsNullOrEmpty(lookupName)) continue;
+                    if (!synonyms.TryGetValue(lookupName, out List<BasePhysicalQuantity>? matches))
+                    {
+                        matches = new List<BasePhysicalQuantity>();
+                        synonyms.Add(lookupName, matches);
+                    }
+                    matches.Add(quantity);
+                }
+            }
+
+            foreach ((string lookupName, List<BasePhysicalQuantity> matches) in synonyms)
+            {
+                BasePhysicalQuantity[] distinctMatches = matches.DistinctBy(quantity => quantity.ID).ToArray();
+                if (distinctMatches.Length == 1 && !quantityLookup.ContainsKey(lookupName))
+                {
+                    quantityLookup.Add(lookupName, distinctMatches[0]);
+                }
+            }
+        }
+
+        protected static string NormalizeQuantityLookupName(string? name)
+        {
+            return string.IsNullOrWhiteSpace(name)
+                ? string.Empty
+                : new string(name.Where(char.IsLetterOrDigit).ToArray());
         }
 
         protected virtual void InitializeUnitChoices()
@@ -388,7 +438,7 @@ namespace OSDC.UnitConversion.Conversion
             {
                 Initialize();
             }
-            basePhysicalQuantitiesByName_.TryGetValue(name, out quantity);
+            basePhysicalQuantitiesByName_.TryGetValue(NormalizeQuantityLookupName(name), out quantity);
             return quantity;
         }
         public static BasePhysicalQuantity GetQuantity(BasePhysicalQuantity.QuantityEnum choice)
@@ -453,8 +503,10 @@ namespace OSDC.UnitConversion.Conversion
         }
         protected void PostProcess()
         {
+            QuantitySynonymCatalog.Supplement(this);
             if (UnitChoices != null)
             {
+                var alternativeNames = new Dictionary<string, List<UnitChoice>>(StringComparer.OrdinalIgnoreCase);
                 foreach (UnitChoice choice in UnitChoices)
                 {
                     if (!unitChoicesByName_.ContainsKey(choice.UnitName))
@@ -473,8 +525,35 @@ namespace OSDC.UnitConversion.Conversion
                     {
                         throw new Exception("duplicate unit choice Guid");
                     }
+
+                    choice.SupplementSynonyms();
+                    AddAlternativeName(alternativeNames, choice.UnitLabel, choice);
+                    foreach (string synonym in choice.Synonyms)
+                    {
+                        AddAlternativeName(alternativeNames, synonym, choice);
+                    }
+                }
+
+                foreach ((string name, List<UnitChoice> choices) in alternativeNames)
+                {
+                    UnitChoice[] distinctChoices = choices.DistinctBy(choice => choice.ID).ToArray();
+                    if (distinctChoices.Length == 1 && !unitChoicesByName_.ContainsKey(name))
+                    {
+                        unitChoicesByName_.Add(name, distinctChoices[0]);
+                    }
                 }
             }
+        }
+
+        private static void AddAlternativeName(Dictionary<string, List<UnitChoice>> names, string? name, UnitChoice choice)
+        {
+            if (string.IsNullOrWhiteSpace(name)) return;
+            if (!names.TryGetValue(name, out List<UnitChoice>? choices))
+            {
+                choices = new List<UnitChoice>();
+                names.Add(name, choices);
+            }
+            choices.Add(choice);
         }
 
         ///////////////////////

@@ -144,6 +144,8 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                     Choices.Add(SurfacePoreDrillingQuantity.Instance.ID.ToString(), SurfacePoreDrillingQuantity.Instance.GetUnitChoice(SurfacePoreDrillingQuantity.UnitChoicesEnum.SquareMicrometre).ID.ToString());
                     Choices.Add(PositionDrillingQuantity.Instance.ID.ToString(), PositionDrillingQuantity.Instance.GetUnitChoice(PositionDrillingQuantity.UnitChoicesEnum.Metre).ID.ToString());
                     Choices.Add(PowerDrillingQuantity.Instance.ID.ToString(), PowerDrillingQuantity.Instance.GetUnitChoice(PowerDrillingQuantity.UnitChoicesEnum.Watt).ID.ToString());
+                    Choices.Add(PowerRateOfChangeDrillingQuantity.Instance.ID.ToString(), PowerRateOfChangeDrillingQuantity.Instance.GetUnitChoice(PowerRateOfChangeDrillingQuantity.UnitChoicesEnum.WattPerSecond).ID.ToString());
+                    Choices.Add(ChokeOpeningRateDrillingQuantity.Instance.ID.ToString(), ChokeOpeningRateDrillingQuantity.Instance.GetUnitChoice(ChokeOpeningRateDrillingQuantity.UnitChoicesEnum.PercentPerSecond).ID.ToString());
                     Choices.Add(PressureDrillingQuantity.Instance.ID.ToString(), PressureDrillingQuantity.Instance.GetUnitChoice(PressureDrillingQuantity.UnitChoicesEnum.Bar).ID.ToString());
                     Choices.Add(PressureGradientPerLengthDrillingQuantity.Instance.ID.ToString(), PressureGradientPerLengthDrillingQuantity.Instance.GetUnitChoice(PressureGradientPerLengthDrillingQuantity.UnitChoicesEnum.BarPerMetre).ID.ToString());
                     Choices.Add(PressureLossConstantDrillingQuantity.Instance.ID.ToString(), PressureLossConstantDrillingQuantity.Instance.GetUnitChoice(PressureLossConstantDrillingQuantity.UnitChoicesEnum.PressureLossConstantMetric).ID.ToString());
@@ -234,6 +236,8 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                     Choices.Add(SurfacePoreDrillingQuantity.Instance.ID.ToString(), SurfacePoreDrillingQuantity.Instance.GetUnitChoice(SurfacePoreDrillingQuantity.UnitChoicesEnum.SquareMicrometre).ID.ToString());
                     Choices.Add(PositionDrillingQuantity.Instance.ID.ToString(), PositionDrillingQuantity.Instance.GetUnitChoice(PositionDrillingQuantity.UnitChoicesEnum.Foot).ID.ToString());
                     Choices.Add(PowerDrillingQuantity.Instance.ID.ToString(), PowerDrillingQuantity.Instance.GetUnitChoice(PowerDrillingQuantity.UnitChoicesEnum.Watt).ID.ToString());
+                    Choices.Add(PowerRateOfChangeDrillingQuantity.Instance.ID.ToString(), PowerRateOfChangeDrillingQuantity.Instance.GetUnitChoice(PowerRateOfChangeDrillingQuantity.UnitChoicesEnum.WattPerSecond).ID.ToString());
+                    Choices.Add(ChokeOpeningRateDrillingQuantity.Instance.ID.ToString(), ChokeOpeningRateDrillingQuantity.Instance.GetUnitChoice(ChokeOpeningRateDrillingQuantity.UnitChoicesEnum.PercentPerSecond).ID.ToString());
                     Choices.Add(PressureDrillingQuantity.Instance.ID.ToString(), PressureDrillingQuantity.Instance.GetUnitChoice(PressureDrillingQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
                     Choices.Add(PressureGradientPerLengthDrillingQuantity.Instance.ID.ToString(), PressureGradientPerLengthDrillingQuantity.Instance.GetUnitChoice(PressureGradientPerLengthDrillingQuantity.UnitChoicesEnum.PsiPerFoot).ID.ToString());
                     Choices.Add(PressureLossConstantDrillingQuantity.Instance.ID.ToString(), PressureLossConstantDrillingQuantity.Instance.GetUnitChoice(PressureLossConstantDrillingQuantity.UnitChoicesEnum.PressureLossConstantUS).ID.ToString());
@@ -324,6 +328,8 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                     Choices.Add(SurfacePoreDrillingQuantity.Instance.ID.ToString(), SurfacePoreDrillingQuantity.Instance.GetUnitChoice(SurfacePoreDrillingQuantity.UnitChoicesEnum.SquareMicrometre).ID.ToString());
                     Choices.Add(PositionDrillingQuantity.Instance.ID.ToString(), PositionDrillingQuantity.Instance.GetUnitChoice(PositionDrillingQuantity.UnitChoicesEnum.Foot).ID.ToString());
                     Choices.Add(PowerDrillingQuantity.Instance.ID.ToString(), PowerDrillingQuantity.Instance.GetUnitChoice(PowerDrillingQuantity.UnitChoicesEnum.Watt).ID.ToString());
+                    Choices.Add(PowerRateOfChangeDrillingQuantity.Instance.ID.ToString(), PowerRateOfChangeDrillingQuantity.Instance.GetUnitChoice(PowerRateOfChangeDrillingQuantity.UnitChoicesEnum.WattPerSecond).ID.ToString());
+                    Choices.Add(ChokeOpeningRateDrillingQuantity.Instance.ID.ToString(), ChokeOpeningRateDrillingQuantity.Instance.GetUnitChoice(ChokeOpeningRateDrillingQuantity.UnitChoicesEnum.PercentPerSecond).ID.ToString());
                     Choices.Add(PressureDrillingQuantity.Instance.ID.ToString(), PressureDrillingQuantity.Instance.GetUnitChoice(PressureDrillingQuantity.UnitChoicesEnum.PoundPerSquareInch).ID.ToString());
                     Choices.Add(PressureGradientPerLengthDrillingQuantity.Instance.ID.ToString(), PressureGradientPerLengthDrillingQuantity.Instance.GetUnitChoice(PressureGradientPerLengthDrillingQuantity.UnitChoicesEnum.PsiPerFoot).ID.ToString());
                     Choices.Add(PressureLossConstantDrillingQuantity.Instance.ID.ToString(), PressureLossConstantDrillingQuantity.Instance.GetUnitChoice(PressureLossConstantDrillingQuantity.UnitChoicesEnum.PressureLossConstantUK).ID.ToString());
@@ -350,7 +356,43 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering
                     Choices.Add(VolumetricFlowRateOfChangeDrillingQuantity.Instance.ID.ToString(), VolumetricFlowRateOfChangeDrillingQuantity.Instance.GetUnitChoice(VolumetricFlowRateOfChangeDrillingQuantity.UnitChoicesEnum.UKGallonPerMinutePerSecond).ID.ToString());
                     Choices.Add(WeightOnBitDrillingQuantity.Instance.ID.ToString(), WeightOnBitDrillingQuantity.Instance.GetUnitChoice(WeightOnBitDrillingQuantity.UnitChoicesEnum.KilopoundForce).ID.ToString());
                 }
+                AddInheritedChoices(quantities);
                 CheckMissing(quantities);
+            }
+        }
+
+        /// <summary>
+        /// A drilling specialization normally reuses the unit choices of its base
+        /// physical quantity and only adds drilling semantics and precision. Reuse
+        /// the selected base-system choice when no deliberate drilling override was
+        /// specified above.
+        /// </summary>
+        private void AddInheritedChoices(IEnumerable<BasePhysicalQuantity> quantities)
+        {
+            foreach (BasePhysicalQuantity quantity in quantities)
+            {
+                if (Choices.ContainsKey(quantity.ID.ToString()))
+                {
+                    continue;
+                }
+
+                Type baseType = quantity.GetType().BaseType;
+                while (baseType != null && typeof(BasePhysicalQuantity).IsAssignableFrom(baseType))
+                {
+                    PropertyInfo instanceProperty = baseType.GetProperty(
+                        "Instance",
+                        BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
+                    if (instanceProperty?.GetValue(null) is BasePhysicalQuantity baseQuantity)
+                    {
+                        UnitChoice inheritedChoice = GetChoice(baseQuantity.ID);
+                        if (inheritedChoice != null && quantity.GetUnitChoice(inheritedChoice.ID) != null)
+                        {
+                            Choices.Add(quantity.ID.ToString(), inheritedChoice.ID.ToString());
+                            break;
+                        }
+                    }
+                    baseType = baseType.BaseType;
+                }
             }
         }
 

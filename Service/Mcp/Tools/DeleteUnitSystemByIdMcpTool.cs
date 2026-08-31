@@ -21,11 +21,21 @@ public sealed class DeleteUnitSystemByIdMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "delete_unit_system_by_id";
+    public string Name => "delete_unit_system";
+
+    public string Title => "Delete Unit System";
 
     public string Description => "Permanently delete one stored unit system by UUID. Check persistent UnitSystemConversionSet records that reference it before deletion; future calculations require both referenced systems to exist. Built-in/default systems should normally be retained.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the stored unit system to delete.");
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"));
+
+    public bool ReadOnly => false;
+
+    public bool Destructive => true;
+
+    public bool Idempotent => false;
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {

@@ -6,7 +6,7 @@ namespace OSDC.UnitConversion.Service.Mcp;
 
 internal static class McpServiceCollectionExtensions
 {
-    public static IServiceCollection AddLegacyMcpTool<TTool>(this IServiceCollection services)
+    public static IServiceCollection AddMcpTool<TTool>(this IServiceCollection services)
         where TTool : class, IMcpTool
     {
         services.AddSingleton<TTool>();
@@ -15,7 +15,7 @@ internal static class McpServiceCollectionExtensions
         {
             var tool = sp.GetRequiredService<TTool>();
             var loggerFactory = sp.GetRequiredService<ILoggerFactory>();
-            return new LegacyMcpServerToolAdapter(tool, loggerFactory);
+            return new McpServerToolAdapter(tool, loggerFactory);
         });
 
         return services;

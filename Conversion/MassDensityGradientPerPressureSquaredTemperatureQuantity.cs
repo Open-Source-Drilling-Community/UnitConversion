@@ -656,7 +656,7 @@ namespace OSDC.UnitConversion.Conversion
         public MassDensityGradientPerPressureSquaredTemperatureQuantity() : base()
         {
             Name = this.GetType().Name.Split("Quantity").ElementAt(0);
-            UsualNames = new HashSet<string>() { "mass density gradient per pressure squared" };
+            UsualNames = new HashSet<string>() { "mass density gradient per pressure squared and temperature" };
             ID = new Guid("2d4b23e0-01ea-472f-85c1-1ced4d6507a6");
             DescriptionMD = string.Empty;
             DescriptionMD += @"A mass density gradient per pressure squared is the second derivative of a mass density compared to pressure: $\frac{d^{2}\rho}{dp^{2}}$, where $\rho$ is a mass density and $p$ is pressure." + Environment.NewLine;

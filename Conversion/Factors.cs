@@ -40,6 +40,7 @@ namespace OSDC.UnitConversion.Conversion
 ,{ "Atto", new FactorDescription("1e-18", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Zepto", new FactorDescription("1e-21", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Yocto", new FactorDescription("1e-24", FactorDescription.QualificationEnum.exact , "")}
+,{ "BitsPerByte", new FactorDescription("8.0", FactorDescription.QualificationEnum.exact , "")}
 ,{ "Angstrom", new FactorDescription("1e-10", FactorDescription.QualificationEnum.exact , "")}
 ,{ "AstronomicalUnit", new FactorDescription("149597870700.0", FactorDescription.QualificationEnum.exact , "https://www.iau.org/static/resolutions/IAU2012_English.pdf")}
 ,{ "LightYear", new FactorDescription("9460730472580800.0", FactorDescription.QualificationEnum.exact , "https://www.iau.org/public/themes/measuring/")}
@@ -73,7 +74,7 @@ namespace OSDC.UnitConversion.Conversion
 ,{ "MonthSynodic", new FactorDescription("29.53059 * Factors.Day", FactorDescription.QualificationEnum.approximate , "https://en.wikipedia.org/wiki/Month")}
 ,{ "QuarterCommon", new FactorDescription("Factors.YearJulian / 4.0", FactorDescription.QualificationEnum.exact , "")}
 ,{ "YearCommon", new FactorDescription("365 * Factors.Day", FactorDescription.QualificationEnum.exact , "")}
-,{ "YearAverageGregorian", new FactorDescription("(365.0 + 97 / 400) * Factors.Day", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Gregorian_calendar")}
+,{ "YearAverageGregorian", new FactorDescription("(365.0 + 97.0 / 400.0) * Factors.Day", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Gregorian_calendar")}
 ,{ "YearLeap", new FactorDescription("366 * Factors.Day", FactorDescription.QualificationEnum.exact , "")}
 ,{ "YearTropical", new FactorDescription("365.2422 * Factors.Day", FactorDescription.QualificationEnum.exact , "https://www.grc.nasa.gov/www/k-12/Numbers/Math/Mathematical_Thinking/calendar_calculations.htm")}
 ,{ "Decade", new FactorDescription("10.0 * Factors.YearJulian", FactorDescription.QualificationEnum.exact , "")}
@@ -110,6 +111,8 @@ namespace OSDC.UnitConversion.Conversion
 ,{ "Poise", new FactorDescription("0.1", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Poise_(unit)")}
 ,{ "G", new FactorDescription("9.80665", FactorDescription.QualificationEnum.standard , "https://en.wikipedia.org/wiki/Gravity_of_Earth")}
 ,{ "WaterDensity4degC1Atm", new FactorDescription("999.9720", FactorDescription.QualificationEnum.approximate , "https://en.wikipedia.org/wiki/Relative_density")}
+,{ "MercuryDensity32degF", new FactorDescription("13595.065312221248", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
+,{ "MercuryDensity60degF", new FactorDescription("13556.805881080776", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
 ,{ "SpecificGavity4degC", new FactorDescription("1.0 / Factors.WaterDensity4degC1Atm", FactorDescription.QualificationEnum.exact , "")}
 ,{ "PPGUK", new FactorDescription("Factors.Pound / Factors.GallonUK", FactorDescription.QualificationEnum.exact , "")}
 ,{ "PPGUS", new FactorDescription("Factors.Pound / Factors.GallonUS", FactorDescription.QualificationEnum.exact , "")}
@@ -122,15 +125,16 @@ namespace OSDC.UnitConversion.Conversion
 ,{ "Atmosphere", new FactorDescription("101325.0", FactorDescription.QualificationEnum.standard , "https://en.wikipedia.org/wiki/Atmospheric_pressure")}
 ,{ "Torr", new FactorDescription("(1.0 / 760.0) * Factors.Atmosphere", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Torr")}
 ,{ "MillimetreMercury", new FactorDescription("133.322387415", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Millimetre_of_mercury")}
-,{ "InchMercury32degF", new FactorDescription("1.0/3386.389", FactorDescription.QualificationEnum.convention , "https://en.wikipedia.org/wiki/Inch_of_mercury")}
-,{ "InchMercury60degF", new FactorDescription("1.0 / 3376.85", FactorDescription.QualificationEnum.convention , "https://en.wikipedia.org/wiki/Inch_of_mercury")}
-,{ "MillimetreWater4degC", new FactorDescription("9.89665", FactorDescription.QualificationEnum.convention , "https://en.wikipedia.org/wiki/Centimetre_or_millimetre_of_water")}
-,{ "InchWater4degC", new FactorDescription("249.082", FactorDescription.QualificationEnum.convention , "https://en.wikipedia.org/wiki/Inch_of_water")}
-,{ "FootWater4degC", new FactorDescription("2989.067", FactorDescription.QualificationEnum.convention , "https://en.wikipedia.org/wiki/Inch_of_water")}
+,{ "InchMercury32degF", new FactorDescription("Factors.MercuryDensity32degF * Factors.G * Factors.Inch", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
+,{ "InchMercury60degF", new FactorDescription("Factors.MercuryDensity60degF * Factors.G * Factors.Inch", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
+,{ "MillimetreWater4degC", new FactorDescription("Factors.WaterDensity4degC1Atm * Factors.G * Factors.Milli", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
+,{ "InchWater4degC", new FactorDescription("Factors.WaterDensity4degC1Atm * Factors.G * Factors.Inch", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
+,{ "FootWater4degC", new FactorDescription("Factors.WaterDensity4degC1Atm * Factors.G * Factors.Foot", FactorDescription.QualificationEnum.approximate , "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9")}
 ,{ "Gauss", new FactorDescription("1e-4", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Gauss_(unit)")}
 ,{ "Acre", new FactorDescription("Factors.SurveyorChain * Factors.Furlong", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Acre")}
 ,{ "PlanckConstant", new FactorDescription("6.62607015e-34", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Planck_constant")}
 ,{ "ElectronCharge", new FactorDescription("1.602176634e-19", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Elementary_charge")}
+,{ "AvogadroConstant", new FactorDescription("6.02214076e23", FactorDescription.QualificationEnum.exact , "https://www.bipm.org/en/si-base-units/mole")}
 ,{ "Maxwell", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Maxwell_(unit)")}
 ,{ "Line", new FactorDescription("1e-8", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Maxwell_(unit)")}
 ,{ "MagneticFluxQuantum", new FactorDescription("Factors.PlanckConstant / (2.0*Factors.ElectronCharge)", FactorDescription.QualificationEnum.exact , "https://en.wikipedia.org/wiki/Magnetic_flux_quantum")}
@@ -157,6 +161,7 @@ namespace OSDC.UnitConversion.Conversion
     public static readonly double Atto = 1e-18;
     public static readonly double Zepto = 1e-21;
     public static readonly double Yocto = 1e-24;
+    public static readonly double BitsPerByte = 8.0;
     public static readonly double Angstrom = 1e-10;
     public static readonly double AstronomicalUnit = 149597870700.0;
     public static readonly double LightYear = 9460730472580800.0;
@@ -190,7 +195,7 @@ namespace OSDC.UnitConversion.Conversion
     public static readonly double MonthSynodic = 29.53059 * Factors.Day;
     public static readonly double QuarterCommon = Factors.YearJulian / 4.0;
     public static readonly double YearCommon = 365 * Factors.Day;
-    public static readonly double YearAverageGregorian = (365.0 + 97 / 400) * Factors.Day;
+    public static readonly double YearAverageGregorian = (365.0 + 97.0 / 400.0) * Factors.Day;
     public static readonly double YearLeap = 366 * Factors.Day;
     public static readonly double YearTropical = 365.2422 * Factors.Day;
     public static readonly double Decade = 10.0 * Factors.YearJulian;
@@ -227,6 +232,8 @@ namespace OSDC.UnitConversion.Conversion
     public static readonly double Poise = 0.1;
     public static readonly double G = 9.80665;
     public static readonly double WaterDensity4degC1Atm = 999.9720;
+    public static readonly double MercuryDensity32degF = 13595.065312221248;
+    public static readonly double MercuryDensity60degF = 13556.805881080776;
     public static readonly double SpecificGavity4degC = 1.0 / Factors.WaterDensity4degC1Atm;
     public static readonly double PPGUK = Factors.Pound / Factors.GallonUK;
     public static readonly double PPGUS = Factors.Pound / Factors.GallonUS;
@@ -239,15 +246,16 @@ namespace OSDC.UnitConversion.Conversion
     public static readonly double Atmosphere = 101325.0;
     public static readonly double Torr = (1.0 / 760.0) * Factors.Atmosphere;
     public static readonly double MillimetreMercury = 133.322387415;
-    public static readonly double InchMercury32degF = 1.0/3386.389;
-    public static readonly double InchMercury60degF = 1.0 / 3376.85;
-    public static readonly double MillimetreWater4degC = 9.89665;
-    public static readonly double InchWater4degC = 249.082;
-    public static readonly double FootWater4degC = 2989.067;
+    public static readonly double InchMercury32degF = Factors.MercuryDensity32degF * Factors.G * Factors.Inch;
+    public static readonly double InchMercury60degF = Factors.MercuryDensity60degF * Factors.G * Factors.Inch;
+    public static readonly double MillimetreWater4degC = Factors.WaterDensity4degC1Atm * Factors.G * Factors.Milli;
+    public static readonly double InchWater4degC = Factors.WaterDensity4degC1Atm * Factors.G * Factors.Inch;
+    public static readonly double FootWater4degC = Factors.WaterDensity4degC1Atm * Factors.G * Factors.Foot;
     public static readonly double Gauss = 1e-4;
     public static readonly double Acre = Factors.SurveyorChain * Factors.Furlong;
     public static readonly double PlanckConstant = 6.62607015e-34;
     public static readonly double ElectronCharge = 1.602176634e-19;
+    public static readonly double AvogadroConstant = 6.02214076e23;
     public static readonly double Maxwell = 1e-8;
     public static readonly double Line = 1e-8;
     public static readonly double MagneticFluxQuantum = Factors.PlanckConstant / (2.0*Factors.ElectronCharge);

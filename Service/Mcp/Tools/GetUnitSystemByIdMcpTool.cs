@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using OSDC.UnitConversion.Service.Controllers;
 using OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering;
+using OSDC.UnitConversion.Conversion.DrillingEngineering;
 
 namespace OSDC.UnitConversion.Service.Mcp.Tools;
 
@@ -23,11 +25,15 @@ public sealed class GetUnitSystemByIdMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "get_unit_system_by_id";
+    public string Name => "get_unit_system";
 
-    public string Description => "Retrieve one complete unit system by UUID. The Choices object maps physical-quantity UUID strings to the selected unit-choice UUID strings and defines how unit-system conversions interpret and produce values. Returns 404 when absent.";
+    public string Title => "Get Unit System";
+
+    public string Description => "Retrieve one unit system by UUID, including its complete physical-quantity-to-unit-choice mapping. Mapping entries identify both UUIDs and, when available, their canonical quantity and unit names.";
 
     public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the unit system to retrieve, including its Choices mapping.");
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("id", "string"), ("name", "string"), ("choices", "array"));
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {
@@ -45,14 +51,15 @@ public sealed class GetUnitSystemByIdMcpTool : IMcpTool
 
             if (actionResult.Value is not null)
             {
-                var payload = JsonSerializer.SerializeToNode(actionResult.Value, McpToolJsonOptions.Default);
-                return Task.FromResult(payload);
+                return Task.FromResult<JsonNode?>(Map(actionResult.Value));
             }
 
             if (actionResult.Result is OkObjectResult okObjectResult && okObjectResult.Value is not null)
             {
-                var payload = JsonSerializer.SerializeToNode(okObjectResult.Value, okObjectResult.Value.GetType(), McpToolJsonOptions.Default);
-                return Task.FromResult(payload);
+                if (okObjectResult.Value is DrillingUnitSystem unitSystem)
+                {
+                    return Task.FromResult<JsonNode?>(Map(unitSystem));
+                }
             }
 
             if (actionResult.Result is NotFoundResult)
@@ -84,6 +91,29 @@ public sealed class GetUnitSystemByIdMcpTool : IMcpTool
             _logger.LogError(ex, "Failed to execute tool {ToolName}.", Name);
             return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, "An unexpected error occurred while retrieving the unit system."));
         }
+    }
+
+    private static JsonObject Map(DrillingUnitSystem system)
+    {
+        var choices = new JsonArray();
+        foreach ((string quantityIdText, string unitIdText) in system.Choices.OrderBy(pair => pair.Key, StringComparer.Ordinal))
+        {
+            Guid.TryParse(quantityIdText, out Guid quantityId);
+            Guid.TryParse(unitIdText, out Guid unitId);
+            var quantity = DrillingPhysicalQuantity.GetQuantity(quantityId);
+            var unit = quantity is null ? null : OSDC.UnitConversion.Conversion.PhysicalQuantityHierarchy.Enumerate(quantity)
+                .SelectMany(parent => parent.UnitChoices ?? []).FirstOrDefault(choice => choice.ID == unitId);
+            choices.Add(new JsonObject
+            {
+                ["physicalQuantityId"] = quantityIdText, ["physicalQuantity"] = quantity?.Name,
+                ["unitChoiceId"] = unitIdText, ["unitName"] = unit?.UnitName, ["unitLabel"] = unit?.UnitLabel
+            });
+        }
+        return new JsonObject
+        {
+            ["id"] = system.ID.ToString(), ["name"] = system.Name, ["description"] = system.Description,
+            ["isDefault"] = system.IsDefault, ["isSI"] = system.IsSI, ["choices"] = choices
+        };
     }
 }
 
