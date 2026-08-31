@@ -29,11 +29,11 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
 
     public string Title => "Replace Unit System";
 
-    public string Description => "Replace an existing custom unit system and its complete Choices mapping. The top-level id must equal unitSystem.ID. Each map entry pairs a physical-quantity UUID with one of that quantity's unit-choice UUIDs; this is a full update, not a partial patch.";
+    public string Description => "Replace an existing custom unit system and its complete Choices mapping. The top-level id must equal unitSystem.ID. Each map entry is validated as a physical-quantity UUID paired with one of that quantity's unit-choice UUIDs. The service derives isSI from the selected choices; this is a full update, not a partial patch.";
 
     public JsonNode? InputSchema => Schema;
 
-    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"));
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"), ("isSI", "boolean"));
 
     public bool ReadOnly => false;
 
@@ -90,6 +90,10 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
             }
 
             var response = ActionResultToolHelper.CreateResponse(actionResult, "Unit system updated.", "Failed to update the unit system.");
+            if (response?["status"]?.GetValue<string>() == "ok")
+            {
+                response["isSI"] = unitSystem.IsSI;
+            }
             return Task.FromResult<JsonNode?>(response);
         }
         catch (Exception ex)

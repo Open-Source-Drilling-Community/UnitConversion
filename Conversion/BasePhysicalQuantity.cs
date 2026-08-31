@@ -67,6 +67,11 @@ namespace OSDC.UnitConversion.Conversion
         /// Description using the Markdown style
         /// </summary>
         public string DescriptionMD { get; protected set; } = string.Empty;
+
+        internal void ReplaceDescription(string description)
+        {
+            DescriptionMD = description;
+        }
         /// <summary>
         /// usual names of the physical quantity
         /// </summary>
@@ -503,6 +508,7 @@ namespace OSDC.UnitConversion.Conversion
         }
         protected void PostProcess()
         {
+            PhysicalQuantityDescriptionCatalog.Supplement(this);
             QuantitySynonymCatalog.Supplement(this);
             if (UnitChoices != null)
             {

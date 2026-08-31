@@ -137,6 +137,9 @@ public class McpContractTests
             Assert.That(replace.Annotations?.IdempotentHint, Is.True);
             Assert.That(delete.Annotations?.DestructiveHint, Is.True);
             Assert.That(delete.Annotations?.IdempotentHint, Is.False);
+            Assert.That(create.InputSchema.GetProperty("properties").GetProperty("unitSystem").GetProperty("properties")
+                    .TryGetProperty("isSI", out _), Is.False,
+                "isSI must be derived by the service, not supplied by an MCP caller.");
         });
     }
 

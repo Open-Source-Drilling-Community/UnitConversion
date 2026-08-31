@@ -118,6 +118,13 @@ namespace OSDC.UnitConversion.Service.Controllers
             UsageStatistics.Instance.IncrementUnitSystemControllerPostPerDay();
             if (value != null && value.ID != Guid.Empty)
             {
+                IReadOnlyList<string> validationErrors = UnitSystemValidation.ValidateAndDerive(value);
+                if (validationErrors.Count > 0)
+                {
+                    _logger.LogWarning("The given UnitSystem contains invalid choices: {ValidationErrors}", string.Join(" ", validationErrors));
+                    return BadRequest(string.Join(" ", validationErrors));
+                }
+
                 DrillingUnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(value.ID);
                 if (unitSystem == null)
                 {
@@ -154,6 +161,13 @@ namespace OSDC.UnitConversion.Service.Controllers
             UsageStatistics.Instance.IncrementUnitSystemControllerPutPerDay();
             if (value != null && value.ID.Equals(id))
             {
+                IReadOnlyList<string> validationErrors = UnitSystemValidation.ValidateAndDerive(value);
+                if (validationErrors.Count > 0)
+                {
+                    _logger.LogWarning("The given UnitSystem contains invalid choices: {ValidationErrors}", string.Join(" ", validationErrors));
+                    return BadRequest(string.Join(" ", validationErrors));
+                }
+
                 DrillingUnitSystem? unitSystem = _unitSystemManager.GetUnitSystemById(id);
                 if (unitSystem != null)
                 {

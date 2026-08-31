@@ -54,7 +54,6 @@ internal static class McpToolArgumentHelpers
             ["name"] = new JsonObject { ["type"] = "string", ["minLength"] = 1 },
             ["description"] = new JsonObject { ["type"] = new JsonArray("string", "null") },
             ["isDefault"] = new JsonObject { ["type"] = "boolean", ["description"] = "Custom systems should normally set this to false." },
-            ["isSI"] = new JsonObject { ["type"] = "boolean", ["description"] = "True only when every mapped choice is SI." },
             ["choices"] = new JsonObject
             {
                 ["type"] = "object",
