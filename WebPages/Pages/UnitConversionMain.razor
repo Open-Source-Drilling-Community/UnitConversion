@@ -25,8 +25,8 @@ else
 
                 </ToolBarContent>
                 <Columns>
-                    <PropertyColumn Property="x => x.Name" Title="Name" CellStyle="width: 30%;" Sortable="true" IsEditable="false" />
-                    <PropertyColumn Property="x => x.Description" Title="Description" CellStyle="width: 60%;" Sortable="true" IsEditable="false" />
+                    <PropertyColumn Property="x => x.Name" Title="Name" CellStyle="width: 30%;" Sortable="true" Editable="false" />
+                    <PropertyColumn Property="x => x.Description" Title="Description" CellStyle="width: 60%;" Sortable="true" Editable="false" />
                     <TemplateColumn CellStyle="width: 5%;">
                         <EditTemplate>
                             <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Delete" OnClick="(() => DeleteUnitConversionSet(context.Item.MetaInfo.ID))" />

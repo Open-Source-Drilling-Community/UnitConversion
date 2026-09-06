@@ -27,7 +27,7 @@ dotnet add package OSDC.UnitConversion.DrillingRazorMudComponents
 
 The package depends on:
 
-- `MudBlazor`
+- `MudBlazor` 9.9.0 or a compatible later version
 - `OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering`
 - `OSDC.DotnetLibraries.General.DataManagement`
 

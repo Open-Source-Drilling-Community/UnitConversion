@@ -96,13 +96,19 @@
         {
             Context.Item.ValueConversionList.ElementAt(0).DataIn = 1;
         }
-        await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+        if (DataGrid.CommittedItemChanges is not null)
+        {
+            await DataGrid.CommittedItemChanges(Context.Item);
+        }
 
     }
 
     private async Task HandleIntervalElapsed(string debouncedText)
     {
-        await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+        if (DataGrid.CommittedItemChanges is not null)
+        {
+            await DataGrid.CommittedItemChanges(Context.Item);
+        }
     }
 
     /// <summary>

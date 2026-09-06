@@ -307,8 +307,9 @@
     {
     }
 
-    async void CommittedItemChanges(QuantityUnitConversion item)
+    private async Task<DataGridEditFormAction> CommittedItemChanges(QuantityUnitConversion item)
     {
         await Update();
+        return DataGridEditFormAction.Close;
     }
 }

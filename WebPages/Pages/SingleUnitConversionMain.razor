@@ -24,7 +24,7 @@ else
                           Adornment="Adornment.Start"
                           AdornmentIcon="@Icons.Material.Filled.Search"
                           Immediate="true"
-                          Dense="true" />
+                          Margin="Margin.Dense" />
             <MudTable T="PhysicalQuantity"
                       Items="@FilteredPhysicalQuantities"
                       Hover="true"
@@ -55,7 +55,7 @@ else
                           Adornment="Adornment.Start"
                           AdornmentIcon="@Icons.Material.Filled.Search"
                           Immediate="true"
-                          Dense="true"
+                          Margin="Margin.Dense"
                           Disabled="@(selectedQuantity_ == null)" />
             <MudTable T="UnitChoice"
                       Items="@FilteredInputUnits"
@@ -84,7 +84,7 @@ else
                           Adornment="Adornment.Start"
                           AdornmentIcon="@Icons.Material.Filled.Search"
                           Immediate="true"
-                          Dense="true"
+                          Margin="Margin.Dense"
                           Disabled="@(selectedQuantity_ == null)" />
             <MudTable T="UnitChoice"
                       Items="@FilteredOutputUnits"
@@ -112,7 +112,7 @@ else
                            Variant="Variant.Outlined"
                            Disabled="@(!CanSwap)"
                            OnClick="SwapUnits"
-                           Title="Swap units" />
+                           aria-label="Swap units" />
         </MudItem>
 
         <MudItem xs="12" md="5">
@@ -123,7 +123,7 @@ else
                              Immediate="true"
                              Variant="Variant.Outlined"
                              Disabled="@(selectedQuantity_ == null)"
-                             Dense="true" />
+                             Margin="Margin.Dense" />
         </MudItem>
         <MudItem xs="12" md="2" Class="d-flex align-center justify-center">
             <MudButton Variant="Variant.Filled"
@@ -138,7 +138,7 @@ else
                           Label="Output value"
                           ReadOnly="true"
                           Variant="Variant.Outlined"
-                          Dense="true" />
+                          Margin="Margin.Dense" />
         </MudItem>
     </MudGrid>
 }

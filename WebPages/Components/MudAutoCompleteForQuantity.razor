@@ -38,7 +38,10 @@
                     Context.Item.QuantityID = quantity.ID;
                     Context.Item.UnitChoiceIDIn = siUnit.ID;
                     Context.Item.UnitChoiceIDOut = siUnit.ID;
-                    await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+                    if (DataGrid.CommittedItemChanges is not null)
+                    {
+                        await DataGrid.CommittedItemChanges(Context.Item);
+                    }
                 }
             }
             catch (Exception ex)
@@ -48,12 +51,12 @@
         }
     }
 
-    private async Task<IEnumerable<string>> SearchQuantity(string qtyName)
+    private async Task<IEnumerable<string>> SearchQuantity(string? qtyName, CancellationToken cancellationToken)
     {
         List<string> qtyList = [];
         
         // In real life use an asynchronous function for fetching data from an api.
-        await Task.Delay(1);
+        await Task.Delay(1, cancellationToken);
 
         // if text is null or empty, show complete list
         if (string.IsNullOrWhiteSpace(qtyName))
