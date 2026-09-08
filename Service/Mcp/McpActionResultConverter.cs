@@ -2,12 +2,13 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OSDC.UnitConversion.Service.Mcp.Tools;
 
 namespace OSDC.UnitConversion.Service.Mcp;
 
 internal static class McpActionResultConverter
 {
-    private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
+    private static readonly JsonSerializerOptions SerializerOptions = McpToolJsonOptions.Default;
 
     public static JsonObject FromActionResult<T>(ActionResult<T> actionResult)
     {
