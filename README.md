@@ -433,3 +433,9 @@ The current work has been funded by the [Research Council of Norway](https://www
 # License
 
 Part of it is hereby donated **without any limit or warranty** to the Society of Petroleum (SPE) Open Source Drilling Community under the **MIT** license, a sub-committee of the Drilling System Automation Technical Section. Anyone is thus **free to use** the source code of this repository **under its own responsibility**.
+
+## Gravity potential support (3.3.28)
+
+The Conversion library includes GravityPotential and its EarthGravityPotential specialization, with SI and US/Imperial choices and explanatory quantity descriptions. EarthGravityPotential uses a meaningful display precision of 0.01 m²/s². See [quantity documentation](Conversion/README.md) and [the enumeration-generation workflow](GenerateEnumerations/README.md).
+
+The Conversion, Conversion.DrillingEngineering, Conversion.UnitSystem and Conversion.UnitSystem.DrillingEngineering projects use source project references within this solution and package version 3.3.28. Packing generates corresponding NuGet dependencies. The service Model also references the local unit-system project so source builds expose the new quantities. Build and publish the related packages together when releasing; changing versions here does not publish them.

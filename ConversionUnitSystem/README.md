@@ -21,3 +21,7 @@ Choices.Add(AccelerationQuantity.Instance.ID.ToString(), AccelerationQuantity.In
 **Eric Cayeux**, *NORCE Energy Modelling and Automation*
 
 **Gilles Pelfrene**, *NORCE Energy Modelling and Automation*
+
+## Gravity potential defaults
+
+Both GravityPotential and EarthGravityPotential default to m²/s² in SI and Metric, and ft²/s² in US and Imperial. SI selects the canonical `IsSI` unit automatically; Metric, Imperial and US have explicit entries. Generate the enumerations before adding these entries. The drilling unit systems inherit these general choices.

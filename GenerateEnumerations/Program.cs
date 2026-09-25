@@ -444,6 +444,17 @@ namespace OSDC.UnitConversion.GenerateEnumerations
         }
         static void GenerateEnumerations(string filename, Type typ, List<BasePhysicalQuantity> quantities)
         {
+            // Existing public enum ordinals must survive adding a quantity. Discover new
+            // quantities after the compiled entries, independently of reflection ordering.
+            Type? existingEnum = typ.GetNestedType("QuantityEnum");
+            if (existingEnum != null)
+            {
+                var ordinals = Enum.GetNames(existingEnum).ToDictionary(name => name,
+                    name => System.Convert.ToInt32(Enum.Parse(existingEnum, name)));
+                quantities = quantities.OrderBy(q => ordinals.TryGetValue(Convert(q.Name), out int ordinal)
+                    ? ordinal : int.MaxValue).ThenBy(q => ordinals.ContainsKey(Convert(q.Name)) ? "" : q.Name,
+                    StringComparer.Ordinal).ToList();
+            }
             using (StreamWriter writer = new StreamWriter(filename))
             {
                 writer.WriteLine("using System;");

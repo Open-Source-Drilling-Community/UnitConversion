@@ -103,7 +103,9 @@ namespace OSDC.UnitConversion.Conversion
          StrokeFrequency,  // StrokeFrequency
          ShockRate,  // ShockRate
          PlaneAngleGeodesic,  // PlaneAngleGeodesic
-         PlaneAngleStandard // PlaneAngleStandard
+         PlaneAngleStandard,  // PlaneAngleStandard
+         EarthGravityPotential,  // EarthGravityPotential
+         GravityPotential // GravityPotential
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -203,7 +205,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.StrokeFrequency, new Guid("86fd37e4-3ebf-42ec-9eb2-1e65f7abf29e")},  // StrokeFrequency
          {QuantityEnum.ShockRate, new Guid("0076d96f-bfc3-4f98-8541-4fd12e4bcbff")},  // ShockRate
          {QuantityEnum.PlaneAngleGeodesic, new Guid("fc88c9ff-fa0a-4406-b397-015f3ca062bc")},  // PlaneAngleGeodesic
-         {QuantityEnum.PlaneAngleStandard, new Guid("3773fc19-be1a-4604-91f8-6e4aefb44757")} // PlaneAngleStandard
+         {QuantityEnum.PlaneAngleStandard, new Guid("3773fc19-be1a-4604-91f8-6e4aefb44757")},  // PlaneAngleStandard
+         {QuantityEnum.EarthGravityPotential, new Guid("61a8a54e-684a-4e72-bb46-b73d342bdb70")},  // EarthGravityPotential
+         {QuantityEnum.GravityPotential, new Guid("3399d06a-5d68-4aab-a92c-8352cc44ac58")} // GravityPotential
     };
   }
 }
@@ -5249,6 +5253,66 @@ namespace OSDC.UnitConversion.Conversion
     {
          {UnitChoicesEnum.Radian, new Guid("a71fc712-342a-48c2-8e45-b56ee31c7ae0")},  // radian
          {UnitChoicesEnum.Degree, new Guid("023a3393-a01e-499f-967a-a76b1a78d586")} // degree
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class EarthGravityPotentialQuantity : GravityPotentialQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         SquareMetrePerSquareSecond,  // square metre per square second
+         JoulePerKilogram,  // joule per kilogram
+         SquareFootPerSquareSecond,  // square foot per square second
+         FootPoundforcePerPoundmass // foot pound-force per pound-mass
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.SquareMetrePerSquareSecond, new Guid("b3bd7f26-53be-42d6-9b0c-37f371944f5a")},  // square metre per square second
+         {UnitChoicesEnum.JoulePerKilogram, new Guid("67ded635-bf30-4986-a452-a4f219294e5f")},  // joule per kilogram
+         {UnitChoicesEnum.SquareFootPerSquareSecond, new Guid("61f47537-c38d-4359-86ad-648fc8903b19")},  // square foot per square second
+         {UnitChoicesEnum.FootPoundforcePerPoundmass, new Guid("568f00ee-c073-4cce-bc41-a20309281a26")} // foot pound-force per pound-mass
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class GravityPotentialQuantity : DerivedBasePhysicalQuantity
+  {
+    public new enum UnitChoicesEnum 
+      {
+         SquareMetrePerSquareSecond,  // square metre per square second
+         JoulePerKilogram,  // joule per kilogram
+         SquareFootPerSquareSecond,  // square foot per square second
+         FootPoundforcePerPoundmass // foot pound-force per pound-mass
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.SquareMetrePerSquareSecond, new Guid("b3bd7f26-53be-42d6-9b0c-37f371944f5a")},  // square metre per square second
+         {UnitChoicesEnum.JoulePerKilogram, new Guid("67ded635-bf30-4986-a452-a4f219294e5f")},  // joule per kilogram
+         {UnitChoicesEnum.SquareFootPerSquareSecond, new Guid("61f47537-c38d-4359-86ad-648fc8903b19")},  // square foot per square second
+         {UnitChoicesEnum.FootPoundforcePerPoundmass, new Guid("568f00ee-c073-4cce-bc41-a20309281a26")} // foot pound-force per pound-mass
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {

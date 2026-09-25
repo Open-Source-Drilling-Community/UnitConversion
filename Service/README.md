@@ -133,3 +133,7 @@ The current work has been funded by the [Research Council of Norway](https://www
 **Eric Cayeux**, *NORCE Energy Modelling and Automation*
 
 **Gilles Pelfrene**, *NORCE Energy Modelling and Automation*
+
+## Quantity catalogue source
+
+The service Model references the local drilling unit-system project and its transitive Conversion projects. Docker's restore stage includes those project files. This ensures the service exposes the same catalogue as the solution, including GravityPotential and EarthGravityPotential and their explanatory text. Release these service changes before clients request the new quantity names.

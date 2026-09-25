@@ -26966,3 +26966,87 @@ namespace OSDC.UnitConversion.Conversion
       }
   }
 }
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class GravityPotentialQuantity : DerivedBasePhysicalQuantity
+  {
+      protected override void InitializeUnitChoices()
+      {
+          UnitChoices = new List<UnitChoice>()
+            {
+                new UnitChoice
+                {
+                  UnitName = "square metre per square second",
+                  UnitLabel = "m²/s²",
+                  SIUnitName = "square metre per square second",
+                  ID = new Guid("b3bd7f26-53be-42d6-9b0c-37f371944f5a"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"No conversion necessary as the unit choice is SI"
+ + Environment.NewLine + "",
+                  IsSI = true
+                }
+              , new UnitChoice
+                {
+                  UnitName = "joule per kilogram",
+                  UnitLabel = "J/kg",
+                  SIUnitName = "square metre per square second",
+                  ID = new Guid("67ded635-bf30-4986-a452-a4f219294e5f"),
+                  ConversionFactorFromSIFormula = "1.0/Factors.Unit",
+                  ConversionFactorFromSI = 1.0/Factors.Unit,
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in joule per kilogram"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/Unit, i.e., 1"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Unit = 1.0"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "square foot per square second",
+                  UnitLabel = "ft²/s²",
+                  SIUnitName = "square metre per square second",
+                  ID = new Guid("61f47537-c38d-4359-86ad-648fc8903b19"),
+                  ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.Foot)",
+                  ConversionFactorFromSI = 1.0/(Factors.Foot*Factors.Foot),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in square foot per square second"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = 1.0/(Foot*Foot), i.e., 10.763910416709725"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "",
+                }
+              , new UnitChoice
+                {
+                  UnitName = "foot pound-force per pound-mass",
+                  UnitLabel = "ft·lbf/lbm",
+                  SIUnitName = "square metre per square second",
+                  ID = new Guid("568f00ee-c073-4cce-bc41-a20309281a26"),
+                  ConversionFactorFromSIFormula = "Factors.Pound/(Factors.Foot*Factors.PoundForce)",
+                  ConversionFactorFromSI = Factors.Pound/(Factors.Foot*Factors.PoundForce),
+                  ConversionDescription = 
+"[v] = a * [SI]"
+ + Environment.NewLine + "where"
+ + Environment.NewLine + "[v] is the value in foot pound-force per pound-mass"
+ + Environment.NewLine + "[SI] is the value in SI"
+ + Environment.NewLine + "a = Pound/(Foot*PoundForce), i.e., 0.3345525633129687"
+ + Environment.NewLine + "and"
+ + Environment.NewLine + "Pound = 0.45359237 reference: https://en.wikipedia.org/wiki/Pound_(mass)"
+ + Environment.NewLine + "Foot = 12.0 * Inch"
+ + Environment.NewLine + "PoundForce = Pound * G reference: https://en.wikipedia.org/wiki/Pound_(force)"
+ + Environment.NewLine + "Inch = 0.0254 reference: https://www.nist.gov/pml/owm/si-units-length"
+ + Environment.NewLine + "G = 9.80665 reference: https://en.wikipedia.org/wiki/Gravity_of_Earth"
+ + Environment.NewLine + "",
+                }
+            };
+      }
+  }
+}

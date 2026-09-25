@@ -62,3 +62,11 @@ quantity or when a new physical quantity is added or removed.
 **Eric Cayeux**, *NORCE Energy Modelling and Automation*
 
 **Gilles Pelfrene**, *NORCE Energy Modelling and Automation*
+
+## Gravity potential
+
+`GravityPotentialQuantity` describes gravity potential with dimensions L² T⁻² and no application-specific meaningful precision. `EarthGravityPotentialQuantity` inherits its units and defines `MeaningfulPrecisionInSI = 0.01` m²/s² for terrestrial presentation. This is approximately a millimetre of height difference near Earth's surface, not a claim of model accuracy or a rounding of stored values.
+
+Both expose explanatory `DescriptionMD` text covering the geodetic convention W = V + Phi, g = grad W, reference-potential considerations, and the distinction from energy density. Supported units are m²/s², J/kg, ft²/s² and ft·lbf/lbm. Factors are formulas built from existing base factors: `1.0/(Factors.Foot*Factors.Foot)` and `Factors.Pound/(Factors.Foot*Factors.PoundForce)` convert from SI. One ft·lbf/lbm is 2.98906692 J/kg; pound-force uses standard gravity, not local gravity.
+
+When adding quantities, follow [the generator workflow](../GenerateEnumerations/README.md). It writes `Constructors.cs`, `Factors.cs` and the enumeration files; regenerate before adding enum-based defaults to unit systems.

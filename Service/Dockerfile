@@ -9,6 +9,10 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["Service/Service.csproj", "Service/"]
 COPY ["Model/Model.csproj", "Model/"]
+COPY ["Conversion/Conversion.csproj", "Conversion/"]
+COPY ["Conversion.DrillingEngineering/Conversion.DrillingEngineering.csproj", "Conversion.DrillingEngineering/"]
+COPY ["ConversionUnitSystem/ConversionUnitSystem.csproj", "ConversionUnitSystem/"]
+COPY ["ConversionUnitSystem.DrillingEngineering/ConversionUnitSystem.DrillingEngineering.csproj", "ConversionUnitSystem.DrillingEngineering/"]
 RUN dotnet restore "Service/Service.csproj"
 
 COPY . .
