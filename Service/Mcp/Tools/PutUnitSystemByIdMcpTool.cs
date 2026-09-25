@@ -17,25 +17,7 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PutUnitSystemByIdMcpTool> _logger;
 
-    private static readonly JsonObject Schema = new()
-    {
-        ["type"] = "object",
-        ["properties"] = new JsonObject
-        {
-            ["id"] = new JsonObject
-            {
-                ["type"] = "string",
-                ["format"] = "uuid"
-            },
-            ["unitSystem"] = new JsonObject
-            {
-                ["type"] = "object",
-                ["description"] = "The updated unit system payload."
-            }
-        },
-        ["required"] = new JsonArray { "id", "unitSystem" },
-        ["additionalProperties"] = false
-    };
+    private static readonly JsonObject Schema = McpToolArgumentHelpers.CreateUnitSystemSchema(includeId: true);
 
     public PutUnitSystemByIdMcpTool(IServiceProvider serviceProvider, ILogger<PutUnitSystemByIdMcpTool> logger)
     {
@@ -43,11 +25,19 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "put_unit_system_by_id";
+    public string Name => "replace_unit_system";
 
-    public string Description => "Updates an existing unit system by forwarding the payload to the UnitSystemController.";
+    public string Title => "Replace Unit System";
+
+    public string Description => "Replace an existing custom unit system and its complete Choices mapping. The top-level id must equal unitSystem.ID. Each map entry is validated as a physical-quantity UUID paired with one of that quantity's unit-choice UUIDs. The service derives isSI from the selected choices; this is a full update, not a partial patch.";
 
     public JsonNode? InputSchema => Schema;
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"), ("isSI", "boolean"));
+
+    public bool ReadOnly => false;
+
+    public bool Destructive => true;
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {
@@ -100,6 +90,10 @@ public sealed class PutUnitSystemByIdMcpTool : IMcpTool
             }
 
             var response = ActionResultToolHelper.CreateResponse(actionResult, "Unit system updated.", "Failed to update the unit system.");
+            if (response?["status"]?.GetValue<string>() == "ok")
+            {
+                response["isSI"] = unitSystem.IsSI;
+            }
             return Task.FromResult<JsonNode?>(response);
         }
         catch (Exception ex)

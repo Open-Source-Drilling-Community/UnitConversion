@@ -44,10 +44,13 @@ namespace OSDC.UnitConversion.Model
             BasePhysicalQuantity quantity = DrillingPhysicalQuantity.GetQuantity(QuantityID);
             if (quantity != null)
             {
-                UnitChoice unitChoiceOut = quantity.GetUnitChoice(UnitChoiceIDOut);
-                UnitChoice unitChoiceIn = quantity.GetUnitChoice(UnitChoiceIDIn);
+                // Specialised quantities deliberately expose only their most common units.
+                // Units declared by an ancestor remain dimensionally valid, while the requested
+                // specialised quantity remains responsible for meaningful output precision.
+                UnitChoice? unitChoiceOut = PhysicalQuantityHierarchy.FindUnitChoice(quantity, UnitChoiceIDOut, out _);
+                UnitChoice? unitChoiceIn = PhysicalQuantityHierarchy.FindUnitChoice(quantity, UnitChoiceIDIn, out _);
 
-                if (ValueConversionList != null)
+                if (ValueConversionList != null && unitChoiceIn != null && unitChoiceOut != null)
                     success = ValueConversion.Calculate(quantity, unitChoiceIn, unitChoiceOut, ValueConversionList);
             }
             return success;

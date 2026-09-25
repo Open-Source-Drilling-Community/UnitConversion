@@ -136,13 +136,12 @@ namespace OSDC.UnitConversion.Conversion
                   UnitName = "radian per second",
                   UnitLabel = "rad/s",
                   ID = new Guid("1da89c19-8dba-44c4-bff5-d1a7bcf97269"),
-                  ConversionFactorFromSIFormula = "Factors.Revolution/Factors.Unit",
-                  IsSI = true
+                  ConversionFactorFromSIFormula = "Factors.Revolution/Factors.Unit"
                 },
                 new UnitChoice
                 {
                   UnitName = "degree per second",
-                  UnitLabel = "°/s",
+                  UnitLabel = "Â°/s",
                   ID = new Guid("dd8dc22c-5dd3-494e-8ff8-fed249a354bb"),
                   ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree"
                 },
@@ -170,21 +169,21 @@ namespace OSDC.UnitConversion.Conversion
                 new UnitChoice
                 {
                   UnitName = "degree per day",
-                  UnitLabel = "°/d",
+                  UnitLabel = "Â°/d",
                   ID = new Guid("a53ece85-ca3b-421a-aa71-6661edd30fa2"),
                   ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Day"
                 },
                 new UnitChoice
                 {
                   UnitName = "degree per hour",
-                  UnitLabel = "°/h",
+                  UnitLabel = "Â°/h",
                   ID = new Guid("9f885257-5f15-4a4d-b5be-7d2f0bc0538e"),
                   ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Hour"
                 },
                 new UnitChoice
                 {
                   UnitName = "degree per minute",
-                  UnitLabel = "°/min",
+                  UnitLabel = "Â°/min",
                   ID = new Guid("61bc0b74-78f4-486f-b725-03ae520a6e8c"),
                   ConversionFactorFromSIFormula = "Factors.Revolution*Factors.Degree*Factors.Minute"
                 }

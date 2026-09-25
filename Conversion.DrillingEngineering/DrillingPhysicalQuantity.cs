@@ -68,11 +68,12 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                                 }
                                 if (physicalQuantitiesByName_ == null)
                                 {
-                                    physicalQuantitiesByName_ = new Dictionary<string, BasePhysicalQuantity>();
+                                    physicalQuantitiesByName_ = new Dictionary<string, BasePhysicalQuantity>(StringComparer.OrdinalIgnoreCase);
                                 }
-                                if (!string.IsNullOrEmpty(res.Name) && !physicalQuantitiesByName_.ContainsKey(res.Name))
+                                string lookupName = NormalizeQuantityLookupName(res.Name);
+                                if (!string.IsNullOrEmpty(lookupName) && !physicalQuantitiesByName_.ContainsKey(lookupName))
                                 {
-                                    physicalQuantitiesByName_.Add(res.Name, res);
+                                    physicalQuantitiesByName_.Add(lookupName, res);
                                 }
                                 else
                                 {
@@ -82,6 +83,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
                         }
                     }
                 }
+                RegisterUniqueSynonyms(availablePhysicalQuantities_, physicalQuantitiesByName_);
             }
         }
 
@@ -122,7 +124,7 @@ namespace OSDC.UnitConversion.Conversion.DrillingEngineering
             {
                 Initialize();
             }
-            physicalQuantitiesByName_.TryGetValue(choiceName, out quantity);
+            physicalQuantitiesByName_.TryGetValue(NormalizeQuantityLookupName(choiceName), out quantity);
             if (quantity == null)
             {
                 quantity = BasePhysicalQuantity.GetQuantity(choiceName);

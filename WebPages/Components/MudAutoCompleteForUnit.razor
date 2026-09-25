@@ -3,9 +3,7 @@
 <MudAutocomplete T="UnitChoice" Value="Unit" ValueChanged="UpdateFromUnit"
                  ToStringFunc="@(e=> e==null?null : $"{e.UnitLabel} ({(e.IsSI ? "SI, " : "")}{e.UnitName})")" SearchFunc="@SearchUnit"
                  MaxItems="null" ResetValueOnEmptyText="true" CoerceText="false" CoerceValue="false"
-                 Adornment="Adornment.End" adornmentIcon="@adornmentIcon" adornmentColor="@adornmentColor" Immediate="true">
-    @Unit.UnitLabel
-</MudAutocomplete>
+                 Adornment="Adornment.End" adornmentIcon="@adornmentIcon" adornmentColor="@adornmentColor" Immediate="true" />
 
 @code {
         [CascadingParameter]
@@ -45,7 +43,10 @@
                 {
                     Context.Item.UnitChoiceIDOut = unitChoice.ID;
                 }
-                await DataGrid.CommittedItemChanges.InvokeAsync(Context.Item);
+                if (DataGrid.CommittedItemChanges is not null)
+                {
+                    await DataGrid.CommittedItemChanges(Context.Item);
+                }
             }
             catch (Exception ex)
             {
@@ -59,10 +60,10 @@
     /// </summary>
     /// <param name="unitString"></param>
     /// <returns></returns>
-    private async Task<IEnumerable<UnitChoice>> SearchUnit(string unitString)
+    private async Task<IEnumerable<UnitChoice>> SearchUnit(string? unitString, CancellationToken cancellationToken)
     {
         List<UnitChoice> unitChoiceList = [];
-        await Task.Delay(1);
+        await Task.Delay(1, cancellationToken);
 
         // if text is null or empty, show complete list
         if (string.IsNullOrWhiteSpace(unitString))

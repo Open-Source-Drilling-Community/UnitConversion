@@ -806,6 +806,11 @@ namespace OSDC.UnitConversion.ServiceTest
         [Test]
         public async Task Test_UnitSystem_Get()
         {
+            if (bypassTests)
+            {
+                Assert.Ignore("Requires an explicitly started integration service and mutates its unit-system database.");
+            }
+
             //test code to remove the default unit systems
             List<Guid> idList = [];
             try

@@ -17,20 +17,7 @@ public sealed class PostUnitSystemMcpTool : IMcpTool
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<PostUnitSystemMcpTool> _logger;
 
-    private static readonly JsonObject Schema = new()
-    {
-        ["type"] = "object",
-        ["properties"] = new JsonObject
-        {
-            ["unitSystem"] = new JsonObject
-            {
-                ["type"] = "object",
-                ["description"] = "The unit system payload to create."
-            }
-        },
-        ["required"] = new JsonArray { "unitSystem" },
-        ["additionalProperties"] = false
-    };
+    private static readonly JsonObject Schema = McpToolArgumentHelpers.CreateUnitSystemSchema();
 
     public PostUnitSystemMcpTool(IServiceProvider serviceProvider, ILogger<PostUnitSystemMcpTool> logger)
     {
@@ -38,11 +25,19 @@ public sealed class PostUnitSystemMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "post_unit_system";
+    public string Name => "create_unit_system";
 
-    public string Description => "Creates a new unit system by forwarding the payload to the UnitSystemController.";
+    public string Title => "Create Unit System";
+
+    public string Description => "Create and persist a custom unit system with a caller-assigned UUID and complete physical-quantity-to-unit-choice mapping. Every selected unit is validated against its quantity. The service derives isSI from the selected choices and returns an error for invalid mappings or an existing UUID.";
 
     public JsonNode? InputSchema => Schema;
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("status", "string"), ("message", "string"), ("isSI", "boolean"));
+
+    public bool ReadOnly => false;
+
+    public bool Idempotent => false;
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {
@@ -85,6 +80,10 @@ public sealed class PostUnitSystemMcpTool : IMcpTool
             }
 
             var response = ActionResultToolHelper.CreateResponse(actionResult, "Unit system created.", "Failed to create the unit system.");
+            if (response?["status"]?.GetValue<string>() == "ok")
+            {
+                response["isSI"] = unitSystem.IsSI;
+            }
             return Task.FromResult<JsonNode?>(response);
         }
         catch (Exception ex)

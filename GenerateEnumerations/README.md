@@ -11,8 +11,10 @@ Example, with the repository's required SDK installed:
 
 ```powershell
 # Working directory: UnitConversion/GenerateEnumerations
-dotnet build -c Release
-dotnet bin/Release/net8.0/GenerateEnumerations.dll
+dotnet build -c Debug -p:UseLocalUnitConversionProjects=true
+dotnet bin/Debug/net8.0/GenerateEnumerations.dll
 ```
 
 The generator retains the compiled QuantityEnum order and appends new quantities in name order, preserving existing numeric enum values when adding quantities. Removing quantities requires a separate compatibility review. Stable GUIDs remain the persisted catalogue identities.
+
+Quantity discovery reflects the static `Instance` property getter (`get_Instance`); the accessor method is not named `Instance`. The generator must include both the base and drilling catalogues.

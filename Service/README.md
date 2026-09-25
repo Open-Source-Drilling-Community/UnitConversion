@@ -57,19 +57,25 @@ http://localhost:5002/UnitConversion/api/mcp
 
 | Tool name | Description |
 |-----------|-------------|
-| `ping` | Returns a `pong` payload to validate connectivity |
-| `get_all_physical_quantity_id` / `get_physical_quantity_by_id` / `get_all_physical_quantity` | List or retrieve physical quantities |
-| `find_physical_quantity_id_by_name` | Tolerant lookup of a physical quantity identifier by name/synonym |
-| `convert_unit_value` | Convert values between two unit choices for a given physical quantity |
-| `get_all_unit_system_id` / `get_unit_system_by_id` / `get_all_unit_system_light` / `get_all_unit_system` | List or retrieve unit systems |
-| `find_unit_system_id_by_name` | Tolerant lookup of unit system identifiers |
-| `post_unit_system`, `put_unit_system_by_id`, `delete_unit_system_by_id` | Manage user-defined unit systems |
-| `convert_unit_system_value` | Convert values between two unit systems |
-| `search_vector_resources` | Returns the top vector-matched resource URIs plus similarity scores for a textual query |
-| `get_all_unit_conversion_set_*`, `get_unit_conversion_set_by_id`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id` | Manage unit conversion sets |
-| `get_all_unit_system_conversion_set_*`, `get_unit_system_conversion_set_by_id`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id` | Manage unit system conversion sets |
+| `search_physical_quantities` | Return ranked canonical-name and synonym matches with UUIDs and hierarchy summaries |
+| `get_physical_quantity` | Retrieve dimensions, SI precision, units, synonyms, hierarchy, and symbolic conversion definitions by UUID |
+| `convert_values` | Pure, non-persisting conversion of one or more values between named or UUID-addressed unit choices |
+| `convert_between_unit_systems` | Pure, non-persisting conversion using the choices selected by two unit systems |
+| `list_unit_systems` / `get_unit_system` | Paginate unit-system summaries and retrieve one complete mapping |
+| `create_unit_system`, `replace_unit_system`, `delete_unit_system` | Persistently manage custom unit systems |
+| `search_documentation` | Return ranked MCP resource links and similarity scores for a textual query |
 
-`search_vector_resources` expects a nomic-ai/nomic-embed-text compatible endpoint (default `http://localhost:8080/embeddings`). Configure `VectorDocumentSearch:Nomic:*` or the `NOMIC_API_KEY` environment variable if the inference server requires authentication, and ensure the vector database was generated with the same model/dimension pair. If search cannot run, the MCP response distinguishes between a missing vector database, an unreachable embedding endpoint, and an embedding dimension mismatch.
+The tool descriptions, input/output schemas, and annotations distinguish three workflows:
+
+- `convert_values` converts an array between two compatible unit choices. UUIDs take precedence over names, and units may be inherited from a compatible parent quantity. Numeric results remain unrounded; display strings use the requested quantity's `MeaningfulPrecisionInSI`.
+- `convert_between_unit_systems` converts an array using the choices selected by two unit systems and returns the actual resolved source and target units.
+- Unit-system mutation tools persist data and carry MCP read-only, destructive, and idempotency annotations so clients can apply appropriate approval behavior.
+
+The MCP conversion tools calculate directly through the conversion model and do not create temporary database records. Persistent conversion-set workflows remain available through the REST API.
+
+For example, `RateOfPenetrationDrilling` derives from `Velocity`. ROP directly lists only the common drilling units, whereas `Velocity` also defines `furlong per fortnight`. A request for `30 meter per hour` to `furlongs per fortnight` can inherit the target unit from `Velocity`, return the full numeric result, and format it using the ROP meaningful precision. The physical-quantity search/get tools expose this relationship in `hierarchy` metadata.
+
+`search_documentation` expects a nomic-ai/nomic-embed-text compatible endpoint (default `http://localhost:8080/embeddings`). Configure `VectorDocumentSearch:Nomic:*` or the `NOMIC_API_KEY` environment variable if the inference server requires authentication, and ensure the vector database was generated with the same model/dimension pair. Results contain structured ranking data and MCP resource-link content blocks.
 
 ### Example request
 
@@ -82,14 +88,14 @@ curl -X POST \
   -d '{
         "jsonrpc": "2.0",
         "id": 1,
-        "method": "tools.call",
+        "method": "tools/call",
         "params": {
-          "name": "convert_unit_value",
+          "name": "convert_values",
           "arguments": {
             "physicalQuantity": "Mud Density",
             "unitIn": "kilogram per cubic metre",
             "unitOut": "pound per gallon",
-            "value": 1200
+            "values": [1200]
           }
         }
       }' \

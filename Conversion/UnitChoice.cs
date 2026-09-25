@@ -27,6 +27,12 @@ namespace OSDC.UnitConversion.Conversion
         /// </summary>
         public string UnitLabel { get; set; }
         /// <summary>
+        /// Alternative spellings and symbols accepted for this unit choice.
+        /// Canonical names and labels remain in <see cref="UnitName"/> and
+        /// <see cref="UnitLabel"/>.
+        /// </summary>
+        public HashSet<string> Synonyms { get; set; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        /// <summary>
         /// the SI Unit name corresponding to this unit choice
         /// </summary>
         public string? SIUnitName { get; set; } = null;
@@ -66,12 +72,68 @@ namespace OSDC.UnitConversion.Conversion
             if (reference != null)
             {
                 UnitName = reference.UnitName;
+                UnitLabel = reference.UnitLabel;
+                Synonyms = new HashSet<string>(reference.Synonyms ?? [], StringComparer.OrdinalIgnoreCase);
                 ConversionFactorFromSIFormula = reference.ConversionFactorFromSIFormula;
                 ConversionBiasFromSIFormula = reference.ConversionBiasFromSIFormula;
                 ConversionFactorFromSI = reference.ConversionFactorFromSI;
                 ConversionBiasFromSI = reference.ConversionBiasFromSI;
                 ConversionDescription = reference.ConversionDescription;
                 SIUnitName = reference.SIUnitName;
+            }
+        }
+
+        internal void SupplementSynonyms()
+        {
+            Synonyms ??= new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            AddSpellingVariant(UnitName, "metre", "meter");
+            AddSpellingVariant(UnitName, "litre", "liter");
+            AddSpellingVariant(UnitName, "UK gallon", "imperial gallon");
+            AddSpellingVariant(UnitName, "UK gallon", "British gallon");
+            AddSpellingVariant(UnitName, "US gallon", "US liquid gallon");
+
+            if (!string.IsNullOrWhiteSpace(UnitLabel))
+            {
+                var variants = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { UnitLabel };
+                Expand(variants, "²", "^2");
+                Expand(variants, "³", "^3");
+                Expand(variants, "⁴", "^4");
+                Expand(variants, "•", "*");
+                Expand(variants, "•", "·");
+                Expand(variants, "µ", "u");
+                Expand(variants, "µ", "μ");
+                Expand(variants, "°", "deg");
+                Expand(variants, "UKGal", "ImpGal");
+                foreach (string variant in variants)
+                {
+                    if (!variant.Equals(UnitLabel, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Synonyms.Add(variant);
+                    }
+                }
+            }
+
+            Synonyms.Remove(UnitName ?? string.Empty);
+            Synonyms.Remove(UnitLabel ?? string.Empty);
+        }
+
+        private void AddSpellingVariant(string? value, string source, string replacement)
+        {
+            if (!string.IsNullOrWhiteSpace(value) && value.Contains(source, StringComparison.OrdinalIgnoreCase))
+            {
+                Synonyms.Add(value.Replace(source, replacement, StringComparison.OrdinalIgnoreCase));
+            }
+        }
+
+        private static void Expand(HashSet<string> values, string source, string replacement)
+        {
+            foreach (string value in values.ToArray())
+            {
+                if (value.Contains(source, StringComparison.Ordinal))
+                {
+                    values.Add(value.Replace(source, replacement, StringComparison.Ordinal));
+                }
             }
         }
 

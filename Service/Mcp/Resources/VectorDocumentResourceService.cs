@@ -12,7 +12,7 @@ using ModelContextProtocol.Server;
 namespace OSDC.UnitConversion.Service.Mcp.Resources;
 
 /// <summary>
-/// Bridges the SQLite-backed vector document catalog with the MCP resources/list and resources/get handlers.
+/// Bridges the SQLite-backed vector document catalog with the MCP resources/list and resources/read handlers.
 /// </summary>
 internal sealed class VectorDocumentResourceService
 {

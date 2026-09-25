@@ -172,14 +172,14 @@ namespace OSDC.UnitConversion.Conversion
                 UnitName = "rpm per second",
                 UnitLabel = "rpm/s",
                 ID = new Guid("762b5d58-a1ba-40cb-8776-2004613d15fb"),
-                ConversionFactorFromSI = 60
+                ConversionFactorFromSIFormula = "Factors.Minute"
             },
         new UnitChoice
             {
                 UnitName = "spm per second",
                 UnitLabel = "spm/s",
                 ID = new Guid("abcb24f7-c949-41dd-bf7d-acc23dc7e5e3"),
-                ConversionFactorFromSI = 60
+                ConversionFactorFromSIFormula = "Factors.Minute"
             }
         };
         public FrequencyRateOfChangeQuantity() : base()

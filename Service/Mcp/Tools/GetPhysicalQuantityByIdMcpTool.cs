@@ -23,11 +23,15 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
         _logger = logger;
     }
 
-    public string Name => "get_physical_quantity_by_id";
+    public string Name => "get_physical_quantity";
 
-    public string Description => "Returns the whole content of a physical quantity using its identifier by calling the PhysicalQuantityController CRUD endpoint.";
+    public string Title => "Get Physical Quantity";
 
-    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id");
+    public string Description => "Retrieve one physical quantity by UUID, including canonical name, synonyms, dimensions, SI unit, meaningful SI precision, directly declared unit choices, symbolic conversion definitions, and compatible parent quantities.";
+
+    public JsonNode? InputSchema => McpToolArgumentHelpers.CreateGuidSchema("id", "UUID of the physical quantity to retrieve.");
+
+    public JsonNode? OutputSchema => McpContractSchemas.TypedObject(("id", "string"), ("name", "string"), ("siUnit", "object"), ("dimensions", "object"), ("unitChoices", "array"), ("hierarchy", "object"));
 
     public Task<JsonNode?> InvokeAsync(JsonObject? arguments, CancellationToken cancellationToken)
     {
@@ -45,14 +49,15 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
 
             if (actionResult.Value is not null)
             {
-                var payload = JsonSerializer.SerializeToNode(actionResult.Value, McpToolJsonOptions.Default);
-                return Task.FromResult(payload);
+                return Task.FromResult<JsonNode?>(PhysicalQuantityContractMapper.ToDetails(actionResult.Value));
             }
 
             if (actionResult.Result is OkObjectResult okObjectResult && okObjectResult.Value is not null)
             {
-                var payload = JsonSerializer.SerializeToNode(okObjectResult.Value, okObjectResult.Value.GetType(), McpToolJsonOptions.Default);
-                return Task.FromResult(payload);
+                if (okObjectResult.Value is OSDC.UnitConversion.Conversion.BasePhysicalQuantity quantity)
+                {
+                    return Task.FromResult<JsonNode?>(PhysicalQuantityContractMapper.ToDetails(quantity));
+                }
             }
 
             if (actionResult.Result is NotFoundResult)
@@ -85,4 +90,5 @@ public sealed class GetPhysicalQuantityByIdMcpTool : IMcpTool
             return Task.FromResult<JsonNode?>(McpToolResponses.CreateError(StatusCodes.Status500InternalServerError, "An unexpected error occurred while retrieving the physical quantity."));
         }
     }
+
 }

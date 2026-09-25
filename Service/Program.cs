@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,10 +14,12 @@ using OSDC.UnitConversion.Service.Mcp.Prompts;
 using OSDC.UnitConversion.Service.Mcp.Resources;
 using OSDC.UnitConversion.Service.Mcp.Tools;
 using OSDC.UnitConversion.Service;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +71,19 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<McpHubOptions>(builder.Configuration.GetSection(McpHubOptions.SectionName));
 builder.Services.AddHttpClient(nameof(McpHubRegistrationService));
 builder.Services.AddHostedService<McpHubRegistrationService>();
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("mcp", context => RateLimitPartition.GetFixedWindowLimiter(
+        context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+        _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 120,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+});
 
 builder.Services.Configure<VectorDocumentDatabaseOptions>(builder.Configuration.GetSection("VectorDocumentDatabase"));
 builder.Services.Configure<VectorDocumentSearchOptions>(builder.Configuration.GetSection("VectorDocumentSearch"));
@@ -91,6 +108,7 @@ var mcpBuilder = builder.Services.AddMcpServer(options =>
         Name = "UnitConversionService",
         Version = serverVersion
     };
+    options.ServerInstructions = "Use convert_values for direct unit conversions and convert_between_unit_systems when unit systems select the units. Resolve ambiguous quantities with search_physical_quantities, then inspect get_physical_quantity. Conversion tools are read-only and do not persist cases. Unit-system create, replace, and delete tools persist changes and should be used only when explicitly requested.";
     options.Capabilities = new ServerCapabilities
     {
         Tools = new ToolsCapability(),
@@ -101,36 +119,16 @@ var mcpBuilder = builder.Services.AddMcpServer(options =>
 mcpBuilder.WithHttpTransport();
 mcpBuilder.WithPrompts<UnitConversionPromptCollection>(new JsonSerializerOptions(JsonSerializerDefaults.Web));
 
-builder.Services.AddLegacyMcpTool<PingMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllPhysicalQuantityIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetPhysicalQuantityByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllPhysicalQuantityMcpTool>();
-builder.Services.AddLegacyMcpTool<FindPhysicalQuantityIdByNameMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitSystemIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetUnitSystemByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitSystemLightMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitSystemMcpTool>();
-builder.Services.AddLegacyMcpTool<FindUnitSystemIdByNameMcpTool>();
-builder.Services.AddLegacyMcpTool<PostUnitSystemMcpTool>();
-builder.Services.AddLegacyMcpTool<PutUnitSystemByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<DeleteUnitSystemByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitConversionSetIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitConversionSetMetaInfoMcpTool>();
-builder.Services.AddLegacyMcpTool<GetUnitConversionSetByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitConversionSetMcpTool>();
-builder.Services.AddLegacyMcpTool<PostUnitConversionSetMcpTool>();
-builder.Services.AddLegacyMcpTool<PutUnitConversionSetByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<DeleteUnitConversionSetByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitSystemConversionSetIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitSystemConversionSetMetaInfoMcpTool>();
-builder.Services.AddLegacyMcpTool<GetUnitSystemConversionSetByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<GetAllUnitSystemConversionSetMcpTool>();
-builder.Services.AddLegacyMcpTool<PostUnitSystemConversionSetMcpTool>();
-builder.Services.AddLegacyMcpTool<PutUnitSystemConversionSetByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<DeleteUnitSystemConversionSetByIdMcpTool>();
-builder.Services.AddLegacyMcpTool<ConvertUnitValueMcpTool>();
-builder.Services.AddLegacyMcpTool<ConvertUnitSystemValueMcpTool>();
-builder.Services.AddLegacyMcpTool<SearchVectorDocumentsMcpTool>();
+builder.Services.AddMcpTool<SearchPhysicalQuantitiesMcpTool>();
+builder.Services.AddMcpTool<GetPhysicalQuantityByIdMcpTool>();
+builder.Services.AddMcpTool<ConvertValuesMcpTool>();
+builder.Services.AddMcpTool<ConvertBetweenUnitSystemsMcpTool>();
+builder.Services.AddMcpTool<ListUnitSystemsMcpTool>();
+builder.Services.AddMcpTool<GetUnitSystemByIdMcpTool>();
+builder.Services.AddMcpTool<PostUnitSystemMcpTool>();
+builder.Services.AddMcpTool<PutUnitSystemByIdMcpTool>();
+builder.Services.AddMcpTool<DeleteUnitSystemByIdMcpTool>();
+builder.Services.AddMcpTool<SearchVectorDocumentsMcpTool>();
 
 // end MCP server
 
@@ -178,6 +176,7 @@ else
 //app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseRateLimiter();
 
 app.UseSwagger(c =>
 {
@@ -210,8 +209,8 @@ app.UseCors(cors => cors
                         .AllowCredentials()
            );
 
-app.MapMcp("/mcp");
-app.MapMcpWebSocket("/mcp/ws");
+app.MapMcp("/mcp").RequireRateLimiting("mcp");
+app.MapMcpWebSocket("/mcp/ws").RequireRateLimiting("mcp");
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 

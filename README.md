@@ -48,6 +48,8 @@ The following tool names are exposed through MCP:
 - Unit conversion set management: `get_all_unit_conversion_set_id`, `get_all_unit_conversion_set_meta_info`, `get_unit_conversion_set_by_id`, `get_all_unit_conversion_set`, `post_unit_conversion_set`, `put_unit_conversion_set_by_id`, `delete_unit_conversion_set_by_id`
 - Unit system conversion set management: `get_all_unit_system_conversion_set_id`, `get_all_unit_system_conversion_set_meta_info`, `get_unit_system_conversion_set_by_id`, `get_all_unit_system_conversion_set`, `post_unit_system_conversion_set`, `put_unit_system_conversion_set_by_id`, `delete_unit_system_conversion_set_by_id`
 
+The two convenience conversion tools create, retrieve, and automatically delete temporary calculation cases. The `post_*_conversion_set` tools are the persistent batch alternative: create a case with a caller-assigned UUID, retrieve its calculated `DataOut` and `DataOutString` fields by that UUID, then delete it explicitly when appropriate. MCP discovery provides complete nested schemas for conversion sets and unit-system `Choices` mappings.
+
 ### Example JSON-RPC request
 
 ```bash
@@ -103,13 +105,15 @@ The registered MCP URLs are derived from `PublicBaseUrl` as `/UnitConversion/api
 
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities:
 
-- either 86 base physical quantities, called `BasePhysicalQuantity`
+- either 206 base physical quantities, called `BasePhysicalQuantity`
 
-- or 70 physical quantities specific to the drilling engineering field, called `PhysicalQuantity`
+- or 192 physical quantities specific to the drilling engineering field, called `PhysicalQuantity`
 
-- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the class `PhysicalQuantity` opens access to a total of **156 physical quantities**.
+- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the drilling catalog opens access to a total of **398 physical quantities**.
 
-- see the complete list of physical quantities by technical fields [below](https://github.com/Open-Source-Drilling-Community/UnitConversion/blob/main/README.md#list-of-physical-quantities)
+- a drilling-specific quantity can itself derive from a more general physical quantity. For example, `RateOfPenetrationDrillingQuantity` derives from `VelocityQuantity`. The specialised quantity exposes a curated list of common drilling units and defines domain-specific `MeaningfulPrecisionInSI`; compatible units absent from that list can be resolved from its parent hierarchy. Conversion retains the specialised quantity for precision semantics rather than replacing it with the parent quantity.
+
+- see the overview of physical quantities by technical fields [below](https://github.com/Open-Source-Drilling-Community/UnitConversion/blob/main/README.md#list-of-physical-quantities); the generated `EnumerationQuantities.cs` files are the authoritative complete catalogs.
 
 </details>
 
@@ -434,8 +438,8 @@ The current work has been funded by the [Research Council of Norway](https://www
 
 Part of it is hereby donated **without any limit or warranty** to the Society of Petroleum (SPE) Open Source Drilling Community under the **MIT** license, a sub-committee of the Drilling System Automation Technical Section. Anyone is thus **free to use** the source code of this repository **under its own responsibility**.
 
-## Gravity potential support (3.3.28)
+## Gravity potential support
 
 The Conversion library includes GravityPotential and its EarthGravityPotential specialization, with SI and US/Imperial choices and explanatory quantity descriptions. EarthGravityPotential uses a meaningful display precision of 0.01 m²/s². See [quantity documentation](Conversion/README.md) and [the enumeration-generation workflow](GenerateEnumerations/README.md).
 
-The Conversion, Conversion.DrillingEngineering, Conversion.UnitSystem and Conversion.UnitSystem.DrillingEngineering projects use source project references within this solution and package version 3.3.28. Packing generates corresponding NuGet dependencies. The service Model also references the local unit-system project so source builds expose the new quantities. Build and publish the related packages together when releasing; changing versions here does not publish them.
+The Conversion, Conversion.DrillingEngineering, Conversion.UnitSystem and Conversion.UnitSystem.DrillingEngineering projects use source project references by default and retain the upstream package version 3.4.1. Set `UseLocalUnitConversionProjects=false` to select the published packages; those packages do not include the newly merged gravity-potential additions until a subsequent release. Packing generates corresponding NuGet dependencies. The service Model also references the local unit-system project so source builds expose the new quantities. Build and publish the related packages together when releasing; changing versions here does not publish them.

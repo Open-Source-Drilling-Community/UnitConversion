@@ -11,7 +11,7 @@ Reference the package from a Blazor Server web application, configure the UnitCo
         AdditionalAssemblies="new[] { typeof(OSDC.UnitConversion.WebPages.UnitConversionMain).Assembly }">
 ```
 
-The host application must register MudBlazor and MudBlazor.Markdown services.
+The host application must register MudBlazor 9.9.0 or a compatible later version and MudBlazor.Markdown services.
 
 ```csharp
 builder.Services.AddMudServices();

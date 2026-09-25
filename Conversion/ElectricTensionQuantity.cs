@@ -55,7 +55,7 @@ namespace OSDC.UnitConversion.Conversion
         new UnitChoice
         {
           UnitName = "microvolt",
-          UnitLabel = "µV",
+          UnitLabel = "ÂµV",
           ID = new Guid("ede7e093-3e7d-429a-8c22-3b35ab5b20f2"),
           ConversionFactorFromSIFormula = "1.0/Factors.Micro"
         },
@@ -91,7 +91,7 @@ namespace OSDC.UnitConversion.Conversion
         {
           UnitName = "gigavolt",
           UnitLabel = "GV",
-          ID = new Guid("640f2693-dd92-472b-b2ec-0052fc7b7a11"),
+          ID = new Guid("1ce4342f-d4d2-44b2-81e9-73502c7ca10f"),
           ConversionFactorFromSIFormula = "1.0/Factors.Giga"
         }
         };
