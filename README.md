@@ -438,6 +438,10 @@ The current work has been funded by the [Research Council of Norway](https://www
 
 Part of it is hereby donated **without any limit or warranty** to the Society of Petroleum (SPE) Open Source Drilling Community under the **MIT** license, a sub-committee of the Drilling System Automation Technical Section. Anyone is thus **free to use** the source code of this repository **under its own responsibility**.
 
+## SDK selection
+
+The projects target .NET 8. `global.json` prefers a compatible .NET 8 SDK and allows rolling forward to the next installed major SDK when .NET 8 is unavailable. This supports development with SDK 9.0.317 and Visual Studio 2022 17.14 while retaining the .NET 8 SDK used by CI and Docker. Reload the solution after changing SDK selection if Visual Studio still displays a cached SDK-resolution error.
+
 ## Gravity potential support
 
 The Conversion library includes GravityPotential and its EarthGravityPotential specialization, with SI and US/Imperial choices and explanatory quantity descriptions. EarthGravityPotential uses a meaningful display precision of 0.01 m²/s². See [quantity documentation](Conversion/README.md) and [the enumeration-generation workflow](GenerateEnumerations/README.md).
