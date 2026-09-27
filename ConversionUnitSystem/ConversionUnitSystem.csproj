@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <UseLocalUnitConversionProjects Condition="'$(UseLocalUnitConversionProjects)' == ''">true</UseLocalUnitConversionProjects>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>OSDC.UnitConversion.Conversion.UnitSystem</RootNamespace>
@@ -17,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="3.4.2" />
+    <ProjectReference Include="..\Conversion\Conversion.csproj" />
   </ItemGroup>
 
   <ItemGroup>

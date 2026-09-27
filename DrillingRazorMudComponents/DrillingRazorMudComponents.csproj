@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="9.9.0" />
     <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="2.2.0" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering" Version="3.4.2" />
+    <ProjectReference Include="..\ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj" />
   </ItemGroup>
 
   <ItemGroup>

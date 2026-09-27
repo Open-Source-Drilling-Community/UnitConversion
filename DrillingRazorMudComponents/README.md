@@ -360,3 +360,7 @@ Child components call these methods through the cascading parent. They are also 
 - Reference source values are expected in SI units for the relevant quantity.
 - Optional reference selectors appear only when at least one non-default reference source is supplied.
 - For geodetic datum conversion, the current implementation follows the same offset-based style as position references: the cartographic projection datum latitude/longitude references are added when displaying from WGS84 and subtracted when converting back to WGS84.
+
+## General inverse-flattening quantity
+
+The local source dependency chain includes the general `InverseFlattening` quantity and its dimensionless unit with 1e-9 meaningful display precision. It is inherited from Conversion rather than defined as drilling-specific. Intra-solution dependencies are unconditional project references; release package versions must be aligned before publication.

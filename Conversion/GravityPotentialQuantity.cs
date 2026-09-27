@@ -31,6 +31,7 @@ namespace OSDC.UnitConversion.Conversion
             new UnitChoice
             {
                 UnitName = "square metre per square second", UnitLabel = "m²/s²",
+                Synonyms = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "m^2/s^2", "square meter per square second" },
                 ID = new Guid("b3bd7f26-53be-42d6-9b0c-37f371944f5a"),
                 ConversionFactorFromSIFormula = "1.0/Factors.Unit", IsSI = true
             },
@@ -43,6 +44,7 @@ namespace OSDC.UnitConversion.Conversion
             new UnitChoice
             {
                 UnitName = "square foot per square second", UnitLabel = "ft²/s²",
+                Synonyms = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ft^2/s^2" },
                 ID = new Guid("61f47537-c38d-4359-86ad-648fc8903b19"),
                 ConversionFactorFromSIFormula = "1.0/(Factors.Foot*Factors.Foot)"
             },

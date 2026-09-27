@@ -105,11 +105,11 @@ The registered MCP URLs are derived from `PublicBaseUrl` as `/UnitConversion/api
 
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities:
 
-- either 206 base physical quantities, called `BasePhysicalQuantity`
+- either 210 base physical quantities, called `BasePhysicalQuantity`
 
 - or 192 physical quantities specific to the drilling engineering field, called `PhysicalQuantity`
 
-- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the drilling catalog opens access to a total of **398 physical quantities**.
+- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the drilling catalog opens access to a total of **402 physical quantities**.
 
 - a drilling-specific quantity can itself derive from a more general physical quantity. For example, `RateOfPenetrationDrillingQuantity` derives from `VelocityQuantity`. The specialised quantity exposes a curated list of common drilling units and defines domain-specific `MeaningfulPrecisionInSI`; compatible units absent from that list can be resolved from its parent hierarchy. Conversion retains the specialised quantity for precision semantics rather than replacing it with the parent quantity.
 
@@ -447,3 +447,13 @@ The projects target .NET 8. `global.json` prefers a compatible .NET 8 SDK and al
 The Conversion library includes GravityPotential and its EarthGravityPotential specialization, with SI and US/Imperial choices and explanatory quantity descriptions. EarthGravityPotential uses a meaningful display precision of 0.01 m²/s². See [quantity documentation](Conversion/README.md) and [the enumeration-generation workflow](GenerateEnumerations/README.md).
 
 The Conversion, Conversion.DrillingEngineering, Conversion.UnitSystem and Conversion.UnitSystem.DrillingEngineering projects use source project references by default and retain the upstream package version 3.4.1. Set `UseLocalUnitConversionProjects=false` to select the published packages; those packages do not include the newly merged gravity-potential additions until a subsequent release. Packing generates corresponding NuGet dependencies. The service Model also references the local unit-system project so source builds expose the new quantities. Build and publish the related packages together when releasing; changing versions here does not publish them.
+
+## Inverse flattening engineering precision
+
+The general Conversion library includes `InverseFlatteningQuantity`, derived from DimensionlessQuantity, with meaningful display precision 1e-9. It preserves nine decimal places without rounding numeric conversions. All four default unit systems use the same dimensionless unit; drilling catalogues inherit it. See [the quantity documentation](Conversion/README.md#inverse-flattening).
+
+The solution uses unconditional project references between its conversion libraries and their direct consumers, so newly generated quantities are available before publication. Release version alignment and NuGet publication remain separate steps.
+
+## Helmert scale difference engineering precision
+
+`HelmertScaleDifferenceQuantity` belongs to the general Conversion library and uses 1e-12 meaningful display precision. Values are signed dimensionless increments in 1+s, not full scale factors or ppm numbers. SI, Metric, US and Imperial all select the dimensionless unit; drilling consumers inherit it. See [the quantity documentation](Conversion/README.md#helmert-scale-difference).

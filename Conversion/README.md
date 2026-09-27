@@ -70,3 +70,13 @@ quantity or when a new physical quantity is added or removed.
 Both expose explanatory `DescriptionMD` text covering the geodetic convention W = V + Phi, g = grad W, reference-potential considerations, and the distinction from energy density. Supported units are m²/s², J/kg, ft²/s² and ft·lbf/lbm. Factors are formulas built from existing base factors: `1.0/(Factors.Foot*Factors.Foot)` and `Factors.Pound/(Factors.Foot*Factors.PoundForce)` convert from SI. One ft·lbf/lbm is 2.98906692 J/kg; pound-force uses standard gravity, not local gravity.
 
 When adding quantities, follow [the generator workflow](../GenerateEnumerations/README.md). It writes `Constructors.cs`, `Factors.cs` and the enumeration files; regenerate before adding enum-based defaults to unit systems.
+
+## Inverse flattening
+
+`InverseFlatteningQuantity` specializes DimensionlessQuantity in the general Conversion library. Its meaningful display precision is 1e-9, preserving nine decimal places such as WGS84's 298.257223563. Numeric conversion is the identity and does not round stored values. The dimensionless unit and its symbolic factor `1.0/Factors.Unit` are inherited from the parent. Flattening and inverse flattening are different quantities, not unit choices. A provider's zero sentinel for a sphere remains untouched.
+
+The new quantity is registered through GenerateEnumerations, with dimensionless defaults in SI, Metric, US and Imperial. Intra-solution dependencies use unconditional project references so generation, tests and consumers see the same source catalogue. NuGet packing still records package dependencies; published dependency versions must be aligned during release.
+
+## Helmert scale difference
+
+`HelmertScaleDifferenceQuantity` specializes DimensionlessQuantity in the general Conversion library, with meaningful precision 1e-12 (0.000001 ppm). It describes the signed increment s in a full scale factor 1+s. Zero means no scale change. Numeric conversions preserve the full value. All systems use the shared dimensionless unit and inherited symbolic identity factor `1.0/Factors.Unit`; ppm is described for interpretation but is not an exposed unit choice. Source ppm values must be converted to SI by multiplying by 1e-6. This precision is a display convention, not a transformation-accuracy claim.

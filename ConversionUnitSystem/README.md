@@ -25,3 +25,11 @@ Choices.Add(AccelerationQuantity.Instance.ID.ToString(), AccelerationQuantity.In
 ## Gravity potential defaults
 
 Both GravityPotential and EarthGravityPotential default to m²/s² in SI and Metric, and ft²/s² in US and Imperial. SI selects the canonical `IsSI` unit automatically; Metric, Imperial and US have explicit entries. Generate the enumerations before adding these entries. The drilling unit systems inherit these general choices.
+
+## Inverse flattening defaults
+
+InverseFlattening uses the dimensionless unit in SI, Metric, US and Imperial. Its 1e-9 meaningful precision belongs to the quantity and is unchanged by the unit system. Drilling unit systems inherit these general defaults.
+
+## Helmert scale difference defaults
+
+HelmertScaleDifference uses the dimensionless unit in SI, Metric, US and Imperial. Meaningful precision is 1e-12 in every system. Drilling unit systems inherit these general defaults.

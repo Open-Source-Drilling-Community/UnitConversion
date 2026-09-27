@@ -214,7 +214,9 @@ namespace OSDC.UnitConversion.Conversion
          PlaneAngleGeodesic,  // PlaneAngleGeodesic
          PlaneAngleStandard,  // PlaneAngleStandard
          EarthGravityPotential,  // EarthGravityPotential
-         GravityPotential // GravityPotential
+         GravityPotential,  // GravityPotential
+         InverseFlattening,  // InverseFlattening
+         HelmertScaleDifference // HelmertScaleDifference
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -425,7 +427,9 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.PlaneAngleGeodesic, new Guid("fc88c9ff-fa0a-4406-b397-015f3ca062bc")},  // PlaneAngleGeodesic
          {QuantityEnum.PlaneAngleStandard, new Guid("3773fc19-be1a-4604-91f8-6e4aefb44757")},  // PlaneAngleStandard
          {QuantityEnum.EarthGravityPotential, new Guid("61a8a54e-684a-4e72-bb46-b73d342bdb70")},  // EarthGravityPotential
-         {QuantityEnum.GravityPotential, new Guid("3399d06a-5d68-4aab-a92c-8352cc44ac58")} // GravityPotential
+         {QuantityEnum.GravityPotential, new Guid("3399d06a-5d68-4aab-a92c-8352cc44ac58")},  // GravityPotential
+         {QuantityEnum.InverseFlattening, new Guid("2f4ba904-6f7d-4be7-abc8-602d37370b59")},  // InverseFlattening
+         {QuantityEnum.HelmertScaleDifference, new Guid("f81f6f40-0910-47e0-9769-56d8542d61e9")} // HelmertScaleDifference
     };
   }
 }
@@ -8587,6 +8591,54 @@ namespace OSDC.UnitConversion.Conversion
          {UnitChoicesEnum.JoulePerKilogram, new Guid("67ded635-bf30-4986-a452-a4f219294e5f")},  // joule per kilogram
          {UnitChoicesEnum.SquareFootPerSquareSecond, new Guid("61f47537-c38d-4359-86ad-648fc8903b19")},  // square foot per square second
          {UnitChoicesEnum.FootPoundforcePerPoundmass, new Guid("568f00ee-c073-4cce-bc41-a20309281a26")} // foot pound-force per pound-mass
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class InverseFlatteningQuantity : DimensionlessQuantity
+  {
+    public new enum UnitChoicesEnum
+      {
+         Dimensionless // dimensionless
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // dimensionless
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class HelmertScaleDifferenceQuantity : DimensionlessQuantity
+  {
+    public new enum UnitChoicesEnum
+      {
+         Dimensionless // dimensionless
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // dimensionless
     };
     public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
     {
