@@ -40,7 +40,7 @@ The service image includes a seed MCP vector document database under `/app/seed/
 
 The following tool names are exposed through MCP:
 
-- `ping` – connectivity probe returning a `pong` payload
+- `ping` â€“ connectivity probe returning a `pong` payload
 - Physical quantity utilities: `get_all_physical_quantity_id`, `get_physical_quantity_by_id`, `get_all_physical_quantity`, `find_physical_quantity_id_by_name`
 - Unit conversions for individual quantities: `convert_unit_value`
 - Unit system utilities: `get_all_unit_system_id`, `get_unit_system_by_id`, `get_all_unit_system_light`, `get_all_unit_system`, `find_unit_system_id_by_name`, `post_unit_system`, `put_unit_system_by_id`, `delete_unit_system_by_id`
@@ -105,11 +105,11 @@ The registered MCP URLs are derived from `PublicBaseUrl` as `/UnitConversion/api
 
 The UnitConversion repository contains tools to handle unit conversions of a wide variety of physical quantities:
 
-- either 210 base physical quantities, called `BasePhysicalQuantity`
+- either 211 base physical quantities, called `BasePhysicalQuantity`
 
 - or 192 physical quantities specific to the drilling engineering field, called `PhysicalQuantity`
 
-- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the drilling catalog opens access to a total of **402 physical quantities**.
+- note that `PhysicalQuantity` extends `BasePhysicalQuantity` and hence encompasses it, so that the drilling catalog opens access to a total of **403 physical quantities**.
 
 - a drilling-specific quantity can itself derive from a more general physical quantity. For example, `RateOfPenetrationDrillingQuantity` derives from `VelocityQuantity`. The specialised quantity exposes a curated list of common drilling units and defines domain-specific `MeaningfulPrecisionInSI`; compatible units absent from that list can be resolved from its parent hierarchy. Conversion retains the specialised quantity for precision semantics rather than replacing it with the parent quantity.
 
@@ -444,7 +444,7 @@ The projects target .NET 8. `global.json` prefers a compatible .NET 8 SDK and al
 
 ## Gravity potential support
 
-The Conversion library includes GravityPotential and its EarthGravityPotential specialization, with SI and US/Imperial choices and explanatory quantity descriptions. EarthGravityPotential uses a meaningful display precision of 0.01 m²/s². See [quantity documentation](Conversion/README.md) and [the enumeration-generation workflow](GenerateEnumerations/README.md).
+The Conversion library includes GravityPotential and its EarthGravityPotential specialization, with SI and US/Imperial choices and explanatory quantity descriptions. EarthGravityPotential uses a meaningful display precision of 0.01 mÂ²/sÂ². See [quantity documentation](Conversion/README.md) and [the enumeration-generation workflow](GenerateEnumerations/README.md).
 
 The Conversion, Conversion.DrillingEngineering, Conversion.UnitSystem and Conversion.UnitSystem.DrillingEngineering projects use source project references by default and retain the upstream package version 3.4.1. Set `UseLocalUnitConversionProjects=false` to select the published packages; those packages do not include the newly merged gravity-potential additions until a subsequent release. Packing generates corresponding NuGet dependencies. The service Model also references the local unit-system project so source builds expose the new quantities. Build and publish the related packages together when releasing; changing versions here does not publish them.
 
@@ -457,3 +457,7 @@ The solution uses unconditional project references between its conversion librar
 ## Helmert scale difference engineering precision
 
 `HelmertScaleDifferenceQuantity` belongs to the general Conversion library and uses 1e-12 meaningful display precision. Values are signed dimensionless increments in 1+s, not full scale factors or ppm numbers. SI, Metric, US and Imperial all select the dimensionless unit; drilling consumers inherit it. See [the quantity documentation](Conversion/README.md#helmert-scale-difference).
+
+## Projection scale factor engineering precision
+
+`ProjectionScaleFactorQuantity` is a general Conversion quantity with 1e-9 meaningful display precision. It represents the full factor k (for example 0.9996), rather than the Helmert increment s. The enumerations are regenerated before the Metric, US and Imperial defaults are added; SI discovers its canonical unit automatically. All systems use the inherited symbolic identity conversion. See [the quantity documentation](Conversion/README.md#projection-scale-factor). Internal library, Model and unit-component dependencies use local project references so builds include new source quantities before publication. Release versions remain unchanged and must be assigned before publishing new NuGets.

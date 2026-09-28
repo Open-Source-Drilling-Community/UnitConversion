@@ -684,6 +684,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(DimensionLessStandardQuantity.Instance.ID.ToString(), DimensionLessStandardQuantity.Instance.GetUnitChoice(DimensionLessStandardQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(InverseFlatteningQuantity.Instance.ID.ToString(), InverseFlatteningQuantity.Instance.GetUnitChoice(InverseFlatteningQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(HelmertScaleDifferenceQuantity.Instance.ID.ToString(), HelmertScaleDifferenceQuantity.Instance.GetUnitChoice(HelmertScaleDifferenceQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
+                    Choices.Add(ProjectionScaleFactorQuantity.Instance.ID.ToString(), ProjectionScaleFactorQuantity.Instance.GetUnitChoice(ProjectionScaleFactorQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(LengthStandardQuantity.Instance.ID.ToString(), LengthStandardQuantity.Instance.GetUnitChoice(LengthStandardQuantity.UnitChoicesEnum.Metre).ID.ToString());
                     Choices.Add(ProportionStandardQuantity.Instance.ID.ToString(), ProportionStandardQuantity.Instance.GetUnitChoice(ProportionStandardQuantity.UnitChoicesEnum.Percent).ID.ToString());
                     Choices.Add(StressQuantity.Instance.ID.ToString(), StressQuantity.Instance.GetUnitChoice("pascal").ID.ToString());
@@ -795,6 +796,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(DimensionLessStandardQuantity.Instance.ID.ToString(), DimensionLessStandardQuantity.Instance.GetUnitChoice(DimensionLessStandardQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(InverseFlatteningQuantity.Instance.ID.ToString(), InverseFlatteningQuantity.Instance.GetUnitChoice(InverseFlatteningQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(HelmertScaleDifferenceQuantity.Instance.ID.ToString(), HelmertScaleDifferenceQuantity.Instance.GetUnitChoice(HelmertScaleDifferenceQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
+                    Choices.Add(ProjectionScaleFactorQuantity.Instance.ID.ToString(), ProjectionScaleFactorQuantity.Instance.GetUnitChoice(ProjectionScaleFactorQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(LengthStandardQuantity.Instance.ID.ToString(), LengthStandardQuantity.Instance.GetUnitChoice(LengthStandardQuantity.UnitChoicesEnum.Foot).ID.ToString());
                     Choices.Add(ProportionStandardQuantity.Instance.ID.ToString(), ProportionStandardQuantity.Instance.GetUnitChoice(ProportionStandardQuantity.UnitChoicesEnum.Percent).ID.ToString());
                     Choices.Add(StressQuantity.Instance.ID.ToString(), StressQuantity.Instance.GetUnitChoice("pascal").ID.ToString());
@@ -906,6 +908,7 @@ namespace OSDC.UnitConversion.Conversion.UnitSystem
                     Choices.Add(DimensionLessStandardQuantity.Instance.ID.ToString(), DimensionLessStandardQuantity.Instance.GetUnitChoice(DimensionLessStandardQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(InverseFlatteningQuantity.Instance.ID.ToString(), InverseFlatteningQuantity.Instance.GetUnitChoice(InverseFlatteningQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(HelmertScaleDifferenceQuantity.Instance.ID.ToString(), HelmertScaleDifferenceQuantity.Instance.GetUnitChoice(HelmertScaleDifferenceQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
+                    Choices.Add(ProjectionScaleFactorQuantity.Instance.ID.ToString(), ProjectionScaleFactorQuantity.Instance.GetUnitChoice(ProjectionScaleFactorQuantity.UnitChoicesEnum.Dimensionless).ID.ToString());
                     Choices.Add(LengthStandardQuantity.Instance.ID.ToString(), LengthStandardQuantity.Instance.GetUnitChoice(LengthStandardQuantity.UnitChoicesEnum.Foot).ID.ToString());
                     Choices.Add(ProportionStandardQuantity.Instance.ID.ToString(), ProportionStandardQuantity.Instance.GetUnitChoice(ProportionStandardQuantity.UnitChoicesEnum.Percent).ID.ToString());
                     Choices.Add(StressQuantity.Instance.ID.ToString(), StressQuantity.Instance.GetUnitChoice("pascal").ID.ToString());

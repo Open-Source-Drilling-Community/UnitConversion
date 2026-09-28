@@ -107,6 +107,24 @@ public class McpContractTests
     }
 
     [Test]
+    public async Task ProjectionScaleFactorConversionKeepsTheFullFactorAndDisplayPrecision()
+    {
+        var quantity = ProjectionScaleFactorQuantity.Instance;
+        var unit = quantity.UnitChoices.Single();
+        var result = await new ConvertValuesMcpTool().InvokeAsync(new JsonObject
+        {
+            ["physicalQuantityId"] = quantity.ID.ToString(),
+            ["unitInId"] = unit.ID.ToString(),
+            ["unitOutId"] = unit.ID.ToString(),
+            ["values"] = new JsonArray(0.9996, 1.000002123456789)
+        }, CancellationToken.None);
+        Assert.That(result?["quantity"]?["id"]?.GetValue<string>(), Is.EqualTo(quantity.ID.ToString()));
+        Assert.That(result?["results"]?[0]?["numericValue"]?.GetValue<double>(), Is.EqualTo(0.9996));
+        Assert.That(result?["results"]?[0]?["formattedValue"]?.GetValue<string>(), Is.EqualTo("0.999600000"));
+        Assert.That(result?["results"]?[1]?["numericValue"]?.GetValue<double>(), Is.EqualTo(1.000002123456789));
+    }
+
+    [Test]
     public void Prompts_AdvertiseArgumentsAndOnlyReferenceCurrentOperations()
     {
         var prompts = new UnitConversionPromptCollection().ToList();

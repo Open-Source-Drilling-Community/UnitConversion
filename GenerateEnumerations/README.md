@@ -11,10 +11,12 @@ Example, with the repository's required SDK installed:
 
 ```powershell
 # Working directory: UnitConversion/GenerateEnumerations
-dotnet build -c Debug -p:UseLocalUnitConversionProjects=true
+dotnet build -c Debug
 dotnet bin/Debug/net8.0/GenerateEnumerations.dll
 ```
 
 The generator retains the compiled QuantityEnum order and appends new quantities in name order, preserving existing numeric enum values when adding quantities. Removing quantities requires a separate compatibility review. Stable GUIDs remain the persisted catalogue identities.
+
+Internal quantity and unit-system dependencies use unconditional project references; no local/package switch is needed. ProjectionScaleFactor follows this workflow and inherits the dimensionless unit's symbolic identity factor before its own enum is generated.
 
 Quantity discovery reflects the static `Instance` property getter (`get_Instance`); the accessor method is not named `Instance`. The generator must include both the base and drilling catalogues.

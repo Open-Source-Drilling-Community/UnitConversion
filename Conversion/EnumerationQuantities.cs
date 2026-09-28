@@ -216,7 +216,8 @@ namespace OSDC.UnitConversion.Conversion
          EarthGravityPotential,  // EarthGravityPotential
          GravityPotential,  // GravityPotential
          InverseFlattening,  // InverseFlattening
-         HelmertScaleDifference // HelmertScaleDifference
+         HelmertScaleDifference,  // HelmertScaleDifference
+         ProjectionScaleFactor // ProjectionScaleFactor
        }
     protected static new Dictionary<QuantityEnum, Guid> enumLookUp_ = new Dictionary<QuantityEnum, Guid>()
     {
@@ -429,7 +430,8 @@ namespace OSDC.UnitConversion.Conversion
          {QuantityEnum.EarthGravityPotential, new Guid("61a8a54e-684a-4e72-bb46-b73d342bdb70")},  // EarthGravityPotential
          {QuantityEnum.GravityPotential, new Guid("3399d06a-5d68-4aab-a92c-8352cc44ac58")},  // GravityPotential
          {QuantityEnum.InverseFlattening, new Guid("2f4ba904-6f7d-4be7-abc8-602d37370b59")},  // InverseFlattening
-         {QuantityEnum.HelmertScaleDifference, new Guid("f81f6f40-0910-47e0-9769-56d8542d61e9")} // HelmertScaleDifference
+         {QuantityEnum.HelmertScaleDifference, new Guid("f81f6f40-0910-47e0-9769-56d8542d61e9")},  // HelmertScaleDifference
+         {QuantityEnum.ProjectionScaleFactor, new Guid("6df5410d-d32a-4d47-89f9-e7c96cf61c74")} // ProjectionScaleFactor
     };
   }
 }
@@ -8631,6 +8633,30 @@ namespace OSDC.UnitConversion.Conversion
 namespace OSDC.UnitConversion.Conversion
 {
   public partial class HelmertScaleDifferenceQuantity : DimensionlessQuantity
+  {
+    public new enum UnitChoicesEnum
+      {
+         Dimensionless // dimensionless
+      }
+    protected new Dictionary<UnitChoicesEnum, Guid> enumLookUp_ = new Dictionary<UnitChoicesEnum, Guid>()
+    {
+         {UnitChoicesEnum.Dimensionless, new Guid("8744b0f7-2866-42d8-bf6c-b619ac87b945")} // dimensionless
+    };
+    public UnitChoice GetUnitChoice(UnitChoicesEnum choice)
+    {
+       UnitChoice c = null;
+       Guid guid;
+       if (enumLookUp_.TryGetValue(choice, out guid))
+       {
+         c = GetUnitChoice(guid);
+       }
+       return c;
+    }
+  }
+}
+namespace OSDC.UnitConversion.Conversion
+{
+  public partial class ProjectionScaleFactorQuantity : DimensionlessQuantity
   {
     public new enum UnitChoicesEnum
       {

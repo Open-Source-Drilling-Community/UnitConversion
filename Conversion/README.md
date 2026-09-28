@@ -80,3 +80,7 @@ The new quantity is registered through GenerateEnumerations, with dimensionless 
 ## Helmert scale difference
 
 `HelmertScaleDifferenceQuantity` specializes DimensionlessQuantity in the general Conversion library, with meaningful precision 1e-12 (0.000001 ppm). It describes the signed increment s in a full scale factor 1+s. Zero means no scale change. Numeric conversions preserve the full value. All systems use the shared dimensionless unit and inherited symbolic identity factor `1.0/Factors.Unit`; ppm is described for interpretation but is not an exposed unit choice. Source ppm values must be converted to SI by multiplying by 1e-6. This precision is a display convention, not a transformation-accuracy claim.
+
+## Projection scale factor
+
+`ProjectionScaleFactorQuantity` specializes DimensionlessQuantity with meaningful display precision 1e-9. It describes the full method-defined projection factor k (unity means no local scale change), distinct from the Helmert increment s in 1+s. UTM uses 0.9996 at its central meridian. SI, Metric, US and Imperial share the dimensionless unit and inherited symbolic factor `1.0/Factors.Unit`; percent and ppm are not exposed unit choices. Numeric conversion does not round values. DescriptionMD explains context, precision and the distinction from scale differences and unit-conversion factors.

@@ -143,3 +143,7 @@ The current work has been funded by the [Research Council of Norway](https://www
 ## Quantity catalogue source
 
 The service Model references the local drilling unit-system project and its transitive Conversion projects. Docker's restore stage includes those project files. This ensures the service exposes the same catalogue as the solution, including GravityPotential and EarthGravityPotential and their explanatory text. Release these service changes before clients request the new quantity names.
+
+## Projection scale factor catalogue entry
+
+The service builds against the local quantity/unit-system projects and exposes ProjectionScaleFactor through its existing catalogue and conversion endpoints. Its dimensionless value is the full projection factor with 1e-9 meaningful display precision. Numeric conversion preserves the full supplied value. No endpoint or DTO shape changes are required.

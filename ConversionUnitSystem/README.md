@@ -33,3 +33,7 @@ InverseFlattening uses the dimensionless unit in SI, Metric, US and Imperial. It
 ## Helmert scale difference defaults
 
 HelmertScaleDifference uses the dimensionless unit in SI, Metric, US and Imperial. Meaningful precision is 1e-12 in every system. Drilling unit systems inherit these general defaults.
+
+## Projection scale factor defaults
+
+ProjectionScaleFactor uses the dimensionless unit in SI, Metric, US and Imperial, with 1e-9 meaningful display precision. The quantity stores the full factor, not a ppm increment. Drilling systems inherit these defaults.

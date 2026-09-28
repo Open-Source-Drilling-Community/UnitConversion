@@ -364,3 +364,7 @@ Child components call these methods through the cascading parent. They are also 
 ## General inverse-flattening quantity
 
 The local source dependency chain includes the general `InverseFlattening` quantity and its dimensionless unit with 1e-9 meaningful display precision. It is inherited from Conversion rather than defined as drilling-specific. Intra-solution dependencies are unconditional project references; release package versions must be aligned before publication.
+
+## Projection scale factor
+
+The local unit-system dependency includes the general `ProjectionScaleFactor` quantity. Unit controls can select it by that canonical name to display full factors with 1e-9 meaningful precision. The configured UnitConversion service must also contain the quantity. SI, Metric, US and Imperial all use dimensionless values.

@@ -25,3 +25,7 @@ Choices.Add(AccelerationDrillingQuantity.Instance.ID.ToString(), AccelerationDri
 ## General inverse-flattening quantity
 
 The local source dependency chain includes the general `InverseFlattening` quantity and its dimensionless unit with 1e-9 meaningful display precision. It is inherited from Conversion rather than defined as drilling-specific. Intra-solution dependencies are unconditional project references; release package versions must be aligned before publication.
+
+## Projection scale factor
+
+Drilling systems inherit the general ProjectionScaleFactor defaults: dimensionless in SI, Metric, US and Imperial, with 1e-9 meaningful display precision.
