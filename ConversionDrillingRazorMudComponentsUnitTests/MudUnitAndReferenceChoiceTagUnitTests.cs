@@ -31,5 +31,21 @@ namespace ConversionDrillingRazorMudComponentsUnitTests
             val = obj.Instance.FromSI(2.0 * Math.PI, OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity.QuantityEnum.AngularVelocityDrilling);
             //Assert.Equal(60.0, val);
         }
+
+        [Fact]
+        public void DateTimeReferenceConvertsDisplayInputBackToCanonicalUtc()
+        {
+            MudUnitAndReferenceChoiceTag component = new();
+            DateTime wallClock = new(2026, 10, 5, 12, 30, 0, DateTimeKind.Unspecified);
+
+            component.DateReferenceName = "UTC";
+            Assert.Equal(TimeSpan.Zero, component.ToUtcDateTimeOffset(wallClock).Offset);
+            Assert.Equal(wallClock, component.ToDisplayDateTime(component.ToUtcDateTimeOffset(wallClock)));
+
+            component.DateReferenceName = "Local Time";
+            DateTimeOffset canonical = component.ToUtcDateTimeOffset(wallClock);
+            Assert.Equal(TimeSpan.Zero, canonical.Offset);
+            Assert.Equal(wallClock, component.ToDisplayDateTime(canonical));
+        }
     }
 }

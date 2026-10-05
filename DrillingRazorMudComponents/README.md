@@ -16,6 +16,7 @@ The package is built for Blazor and targets `net8.0`. It uses the drilling unit 
   - Position: WGS84, well-head, cluster-reference, field, and cartographic grid.
   - Geodetic datum: WGS84 and cartographic projection datum.
 - Refresh child components automatically when the selected unit system or reference changes.
+- Optionally select UTC or local time for date-time presentation and editing while retaining canonical UTC values.
 
 ## Installation
 
@@ -75,9 +76,13 @@ Common parameters:
 | `GeodeticReferenceName` / `GeodeticReferenceNameChanged` | Selected geodetic datum reference. |
 | `AzimuthReferenceName` / `AzimuthReferenceNameChanged` | Selected azimuth reference. |
 | `PressureReferenceName` / `PressureReferenceNameChanged` | Selected pressure reference. |
+| `EnableDateTimeReference` | Shows the time-reference selector even when no registered date-time-aware child component is present. |
+| `DateReferenceName` / `DateReferenceNameChanged` | Selected time reference: `UTC` or `Local Time`. |
 | `HttpHost`, `HttpBasePath`, `HttpController` | Optional endpoint information for loading custom unit systems. If omitted, built-in drilling unit systems are used. |
 
 Reference selectors are optional. A selector is hidden when it has only the default choice.
+
+Date-time values remain UTC in domain models and wire contracts. Use `ToDisplayDateTime` and `FormatDateTime` for presentation, and `ToUtcDateTimeOffset` when accepting a wall-clock value in the selected reference. `IDateTimeReferenceAwareComponent` children are refreshed when the selection changes.
 
 ### MudInputWithUnit
 
