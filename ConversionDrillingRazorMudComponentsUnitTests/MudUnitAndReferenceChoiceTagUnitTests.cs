@@ -38,6 +38,8 @@ namespace ConversionDrillingRazorMudComponentsUnitTests
             MudUnitAndReferenceChoiceTag component = new();
             DateTime wallClock = new(2026, 10, 5, 12, 30, 0, DateTimeKind.Unspecified);
 
+            Assert.Equal("Local Time", component.DateReferenceName);
+
             component.DateReferenceName = "UTC";
             Assert.Equal(TimeSpan.Zero, component.ToUtcDateTimeOffset(wallClock).Offset);
             Assert.Equal(wallClock, component.ToDisplayDateTime(component.ToUtcDateTimeOffset(wallClock)));

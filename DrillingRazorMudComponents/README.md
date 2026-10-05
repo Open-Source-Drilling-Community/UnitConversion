@@ -77,7 +77,7 @@ Common parameters:
 | `AzimuthReferenceName` / `AzimuthReferenceNameChanged` | Selected azimuth reference. |
 | `PressureReferenceName` / `PressureReferenceNameChanged` | Selected pressure reference. |
 | `EnableDateTimeReference` | Shows the time-reference selector even when no registered date-time-aware child component is present. |
-| `DateReferenceName` / `DateReferenceNameChanged` | Selected time reference: `UTC` or `Local Time`. |
+| `DateReferenceName` / `DateReferenceNameChanged` | Selected time reference: `UTC` or `Local Time`; defaults to `Local Time`. |
 | `HttpHost`, `HttpBasePath`, `HttpController` | Optional endpoint information for loading custom unit systems. If omitted, built-in drilling unit systems are used. |
 
 Reference selectors are optional. A selector is hidden when it has only the default choice.

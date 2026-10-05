@@ -270,8 +270,8 @@ else
     [Parameter]
     public string DateReferenceName
     {
-        get => dateReferenceName == "Local Time" ? "Local Time" : "UTC";
-        set => dateReferenceName = value == "Local Time" ? "Local Time" : "UTC";
+        get => dateReferenceName == "UTC" ? "UTC" : "Local Time";
+        set => dateReferenceName = value == "UTC" ? "UTC" : "Local Time";
     }
 
     [Parameter]
@@ -285,7 +285,7 @@ else
     private string? geodeticReferenceName_;
     private string? azimuthReferenceName_;
     private string? pressureReferenceName_;
-    public string? dateReferenceName = "UTC";
+    public string? dateReferenceName = "Local Time";
 
     private HttpClient? httpClient;
     private List<UnitSystemLight>? unitSystemLightList = new List<UnitSystemLight>();
@@ -495,7 +495,7 @@ else
 
     private async Task ChangeDateReference(string? value)
     {
-        DateReferenceName = value ?? "UTC";
+        DateReferenceName = value ?? "Local Time";
         await PostProcessDateTimeReference();
     }
 
