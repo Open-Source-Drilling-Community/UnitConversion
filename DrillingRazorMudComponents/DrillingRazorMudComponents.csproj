@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="MudBlazor" Version="9.9.0" />
     <PackageReference Include="OSDC.DotnetLibraries.General.DataManagement" Version="2.2.0" />
-    <PackageReference Include="OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering" Version="3.4.5" />
+    <ProjectReference Include="..\ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj" />
   </ItemGroup>
 
   <ItemGroup>

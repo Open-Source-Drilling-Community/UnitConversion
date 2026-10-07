@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConversionUnitSystem.DrillingEngineering\ConversionUnitSystem.DrillingEngineering.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
     <ProjectReference Include="..\ModelShared\ModelShared.csproj" />
     <ProjectReference Include="..\Service\Service.csproj" />

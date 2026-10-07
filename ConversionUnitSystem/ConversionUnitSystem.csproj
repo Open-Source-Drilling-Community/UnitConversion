@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OSDC.UnitConversion.Conversion" Version="3.4.5" />
+    <ProjectReference Include="..\Conversion\Conversion.csproj" />
   </ItemGroup>
 
   <ItemGroup>
