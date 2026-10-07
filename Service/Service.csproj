@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -38,4 +38,5 @@
 		<Exec Command="dotnet swagger tofile --output ../ModelShared/json-schemas/$(Version)/UnitConversion.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
 	</Target>
 
+  <ItemGroup><PackageReference Include="OSDC.DotnetLibraries.Drilling.SemanticCatalogue" Version="0.16.0" /></ItemGroup>
 </Project>

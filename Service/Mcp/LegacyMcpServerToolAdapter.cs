@@ -48,12 +48,12 @@ internal sealed class McpServerToolAdapter : McpServerTool
 
         if (tool.InputSchema is JsonNode schemaNode)
         {
-            _protocolTool.InputSchema = JsonSerializer.SerializeToElement(schemaNode, SerializerOptions);
+            _protocolTool.InputSchema = JsonSerializer.SerializeToElement(Tools.UnitConversionSemanticSchemas.Annotate(tool.Name, schemaNode, true), SerializerOptions);
         }
 
         if (tool.OutputSchema is JsonNode outputSchemaNode)
         {
-            _protocolTool.OutputSchema = JsonSerializer.SerializeToElement(outputSchemaNode, SerializerOptions);
+            _protocolTool.OutputSchema = JsonSerializer.SerializeToElement(Tools.UnitConversionSemanticSchemas.Annotate(tool.Name, outputSchemaNode, false), SerializerOptions);
         }
     }
 

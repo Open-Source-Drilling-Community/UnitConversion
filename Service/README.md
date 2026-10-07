@@ -147,3 +147,5 @@ The service Model references the local drilling unit-system project and its tran
 ## Projection scale factor catalogue entry
 
 The service builds against the local quantity/unit-system projects and exposes ProjectionScaleFactor through its existing catalogue and conversion endpoints. Its dimensionless value is the full projection factor with 1e-9 meaningful display precision. Numeric conversion preserves the full supplied value. No endpoint or DTO shape changes are required.
+
+MCP discovery now publishes reviewed SemanticCatalogue 0.16.0 extensions from a provider-owned mapping. Conversion inputs/results identify the enclosing conversion noun and input/numeric/formatted roles; physical quantity is supplied dynamically by the requested catalogue UUID, not inferred from a numeric value. Unit/system source and target roles are separate from identifiers. Annotation clones shared schema templates and does not change argument validation, persistence or behavior flags. Numeric output remains full precision. After deployment, refresh MCP discovery in consumers.
