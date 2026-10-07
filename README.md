@@ -24,6 +24,8 @@ The UnitConversion repository contains tools to handle unit conversions of a wid
 
 The UnitConversion service hosts a [Model Context Protocol](https://modelcontextprotocol.io/) server alongside the REST API. MCP-compatible clients can call tools over HTTP (streaming) or WebSocket transports using the endpoint:
 
+The Unit Conversion REST/MCP vocabulary is curated in `OSDC.DotnetLibraries.Drilling.SemanticCatalogue` 0.16.0. This service intentionally does **not** reference that package: the semantic catalogue is built on Unit Conversion's physical-quantity packages, so a reverse runtime reference would create a package dependency cycle. Unit Conversion remains the authoritative source for quantities, units, systems, conversions, formatting, and hierarchy behavior; the catalogue supplies stable external semantic identities for consumers. A future transport-neutral annotations package may be introduced only if it can preserve this acyclic dependency direction.
+
 ```
 https://app.digiwells.no/UnitConversion/api/mcp
 ```
