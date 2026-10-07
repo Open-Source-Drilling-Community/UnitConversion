@@ -5,6 +5,9 @@ metadata:
   labels:
     {{- include "osdcunitconversionservice.labels" . | nindent 4 }}
 spec:
+  # The persistent SQLite and JSON stores have one writer.
+  strategy:
+    type: Recreate
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
