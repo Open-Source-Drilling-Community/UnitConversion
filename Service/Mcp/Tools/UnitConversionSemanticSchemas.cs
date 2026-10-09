@@ -34,7 +34,7 @@ internal static class UnitConversionSemanticSchemas
             _ => null // Unknown tools remain unannotated and cannot become generated semantic leaves.
         };
         if (concept is null) return schema;
-        schema["x-osdc-semantic"] = Metadata(concept);
+        schema["x-osdc-semantic"] = Metadata(concept, OperationRole(name));
         if (schema["properties"] is JsonObject properties)
         {
             void Bind(string field, string meaning, string? role = null)
@@ -64,5 +64,15 @@ internal static class UnitConversionSemanticSchemas
         }
         return schema;
     }
+    private static string OperationRole(string name) => name switch
+    {
+        "convert_values" or "convert_between_unit_systems" => Concepts.StatelessEvaluation,
+        "search_physical_quantities" or "search_documentation" or "list_unit_systems" => Concepts.ResourceCollectionRetrieval,
+        "get_physical_quantity" or "get_unit_system" => Concepts.ResourceRetrieval,
+        "create_unit_system" => Concepts.ResourceCreation,
+        "replace_unit_system" => Concepts.ResourceReplacement,
+        "delete_unit_system" => Concepts.ResourceDeletion,
+        _ => Concepts.OperationRole
+    };
     private static JsonObject Scalar(string type, string role) => new() { ["type"] = type, ["x-osdc-semantic"] = Metadata(Concepts.UnitConversion, role) };
 }

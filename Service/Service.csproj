@@ -38,5 +38,5 @@
 		<Exec Command="dotnet swagger tofile --output ../ModelShared/json-schemas/$(Version)/UnitConversion.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
 	</Target>
 
-  <ItemGroup><PackageReference Include="OSDC.DotnetLibraries.Drilling.SemanticCatalogue" Version="0.16.0" /></ItemGroup>
+<ItemGroup><PackageReference Include="OSDC.DotnetLibraries.Drilling.SemanticCatalogue" Version="0.18.0" /></ItemGroup>
 </Project>

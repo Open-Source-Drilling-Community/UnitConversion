@@ -8,6 +8,7 @@ using OSDC.UnitConversion.Conversion.DrillingEngineering;
 using OSDC.UnitConversion.Service.Mcp;
 using OSDC.UnitConversion.Service.Mcp.Prompts;
 using OSDC.UnitConversion.Service.Mcp.Tools;
+using OSDC.DotnetLibraries.Drilling.SemanticCatalogue;
 
 namespace OSDC.UnitConversion.ServiceTest;
 
@@ -41,16 +42,19 @@ public class McpContractTests
             var adapter = new McpServerToolAdapter(tool, NullLoggerFactory.Instance);
             var input = JsonNode.Parse(adapter.ProtocolTool.InputSchema.GetRawText())!;
             var output = JsonNode.Parse(adapter.ProtocolTool.OutputSchema!.Value.GetRawText())!;
-            Assert.That(input["x-osdc-semantic"]!["catalogueVersion"]!.ToString(), Is.EqualTo("0.16.0"));
+            Assert.That(input["x-osdc-semantic"]!["catalogueVersion"]!.ToString(), Is.EqualTo("0.18.0"));
             Assert.That(output["x-osdc-semantic"]!["curationStatus"]!.ToString(), Is.EqualTo("Reviewed"));
             if (tool.Name.StartsWith("convert"))
             {
+                Assert.That(input["x-osdc-semantic"]!["role"]!.ToString(), Is.EqualTo(Concepts.StatelessEvaluation));
                 var numeric = output["properties"]!["results"]!["items"]!["properties"]!["numericValue"]!["x-osdc-semantic"]!;
                 Assert.That(numeric["concept"]!.ToString(), Is.EqualTo("urn:osdc:semantic:unit-conversion"));
                 Assert.That(numeric["role"]!.ToString(), Is.EqualTo("urn:osdc:semantic:unit-conversion-numeric-result"));
                 Assert.That(numeric["physicalQuantity"], Is.Null, "The enclosing requested quantity supplies dynamic metrological meaning.");
                 Assert.That(tool.InputSchema!["x-osdc-semantic"], Is.Null, "Do not mutate shared schema templates.");
             }
+            else
+                Assert.That(input["x-osdc-semantic"]!["role"]!.ToString(), Is.EqualTo(Concepts.ResourceCollectionRetrieval));
         }
     }
 
