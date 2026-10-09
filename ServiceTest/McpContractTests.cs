@@ -132,6 +132,24 @@ public class McpContractTests
     }
 
     [Test]
+    public async Task ConvertValues_ResolvesSymbolOnlyUnitLabels()
+    {
+        JsonNode? result=await new ConvertValuesMcpTool().InvokeAsync(new JsonObject
+        {
+            ["physicalQuantityId"]="97555d61-9fc3-4769-9143-6bc2bf51b2d7",
+            ["unitIn"]="%",
+            ["unitOut"]="proportion",
+            ["values"]=new JsonArray(95d)
+        },CancellationToken.None);
+
+        Assert.Multiple(()=>
+        {
+            Assert.That(result?["inputUnit"]?["label"]?.GetValue<string>(),Is.EqualTo("%"));
+            Assert.That(result?["results"]?[0]?["numericValue"]?.GetValue<double>(),Is.EqualTo(0.95).Within(1e-12));
+        });
+    }
+
+    [Test]
     public async Task ProjectionScaleFactorConversionKeepsTheFullFactorAndDisplayPrecision()
     {
         var quantity = ProjectionScaleFactorQuantity.Instance;

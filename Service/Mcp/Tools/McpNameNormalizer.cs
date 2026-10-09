@@ -61,6 +61,8 @@ internal static class McpNameNormalizer
             FlushWord();
             if (useUnitAliases && character is '/' or '⁄') words.Add("per");
             else if (useUnitAliases && character == '°') words.Add("degree");
+            else if (useUnitAliases && character == '%') words.Add("percent");
+            else if (useUnitAliases && character == '‰') words.Add("perthousand");
         }
 
         FlushWord();
