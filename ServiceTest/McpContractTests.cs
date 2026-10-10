@@ -42,7 +42,8 @@ public class McpContractTests
             var adapter = new McpServerToolAdapter(tool, NullLoggerFactory.Instance);
             var input = JsonNode.Parse(adapter.ProtocolTool.InputSchema.GetRawText())!;
             var output = JsonNode.Parse(adapter.ProtocolTool.OutputSchema!.Value.GetRawText())!;
-            Assert.That(input["x-osdc-semantic"]!["catalogueVersion"]!.ToString(), Is.EqualTo("0.18.0"));
+            Assert.That(input["x-osdc-semantic"]!["catalogueVersion"]!.ToString(),
+                Is.EqualTo(SemanticCatalogue.Default.Document.Version));
             Assert.That(output["x-osdc-semantic"]!["curationStatus"]!.ToString(), Is.EqualTo("Reviewed"));
             if (tool.Name.StartsWith("convert"))
             {
