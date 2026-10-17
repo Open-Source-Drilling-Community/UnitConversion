@@ -6,7 +6,7 @@ on:
       version:
         description: Package version to publish
         required: true
-        default: '3.4.8'
+        default: '3.4.9'
         type: string
   push:
     tags:
@@ -37,6 +37,14 @@ jobs:
             echo "PACKAGE_VERSION=${GITHUB_REF_NAME#drilling-components-v}" >> "$GITHUB_ENV"
           fi
 
+      - name: Set only the component project version
+        shell: pwsh
+        run: |
+          $path = 'DrillingRazorMudComponents/DrillingRazorMudComponents.csproj'
+          $project = [xml](Get-Content $path -Raw)
+          $project.SelectSingleNode('/Project/PropertyGroup/Version').InnerText = $env:PACKAGE_VERSION
+          $project.Save((Join-Path $PWD $path))
+
       - name: Restore
         run: dotnet restore ConversionDrillingRazorMudComponentsUnitTests/ConversionDrillingRazorMudComponentsUnitTests.csproj
 
@@ -44,7 +52,10 @@ jobs:
         run: dotnet test ConversionDrillingRazorMudComponentsUnitTests/ConversionDrillingRazorMudComponentsUnitTests.csproj --configuration Release --no-restore --filter FullyQualifiedName~UnitSystemDiscoveryClientTests
 
       - name: Pack
-        run: dotnet pack DrillingRazorMudComponents/DrillingRazorMudComponents.csproj --configuration Release --no-build -p:PackageVersion=${{ env.PACKAGE_VERSION }} --output artifacts
+        run: dotnet pack DrillingRazorMudComponents/DrillingRazorMudComponents.csproj --configuration Release --no-build --output artifacts
+
+      - name: Verify package identity and dependency versions
+        run: python scripts/verify-component-package.py "artifacts/OSDC.UnitConversion.DrillingRazorMudComponents.${{ env.PACKAGE_VERSION }}.nupkg"
 
       - name: Log in to NuGet.org with OIDC
         id: nuget-login

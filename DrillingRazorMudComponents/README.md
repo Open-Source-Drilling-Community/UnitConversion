@@ -374,6 +374,8 @@ The local source dependency chain includes the general `InverseFlattening` quant
 
 The local unit-system dependency includes the general `ProjectionScaleFactor` quantity. Unit controls can select it by that canonical name to display full factors with 1e-9 meaningful precision. The configured UnitConversion service must also contain the quantity. SI, Metric, US and Imperial all use dimensionless values.
 
-## Version 3.4.8
+## Version 3.4.9
 
-The unit selector reads bounded light-discovery pages from UnitSystem/LightData and follows NextOffset until the catalog is complete. It requires the paginated discovery contract; each request is limited to 200 light records. The dedicated publish-drilling-razor-mud-components-nuget.yml workflow tests, packs, and publishes this package using the repository NUGET_USER trusted-publishing identity. Configure the nuget.org policy for owner Open-Source-Drilling-Community, repository UnitConversion, workflow publish-drilling-razor-mud-components-nuget.yml, package OSDC.UnitConversion.DrillingRazorMudComponents, and no environment. Trigger the workflow with version 3.4.8 or push tag drilling-components-v3.4.8.
+The unit selector reads bounded light-discovery pages from UnitSystem/LightData and follows NextOffset until the catalog is complete. It requires the paginated discovery contract; each request is limited to 200 light records. The dedicated publish-drilling-razor-mud-components-nuget.yml workflow tests, packs, and publishes this package using the repository NUGET_USER trusted-publishing identity. Configure the nuget.org policy for owner Open-Source-Drilling-Community, repository UnitConversion, workflow publish-drilling-razor-mud-components-nuget.yml, package OSDC.UnitConversion.DrillingRazorMudComponents, and no environment. Trigger the workflow with version 3.4.9 or push tag drilling-components-v3.4.9.
+
+The release workflow versions only this project before compilation and verifies the packed dependency versions. Do not pass PackageVersion globally: that also rewrites project-reference dependency versions. Version 3.4.8 was superseded because its package declared unavailable dependency versions.
