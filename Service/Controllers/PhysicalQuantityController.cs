@@ -25,7 +25,8 @@ namespace OSDC.UnitConversion.Service.Controllers
             var source = GetAllPhysicalQuantity();
             if (source.Result is Microsoft.AspNetCore.Mvc.ObjectResult result && result.StatusCode is >= 400)
                 return StatusCode(result.StatusCode.Value, result.Value);
-            var values = source.Value ?? (source.Result as Microsoft.AspNetCore.Mvc.ObjectResult)?.Value as System.Collections.Generic.IEnumerable<DrillingPhysicalQuantity>;
+            IEnumerable<BasePhysicalQuantity>? values = source.Value ??
+                (source.Result as ObjectResult)?.Value as IEnumerable<BasePhysicalQuantity>;
             if (values == null) return StatusCode(500, new { error = "discovery_failed" });
             var records = DiscoveryRecords.Page<OSDC.UnitConversion.Model.PhysicalQuantityLight>(values, offset, limit, name,
                 new System.Collections.Generic.Dictionary<string, object?> {  }, out int total);
