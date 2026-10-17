@@ -376,5 +376,4 @@ The local unit-system dependency includes the general `ProjectionScaleFactor` qu
 
 ## Version 3.4.8
 
-The unit selector reads bounded light-discovery pages from UnitSystem/LightData and follows NextOffset until the catalog is complete. It requires the paginated discovery contract; each request is limited to 200 light records. The NuGet release uses publish-webpages-nuget.yml with package DrillingRazorMudComponents and the repository NUGET_USER trusted-publishing identity.
-
+The unit selector reads bounded light-discovery pages from UnitSystem/LightData and follows NextOffset until the catalog is complete. It requires the paginated discovery contract; each request is limited to 200 light records. The dedicated publish-drilling-razor-mud-components-nuget.yml workflow tests, packs, and publishes this package using the repository NUGET_USER trusted-publishing identity. Configure the nuget.org policy for owner Open-Source-Drilling-Community, repository UnitConversion, workflow publish-drilling-razor-mud-components-nuget.yml, package OSDC.UnitConversion.DrillingRazorMudComponents, and no environment. Trigger the workflow with version 3.4.8 or push tag drilling-components-v3.4.8.
