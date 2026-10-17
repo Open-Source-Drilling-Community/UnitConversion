@@ -373,3 +373,8 @@ The local source dependency chain includes the general `InverseFlattening` quant
 ## Projection scale factor
 
 The local unit-system dependency includes the general `ProjectionScaleFactor` quantity. Unit controls can select it by that canonical name to display full factors with 1e-9 meaningful precision. The configured UnitConversion service must also contain the quantity. SI, Metric, US and Imperial all use dimensionless values.
+
+## Version 3.4.8
+
+The unit selector reads bounded light-discovery pages from UnitSystem/LightData and follows NextOffset until the catalog is complete. It requires the paginated discovery contract; each request is limited to 200 light records. The NuGet release uses publish-webpages-nuget.yml with package DrillingRazorMudComponents and the repository NUGET_USER trusted-publishing identity.
+
