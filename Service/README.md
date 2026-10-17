@@ -168,3 +168,9 @@ Pages contain `Items`, `Offset`, `Limit`, `TotalCount`, and `NextOffset`; `NextO
 Single-record reads, result/chunk reads, and deliberate backup/export/restore operations are preserved. Backups can still contain complete resources and should be treated as explicit bulk operations.
 
 This is a breaking REST/MCP contract change: update generated clients, UIs, and external integrations together with the service release. Removed heavy-list names are not compatibility aliases. No persisted engineering shapes, database names, or storage volumes are changed. Historical usage counters are retained; bounded discovery has a separate additive `DiscoveryRequestsPerDay` history in resource services.
+
+## Persistent database deployment
+
+The service connects to `Path.Combine(SqlConnectionManager.HOME_DIRECTORY, "UnitConversion.db")`, which resolves to `/home/UnitConversion.db` in the service image. Keep `/home` mounted on the existing PVC. Startup validates the existing schema and fails without dropping records if it is incompatible; apply an explicit reviewed migration instead.
+
+`DatabaseCleanup:Enabled` defaults to `true` and retains the existing 90-day cleanup policy for stored conversion results. Set `DatabaseCleanup__Enabled=false` when bringing an existing development database back into service and its historical records must remain intact. The development discovery deployment uses this setting. Snapshot both the mounted database and any database left outside the volume by the old missing-separator connection string before changing the image; keep these snapshots inside the development cluster.

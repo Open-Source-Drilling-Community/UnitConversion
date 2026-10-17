@@ -11,8 +11,8 @@ namespace OSDC.UnitConversion.Service
 {
     /// <summary>
     /// A manager for the sql database connection, registered as a singleton through dependency injection (see Program.cs)
-    /// Prior to creating a database, existing database structure is checked for consistency with the structure defined in tableStructureDict_
-    /// If inconsistent (table count, table names, fields count, fields names), a timestamped backup of the existing database is generated first
+    /// Before serving requests, the existing database structure is checked against the expected schema.
+    /// An incompatible existing schema fails startup without deleting stored records.
     /// </summary>
     /// <remarks>
     /// SQLite database connection strategy:
@@ -32,6 +32,9 @@ namespace OSDC.UnitConversion.Service
         private readonly string _connectionString;
         public static readonly string HOME_DIRECTORY = Path.Combine("..", "home");
         public static readonly string DATABASE_FILENAME = "UnitConversion.db";
+
+        public static string CreateConnectionString(string homeDirectory) =>
+            new SqliteConnectionStringBuilder { DataSource = Path.Combine(homeDirectory, DATABASE_FILENAME) }.ToString();
         public static readonly string DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
         // dictionary describing tables format
@@ -80,7 +83,7 @@ namespace OSDC.UnitConversion.Service
             }
             else
             {
-                _logger.LogInformation("SqliteConnectionManager created");
+                throw new InvalidOperationException("The UnitConversion database directory could not be initialized.");
             }
         }
 
@@ -100,50 +103,23 @@ namespace OSDC.UnitConversion.Service
 
         private bool Initialize()
         {
-            if (!Directory.Exists(HOME_DIRECTORY))
+            try
             {
-                _logger.LogInformation("Creating home directory");
-                try
-                {
-                    Directory.CreateDirectory(HOME_DIRECTORY);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Impossible to create home directory for local storage");
-                    return false;
-                }
+                string databasePath = Path.GetFullPath(new SqliteConnectionStringBuilder(_connectionString).DataSource);
+                Directory.CreateDirectory(Path.GetDirectoryName(databasePath)!);
+                _logger.LogInformation("Opening UnitConversion database {DatabasePath}", databasePath);
+                return true;
             }
-            if (Directory.Exists(HOME_DIRECTORY))
+            catch (Exception ex)
             {
-                try
-                {
-                    string databaseFileName = Path.Combine(HOME_DIRECTORY,  DATABASE_FILENAME);
-                    if (File.Exists(databaseFileName))
-                    {
-                        _logger.LogInformation("Opening database {_databaseFileName}", DATABASE_FILENAME);
-                    }
-                    else
-                    {
-                        _logger.LogInformation("Creating database {_databaseFileName}", DATABASE_FILENAME);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Impossible to create {_databaseFileName}", DATABASE_FILENAME);
-                    return false;
-                }
-            }
-            else
-            {
-                _logger.LogError("Home directory for local storage should have been created, check for access");
+                _logger.LogError(ex, "Impossible to initialize the configured database directory");
                 return false;
             }
-            return true;
         }
 
         /// <summary>
         /// This function parses the existing database and check that its structure matches the expected one.
-        /// If not, the existing database is backed-up and the actual database is recreated from scratch
+        /// An incompatible existing database fails startup and is left unchanged.
         /// </summary>
         private void ManageDataBase()
         {
@@ -195,33 +171,9 @@ namespace OSDC.UnitConversion.Service
                 {
                     createDb = true;
                     if (tableNameList.Count > 0)
-                    {
-                        _logger.LogWarning("Unexpected structure of the existing database. A timestamped backup copy will be generated");
-                        // backup existing database
-                        string backupFileName = HOME_DIRECTORY + Path.DirectorySeparatorChar + DATABASE_FILENAME;
-                        string timeStamp = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss");
-                        backupFileName = backupFileName.Insert(backupFileName.Length - 3, "-" + timeStamp);
-                        try
-                        {
-                            File.Copy(HOME_DIRECTORY + Path.DirectorySeparatorChar + DATABASE_FILENAME, backupFileName);
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogError(ex, "Problem while generating a timestamped backup copy of the existing database");
-                        }
-                        // drop existing tables
-                        _logger.LogWarning("Dropping tables from existing database");
-                        foreach (string tableName in tableNameList)
-                        {
-                            if (!DropTable(tableName))
-                            {
-                                createDb = false;
-                                _logger.LogError("Impossible to drop {tableName}. Database may be corrupted, consider deleting it", tableName);
-                                break;
-                            }
-                        }
-                    }
+                        throw new InvalidOperationException("The existing UnitConversion database schema is incompatible. An explicit migration is required; the database has been left unchanged.");
                 }
+
                 if (createDb)
                 {
                     _logger.LogInformation("Creating database tables");
@@ -240,8 +192,7 @@ namespace OSDC.UnitConversion.Service
                         }
                         if (!success)
                         {
-                            if (!DropTable(tableName))
-                                _logger.LogError("Impossible to drop {key}. Database may be corrupted, consider deleting it", tableName);
+                            throw new InvalidOperationException("The UnitConversion database could not be initialized.");
                         }
 
                     }

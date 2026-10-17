@@ -29,13 +29,16 @@ builder.Configuration.AddJsonFile(externalConfigPath, optional: true, reloadOnCh
 
 // registering the manager of SQLite connections through dependency injection
 builder.Services.AddSingleton(sp => new SqlConnectionManager(
-    $"Data Source={SqlConnectionManager.HOME_DIRECTORY}{SqlConnectionManager.DATABASE_FILENAME}",
+    SqlConnectionManager.CreateConnectionString(SqlConnectionManager.HOME_DIRECTORY),
     sp.GetRequiredService<ILogger<SqlConnectionManager>>()));
 
 // registering the database cleaner service through dependency injection
-builder.Services.AddHostedService(sp => new DatabaseCleanerService(
-    sp.GetRequiredService<ILogger<DatabaseCleanerService>>(),
-    sp.GetRequiredService<SqlConnectionManager>()));
+if (builder.Configuration.GetValue("DatabaseCleanup:Enabled", true))
+{
+    builder.Services.AddHostedService(sp => new DatabaseCleanerService(
+        sp.GetRequiredService<ILogger<DatabaseCleanerService>>(),
+        sp.GetRequiredService<SqlConnectionManager>()));
+}
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options =>
@@ -134,6 +137,7 @@ builder.Services.AddMcpTool<SearchVectorDocumentsMcpTool>();
 // end MCP server
 
 var app = builder.Build();
+_ = app.Services.GetRequiredService<SqlConnectionManager>();
 
 VectorDocumentSeedInitializer.EnsureSeeded(app.Services);
 
