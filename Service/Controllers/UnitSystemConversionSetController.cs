@@ -1,4 +1,5 @@
-﻿using System;
+using OSDC.UnitConversion.Service;
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,32 @@ namespace OSDC.UnitConversion.Service.Controllers
     [ApiController]
     public class UnitSystemConversionSetController : ControllerBase
     {
+        private readonly SqlConnectionManager _discoveryConnections;
+
+        /// <summary>Discover UnitSystemConversionSet resources as bounded light records; retrieve selected full records by ID.</summary>
+        [HttpGet("LightData", Name = "DiscoverUnitSystemConversionSet")]
+        public ActionResult<OSDC.UnitConversion.Model.UnitSystemConversionSetDiscoveryPage> DiscoverUnitSystemConversionSet([FromQuery] int offset = 0, [FromQuery] int limit = 50, [FromQuery] string? name = null, [FromQuery] System.Guid? unitSystemInId = null, [FromQuery] System.Guid? unitSystemOutId = null)
+        {
+            UsageStatistics.Instance.IncrementDiscoveryRequestsPerDay();
+            if (offset < 0 || limit < 1 || limit > 200 || name?.Length > 200 || unitSystemInId == System.Guid.Empty || unitSystemOutId == System.Guid.Empty)
+                return BadRequest(new { error = "invalid_discovery_query", message = "Offset must be non-negative, limit 1–200, name at most 200 characters, and UUID filters non-empty." });
+            try
+            {
+                var records = DiscoveryRecords.ReadPage<OSDC.UnitConversion.Model.UnitSystemConversionSetLight>(_discoveryConnections.GetConnection(), "UnitSystemConversionSetTable", "UnitSystemConversionSet", offset, limit, name,
+                    new System.Collections.Generic.Dictionary<string, object?>(), out int total);
+                return Ok(new OSDC.UnitConversion.Model.UnitSystemConversionSetDiscoveryPage { Items = records, Offset = offset, Limit = limit, TotalCount = total,
+                    NextOffset = offset < total && records.Count < total - offset ? offset + records.Count : null });
+            }
+            catch (System.Exception ex) when (ex is Microsoft.Data.Sqlite.SqliteException or System.Text.Json.JsonException or System.InvalidOperationException)
+            { return StatusCode(500, new { error = "discovery_failed" }); }
+        }
+
         private readonly ILogger<UnitSystemConversionSetManager> _logger;
         private readonly UnitSystemConversionSetManager _unitSystemConversionSetManager;
 
         public UnitSystemConversionSetController(ILogger<UnitSystemConversionSetManager> logger, SqlConnectionManager connectionManager)
         {
+            _discoveryConnections = connectionManager;
             _logger = logger;
             _unitSystemConversionSetManager = UnitSystemConversionSetManager.GetInstance(_logger, connectionManager);
         }
@@ -91,7 +113,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// Returns the list of all UnitSystemConversionSet present in the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/HeavyData
         /// </summary>
         /// <returns>the list of all UnitSystemConversionSet present in the microservice database, at endpoint UnitConversion/api/UnitSystemConversionSet/HeavyData</returns>
-        [HttpGet("HeavyData", Name = "GetAllUnitSystemConversionSet")]
+        [NonAction]
         public ActionResult<IEnumerable<Model.UnitSystemConversionSet>> GetAllUnitSystemConversionSet()
         {
             UsageStatistics.Instance.IncrementUnitSystemConversionSetControllerGetAllPerDay();

@@ -145,6 +145,13 @@
         try
         {
             unitConversionSet = await APIUtils.ClientUnitConversion.GetUnitConversionSetByIdAsync(UnitConversionSetID);
+            if (PhysicalQuantityList != null)
+            {
+                var quantityIds = unitConversionSet.QuantityUnitConversionList?.Select(value => value.QuantityID).Distinct().ToList() ?? [];
+                if (quantityIds.Count == 0 && PhysicalQuantityList.Count > 0) quantityIds.Add(PhysicalQuantityList[0].ID);
+                foreach (Guid quantityId in quantityIds)
+                    await APIUtils.ClientUnitConversion.LoadPhysicalQuantityDetailsAsync(PhysicalQuantityList, quantityId);
+            }
             if (unitConversionSet != null && unitConversionSet.MetaInfo != null)
             {
                 name = unitConversionSet.Name;

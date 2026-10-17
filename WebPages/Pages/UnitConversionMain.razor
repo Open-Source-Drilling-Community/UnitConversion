@@ -1,4 +1,4 @@
-﻿@page "/UnitConversion"
+@page "/UnitConversion"
 @inject ILogger<UnitConversionMain> logger
 @inject ISnackbar Snackbar
 @namespace OSDC.UnitConversion.WebPages
@@ -63,9 +63,9 @@ else
 
             // Starting all loading tasks asynchronously
             logger.LogInformation("Trying to load list of UnitConversionSet from client: " + APIUtils.HostNameUnitConversion);
-            var unitConversionSetTask = APIUtils.ClientUnitConversion.GetAllUnitConversionSetAsync();
+            var unitConversionSetTask = APIUtils.ClientUnitConversion.ListUnitConversionSetReferencesAsync();
             logger.LogInformation("Trying to load list of PhysicalQuantity from client: " + APIUtils.HostNameUnitConversion);
-            var physicalQuantityTask = APIUtils.ClientUnitConversion.GetAllPhysicalQuantityAsync();
+            var physicalQuantityTask = APIUtils.ClientUnitConversion.ListPhysicalQuantityReferencesAsync();
 
             List<Task> loadingTaskList = new List<Task> { unitConversionSetTask, physicalQuantityTask };
 

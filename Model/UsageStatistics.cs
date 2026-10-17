@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -60,6 +60,13 @@ namespace OSDC.UnitConversion.Model
     }
     public class UsageStatistics
     {
+        /// <summary>Bounded light discovery requests across the service's resource and catalog families.</summary>
+        public History DiscoveryRequestsPerDay { get; set; } = new History();
+        public void IncrementDiscoveryRequestsPerDay()
+        {
+            lock (lock_) { DiscoveryRequestsPerDay ??= new History(); DiscoveryRequestsPerDay.Increment(); }
+        }
+
         public static readonly string HOME_DIRECTORY = ".." + Path.DirectorySeparatorChar + "home" + Path.DirectorySeparatorChar;
 
         public DateTime LastSaved { get; set; } = DateTime.MinValue;

@@ -21,7 +21,7 @@ internal static class Program
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
     };
 
-    private const string DefaultApiUrl = "https://app.digiwells.no/UnitConversion/api/PhysicalQuantity/HeavyData";
+    private const string DefaultApiUrl = "https://app.digiwells.no/UnitConversion/api/PhysicalQuantity/LightData";
     private const string DataBaseName = "UnitConversionVectors.db";
     private const string DefaultUriPrefix = "resource://unit-conversion/documents/";
     private const string DefaultEmbeddingEndpoint = "http://localhost:8080/embeddings";
@@ -165,16 +165,34 @@ internal static class Program
 
         public async Task<IReadOnlyList<PhysicalQuantityDto>> GetPhysicalQuantitiesAsync(CancellationToken cancellationToken)
         {
-            using var response = await _httpClient.GetAsync(_endpoint, cancellationToken).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
+            var quantities = new List<PhysicalQuantityDto>();
+            int offset = 0;
+            while (true)
             {
-                var body = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                throw new InvalidOperationException($"Physical quantity request failed with {(int)response.StatusCode}: {body}");
+                using var response = await _httpClient.GetAsync($"{_endpoint}?offset={offset}&limit=200", cancellationToken).ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
+                await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                var page = await JsonSerializer.DeserializeAsync<PhysicalQuantityDiscoveryPage>(stream, SerializerOptions, cancellationToken)
+                    ?? throw new InvalidOperationException("The quantity discovery page is null.");
+                // Resource generation deliberately needs units and aliases, so it reads each definition individually.
+                foreach (var summary in page.Items)
+                {
+                    string endpoint = _endpoint[.._endpoint.LastIndexOf('/')] + "/" + summary.Id;
+                    using var detail = await _httpClient.GetAsync(endpoint, cancellationToken).ConfigureAwait(false);
+                    detail.EnsureSuccessStatusCode();
+                    await using var detailStream = await detail.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+                    quantities.Add(await JsonSerializer.DeserializeAsync<PhysicalQuantityDto>(detailStream, SerializerOptions, cancellationToken)
+                        ?? throw new InvalidOperationException("The selected quantity is null."));
+                }
+                if (page.NextOffset is not int next) return quantities;
+                if (next <= offset) throw new InvalidOperationException("Discovery pagination did not advance.");
+                offset = next;
             }
-
-            await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
-            var data = await JsonSerializer.DeserializeAsync<List<PhysicalQuantityDto>>(stream, SerializerOptions, cancellationToken).ConfigureAwait(false);
-            return data ?? new List<PhysicalQuantityDto>();
+        }
+        private sealed class PhysicalQuantityDiscoveryPage
+        {
+            public List<PhysicalQuantityDto> Items { get; set; } = [];
+            public int? NextOffset { get; set; }
         }
     }
 

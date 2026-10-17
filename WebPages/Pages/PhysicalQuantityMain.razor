@@ -1,4 +1,4 @@
-﻿@page "/PhysicalQuantity"
+@page "/PhysicalQuantity"
 @inject ILogger<PhysicalQuantity> logger
 @inject ISnackbar Snackbar
 @inject IJSRuntime JS
@@ -89,8 +89,8 @@ else
                                     <MudTh>N</MudTh>
                                     <MudTh>I</MudTh>
                                     <MudTh>J</MudTh>
-                                    <MudTh>θ</MudTh>
-                                    <MudTh>Ω</MudTh>
+                                    <MudTh>Î¸</MudTh>
+                                    <MudTh>Î©</MudTh>
                                 </HeaderContent>
                                 <RowTemplate>
                                     <MudTd>@DimContext.T</MudTd>
@@ -153,7 +153,7 @@ else
         {
             // Starting loading task asynchronously
             logger.LogInformation("Trying to load list of PhysicalQuantity from client: " + APIUtils.HttpClientUnitConversion);
-            var physicalQuantityTask = APIUtils.ClientUnitConversion.GetAllPhysicalQuantityAsync();
+            var physicalQuantityTask = APIUtils.ClientUnitConversion.ListPhysicalQuantityReferencesAsync();
 
             List<Task> loadingTaskList = new List<Task> { physicalQuantityTask };
 
@@ -227,16 +227,17 @@ else
         return (
             string.IsNullOrWhiteSpace(searchString) ||
             x.Quantity!.Name.Contains(searchString, StringComparison.InvariantCultureIgnoreCase) ||
-            x.Quantity!.UsualNames.Any(uName => uName.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) ||
-            x.Quantity!.UnitChoices.Any(uChoice => uChoice.UnitName.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) ||
-            x.Quantity!.UnitChoices.Any(uChoice => uChoice.UnitLabel.Contains(searchString, StringComparison.InvariantCultureIgnoreCase))
+            x.Quantity!.UsualNames?.Any(uName => uName.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) == true ||
+            x.Quantity!.UnitChoices?.Any(uChoice => uChoice.UnitName.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) == true ||
+            x.Quantity!.UnitChoices?.Any(uChoice => uChoice.UnitLabel.Contains(searchString, StringComparison.InvariantCultureIgnoreCase)) == true
         );
     };
 
-    private void ShowDetails(TableRowClickEventArgs<VisualPhysicalQuantity> args)
+    private async Task ShowDetails(TableRowClickEventArgs<VisualPhysicalQuantity> args)
     {
         try
         {
+            args.Item.Quantity = await APIUtils.ClientUnitConversion.GetPhysicalQuantityByIdAsync(args.Item.Quantity!.ID);
             int idx = physicalQuantityList.FindIndex(f => f.Quantity!.ID == args.Item.Quantity!.ID);
             physicalQuantityList[idx].ShowDetails = !physicalQuantityList[idx].ShowDetails;
         }

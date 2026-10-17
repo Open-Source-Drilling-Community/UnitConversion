@@ -103,7 +103,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 List<UnitConversionSet> unitConversionSetList = [];
                 try
                 {
-                    unitConversionSetList = (List<UnitConversionSet>)await nSwagClient.GetAllUnitConversionSetAsync();
+                    unitConversionSetList = (List<UnitConversionSet>)await nSwagClient.ListUnitConversionSetReferencesAsync();
                 }
                 catch (ApiException ex)
                 {
@@ -486,7 +486,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 List<UnitSystemConversionSet> unitSystemConversionSetList = [];
                 try
                 {
-                    unitSystemConversionSetList = (List<UnitSystemConversionSet>)await nSwagClient.GetAllUnitSystemConversionSetAsync();
+                    unitSystemConversionSetList = (List<UnitSystemConversionSet>)await nSwagClient.ListUnitSystemConversionSetReferencesAsync();
                 }
                 catch (ApiException ex)
                 {
@@ -893,7 +893,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 List<UnitSystem> unitSystemList = [];
                 try
                 {
-                    unitSystemList = (List<UnitSystem>)await nSwagClient.GetAllUnitSystemAsync();
+                    unitSystemList = (List<UnitSystem>)await nSwagClient.ListUnitSystemReferencesAsync();
                 }
                 catch (ApiException ex)
                 {
@@ -912,7 +912,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 List<UnitSystemLight> unitSystemLightList = [];
                 try
                 {
-                    unitSystemLightList = (List<UnitSystemLight>)await nSwagClient.GetAllUnitSystemLightAsync();
+                    unitSystemLightList = (List<UnitSystemLight>)await nSwagClient.ListUnitSystemLightAsync();
                 }
                 catch (ApiException ex)
                 {
@@ -1498,7 +1498,7 @@ namespace OSDC.UnitConversion.ServiceTest
                 List<PhysicalQuantity> physicalQuantityList = [];
                 try
                 {
-                    physicalQuantityList = (List<PhysicalQuantity>)await nSwagClient.GetAllPhysicalQuantityAsync();
+                    physicalQuantityList = (List<PhysicalQuantity>)await nSwagClient.ListPhysicalQuantityReferencesAsync();
                 }
                 catch (ApiException ex)
                 {

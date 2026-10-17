@@ -1,4 +1,5 @@
-﻿using System;
+using OSDC.UnitConversion.Service;
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,24 @@ namespace OSDC.UnitConversion.Service.Controllers
     [ApiController]
     public class UnitSystemController : ControllerBase
     {
+        /// <summary>Discover UnitSystem resources as bounded light records; retrieve selected full records by ID.</summary>
+        [HttpGet("LightData", Name = "DiscoverUnitSystem")]
+        public ActionResult<OSDC.UnitConversion.Model.UnitSystemDiscoveryPage> DiscoverUnitSystem([FromQuery] int offset = 0, [FromQuery] int limit = 50, [FromQuery] string? name = null)
+        {
+            UsageStatistics.Instance.IncrementDiscoveryRequestsPerDay();
+            if (offset < 0 || limit < 1 || limit > 200 || name?.Length > 200)
+                return BadRequest(new { error = "invalid_discovery_query", message = "Offset must be non-negative, limit 1–200, name at most 200 characters, and UUID filters non-empty." });
+            var source = GetAllUnitSystemLight();
+            if (source.Result is Microsoft.AspNetCore.Mvc.ObjectResult result && result.StatusCode is >= 400)
+                return StatusCode(result.StatusCode.Value, result.Value);
+            var values = source.Value ?? (source.Result as Microsoft.AspNetCore.Mvc.ObjectResult)?.Value as System.Collections.Generic.IEnumerable<UnitSystemLight>;
+            if (values == null) return StatusCode(500, new { error = "discovery_failed" });
+            var records = DiscoveryRecords.Page<OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystemLight>(values, offset, limit, name,
+                new System.Collections.Generic.Dictionary<string, object?> {  }, out int total);
+            return Ok(new OSDC.UnitConversion.Model.UnitSystemDiscoveryPage { Items = records, Offset = offset, Limit = limit, TotalCount = total,
+                NextOffset = offset < total && records.Count < total - offset ? offset + records.Count : null });
+        }
+
         private readonly ILogger<UnitSystemManager> _logger;
         private readonly UnitSystemManager _unitSystemManager;
 
@@ -73,7 +92,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// Returns the list of all UnitSystemLight present in the microservice database, at endpoint UnitConversion/api/UnitSystem/LightData
         /// </summary>
         /// <returns>the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/LightData</returns>
-        [HttpGet("LightData", Name = "GetAllUnitSystemLight")]
+        [NonAction]
         public ActionResult<IEnumerable<UnitSystemLight>> GetAllUnitSystemLight()
         {
             UsageStatistics.Instance.IncrementUnitSystemControllerGetAllLightPerDay();
@@ -92,7 +111,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// Returns the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/HeavyData
         /// </summary>
         /// <returns>the list of all UnitSystem present in the microservice database, at endpoint UnitConversion/api/UnitSystem/HeavyData</returns>
-        [HttpGet("HeavyData", Name = "GetAllUnitSystem")]
+        [NonAction]
         public ActionResult<IEnumerable<DrillingUnitSystem>> GetAllUnitSystem()
         {
             UsageStatistics.Instance.IncrementUnitSystemControllerGetAllPerDay();

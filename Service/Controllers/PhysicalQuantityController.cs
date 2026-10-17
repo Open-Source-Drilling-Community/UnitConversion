@@ -1,4 +1,5 @@
-﻿using System;
+using OSDC.UnitConversion.Service;
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,24 @@ namespace OSDC.UnitConversion.Service.Controllers
     [ApiController]
     public class PhysicalQuantityController : ControllerBase
     {
+        /// <summary>Discover PhysicalQuantity resources as bounded light records; retrieve selected full records by ID.</summary>
+        [HttpGet("LightData", Name = "DiscoverPhysicalQuantity")]
+        public ActionResult<OSDC.UnitConversion.Model.PhysicalQuantityDiscoveryPage> DiscoverPhysicalQuantity([FromQuery] int offset = 0, [FromQuery] int limit = 50, [FromQuery] string? name = null)
+        {
+            UsageStatistics.Instance.IncrementDiscoveryRequestsPerDay();
+            if (offset < 0 || limit < 1 || limit > 200 || name?.Length > 200)
+                return BadRequest(new { error = "invalid_discovery_query", message = "Offset must be non-negative, limit 1–200, name at most 200 characters, and UUID filters non-empty." });
+            var source = GetAllPhysicalQuantity();
+            if (source.Result is Microsoft.AspNetCore.Mvc.ObjectResult result && result.StatusCode is >= 400)
+                return StatusCode(result.StatusCode.Value, result.Value);
+            var values = source.Value ?? (source.Result as Microsoft.AspNetCore.Mvc.ObjectResult)?.Value as System.Collections.Generic.IEnumerable<DrillingPhysicalQuantity>;
+            if (values == null) return StatusCode(500, new { error = "discovery_failed" });
+            var records = DiscoveryRecords.Page<OSDC.UnitConversion.Model.PhysicalQuantityLight>(values, offset, limit, name,
+                new System.Collections.Generic.Dictionary<string, object?> {  }, out int total);
+            return Ok(new OSDC.UnitConversion.Model.PhysicalQuantityDiscoveryPage { Items = records, Offset = offset, Limit = limit, TotalCount = total,
+                NextOffset = offset < total && records.Count < total - offset ? offset + records.Count : null });
+        }
+
         private readonly ILogger _logger;
 
         public PhysicalQuantityController(ILogger<PhysicalQuantityController> logger)
@@ -79,7 +98,7 @@ namespace OSDC.UnitConversion.Service.Controllers
         /// Returns the list of all PhysicalQuantity present in the microservice database, at endpoint UnitConversion/api/PhysicalQuantity/HeavyData
         /// </summary>
         /// <returns>the list of all PhysicalQuantity present in the microservice database, at endpoint UnitConversion/api/PhysicalQuantity/HeavyData</returns>
-        [HttpGet("HeavyData", Name = "GetAllPhysicalQuantity")]
+        [NonAction]
         public ActionResult<IEnumerable<DrillingPhysicalQuantity>> GetAllPhysicalQuantity()
         {
             UsageStatistics.Instance.IncrementPhysicalQuantityControllerGetAllPerDay();

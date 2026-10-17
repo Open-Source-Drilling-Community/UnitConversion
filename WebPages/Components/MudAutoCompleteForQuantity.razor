@@ -1,4 +1,4 @@
-﻿@inject ILogger<MudAutoCompleteForQuantity> logger
+@inject ILogger<MudAutoCompleteForQuantity> logger
 
 <MudAutocomplete T="string" Value="Quantity" ValueChanged="UpdateFromQuantity" SearchFunc="@SearchQuantity"
                  MaxItems="null" ResetValueOnEmptyText="true" CoerceText="false" CoerceValue="false"
@@ -19,7 +19,7 @@
 
     private string? Quantity
     {
-        get => PhysicalQuantityList!.First(q => q.ID == Context.Item.QuantityID)!.UsualNames.ElementAt(0);
+        get => PhysicalQuantityList!.First(q => q.ID == Context.Item.QuantityID)!.Name;
     }
 
     private string adornmentIcon = MudBlazor.Icons.Material.Filled.Search;
@@ -31,7 +31,8 @@
         {
             try
             {
-                var quantity = PhysicalQuantityList.First(q => q.Name == qtyName);
+                var summary = PhysicalQuantityList.First(q => q.Name == qtyName);
+                var quantity = await APIUtils.ClientUnitConversion.LoadPhysicalQuantityDetailsAsync(PhysicalQuantityList, summary.ID);
                 var siUnit = quantity.UnitChoices.First(u => u.IsSI);
                 if (quantity != null && siUnit != null)
                 {
@@ -66,7 +67,7 @@
         else
         {
             qtyList = (List<string>)PhysicalQuantityList.Where(x => x.Name.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase) ||
-                                                x.UsualNames.Any(uName => uName.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase)))
+                                                (x.UsualNames?.Any(uName => uName.Contains(qtyName, StringComparison.InvariantCultureIgnoreCase)) == true))
                                                .Select(q => q.Name).ToList();
             if (qtyList == null || !qtyList.Any())
             {

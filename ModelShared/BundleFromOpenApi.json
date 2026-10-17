@@ -6,6 +6,53 @@
     "version": "3.2.1"
   },
   "paths": {
+    "/PhysicalQuantity/LightData": {
+      "get": {
+        "tags": [
+          "PhysicalQuantity"
+        ],
+        "operationId": "DiscoverPhysicalQuantity",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Model.PhysicalQuantityDiscoveryPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/PhysicalQuantity": {
       "get": {
         "tags": [
@@ -53,7 +100,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity"
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity"
                 }
               }
             }
@@ -61,22 +108,46 @@
         }
       }
     },
-    "/PhysicalQuantity/HeavyData": {
+    "/UnitConversionSet/LightData": {
       "get": {
         "tags": [
-          "PhysicalQuantity"
+          "UnitConversionSet"
         ],
-        "operationId": "GetAllPhysicalQuantity",
+        "operationId": "DiscoverUnitConversionSet",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity"
-                  }
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitConversionSetDiscoveryPage"
                 }
               }
             }
@@ -279,22 +350,46 @@
         }
       }
     },
-    "/UnitConversionSet/HeavyData": {
+    "/UnitSystem/LightData": {
       "get": {
         "tags": [
-          "UnitConversionSet"
+          "UnitSystem"
         ],
-        "operationId": "GetAllUnitConversionSet",
+        "operationId": "DiscoverUnitSystem",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitConversionSet"
-                  }
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitSystemDiscoveryPage"
                 }
               }
             }
@@ -336,7 +431,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -345,7 +440,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -354,7 +449,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -391,7 +486,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                 }
               }
             }
@@ -420,7 +515,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -429,7 +524,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -438,7 +533,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
+                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem"
                   }
                 ]
               }
@@ -474,45 +569,62 @@
         }
       }
     },
-    "/UnitSystem/LightData": {
+    "/UnitSystemConversionSet/LightData": {
       "get": {
         "tags": [
-          "UnitSystem"
+          "UnitSystemConversionSet"
         ],
-        "operationId": "GetAllUnitSystemLight",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystemLight"
-                  }
-                }
-              }
+        "operationId": "DiscoverUnitSystemConversionSet",
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 50
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "unitSystemInId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "unitSystemOutId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           }
-        }
-      }
-    },
-    "/UnitSystem/HeavyData": {
-      "get": {
-        "tags": [
-          "UnitSystem"
         ],
-        "operationId": "GetAllUnitSystem",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem"
-                  }
+                  "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitSystemConversionSetDiscoveryPage"
                 }
               }
             }
@@ -715,29 +827,6 @@
         }
       }
     },
-    "/UnitSystemConversionSet/HeavyData": {
-      "get": {
-        "tags": [
-          "UnitSystemConversionSet"
-        ],
-        "operationId": "GetAllUnitSystemConversionSet",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitSystemConversionSet"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/UsageStatistics": {
       "get": {
         "tags": [
@@ -783,7 +872,7 @@
         },
         "additionalProperties": false
       },
-      "OSDC.UnitConversion.Conversion.DrillingEngineering.PhysicalQuantity": {
+      "OSDC.UnitConversion.Conversion.DrillingEngineering.DrillingPhysicalQuantity": {
         "type": "object",
         "properties": {
           "Name": {
@@ -964,6 +1053,14 @@
             "type": "string",
             "nullable": true
           },
+          "Synonyms": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "SIUnitName": {
             "type": "string",
             "nullable": true
@@ -995,7 +1092,7 @@
         },
         "additionalProperties": false
       },
-      "OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.UnitSystem": {
+      "OSDC.UnitConversion.Conversion.UnitSystem.DrillingEngineering.DrillingUnitSystem": {
         "type": "object",
         "properties": {
           "Choices": {
@@ -1048,6 +1145,125 @@
             "items": {
               "$ref": "#/components/schemas/OSDC.UnitConversion.Model.CountPerDay"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.PhysicalQuantityDiscoveryPage": {
+        "type": "object",
+        "properties": {
+          "Items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Model.PhysicalQuantityLight"
+            },
+            "nullable": true
+          },
+          "Offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.PhysicalQuantityLight": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "ID": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "DescriptionMD": {
+            "type": "string",
+            "nullable": true
+          },
+          "SIUnitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "SIUnitLabelLatex": {
+            "type": "string",
+            "nullable": true
+          },
+          "LengthDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "MassDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "TimeDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "TemperatureDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "AmountSubstanceDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ElectricCurrentDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "LuminousIntensityDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "PlaneAngleDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "SolidAngleDimension": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "MeaningfulPrecisionInSI": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "TypicalSymbol": {
+            "type": "string",
+            "nullable": true
+          },
+          "SIUnitLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "PhysicalDimensionLatex": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -1134,6 +1350,68 @@
         },
         "additionalProperties": false
       },
+      "OSDC.UnitConversion.Model.UnitConversionSetDiscoveryPage": {
+        "type": "object",
+        "properties": {
+          "Items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitConversionSetLight"
+            },
+            "nullable": true
+          },
+          "Offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.UnitConversionSetLight": {
+        "type": "object",
+        "properties": {
+          "MetaInfo": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.DotnetLibraries.General.DataManagement.MetaInfo"
+              }
+            ],
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "LastModificationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OSDC.UnitConversion.Model.UnitSystemConversionSet": {
         "type": "object",
         "properties": {
@@ -1181,14 +1459,124 @@
         },
         "additionalProperties": false
       },
+      "OSDC.UnitConversion.Model.UnitSystemConversionSetDiscoveryPage": {
+        "type": "object",
+        "properties": {
+          "Items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Model.UnitSystemConversionSetLight"
+            },
+            "nullable": true
+          },
+          "Offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.UnitSystemConversionSetLight": {
+        "type": "object",
+        "properties": {
+          "MetaInfo": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.DotnetLibraries.General.DataManagement.MetaInfo"
+              }
+            ],
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "LastModificationDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "UnitSystemInID": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "UnitSystemOutID": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OSDC.UnitConversion.Model.UnitSystemDiscoveryPage": {
+        "type": "object",
+        "properties": {
+          "Items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OSDC.UnitConversion.Conversion.DrillingEngineering.UnitSystemLight"
+            },
+            "nullable": true
+          },
+          "Offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TotalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NextOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OSDC.UnitConversion.Model.UsageStatistics": {
         "type": "object",
         "properties": {
+          "DiscoveryRequestsPerDay": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/OSDC.UnitConversion.Model.History"
+              }
+            ],
+            "nullable": true
+          },
           "LastSaved": {
             "type": "string",
             "format": "date-time"
           },
-          "BackInterval": {
+          "BackUpInterval": {
             "type": "string",
             "format": "date-span"
           },

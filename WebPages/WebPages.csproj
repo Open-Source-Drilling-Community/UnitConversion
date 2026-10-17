@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\ModelShared\ModelSharedFromOpenApi.cs" Link="GeneratedDtos\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="..\ModelShared\ModelSharedFromOpenApi.cs;..\ModelShared\DiscoveryClientExtensions.cs" Link="GeneratedDtos\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>

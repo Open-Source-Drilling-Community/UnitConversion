@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.RateLimiting;
@@ -119,6 +119,7 @@ var mcpBuilder = builder.Services.AddMcpServer(options =>
 mcpBuilder.WithHttpTransport();
 mcpBuilder.WithPrompts<UnitConversionPromptCollection>(new JsonSerializerOptions(JsonSerializerDefaults.Web));
 
+builder.Services.AddDiscoveryMcpTools();
 builder.Services.AddMcpTool<SearchPhysicalQuantitiesMcpTool>();
 builder.Services.AddMcpTool<GetPhysicalQuantityByIdMcpTool>();
 builder.Services.AddMcpTool<ConvertValuesMcpTool>();
@@ -212,6 +213,6 @@ app.UseCors(cors => cors
 app.MapMcp("/mcp").RequireRateLimiting("mcp");
 app.MapMcpWebSocket("/mcp/ws").RequireRateLimiting("mcp");
 app.MapControllers();
-app.MapFallbackToFile("index.html");
+app.MapFallbackToFile("/", "index.html");
 
 app.Run();

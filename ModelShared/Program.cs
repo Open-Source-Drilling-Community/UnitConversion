@@ -41,7 +41,7 @@ class Program
     static async Task Main()
     {
         bool finished = false;
-        Console.Clear();
+        if (!Console.IsOutputRedirected) Console.Clear();
         Console.BackgroundColor = ConsoleColor.Black;
         do
         {
@@ -245,7 +245,9 @@ class Program
     {
         public string Generate(JsonSchema schema, string? typeNameHint, IEnumerable<string> reservedTypeNames)
         {
-            return typeNameHint != null ? typeNameHint.Split('.', '+').Last() : String.Empty;
+            string name = typeNameHint != null ? typeNameHint.Split('.', '+').Last() : String.Empty;
+            // Preserve the established client type name for the package-owned drilling quantity.
+            return name switch { "DrillingPhysicalQuantity" => "PhysicalQuantity", "DrillingUnitSystem" => "UnitSystem", _ => name };
         }
     }
 

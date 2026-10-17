@@ -187,13 +187,13 @@ else
     {
         try
         {
-            ICollection<PhysicalQuantity> quantities = await APIUtils.ClientUnitConversion.GetAllPhysicalQuantityAsync();
+            ICollection<PhysicalQuantity> quantities = await APIUtils.ClientUnitConversion.ListPhysicalQuantityReferencesAsync();
             physicalQuantities_ = quantities
                 .Where(quantity => quantity != null)
                 .OrderBy(quantity => quantity.Name)
                 .ToList();
 
-            SelectQuantity(physicalQuantities_.FirstOrDefault());
+            await SelectQuantity(physicalQuantities_.FirstOrDefault());
         }
         catch (Exception ex)
         {
@@ -206,14 +206,14 @@ else
         }
     }
 
-    private void OnQuantityRowClicked(TableRowClickEventArgs<PhysicalQuantity> args)
+    private async Task OnQuantityRowClicked(TableRowClickEventArgs<PhysicalQuantity> args)
     {
-        SelectQuantity(args.Item);
+        await SelectQuantity(args.Item);
     }
 
-    private void SelectQuantity(PhysicalQuantity? quantity)
+    private async Task SelectQuantity(PhysicalQuantity? quantity)
     {
-        selectedQuantity_ = quantity;
+        selectedQuantity_ = quantity == null ? null : await APIUtils.ClientUnitConversion.GetPhysicalQuantityByIdAsync(quantity.ID);
         List<UnitChoice> units = GetCurrentUnits().ToList();
         UnitChoice? siUnit = units.FirstOrDefault(unit => unit.IsSI) ?? units.FirstOrDefault();
         inputUnit_ = siUnit;
