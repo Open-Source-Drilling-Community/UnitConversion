@@ -1,0 +1,3 @@
+# Preserve historical conversion results when reconnecting the development PVC.
+databaseCleanup:
+  enabled: false

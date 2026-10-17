@@ -93,3 +93,6 @@ affinity: {}
 
 probes:
   enabled: false
+
+databaseCleanup:
+  enabled: true
